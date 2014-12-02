@@ -1,24 +1,38 @@
 \chapter{Introduction}
 
-\section{Overview of string diagrams in the literature. 
-TSMC's and Penrose diagrams for tensor calculus.
-}
-Traced symmetric monoidal categories are often used to model processes with feedback or operators with fixed points (Ponto, Shulman). A graphical calculus for TSMCs was developed by Joyal, Street, and Verity, in which string diagrams
-\begin{center}Put in diagram here\end{center}
-represent compositions, i.e., new morphisms from old. In fact, these generalize Penrose diagrams in $\Cat{Vect}$, and the word \emph{traced} originates in vector space terminology.  
+Traced symmetric monoidal categories have been used to model processes with feedback or operators with fixed points (Ponto, Shulman). A graphical calculus for TSMCs was developed by Joyal, Street, and Verity, in which string diagrams of the form
+\begin{center}\missingfigure[figwidth=3in]{String diagram with labeled wires}\end{center}
+represent compositions, i.e., new morphisms are constructed from old by specifying which outputs will be fed back into which inputs. In fact, these generalize Penrose diagrams in $\Cat{Vect}$, and the word \emph{traced} originates in vector space terminology.  
 
-\section{Dual interpretation of wiring diagrams as pictures of objects and morphisms in the category $\Cat{Cob}$ of oriented $0$-manifolds and as diagrams for computing with morphisms, compositions, and traces in a TSMC.  Labeled wires.
-}
+But notice that the above picture has another interpretation, in terms of 1-dimensional cobordisms between oriented 0-manifolds. A box in the picture includes only the data of two finite sets $(\inp{X},\outp{X})$, drawn as input wires on the left and output wires on the right, which can be interpreted as an oriented 0-manifold. A string diagram then consists of boxes $X_1,\ldots,X_n$ wired together inside a larger box $Y$, and can be interpreted as a cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$. 
 
-\section{Table of equivalences, shifted data}
+There is actually a bit more data in a string diagram for a TSMC $\cat{C}$; namely, each wire is labeled by an element of $\cat{O}:=\Ob(\cat{C})$. The category of cobordisms is thus taken relative to a fixed set $\cat{O}$, i.e. 0-manifolds and cobordisms are coherently labeled by objects of $\cat{C}$.
 
-\section{Nesting properties and self-similarity in applications}
+We record these interpretations of string diagrams below.
 
-\section{First main theorem}
+\begin{center}
+\begin{tabular}{| l | l | l |}
+\hline
+\multicolumn{3}{|c|}{Interpretations of string diagrams}\\\hline\hline
+String diagram & Traced category $\cat{C}$ & $\Cat{Cob}/\cat{O}$\\\hline
+Boxes & Morphisms & Labeled 0-manifolds\\
+Diagram & Pasting diagram & Coherent cobordism\\
+Nesting & Axioms of TSMCs & Composition law\\\hline
+\end{tabular}
+\end{center}
 
+The relationship between these interpretations is made precise in the following first main theorem.
 \begin{theorem}
  The category $\Cat{TSMC}$ is equivalent to the category of $\Cat{Cob}/\cat{O}$-algebras.
 \end{theorem}
+
+This precise connection between objects in $\Cat{Cob}/\cat{O}$ and morphisms in the traced category $\cat{C}$ is made by a $\Cat{Cob}/\cat{O}$-algebra, i.e. a lax functor $P\colon\Cat{Cob}/\cat{O}\to\Cat{Set}$. For each object box $(\inp{X},\outp{X})$ in a string diagram, there is a set of morphisms in $\cat{C}$, roughly $\Hom_{\cat{C}}(\inp{X},\outp{X})$, which can fill the box. The functor $P$ assigns to each morphism in $\Cat{Cob}/\cat{O}$ a pasting diagram, which encodes a collection of compositions, monoidal products, and traces in $\cat{C}$.  Finally the functor $P$ provides a method for evaluating the pasting diagram on a set of morphisms of $\cat{C}$ filling the inner boxes to obtain a morphism filling the outer box, this encodes all of the axioms which specify how compositions, monoidal products, and traces must interact in $\cat{C}$. This process is intimately connected to the composition law in $\Cat{Cob}/\cat{O}$ which thus corresponds roughly to the set of axioms for the trace in $\cat{C}$.
+
+\section{Nesting properties and self-similarity in applications}
+
+
+
+
 
 \section{Generalization}
 
