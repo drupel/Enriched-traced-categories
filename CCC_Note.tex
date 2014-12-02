@@ -1,0 +1,29 @@
+\documentclass[12pt,oneside,article,draft]{memoir}
+\input{preamble.tex}
+
+\settrims{0pt}{0pt} % page and stock same size
+\setlxvchars %calculate line length such that there are about 65 characters per line in \normalfont
+\settypeblocksize{*}{36pc}{*} % {height}{width}{ratio}
+\setlrmargins{*}{*}{1} % {spine}{edge}{ratio}
+%\setulmargins{*}{*}{1} % {upper}{lower}{ratio}, hight of typeblock fixed
+\setulmarginsandblock{1in}{1in}{*} % hight of typeblock computed
+\setheadfoot{\onelineskip}{2\onelineskip} % {headheight}{footskip}
+\setheaderspaces{*}{1.5\onelineskip}{*} % {headdrop}{headsep}{ratio}
+\checkandfixthelayout
+
+%\chapterstyle{dash}
+\pagestyle{companion}
+
+\title{Enriched Traced Monoidal Categories are Lax Functors out of Compact Categories}
+\author{D. Rupel \and P. Schultz \and D. Spivak}
+
+\begin{document}
+\tightlists
+\firmlists
+
+\maketitle
+%\todo{test}
+\input{dylan_david.tex}
+\input{patrick.tex}
+
+\end{document}

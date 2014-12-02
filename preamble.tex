@@ -1,0 +1,118 @@
+% -*- root: CCC Note.tex -*-
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+%\usepackage{datetime}
+\usepackage[T1]{fontenc}
+\usepackage[sc]{mathpazo}
+\linespread{1.05}
+\usepackage{mathrsfs}
+\usepackage{euscript}
+\usepackage{MnSymbol}
+\usepackage{paralist}
+\usepackage{tikz}
+\usetikzlibrary{cd}
+
+\usetikzlibrary{decorations.markings,arrows.meta}
+
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\dvert}{Vert}
+\DeclareMathOperator{\Lax}{Lax}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Prof}{Prof}
+\DeclareMathOperator{\MProf}{MProf}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Ob}{Ob}
+
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{exercise}{Exercise}[chapter]
+
+\theoremstyle{remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\prodb}{\mathbin{\Pi}}
+\newcommand{\iso}{\cong}
+
+\newcommand{\cat}[1]{\mathscr{#1}}
+\newcommand{\Cat}[1]{\mathbf{#1}}
+%\newcommand{\hom}{\mathrm{hom}}
+\newcommand{\twocat}[1]{\mathcal{#1}}
+\newcommand{\dblcat}[1]{\mathbb{#1}}
+\newcommand{\btwo}{\mathbf{2}}
+\newcommand{\FF}{\mathbb{F}\Cat{F}}
+\newcommand{\FFD}{\FF(\dblcat{D})}
+\newcommand{\Mon}{\Cat{Mon}}
+\newcommand{\DMon}{\mathbb{M}\Cat{on}}
+\newcommand{\Comon}{\Cat{Comon}}
+\newcommand{\DComon}{\mathbb{C}\Cat{omon}}
+\newcommand{\Bimon}{\Cat{Bimon}}
+\newcommand{\Sq}{\mathbb{S}\Cat{q}}
+\newcommand{\Span}{\mathbb{S}\Cat{pan}}
+\newcommand{\Hor}{\twocat{H}or}
+\newcommand{\LAdj}{\dblcat{L}\Cat{Adj}}
+\newcommand{\RAdj}{\dblcat{R}\Cat{Adj}}
+\newcommand{\MAdjC}{\Cat{MAdj}}
+\newcommand{\MAdj}{\dblcat{M}\Cat{Adj}}
+\newcommand{\EAdj}{\dblcat{E}\Cat{Adj}}
+\newcommand{\SymMonCat}{\Cat{SymMonCat}}
+\newcommand{\CompCat}{\Cat{CompCat}}
+\newcommand{\Set}{\Cat{Set}}
+
+\newcommand{\op}[1]{{#1}^{\text{op}}}
+\newcommand{\vop}[1]{{#1}^{\text{vop}}}
+\newcommand{\hop}[1]{{#1}^{\text{hop}}}
+
+\newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\Coalg}{\mathrm{Coalg}}
+\newcommand{\RAlg}[1][]{\mathbb{R}_{#1}\text{-}\Alg}
+\newcommand{\LCoalg}[1][]{\mathbb{L}_{#1}\text{-}\Coalg}
+\newcommand{\LCoalgA}{\mathbb{L}_1\text{-}\Coalg}
+\newcommand{\LCoalgB}{\mathbb{L}_2\text{-}\Coalg}
+
+\newcommand{\twocell}[3][]{\arrow[draw=none,to path={(dom#2.center)--(cod#2.center)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #3}}
+\newcommand{\twocellalt}[3][]{\arrow[draw=none,to path={(dom#2.center)--(cod#2.center)\tikztonodes}]{}[anchor=center,#1]{#3}}
+\newcommand{\twocellA}[2][]{\twocell[#1]{A}{#2}}
+\newcommand{\twocellB}[2][]{\twocell[#1]{B}{#2}}
+\newcommand{\twocellC}[2][]{\twocell[#1]{C}{#2}}
+\newcommand{\twocellD}[2][]{\twocell[#1]{D}{#2}}
+\newcommand{\twocellE}[2][]{\twocell[#1]{E}{#2}}
+\newcommand{\twocellF}[2][]{\twocell[#1]{F}{#2}}
+
+\tikzcdset{
+	arrow style=tikz,
+	diagrams={>={Classical TikZ Rightarrow[angle=63:4pt, line width=.6pt]}},
+	arrows={semithick}
+}
+
+\tikzset{tick/.style={postaction={decorate,decoration={markings,mark=at position 0.5 with {\draw[-] (0,.4ex) -- (0,-.4ex);}}}}}
+\tikzset{dom/.style={append after command={coordinate[alias=dom#1]}},
+		domA/.style={dom=A}, domB/.style={dom=B},
+		domC/.style={dom=C}, domD/.style={dom=D},
+		domE/.style={dom=E}, domF/.style={dom=F}}
+\tikzset{cod/.style={append after command={coordinate[alias=cod#1]}},
+		codA/.style={cod=A}, codB/.style={cod=B},
+		codC/.style={cod=C}, codD/.style={cod=D},
+		codE/.style={cod=E}, codF/.style={cod=F}}
+
+
+\newcommand{\vinp}[1]{\overline{\inp{#1}}}%Delete me later
+\newcommand{\voutp}[1]{\overline{\outp{#1}}}%Delete me later
+\newcommand{\inp}[1]{{#1_-}}%Delete me later
+\newcommand{\outp}[1]{{#1_+}}%Delete me later
+

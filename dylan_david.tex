@@ -1,0 +1,64 @@
+\chapter{Introduction}
+
+\section{Overview of string diagrams in the literature. 
+TSMC's and Penrose diagrams for tensor calculus.
+}
+Traced symmetric monoidal categories are often used to model processes with feedback or operators with fixed points (Ponto, Shulman). A graphical calculus for TSMCs was developed by Joyal, Street, and Verity, in which string diagrams
+\begin{center}Put in diagram here\end{center}
+represent compositions, i.e., new morphisms from old. In fact, these generalize Penrose diagrams in $\Cat{Vect}$, and the word \emph{traced} originates in vector space terminology.  
+
+\section{Dual interpretation of wiring diagrams as pictures of objects and morphisms in the category $\Cat{Cob}$ of oriented $0$-manifolds and as diagrams for computing with morphisms, compositions, and traces in a TSMC.  Labeled wires.
+}
+
+\section{Table of equivalences, shifted data}
+
+\section{Nesting properties and self-similarity in applications}
+
+\section{First main theorem}
+
+\begin{theorem}
+ The category $\Cat{TSMC}$ is equivalent to the category of $\Cat{Cob}/\cat{O}$-algebras.
+\end{theorem}
+
+\section{Generalization}
+
+\begin{theorem}
+ Let $\cat{C}$ be a compact closed category and $\cat{V}$ a symmetric monodical category.  The category $\Lax(\cat{C},\cat{V})$ of lax monodical functors is equivalent to the coslice category $\cat{C}/\cat{V}-\Cat{CompCat}$ spanned by bijective on objects functors.
+\end{theorem}
+\begin{corollary}
+ $\Lax(\Int(\cat{T}),\cat{V})=\cat{V}-\Cat{TSMC}_{\cat{T}/}$
+\end{corollary}
+
+\chapter{Wiring Diagrams and $1-\Cat{Cob}$}
+\section{Set-theoretic formulation of $1-\Cat{Cob}$, as free compact closed category on one object, as $\Int$ of the free TSMC on one object ($\Cat{Bij}$)}
+\subsection{Many object case/generalization $\Cat{Cob}/\cat{O}$}
+
+\section{Drawings of morphisms in $1-\Cat{Cob}$ as wiring diagrams, new way to visualize these}
+
+\section{$1-\Cat{Cob}$-algebras and applications}
+
+\section{Definition of functors between $\Cat{TSMC}$ and $\Cat{Cob}/\cat{O}$-algebras}
+
+Let $\cat{M}$ be a traced symmetric monoidal category with objects $\cat{O}$. We will define a $\Cat{Cob}/\cat{O}$-algebra $\cat{P}=R(\cat{M})\colon\Cat{Cob}/\cat{O}\to\Cat{Set}$ as follows. For an object $X\in\Ob(\Cat{Cob}/\cat{O})$, set 
+$$\cat{P}(X):=\Hom_{\cat{M}}(\vinp{X},\voutp{X}).$$
+We next consider morphisms.
+
+Following Proposition~\ref{prop:set theoretic cob1} (borrow notation/setup from Abramsky instead) a morphism $\Phi\colon X\longrightarrow Y$ consists of a typed bijection 
+$$\varphi\colon\inp{X}\sqcup \outp{Y}\xrightarrow{\iso}\outp{X}\sqcup \inp{Y},$$ 
+together with a typed finite set $S$. Given an element $f\in\cat{P}(X)$ we must construct $\cat{P}(\Phi)(f)\in\cat{P}(Y)$. Let $\dim(\overline{S})=\textnormal{Tr}^{\overline{S}}_{I,I}\big[\id_{\overline{S}}\big]\in\cat{S}_\cat{M}$. Then we use the formula
+$$\cat{P}(\Phi)(f):=
+\textnormal{Tr}^{\overline{X_+}}_{\overline{Y_-},\overline{Y_+}}\Big[\big(f\otimes\id_{\overline{Y_+}}\big)\circ\overline{\varphi}\Big]
+\otimes\dim(\overline{S}).	
+$$
+
+\begin{theorem}
+ The category $\Cat{TSMC}$ is equivalent to the category of $\Cat{Cob}/\cat{O}$-algebras.
+\end{theorem}
+\begin{proof}
+ 
+\end{proof}
+\begin{corollary}
+ Enriched setting?
+\end{corollary}
+
+
