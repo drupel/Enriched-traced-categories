@@ -50,7 +50,7 @@ commutes, and for all $X\in\cat{C}$ the two diagrams
 	& F(X\otimes I_C)
 \end{tikzcd}
 \]
-commute. If $\epsilon$ and $\mu$ are isomorphisms, then $F$ is \emph{strong}. \todo{test}
+commute. If $\epsilon$ and $\mu$ are isomorphisms, then $F$ is \emph{strong}.
 
 If $\cat{C}$ and $\cat{D}$ are symmetric monoidal, then $F$ is a \emph{lax symmetric monoidal functor} if it is lax monoidal, and commutes with the symmetries, in the sense that the diagram
 \[
@@ -212,7 +212,7 @@ For any category $\cat{C}$, there is a profunctor $\Hom_{\cat{C}}\colon\op{\cat{
 
 Given a category $\cat{C}$, there is a monoidal category $\Prof(\cat{C},\cat{C})$ of profunctors from $\cat{C}$ to itself and morphisms of profunctors, with the tensor product given above and $\Hom_{\cat{C}}$ as the monoidal unit. We would now like to investigate monoids in this monoidal category.
 
-Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure. The unit is a profunctor morphism $i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element $i(f)\in M(c,d)$, such that $f\cdot i(g)\cdot h = i(f\circ g\circ h)$ whenever this makes sense. The multiplication $M\otimes M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, satisfying the following equations whenever they make sense:
+Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure. The unit is a profunctor morphism $i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element $i(f)\in M(c,d)$, such that $f\cdot i(g)\cdot h = i(f\circ g\circ h)$ whenever this makes sense. The multiplication $M\otimes M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative, and satisfies the following equations whenever they make sense:
 \begin{gather*}
 	(f\cdot m_2)\bullet(m_1\cdot h) = f\cdot(m_2\bullet m_1)\cdot h \\
 	(m_3\cdot g)\bullet m_1 = m_3\bullet(g\cdot m_1) \\
