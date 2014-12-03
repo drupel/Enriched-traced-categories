@@ -276,8 +276,18 @@ Let $\cat{C}$ be a compact closed category.
 \begin{proof}
 	We can define a multiplication on $N$ by the following formula: given any $n_1\in N(c,d)$ and $n_2\in N(d,e)$,
 	\[
-		n_2\bullet n_1 = (\id_c\otimes \eta_d)\cdot(n_1\boxtimes i(\id_{d^*})\boxtimes n_2)\cdot(\epsilon_d\otimes\id_e)
+		n_2\bullet n_1 = (\epsilon_d\otimes\id_e)\cdot(n_1\boxtimes i(\id_{d^*})\boxtimes n_2)\cdot(\id_c\otimes \eta_d).
 	\]
+	We first check the equation $n\bullet i(f)=n\cdot f$ for any $n\in N(d,e)$ and $f\colon c\to d$:
+	\begin{align*}
+		n\bullet i(f) &= (\epsilon_d\otimes\id_e)\cdot\bigl(i(f)\boxtimes i(\id_{d^*})\boxtimes n\bigr)\cdot(\id_c\otimes \eta_d) \\
+		&= (\epsilon_d\otimes\id_e)\cdot\bigl(i(f\otimes \id_{d^*})\boxtimes n\bigr)\cdot(\id_c\otimes \eta_d) \\
+		&= \bigl((\epsilon_d\cdot i(f\otimes \id_{d^*}))\boxtimes (\id_e\cdot n)\bigr)\cdot(\id_c\otimes \eta_d) \\
+		&= \bigl(i(\epsilon_d\circ (f\otimes \id_{d^*}))\boxtimes n\bigr)\cdot(\id_c\otimes \eta_d) \\
+		&= \bigl(i(\id_I)\boxtimes n\bigr)\cdot\bigl(((\epsilon_d\circ (f\otimes \id_{d^*}))\otimes\id_d)\circ(\id_c\otimes \eta_d)\bigr) \\
+		&= \bigl(I_N\boxtimes n\bigr)\cdot\bigl((\epsilon_d\otimes\id_d)\circ(\id_d\otimes\eta_d)\circ(f\otimes\id_I)\bigr) \\
+		&= n\cdot f
+	\end{align*}
 \end{proof}
 
 \begin{proposition}
