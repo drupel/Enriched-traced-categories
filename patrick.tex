@@ -226,19 +226,20 @@ Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure. The unit is a profu
 	Simple to check. The unit provides the identities and the functor from $\cat{C}$, while the multiplication provides the composition.
 \end{proof}
 
-Now suppose $\cat{C}$ and $\cat{D}$ are monoidal categories. We will write
-\[
-	a_{c,d,e}\colon (c\otimes d)\otimes e \to c\otimes(d\otimes e), 
-		\quad \lambda_c\colon I\otimes c\to c,
-		\quad \rho_c\colon c\otimes I \to c 
-\]
-for the associator and left and right unitor isomorphisms, respectively, leaving it to context to make clear whether we are in $\cat{C}$ or $\cat{D}$.
+Now suppose $\cat{C}$ and $\cat{D}$ are symmetric monoidal categories. We will write
+\begin{gather*}
+	a_{c,d,e}\colon (c\otimes d)\otimes e \to c\otimes(d\otimes e), \\
+		\lambda_c\colon I\otimes c\to c,
+		\qquad \rho_c\colon c\otimes I \to c, \\
+		\sigma_{c,d}\colon c\otimes d\to d\otimes c
+\end{gather*}
+for the associator, left and right unitor, and symmetry isomorphisms, respectively, leaving it to context to make clear whether we are in $\cat{C}$ or $\cat{D}$.
 
 A \emph{monoidal profunctor} $M$ from $\cat{C}$ to $\cat{D}$ is an ordinary profunctor such that the functor $M\colon \op{\cat{C}}\times\cat{D}\to\Set$ is equipped with a lax-monoidal structure, with the cartesian monoidal structure on $\Set$. In the bimodule notation, this means that there is an associative operation assigning to any elements $m_1\in M(c_1,c'_1)$ and $m_2\in M(c_2,c'_2)$ an element $m_1\boxtimes m_2\in M(c_1\otimes c_2,c'_1\otimes c'_2)$ such that
 \[
 	(f_1\cdot m_1\cdot g_1)\boxtimes(f_2\cdot m_2\cdot g_2) = (f_1\otimes f_2)\cdot(m_1\boxtimes m_2)\cdot(g_1\otimes g_2),
 \]
-as well as a distinguished element $I_M\in M(I,I)$ such that $\lambda_d\cdot(I_M\boxtimes m)\cdot\lambda^{-1}_c = m = \rho_d\cdot(m\boxtimes I_M)\cdot\rho^{-1}_c$ for any $m\in M(c,d)$.
+as well as a distinguished element $I_M\in M(I,I)$ such that $\lambda_d\cdot(I_M\boxtimes m)\cdot\lambda^{-1}_c = m = \rho_d\cdot(m\boxtimes I_M)\cdot\rho^{-1}_c$ for any $m\in M(c,d)$. If moreover $m_2\boxtimes m_1 = \sigma_{c'_1,c'_2}\cdot(m_1\boxtimes m_2)\cdot\sigma_{c_1,c_2}^{-1}$, we say $M$ is \emph{symmetric monoidal}.
 
 A monoidal profunctor morphism $\phi\colon M\to N$ is simply a monoidal transformation. Spelling this out in bimodule notation, $\phi$ is an ordinary morphism of profunctors such that $\phi(m_1\boxtimes m_2)=\phi(m_1)\boxtimes\phi(m_2)$ and $\phi(I_M)=I_N$. We will denote the category of monoidal profunctors from $\cat{C}$ to $\cat{D}$ and monoidal profunctor morphisms as $\MProf(\cat{C},\cat{D})$.
 
@@ -276,18 +277,22 @@ Let $\cat{C}$ be a compact closed category.
 \begin{proof}
 	We can define a multiplication on $N$ by the following formula: given any $n_1\in N(c,d)$ and $n_2\in N(d,e)$,
 	\[
-		n_2\bullet n_1 = (\epsilon_d\otimes\id_e)\cdot(n_1\boxtimes i(\id_{d^*})\boxtimes n_2)\cdot(\id_c\otimes \eta_d).
+		n_2\bullet n_1 = \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(n_1\boxtimes i(\id_{d^*})\boxtimes n_2)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr).
 	\]
 	We first check the equation $n\bullet i(f)=n\cdot f$ for any $n\in N(d,e)$ and $f\colon c\to d$:
 	\begin{align*}
-		n\bullet i(f) &= (\epsilon_d\otimes\id_e)\cdot\bigl(i(f)\boxtimes i(\id_{d^*})\boxtimes n\bigr)\cdot(\id_c\otimes \eta_d) \\
-		&= (\epsilon_d\otimes\id_e)\cdot\bigl(i(f\otimes \id_{d^*})\boxtimes n\bigr)\cdot(\id_c\otimes \eta_d) \\
-		&= \bigl((\epsilon_d\cdot i(f\otimes \id_{d^*}))\boxtimes (\id_e\cdot n)\bigr)\cdot(\id_c\otimes \eta_d) \\
-		&= \bigl(i(\epsilon_d\circ (f\otimes \id_{d^*}))\boxtimes n\bigr)\cdot(\id_c\otimes \eta_d) \\
-		&= \bigl(i(\id_I)\boxtimes n\bigr)\cdot\bigl(((\epsilon_d\circ (f\otimes \id_{d^*}))\otimes\id_d)\circ(\id_c\otimes \eta_d)\bigr) \\
-		&= \bigl(I_N\boxtimes n\bigr)\cdot\bigl((\epsilon_d\otimes\id_d)\circ(\id_d\otimes\eta_d)\circ(f\otimes\id_I)\bigr) \\
-		&= n\cdot f
+		n\bullet i(f) &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(i(f)\boxtimes i(\id_{d^*})\boxtimes n)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
+		&= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(i(f\otimes\id_{d^*})\boxtimes n)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
+		&= \lambda_e\cdot\bigl((\epsilon_d\cdot i(f\otimes \id_{d^*}))\boxtimes (\id_e\cdot n)\bigr)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
+		&= \lambda_e\cdot\bigl(i(\epsilon_d\circ (f\otimes \id_{d^*}))\boxtimes (n\cdot\id_d)\bigr)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
+		&= \lambda_e\cdot\bigl(i(\id_I)\boxtimes n\bigr)\cdot\bigl(((\epsilon_d\circ (f\otimes \id_{d^*}))\otimes\id_d)\circ(\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
+		&= \lambda_e\cdot\bigl(I_N\boxtimes n\bigr)\cdot\bigl((\epsilon_d\otimes\id_d)\circ(\id_d\otimes\eta_d)\circ(f\otimes\id_I)\circ\rho_c^{-1}\bigr) \\
+		&= \lambda_e\cdot\bigl(I_N\boxtimes n\bigr)\cdot\bigl(\lambda_d^{-1}\circ\rho_d\circ(f\otimes\id_I)\circ\rho_c^{-1}\bigr) \\
+		&= \bigl(\lambda_e\cdot(I_N\boxtimes n)\cdot\lambda_d^{-1}\bigr)\cdot\bigl(\rho_d\circ(f\otimes\id_I)\circ\rho_c^{-1}\bigr) \\
+		&= n\cdot f.
 	\end{align*}
+
+	The equation $i(f)\bullet n=f\cdot n$ follows similarly, and the associativity of $\bullet$ is a straightforward verification. \todo[author=Patrick]{Finish proof}
 \end{proof}
 
 \begin{proposition}
