@@ -1,4 +1,4 @@
-% -*- root: CCC_Note.tex -*-
+% !TEX root = ./CCC_Note.tex
 \chapter{Introduction}
 
 Traced symmetric monoidal categories have been used to model processes with feedback (\url{http://arxiv.org/pdf/1401.5113v1.pdf})  or operators with fixed points (\url{http://arxiv.org/pdf/1107.6032.pdf}). A graphical calculus for TSMCs was developed by Joyal, Street, and Verity, in which string diagrams of the form
@@ -7,16 +7,16 @@ represent compositions, i.e., new morphisms are constructed from old by specifyi
 
 But notice that the above picture has another interpretation, in terms of 1-dimensional cobordisms between oriented 0-manifolds. The box $X$ in the picture includes only the data of two finite sets $(\inp{X},\outp{X})$, here $(blah,blah)$. Thus each box encodes a signed set, which can be interpreted as an oriented 0-manifold. A string diagram, in which boxes $X_1,\ldots,X_n$ are wired together inside a larger box $Y$, can be interpreted as a cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$. 
 
-There is actually a bit more data in a string diagram for a TSMC $\cat{C}$; namely, each wire is labeled by an element of $\cat{O}:=\Ob(\cat{C})$. The category of cobordisms is thus taken relative to a fixed set $\cat{O}$, i.e. 0-manifolds and cobordisms are coherently labeled by objects of $\cat{C}$.
+There is actually a bit more data in a string diagram for a TSMC $\cat{C}$; namely, each wire is labeled by an object of $\cat{C}$. We will thus consider the category $\Cat{Cob}/L$ of oriented 1-dimensional cobordisms over a fixed set $L$ of labels. 
 
 We record these interpretations of string diagrams below.
-
 \begin{center}
 \begin{tabular}{| l | l | l |}
 \hline
 \multicolumn{3}{|c|}{Interpretations of string diagrams}\\\hline
-String diagram & Traced category $\cat{C}$ & $\Cat{Cob}/\cat{O}$\\\bhline
-Boxes & Morphisms & Labeled 0-manifolds\\
+String diagram & Traced category $\cat{C}$ & $\Cat{Cob}/L$\\\bhline
+Wire labels&Objects&Fixed set $L$\\
+Boxes & Morphisms & $L$-labeled 0-manifolds\\
 Diagram & Pasting diagram & Coherent cobordism\\
 Nesting & Axioms of TSMCs & Composition law\\\hline
 \end{tabular}
