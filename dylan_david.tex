@@ -15,16 +15,16 @@ We record these interpretations of string diagrams below.
 \hline
 \multicolumn{3}{|c|}{Interpretations of string diagrams}\\\hline
 String diagram & Traced category $\cat{C}$ & $\Cat{Cob}/L$\\\bhline
-Wire labels&Objects&Fixed set $L$\\
-Boxes & Morphisms & $L$-labeled 0-manifolds\\
-Diagram & Pasting diagram & Coherent cobordism\\
+Wire label set, $L$&Objects, $L:=\Ob(\cat{C})$&Label set, $L$\\
+Boxes & Morphisms & Objects (oriented 0-mfds over $L$)\\
+Diagrams & Pasting diagrams & Morphisms (Cobordisms over $L$)\\
 Nesting & Axioms of TSMCs & Composition law\\\hline
 \end{tabular}
 \end{center}
 
 The relationship between these interpretations is made precise in the following first main theorem.
 \begin{theorem}
- The category $\Cat{TSMC}$ is equivalent to the category of $\Cat{Cob}/\cat{O}$-algebras.
+ The category $\Cat{TSMC}$ is equivalent to the total category of a split cocartesian fibration over $\Set$, in which the fiber over a set $L$ is the category of $(\Cat{Cob}/L)$-algebras.
 \end{theorem}
 
 This precise connection between objects in $\Cat{Cob}/\cat{O}$ and morphisms in the traced category $\cat{C}$ is made by a $\Cat{Cob}/\cat{O}$-algebra, i.e. a lax functor $P\colon\Cat{Cob}/\cat{O}\to\Cat{Set}$. For each object box $(\inp{X},\outp{X})$ in a string diagram, there is a set of morphisms in $\cat{C}$, roughly $\Hom_{\cat{C}}(\inp{X},\outp{X})$, which can fill the box. The functor $P$ assigns to each morphism in $\Cat{Cob}/\cat{O}$ a pasting diagram, which encodes a collection of compositions, monoidal products, and traces in $\cat{C}$.  Finally the functor $P$ provides a method for evaluating the pasting diagram on a set of morphisms of $\cat{C}$ filling the inner boxes to obtain a morphism filling the outer box, this encodes all of the axioms which specify how compositions, monoidal products, and traces must interact in $\cat{C}$. This process is intimately connected to the composition law in $\Cat{Cob}/\cat{O}$ which thus corresponds roughly to the set of axioms for the trace in $\cat{C}$.
