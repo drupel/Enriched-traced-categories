@@ -9,25 +9,26 @@ But notice that the above picture has another interpretation, in terms of 1-dime
 
 There is actually a bit more data in a string diagram for a TSMC $\cat{C}$; namely, each wire is labeled by an object of $\cat{C}$. We will thus consider the category $\Cat{Cob}/L$ of oriented 1-dimensional cobordisms over a fixed set $L$ of labels. 
 
-We record these interpretations of string diagrams below.
+We record these two interpretations of string diagrams in the table below. Note the ``degree shift" between the second and third columns.
 \begin{center}
 \begin{tabular}{| l | l | l |}
 \hline
 \multicolumn{3}{|c|}{Interpretations of string diagrams}\\\hline
 String diagram & Traced category $\cat{C}$ & $\Cat{Cob}/L$\\\bhline
 Wire label set, $L$&Objects, $L:=\Ob(\cat{C})$&Label set, $L$\\
-Boxes & Morphisms & Objects (oriented 0-mfds over $L$)\\
-Diagrams & Pasting diagrams & Morphisms (Cobordisms over $L$)\\
-Nesting & Axioms of TSMCs & Composition law\\\hline
+Box & Morphism & Object (oriented 0-mfd over $L$)\\
+String diagram & Composition & Morphism (Cobordism over $L$)\\
+Nesting & Axioms of TSMCs & Composition\\\hline
 \end{tabular}
 \end{center}
 
-The relationship between these interpretations is made precise in the following first main theorem.
+The relationship between these interpretations is made precise in the following first main theorem, which will be proved in Section~\ref{**}.
 \begin{theorem}
- The category $\Cat{TSMC}$ is equivalent to the total category of a split cocartesian fibration over $\Set$, in which the fiber over a set $L$ is the category of $(\Cat{Cob}/L)$-algebras.
+Consider the functor $\op\Set\to\Cat{Cat}$, given by $L\mapsto(\Cat{Cob}/L)\alg$, and let $(\Cat{Cob}/\bullet)\alg\to\Set$ denote the corresponding split fibration. Then there is an equivalence of categories
+$$\Cat{TSMC}\simeq(\Cat{Cob}/\bullet)\alg.$$
 \end{theorem}
 
-This precise connection between objects in $\Cat{Cob}/\cat{O}$ and morphisms in the traced category $\cat{C}$ is made by a $\Cat{Cob}/\cat{O}$-algebra, i.e. a lax functor $P\colon\Cat{Cob}/\cat{O}\to\Cat{Set}$. For each object box $(\inp{X},\outp{X})$ in a string diagram, there is a set of morphisms in $\cat{C}$, roughly $\Hom_{\cat{C}}(\inp{X},\outp{X})$, which can fill the box. The functor $P$ assigns to each morphism in $\Cat{Cob}/\cat{O}$ a pasting diagram, which encodes a collection of compositions, monoidal products, and traces in $\cat{C}$.  Finally the functor $P$ provides a method for evaluating the pasting diagram on a set of morphisms of $\cat{C}$ filling the inner boxes to obtain a morphism filling the outer box, this encodes all of the axioms which specify how compositions, monoidal products, and traces must interact in $\cat{C}$. This process is intimately connected to the composition law in $\Cat{Cob}/\cat{O}$ which thus corresponds roughly to the set of axioms for the trace in $\cat{C}$.
+We sketch the connection, with a few minor abuses of notation, as follows. Recall that a $(\Cat{Cob}/L)$-algebra is a lax functor $P\colon\Cat{Cob}/L\to\Cat{Set}$. Once a set $L$ is established, specifying a traced category $\cat{C}$ with objects $L$ requires the same data as specifying a lax functor $P$. First, for each box $(\inp{X},\outp{X})$ in a string diagram, both $\cat{C}$ and $P$ require a set, $\Hom_{\cat{C}}(\inp{X},\outp{X})$ and $P(\inp{X},\outp{X})$, respectively.  Second, for each string diagram, both $\cat{C}$ and $P$ require a function: a formula for composition and trace, in the case of $\cat{C}$, and an action on morphisms, in the case of $P$. The fact that $\cat{C}$ satisfies the axioms of traced symmetric monoidal categories corresponds to checking the functoriality of $P$.
 
 \section{Nesting properties and self-similarity in applications}
 
@@ -44,13 +45,17 @@ This precise connection between objects in $\Cat{Cob}/\cat{O}$ and morphisms in 
  $\Lax(\Int(\cat{T}),\cat{V})=\cat{V}-\Cat{TSMC}_{\cat{T}/}$
 \end{corollary}
 
-\chapter{Wiring Diagrams and $1-\Cat{Cob}$}
-\section{Set-theoretic formulation of $1-\Cat{Cob}$, as free compact closed category on one object, as $\Int$ of the free TSMC on one object ($\Cat{Bij}$)}
+\chapter{Wiring Diagrams and $\Cat{1-Cob}$}
+\section{Set-theoretic formulation of $\Cat{1-Cob}$, as free compact closed category on one object, as $\Int$ of the free TSMC on one object ($\Cat{Bij}$)}
 \subsection{Many object case/generalization $\Cat{Cob}/\cat{O}$}
 
-\section{Drawings of morphisms in $1-\Cat{Cob}$ as wiring diagrams, new way to visualize these}
+\section{Morphisms in $\Cat{1-Cob}$ as wiring diagrams}
 
-\section{$1-\Cat{Cob}$-algebras and applications}
+Wiring diagrams are a new way to visualize morphisms in 1-Cob.
+
+\missingfigure{Draw, perhaps side-by-side, a cobordism in the usual style and in our style.}
+
+\section{$\Cat{1-Cob}$-algebras and applications}
 
 \section{Definition of functors between $\Cat{TSMC}$ and $\Cat{Cob}/\cat{O}$-algebras}
 
