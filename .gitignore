@@ -6,4 +6,5 @@
 *.log
 *.fdb_latexmk
 *.toc
+*.out
 Output/*
