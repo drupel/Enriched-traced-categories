@@ -22,15 +22,31 @@ Nesting & Axioms of TSMCs & Composition\\\hline
 \end{tabular}
 \end{center}
 
-The relationship between these interpretations is made precise in the following first main theorem, which will be proved in Section~\ref{**}.
-\begin{theorem}
+The relationship between these interpretations is made precise in the following first main theorem, which will be proved in Section~\ref{3}.
+\begin{theorem}\label{thm:traced as cob-alg}
 Consider the functor $\op\Set\to\Cat{Cat}$, given by $Lbl\mapsto(\Cat{Cob}/Lbl)\alg$, and let $(\Cat{Cob}/\bullet)\alg\to\Set$ denote the corresponding split Grothendieck fibration. Then there is an equivalence of categories
 $$\Cat{TSMC}\simeq(\Cat{Cob}/\bullet)\alg.$$
 \end{theorem}
 
 We sketch the connection, with a few minor abuses of notation, as follows. Recall that a $(\Cat{Cob}/Lbl)$-algebra is a lax functor $P\colon\Cat{Cob}/Lbl\to\Cat{Set}$. Once a set $Lbl$ is established, specifying a traced category $\cat{C}$ with objects $Lbl$ requires the same data as specifying a lax functor $P$. First, for each box $(\inp{X},\outp{X})$ in a string diagram, both $\cat{C}$ and $P$ require a set, $\Hom_{\cat{C}}(\inp{X},\outp{X})$ and $P(\inp{X},\outp{X})$, respectively.  Second, for each string diagram, both $\cat{C}$ and $P$ require a function: a formula for composition and trace, in the case of $\cat{C}$, and an action on morphisms, in the case of $P$. The fact that $\cat{C}$ satisfies the axioms of traced symmetric monoidal categories corresponds to checking the functoriality of $P$.
 
-\section{Applications of the cobordism-algebra perspective in engineering}
+\section{Generalization: lax algebras on a traced or compact category}
+
+\begin{theorem}
+ Let $\cat{C}$ be a compact closed category and $\cat{V}$ a symmetric monoidal category.  The category $\Lax(\cat{C},\cat{V})$ of lax monodical functors is equivalent to the coslice category $\cat{C}/(\cat{V}-\Cat{CompCat})$ spanned by bijective on objects functors.
+\end{theorem}
+
+\begin{corollary}
+If $\cat{C}=Int\cat{D}$, then $\Lax(\cat{C},\cat{V})$ is equivalent to the coslice category $\cat{C}/(\cat{V}-\Cat{TracedCat})$ with boo.
+\end{corollary}
+
+Theorem~\ref{thm:traced as cob-alg} follows from this corollary, because $\Cat{Cob}/Lbl$ is Int of the free traced category on a set of objects $Lbl$, so....
+
+\begin{corollary}
+ $\Lax(\Int(\cat{T}),\cat{V})=\cat{V}-\Cat{TSMC}_{\cat{T}/}$
+\end{corollary}
+
+\section{Applications of the cobordism-algebra perspective in engineering design}
 
 When designing or investigating a complex system, it is often useful to think in terms of interacting subsystems, put together to make a larger whole. This is often called \emph{compositionality}.
 
@@ -41,27 +57,17 @@ When drawing 0-manifolds as boxes and cobordisms as string diagrams, composition
 \missingfigure{Draw nested diagrams}
 A commutative square in $\Cat{1-Cob}$ corresponds to finding two different ways to chunk small boxes inside a big box. The functoriality of $P\colon\Cat{1-Cob}\to\Set$ can be thought of as ensuring that any two ways to chunk boxes gives the same result.
 
-\section{Generalization: lax algebras on a traced or compact category}
-
-\begin{theorem}
- Let $\cat{C}$ be a compact closed category and $\cat{V}$ a symmetric monodical category.  The category $\Lax(\cat{C},\cat{V})$ of lax monodical functors is equivalent to the coslice category $\cat{C}/(\cat{V}-\Cat{CompCat})$ spanned by bijective on objects functors.
-\end{theorem}
-
-\begin{corollary}
-If $\cat{C}=Int\cat{D}$, then $\Lax(\cat{C},\cat{V})$ is equivalent to the coslice category $\cat{C}/(\cat{V}-\Cat{TracedCat})$ with boo.
-\end{corollary}
-
-\begin{corollary}
- $\Lax(\Int(\cat{T}),\cat{V})=\cat{V}-\Cat{TSMC}_{\cat{T}/}$
-\end{corollary}
-
 \section{Acknowledgments}
 
-Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect our operadic picture to the traced one. 
+Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect our operad-algebra picture to the traced one. 
 
 \chapter{Wiring Diagrams and $\Cat{1-Cob}$}
-\section{Set-theoretic formulation of $\Cat{1-Cob}$, as free compact closed category on one object, as $\Int$ of the free TSMC on one object ($\Cat{Bij}$)}
-\subsection{Many object case/generalization $\Cat{Cob}/\cat{O}$}
+
+In this section, we more carefully explain the equivalence between the category of traced categories and the category of cobordism algebras.
+
+\section{Objects in $\Cat{1-Cob}$ as interfaces}
+
+\missingfigure{Draw, perhaps side-by-side, an oriented 0-manifold in the usual style and in our style.}
 
 \section{Morphisms in $\Cat{1-Cob}$ as wiring diagrams}
 
@@ -70,6 +76,12 @@ Wiring diagrams are a new way to visualize morphisms in 1-Cob.
 \missingfigure{Draw, perhaps side-by-side, a cobordism in the usual style and in our style.}
 
 \section{$\Cat{1-Cob}$-algebras and applications}
+
+Traced categories are often used to model processes with feedback. The processes correspond to morphisms, each drawn as an interface, and these processes can be strung together in series or parallel, and with feedback, using string diagram notation. Theorem~\ref{thm:traced as cob-alg} says that we can also view string diagrams as morphisms in $\Cat{Cob}$. In this setting, the processes are modeled using an algebra on $\Cat{Cob}$.
+
+References for applications of traced monoidal categories.
+
+References for applications of $\Cat{Cob}$-algebras.
 
 \chapter{Traced Symmetric Monoidal Categories}
 
