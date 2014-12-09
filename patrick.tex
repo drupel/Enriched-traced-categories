@@ -321,6 +321,9 @@ Let $\cat{C}$ be a compact closed category.
 \begin{proposition}
 	For any $M\in\MProf(1,\cat{C})$, $FM\in\Prof(\cat{C},\cat{C})$ has a canonical unit.
 \end{proposition}
+\begin{proof}
+	Given any $f\colon c\to d$ in $\cat{C}$, we must define an element $i(f)\in FM(c,d)=M(c^*\otimes d)$. Since $M$ is a monoidal profunctor, there is a given unit element $I_M\in M(I)$, with which we can define $i(f)=((\id_{c^*}\otimes f)\circ\eta_c)\cdot I_M$.
+\end{proof}
 
 \begin{corollary}
 	The functor $F$ factors canonically through the category $\Mon(\MProf(\cat{C},\cat{C}))$ of monoid objects.
