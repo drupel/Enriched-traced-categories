@@ -37,22 +37,27 @@ When designing or investigating a complex system, it is often useful to think in
 Thinking of this as processes wired together to make larger processes has and Rupel were originally motivated to formalize the operadic nature of compositionality. This led to the notion of wiring diagrams and their algebras, as discussed in previous work \cite{Spivak}, \cite{Rupel-Spivak}, \cite{Vagner-Spivak-Lerman}. 
  
 
-\subsection{Nesting}
 When drawing 0-manifolds as boxes and cobordisms as string diagrams, composition of cobordisms become nested diagrams.
 \missingfigure{Draw nested diagrams}
+A commutative square in $\Cat{1-Cob}$ corresponds to finding two different ways to chunk small boxes inside a big box. The functoriality of $P\colon\Cat{1-Cob}\to\Set$ can be thought of as ensuring that any two ways to chunk boxes gives the same result.
 
-\section{Generalization}
+\section{Generalization: lax algebras on a traced or compact category}
 
 \begin{theorem}
- Let $\cat{C}$ be a compact closed category and $\cat{V}$ a symmetric monodical category.  The category $\Lax(\cat{C},\cat{V})$ of lax monodical functors is equivalent to the coslice category $\cat{C}/\cat{V}-\Cat{CompCat}$ spanned by bijective on objects functors.
+ Let $\cat{C}$ be a compact closed category and $\cat{V}$ a symmetric monodical category.  The category $\Lax(\cat{C},\cat{V})$ of lax monodical functors is equivalent to the coslice category $\cat{C}/(\cat{V}-\Cat{CompCat})$ spanned by bijective on objects functors.
 \end{theorem}
+
+\begin{corollary}
+If $\cat{C}=Int\cat{D}$, then $\Lax(\cat{C},\cat{V})$ is equivalent to the coslice category $\cat{C}/(\cat{V}-\Cat{TracedCat})$ with boo.
+\end{corollary}
+
 \begin{corollary}
  $\Lax(\Int(\cat{T}),\cat{V})=\cat{V}-\Cat{TSMC}_{\cat{T}/}$
 \end{corollary}
 
 \section{Acknowledgments}
 
-Steve Awodey, Ed Morehouse.
+Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect our operadic picture to the traced one. 
 
 \chapter{Wiring Diagrams and $\Cat{1-Cob}$}
 \section{Set-theoretic formulation of $\Cat{1-Cob}$, as free compact closed category on one object, as $\Int$ of the free TSMC on one object ($\Cat{Bij}$)}
