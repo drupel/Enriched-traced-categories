@@ -2,7 +2,22 @@
 \chapter{Introduction}
 
 Traced symmetric monoidal categories have been used to model processes with feedback (\url{http://arxiv.org/pdf/1401.5113v1.pdf})  or operators with fixed points (\url{http://arxiv.org/pdf/1107.6032.pdf}). A graphical calculus for TSMCs was developed by Joyal, Street, and Verity, in which string diagrams of the form
-\begin{center}\missingfigure[figwidth=3in]{String diagram with labeled wires}\end{center}
+\begin{center}
+\activetikz{
+	%little box 1
+	\path(2,1.5);
+	\blackbox{(2,2)}{2}{1}{$X_1$}{.5}
+	%little box 2
+	\path(6,1.5);
+	\blackbox{(2,2)}{2}{2}{$X_2$}{.5}
+	%wires
+	\directarc{(4.25,2.5)}{(5.75,2.16667)} % X_1 -> X_2
+	\directarc{(0.35,2.833333)}{(1.75,2.83333)} % Y -> X_1
+	\fancyarc{(0.35,4)}{(5.75,2.83333)}{-35}{16} % Y -> X_2
+	\directarc{(8.25,2.8333)}{(9.65,2.83333)} % X_2 -> Y
+	\fancyarc{(1.75,2.16667)}{(8.25,2.16667)}{20}{-45} % X_2 -> X_1
+}
+\end{center}
 represent compositions, i.e., new morphisms are constructed from old by specifying which outputs will be fed back into which inputs. In fact, these generalize Penrose diagrams in $\Cat{Vect}$, and the word \emph{traced} originates in vector space terminology.  
 
 But notice that the above picture has another interpretation, in terms of 1-dimensional cobordisms between oriented 0-manifolds. The box $X$ in the picture includes only the data of two finite sets $(\inp{X},\outp{X})$, here $(blah,blah)$. Thus each box encodes a signed set, which can be interpreted as an oriented 0-manifold. A string diagram, in which boxes $X_1,\ldots,X_n$ are wired together inside a larger box $Y$, can be interpreted as a cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$. 
@@ -183,6 +198,7 @@ Wiring diagrams are a new way to visualize morphisms in 1-Cob.
 	\fancyarc{(1.75,2.16667)}{(8.25,2.16667)}{20}{-45} % X_2 -> X_1
 }
 \end{center}
+~\todo{Put these two drawings on one line?}
 \begin{center}
 \activetikz{
 %Left manifolds
