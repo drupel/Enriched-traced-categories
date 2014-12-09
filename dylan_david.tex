@@ -7,35 +7,39 @@ represent compositions, i.e., new morphisms are constructed from old by specifyi
 
 But notice that the above picture has another interpretation, in terms of 1-dimensional cobordisms between oriented 0-manifolds. The box $X$ in the picture includes only the data of two finite sets $(\inp{X},\outp{X})$, here $(blah,blah)$. Thus each box encodes a signed set, which can be interpreted as an oriented 0-manifold. A string diagram, in which boxes $X_1,\ldots,X_n$ are wired together inside a larger box $Y$, can be interpreted as a cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$. 
 
-There is actually a bit more data in a string diagram for a TSMC $\cat{C}$; namely, each wire is labeled by an object of $\cat{C}$. We will thus consider the category $\Cat{Cob}/L$ of oriented 1-dimensional cobordisms over a fixed set $L$ of labels. 
+There is actually a bit more data in a string diagram for a TSMC $\cat{C}$; namely, each wire is labeled by an object of $\cat{C}$. We will thus consider the category $\Cat{Cob}/Lbl$ of oriented 1-dimensional cobordisms over a fixed set $Lbl$ of labels. 
 
 We record these two interpretations of string diagrams in the table below. Note the ``degree shift" between the second and third columns.
 \begin{center}
 \begin{tabular}{| l | l | l |}
 \hline
 \multicolumn{3}{|c|}{Interpretations of string diagrams}\\\hline
-String diagram & Traced category $\cat{C}$ & $\Cat{Cob}/L$\\\bhline
-Wire label set, $L$&Objects, $L:=\Ob(\cat{C})$&Label set, $L$\\
-Box & Morphism & Object (oriented 0-mfd over $L$)\\
-String diagram & Composition & Morphism (Cobordism over $L$)\\
+String diagram & Traced category $\cat{C}$ & $\Cat{Cob}/Lbl$\\\bhline
+Wire label set, $Lbl$&Objects, $Lbl:=\Ob(\cat{C})$&Label set, $Lbl$\\
+Box & Morphism & Object (oriented 0-mfd over $Lbl$)\\
+String diagram & Composition & Morphism (Cobordism over $Lbl$)\\
 Nesting & Axioms of TSMCs & Composition\\\hline
 \end{tabular}
 \end{center}
 
 The relationship between these interpretations is made precise in the following first main theorem, which will be proved in Section~\ref{**}.
 \begin{theorem}
-Consider the functor $\op\Set\to\Cat{Cat}$, given by $L\mapsto(\Cat{Cob}/L)\alg$, and let $(\Cat{Cob}/\bullet)\alg\to\Set$ denote the corresponding split fibration. Then there is an equivalence of categories
+Consider the functor $\op\Set\to\Cat{Cat}$, given by $Lbl\mapsto(\Cat{Cob}/Lbl)\alg$, and let $(\Cat{Cob}/\bullet)\alg\to\Set$ denote the corresponding split Grothendieck fibration. Then there is an equivalence of categories
 $$\Cat{TSMC}\simeq(\Cat{Cob}/\bullet)\alg.$$
 \end{theorem}
 
-We sketch the connection, with a few minor abuses of notation, as follows. Recall that a $(\Cat{Cob}/L)$-algebra is a lax functor $P\colon\Cat{Cob}/L\to\Cat{Set}$. Once a set $L$ is established, specifying a traced category $\cat{C}$ with objects $L$ requires the same data as specifying a lax functor $P$. First, for each box $(\inp{X},\outp{X})$ in a string diagram, both $\cat{C}$ and $P$ require a set, $\Hom_{\cat{C}}(\inp{X},\outp{X})$ and $P(\inp{X},\outp{X})$, respectively.  Second, for each string diagram, both $\cat{C}$ and $P$ require a function: a formula for composition and trace, in the case of $\cat{C}$, and an action on morphisms, in the case of $P$. The fact that $\cat{C}$ satisfies the axioms of traced symmetric monoidal categories corresponds to checking the functoriality of $P$.
+We sketch the connection, with a few minor abuses of notation, as follows. Recall that a $(\Cat{Cob}/Lbl)$-algebra is a lax functor $P\colon\Cat{Cob}/Lbl\to\Cat{Set}$. Once a set $Lbl$ is established, specifying a traced category $\cat{C}$ with objects $Lbl$ requires the same data as specifying a lax functor $P$. First, for each box $(\inp{X},\outp{X})$ in a string diagram, both $\cat{C}$ and $P$ require a set, $\Hom_{\cat{C}}(\inp{X},\outp{X})$ and $P(\inp{X},\outp{X})$, respectively.  Second, for each string diagram, both $\cat{C}$ and $P$ require a function: a formula for composition and trace, in the case of $\cat{C}$, and an action on morphisms, in the case of $P$. The fact that $\cat{C}$ satisfies the axioms of traced symmetric monoidal categories corresponds to checking the functoriality of $P$.
 
-\section{Nesting properties and self-similarity in applications}
+\section{Applications of the cobordism-algebra perspective in engineering}
 
+When designing or investigating a complex system, it is often useful to think in terms of interacting subsystems, put together to make a larger whole. This is often called \emph{compositionality}.
+
+Thinking of this as processes wired together to make larger processes has and Rupel were originally motivated to formalize the operadic nature of compositionality. This led to the notion of wiring diagrams and their algebras, as discussed in previous work \cite{Spivak}, \cite{Rupel-Spivak}, \cite{Vagner-Spivak-Lerman}. 
+ 
+
+\subsection{Nesting}
 When drawing 0-manifolds as boxes and cobordisms as string diagrams, composition of cobordisms become nested diagrams.
 \missingfigure{Draw nested diagrams}
-
-
 
 \section{Generalization}
 
@@ -45,6 +49,10 @@ When drawing 0-manifolds as boxes and cobordisms as string diagrams, composition
 \begin{corollary}
  $\Lax(\Int(\cat{T}),\cat{V})=\cat{V}-\Cat{TSMC}_{\cat{T}/}$
 \end{corollary}
+
+\section{Acknowledgments}
+
+Steve Awodey, Ed Morehouse.
 
 \chapter{Wiring Diagrams and $\Cat{1-Cob}$}
 \section{Set-theoretic formulation of $\Cat{1-Cob}$, as free compact closed category on one object, as $\Int$ of the free TSMC on one object ($\Cat{Bij}$)}
@@ -57,6 +65,145 @@ Wiring diagrams are a new way to visualize morphisms in 1-Cob.
 \missingfigure{Draw, perhaps side-by-side, a cobordism in the usual style and in our style.}
 
 \section{$\Cat{1-Cob}$-algebras and applications}
+
+\chapter{Traced Symmetric Monoidal Categories}
+
+Let $(\cat{M},\otimes,I)$ be a symmetric monoidal category where for any $X,Y\in\Ob(\cat{M})$ we write $\gamma_{X,Y}:X\otimes Y\To{\sim} Y\otimes X$ for the distinguished symmetry isomorphisms. Recall that we have $\gamma_{Y,X}=\gamma_{X,Y}^{-1}$.  We define the {\em monoid of scalars in $\cat{M}$} to be the set $S_{\cat{M}}:=\Hom(I,I)$ with multiplication given by composition.  Note that $S_{\cat{M}}$ is commutative since $\cat{M}$ is symmetric.  There is an action of $S_{\cat{M}}$ on the set $\Hom_{\cat{M}}(X,Y)$ for each $(X,Y)\in\Ob(\cat{M}^{op}\times\cat{M})$, where $s\in S_{\cat{M}}$ acts on a morphism $f\colon X\to Y$ by sending it to the composite morphism
+$$s\bullet f:X\to I\otimes X\To{s\otimes f}I\otimes Y\to Y.$$
+We write $|X|:=\Hom(I,X)$ for the \emph{elements} of $X$.
+
+The functor $|\cdot|=\Hom(I,\cdot)\colon\cat{M}\to\Set$ is a unital algebra on $\cat{M}$ with unit map
+\[\eta:\{1\}\To{\id_{I}}S_{\cat{M}}\]
+and multiplication map
+\[\mu:\Hom(I,X)\otimes\Hom(I,X')\to\Hom(I\otimes I,X\otimes X')\iso\Hom(I,X\otimes X').\]
+
+A (left) \emph{trace} on a symmetric monoidal category is a collection of functions 
+\[\Tr^U_{X,Y}:\Hom(U\otimes X,U\otimes Y)\to\Hom(X,Y)\]
+for $U,X,Y\in\Ob(\cat{M})$ satisfying the following axioms:
+\begin{itemize}
+ \item Dinaturality I: for every $f:U\otimes X\to V\otimes Y$ and $g:V\to U$ we have
+ \[\Tr^U_{X,Y}\Big[\big(g\otimes Y\big)\circ f\Big]=\Tr^V_{X,Y}\Big[f\circ\big(g\otimes X\big)\Big];\] 
+ \item Naturality: for every $f:U\otimes X\to U\otimes Y$, $g:X'\to X$, and $h:Y\to Y'$ we have
+ \[\Tr^U_{X',Y'}\Big[\big(U\otimes h\big)\circ f\circ\big(U\otimes g\big)\Big]=h\circ\Tr^U_{X,Y}\big[f\big]\circ g;\]
+ \item Superposing: for every $f:U\otimes X\to U\otimes Y$ and $g:W\to Z$ we have
+ \[\Tr^U_{X,Y}\big[f\big]\otimes g=\Tr^U_{X\otimes W,Y\otimes Z}\big[f\otimes g\big];\]
+ \item Vanishing I: for every $f:X\to Y$ we have
+ \[\Tr^{I}_{X,Y}\big[f\big]=f;\]
+ \item Vanishing II: for every $f:U\otimes V\otimes X\to U\otimes V\otimes Y$ we have
+ \[\Tr^{U\otimes V}_{X,Y}\big[f\big]=\Tr^V_{X,Y}\Big[\Tr^U_{V\otimes X,V\otimes Y}\big[f\big]\Big];\]
+ \item Yanking: for any $X\in\Ob(\cat{M})$ we have
+ \[\Tr^X_{X,X}\big[\gamma_{X,X}\big].\]
+\end{itemize}
+
+For an object $X$ in a traced symmetric monoidal category $\cat{M}$ we write $\dim(X):=\Tr^X_{I,I}\big[\id_X\big]\in S_{\cat{M}}$ for the {\em dimension} of $X$.  Note also that for any endomorphism $f:X\to X$ there is a scalar $s_f=\Tr^X_{I,I}[f]\in S_{\cat{M}}$.
+
+\begin{proposition}\label{prop:dinaturality}\mbox{}
+\begin{enumerate}
+ \item For every $f:X\to Y$ and $g:Y\to Z$ we have
+ \[g\circ f=\Tr^Y_{X,Z}\Big[\big(f\otimes g\big)\circ\gamma_{Y,X}\Big].\]
+ \item The following is equivalent to the axiom Dinaturality I:
+ \begin{itemize}
+  \item Dinaturality I': for every $h:U\otimes V\otimes X\to U\otimes V\otimes Y$ we have
+ \[\Tr^{U\otimes V}_{X,Y}\big[h\big]=\Tr^{V\otimes U}_{X,Y}\Big[\big(\gamma_{U,V}\otimes Y\big)\circ h\circ\big(\gamma_{V,U}\otimes X\big)\Big].\]
+ \end{itemize}
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+ (1) can be shown from the Naturality and Yanking axioms of the trace as follows:
+ \begin{align*}
+  \Tr^Y_{X,Z}\Big[\big(f\otimes g\big)\circ\gamma_{Y,X}\Big]
+  &=\Tr^Y_{X,Z}\Big[\big(Y\otimes g\big)\circ\big(f\otimes Y\big)\circ\gamma_{Y,X}\Big]=\Tr^Y_{X,Z}\Big[\big(Y\otimes g\big)\circ\gamma_{Y,Y}\circ\big(Y\otimes f\big)\Big]\\
+  &=g\circ\Tr^Y_{Y,Y}\big[\gamma_{Y,Y}\big]\circ f=g\circ f.
+ \end{align*}
+ 
+ Dinaturality I' is an immediate consequence of Dinaturality I, indeed apply Dinaturality I with $f=h\circ\big(\gamma_{V,U}\otimes X\big)$ and $g=\gamma_{U,V}$.  For the other direction we apply the composition formula of (1) to the left side of the Dinaturality I equation to get
+ \begin{align*}
+  \Tr^U_{X,Y}\Big[\big(g\otimes Y\big)\circ f\Big]
+  &=\Tr^U_{X,Y}\bigg[\Tr^{V\otimes Y}_{U\otimes X,U\otimes Y}\Big[\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\Big]\bigg]\\
+ &=\Tr^{V\otimes Y\otimes U}_{X,Y}\Big[\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\Big]\\
+  &=\Tr^{V\otimes Y\otimes U}_{X,Y}\Big[\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\Big]\circ\Tr^X_{X,X}\big[\gamma_{X,X}\big],
+ \end{align*}
+ where the last two equalities follow from Vanishing II and a trivial application of Yanking.  
+ 
+ By Naturality we may bring the first trace into the second to get
+ \begin{align*}
+  &\Tr^X_{X,Y}\Bigg[\bigg(X\otimes \Tr^{V\otimes Y\otimes U}_{X,Y}\Big[\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\Big]\bigg)\circ\gamma_{X,X}\Bigg]\\
+  &\quad=\Tr^X_{X,Y}\Bigg[\gamma_{Y,X}\circ\bigg(\Tr^{V\otimes Y\otimes U}_{X,Y}\Big[\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\Big]\otimes X\bigg)\Bigg]\\
+  &\quad=\Tr^X_{X,Y}\bigg[\gamma_{Y,X}\circ\Tr^{V\otimes Y\otimes U}_{X\otimes X,Y\otimes X}\Big[\big(f\otimes g\otimes Y\otimes X\big)\circ\big(\gamma_{V\otimes Y,U\otimes X}\otimes X\big)\Big]\bigg]\\
+  &\quad=\Tr^X_{X,Y}\bigg[\Tr^{V\otimes Y\otimes U}_{X\otimes X,X\otimes Y}\Big[\big(V\otimes Y\otimes U\otimes \gamma_{Y,X}\big)\circ\big(f\otimes g\otimes Y\otimes X\big)\circ\big(\gamma_{V\otimes Y,U\otimes X}\otimes X\big)\Big]\bigg]\\
+  &\quad=\Tr^X_{X,Y}\bigg[\Tr^{V\otimes Y\otimes U}_{X\otimes X,X\otimes Y}\Big[\big(f\otimes g\otimes \gamma_{Y,X}\big)\circ\big(\gamma_{V\otimes Y,U\otimes X}\otimes X\big)\Big]\bigg]\\
+  &\quad=\Tr^{V\otimes Y\otimes U\otimes X}_{X,Y}\Big[\big(f\otimes g\otimes \gamma_{Y,X}\big)\circ\big(\gamma_{V\otimes Y,U\otimes X}\otimes X\big)\Big],
+ \end{align*}
+ where we apply Superposing to get the second equality, Naturality to get the third, and Vanishing II for the last.
+ 
+ Now we are ready to apply Dinaturality I' to get
+ \begin{align*}
+  \Tr^{U\otimes X\otimes V\otimes Y}_{X,Y}\Big[\big(\gamma_{V\otimes Y,U\otimes X}\otimes Y\big)\circ\big(f\otimes g\otimes \gamma_{Y,X}\big)\Big]
+ \end{align*}
+ from which we may apply, in reverse, an analogous sequence of equalities to that above to get the right hand side of the Dinaturality I equation.
+ \erase{\begin{align*}%begin erase
+  &=\Tr^Y_{X,Y}\bigg[\Tr^{U\otimes X\otimes V}_{Y\otimes X,Y\otimes Y}\Big[\big(\gamma_{V\otimes Y,U\otimes X}\otimes Y\big)\circ\big(f\otimes g\otimes \gamma_{Y,X}\big)\Big]\bigg]\\
+  &=\Tr^Y_{X,Y}\bigg[\Tr^{U\otimes X\otimes V}_{Y\otimes X,Y\otimes Y}\Big[\big(\gamma_{V\otimes Y,U\otimes X}\otimes Y\big)\circ\big(f\otimes g\otimes X\otimes Y\big)\circ\big(U\otimes X\otimes V\otimes \gamma_{Y,X}\big)\Big]\bigg]\\
+  &=\Tr^Y_{X,Y}\bigg[\Tr^{U\otimes X\otimes V}_{X\otimes Y,Y\otimes Y}\Big[\big(\gamma_{V\otimes Y,U\otimes X}\otimes Y\big)\circ\big(f\otimes g\otimes X\otimes Y\big)\Big]\circ\gamma_{Y,X}\bigg]\\
+  &=\Tr^Y_{X,Y}\Bigg[\bigg(\Tr^{U\otimes X\otimes V}_{X,Y}\Big[\gamma_{V\otimes Y,U\otimes X}\circ\big(f\otimes g\otimes X\big)\Big]\otimes Y\bigg)\circ\gamma_{Y,X}\Bigg]\\
+  &=\Tr^Y_{X,Y}\Bigg[\gamma_{Y,Y}\circ\bigg(Y\otimes\Tr^{U\otimes X\otimes V}_{X,Y}\Big[\gamma_{V\otimes Y,U\otimes X}\circ\big(f\otimes g\otimes X\big)\Big]\bigg)\Bigg]\\
+  &=\Tr^Y_{Y,Y}\big[\gamma_{Y,Y}\big]\circ\Tr^{U\otimes X\otimes V}_{X,Y}\Big[\gamma_{V\otimes Y,U\otimes X}\circ\big(f\otimes g\otimes X\big)\Big]\\
+  &=\Tr^{U\otimes X\otimes V}_{X,Y}\Big[\gamma_{V\otimes Y,U\otimes X}\circ\big(f\otimes g\otimes X\big)\Big]\\
+  &=\Tr^{U\otimes X\otimes V}_{X,Y}\Big[\big(g\otimes X\otimes f\big)\circ\gamma_{U\otimes X,V\otimes X}\Big]\\
+  &=\Tr^V_{X,Y}\bigg[\Tr^{U\otimes X}_{V\otimes X,V\otimes Y}\Big[\big(g\otimes X\otimes f\big)\circ\gamma_{U\otimes X, V\otimes X}\Big]\bigg]\\
+  &=\Tr^V_{X,Y}\Big[f\circ\big(g\otimes X\big)\Big].
+ \end{align*}}%end erase
+ %%Another proof
+ \erase{By Dinaturality I' this becomes%begin erase
+ \[\Tr^U_{X,Y}\bigg[\Tr^{Y\otimes V}_{U\otimes X,U\otimes Y}\Big[\big(\gamma_{V,Y}\otimes U\otimes Y\big)\circ\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\circ\big(\gamma_{Y,V}\otimes U\otimes X\big)\Big]\bigg]\]
+ which is equal via Vanishing II and Naturality to
+ \begin{align*}
+  &\Tr^U_{X,Y}\Bigg[\Tr^V_{U\otimes X,U\otimes Y}\bigg[\Tr^Y_{V\otimes U\otimes X,V\otimes U\otimes Y}\Big[\big(\gamma_{V,Y}\otimes U\otimes Y\big)\circ\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\circ\big(\gamma_{Y,V}\otimes U\otimes X\big)\Big]\bigg]\Bigg]\\
+  &\quad=\Tr^{V\otimes U}_{X,Y}\bigg[\Tr^Y_{V\otimes U\otimes X,V\otimes U\otimes Y}\Big[\big(Y\otimes V\otimes g\otimes Y\big)\circ\big(\gamma_{V,Y}\otimes V\otimes Y\big)\circ\gamma_{V\otimes Y,V\otimes Y}\circ\big(\gamma_{Y,V}\otimes V\otimes Y\big)\circ\big(Y\otimes V\otimes f\big)\Big]\bigg]\\
+  &\quad=\Tr^{V\otimes U}_{X,Y}\bigg[\big(V\otimes g\otimes Y\big)\circ\Tr^Y_{V\otimes V\otimes Y,V\otimes V\otimes Y}\Big[\big(\gamma_{V,Y}\otimes V\otimes Y\big)\circ\gamma_{V\otimes Y,V\otimes Y}\circ\big(\gamma_{Y,V}\otimes V\otimes Y\big)\Big]\circ\big(V\otimes f\big)\bigg]\\
+  &\quad=\Tr^{V\otimes U}_{X,Y}\bigg[\big(V\otimes g\otimes Y\big)\circ\big(\gamma_{V,V}\otimes Y\big)\circ\big(V\otimes f\big)\bigg].
+ \end{align*}
+ Applying Dinaturality I' again we get
+ \begin{align*}
+  &\Tr^{U\otimes V}_{X,Y}\bigg[\big(\gamma_{V,U}\otimes Y\big)\circ\big(V\otimes g\otimes Y\big)\circ\big(\gamma_{V,V}\otimes Y\big)\circ\big(V\otimes f\big)\circ\big(\gamma_{U,V}\otimes X\big)\bigg]\\
+  &=\Tr^{U\otimes V}_{X,Y}\bigg[\big(g\otimes f\big)\circ\big(\gamma_{U,V}\otimes X\big)\bigg]\\
+  &=\Tr^{U\otimes V}_{X,Y}\bigg[\big(U\otimes f\big)\circ\big(\gamma_{U,U}\otimes X\big)\circ\big(U\otimes g\otimes X\big)\bigg]\\
+  &=\Tr^{U\otimes V}_{X,Y}\bigg[\big(U\otimes f\big)\circ\Tr^X_{U\otimes U\otimes X,U\otimes U\otimes X}\Big[\big(\gamma_{U,X}\otimes U\otimes X\big)\circ\gamma_{U\otimes X, U\otimes X}\circ\big(\gamma_{X,U}\otimes U\otimes X\big)\Big]\circ\big(U\otimes g\otimes X\big)\bigg]
+ \end{align*}
+ Now using Naturality and Vanishing II we get
+ \begin{align*}
+  &\Tr^{U\otimes V}_{X,Y}\bigg[\Tr^X_{U\otimes V\otimes X,U\otimes V\otimes Y}\Big[\big(X\otimes U\otimes f\big)\circ\big(\gamma_{U,X}\otimes U\otimes X\big)\circ\gamma_{U\otimes X, U\otimes X}\circ\big(\gamma_{X,U}\otimes U\otimes X\big)\circ\big(X\otimes U\otimes g\otimes X\big)\Big]\bigg]\\
+  &=\Tr^V_{X,Y}\Bigg[\Tr^U_{V\otimes X,V\otimes Y}\bigg[\Tr^X_{U\otimes V\otimes X,U\otimes V\otimes Y}\Big[\big(\gamma_{U,X}\otimes V\otimes Y\big)\circ\big(g\otimes X\otimes f\big)\circ\gamma_{U\otimes X, V\otimes X}\circ\big(\gamma_{X,U}\otimes V\otimes X\big)\Big]\bigg]\Bigg]\\
+  &=\Tr^V_{X,Y}\bigg[\Tr^{X\otimes U}_{V\otimes X,V\otimes Y}\Big[\big(\gamma_{U,X}\otimes V\otimes Y\big)\circ\big(g\otimes X\otimes f\big)\circ\gamma_{U\otimes X, V\otimes X}\circ\big(\gamma_{X,U}\otimes V\otimes X\big)\Big]\bigg]
+ \end{align*}
+ which by Dinaturality I' is equal to
+ \[\Tr^V_{X,Y}\bigg[\Tr^{U\otimes X}_{V\otimes X,V\otimes Y}\Big[\big(g\otimes X\otimes f\big)\circ\gamma_{U\otimes X, V\otimes X}\Big]\bigg],\]
+ but this is exactly the composition formula applied to the right hand side of Dinaturality I.}%end erase
+\end{proof}
+
+For a traced symmetric monoidal category $\cat{M}$ let $\widetilde{\cat{M}}=\Int(\cat{M})$ denote the category with objects given by pairs $(X_-,X_+)$ where $X_-,X_+\in \Ob(\cat{M})$ and morphisms given by 
+\[\Hom_{\widetilde{\cat{M}}}\big((X_-,X_+),(Y_-,Y_+)\big)=\Hom_{\cat{M}}(X_-\otimes Y_+,X_+\otimes Y_-).\]
+For morphisms $\Phi:(X_-,X_+)\to(Y_-,Y_+)$ and $\Psi:(Y_-,Y_+)\to(Z_-,Z_+)$ in $\widetilde{\cat{M}}$ we define their composition to be
+\[\Psi\circ\Phi:=\Tr^{Y_+}_{X_-\otimes Z_+,X_+\otimes Z_-}\Big[\big(\gamma_{X_+,Y_+}\otimes Z_-\big)\circ\big(X_+\otimes\Psi\big)\circ\big(\Phi\otimes Z_+\big)\circ\big(\gamma_{Y_+,X_-}\otimes Z_+\big)\Big].\]
+It is well known that $\widetilde{\cat{M}}$ is a compact closed category whose tensor is given by
+\[(X_-,X_+)\odot(Y_-,Y_+):=(X_-\otimes Y_-,X_+\otimes Y_+)\]
+with unit object $\tilde I:=(I,I)$ and duality $(X_-,X_+)^\vee:=(X_+,X_-)$.  The following is immediate from the definitions.
+
+\begin{lemma}
+
+Let $\cat{M}$ be a traced symmetric monoidal category.  Then for any object $(X_-,X_+)\in\Ob\big(\widetilde{\cat{M}}\big)$ there is a canonical bijection
+\[|(X_-,X_+)|\iso\Hom_{\cat{M}}(X_-,X_+).\]
+
+\end{lemma}
+
+\section{Free Constructions}
+
+To continue we recall the constructions of various free monoidal structures on a category $\cat{C}$ following \cite{abramsky}.  These are defined inductively by successively including additional structure into the constructions.
+
+The objects of the free monoidal category $F_M(\cat{C})$ are lists of objects in $\cat{C}$ with componentwise morphisms.  More formally the objects are pairs $(n,X)$ where $n\in\NN$ and $X$ is a map $X\colon[n]\to \Ob\cat{C}$ and a morphism $f:(n,X)\to(m,Y)$ exists if and only if $n=m$ in which case $f\in\prod_{i=1}^n\Hom_{\cat{C}}(X_i,Y_i)$ with compositions formed as expected.  The tensor product is given by concatenation of lists, i.e. $(n,X)\otimes(m,Y)=(n+m,X+Y)$, with tensor unit $(0,!)$ where $!$ is the unique function from the empty set.
+
+The objects of the free symmetric monoidal category $F_{SM}(\cat{C})$ are again lists of objects in $\cat{C}$, however morphisms now come equipped with a permutation.  More formally, a morphism from $(n,X)$ to $(n,Y)$ is a pair $(f,\pi)$ where $f\in\prod_{i=1}^n\Hom_{\cat{C}}(X_i,Y_{\pi(i)})$ and $\pi\in S(n)$ is a permutation which by abuse of notation can be thought of as an isomorphism $\pi:Y_1\otimes\cdots\otimes Y_n\To{sim} Y_{\pi(1)}\otimes\cdots\otimes Y_{\pi(n)}$.  The composition of morphisms is given by $(\sigma,g)\circ(\pi,f)=\Big(\sigma\circ\pi,\otimes_{i=1}^n (g_{\pi(i)}\circ f_i)\Big)$ and the tensor is given by $(\pi,f)\otimes(\sigma,g)=(\pi\otimes\sigma,f\otimes g)$.  
+
 
 \section{Definition of functors between $\Cat{TSMC}$ and $\Cat{Cob}/\cat{O}$-algebras}
 

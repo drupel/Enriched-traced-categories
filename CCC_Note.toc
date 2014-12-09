@@ -1,0 +1,17 @@
+\contentsline {chapter}{Contents}{1}{section*.1}
+\contentsline {chapter}{\chapternumberline {1}Introduction}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}Applications of the cobordism-algebra perspective in engineering}{3}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Nesting}{3}{subsection.1.1.1}
+\contentsline {section}{\numberline {1.2}Generalization}{4}{section.1.2}
+\contentsline {section}{\numberline {1.3}Acknowledgments}{4}{section.1.3}
+\contentsline {chapter}{\chapternumberline {2}Wiring Diagrams and $\mathbf {1-Cob}$}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}Set-theoretic formulation of $\mathbf {1-Cob}$, as free compact closed category on one object, as $\Int $ of the free TSMC on one object ($\mathbf {Bij}$)}{4}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Many object case/generalization $\mathbf {Cob}/\mathscr {O}$}{4}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}Morphisms in $\mathbf {1-Cob}$ as wiring diagrams}{4}{section.2.2}
+\contentsline {section}{\numberline {2.3}$\mathbf {1-Cob}$-algebras and applications}{4}{section.2.3}
+\contentsline {chapter}{\chapternumberline {3}Traced Symmetric Monoidal Categories}{4}{chapter.3}
+\contentsline {section}{\numberline {3.1}Definition of functors between $\mathbf {TSMC}$ and $\mathbf {Cob}/\mathscr {O}$-algebras}{8}{section.3.1}
+\contentsline {chapter}{\chapternumberline {4}Preliminaries}{8}{chapter.4}
+\contentsline {chapter}{\chapternumberline {5}Profunctors}{9}{chapter.5}
+\contentsline {chapter}{\chapternumberline {6}Compact closed categories}{12}{chapter.6}
+\contentsline {chapter}{\chapternumberline {7}Traced Monoidal Categories}{13}{chapter.7}
