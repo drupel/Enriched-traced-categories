@@ -301,18 +301,20 @@ Let $\cat{C}$ be a compact closed category.
 		&= \bigl(\lambda_{e\otimes e'}\circ(\epsilon_{d\otimes d'}\otimes\id_{e\otimes e'})\bigr) \\
 		&\qquad \cdot\left((n_1\boxtimes n'_1)\boxtimes i(\id_{d^*\otimes d'^{*}})\boxtimes(n_2\boxtimes n'_2)\right) \\
 		&\qquad \cdot\left((\id_{c\otimes c'}\otimes\eta_{d\otimes d'})\otimes\rho_{c\otimes c'}^{-1}\right)\\
-		&= \bigl((\lambda_e\otimes\lambda_e')\circ(\epsilon_d\otimes\id_{e\otimes I\otimes e'})\circ(\id_d\otimes\sigma_{I,d^*\otimes e}\otimes\id_{e'})\bigr) \\
+		&= \bigl((\lambda_e\otimes\lambda_{e'})\circ(\epsilon_d\otimes\id_{e\otimes I\otimes e'})\circ(\id_d\otimes\sigma_{I,d^*\otimes e}\otimes\id_{e'})\bigr) \\
 		%&= \bigl(\lambda_e\circ(\epsilon_e\otimes\lambda_e)\circ(\id_d\otimes\sigma_{I,d^*}\otimes\id_e)\bigr)\otimes\id_{e'} \\
 		&\qquad \cdot\Bigl[n_1\boxtimes\bigl(\epsilon_{d'}\cdot(n'_1\boxtimes i(\id_{d'^{*}}))\bigr)\boxtimes\bigl((i(\id_{d*})\boxtimes n_2)\cdot\eta_d\bigr)\boxtimes n'_2\Bigr] \\
-		&\qquad \cdot\bigl((\id_c\otimes\sigma_{I,c'\otimes d'^*}\otimes\eta_{d'})\circ(\rho_c^{-1}\otimes\rho_{c'}^{-1})\bigr) \\
+		&\qquad \cdot\bigl((\id_c\otimes\sigma_{I,c'\otimes d'^*}\otimes\id_{d'})\circ(\id_{c\otimes I\otimes c'}\otimes\eta_{d'})\circ(\rho_c^{-1}\otimes\rho_{c'}^{-1})\bigr) \\
 		%&\qquad \cdot\id_c\otimes\bigl((\id_{c'}\otimes\sigma_{I,d'^{*}}\otimes\id_{d'})\circ(\rho_{c'}^{-1}\otimes\eta_{d'})\circ\rho_{c'}^{-1}\bigr) \\
-		&= \bigl(\lambda_e\circ(\epsilon_e\otimes\lambda_e)\circ(\id_d\otimes\sigma_{I,d^*}\otimes\id_e)\circ(\id_d\otimes\sigma_{d^*\otimes e,I})\bigr)\otimes\id_{e'} \\
-		&= \bigl((\lambda_e\otimes\lambda_e')\circ(\epsilon_d\otimes\id_{e\otimes I}\otimes\id_{e'})\bigr) \\
+		%&= \bigl(\lambda_e\circ(\epsilon_e\otimes\lambda_e)\circ(\id_d\otimes\sigma_{I,d^*}\otimes\id_e)\circ(\id_d\otimes\sigma_{d^*\otimes e,I})\bigr)\otimes\id_{e'} \\
+		&= \bigl((\lambda_e\otimes\lambda_{e'})\circ(\epsilon_d\otimes\id_{e\otimes I\otimes e'})\bigr) \\
 		&\qquad \cdot\Bigl[n_1\boxtimes\bigl((i(\id_{d*})\boxtimes n_2)\cdot\eta_d\bigr)\boxtimes\bigl(\epsilon_{d'}\cdot(n'_1\boxtimes i(\id_{d'^{*}}))\bigr)\boxtimes n'_2\Bigr] \\
-		&\qquad \cdot\id_c\otimes\bigl((\sigma_{c'\otimes d'^*,I}\otimes\id_{d'})\circ(\id_{c'}\otimes\sigma_{I,d'^{*}}\otimes\id_{d'})\circ(\rho_{c'}^{-1}\otimes\eta_{d'})\circ\rho_{c'}^{-1}\bigr) \\
-		&= \bigl(\lambda_e\circ(\epsilon_d\otimes\rho_e)\bigr)\otimes\id_{e'} \\
-		&\qquad \cdot\Bigl[n_1\boxtimes\bigl((i(\id_{d*})\boxtimes n_2)\cdot\eta_d\bigr)\boxtimes\bigl(\epsilon_{d'}\cdot(n'_1\boxtimes i(\id_{d'^{*}}))\bigr)\boxtimes n'_2\Bigr] \\
-		&\qquad \cdot\id_c\otimes\bigl((\lambda_{c'}^{-1}\otimes\eta_{d'})\circ\rho_{c'}^{-1}\bigr)
+		&\qquad \cdot\bigl((\id_{c\otimes I\otimes c'}\otimes\eta_{d'})\circ(\rho_c^{-1}\otimes\rho_{c'}^{-1})\bigr) \\
+		&= \Bigl[\bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\otimes\bigl(\lambda_{e'}\circ(\epsilon_{d'}\otimes\id_{e'})\bigr)\Bigr] \\
+		&\qquad \cdot\Bigl[\bigl(n_1\boxtimes i(\id_{d^*})\boxtimes n_2\bigr)\boxtimes\bigl(n'_1\boxtimes i(\id_{d'^*})\boxtimes n'_2\bigr)\Bigr] \\
+		&\qquad \cdot\Bigl[\bigl((\id_c\otimes\eta_d)\circ\rho_c^{-1}\bigr)\otimes\bigl((\id_{c'}\otimes\eta_{d'})\circ\rho_{c'}^{-1}\bigr)\Bigr] \\
+		&= \Bigl[\bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot\bigl(n_1\boxtimes i(\id_{d^*})\boxtimes n_2\bigr)\cdot\bigl((\id_c\otimes\eta_d)\circ\rho_c^{-1}\bigr)\Bigr] \\
+		&\qquad \boxtimes\Bigl[\bigl(\lambda_{e'}\circ(\epsilon_{d'}\otimes\id_{e'})\bigr)\cdot\bigl(n'_1\boxtimes i(\id_{d'^*})\boxtimes n'_2\bigr)\cdot\bigl((\id_{c'}\otimes\eta_{d'})\circ\rho_{c'}^{-1}\bigr)\Bigr]
 	\end{align*}
 \end{proof}
 
