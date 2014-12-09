@@ -4,4 +4,5 @@
 *.synctex.gz
 *.synctex.gz(busy)
 *.log
+*.fdb_latexmk
 Output/*
