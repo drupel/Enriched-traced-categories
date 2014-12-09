@@ -117,10 +117,12 @@
 		codE/.style={cod=E}, codF/.style={cod=F}}
 
 
-\newcommand{\vinp}[1]{\overline{\inp{#1}}}%Delete me later
-\newcommand{\voutp}[1]{\overline{\outp{#1}}}%Delete me later
-\newcommand{\inp}[1]{{#1_-}}%Delete me later
-\newcommand{\outp}[1]{{#1_+}}%Delete me later
+\newcommand{\vinp}[1]{\overline{\inp{#1}}}
+\newcommand{\voutp}[1]{\overline{\outp{#1}}}
+\newcommand{\inp}[1]{#1^{\text{in}}}
+\newcommand{\outp}[1]{#1^{\text{out}}}
+%\newcommand{\inp}[1]{{#1_-}}
+%\newcommand{\outp}[1]{{#1_+}}
 
 % \def\bhline{\Xhline{2\arrayrulewidth}}
 % \def\bbhline{\Xhline{2.5\arrayrulewidth}}
