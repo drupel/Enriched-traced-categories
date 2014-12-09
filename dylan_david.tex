@@ -58,7 +58,7 @@ Theorem~\ref{thm:traced as cob-alg} follows from this corollary, because $\Cat{C
  $\Lax(\Int(\cat{T}),\cat{V})=\cat{V}-\Cat{TSMC}_{\cat{T}/}$
 \end{corollary}
 
-\section{Applications of the cobordism-algebra perspective in engineering design}
+\section[Applications of the cobordism-algebra perspective]{Applications of the cobordism-algebra perspective in engineering design}
 
 When designing or investigating a complex system, it is often useful to think in terms of interacting subsystems, put together to make a larger whole. This is often called \emph{compositionality}.
 
@@ -66,7 +66,56 @@ Thinking of this as processes wired together to make larger processes has and Ru
  
 
 When drawing 0-manifolds as boxes and cobordisms as string diagrams, composition of cobordisms become nested diagrams.
-\missingfigure{Draw nested diagrams}
+\begin{figure}[hb]
+\activetikz{
+	%left large box,
+	\node at (.5,2.7){$X\xrightarrow{\Phi}Y\xrightarrow{\Psi}Z$};
+	\node at (.5,1.15){\tiny $\alpha$};
+	\node at (.2,2.05){\tiny $\beta$};
+	\path(-1,0);\blackbox{(3,2.4)}{1}{2}{}{.5}
+	%left small boxes (dashed),
+	\path(0,1.4);\dashblackbox{(1,.8)}{1}{1}{}{.2}
+	\path(0,.3);\dashblackbox{(1,.6)}{1}{2}{}{.2}
+	%left outer arcs
+	\directarc{(1.1,1.8)}{(1.75,1.6)}
+	\directarc{(1.1,.5)}{(1.75,.8)}
+	\directarc{(-.75,1.2)}{(-.1,.6)} %this
+	\fancyarc{(-.1,1.8)}{(1.1,.7)}{10}{0}
+	%left inner arcs, top
+	\fancyarc{(.283,1.817)}{(.716,1.817)}{4}{5}
+	\directarc{(.1,1.8)}{(.283,1.733)}
+	\directarc{(.716,1.733)}{(.9,1.8)}
+	%left inner arcs, bottom
+	\directarc{(.1,.6)}{(.6,.75)}
+	\directarc{(.85,.725)}{(.9,.7)}
+	\directarc{(.55,.55)}{(.6,.7)}
+	%\directarc{(.1,.5)}{(.2,.525)}
+	\directarc{(.55,.5)}{(.9,.5)}
+	%left tiny boxes,
+	\path(0.333,1.65);\blackbox{(.333,.25)}{2}{2}{}{.1}
+	\path(0.65,.65);\blackbox{(.15,.15)}{2}{1}{}{.1}
+	\path(0.35,.45);\blackbox{(.15,.15)}{0}{2}{}{.1} %this
+	%right large box,
+	\node at (4.5,2.7){$X\xrightarrow{\Psi\circ\Phi}Z$};
+	\node at (4.5,1.12){\tiny $\alpha$};
+	\node at (4.2,2.05){\tiny $\beta$};
+	\path(3,0);\blackbox{(3,2.4)}{1}{2}{}{.5}
+	%right tiny boxes,
+	\path(4.333,1.65);\blackbox{(.333,.25)}{2}{2}{}{.1}
+	\path(4.65,.65);\blackbox{(.15,.15)}{2}{1}{}{.1}
+	\path(4.25,.45);\blackbox{(.15,.15)}{0}{2}{}{.1}
+	%right arcs, between
+	\fancyarc{(4.283,1.733)}{(4.85,.725)}{10}{0}
+	%right arcs, top
+	\fancyarc{(4.283,1.817)}{(4.716,1.817)}{4}{5}
+	\directarc{(4.716,1.733)}{(5.75,1.6)}
+	%right arcs, bottom
+	\directarc{(3.25,1.2)}{(4.6,.75)}
+	\directarc{(4.45,.55)}{(4.6,.7)}
+	\directarc{(4.45,.5)}{(5.75,.8)}
+	%\fancyarc{(4.2,.525)}{(4.45,.5)}{5}{-5}
+}
+\end{figure}
 A commutative square in $\Cat{1-Cob}$ corresponds to finding two different ways to chunk small boxes inside a big box. The functoriality of $P\colon\Cat{1-Cob}\to\Set$ can be thought of as ensuring that any two ways to chunk boxes gives the same result.
 
 \section{Acknowledgments}
@@ -79,7 +128,17 @@ In this section, we more carefully explain the equivalence between the category 
 
 \section{Objects in $\Cat{1-Cob}$ as interfaces}
 
+The objects in $\Cat{1-Cob}$ are signed sets $(\inp{X},\outp{X})$, each of which can be drawn as a box with input wires $\inp{X}$ drawn entering the box, on its left, and output wires $\outp{X}$ drawn exiting the box, on its right. We call the latter style \emph{an interface}.
+
+\begin{figure}
+\activetikz{
+\filldraw (0,0) circle (2pt);
+\path(5,0);
+\blackbox{(2,2)}{3}{2}{$X$}{.5}
+}
 \missingfigure{Draw, perhaps side-by-side, an oriented 0-manifold in the usual style and in our style.}
+\caption{A signed set $(\ul{3},\ul{2})$, drawn in the usual style and as an interface.}
+\end{figure}
 
 \section{Morphisms in $\Cat{1-Cob}$ as wiring diagrams}
 
