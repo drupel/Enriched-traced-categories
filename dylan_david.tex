@@ -240,7 +240,7 @@ Let $(\cat{M},\otimes,I)$ be a symmetric monoidal category where for any $X,Y\in
 $$s\bullet f:X\to I\otimes X\To{s\otimes f}I\otimes Y\to Y.$$
 We write $|X|:=\Hom(I,X)$ for the \emph{elements} of $X$.
 
-The functor $|\cdot|=\Hom(I,\cdot)\colon\cat{M}\to\Set$ is a unital algebra on $\cat{M}$ with unit map
+The functor $|\cdot|=\Hom(I,\cdot)\colon\cat{M}\to\Set$ is a unital \todo{This is just a lax monoidal functor, right?} algebra on $\cat{M}$ with unit map
 \[\eta:\{1\}\To{\id_{I}}S_{\cat{M}}\]
 and multiplication map
 \[\mu:\Hom(I,X)\otimes\Hom(I,X')\to\Hom(I\otimes I,X\otimes X')\iso\Hom(I,X\otimes X').\]
@@ -248,32 +248,34 @@ and multiplication map
 A (left) \emph{trace} on a symmetric monoidal category is a collection of functions 
 \[\Tr^U_{X,Y}:\Hom(U\otimes X,U\otimes Y)\to\Hom(X,Y)\]
 for $U,X,Y\in\Ob(\cat{M})$ satisfying the following axioms:
-\begin{itemize}
- \item Dinaturality I: for every $f:U\otimes X\to V\otimes Y$ and $g:V\to U$ we have
+\begin{description}
+ \item [Dinaturality I:] for every $f:U\otimes X\to V\otimes Y$ and $g:V\to U$ we have
  \[\Tr^U_{X,Y}\Big[\big(g\otimes Y\big)\circ f\Big]=\Tr^V_{X,Y}\Big[f\circ\big(g\otimes X\big)\Big];\] 
- \item Naturality: for every $f:U\otimes X\to U\otimes Y$, $g:X'\to X$, and $h:Y\to Y'$ we have
+ \item [Naturality:] for every $f:U\otimes X\to U\otimes Y$, $g:X'\to X$, and $h:Y\to Y'$ we have
  \[\Tr^U_{X',Y'}\Big[\big(U\otimes h\big)\circ f\circ\big(U\otimes g\big)\Big]=h\circ\Tr^U_{X,Y}\big[f\big]\circ g;\]
- \item Superposing: for every $f:U\otimes X\to U\otimes Y$ and $g:W\to Z$ we have
+ \item [Superposing:] for every $f:U\otimes X\to U\otimes Y$ and $g:W\to Z$ we have
  \[\Tr^U_{X,Y}\big[f\big]\otimes g=\Tr^U_{X\otimes W,Y\otimes Z}\big[f\otimes g\big];\]
- \item Vanishing I: for every $f:X\to Y$ we have
+ \item [Vanishing I:] for every $f:X\to Y$ we have
  \[\Tr^{I}_{X,Y}\big[f\big]=f;\]
- \item Vanishing II: for every $f:U\otimes V\otimes X\to U\otimes V\otimes Y$ we have
+ \item [Vanishing II:] for every $f:U\otimes V\otimes X\to U\otimes V\otimes Y$ we have
  \[\Tr^{U\otimes V}_{X,Y}\big[f\big]=\Tr^V_{X,Y}\Big[\Tr^U_{V\otimes X,V\otimes Y}\big[f\big]\Big];\]
- \item Yanking: for any $X\in\Ob(\cat{M})$ we have
+ \item [Yanking:] for any $X\in\Ob(\cat{M})$ we have
  \[\Tr^X_{X,X}\big[\gamma_{X,X}\big].\]
-\end{itemize}
+\end{description}
 
 For an object $X$ in a traced symmetric monoidal category $\cat{M}$ we write $\dim(X):=\Tr^X_{I,I}\big[\id_X\big]\in S_{\cat{M}}$ for the {\em dimension} of $X$.  Note also that for any endomorphism $f:X\to X$ there is a scalar $s_f=\Tr^X_{I,I}[f]\in S_{\cat{M}}$.
 
 \begin{proposition}\label{prop:dinaturality}\mbox{}
+Let $\cat{M}$ be a symmetric monoidal category.
 \begin{enumerate}
- \item For every $f:X\to Y$ and $g:Y\to Z$ we have
+ \item If $\cat{M}$ is traced then for every $f:X\to Y$ and $g:Y\to Z$ in $\cat{M}$, we have
  \[g\circ f=\Tr^Y_{X,Z}\Big[\big(f\otimes g\big)\circ\gamma_{Y,X}\Big].\]
- \item The following is equivalent to the axiom Dinaturality I:
- \begin{itemize}
-  \item Dinaturality I': for every $h:U\otimes V\otimes X\to U\otimes V\otimes Y$ we have
+ \item Consider the following axiom:
+ \begin{description}
+  \item [Dinaturality I':] for every $h:U\otimes V\otimes X\to U\otimes V\otimes Y$ we have
  \[\Tr^{U\otimes V}_{X,Y}\big[h\big]=\Tr^{V\otimes U}_{X,Y}\Big[\big(\gamma_{U,V}\otimes Y\big)\circ h\circ\big(\gamma_{V,U}\otimes X\big)\Big].\]
- \end{itemize}
+ \end{description}
+ In the presence of the other five Axioms, the axioms Dinaturality~I and Dinaturality~I' are equivalent.
 \end{enumerate}
 \end{proposition}
 \begin{proof}
