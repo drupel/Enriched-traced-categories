@@ -351,6 +351,8 @@ Let $\cat{M}$ be a symmetric monoidal category.
  but this is exactly the composition formula applied to the right hand side of Dinaturality I.}%end erase
 \end{proof}
 
+\section{The Int construction}
+
 For a traced symmetric monoidal category $\cat{M}$ let $\widetilde{\cat{M}}=\Int(\cat{M})$ denote the category with objects given by pairs $(X_-,X_+)$ where $X_-,X_+\in \Ob(\cat{M})$ and morphisms given by 
 \[\Hom_{\widetilde{\cat{M}}}\big((X_-,X_+),(Y_-,Y_+)\big)=\Hom_{\cat{M}}(X_-\otimes Y_+,X_+\otimes Y_-).\]
 For morphisms $\Phi:(X_-,X_+)\to(Y_-,Y_+)$ and $\Psi:(Y_-,Y_+)\to(Z_-,Z_+)$ in $\widetilde{\cat{M}}$ we define their composition to be
@@ -359,7 +361,7 @@ It is well known that $\widetilde{\cat{M}}$ is a compact closed category whose t
 \[(X_-,X_+)\odot(Y_-,Y_+):=(X_-\otimes Y_-,X_+\otimes Y_+)\]
 with unit object $\tilde I:=(I,I)$ and duality $(X_-,X_+)^\vee:=(X_+,X_-)$.  The following is immediate from the definitions.
 
-\begin{lemma}
+\begin{lemma}\todo{This lemma has a sign-error. Either change definition of $\Hom_{\widetilde{\cat{M}}}$ or lemma statement.}
 
 Let $\cat{M}$ be a traced symmetric monoidal category.  Then for any object $(X_-,X_+)\in\Ob\big(\widetilde{\cat{M}}\big)$ there is a canonical bijection
 \[|(X_-,X_+)|\iso\Hom_{\cat{M}}(X_-,X_+).\]
