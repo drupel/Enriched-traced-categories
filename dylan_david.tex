@@ -353,18 +353,18 @@ Let $\cat{M}$ be a symmetric monoidal category.
 
 \section{The Int construction}
 
-For a traced symmetric monoidal category $\cat{M}$ let $\widetilde{\cat{M}}=\Int(\cat{M})$ denote the category with objects given by pairs $(X_-,X_+)$ where $X_-,X_+\in \Ob(\cat{M})$ and morphisms given by 
-\[\Hom_{\widetilde{\cat{M}}}\big((X_-,X_+),(Y_-,Y_+)\big)=\Hom_{\cat{M}}(X_-\otimes Y_+,X_+\otimes Y_-).\]
-For morphisms $\Phi:(X_-,X_+)\to(Y_-,Y_+)$ and $\Psi:(Y_-,Y_+)\to(Z_-,Z_+)$ in $\widetilde{\cat{M}}$ we define their composition to be
-\[\Psi\circ\Phi:=\Tr^{Y_+}_{X_-\otimes Z_+,X_+\otimes Z_-}\Big[\big(\gamma_{X_+,Y_+}\otimes Z_-\big)\circ\big(X_+\otimes\Psi\big)\circ\big(\Phi\otimes Z_+\big)\circ\big(\gamma_{Y_+,X_-}\otimes Z_+\big)\Big].\]
+For a traced symmetric monoidal category $\cat{M}$ let $\widetilde{\cat{M}}=\Int(\cat{M})$ denote the category with objects given by pairs $(\inp{X},\outp{X})$ where $\inp{X},\outp{X}\in \Ob(\cat{M})$ and morphisms given by 
+\[\Hom_{\widetilde{\cat{M}}}\big((\inp{X},\outp{X}),(\inp{Y},\outp{Y})\big)=\Hom_{\cat{M}}(\inp{X}\otimes \outp{Y},\outp{X}\otimes \inp{Y}).\]
+For morphisms $\Phi:(\inp{X},\outp{X})\to(\inp{Y},\outp{Y})$ and $\Psi:(\inp{Y},\outp{Y})\to(\inp{Z},\outp{Z})$ in $\widetilde{\cat{M}}$ we define their composition to be
+\[\Psi\circ\Phi:=\Tr^{\outp{Y}}_{\inp{X}\otimes \outp{Z},\outp{X}\otimes \inp{Z}}\Big[\big(\gamma_{\outp{X},\outp{Y}}\otimes \inp{Z}\big)\circ\big(\outp{X}\otimes\Psi\big)\circ\big(\Phi\otimes \outp{Z}\big)\circ\big(\gamma_{\outp{Y},\inp{X}}\otimes \outp{Z}\big)\Big].\]
 It is well known that $\widetilde{\cat{M}}$ is a compact closed category whose tensor is given by
-\[(X_-,X_+)\odot(Y_-,Y_+):=(X_-\otimes Y_-,X_+\otimes Y_+)\]
-with unit object $\tilde I:=(I,I)$ and duality $(X_-,X_+)^\vee:=(X_+,X_-)$.  The following is immediate from the definitions.
+\[(\inp{X},\outp{X})\odot(\inp{Y},\outp{Y}):=(\inp{X}\otimes \inp{Y},\outp{X}\otimes \outp{Y})\]
+with unit object $\tilde I:=(I,I)$ and duality $(\inp{X},\outp{X})^\vee:=(\outp{X},\inp{X})$.  The following is immediate from the definitions.
 
 \begin{lemma}\todo{This lemma has a sign-error. Either change definition of $\Hom_{\widetilde{\cat{M}}}$ or lemma statement.}
 
-Let $\cat{M}$ be a traced symmetric monoidal category.  Then for any object $(X_-,X_+)\in\Ob\big(\widetilde{\cat{M}}\big)$ there is a canonical bijection
-\[|(X_-,X_+)|\iso\Hom_{\cat{M}}(X_-,X_+).\]
+Let $\cat{M}$ be a traced symmetric monoidal category.  Then for any object $(\inp{X},\outp{X})\in\Ob\big(\widetilde{\cat{M}}\big)$ there is a canonical bijection
+\[|(\inp{X},\outp{X})|\iso\Hom_{\cat{M}}(\inp{X},\outp{X}).\]
 
 \end{lemma}
 
@@ -387,7 +387,7 @@ Following Proposition~\ref{prop:set theoretic cob1} (borrow notation/setup from 
 $$\varphi\colon\inp{X}\sqcup \outp{Y}\xrightarrow{\iso}\outp{X}\sqcup \inp{Y},$$ 
 together with a typed finite set $S$. Given an element $f\in\cat{P}(X)$ we must construct $\cat{P}(\Phi)(f)\in\cat{P}(Y)$. Let $\dim(\overline{S})=\textnormal{Tr}^{\overline{S}}_{I,I}\big[\id_{\overline{S}}\big]\in\cat{S}_\cat{M}$. Then we use the formula
 $$\cat{P}(\Phi)(f):=
-\textnormal{Tr}^{\overline{X_+}}_{\overline{Y_-},\overline{Y_+}}\Big[\big(f\otimes\id_{\overline{Y_+}}\big)\circ\overline{\varphi}\Big]
+\textnormal{Tr}^{\voutp{X}}_{\vinp{Y},\voutp{Y}}\Big[\big(f\otimes\id_{\voutp{Y}}\big)\circ\overline{\varphi}\Big]
 \otimes\dim(\overline{S}).	
 $$
 
