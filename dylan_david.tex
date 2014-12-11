@@ -1,77 +1,133 @@
 % !TEX root = ./CCC_Note.tex
 \chapter{Introduction}
 
-Traced symmetric monoidal categories have been used to model processes with feedback (\url{http://arxiv.org/pdf/1401.5113v1.pdf})  or operators with fixed points (\url{http://arxiv.org/pdf/1107.6032.pdf}). A graphical calculus for TSMCs was developed by Joyal, Street, and Verity, in which string diagrams of the form
-\begin{center}
-\activetikz{
+Traced symmetric monoidal categories, hereafter \emph{traced categories}, have been used to model processes with feedback (\cite{http://arxiv.org/pdf/1401.5113v1.pdf})  or operators with fixed points (\cite{http://arxiv.org/pdf/1107.6032.pdf}). A graphical calculus for traced categories was developed by Joyal, Street, and Verity (\cite{JoyalStreetVerity}), in which string diagrams of the form
+%
+%
+%WITHOUT OUTER BOX:
+%
+%
+%\begin{align}\label{dia:string diagram}
+%\begin{tikzpicture}
+%	%little box 1
+%	\path(2,1.5);
+%	\blackbox{(2,2)}{2}{1}{$X_1$}{.5}
+%	%little box 2
+%	\path(6,1.5);
+%	\blackbox{(2,2)}{2}{2}{$X_2$}{.5}
+%	%wires
+%	\directarc{(4.25,2.5)}{(5.75,2.16667)} % X_1 -> X_2
+%	\directarc{(0.35,2.833333)}{(1.75,2.83333)} % Y -> X_1
+%	\fancyarc{(0.35,4)}{(5.75,2.83333)}{-35}{16} % Y -> X_2
+%	\directarc{(8.25,2.8333)}{(9.65,2.83333)} % X_2 -> Y
+%	\fancyarc{(1.75,2.16667)}{(8.25,2.16667)}{20}{-45} % X_2 -> X_1
+%\end{tikzpicture}
+%\end{align}
+%
+%
+%WITH OUTER BOX:
+%
+%
+\begin{align}\label{dia:string diagram}
+\begin{tikzpicture}
+   %big box
+	\path(0,0);
+	\blackbox{(10,5)}{2}{1}{$Y$}{.7}
+	    %inner wires
+	        \node at (.4,3.6) {\tiny $\inp{Y}_{a}$};
+	        \node at (.4,1.9) {\tiny $\inp{Y}_{b}$};
+	    %outer wire
+	        \node at (9.6,2.75) {\tiny $\outp{Y}_a$};
 	%little box 1
 	\path(2,1.5);
 	\blackbox{(2,2)}{2}{1}{$X_1$}{.5}
+	    %tank info
+	    %inner wires
+	        \node at (1.75,3.03) {\tiny $\inp{X}_{1a}$};
+	        \node at (1.75,2.35) {\tiny $\inp{X}_{1b}$};
+	    %outer wire
+	        \node at (4.33,2.68) {\tiny $\outp{X}_{1c}$};
 	%little box 2
 	\path(6,1.5);
 	\blackbox{(2,2)}{2}{2}{$X_2$}{.5}
+	    %tank info
+	    %inner wires
+	        \node at (5.75,3.03) {\tiny $\inp{X}_{2a}$};
+	        \node at (5.75,2.35) {\tiny $\inp{X}_{2b}$};
+	    %outer wires
+	        \node at (8.33,3.03) {\tiny $\outp{X}_{2c}$};
+	        \node at (8.33,2.35) {\tiny $\outp{X}_{2d}$};
 	%wires
 	\directarc{(4.25,2.5)}{(5.75,2.16667)} % X_1 -> X_2
-	\directarc{(0.35,2.833333)}{(1.75,2.83333)} % Y -> X_1
-	\fancyarc{(0.35,4)}{(5.75,2.83333)}{-35}{16} % Y -> X_2
-	\directarc{(8.25,2.8333)}{(9.65,2.83333)} % X_2 -> Y
+	\directarc{(0.35,1.6667)}{(1.75,2.83333)} % Y -> X_1
+	\fancyarc{(0.35,3.3333)}{(5.75,2.83333)}{-40}{25} % Y -> X_2
+	\directarc{(8.25,2.8333)}{(9.65,2.5)} % X_2 -> Y
 	\fancyarc{(1.75,2.16667)}{(8.25,2.16667)}{20}{-45} % X_2 -> X_1
-}
-\end{center}
+\end{tikzpicture}
+\end{align}
 represent compositions, i.e., new morphisms are constructed from old by specifying which outputs will be fed back into which inputs. In fact, these generalize Penrose diagrams in $\Cat{Vect}$, and the word \emph{traced} originates in vector space terminology.  
 
-But notice that the above picture has another interpretation, in terms of 1-dimensional cobordisms between oriented 0-manifolds. The box $X$ in the picture includes only the data of two finite sets $(\inp{X},\outp{X})$, here $(blah,blah)$. Thus each box encodes a signed set, which can be interpreted as an oriented 0-manifold. A string diagram, in which boxes $X_1,\ldots,X_n$ are wired together inside a larger box $Y$, can be interpreted as a cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$. 
+But notice that the picture in (\ref{dia:string diagram}) has another interpretation, in terms of 1-dimensional cobordisms between oriented 0-manifolds. The box $X_1$ in the picture includes only the data of a pair of finite sets, $(\inp{X_1},\outp{X_1})=(\{1a,1b\},\{1c\})$. Thus each box encodes an oriented 0-manifold. A string diagram, in which boxes $X_1,\ldots,X_n$ are wired together inside a larger box $Y$, can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$. This is a morphism in the multicategory $\Cat{Cob}$, underlying the symmetric monoidal category of oriented 1-cobordisms.
 
-There is actually a bit more data in a string diagram for a TSMC $\cat{C}$; namely, each wire is labeled by an object of $\cat{C}$. We will thus consider the category $\Cat{Cob}/Lbl$ of oriented 1-dimensional cobordisms over a fixed set $Lbl$ of labels. 
+There is actually a bit more data in a string diagram for a traced category $\cat{C}$; namely, each wire is labeled by an object of $\cat{C}$. The strings in a string diagram must respect these labels. We will thus consider the multicategory $\Cat{Cob}/\cat{O}$ of oriented 1-dimensional cobordisms over a fixed set $\cat{O}$ of labels. 
 
-We record these two interpretations of string diagrams in the table below. Note the ``degree shift" between the second and third columns.
+In the table below, we record these two interpretations of a string diagram. Note the ``degree shift" between the second and third columns.
 \begin{center}
 % \begin{tabular}{| l | l | l |}
 % \hline
 % \multicolumn{3}{|c|}{Interpretations of string diagrams}\\\hline
-% String diagram & Traced category $\cat{C}$ & $\Cat{Cob}/Lbl$\\\bhline
-% Wire label set, $Lbl$&Objects, $Lbl:=\Ob(\cat{C})$&Label set, $Lbl$\\
-% Box & Morphism & Object (oriented 0-mfd over $Lbl$)\\
-% String diagram & Composition & Morphism (Cobordism over $Lbl$)\\
+% String diagram & Traced category $\cat{C}$ & $\Cat{Cob}/\cat{O}$\\\bhline
+% Wire label set, $\cat{O}$&Objects, $\cat{O}:=\Ob(\cat{C})$&Label set, $\cat{O}$\\
+% Box & Morphism & Object (oriented 0-mfd over $\cat{O}$)\\
+% String diagram & Composition & Morphism (Cobordism over $\cat{O}$)\\
 % Nesting & Axioms of TSMCs & Composition\\\hline
 % \end{tabular}
 \begin{tabular}{lll}
 \toprule
 \multicolumn{3}{c}{Interpretations of string diagrams} \\
 \midrule
-String diagram & Traced category $\cat{C}$ & $\Cat{Cob}/Lbl$ \\
+String diagram & Traced category $\cat{C}$ & $\Cat{Cob}/\cat{O}$ \\
 \midrule
-Wire label set, $Lbl$ & Objects, $Lbl:=\Ob(\cat{C})$ & Label set, $Lbl$ \\
-Box & Morphism & Object (oriented 0-mfd over $Lbl$) \\
-String diagram & Composition & Morphism (Cobordism over $Lbl$) \\
+Wire label set, $\cat{O}$ & Objects, $\cat{O}:=\Ob(\cat{C})$ & Label set, $\cat{O}$ \\
+Box & Morphism & Object (oriented 0-mfd over $\cat{O}$) \\
+String diagram & Composition & Morphism (Cobordism over $\cat{O}$) \\
 Nesting & Axioms of TSMCs & Composition \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-The relationship between these interpretations is made precise in the following first main theorem, which will be proved in Section~\ref{3}.
+The relationship between these interpretations is made precise in the following first main theorem, which will be proved in Section~\ref{3}. For any multicategory $\cat{M}$, we denote by $\cat{M}\alg$ the category of lax functors $\cat{M}\to\Cat{Set}$. Let $\Cat{TrCat}$ denote the category of traced categories and traced functors; these will be recalled in Section~\ref{sec:traced categories}.
+
 \begin{theorem}\label{thm:traced as cob-alg}
-Consider the functor $\op\Set\to\Cat{Cat}$, given by $Lbl\mapsto(\Cat{Cob}/Lbl)\alg$, and let $(\Cat{Cob}/\bullet)\alg\to\Set$ denote the corresponding split Grothendieck fibration. Then there is an equivalence of categories
-$$\Cat{TSMC}\simeq(\Cat{Cob}/\bullet)\alg.$$
+Consider the functor $\op\Set\to\Cat{Cat}$, given by $\cat{O}\mapsto(\Cat{Cob}/\cat{O})\alg$, and let $(\Cat{Cob}/\bullet)\alg$ denote the total category of corresponding split Grothendieck fibration. Then there is an equivalence of categories
+$$(\Cat{Cob}/\bullet)\alg\iso\Cat{TrCat}.$$
 \end{theorem}
 
-We sketch the connection, with a few minor abuses of notation, as follows. Recall that a $(\Cat{Cob}/Lbl)$-algebra is a lax functor $P\colon\Cat{Cob}/Lbl\to\Cat{Set}$. Once a set $Lbl$ is established, specifying a traced category $\cat{C}$ with objects $Lbl$ requires the same data as specifying a lax functor $P$. First, for each box $(\inp{X},\outp{X})$ in a string diagram, both $\cat{C}$ and $P$ require a set, $\Hom_{\cat{C}}(\inp{X},\outp{X})$ and $P(\inp{X},\outp{X})$, respectively.  Second, for each string diagram, both $\cat{C}$ and $P$ require a function: a formula for composition and trace, in the case of $\cat{C}$, and an action on morphisms, in the case of $P$. The fact that $\cat{C}$ satisfies the axioms of traced symmetric monoidal categories corresponds to checking the functoriality of $P$.
+We sketch the equivalence, with a few minor abuses of notation, as follows. It suffices to fix a set $\cat{O}$ and find an equivalence, natural in $\cat{O}$, between the category of $\Cat{Cob}/\cat{O}$-algebras and the category of traced categories with \todo{Is this accurate?} generating objects $\cat{O}$. We will show that specifying a lax functor $P\colon\Cat{Cob}/\cat{O}\to\Cat{Set}$ requires the same data as specifying a traced category $\cat{C}$ with generating objects $\cat{O}$. 
+
+First, for each box $(\inp{X},\outp{X})$ in a string diagram, both $P$ and $\cat{C}$ require a set, $P(\inp{X},\outp{X})$ and $\Hom_{\cat{C}}(\inp{X},\outp{X})$, respectively.  Second, for each string diagram, both $P$ and $\cat{C}$ require a function: an action on morphisms, in the case of $P$, and a formula for performing the required compositions, tensors, and traces, in the case of $\cat{C}$. The functoriality of $P$ corresponds to the fact that $\cat{C}$ satisfies the axioms of traced categories.
 
 \section{Generalization: lax algebras on a traced or compact category}
 
-\begin{theorem}
- Let $\cat{C}$ be a compact closed category and $\cat{V}$ a symmetric monoidal category.  The category $\Lax(\cat{C},\cat{V})$ of lax monodical functors is equivalent to the coslice category $\cat{C}/(\cat{V}-\Cat{CompCat})$ spanned by bijective on objects functors.
+It is most convenient to prove Theorem~\ref{thm:traced as cob-alg} by proving a much more general result, which relates lax algebras out of compact categories $\cat{C}$ to strong, bijective-on-objects functors out of $\cat{C}$. Let $\Cat{CompCat}$ denote the category of compact categories and strong monoidal functors between them, and let $\Cat{CompCat}_{\Ob\iso}$ denote the wide subcategory spanned by functors that are bijective on objects. For any symmetric monoidal category $\cat{V}$, we denote by $\Cat{CompCat}^{\cat{V}}_{\Ob\iso}\ss\Cat{CompCat}^{\cat{V}}$ the respective categories of $\cat{V}$-enriched compact categories.
+
+\begin{theorem}\label{thm:compact lax and strong}
+ Let $\cat{C}$ be a compact closed category and $\cat{V}$ a symmetric monoidal category. If $\Lax(\cat{C},\cat{V})$ denotes the category of lax monoidal functors out of $\cat{C}$, and $\cat{C}/\Cat{CompCat}^\cat{V}_{\Ob\iso}$ denotes the coslice category of $\cat{V}$-enriched compact categories and strong functors under $\cat{C}$, then there is an equivalence of categories
+$$\Lax(\cat{C},\cat{V})\cong\cat{C}/\Cat{CompCat}^\cat{V}_{\Ob\iso}$$
 \end{theorem}
 
-\begin{corollary}
-If $\cat{C}=Int\cat{D}$, then $\Lax(\cat{C},\cat{V})$ is equivalent to the coslice category $\cat{C}/(\cat{V}-\Cat{TracedCat})$ with boo.
+By \cite{Abramsky}, $\Cat{Cob}/\cat{O}$ is the free compact category on the set $\cat{O}$ of objects. In this case Theorem~\ref{thm:compact lax and strong} amounts to the following equivalence of categories when $\cat{V}=\Cat{Set}$: 
+$$\Lax(\Cat{Cob}/\cat{O},\Cat{Set})\iso\Cat{CompCat}_{\Ob\cong\cat{O}}.$$
+It turns out that if our compact category $\cat{C}$ is Int of something, then Theorem~\ref{thm:compact lax and strong} lifts to a result about traced categories, recorded as Corollary~\ref{cor:thm:traced lax and strong}, from which Theorem~\ref{thm:traced as cob-alg} follows. 
+
+\todo{I want something here that explains the variance in $\cat{C}$.}
+
+\begin{corollary}\label{cor:thm:traced lax and strong}
+Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=Int\cat{D}$. Then there is an equivalence of categories
+$$\Lax(\cat{C},\cat{V})\iso\cat{C}/\Cat{TrCat}^\cat{V}_{\Ob\iso}$$
 \end{corollary}
 
-Theorem~\ref{thm:traced as cob-alg} follows from this corollary, because $\Cat{Cob}/Lbl$ is Int of the free traced category on a set of objects $Lbl$, so....
 
-\begin{corollary}
- $\Lax(\Int(\cat{T}),\cat{V})=\cat{V}-\Cat{TSMC}_{\cat{T}/}$
-\end{corollary}
 
 \section[Applications of the cobordism-algebra perspective]{Applications of the cobordism-algebra perspective in engineering design}
 
@@ -131,19 +187,19 @@ When drawing 0-manifolds as boxes and cobordisms as string diagrams, composition
 	%\fancyarc{(4.2,.525)}{(4.45,.5)}{5}{-5}
 }
 \end{figure}
-A commutative square in $\Cat{1-Cob}$ corresponds to finding two different ways to chunk small boxes inside a big box. The functoriality of $P\colon\Cat{1-Cob}\to\Set$ can be thought of as ensuring that any two ways to chunk boxes gives the same result.
+A commutative square in $\Cat{Cob}$ corresponds to finding two different ways to chunk small boxes inside a big box. The functoriality of $P\colon\Cat{Cob}\to\Set$ can be thought of as ensuring that any two ways to chunk boxes gives the same result.
 
 \section{Acknowledgments}
 
 Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect our operad-algebra picture to the traced one. 
 
-\chapter{Wiring Diagrams and $\Cat{1-Cob}$}
+\chapter{Wiring Diagrams and $\Cat{Cob}$}
 
 In this section, we more carefully explain the equivalence between the category of traced categories and the category of cobordism algebras.
 
-\section{Objects in $\Cat{1-Cob}$ as interfaces}
+\section{Objects in $\Cat{Cob}$ as interfaces}
 
-The objects in $\Cat{1-Cob}$ are signed sets $(\inp{X},\outp{X})$, each of which can be drawn as a box with input wires $\inp{X}$ drawn entering the box, on its left, and output wires $\outp{X}$ drawn exiting the box, on its right. We call the latter style \emph{an interface}.
+The objects in $\Cat{Cob}$ are signed sets $(\inp{X},\outp{X})$, each of which can be drawn as a box with input wires $\inp{X}$ drawn entering the box, on its left, and output wires $\outp{X}$ drawn exiting the box, on its right. We call the latter style \emph{an interface}.
 
 \begin{figure}
 \activetikz{
@@ -158,7 +214,7 @@ The objects in $\Cat{1-Cob}$ are signed sets $(\inp{X},\outp{X})$, each of which
 \caption{The signed set $(\ul{3},\ul{2})$, drawn in the usual style and as an interface.}
 \end{figure}
 
-\section{Morphisms in $\Cat{1-Cob}$ as wiring diagrams}
+\section{Morphisms in $\Cat{Cob}$ as wiring diagrams}
 
 Wiring diagrams are a new way to visualize morphisms in 1-Cob.
 \begin{center}
@@ -179,7 +235,7 @@ Wiring diagrams are a new way to visualize morphisms in 1-Cob.
 	        \node at (1.75,3.03) {\tiny $\inp{X}_{1a}$};
 	        \node at (1.75,2.35) {\tiny $\inp{X}_{1b}$};
 	    %outer wire
-	        \node at (4.33,2.68) {\tiny $\outp{X}_{1a}$};
+	        \node at (4.33,2.68) {\tiny $\outp{X}_{1c}$};
 	%little box 2
 	\path(6,1.5);
 	\blackbox{(2,2)}{2}{2}{$X_2$}{.5}
@@ -188,8 +244,8 @@ Wiring diagrams are a new way to visualize morphisms in 1-Cob.
 	        \node at (5.75,3.03) {\tiny $\inp{X}_{2a}$};
 	        \node at (5.75,2.35) {\tiny $\inp{X}_{2b}$};
 	    %outer wires
-	        \node at (8.33,3.03) {\tiny $\outp{X}_{2a}$};
-	        \node at (8.33,2.35) {\tiny $\outp{X}_{2b}$};
+	        \node at (8.33,3.03) {\tiny $\outp{X}_{2c}$};
+	        \node at (8.33,2.35) {\tiny $\outp{X}_{2d}$};
 	%wires
 	\directarc{(4.25,2.5)}{(5.75,2.16667)} % X_1 -> X_2
 	\directarc{(0.35,1.6667)}{(1.75,2.83333)} % Y -> X_1
@@ -207,12 +263,12 @@ Wiring diagrams are a new way to visualize morphisms in 1-Cob.
 \def\bspace{5}
 \draw (0,7*\factor) node {$\inp{X}_{1a}$};\draw (\lspace,7*\factor) node {$-$};
 \draw(0,6*\factor) node {$\inp{X}_{1b}$};\draw (\lspace,6*\factor) node {$-$};
-\draw(0,5*\factor) node {$\outp{X}_{1a}$};\draw (\lspace,5*\factor) node {$+$};
+\draw(0,5*\factor) node {$\outp{X}_{1c}$};\draw (\lspace,5*\factor) node {$+$};
 %skip 3 to separate manifolds
 \draw(0,3*\factor) node {$\inp{X}_{2a}$};\draw (\lspace,3*\factor) node {$-$};
 \draw(0,2*\factor) node {$\inp{X}_{2b}$};\draw (\lspace,2*\factor) node {$-$};
-\draw(0,1*\factor) node {$\outp{X}_{2a}$};\draw (\lspace,1*\factor) node {$+$};
-\draw(0,0*\factor) node {$\outp{X}_{2b}$};\draw (\lspace,0*\factor) node {$+$};
+\draw(0,1*\factor) node {$\outp{X}_{2c}$};\draw (\lspace,1*\factor) node {$+$};
+\draw(0,0*\factor) node {$\outp{X}_{2d}$};\draw (\lspace,0*\factor) node {$+$};
 %Right manifold
 \draw (\bspace,6*\factor) node {$\inp{Y}_a$};\draw (\bspace-\lspace,6*\factor) node {$-$};
 \draw (\bspace,4*\factor) node {$\inp{Y}_b$};\draw (\bspace-\lspace,4*\factor) node {$-$};
@@ -226,7 +282,7 @@ Wiring diagrams are a new way to visualize morphisms in 1-Cob.
 }
 \end{center}
 
-\section{$\Cat{1-Cob}$-algebras and applications}
+\section{$\Cat{Cob}$-algebras and applications}
 
 Traced categories are often used to model processes with feedback. The processes correspond to morphisms, each drawn as an interface, and these processes can be strung together in series or parallel, and with feedback, using string diagram notation. Theorem~\ref{thm:traced as cob-alg} says that we can also view string diagrams as morphisms in $\Cat{Cob}$. In this setting, the processes are modeled using an algebra on $\Cat{Cob}$.
 
@@ -234,7 +290,7 @@ References for applications of traced monoidal categories.
 
 References for applications of $\Cat{Cob}$-algebras.
 
-\chapter{Traced Symmetric Monoidal Categories}
+\chapter{Traced Categories}\label{sec:traced categories}
 
 Let $(\cat{M},\otimes,I)$ be a symmetric monoidal category where for any $X,Y\in\Ob(\cat{M})$ we write $\gamma_{X,Y}:X\otimes Y\To{\sim} Y\otimes X$ for the distinguished symmetry isomorphisms. Recall that we have $\gamma_{Y,X}=\gamma_{X,Y}^{-1}$.  We define the {\em monoid of scalars in $\cat{M}$} to be the set $S_{\cat{M}}:=\Hom(I,I)$ with multiplication given by composition.  Note that $S_{\cat{M}}$ is commutative since $\cat{M}$ is symmetric.  There is an action of $S_{\cat{M}}$ on the set $\Hom_{\cat{M}}(X,Y)$ for each $(X,Y)\in\Ob(\cat{M}^{op}\times\cat{M})$, where $s\in S_{\cat{M}}$ acts on a morphism $f\colon X\to Y$ by sending it to the composite morphism
 $$s\bullet f:X\to I\otimes X\To{s\otimes f}I\otimes Y\to Y.$$
@@ -263,7 +319,7 @@ for $U,X,Y\in\Ob(\cat{M})$ satisfying the following axioms:
  \[\Tr^X_{X,X}\big[\gamma_{X,X}\big].\]
 \end{description}
 
-For an object $X$ in a traced symmetric monoidal category $\cat{M}$ we write $\dim(X):=\Tr^X_{I,I}\big[\id_X\big]\in S_{\cat{M}}$ for the {\em dimension} of $X$.  Note also that for any endomorphism $f:X\to X$ there is a scalar $s_f=\Tr^X_{I,I}[f]\in S_{\cat{M}}$.
+For an object $X$ in a traced category $\cat{M}$ we write $\dim(X):=\Tr^X_{I,I}\big[\id_X\big]\in S_{\cat{M}}$ for the {\em dimension} of $X$.  Note also that for any endomorphism $f:X\to X$ there is a scalar $s_f=\Tr^X_{I,I}[f]\in S_{\cat{M}}$.
 
 \begin{proposition}\label{prop:dinaturality}\mbox{}
 Let $\cat{M}$ be a symmetric monoidal category.
@@ -353,7 +409,7 @@ Let $\cat{M}$ be a symmetric monoidal category.
 
 \section{The Int construction}
 
-For a traced symmetric monoidal category $\cat{M}$ let $\widetilde{\cat{M}}=\Int(\cat{M})$ denote the category with objects given by pairs $(\inp{X},\outp{X})$ where $\inp{X},\outp{X}\in \Ob(\cat{M})$ and morphisms given by 
+For a traced category $\cat{M}$ let $\widetilde{\cat{M}}=\Int(\cat{M})$ denote the category with objects given by pairs $(\inp{X},\outp{X})$ where $\inp{X},\outp{X}\in \Ob(\cat{M})$ and morphisms given by 
 \[\Hom_{\widetilde{\cat{M}}}\big((\inp{X},\outp{X}),(\inp{Y},\outp{Y})\big)=\Hom_{\cat{M}}(\inp{X}\otimes \outp{Y},\outp{X}\otimes \inp{Y}).\]
 For morphisms $\Phi:(\inp{X},\outp{X})\to(\inp{Y},\outp{Y})$ and $\Psi:(\inp{Y},\outp{Y})\to(\inp{Z},\outp{Z})$ in $\widetilde{\cat{M}}$ we define their composition to be
 \[\Psi\circ\Phi:=\Tr^{\outp{Y}}_{\inp{X}\otimes \outp{Z},\outp{X}\otimes \inp{Z}}\Big[\big(\gamma_{\outp{X},\outp{Y}}\otimes \inp{Z}\big)\circ\big(\outp{X}\otimes\Psi\big)\circ\big(\Phi\otimes \outp{Z}\big)\circ\big(\gamma_{\outp{Y},\inp{X}}\otimes \outp{Z}\big)\Big].\]
@@ -363,7 +419,7 @@ with unit object $\tilde I:=(I,I)$ and duality $(\inp{X},\outp{X})^\vee:=(\outp{
 
 \begin{lemma}\todo{This lemma has a sign-error. Either change definition of $\Hom_{\widetilde{\cat{M}}}$ or lemma statement.}
 
-Let $\cat{M}$ be a traced symmetric monoidal category.  Then for any object $(\inp{X},\outp{X})\in\Ob\big(\widetilde{\cat{M}}\big)$ there is a canonical bijection
+Let $\cat{M}$ be a traced category.  Then for any object $(\inp{X},\outp{X})\in\Ob\big(\widetilde{\cat{M}}\big)$ there is a canonical bijection
 \[|(\inp{X},\outp{X})|\iso\Hom_{\cat{M}}(\inp{X},\outp{X}).\]
 
 \end{lemma}
@@ -374,12 +430,15 @@ To continue we recall the constructions of various free monoidal structures on a
 
 The objects of the free monoidal category $F_M(\cat{C})$ are lists of objects in $\cat{C}$ with componentwise morphisms.  More formally the objects are pairs $(n,X)$ where $n\in\NN$ and $X$ is a map $X\colon[n]\to \Ob\cat{C}$ and a morphism $f:(n,X)\to(m,Y)$ exists if and only if $n=m$ in which case $f\in\prod_{i=1}^n\Hom_{\cat{C}}(X_i,Y_i)$ with compositions formed as expected.  The tensor product is given by concatenation of lists, i.e. $(n,X)\otimes(m,Y)=(n+m,X+Y)$, with tensor unit $(0,!)$ where $!$ is the unique function from the empty set.
 
-The objects of the free symmetric monoidal category $F_{SM}(\cat{C})$ are again lists of objects in $\cat{C}$, however morphisms now come equipped with a permutation.  More formally, a morphism from $(n,X)$ to $(n,Y)$ is a pair $(f,\pi)$ where $f\in\prod_{i=1}^n\Hom_{\cat{C}}(X_i,Y_{\pi(i)})$ and $\pi\in S(n)$ is a permutation which by abuse of notation can be thought of as an isomorphism $\pi:Y_1\otimes\cdots\otimes Y_n\To{sim} Y_{\pi(1)}\otimes\cdots\otimes Y_{\pi(n)}$.  The composition of morphisms is given by $(\sigma,g)\circ(\pi,f)=\Big(\sigma\circ\pi,\otimes_{i=1}^n (g_{\pi(i)}\circ f_i)\Big)$ and the tensor is given by $(\pi,f)\otimes(\sigma,g)=(\pi\otimes\sigma,f\otimes g)$.  
+The objects of the free symmetric monoidal category $F_{SM}(\cat{C})$ are again lists of objects in $\cat{C}$, however morphisms now come equipped with a permutation.  More formally, a morphism from $(n,X)$ to $(n,Y)$ is a pair $(f,\pi)$ where $f\in\prod_{i=1}^n\Hom_{\cat{C}}(X_i,Y_{\pi(i)})$ and $\pi\in S(n)$ is a permutation which by abuse of notation can be thought of as an isomorphism $\pi:Y_1\otimes\cdots\otimes Y_n\To{\sim} Y_{\pi(1)}\otimes\cdots\otimes Y_{\pi(n)}$.  The composition of morphisms is given by 
+$$(\sigma,g)\circ(\pi,f):=\Big(\sigma\circ\pi,\otimes_{i=1}^n (g_{\pi(i)}\circ f_i)\Big)$$ 
+and the tensor is given by 
+$$(\pi,f)\otimes(\sigma,g):=(\pi\otimes\sigma,f\otimes g).$$  
 
 
-\section{Definition of functors between $\Cat{TSMC}$ and $\Cat{Cob}/\cat{O}$-algebras}
+\section{Definition of functors between $\Cat{TrCat}$ and $\Cat{Cob}/\cat{O}$-algebras}
 
-Let $\cat{M}$ be a traced symmetric monoidal category with objects $\cat{O}$. We will define a $\Cat{Cob}/\cat{O}$-algebra $\cat{P}=R(\cat{M})\colon\Cat{Cob}/\cat{O}\to\Cat{Set}$ as follows. For an object $X\in\Ob(\Cat{Cob}/\cat{O})$, set 
+Let $\cat{M}$ be a traced category with objects $\cat{O}$. We will define a $\Cat{Cob}/\cat{O}$-algebra $\cat{P}=R(\cat{M})\colon\Cat{Cob}/\cat{O}\to\Cat{Set}$ as follows. For an object $X\in\Ob(\Cat{Cob}/\cat{O})$, set 
 $$\cat{P}(X):=\Hom_{\cat{M}}(\vinp{X},\voutp{X}).$$
 We next consider morphisms.
 
@@ -392,7 +451,7 @@ $$\cat{P}(\Phi)(f):=
 $$
 
 \begin{theorem}
- The category $\Cat{TSMC}$ is equivalent to the category of $\Cat{Cob}/\cat{O}$-algebras.
+ The category $\Cat{TrCat}$ is equivalent to the category of $\Cat{Cob}/\cat{O}$-algebras.
 \end{theorem}
 \begin{proof}
  

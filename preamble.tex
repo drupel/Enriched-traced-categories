@@ -117,22 +117,6 @@
 		codE/.style={cod=E}, codF/.style={cod=F}}
 
 
-\newcommand{\vinp}[1]{\overline{\inp{#1}}}
-\newcommand{\voutp}[1]{\overline{\outp{#1}}}
-%\newcommand{\inp}[1]{#1^{\textnormal{in}}}
-%\newcommand{\outp}[1]{#1^{\textnormal{out}}}
-\newcommand{\inp}[1]{{#1^-}}
-\newcommand{\outp}[1]{{#1^+}}
-
-% \def\bhline{\Xhline{2\arrayrulewidth}}
-% \def\bbhline{\Xhline{2.5\arrayrulewidth}}
-\def\alg{{\text \textendash}\Cat{Alg}}
-\def\To{\xrightarrow}
-\def\ul{\underline}
-
-\newcommand{\erase}[1]{{}}
-\def\NN{\mathbb{N}}
-
 
 
 \usetikzlibrary{arrows,calc,chains,matrix,positioning,scopes,snakes}
@@ -284,3 +268,20 @@
 \def\activetikz#1{$$\begin{tikzpicture}#1\end{tikzpicture}$$}
 \def\inactivetikz#1{\begin{center}\fbox{Tikz picture exists but is not being displayed}\end{center}}
 %End tikz macros
+
+\newcommand{\vinp}[1]{\overline{\inp{#1}}}
+\newcommand{\voutp}[1]{\overline{\outp{#1}}}
+%\newcommand{\inp}[1]{#1^{\textnormal{in}}}
+%\newcommand{\outp}[1]{#1^{\textnormal{out}}}
+\newcommand{\inp}[1]{#1^-}
+\newcommand{\outp}[1]{#1^+}
+
+% \def\bhline{\Xhline{2\arrayrulewidth}}
+% \def\bbhline{\Xhline{2.5\arrayrulewidth}}
+\def\alg{{\text \textendash}\Cat{Alg}}
+\def\To{\xrightarrow}
+\def\ul{\underline}
+
+\newcommand{\erase}[1]{{}}
+\def\NN{\mathbb{N}}
+\def\ss{\subseteq}
