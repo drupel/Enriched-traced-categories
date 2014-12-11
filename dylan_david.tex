@@ -112,7 +112,7 @@ First, for each box $(\inp{X},\outp{X})$ in a string diagram, both $P$ and $\cat
 It is most convenient to prove Theorem~\ref{thm:traced as cob-alg} by proving a much more general result, which relates lax algebras out of compact categories $\cat{C}$ to strong, bijective-on-objects functors out of $\cat{C}$. Let $\Cat{CompCat}$ denote the category of compact categories and strong monoidal functors between them, and let $\Cat{CompCat}_{\Ob\iso}$ denote the wide subcategory spanned by functors that are bijective on objects. For any symmetric monoidal category $\cat{V}$, we denote by $\Cat{CompCat}^{\cat{V}}_{\Ob\iso}\ss\Cat{CompCat}^{\cat{V}}$ the respective categories of $\cat{V}$-enriched compact categories.
 
 \begin{theorem}\label{thm:compact lax and strong}
- Let $\cat{C}$ be a compact closed category and $\cat{V}$ a symmetric monoidal category. If $\Lax(\cat{C},\cat{V})$ denotes the category of lax monoidal functors out of $\cat{C}$, and $\cat{C}/\Cat{CompCat}^\cat{V}_{\Ob\iso}$ denotes the coslice category of $\cat{V}$-enriched compact categories and strong functors under $\cat{C}$, then there is an equivalence of categories
+ Let $\cat{C}$ be a compact category \todo{Does $\cat{C}$ have to be $\cat{V}$-enriched?} and $\cat{V}$ a symmetric monoidal category. If $\Lax(\cat{C},\cat{V})$ denotes the category of lax monoidal functors out of $\cat{C}$, and $\cat{C}/\Cat{CompCat}^\cat{V}_{\Ob\iso}$ denotes the coslice category of $\cat{V}$-enriched compact categories and strong functors under $\cat{C}$, then there is an equivalence of categories
 $$\Lax(\cat{C},\cat{V})\cong\cat{C}/\Cat{CompCat}^\cat{V}_{\Ob\iso}$$
 \end{theorem}
 
@@ -120,13 +120,29 @@ By \cite{Abramsky}, $\Cat{Cob}/\cat{O}$ is the free compact category on the set 
 $$\Lax(\Cat{Cob}/\cat{O},\Cat{Set})\iso\Cat{CompCat}_{\Ob\cong\cat{O}}.$$
 It turns out that if our compact category $\cat{C}$ is Int of something, then Theorem~\ref{thm:compact lax and strong} lifts to a result about traced categories, recorded as Corollary~\ref{cor:thm:traced lax and strong}, from which Theorem~\ref{thm:traced as cob-alg} follows. 
 
-\todo{I want something here that explains the variance in $\cat{C}$.}
-
 \begin{corollary}\label{cor:thm:traced lax and strong}
 Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=Int\cat{D}$. Then there is an equivalence of categories
 $$\Lax(\cat{C},\cat{V})\iso\cat{C}/\Cat{TrCat}^\cat{V}_{\Ob\iso}$$
+This equivalence is natural in the compact category $\cat{C}$, using the factorization system on $\Cat{CompCat}$ from Lemma~\ref{lemma:factorization system}.
 \end{corollary}
 
+We prove the following lemma here, because there is no other place I've found to put it.\todo{Find a better place?}
+
+\begin{lemma}\label{lemma:factorization system}
+
+Let $\Cat{MonCat}$ denote the category of monoidal categories and strong functors. It admits an orthogonal factorization system $(\cat{L},\cat{R})$, where the morphisms in $\cat{L}$ are bijective on objects, and the morphisms in $\cat{R}$ are fully faithful.
+
+\end{lemma}
+
+\begin{proof}[Sketch of proof]
+
+Let $(\cat{C},\otimes_{\cat{C}})$ and $(\cat{D},\otimes_{\cat{D}})$ be monoidal categories, and let $F\colon\cat{C}\to\cat{D}$ be a strong monoidal functor. Define a monoidal category $(\cat{F},\otimes_{\cat{F}})$ to act like $\cat{C}$ on objects and like $\cat{D}$ on morphisms. That is, $\Ob\cat{F}:=\Ob\cat{C}$, and $\Hom_{\cat{F}}(c_1,c_2):=\Hom_{\cat{D}}(Fc_1,Fc_2).$ On objects, put $c_1\otimes_{\cat{F}}c_2:=c_1\otimes_{\cat{C}}c_2$. Given morphisms $f_1\colon c_1\to c_1'$ and $f_2\colon c_2\to c_2'$ in $\cat{F}$, put $f_1\otimes_{\cat{F}}f_2:=f_1\otimes_{\cat{D}}f_2$, using the coherence isomorphisms.
+
+There are induced strong monoidal functors 
+$$(\cat{C},\otimes_{\cat{C}})\to(\cat{F},\otimes_{\cat{F}})\to(\cat{D},\otimes_{\cat{D}})$$
+which compose to $F$, such that the former is bijective on objects and the latter is fully faithful. The proof of orthogonality is straightforward.\todo{None of this has been rigorously checked.}
+
+\end{proof}
 
 
 \section[Applications of the cobordism-algebra perspective]{Applications of the cobordism-algebra perspective in engineering design}
@@ -413,7 +429,7 @@ For a traced category $\cat{M}$ let $\widetilde{\cat{M}}=\Int(\cat{M})$ denote t
 \[\Hom_{\widetilde{\cat{M}}}\big((\inp{X},\outp{X}),(\inp{Y},\outp{Y})\big)=\Hom_{\cat{M}}(\inp{X}\otimes \outp{Y},\outp{X}\otimes \inp{Y}).\]
 For morphisms $\Phi:(\inp{X},\outp{X})\to(\inp{Y},\outp{Y})$ and $\Psi:(\inp{Y},\outp{Y})\to(\inp{Z},\outp{Z})$ in $\widetilde{\cat{M}}$ we define their composition to be
 \[\Psi\circ\Phi:=\Tr^{\outp{Y}}_{\inp{X}\otimes \outp{Z},\outp{X}\otimes \inp{Z}}\Big[\big(\gamma_{\outp{X},\outp{Y}}\otimes \inp{Z}\big)\circ\big(\outp{X}\otimes\Psi\big)\circ\big(\Phi\otimes \outp{Z}\big)\circ\big(\gamma_{\outp{Y},\inp{X}}\otimes \outp{Z}\big)\Big].\]
-It is well known that $\widetilde{\cat{M}}$ is a compact closed category whose tensor is given by
+It is well known that $\widetilde{\cat{M}}$ is a compact  category whose tensor is given by
 \[(\inp{X},\outp{X})\odot(\inp{Y},\outp{Y}):=(\inp{X}\otimes \inp{Y},\outp{X}\otimes \outp{Y})\]
 with unit object $\tilde I:=(I,I)$ and duality $(\inp{X},\outp{X})^\vee:=(\outp{X},\inp{X})$.  The following is immediate from the definitions.
 
