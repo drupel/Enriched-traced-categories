@@ -32,7 +32,7 @@ Traced symmetric monoidal categories, hereafter \emph{traced categories}, have b
 \begin{tikzpicture}
    %big box
 	\path(0,0);
-	\blackbox{(10,5)}{2}{1}{$Y$}{.7}
+	\dashblackbox{(10,5)}{2}{1}{$Y$}{.7}
 	    %inner wires
 	        \node at (.4,3.6) {\tiny $\inp{Y}_{a}$};
 	        \node at (.4,1.9) {\tiny $\inp{Y}_{b}$};
@@ -67,11 +67,11 @@ Traced symmetric monoidal categories, hereafter \emph{traced categories}, have b
 \end{align}
 represent compositions, i.e., new morphisms are constructed from old by specifying which outputs will be fed back into which inputs. In fact, these generalize Penrose diagrams in $\Cat{Vect}$, and the word \emph{traced} originates in vector space terminology.  
 
-But notice that the picture in (\ref{dia:string diagram}) has another interpretation, in terms of 1-dimensional cobordisms between oriented 0-manifolds. The box $X_1$ in the picture includes only the data of a pair of finite sets, $(\inp{X_1},\outp{X_1})=(\{1a,1b\},\{1c\})$. Thus each box encodes an oriented 0-manifold. A string diagram, in which boxes $X_1,\ldots,X_n$ are wired together inside a larger box $Y$, can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$. This is a morphism in the multicategory $\Cat{Cob}$, underlying the symmetric monoidal category of oriented 1-cobordisms.
+But notice that the picture in (\ref{dia:string diagram}) has another interpretation, in terms of 1-dimensional cobordisms between oriented 0-manifolds. The box $X_1$ in the picture includes only the data of a pair of finite sets, $(\inp{X_1},\outp{X_1})=(\{1a,1b\},\{1c\})$, which can be interpreted as an oriented 0-manifold. A string diagram, in which boxes $X_1,\ldots,X_n$ are wired together inside a larger box $Y$, can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$. This is a morphism in the multicategory $\Cat{Cob}$, underlying the symmetric monoidal category of oriented 1-cobordisms.
 
 There is actually a bit more data in a string diagram for a traced category $\cat{C}$; namely, each wire is labeled by an object of $\cat{C}$. The strings in a string diagram must respect these labels. We will thus consider the multicategory $\Cat{Cob}/\cat{O}$ of oriented 1-dimensional cobordisms over a fixed set $\cat{O}$ of labels. 
 
-In the table below, we record these two interpretations of a string diagram. Note the ``degree shift" between the second and third columns.
+In the table below, we record these two interpretations of a string diagram. Note the "degree shift" between the second and third columns.
 \begin{center}
 % \begin{tabular}{| l | l | l |}
 % \hline
@@ -96,41 +96,49 @@ Nesting & Axioms of TSMCs & Composition \\
 \end{tabular}
 \end{center}
 
-The relationship between these interpretations is made precise in the following first main theorem, which will be proved in Section~\ref{3}. For any multicategory $\cat{M}$, we denote by $\cat{M}\alg$ the category of lax functors $\cat{M}\to\Cat{Set}$. Let $\Cat{TrCat}$ denote the category of traced categories and traced functors; these will be recalled in Section~\ref{sec:traced categories}.
+The relationship between these interpretations is made precise in the following first main theorem, which will be proved in Section~\ref{3}. For any multicategory $\cat{M}$, we denote by $\cat{M}\alg$ the category of lax functors $\cat{M}\to\Cat{Set}$. Let $\Cat{TrCat}$ denote the category of traced categories and traced functors; these notions will be recalled in Section~\ref{sec:traced categories}.
 
 \begin{theorem}\label{thm:traced as cob-alg}
-Consider the functor $\op\Set\to\Cat{Cat}$, given by $\cat{O}\mapsto(\Cat{Cob}/\cat{O})\alg$, and let $(\Cat{Cob}/\bullet)\alg$ denote the total category of corresponding split Grothendieck fibration. Then there is an equivalence of categories
+Consider the functor $\op\Set\to\Cat{Cat}$, given by $\cat{O}\mapsto(\Cat{Cob}/\cat{O})\alg$, and let $(\Cat{Cob}/\bullet)\alg$ denote the total category of corresponding Grothendieck fibration. Then there is an equivalence of categories
 $$(\Cat{Cob}/\bullet)\alg\iso\Cat{TrCat}.$$
 \end{theorem}
 
-We sketch the equivalence, with a few minor abuses of notation, as follows. It suffices to fix a set $\cat{O}$ and find an equivalence, natural in $\cat{O}$, between the category of $\Cat{Cob}/\cat{O}$-algebras and the category of traced categories with \todo{Is this accurate?} generating objects $\cat{O}$. We will show that specifying a lax functor $P\colon\Cat{Cob}/\cat{O}\to\Cat{Set}$ requires the same data as specifying a traced category $\cat{C}$ with generating objects $\cat{O}$. 
+We sketch the equivalence, with a few minor abuses of notation, as follows. It suffices to fix a set $\cat{O}$ and find an equivalence, natural in $\cat{O}$, between the category of $\Cat{Cob}/\cat{O}$-algebras and the category of traced categories with \todo{Is this accurate?} generating objects $\cat{O}$. We will show that the same data are required, and the same conditions are satisfied, whether one is specifying a lax functor $P\colon\Cat{Cob}/\cat{O}\to\Cat{Set}$ or a traced category $\cat{C}$ with objects generated by $\cat{O}$. 
 
-First, for each box $(\inp{X},\outp{X})$ in a string diagram, both $P$ and $\cat{C}$ require a set, $P(\inp{X},\outp{X})$ and $\Hom_{\cat{C}}(\inp{X},\outp{X})$, respectively.  Second, for each string diagram, both $P$ and $\cat{C}$ require a function: an action on morphisms, in the case of $P$, and a formula for performing the required compositions, tensors, and traces, in the case of $\cat{C}$. The functoriality of $P$ corresponds to the fact that $\cat{C}$ satisfies the axioms of traced categories.
+First, for each box $(\inp{X},\outp{X})$ in a string diagram, both $P$ and $\cat{C}$ require a set, $P(\inp{X},\outp{X})$ and $\Hom_{\cat{C}}(\inp{X},\outp{X})$, respectively.  Second, for each string diagram, both $P$ and $\cat{C}$ require a function: an action on morphisms, in the case of $P$, and a formula for performing the required compositions, tensors, and traces, in the case of $\cat{C}$. The condition that $P$ is functorial corresponds to the fact that $\cat{C}$ satisfies the axioms of traced categories.
 
 \section{Generalization: lax algebras on a traced or compact category}
 
-It is most convenient to prove Theorem~\ref{thm:traced as cob-alg} by proving a much more general result, which relates lax algebras out of compact categories $\cat{C}$ to strong, bijective-on-objects functors out of $\cat{C}$. Let $\Cat{CompCat}$ denote the category of compact categories and strong monoidal functors between them, and let $\Cat{CompCat}_{\Ob\iso}$ denote the wide subcategory spanned by functors that are bijective on objects. For any symmetric monoidal category $\cat{V}$, we denote by $\Cat{CompCat}^{\cat{V}}_{\Ob\iso}\ss\Cat{CompCat}^{\cat{V}}$ the respective categories of $\cat{V}$-enriched compact categories.
+It is most convenient to prove Theorem~\ref{thm:traced as cob-alg} by proving a much more general result, which relates the category of lax functors out of a compact category $\cat{C}$ to the category of strong, bijective-on-objects functors out of $\cat{C}$. Let $\Cat{CompCat}$ denote the category of compact categories and strong monoidal functors between them, and let $\Cat{CompCat}_{\Ob\iso}$ denote the wide subcategory spanned by functors whose object part is a bijection. 
 
 \begin{theorem}\label{thm:compact lax and strong}
- Let $\cat{C}$ be a compact category \todo{Does $\cat{C}$ have to be $\cat{V}$-enriched?} and $\cat{V}$ a symmetric monoidal category. If $\Lax(\cat{C},\cat{V})$ denotes the category of lax monoidal functors out of $\cat{C}$, and $\cat{C}/\Cat{CompCat}^\cat{V}_{\Ob\iso}$ denotes the coslice category of $\cat{V}$-enriched compact categories and strong functors under $\cat{C}$, then there is an equivalence of categories
-$$\Lax(\cat{C},\cat{V})\cong\cat{C}/\Cat{CompCat}^\cat{V}_{\Ob\iso}$$
+ Let $\cat{C}$ be a compact category. If $\Lax(\cat{C},\Cat{Set})$ denotes the category of lax monoidal set-valued functors out of $\cat{C}$, and $\cat{C}/\Cat{CompCat}_{\Ob\iso}$ denotes the coslice category of compact categories and strong bijective-on-objects functors under $\cat{C}$, then there is an equivalence of categories
+\begin{align}\label{dia:compact lax strong}
+\Lax(\cat{C},\Cat{Set})\cong\cat{C}/\Cat{CompCat}_{\Ob\iso}
+\end{align}
 \end{theorem}
 
-By \cite{Abramsky}, $\Cat{Cob}/\cat{O}$ is the free compact category on the set $\cat{O}$ of objects. In this case Theorem~\ref{thm:compact lax and strong} amounts to the following equivalence of categories when $\cat{V}=\Cat{Set}$: 
+By \cite{Abramsky}, $\Cat{Cob}/\cat{O}$ is the free compact category on the set $\cat{O}$ of objects. In this case Theorem~\ref{thm:compact lax and strong} amounts to the following equivalence of categories: 
 $$\Lax(\Cat{Cob}/\cat{O},\Cat{Set})\iso\Cat{CompCat}_{\Ob\cong\cat{O}}.$$
 It turns out that if our compact category $\cat{C}$ is Int of something, then Theorem~\ref{thm:compact lax and strong} lifts to a result about traced categories, recorded as Corollary~\ref{cor:thm:traced lax and strong}, from which Theorem~\ref{thm:traced as cob-alg} follows. 
 
 \begin{corollary}\label{cor:thm:traced lax and strong}
 Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=Int\cat{D}$. Then there is an equivalence of categories
-$$\Lax(\cat{C},\cat{V})\iso\cat{C}/\Cat{TrCat}^\cat{V}_{\Ob\iso}$$
+\begin{align}\label{dia:traced lax strong}
+\Lax(\cat{C},\Cat{Set})\iso\cat{C}/\Cat{TrCat}_{\Ob\iso}
+\end{align}
 This equivalence is natural in the compact category $\cat{C}$, using the factorization system on $\Cat{CompCat}$ from Lemma~\ref{lemma:factorization system}.
 \end{corollary}
 
-We prove the following lemma here, because there is no other place I've found to put it.\todo{Find a better place?}
+\begin{remark}
+
+Let $\cat{V}$ denote a symmetric monoidal category. The categories of $\cat{V}$-enriched compact or traced categories have not, to the best of our knowledge, been defined in the literature. Theorem~\ref{thm:compact lax and strong} and Corollary~\ref{cor:thm:traced lax and strong} could be used to motivate a definition of these categories by replacing $\Cat{Set}$ with $\cat{V}$ in (\ref{dia:compact lax strong}) and (\ref{dia:traced lax strong}). That is, one could define a $\cat{V}$-enriched compact category to be a set $\cat{O}$ and a lax functor $\Cat{Cob}/\cat{O}\to\cat{V}$. 
+
+\end{remark}
 
 \begin{lemma}\label{lemma:factorization system}
 
-Let $\Cat{XCat}$, denote the category of $\Cat{X}$-strong functors between $\Cat{X}$-categories,  where $\Cat{X}$ is monoidal, traced, or compact. Then $\Cat{XCat}$ admits an orthogonal factorization system $(\cat{L},\cat{R})$, where the morphisms in $\cat{L}$ are bijective on objects, and the morphisms in $\cat{R}$ are fully faithful.
+Let $\Cat{XCat}$, denote the category of $\Cat{X}$-strong functors between $\Cat{X}$-categories,  where $\Cat{X}$ is monoidal, traced, or compact. Then $\Cat{XCat}$ admits an orthogonal factorization system $(\cat{L},\cat{R})$, where the morphisms in $\cat{L}$ are bijective-on-objects functors, and the morphisms in $\cat{R}$ are fully faithful functors.
 
 \end{lemma}
 
