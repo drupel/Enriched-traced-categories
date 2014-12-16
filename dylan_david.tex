@@ -109,7 +109,7 @@ First, for each box $(\inp{X},\outp{X})$ that might appear in a string diagram, 
 
 \section{Generalization: lax algebras on a traced or compact category}
 
-It is most convenient to prove Theorem~\ref{thm:traced as cob-alg} by proving a much more general result, which relates the category of lax functors out of any compact category $\cat{C}$ to the category of strong, bijective-on-objects functors out of $\cat{C}$. Let $\Cat{CompCat}$ denote the category of compact categories and strong monoidal functors between them, and let $\Cat{CompCat}_{\Ob\iso}$ denote the wide subcategory spanned by functors whose object part is a bijection. 
+It is most convenient to prove Theorem~\ref{thm:traced as cob-alg} by proving a much more general result, which relates the category of lax functors out of any compact category $\cat{C}$ to the category of strong, bijective-on-objects functors out of $\cat{C}$. Let $\Cat{CompCat}$ denote the category of compact categories and strong monoidal functors between them. We show in Lemma~\ref{lemma:factorization system} that there is a factorization system on $\Cat{CompCat}$, in which the left class consists of bijective-on-objects functors and the right class consists of fully faithful functors. Let $\Cat{CompCat}_{\Ob\iso}\ss\Cat{CompCat}$ denote the left class. 
 
 \begin{theorem}\label{thm:compact lax and strong}
  Let $\cat{C}$ be a compact category. If $\Lax(\cat{C},\Cat{Set})$ denotes the category of lax monoidal set-valued functors out of $\cat{C}$, and $\cat{C}/\Cat{CompCat}_{\Ob\iso}$ denotes the coslice category of compact categories and strong bijective-on-objects functors under $\cat{C}$, then there is an equivalence of categories
@@ -118,8 +118,8 @@ It is most convenient to prove Theorem~\ref{thm:traced as cob-alg} by proving a 
 \end{align}
 \end{theorem}
 
-By \cite{Abramsky}, $\Cat{Cob}/\cat{O}$ is the free compact category on the set $\cat{O}$ of objects. In this case Theorem~\ref{thm:compact lax and strong} amounts to the following equivalence of categories: 
-$$\Lax(\Cat{Cob}/\cat{O},\Cat{Set})\iso\Cat{CompCat}_{\Ob\cong\cat{O}}.$$
+By \cite{Abramsky}, $\Cat{Cob}/\cat{O}$ is the free compact category on the set $\cat{O}$ of objects; we denote its set of objects by $\Ob(\Cat{Cob}/\cat{O})=\List(\cat{O})$. Theorem~\ref{thm:compact lax and strong} amounts to the following equivalence of categories, when $\cat{C}=\Cat{Cob}/\cat{O}$:
+$$\Lax(\Cat{Cob}/\cat{O},\Cat{Set})\iso\Cat{CompCat}_{\Ob\cong\List(\cat{O})}.$$
 
 Recall from \cite{JoyalStreetVerity} that traced categories are full subcategories of compact categories. The Int construction, applied to a traced category $\cat{C}$, returns the smallest compact category $\Int(\cat{C})$ of which it is a subcategory; we call $\Int(\cat{C})$ the \emph{compact closure} of $\cat{C}$. 
 
@@ -137,7 +137,7 @@ This equivalence is natural in the compact category $\cat{C}$, using the factori
 
 Let $\cat{V}$ denote a symmetric monoidal category. The categories of $\cat{V}$-enriched compact or traced categories have not, to the best of our knowledge, been defined in the literature. Theorem~\ref{thm:compact lax and strong} and Corollary~\ref{cor:thm:traced lax and strong} could be used to motivate a definition of these categories by replacing $\Cat{Set}$ with $\cat{V}$ in (\ref{dia:compact lax strong}) and (\ref{dia:traced lax strong}). That is, one could define a $\cat{V}$-enriched compact category to be a set $\cat{O}$ and a lax functor $\Cat{Cob}/\cat{O}\to\cat{V}$. 
 
-There are other ways to define $\cat{V}$-enriched traced and compact categories, e.g., using the theory of framed bicategories. The above definition agrees, though we do not prove this result in the present paper.\todo{True?}
+There are other ways to define $\cat{V}$-enriched traced and compact categories, e.g., using the theory of framed bicategories. The above definition agrees, \todo{True?}though we do not prove this result in the present paper.
 
 \end{remark}
 
@@ -201,114 +201,21 @@ When drawing 0-manifolds as boxes and cobordisms as string diagrams, composition
 \end{figure}
 A commutative square in $\Cat{Cob}$ corresponds to finding two different ways to chunk small boxes inside a big box. The functoriality of $P\colon\Cat{Cob}\to\Set$ can be thought of as ensuring that any two ways to chunk boxes gives the same result.
 
-\section{Acknowledgments}
+\section{Plan of the paper}
+
+The paper is organized as follows. In Section~\ref{sec:traced categories} we give more details on the connection between traced monoidal categories, their string diagrams, and algebras on the operad of cobordisms. In Section~\ref{**}....
+
+\section*{Acknowledgments}
 
 Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect our operad-algebra picture to the traced one. 
 
-\chapter{Wiring Diagrams and $\Cat{Cob}$}
-
-In this section, we more carefully explain the equivalence between the category of traced categories and the category of cobordism algebras.
-
-\section{Objects in $\Cat{Cob}$ as interfaces}
-
-The objects in $\Cat{Cob}$ are signed sets $(\inp{X},\outp{X})$, each of which can be drawn as a box with input wires $\inp{X}$ drawn entering the box, on its left, and output wires $\outp{X}$ drawn exiting the box, on its right. We call the latter style \emph{an interface}.
-
-\begin{figure}
-\activetikz{
-\draw (0,2) node {$-$};
-\draw(0,1.5) node {$-$};
-\draw(0,1) node {$-$};
-\draw(0,.5) node {$+$};
-\draw(0,0) node {$+$};
-\path(5,0);
-\blackbox{(2,2)}{3}{2}{$X$}{.5}
-}
-\caption{The signed set $(\ul{3},\ul{2})$, drawn in the usual style and as an interface.}
-\end{figure}
-
-\section{Morphisms in $\Cat{Cob}$ as wiring diagrams}
-
-Wiring diagrams are a new way to visualize morphisms in 1-Cob.
-\begin{center}
-\activetikz{
-    %big box
-	\path(0,0);
-	\blackbox{(10,5)}{2}{1}{$Y$}{.7}
-	    %inner wires
-	        \node at (.4,3.6) {\tiny $\inp{Y}_{a}$};
-	        \node at (.4,1.9) {\tiny $\inp{Y}_{b}$};
-	    %outer wire
-	        \node at (9.6,2.75) {\tiny $\outp{Y}_a$};
-	%little box 1
-	\path(2,1.5);
-	\blackbox{(2,2)}{2}{1}{$X_1$}{.5}
-	    %tank info
-	    %inner wires
-	        \node at (1.75,3.03) {\tiny $\inp{X}_{1a}$};
-	        \node at (1.75,2.35) {\tiny $\inp{X}_{1b}$};
-	    %outer wire
-	        \node at (4.33,2.68) {\tiny $\outp{X}_{1c}$};
-	%little box 2
-	\path(6,1.5);
-	\blackbox{(2,2)}{2}{2}{$X_2$}{.5}
-	    %tank info
-	    %inner wires
-	        \node at (5.75,3.03) {\tiny $\inp{X}_{2a}$};
-	        \node at (5.75,2.35) {\tiny $\inp{X}_{2b}$};
-	    %outer wires
-	        \node at (8.33,3.03) {\tiny $\outp{X}_{2c}$};
-	        \node at (8.33,2.35) {\tiny $\outp{X}_{2d}$};
-	%wires
-	\directarc{(4.25,2.5)}{(5.75,2.16667)} % X_1 -> X_2
-	\directarc{(0.35,1.6667)}{(1.75,2.83333)} % Y -> X_1
-	\fancyarc{(0.35,3.3333)}{(5.75,2.83333)}{-40}{25} % Y -> X_2
-	\directarc{(8.25,2.8333)}{(9.65,2.5)} % X_2 -> Y
-	\fancyarc{(1.75,2.16667)}{(8.25,2.16667)}{20}{-45} % X_2 -> X_1
-}
-\end{center}
-~\todo{Put these two drawings on one line?}
-\begin{center}
-\activetikz{
-%Left manifolds
-\def\factor{.7}
-\def\lspace{.7}
-\def\bspace{5}
-\draw (0,7*\factor) node {$\inp{X}_{1a}$};\draw (\lspace,7*\factor) node {$-$};
-\draw(0,6*\factor) node {$\inp{X}_{1b}$};\draw (\lspace,6*\factor) node {$-$};
-\draw(0,5*\factor) node {$\outp{X}_{1c}$};\draw (\lspace,5*\factor) node {$+$};
-%skip 3 to separate manifolds
-\draw(0,3*\factor) node {$\inp{X}_{2a}$};\draw (\lspace,3*\factor) node {$-$};
-\draw(0,2*\factor) node {$\inp{X}_{2b}$};\draw (\lspace,2*\factor) node {$-$};
-\draw(0,1*\factor) node {$\outp{X}_{2c}$};\draw (\lspace,1*\factor) node {$+$};
-\draw(0,0*\factor) node {$\outp{X}_{2d}$};\draw (\lspace,0*\factor) node {$+$};
-%Right manifold
-\draw (\bspace,6*\factor) node {$\inp{Y}_a$};\draw (\bspace-\lspace,6*\factor) node {$-$};
-\draw (\bspace,4*\factor) node {$\inp{Y}_b$};\draw (\bspace-\lspace,4*\factor) node {$-$};
-\draw (\bspace,2*\factor) node {$\outp{Y}_a$};\draw (\bspace-\lspace,2*\factor) node {$+$};
-%Arcs
-\draw (1.3*\lspace,6*\factor) .. controls (3*\lspace,6*\factor) and (3*\lspace,0*\factor) .. (1.3*\lspace,0*\factor);
-\draw (1.3*\lspace,5*\factor) .. controls (2.5*\lspace,5*\factor) and (2.5*\lspace,2*\factor) .. (1.3*\lspace,2*\factor);
-\directarc{(1.3*\lspace,7*\factor)}{(\bspace-1.3*\lspace,4*\factor)}
-\directarc{(1.3*\lspace,3*\factor)}{(\bspace-1.3*\lspace,6*\factor)}
-\directarc{(1.3*\lspace,1*\factor)}{(\bspace-1.3*\lspace,2*\factor)}
-}
-\end{center}
-
-\section{$\Cat{Cob}$-algebras and applications}
-
-Traced categories are often used to model processes with feedback. The processes correspond to morphisms, each drawn as an interface, and these processes can be strung together in series or parallel, and with feedback, using string diagram notation. Theorem~\ref{thm:traced as cob-alg} says that we can also view string diagrams as morphisms in $\Cat{Cob}$. In this setting, the processes are modeled using an algebra on $\Cat{Cob}$.
-
-References for applications of traced monoidal categories.
-
-References for applications of $\Cat{Cob}$-algebras.
-
-\chapter{Traced Categories}\label{sec:traced categories}
+\chapter{Traced Categories and cobordism algebras}\label{sec:traced categories}
 
 Let $(\cat{M},\otimes,I)$ be a symmetric monoidal category where for any $X,Y\in\Ob(\cat{M})$ we write $\gamma_{X,Y}:X\otimes Y\To{\sim} Y\otimes X$ for the distinguished symmetry isomorphisms. Recall that we have $\gamma_{Y,X}=\gamma_{X,Y}^{-1}$.  We define the {\em monoid of scalars in $\cat{M}$} to be the set $S_{\cat{M}}:=\Hom(I,I)$ with multiplication given by composition.  Note that $S_{\cat{M}}$ is commutative since $\cat{M}$ is symmetric.  There is an action of $S_{\cat{M}}$ on the set $\Hom_{\cat{M}}(X,Y)$ for each $(X,Y)\in\Ob(\cat{M}^{op}\times\cat{M})$, where $s\in S_{\cat{M}}$ acts on a morphism $f\colon X\to Y$ by sending it to the composite morphism
 $$s\bullet f:X\to I\otimes X\To{s\otimes f}I\otimes Y\to Y.$$
 We write $|X|:=\Hom(I,X)$ for the \emph{elements} of $X$.
 
-The functor $|\cdot|=\Hom(I,\cdot)\colon\cat{M}\to\Set$ is a unital \todo{This is just a lax monoidal functor, right?} algebra on $\cat{M}$ with unit map
+The functor $|\cdot|=\Hom(I,\cdot)\colon\cat{M}\to\Set$ is an algebra, i.e., a lax monoidal functor, with unit map
 \[\eta:\{1\}\To{\id_{I}}S_{\cat{M}}\]
 and multiplication map
 \[\mu:\Hom(I,X)\otimes\Hom(I,X')\to\Hom(I\otimes I,X\otimes X')\iso\Hom(I,X\otimes X').\]
@@ -467,6 +374,103 @@ The objects of the free symmetric monoidal category $F_{SM}(\cat{C})$ are again 
 $$(\sigma,g)\circ(\pi,f):=\Big(\sigma\circ\pi,\otimes_{i=1}^n (g_{\pi(i)}\circ f_i)\Big)$$ 
 and the tensor is given by 
 $$(\pi,f)\otimes(\sigma,g):=(\pi\otimes\sigma,f\otimes g).$$  
+
+\section{Wiring Diagrams and $\Cat{Cob}$}\label{sec:wds and cob}
+
+In this section, we more carefully explain the equivalence between the category of traced categories and the category of cobordism algebras.
+
+\subsection{Objects in $\Cat{Cob}$ as interfaces}
+
+The objects in $\Cat{Cob}$ are signed sets $(\inp{X},\outp{X})$, each of which can be drawn as a box with input wires $\inp{X}$ drawn entering the box, on its left, and output wires $\outp{X}$ drawn exiting the box, on its right. We call the latter style \emph{an interface}.
+
+\begin{figure}
+\activetikz{
+\draw (0,2) node {$-$};
+\draw(0,1.5) node {$-$};
+\draw(0,1) node {$-$};
+\draw(0,.5) node {$+$};
+\draw(0,0) node {$+$};
+\path(5,0);
+\blackbox{(2,2)}{3}{2}{$X$}{.5}
+}
+\caption{The signed set $(\ul{3},\ul{2})$, drawn in the usual style and as an interface.}
+\end{figure}
+
+\subsection{Morphisms in $\Cat{Cob}$ as wiring diagrams}
+
+Wiring diagrams are a new way to visualize morphisms in 1-Cob.
+\begin{center}
+\activetikz{
+    %big box
+	\path(0,0);
+	\blackbox{(10,5)}{2}{1}{$Y$}{.7}
+	    %inner wires
+	        \node at (.4,3.6) {\tiny $\inp{Y}_{a}$};
+	        \node at (.4,1.9) {\tiny $\inp{Y}_{b}$};
+	    %outer wire
+	        \node at (9.6,2.75) {\tiny $\outp{Y}_a$};
+	%little box 1
+	\path(2,1.5);
+	\blackbox{(2,2)}{2}{1}{$X_1$}{.5}
+	    %tank info
+	    %inner wires
+	        \node at (1.75,3.03) {\tiny $\inp{X}_{1a}$};
+	        \node at (1.75,2.35) {\tiny $\inp{X}_{1b}$};
+	    %outer wire
+	        \node at (4.33,2.68) {\tiny $\outp{X}_{1c}$};
+	%little box 2
+	\path(6,1.5);
+	\blackbox{(2,2)}{2}{2}{$X_2$}{.5}
+	    %tank info
+	    %inner wires
+	        \node at (5.75,3.03) {\tiny $\inp{X}_{2a}$};
+	        \node at (5.75,2.35) {\tiny $\inp{X}_{2b}$};
+	    %outer wires
+	        \node at (8.33,3.03) {\tiny $\outp{X}_{2c}$};
+	        \node at (8.33,2.35) {\tiny $\outp{X}_{2d}$};
+	%wires
+	\directarc{(4.25,2.5)}{(5.75,2.16667)} % X_1 -> X_2
+	\directarc{(0.35,1.6667)}{(1.75,2.83333)} % Y -> X_1
+	\fancyarc{(0.35,3.3333)}{(5.75,2.83333)}{-40}{25} % Y -> X_2
+	\directarc{(8.25,2.8333)}{(9.65,2.5)} % X_2 -> Y
+	\fancyarc{(1.75,2.16667)}{(8.25,2.16667)}{20}{-45} % X_2 -> X_1
+}
+\end{center}
+~\todo{Put these two drawings on one line?}
+\begin{center}
+\activetikz{
+%Left manifolds
+\def\factor{.7}
+\def\lspace{.7}
+\def\bspace{5}
+\draw (0,7*\factor) node {$\inp{X}_{1a}$};\draw (\lspace,7*\factor) node {$-$};
+\draw(0,6*\factor) node {$\inp{X}_{1b}$};\draw (\lspace,6*\factor) node {$-$};
+\draw(0,5*\factor) node {$\outp{X}_{1c}$};\draw (\lspace,5*\factor) node {$+$};
+%skip 3 to separate manifolds
+\draw(0,3*\factor) node {$\inp{X}_{2a}$};\draw (\lspace,3*\factor) node {$-$};
+\draw(0,2*\factor) node {$\inp{X}_{2b}$};\draw (\lspace,2*\factor) node {$-$};
+\draw(0,1*\factor) node {$\outp{X}_{2c}$};\draw (\lspace,1*\factor) node {$+$};
+\draw(0,0*\factor) node {$\outp{X}_{2d}$};\draw (\lspace,0*\factor) node {$+$};
+%Right manifold
+\draw (\bspace,6*\factor) node {$\inp{Y}_a$};\draw (\bspace-\lspace,6*\factor) node {$-$};
+\draw (\bspace,4*\factor) node {$\inp{Y}_b$};\draw (\bspace-\lspace,4*\factor) node {$-$};
+\draw (\bspace,2*\factor) node {$\outp{Y}_a$};\draw (\bspace-\lspace,2*\factor) node {$+$};
+%Arcs
+\draw (1.3*\lspace,6*\factor) .. controls (3*\lspace,6*\factor) and (3*\lspace,0*\factor) .. (1.3*\lspace,0*\factor);
+\draw (1.3*\lspace,5*\factor) .. controls (2.5*\lspace,5*\factor) and (2.5*\lspace,2*\factor) .. (1.3*\lspace,2*\factor);
+\directarc{(1.3*\lspace,7*\factor)}{(\bspace-1.3*\lspace,4*\factor)}
+\directarc{(1.3*\lspace,3*\factor)}{(\bspace-1.3*\lspace,6*\factor)}
+\directarc{(1.3*\lspace,1*\factor)}{(\bspace-1.3*\lspace,2*\factor)}
+}
+\end{center}
+
+\subsection{$\Cat{Cob}$-algebras and applications}
+
+Traced categories are often used to model processes with feedback. The processes correspond to morphisms, each drawn as an interface, and these processes can be strung together in series or parallel, and with feedback, using string diagram notation. Theorem~\ref{thm:traced as cob-alg} says that we can also view string diagrams as morphisms in $\Cat{Cob}$. In this setting, the processes are modeled using an algebra on $\Cat{Cob}$.
+
+References for applications of traced monoidal categories.
+
+References for applications of $\Cat{Cob}$-algebras.
 
 \section{A factorization system for strong functors}
 
