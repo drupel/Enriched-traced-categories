@@ -28,43 +28,72 @@ Traced symmetric monoidal categories, hereafter \emph{traced categories}, have b
 %WITH OUTER BOX:
 %
 %
-\begin{align}\label{dia:string diagram}
-\begin{tikzpicture}
-   %big box
-	\path(0,0);
-	\dashblackbox{(10,5)}{2}{1}{$Y$}{.7}
-	    %inner wires
-	        \node at (.4,3.6) {\tiny $\inp{Y}_{a}$};
-	        \node at (.4,1.9) {\tiny $\inp{Y}_{b}$};
-	    %outer wire
-	        \node at (9.6,2.75) {\tiny $\outp{Y}_a$};
-	%little box 1
-	\path(2,1.5);
-	\blackbox{(2,2)}{2}{1}{$X_1$}{.5}
-	    %tank info
-	    %inner wires
-	        \node at (1.75,3.03) {\tiny $\inp{X}_{1a}$};
-	        \node at (1.75,2.35) {\tiny $\inp{X}_{1b}$};
-	    %outer wire
-	        \node at (4.33,2.68) {\tiny $\outp{X}_{1c}$};
-	%little box 2
-	\path(6,1.5);
-	\blackbox{(2,2)}{2}{2}{$X_2$}{.5}
-	    %tank info
-	    %inner wires
-	        \node at (5.75,3.03) {\tiny $\inp{X}_{2a}$};
-	        \node at (5.75,2.35) {\tiny $\inp{X}_{2b}$};
-	    %outer wires
-	        \node at (8.33,3.03) {\tiny $\outp{X}_{2c}$};
-	        \node at (8.33,2.35) {\tiny $\outp{X}_{2d}$};
-	%wires
-	\directarc{(4.25,2.5)}{(5.75,2.16667)} % X_1 -> X_2
-	\directarc{(0.35,1.6667)}{(1.75,2.83333)} % Y -> X_1
-	\fancyarc{(0.35,3.3333)}{(5.75,2.83333)}{-40}{25} % Y -> X_2
-	\directarc{(8.25,2.8333)}{(9.65,2.5)} % X_2 -> Y
-	\fancyarc{(1.75,2.16667)}{(8.25,2.16667)}{20}{-45} % X_2 -> X_1
+% \begin{align}\label{dia:string diagram}
+% \begin{tikzpicture}
+%    %big box
+% 	\path(0,0);
+% 	\dashblackbox{(10,5)}{2}{1}{$Y$}{.7}
+% 	    %inner wires
+% 	        \node at (.4,3.6) {\tiny $\inp{Y}_{a}$};
+% 	        \node at (.4,1.9) {\tiny $\inp{Y}_{b}$};
+% 	    %outer wire
+% 	        \node at (9.6,2.75) {\tiny $\outp{Y}_a$};
+% 	%little box 1
+% 	\path(2,1.5);
+% 	\blackbox{(2,2)}{2}{1}{$X_1$}{.5}
+% 	    %tank info
+% 	    %inner wires
+% 	        \node at (1.75,3.03) {\tiny $\inp{X}_{1a}$};
+% 	        \node at (1.75,2.35) {\tiny $\inp{X}_{1b}$};
+% 	    %outer wire
+% 	        \node at (4.33,2.68) {\tiny $\outp{X}_{1c}$};
+% 	%little box 2
+% 	\path(6,1.5);
+% 	\blackbox{(2,2)}{2}{2}{$X_2$}{.5}
+% 	    %tank info
+% 	    %inner wires
+% 	        \node at (5.75,3.03) {\tiny $\inp{X}_{2a}$};
+% 	        \node at (5.75,2.35) {\tiny $\inp{X}_{2b}$};
+% 	    %outer wires
+% 	        \node at (8.33,3.03) {\tiny $\outp{X}_{2c}$};
+% 	        \node at (8.33,2.35) {\tiny $\outp{X}_{2d}$};
+% 	%wires
+% 	\directarc{(4.25,2.5)}{(5.75,2.16667)} % X_1 -> X_2
+% 	\directarc{(0.35,1.6667)}{(1.75,2.83333)} % Y -> X_1
+% 	\fancyarc{(0.35,3.3333)}{(5.75,2.83333)}{-40}{25} % Y -> X_2
+% 	\directarc{(8.25,2.8333)}{(9.65,2.5)} % X_2 -> Y
+% 	\fancyarc{(1.75,2.16667)}{(8.25,2.16667)}{20}{-45} % X_2 -> X_1
+%   \end{tikzpicture}
+% \end{align}
+
+\[
+\begin{tikzpicture}[wiring diagram]
+  \node[bb={2}{1}] (X1) {};
+  \node[bb={2}{2}, right=of X1] (X2) {};
+  \node[bb={2}{1}, dashed, fit={(X1) (X2) ($(X1.north)+(0,1)$) ($(X1.south)-(0,1)$)}] (Y) {};
+  \draw (X1.north) node[below] {$X_1$}
+        (X2.north) node[below] {$X_2$}
+        (Y.north) node[below] {$Y$};
+  \draw[label] 
+        node[above left=of Y_in1]     {$Y_a^-$}
+        node[above left=of Y_in2]     {$Y_b^-$}
+        node[above right=of Y_out1]   {$Y^+_a$}
+        node[above left=of X1_in1]    {$X^-_{1a}$}
+        node[above left=of X1_in2]    {$X^-_{1b}$}
+        node[above right=of X1_out1]  {$X^+_{1c}$}
+        node[above left=of X2_in1]    {$X^-_{2a}$}
+        node[above left=of X2_in2]    {$X^-_{2b}$}
+        node[above right=of X2_out1]  {$X^+_{2c}$}
+        node[above right=of X2_out2]  {$X^+_{2d}$};
+  \draw[ar] (Y_in2') to (X1_in1);
+  \draw[ar] (X1_out1) to (X2_in2);
+  \draw[ar] (X2_out1) to (Y_out1');
+  \draw[ar] let \p1=(X1.north west), \p2=(X1.north east), \n1={\y1+\bby}, \n2=\bbportlen in
+        (Y_in1') to (\x1-\n2,\n1) -- (\x2+\n2,\n1) to (X2_in1);
+  \draw[ar] let \p1=(X2.south east), \p2=(X1.south west), \n1={\y1-\bby}, \n2=\bbportlen in
+          (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
 \end{tikzpicture}
-\end{align}
+\]
 represent compositions, i.e., new morphisms are constructed from old by specifying which outputs will be fed back into which inputs. In fact, these generalize Penrose diagrams in $\Cat{Vect}$, and the word \emph{traced} originates in vector space terminology.  
 
 A string diagram usually does not explicitly include the outer box $Y$. If we include it, as in (\ref{dia:string diagram}), the resulting \emph{wiring diagram} can be given another interpretation: it represents a 1-dimensional cobordism between oriented 0-manifolds. For example, the box $X_1$ in the picture includes only the data of a pair of finite sets, $(\inp{X_1},\outp{X_1})=(\{1a,1b\},\{1c\})$, which can be interpreted as an oriented 0-manifold.  And the wiring diagram itself, in which boxes $X_1,\ldots,X_n$ are wired together inside a larger box $Y$, can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$. This is a morphism in the multicategory $\Cat{Cob}$, underlying the symmetric monoidal category of oriented 1-cobordisms.
@@ -149,56 +178,95 @@ Thinking of this as processes wired together to make larger processes was what o
  
 
 When drawing 0-manifolds as boxes and cobordisms as string diagrams, composition of cobordisms become nested diagrams.
-\begin{figure}[hb]
-\activetikz{
-	%left large box,
-	\node at (.5,2.7){$X\xrightarrow{\Phi}Y\xrightarrow{\Psi}Z$};
-	\node at (.5,1.15){\tiny $\alpha$};
-	\node at (.2,2.05){\tiny $\beta$};
-	\path(-1,0);\blackbox{(3,2.4)}{1}{2}{}{.5}
-	%left small boxes (dashed),
-	\path(0,1.4);\dashblackbox{(1,.8)}{1}{1}{}{.2}
-	\path(0,.3);\dashblackbox{(1,.6)}{1}{2}{}{.2}
-	%left outer arcs
-	\directarc{(1.1,1.8)}{(1.75,1.6)}
-	\directarc{(1.1,.5)}{(1.75,.8)}
-	\directarc{(-.75,1.2)}{(-.1,.6)} %this
-	\fancyarc{(-.1,1.8)}{(1.1,.7)}{10}{0}
-	%left inner arcs, top
-	\fancyarc{(.283,1.817)}{(.716,1.817)}{4}{5}
-	\directarc{(.1,1.8)}{(.283,1.733)}
-	\directarc{(.716,1.733)}{(.9,1.8)}
-	%left inner arcs, bottom
-	\directarc{(.1,.6)}{(.6,.75)}
-	\directarc{(.85,.725)}{(.9,.7)}
-	\directarc{(.55,.55)}{(.6,.7)}
-	%\directarc{(.1,.5)}{(.2,.525)}
-	\directarc{(.55,.5)}{(.9,.5)}
-	%left tiny boxes,
-	\path(0.333,1.65);\blackbox{(.333,.25)}{2}{2}{}{.1}
-	\path(0.65,.65);\blackbox{(.15,.15)}{2}{1}{}{.1}
-	\path(0.35,.45);\blackbox{(.15,.15)}{0}{2}{}{.1} %this
-	%right large box,
-	\node at (4.5,2.7){$X\xrightarrow{\Psi\circ\Phi}Z$};
-	\node at (4.5,1.12){\tiny $\alpha$};
-	\node at (4.2,2.05){\tiny $\beta$};
-	\path(3,0);\blackbox{(3,2.4)}{1}{2}{}{.5}
-	%right tiny boxes,
-	\path(4.333,1.65);\blackbox{(.333,.25)}{2}{2}{}{.1}
-	\path(4.65,.65);\blackbox{(.15,.15)}{2}{1}{}{.1}
-	\path(4.25,.45);\blackbox{(.15,.15)}{0}{2}{}{.1}
-	%right arcs, between
-	\fancyarc{(4.283,1.733)}{(4.85,.725)}{10}{0}
-	%right arcs, top
-	\fancyarc{(4.283,1.817)}{(4.716,1.817)}{4}{5}
-	\directarc{(4.716,1.733)}{(5.75,1.6)}
-	%right arcs, bottom
-	\directarc{(3.25,1.2)}{(4.6,.75)}
-	\directarc{(4.45,.55)}{(4.6,.7)}
-	\directarc{(4.45,.5)}{(5.75,.8)}
-	%\fancyarc{(4.2,.525)}{(4.45,.5)}{5}{-5}
-}
-\end{figure}
+% \begin{figure}[hb]
+% \activetikz{
+% 	%left large box,
+% 	\node at (.5,2.7){$X\xrightarrow{\Phi}Y\xrightarrow{\Psi}Z$};
+% 	\node at (.5,1.15){\tiny $\alpha$};
+% 	\node at (.2,2.05){\tiny $\beta$};
+% 	\path(-1,0);\blackbox{(3,2.4)}{1}{2}{}{.5}
+% 	%left small boxes (dashed),
+% 	\path(0,1.4);\dashblackbox{(1,.8)}{1}{1}{}{.2}
+% 	\path(0,.3);\dashblackbox{(1,.6)}{1}{2}{}{.2}
+% 	%left outer arcs
+% 	\directarc{(1.1,1.8)}{(1.75,1.6)}
+% 	\directarc{(1.1,.5)}{(1.75,.8)}
+% 	\directarc{(-.75,1.2)}{(-.1,.6)} %this
+% 	\fancyarc{(-.1,1.8)}{(1.1,.7)}{10}{0}
+% 	%left inner arcs, top
+% 	\fancyarc{(.283,1.817)}{(.716,1.817)}{4}{5}
+% 	\directarc{(.1,1.8)}{(.283,1.733)}
+% 	\directarc{(.716,1.733)}{(.9,1.8)}
+% 	%left inner arcs, bottom
+% 	\directarc{(.1,.6)}{(.6,.75)}
+% 	\directarc{(.85,.725)}{(.9,.7)}
+% 	\directarc{(.55,.55)}{(.6,.7)}
+% 	%\directarc{(.1,.5)}{(.2,.525)}
+% 	\directarc{(.55,.5)}{(.9,.5)}
+% 	%left tiny boxes,
+% 	\path(0.333,1.65);\blackbox{(.333,.25)}{2}{2}{}{.1}
+% 	\path(0.65,.65);\blackbox{(.15,.15)}{2}{1}{}{.1}
+% 	\path(0.35,.45);\blackbox{(.15,.15)}{0}{2}{}{.1} %this
+% 	%right large box,
+% 	\node at (4.5,2.7){$X\xrightarrow{\Psi\circ\Phi}Z$};
+% 	\node at (4.5,1.12){\tiny $\alpha$};
+% 	\node at (4.2,2.05){\tiny $\beta$};
+% 	\path(3,0);\blackbox{(3,2.4)}{1}{2}{}{.5}
+% 	%right tiny boxes,
+% 	\path(4.333,1.65);\blackbox{(.333,.25)}{2}{2}{}{.1}
+% 	\path(4.65,.65);\blackbox{(.15,.15)}{2}{1}{}{.1}
+% 	\path(4.25,.45);\blackbox{(.15,.15)}{0}{2}{}{.1}
+% 	%right arcs, between
+% 	\fancyarc{(4.283,1.733)}{(4.85,.725)}{10}{0}
+% 	%right arcs, top
+% 	\fancyarc{(4.283,1.817)}{(4.716,1.817)}{4}{5}
+% 	\directarc{(4.716,1.733)}{(5.75,1.6)}
+% 	%right arcs, bottom
+% 	\directarc{(3.25,1.2)}{(4.6,.75)}
+% 	\directarc{(4.45,.55)}{(4.6,.7)}
+% 	\directarc{(4.45,.5)}{(5.75,.8)}
+% 	%\fancyarc{(4.2,.525)}{(4.45,.5)}{5}{-5}
+% }
+% \end{figure}
+
+\[
+\begin{tikzpicture}[wiring diagram, bb small]
+  \node[bb={2}{2}] (X1) {};
+  \node[bb={1}{1}, fit={(X1) ($(X1.north)+(0,1)$)}, dashed] (Y1) {};
+  \node[bb={2}{1}, below right=4 and 0 of X1] (X2) {};
+  \node[bb={0}{2},below left=of X2] (X3) {};
+  \node[bb={1}{2}, fit=(X2) (X3), dashed] (Y2) {};
+  \node[bb={1}{2}, fit=(Y1) (Y2)] (Z) {};
+  \draw[ar] (Z_in1') to (Y2_in1);
+  \draw[ar] (Y2_in1') to (X2_in1);
+  \draw[ar] (X3_out1) to (X2_in2);
+  \draw[ar] (X3_out2) to (Y2_out2');
+  \draw (Y2_out2) to (Z_out2');
+  \draw[ar] (Y1_in1') to (X1_in2);
+  \draw (X1_out2) to (Y1_out1');
+  \draw[ar] (Y1_out1) to (Z_out1');
+  \draw (X2_out1) to (Y2_out1');
+  \draw[ar] let \p1=(Y2.north east), \p2=(Y1.south west), \n1={\y1+\bby}, \n2=\bbportlen in
+          (Y2_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (Y1_in1);
+  \draw[ar] let \p1=(X1.north east), \p2=(X1.north west), \n1={\y1+\bby}, \n2=\bbportlen in
+          (X1_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in1);
+  \node[anchor=south] at (Z.north) {$X\xrightarrow{\Phi}Y\xrightarrow{\Psi}Z$};
+  
+  \node[bb={2}{2}, right=10 of X1] (X1') {};
+  \node[bb={2}{1}, below right=4 and 0 of X1'] (X2') {};
+  \node[bb={0}{2},below left=of X2'] (X3') {};
+  \node[bb={1}{2}, fit={($(X1'.north)+(0,1)$) (X2') (X3')}, inner xsep=2*\bbx, inner ysep=2*\bby] (Z') {};
+  \draw[ar] (X3'_out1) to (X2'_in2);
+  \draw[ar] (Z'_in1') to (X2'_in1);
+  \draw[ar] (X1'_out2) to (Z'_out1');
+  \draw[ar] (X3'_out2) to (Z'_out2');
+  \draw[ar] let \p1=(X2'.north east), \p2=(X1'.south west), \n1={\y1+2*\bby}, \n2=\bbportlen in
+          (X2'_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1'_in2);
+  \draw[ar] let \p1=(X1'.north east), \p2=(X1'.north west), \n1={\y1+\bby}, \n2=\bbportlen in
+          (X1'_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1'_in1);
+  \node[anchor=south] at (Z'.north) {$X\xrightarrow{\Psi\circ\Phi}Z$};
+\end{tikzpicture}
+\]
 A commutative square in $\Cat{Cob}$ corresponds to finding two different ways to chunk small boxes inside a big box. The functoriality of $P\colon\Cat{Cob}\to\Set$ can be thought of as ensuring that any two ways to chunk boxes gives the same result.
 
 \section{Plan of the paper}
@@ -399,70 +467,116 @@ The objects in $\Cat{Cob}$ are signed sets $(\inp{X},\outp{X})$, each of which c
 \subsection{Morphisms in $\Cat{Cob}$ as wiring diagrams}
 
 Wiring diagrams are a new way to visualize morphisms in 1-Cob.
-\begin{center}
-\activetikz{
-    %big box
-	\path(0,0);
-	\blackbox{(10,5)}{2}{1}{$Y$}{.7}
-	    %inner wires
-	        \node at (.4,3.6) {\tiny $\inp{Y}_{a}$};
-	        \node at (.4,1.9) {\tiny $\inp{Y}_{b}$};
-	    %outer wire
-	        \node at (9.6,2.75) {\tiny $\outp{Y}_a$};
-	%little box 1
-	\path(2,1.5);
-	\blackbox{(2,2)}{2}{1}{$X_1$}{.5}
-	    %tank info
-	    %inner wires
-	        \node at (1.75,3.03) {\tiny $\inp{X}_{1a}$};
-	        \node at (1.75,2.35) {\tiny $\inp{X}_{1b}$};
-	    %outer wire
-	        \node at (4.33,2.68) {\tiny $\outp{X}_{1c}$};
-	%little box 2
-	\path(6,1.5);
-	\blackbox{(2,2)}{2}{2}{$X_2$}{.5}
-	    %tank info
-	    %inner wires
-	        \node at (5.75,3.03) {\tiny $\inp{X}_{2a}$};
-	        \node at (5.75,2.35) {\tiny $\inp{X}_{2b}$};
-	    %outer wires
-	        \node at (8.33,3.03) {\tiny $\outp{X}_{2c}$};
-	        \node at (8.33,2.35) {\tiny $\outp{X}_{2d}$};
-	%wires
-	\directarc{(4.25,2.5)}{(5.75,2.16667)} % X_1 -> X_2
-	\directarc{(0.35,1.6667)}{(1.75,2.83333)} % Y -> X_1
-	\fancyarc{(0.35,3.3333)}{(5.75,2.83333)}{-40}{25} % Y -> X_2
-	\directarc{(8.25,2.8333)}{(9.65,2.5)} % X_2 -> Y
-	\fancyarc{(1.75,2.16667)}{(8.25,2.16667)}{20}{-45} % X_2 -> X_1
-}
-\end{center}
-~\todo{Put these two drawings on one line?}
-\begin{center}
-\activetikz{
-%Left manifolds
-\def\factor{.7}
-\def\lspace{.7}
-\def\bspace{5}
-\draw (0,7*\factor) node {$\inp{X}_{1a}$};\draw (\lspace,7*\factor) node {$-$};
-\draw(0,6*\factor) node {$\inp{X}_{1b}$};\draw (\lspace,6*\factor) node {$-$};
-\draw(0,5*\factor) node {$\outp{X}_{1c}$};\draw (\lspace,5*\factor) node {$+$};
-%skip 3 to separate manifolds
-\draw(0,3*\factor) node {$\inp{X}_{2a}$};\draw (\lspace,3*\factor) node {$-$};
-\draw(0,2*\factor) node {$\inp{X}_{2b}$};\draw (\lspace,2*\factor) node {$-$};
-\draw(0,1*\factor) node {$\outp{X}_{2c}$};\draw (\lspace,1*\factor) node {$+$};
-\draw(0,0*\factor) node {$\outp{X}_{2d}$};\draw (\lspace,0*\factor) node {$+$};
-%Right manifold
-\draw (\bspace,6*\factor) node {$\inp{Y}_a$};\draw (\bspace-\lspace,6*\factor) node {$-$};
-\draw (\bspace,4*\factor) node {$\inp{Y}_b$};\draw (\bspace-\lspace,4*\factor) node {$-$};
-\draw (\bspace,2*\factor) node {$\outp{Y}_a$};\draw (\bspace-\lspace,2*\factor) node {$+$};
-%Arcs
-\draw (1.3*\lspace,6*\factor) .. controls (3*\lspace,6*\factor) and (3*\lspace,0*\factor) .. (1.3*\lspace,0*\factor);
-\draw (1.3*\lspace,5*\factor) .. controls (2.5*\lspace,5*\factor) and (2.5*\lspace,2*\factor) .. (1.3*\lspace,2*\factor);
-\directarc{(1.3*\lspace,7*\factor)}{(\bspace-1.3*\lspace,4*\factor)}
-\directarc{(1.3*\lspace,3*\factor)}{(\bspace-1.3*\lspace,6*\factor)}
-\directarc{(1.3*\lspace,1*\factor)}{(\bspace-1.3*\lspace,2*\factor)}
-}
-\end{center}
+% \begin{center}
+% \activetikz{
+%     %big box
+% 	\path(0,0);
+% 	\blackbox{(10,5)}{2}{1}{$Y$}{.7}
+% 	    %inner wires
+% 	        \node at (.4,3.6) {\tiny $\inp{Y}_{a}$};
+% 	        \node at (.4,1.9) {\tiny $\inp{Y}_{b}$};
+% 	    %outer wire
+% 	        \node at (9.6,2.75) {\tiny $\outp{Y}_a$};
+% 	%little box 1
+% 	\path(2,1.5);
+% 	\blackbox{(2,2)}{2}{1}{$X_1$}{.5}
+% 	    %tank info
+% 	    %inner wires
+% 	        \node at (1.75,3.03) {\tiny $\inp{X}_{1a}$};
+% 	        \node at (1.75,2.35) {\tiny $\inp{X}_{1b}$};
+% 	    %outer wire
+% 	        \node at (4.33,2.68) {\tiny $\outp{X}_{1c}$};
+% 	%little box 2
+% 	\path(6,1.5);
+% 	\blackbox{(2,2)}{2}{2}{$X_2$}{.5}
+% 	    %tank info
+% 	    %inner wires
+% 	        \node at (5.75,3.03) {\tiny $\inp{X}_{2a}$};
+% 	        \node at (5.75,2.35) {\tiny $\inp{X}_{2b}$};
+% 	    %outer wires
+% 	        \node at (8.33,3.03) {\tiny $\outp{X}_{2c}$};
+% 	        \node at (8.33,2.35) {\tiny $\outp{X}_{2d}$};
+% 	%wires
+% 	\directarc{(4.25,2.5)}{(5.75,2.16667)} % X_1 -> X_2
+% 	\directarc{(0.35,1.6667)}{(1.75,2.83333)} % Y -> X_1
+% 	\fancyarc{(0.35,3.3333)}{(5.75,2.83333)}{-40}{25} % Y -> X_2
+% 	\directarc{(8.25,2.8333)}{(9.65,2.5)} % X_2 -> Y
+% 	\fancyarc{(1.75,2.16667)}{(8.25,2.16667)}{20}{-45} % X_2 -> X_1
+% }
+% \end{center}
+% ~\todo{Put these two drawings on one line?}
+% \begin{center}
+% \activetikz{
+% %Left manifolds
+% \def\factor{.7}
+% \def\lspace{.7}
+% \def\bspace{5}
+% \draw (0,7*\factor) node {$\inp{X}_{1a}$};\draw (\lspace,7*\factor) node {$-$};
+% \draw(0,6*\factor) node {$\inp{X}_{1b}$};\draw (\lspace,6*\factor) node {$-$};
+% \draw(0,5*\factor) node {$\outp{X}_{1c}$};\draw (\lspace,5*\factor) node {$+$};
+% %skip 3 to separate manifolds
+% \draw(0,3*\factor) node {$\inp{X}_{2a}$};\draw (\lspace,3*\factor) node {$-$};
+% \draw(0,2*\factor) node {$\inp{X}_{2b}$};\draw (\lspace,2*\factor) node {$-$};
+% \draw(0,1*\factor) node {$\outp{X}_{2c}$};\draw (\lspace,1*\factor) node {$+$};
+% \draw(0,0*\factor) node {$\outp{X}_{2d}$};\draw (\lspace,0*\factor) node {$+$};
+% %Right manifold
+% \draw (\bspace,6*\factor) node {$\inp{Y}_a$};\draw (\bspace-\lspace,6*\factor) node {$-$};
+% \draw (\bspace,4*\factor) node {$\inp{Y}_b$};\draw (\bspace-\lspace,4*\factor) node {$-$};
+% \draw (\bspace,2*\factor) node {$\outp{Y}_a$};\draw (\bspace-\lspace,2*\factor) node {$+$};
+% %Arcs
+% \draw (1.3*\lspace,6*\factor) .. controls (3*\lspace,6*\factor) and (3*\lspace,0*\factor) .. (1.3*\lspace,0*\factor);
+% \draw (1.3*\lspace,5*\factor) .. controls (2.5*\lspace,5*\factor) and (2.5*\lspace,2*\factor) .. (1.3*\lspace,2*\factor);
+% \directarc{(1.3*\lspace,7*\factor)}{(\bspace-1.3*\lspace,4*\factor)}
+% \directarc{(1.3*\lspace,3*\factor)}{(\bspace-1.3*\lspace,6*\factor)}
+% \directarc{(1.3*\lspace,1*\factor)}{(\bspace-1.3*\lspace,2*\factor)}
+% }
+% \end{center}
+\[
+\begin{tikzpicture}[wiring diagram, bbx=1.6cm]
+  \node[bb={2}{1}] (X1) {};
+  \node[bb={2}{2}, right=of X1] (X2) {};
+  \node[bb={2}{1}, fit={(X1) (X2) ($(X1.north)+(0,1)$) ($(X1.south)-(0,1)$)}] (Y) {};
+  \draw (X1.north) node[below] {$X_1$}
+        (X2.north) node[below] {$X_2$}
+        (Y.north) node[below] {$Y$};
+  \draw[label] 
+        node[above left=of Y_in1]     {$Y_a^-$}
+        node[above left=of Y_in2]     {$Y_b^-$}
+        node[above right=of Y_out1]   {$Y^+_a$}
+        node[above left=of X1_in1]    {$X^-_{1a}$}
+        node[above left=of X1_in2]    {$X^-_{1b}$}
+        node[above right=of X1_out1]  {$X^+_{1c}$}
+        node[above left=of X2_in1]    {$X^-_{2a}$}
+        node[above left=of X2_in2]    {$X^-_{2b}$}
+        node[above right=of X2_out1]  {$X^+_{2c}$}
+        node[above right=of X2_out2]  {$X^+_{2d}$};
+  \draw[ar] (Y_in2') to (X1_in1);
+  \draw[ar] (X1_out1) to (X2_in2);
+  \draw[ar] (X2_out1) to (Y_out1');
+  \draw[ar] let \p1=(X1.north west), \p2=(X1.north east), \n1={\y1+\bby}, \n2=\bbportlen in
+        (Y_in1') to (\x1-\n2,\n1) -- (\x2+\n2,\n1) to (X2_in1);
+  \draw[ar] let \p1=(X2.south east), \p2=(X1.south west), \n1={\y1-\bby}, \n2=\bbportlen in
+          (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}[x=1cm,y=1ex,node distance=1 and 1,semithick,every label quotes/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},every to/.style={out=0,in=180}]
+  \node ["$\inp{X}_{1a}$" left] (X1a) {$-$};
+  \node [below=0 of X1a, "$\inp{X}_{1b}$" left] (X1b) {$-$};
+  \node [below=0 of X1b, "$\outp{X}_{1c}$" left] (X1c) {$+$};
+  \node [below=1.5 of X1c, "$\inp{X}_{2a}$" left] (X2a) {$-$};
+  \node [below=0 of X2a, "$\inp{X}_{2b}$" left] (X2b) {$-$};
+  \node [below=0 of X2b, "$\outp{X}_{2c}$" left] (X2c) {$+$};
+  \node [below=0 of X2c, "$\outp{X}_{2d}$" left] (X2d) {$+$};
+  \node [below right=1.5 and 2 of X1a, "$\inp{Y}_a$" right] (Ya) {$-$};
+  \node [below=1.5 of Ya, "$\inp{Y}_b$" right] (Yb) {$-$};
+  \node [below=1.5 of Yb, "$\outp{Y}_a$" right] (Yc) {$+$};
+  \draw (X1a) to (Yb);
+  \draw (X1b) to[in=0] (X2d);
+  \draw (X1c) to[in=0] (X2b);
+  \draw (X2a) to (Ya);
+  \draw (X2c) to (Yc);
+\end{tikzpicture}
+\]
 
 \subsection{$\Cat{Cob}$-algebras and applications}
 
