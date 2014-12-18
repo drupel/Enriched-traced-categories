@@ -540,16 +540,16 @@ Wiring diagrams are a new way to visualize morphisms in 1-Cob.
         (X2.north) node[below] {$X_2$}
         (Y.north) node[below] {$Y$};
   \draw[label] 
-        node[above left=of Y_in1]     {$Y_a^-$}
-        node[above left=of Y_in2]     {$Y_b^-$}
-        node[above right=of Y_out1]   {$Y^+_a$}
-        node[above left=of X1_in1]    {$X^-_{1a}$}
-        node[above left=of X1_in2]    {$X^-_{1b}$}
-        node[above right=of X1_out1]  {$X^+_{1c}$}
-        node[above left=of X2_in1]    {$X^-_{2a}$}
-        node[above left=of X2_in2]    {$X^-_{2b}$}
-        node[above right=of X2_out1]  {$X^+_{2c}$}
-        node[above right=of X2_out2]  {$X^+_{2d}$};
+        node[above left=of Y_in1]     {$\inp{Y}_a$}
+        node[above left=of Y_in2]     {$\inp{Y}_b$}
+        node[above right=of Y_out1]   {$\outp{Y}_a$}
+        node[above left=of X1_in1]    {$\inp{X}_{1a}$}
+        node[above left=of X1_in2]    {$\inp{X}_{1b}$}
+        node[above right=of X1_out1]  {$\outp{X}_{1c}$}
+        node[above left=of X2_in1]    {$\inp{X}_{2a}$}
+        node[above left=of X2_in2]    {$\inp{X}_{2b}$}
+        node[above right=of X2_out1]  {$\outp{X}_{2c}$}
+        node[above right=of X2_out2]  {$\outp{X}_{2d}$};
   \draw[ar] (Y_in2') to (X1_in1);
   \draw[ar] (X1_out1) to (X2_in2);
   \draw[ar] (X2_out1) to (Y_out1');
@@ -575,6 +575,18 @@ Wiring diagrams are a new way to visualize morphisms in 1-Cob.
   \draw (X1c) to[in=0] (X2b);
   \draw (X2a) to (Ya);
   \draw (X2c) to (Yc);
+\end{tikzpicture}
+\]
+
+\[
+\begin{tikzpicture}[wiring diagram, bbx=1cm]
+  \node[bb={2}{1}] (X1) {$X_1$};
+  \node[bb={1}{2}, right=of X1] (X2) {$X_2$};
+  \node[bb={1}{1}, fit={(X1) (X2) ($(X1.north)+(0,1)$) ($(X1.south)-(0,.1)$)}] (Y) {};
+  \draw[ar] (Y_in1') to (X1_in1);
+  \draw[ar] (X1_out1) to (X2_in1);
+  \draw[ar] (X2_out1) to (Y_out1');
+  \draw[ar] let \p1=(X1.south west) in (X2_out2) to[in=0](\x1,2) -- (3,4) to[out=180] (X1_in2);
 \end{tikzpicture}
 \]
 
