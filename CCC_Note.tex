@@ -184,17 +184,17 @@ First, for each box $(\inp{X},\outp{X})$ that might appear in a string diagram, 
 
 Recall that a compact closed symmetric monoidal category, hereafter \emph{compact category} is .... 
 
-It is most convenient to prove Theorem~\ref{thm:traced as cob-alg} by proving a much more general result, which relates the category of lax functors out of any compact category $\cat{C}$ to the category of strong, bijective-on-objects functors out of $\cat{C}$. Let $\CompCat$ denote the category of compact categories and strong monoidal functors between them. We show in Lemma~\ref{lemma:factorization system} that there is a factorization system on $\CompCat$, in which the left class consists of bijective-on-objects functors and the right class consists of fully faithful functors. Let $\CompCat_{\Ob\iso}\ss\CompCat$ denote the left class. 
+It is most convenient to prove Theorem~\ref{thm:traced as cob-alg} by proving a much more general result, which relates the category of lax functors out of any compact category $\cat{C}$ to the category of strong, bijective-on-objects functors out of $\cat{C}$. Let $\CompCat$ denote the category of compact categories and strong monoidal functors between them. We show in Lemma~\ref{lemma:factorization system} that there is a factorization system on $\CompCat$, in which the left class consists of bijective-on-objects functors and the right class consists of fully faithful functors. Let $\CompCat_{\boo}\ss\CompCat$ denote the left class. 
 
 \begin{theorem}\label{thm:compact lax and strong}
- Let $\cat{C}$ be a compact category. If $\Lax(\cat{C},\Cat{Set})$ denotes the category of lax monoidal set-valued functors out of $\cat{C}$, and $\cat{C}/\CompCat_{\Ob\iso}$ denotes the coslice category of compact categories and strong bijective-on-objects functors under $\cat{C}$, then there is an equivalence of categories
+ Let $\cat{C}$ be a compact category. If $\Lax(\cat{C},\Cat{Set})$ denotes the category of lax monoidal set-valued functors out of $\cat{C}$, and $\cat{C}/\CompCat_{\boo}$ denotes the coslice category of compact categories and strong bijective-on-objects functors under $\cat{C}$, then there is an equivalence of categories
 \begin{align}\label{dia:compact lax strong}
-\Lax(\cat{C},\Cat{Set})\cong\cat{C}/\CompCat_{\Ob\iso}
+\Lax(\cat{C},\Cat{Set})\cong\cat{C}/\CompCat_{\boo}
 \end{align}
 \end{theorem}
 
 By \cite{Abramsky}, $\Cat{Cob}/\cat{O}$ is the free compact category on the set $\cat{O}$ of objects. The objects in $\Cat{Cob}/\cat{O}$ are signed symmetric lists in $\cat{O}$, the set of which we denote by $\Ob(\Cat{Cob}/\cat{O})=\SSList(\cat{O})$. Theorem~\ref{thm:compact lax and strong} amounts to the following equivalence of categories, when $\cat{C}=\Cat{Cob}/\cat{O}$:
-$$\Lax(\Cat{Cob}/\cat{O},\Cat{Set})\iso\CompCat_{\Ob\cong\SSList(\cat{O})}.$$
+$$\Lax(\Cat{Cob}/\cat{O},\Cat{Set})\iso\CompCat_{\boo\SSList(\cat{O})}.$$
 
 Recall from \cite{JoyalStreetVerity} that traced categories are full subcategories of compact categories. The Int construction, applied to a traced category $\cat{C}$, returns the smallest compact category $\Int(\cat{C})$ of which it is a subcategory; we call $\Int(\cat{C})$ the \emph{compact closure} of $\cat{C}$. 
 
@@ -203,7 +203,7 @@ It turns out that if our compact category $\cat{C}$ is the compact closure of a 
 \begin{corollary}\label{cor:thm:traced lax and strong}
 Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=\Int\cat{D}$. Then there is an equivalence of categories
 \begin{align}\label{dia:traced lax strong}
-\Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\Ob\iso}
+\Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\boo}
 \end{align}
 This equivalence is natural in the traced category $\cat{D}$, using the factorization system on $\CompCat$ from Lemma~\ref{lemma:factorization system}.
 \end{corollary}
@@ -478,10 +478,13 @@ I\otimes X^*\arrow[d,"\eta_X\otimes X^*"']&X^*\otimes I\arrow[u,"\cong"']\\
 $$
 
 Every compact category $\cat{C}$ has a canonical trace structure, defined on a morphism $f\colon U\otimes X\to U\otimes Y$ to be $\Tr^U_{X,Y}(f):=\epsilon_U\circ f\circ \eta_U$. Thus we have a functor 
-\begin{align}\label{dia:compact to traced}
-U\colon\CompCat\to\TrCat
-\end{align}
-
+$U\colon\CompCat\to\TrCat$. It is shown in \cite{Joyal-Street-Verity} that this functor is the right half of an adjunction 
+\begin{equation}\label{dia:traced compact adjunction}
+\begin{tikzcd}
+\TrCat\arrow[r,shift left=.5ex, "\Int"]&\CompCat\arrow[l,shift left=.5ex,"U"]
+\end{tikzcd}
+\end{equation}
+the left half of which we describe now describe. 
 
 For a traced category $\cat{M}$ let $\widetilde{\cat{M}}=\Int(\cat{M})$ denote the category with objects given by pairs $(\inp{X},\outp{X})$ where $\inp{X},\outp{X}\in \Ob(\cat{M})$ and morphisms given by 
 \[\Hom_{\widetilde{\cat{M}}}\big((\inp{X},\outp{X}),(\inp{Y},\outp{Y})\big)=\Hom_{\cat{M}}(\inp{X}\otimes \outp{Y},\outp{X}\otimes \inp{Y}).\]
@@ -497,6 +500,20 @@ Let $\cat{M}$ be a traced category.  Then for any object $(\inp{X},\outp{X})\in\
 \[|(\inp{X},\outp{X})|\iso\Hom_{\cat{M}}(\inp{X},\outp{X}).\]
 
 \end{lemma}
+
+\begin{lemma}\label{lemma:fully faithful and trace}
+The following facts hold for any traced category $\cat{C}$:
+\begin{compactitem}
+	\item The unit $\cat{C}\to\Int(\cat{C})$ is fully faithful.
+	\item If $\cat{D}$ is a category and $F\colon\cat{D}\to\cat{C}$ a fully faithful symmetric monoidal functor, then $\cat{D}$ has a unique trace for which $F$ is a traced functor.
+\end{compactitem}
+\end{lemma}
+
+\begin{proof}
+
+These are all shown in \cite{Joyal-Street-Verity}.
+
+\end{proof}
 
 \section{Free Constructions}
 
@@ -722,7 +739,7 @@ $$
 
 \begin{theorem}
 For any set $\cat{O}$, let $\SList(\cat{O})$ denote the set of symmetric lists in $\cat{O}$. There is an equivalence of categories 
- $$(\Cat{Cob}/\cat{O})\alg\simeq\TrCat_{\Ob\iso\SList(\cat{O})}$$
+ $$(\Cat{Cob}/\cat{O})\alg\simeq\TrCat_{\boo\SList(\cat{O})}$$
 \end{theorem}
 \begin{proof}
  Dylan....
@@ -741,23 +758,14 @@ Use Proposition \ref{prop:free objects}.
 
 \end{proof}
 
-\begin{corollary}
- Enriched setting?\todo{So far, we have not found references for enriched traced or compact categories, so this part may be moot.}
-\end{corollary}
-
 \section{Proof of Corollary~\ref{cor:thm:traced lax and strong}}
 
 
 
-Recall from~\cite{JoyalStreet}
-\begin{compactitem}
-	\item Let $\cat{D}$ be a traced category, and $F\colon\cat{C}\to\cat{D}$ a fully faithful symmetric monoidal functor. Then $\cat{C}$ has a unique trace for which $F$ is a traced functor.
-	\item Any compact category has a canonical trace, defining a functor $U\colon\CompCat\to\TrCat$. See (\ref{dia:compact to traced}).
-	\item The Int construction $\Int\colon\TrCat\to\CompCat$ is left 2-adjoint to $U$. For any traced category $\cat{C}$, the unit $\cat{C}\to\Int(\cat{C})$ is fully faithful.
-\end{compactitem}
 
-\begin{lemma}
-	Let $\cat{D}$ be a compact category, and $F\colon\cat{C}\to\cat{D}$ a fully faithful strong functor. Then, using the unique trace on $\cat{C}$ making $F$ a traced functor, the functor $\Int(\cat{C})\to\cat{D}$ which is adjunct to $F$ is also fully faithful.
+
+\begin{lemma}\label{lemma:more fully faithfulness}
+	Let $\cat{C}$ be a category, let $\cat{D}$ be a compact category, let $F\colon\cat{C}\to\cat{D}$ a fully faithful strong functor, and consider $\cat{C}$ as a traced category by Lemma~\ref{lemma:fully faithful and trace}. Then the functor $\Int(\cat{C})\to\cat{D}$ which is adjunct to $F$ is also fully faithful.
 \end{lemma}
 
 \begin{proof}
@@ -769,13 +777,42 @@ Recall from~\cite{JoyalStreet}
 \begin{proposition}
 	Let $\cat{C}$ be a traced category. Then the Int construction provides an equivalence of categories
 	\[
-		(\cat{C}/\TrCat)_{\text{b.o.o.}} \simeq (\Int(\cat{C})/\CompCat)_{\text{b.o.o.}}
+		\cat{C}/\TrCat_{b.o.o.} \simeq \Int(\cat{C})/\CompCat_{b.o.o.}
 	\]
 \end{proposition}
 
 \begin{proof}
 
-**To construct the functors: one direction is Int, the other is the factorization system on TrCat.
+Suppose that a traced functor $F\colon\cat{C}\to\cat{D}$ is bijective on objects. It is easy to see that $\Int(F)$ is also bijective on objects, so can regard $\Int$ as a functor 
+$$\Int\colon\cat{C}/\TrCat_{b.o.o.} \to\Int(\cat{C})/\CompCat_{b.o.o.}$$
+We now define a candidate for its inverse. 
+
+Given a compact category $\cat{D}$ and a bijective-on-objects functor $\Int(\cat{C})\to\cat{D}$, we can consider both as traced categories by (\ref{dia:traced compact adjunction}), and there is a fully faithful inclusion $\cat{C}\to\Int(\cat{C})$ by Lemma~\ref{lemma:fully faithful and trace}. Using the orthogonal factorization system from Lemma~\ref{lemma:factorization system}, there is a unique way to fill out the bottom left part of a commutative square in $\TrCat$:
+\begin{equation}\label{dia:factoring square}
+\begin{tikzcd}
+\cat{C}\arrow[r,"f.f."]\arrow[d,"b.o.o."']&\Int(\cat{C})\arrow[d,"b.o.o."]\\
+\cat{F}\arrow[r,"f.f."']&\cat{D}
+\end{tikzcd}
+\end{equation}
+with the bijective-on-objects and fully faithful properties as labeled. Because the factorization system is functorial, we have defined a functor
+$$Q\colon\Int(\cat{C})/\CompCat_{b.o.o.}\to\cat{C}/\TrCat_{b.o.o.}$$
+
+We now prove that $Q$ and $\Int$ are mutually inverse. If $G\colon\cat{C}\to\cat{D}$ is traced and b.o.o., then $Q(\Int(G))=G$ by the uniqueness of the bottom left part of the square
+$$
+\begin{tikzcd}
+\cat{C}\arrow[r,"f.f."]\arrow[d,"b.o.o."']&\Int(\cat{C})\arrow[d,"b.o.o."]\\
+\cat{D}\arrow[r,"f.f."']&\Int(\cat{D})
+\end{tikzcd}
+$$
+Finally, suppose that $F\colon\Int(\cat{C})\to\cat{D}$ is a b.o.o. functor between compact categories. To find see that $\Int(Q(F))=F$, consider the diagram below, where the outer square is obtained by $Q$ as in (\ref{dia:factoring square}):
+$$
+\begin{tikzcd}[column sep=small, row sep=small]
+\cat{C}\arrow[rr,"f.f."]\arrow[dd,"b.o.o."']&~&\Int(\cat{C})\arrow[dd,"b.o.o."']\arrow[dddr,bend left,"b.o.o."]\\~\\
+\cat{F}\arrow[rr,"f.f."]\arrow[drrr,bend right, "f.f."']&&\Int(\cat{F})\arrow[dr,dashed]\\
+&&&\cat{D}
+\end{tikzcd}
+$$
+Applying $\Int$ to the left-hand map, we obtain the right-hand map of the inner commutative square. The dashed arrow exists by the universal property of the Int construction. It is fully faithful by Lemma~\ref{lemma:more fully faithfulness}, and it is clearly bijective-on-objects. Thus the dashed arrow is an isomorphism, which completes the proof.
 
 \end{proof}
 
@@ -783,12 +820,14 @@ Recall from~\cite{JoyalStreet}
 \begin{corollary}
 Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=\Int\cat{D}$. Then there is an equivalence of categories
 \begin{align}\label{dia:traced lax strong}
-\Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\Ob\iso}
+\Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\boo}
 \end{align}
 This equivalence is natural in the traced category $\cat{D}$, using the factorization system on $\CompCat$ from Lemma~\ref{lemma:factorization system}.
 \end{corollary}
 
-
+\begin{proof}
+**
+\end{proof}
 
 
 %%%%%%%%%%%%%%%%%%
@@ -1016,7 +1055,7 @@ Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure. The unit is a profu
 \end{gather*}
 
 \begin{lemma}
-	There is an equivalence of categories $\Mon(\Prof(\cat{C},\cat{C}))\iso (\cat{C}/\Cat{Cat})_{\text{b.o.o.}}$ between the category of monoids in $\Prof(\cat{C},\cat{C})$ and the full subcategory of the coslice category $\cat{C}/\Cat{Cat}$ spanned by the bijective-on-objects functors.
+	There is an equivalence of categories $\Mon(\Prof(\cat{C},\cat{C}))\iso (\cat{C}/\Cat{Cat})_{b.o.o.}$ between the category of monoids in $\Prof(\cat{C},\cat{C})$ and the full subcategory of the coslice category $\cat{C}/\Cat{Cat}$ spanned by the bijective-on-objects functors.
 \end{lemma}
 \begin{proof}
 	Simple to check. The unit provides the identities and the functor from $\cat{C}$, while the multiplication provides the composition.
@@ -1047,7 +1086,7 @@ A unit for a monoidal profunctor $M\in\MProf(\cat{C},\cat{C})$ is a unit $i\colo
 for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e')$.
 
 \begin{lemma}
-	Let $\cat{C}$ be a monoidal category. There is an equivalence of categories $\Mon(\MProf(\cat{C},\cat{C}))\iso (\cat{C}/\Cat{MonCat})_{\text{b.o.o.}}$ between the category of monoids in $\MProf(\cat{C},\cat{C})$ and the full subcategory of the coslice category $\cat{C}/\Cat{MonCat}$ spanned by the bijective-on-objects functors.
+	Let $\cat{C}$ be a monoidal category. There is an equivalence of categories $\Mon(\MProf(\cat{C},\cat{C}))\iso (\cat{C}/\Cat{MonCat})_{b.o.o.}$ between the category of monoids in $\MProf(\cat{C},\cat{C})$ and the full subcategory of the coslice category $\cat{C}/\Cat{MonCat}$ spanned by the bijective-on-objects functors.
 \end{lemma}
 
 \section{Compact closed categories}
@@ -1130,7 +1169,7 @@ Let $\cat{C}$ be a compact closed category.
 \end{proposition}
 
 \begin{corollary}
-	There is an equivalence of categories $\Lax(\cat{C},\Set)\simeq(\cat{C}/\CompCat)_{\text{b.o.o.}}$.
+	There is an equivalence of categories $\Lax(\cat{C},\Set)\simeq(\cat{C}/\CompCat)_{b.o.o.}$.
 \end{corollary}
 
 \end{document} 
