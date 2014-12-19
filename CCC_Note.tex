@@ -14,8 +14,9 @@
 
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
-%\chapterstyle{dash}
 \pagestyle{companion}
+\renewcommand*{\chaptitlefont}{\bfseries\Large}
+\setsecheadstyle{\bfseries\large\raggedright}
 
 \title{Enriched Traced Monoidal Categories as Lax Functors out of Compact Categories}
 \author{
@@ -39,10 +40,9 @@ We give an alternate conception of string diagrams as 1-dimensional oriented cob
 Global todo's:
 \begin{enumerate}
 \item Decide when (if ever) to say $\Cat{Cob}$ and when (if ever) to say $\Cat{1-Cob}$.
-\item David has slight preference for smaller section and chapter headings. They look pretty big.
+\item David has slight preference for smaller section and chapter headings. They look pretty big. (Patrick thinks he has fixed this.)
 \end{enumerate}
-\todo{Table of contents says ``Contents" twice.}
-\tableofcontents
+\tableofcontents*
 \input{dylan_david.tex}
 \input{patrick.tex}
 
