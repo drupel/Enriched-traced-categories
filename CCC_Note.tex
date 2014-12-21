@@ -505,6 +505,8 @@ Let $\cat{M}$ be a traced category.  Then for any object $(\inp{X},\outp{X})\in\
 
 \end{lemma}
 
+\todo{Perhaps we should explain somewhere how the adjunction works, and update the proof of Lemma~\ref{lemma:more fully faithfulness} if necessary.}
+
 \begin{lemma}\label{lemma:fully faithful and trace}
 The following facts hold for any traced category $\cat{C}$:
 \begin{compactitem}
@@ -771,8 +773,11 @@ Use Proposition \ref{prop:free objects}.
 \end{lemma}
 
 \begin{proof}
-
-**Should be clear.
+This is straightforward, but the calculation is \todo{should be something like this} shown below:
+\begin{align*}
+\Hom_{\Int(\cat{C})}((\inp{X},\outp{X}),(\inp{Y},\outp{Y}))&=\Hom_{\cat{C}}(\inp{X}\otimes\outp{Y},\outp{X}\otimes\inp{Y})\\
+&\iso\Hom_{\cat{D}}(F(\inp{X}\otimes \outp{Y}),F(\outp{X}\otimes\inp{Y}))\\
+\end{align*}
 
 \end{proof}
 
