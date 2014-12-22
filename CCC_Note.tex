@@ -41,6 +41,7 @@ Global todo's:
 \begin{enumerate}
 \item Decide when (if ever) to say $\Cat{Cob}$ and when (if ever) to say $\Cat{1-Cob}$.
 \item David has slight preference for smaller section and chapter headings. They look pretty big. (Patrick thinks he has fixed this.)
+\item Some aspect of the factorization system from Lemma~\ref{lemma:factorization system} is used  in several constructions. There may be a tighter formulation of the aspect that is being used. 
 \end{enumerate}
 \tableofcontents*
 
@@ -755,7 +756,7 @@ $$\cat{P}(\Phi)(f):=
 \otimes\dim(\overline{S}).	
 $$
 
-\begin{theorem}
+\begin{theorem}\label{thm:cob-O and traced-O}
 For any set $\cat{O}$, let $\SList(\cat{O})$ denote the set of symmetric lists in $\cat{O}$. There is an equivalence of categories 
  $$(\Cat{Cob}/\cat{O})\alg\simeq\TrCat_{\boo\SList(\cat{O})}$$
 \end{theorem}
@@ -763,16 +764,32 @@ For any set $\cat{O}$, let $\SList(\cat{O})$ denote the set of symmetric lists i
  Dylan....
 \end{proof}
 
+\begin{proposition}\label{prop:naturality of equivalence cob-O and traced-O}
+
+The equivalence $(\Cat{Cob}/\cat{O})\alg\simeq\TrCat_{\boo\SList(\cat{O})}$ in Theorem~\ref{thm:cob-O and traced-O} is natural in $\cat{O}$, using the factorization system on $\TrCat$ from Lemma~\ref{lemma:factorization system}.
+
+\end{proposition}
+
+\begin{proof}
+
+**
+
+\end{proof}
+
 \begin{corollary}\label{cor:traced as cob-alg}
 
-Consider the functor $\op\Set\to\Cat{Cat}$, given by $\cat{O}\mapsto(\Cat{Cob}/\cat{O})\alg$, and let $(\Cat{Cob}/\bullet)\alg$ denote the total category of corresponding Grothendieck fibration. Then there is an equivalence of categories
-$$(\Cat{Cob}/\bullet)\alg\iso\TrCat.$$
+Consider the functor $\op\Set\to\Cat{Cat}$, given by $\cat{O}\mapsto(\Cat{Cob}/\cat{O})\alg$, and let $(\Cat{Cob}/\bullet)\alg$ denote the total category of corresponding split Grothendieck fibration. Then there is an equivalence of categories
+$$(\Cat{Cob}/\bullet)\alg\simeq\TrCat.$$
 
 \end{corollary}
 
 \begin{proof}
 
-Use Proposition \ref{prop:free objects}.
+By Proposition~\ref{prop:free objects}, there is an equivalence of categories 
+$$\Cat{TrFrObCat}\simeq\Cat{TrCat}.$$ 
+The left-hand side is fibered over set; it is the Grothendieck construction of a functor $\op\Set\to\Cat{Cat}$ given on objects by $\cat{O}\mapsto\TrCat_{\boo\SList(\cat{O})}$, and on morphisms by Lemma~\ref{lemma:factorization system}. The result follows by Theorem~\ref{thm:cob-O and traced-O} and Proposition~\ref{prop:naturality of equivalence cob-O and traced-O}. \todo{This has not been rigorously checked.}
+
+
 
 \end{proof}
 
