@@ -674,9 +674,17 @@ References for applications of $\Cat{Cob}$-algebras.
 
 \section{A factorization system for strong functors}
 
-Recall from \cite{} that an orthogonal factorization system on a category $\cat{C}$ is a pair $(\cat{L},\cat{R})$ of wide subcategories, called the \emph{left class} and \emph{right class}, such that every morphism $f\cat{C}$ can be functorially factored as $f=r\circ\ell$ where $r\in\cat{R}$ and $\ell\in\cat{L}$. For example, there is an orthogonal factorization system on $\Cat{Cat}$ in which the left class consists of functors that are bijective on objects and the right class consists of functors that are fully faithful. 
+In this section we prove that an orthogonal factorization system exists on the categories $\SymMonCat$ and $\TrCat$ of symmetric monoidal (resp. traced) categories and strong functors (resp. traced functors; see Definition~\ref{def:traced functor}). 
 
-In this section we prove that a similar factorization system exists on the categories $\SymMonCat$ and $\TrCat$ of symmetric monoidal (resp. traced) categories and strong functors (resp. traced functors; see Definition~\ref{def:traced functor}).  
+Recall from \cite{} that an \emph{orthogonal factorization system} on a category $\cat{C}$ consists of a class $\cat{L}$ and a class $\cat{R}$ of morphisms in $\cat{C}$, called the \emph{left class} and \emph{right class} of the factorization system, respectively, satisfying the following properties:
+\begin{enumerate}
+\item $\cat{L}$ (resp. $\cat{R}$) contains every isomorphism in $\cat{C}$, 
+\item $\cat{L}$ (resp. $\cat{R}$) is closed under composition, and
+\item every morphism $f\in\cat{C}$ can be uniquely and functorially factored as $f=r\circ\ell$ where $r\in\cat{R}$ and $\ell\in\cat{L}$
+\end{enumerate}
+For example, there is an orthogonal factorization system on $\Cat{Cat}$ in which the left class consists of functors that are bijective on objects and the right class consists of functors that are fully faithful. 
+
+
 
 \begin{lemma}\label{lemma:factorization system}
 
