@@ -205,7 +205,7 @@ Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=
 \begin{align}\label{dia:traced lax strong}
 \Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\boo}
 \end{align}
-This equivalence is natural in the traced category $\cat{D}$, using the factorization system on $\CompCat$ from Lemma~\ref{lemma:factorization system}.
+This equivalence is natural in the traced category $\cat{D}$, using the factorization system on $\TrCat$ from Lemma~\ref{lemma:factorization system}.
 \end{corollary}
 
 \begin{remark}
@@ -783,7 +783,7 @@ This is straightforward, but the calculation is \todo{should be something like t
 
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{prop:slice boo int}
 	Let $\cat{C}$ be a traced category. Then the Int construction provides an equivalence of categories
 	\[
 		\cat{C}/\TrCat_{b.o.o.} \simeq \Int(\cat{C})/\CompCat_{b.o.o.}
@@ -826,23 +826,39 @@ Applying $\Int$ to the left-hand map, we obtain the right-hand map of the inner 
 
 \end{proof}
 
+We finish this section by proving Corollary~\ref{cor:thm:traced lax and strong}, assuming results from Section~\ref{sec:ccc's}. To be sure, nothing in Section~\ref{sec:generalization} will rely on Corollary~\ref{cor:thm:traced lax and strong}.
 
-\begin{corollary}
+\begin{corollary}\todo{relabel this Corollary 1.1.2}
 Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=\Int\cat{D}$. Then there is an equivalence of categories
 \begin{align}\label{dia:traced lax strong}
 \Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\boo}
 \end{align}
-This equivalence is natural in the traced category $\cat{D}$, using the factorization system on $\CompCat$ from Lemma~\ref{lemma:factorization system}.
+This equivalence is natural in the traced category $\cat{D}$, using the factorization system on $\TrCat$ from Lemma~\ref{lemma:factorization system}.
 \end{corollary}
 
 \begin{proof}
-**
+
+By Corollary~\ref{cor:ccc's lax and strong}, there is an equivalence of categories 
+$$\Lax(\cat{C},\Set)\simeq(\cat{C}/\CompCat)_{\boo}$$
+and the equivalence (\ref{dia:traced lax strong}) follows from Proposition~\ref{prop:slice boo int}. 
+
+We need to show that this equivalence is natural in the following sense. Suppose that $F\colon\cat{D'}\to\cat{D}$ is a strong traced functor, and let $\cat{C'}:=\Int(D')$. We want to show that the diagram 
+$$
+\begin{tikzcd}
+\Lax(\cat{C},\Cat{Set})\arrow[r]\arrow[d,"\Int(F)"']&\cat{D}/\TrCat_{\boo}\arrow[d,"\ref{lemma:factorization system}"]\\
+\Lax(\cat{C},\Cat{Set})\arrow[r]&\cat{D'}/\TrCat_{\boo}
+\end{tikzcd}
+$$
+commutes, where the right-hand functor is obtained using the factorization system on traced categories from Lemma~\ref{lemma:factorization system}.
+
+**\todo{finish proof}
 \end{proof}
+
 
 
 %%%%%%%%%%%%%%%%%%
 
-\chapter{Proof of Theorem~\ref{thm:compact lax and strong}}
+\chapter{Proof of Theorem~\ref{thm:compact lax and strong}}\label{sec:generalization}
 
 \section{Preliminaries}
 
@@ -1099,7 +1115,7 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
 	Let $\cat{C}$ be a monoidal category. There is an equivalence of categories $\Mon(\MProf(\cat{C},\cat{C}))\iso (\cat{C}/\Cat{MonCat})_{b.o.o.}$ between the category of monoids in $\MProf(\cat{C},\cat{C})$ and the full subcategory of the coslice category $\cat{C}/\Cat{MonCat}$ spanned by the bijective-on-objects functors.
 \end{lemma}
 
-\section{Compact closed categories}
+\section{Compact closed categories}\label{sec:ccc's}
 
 Let $\cat{C}$ be a compact closed category.
 
@@ -1178,7 +1194,7 @@ Let $\cat{C}$ be a compact closed category.
 	The functors $F$ and $U$ induce an equivalence of categories $\MProf(1,\cat{C})\simeq\Mon(\MProf(\cat{C},\cat{C}))$.
 \end{proposition}
 
-\begin{corollary}
+\begin{corollary}\label{cor:ccc's lax and strong}
 	There is an equivalence of categories $\Lax(\cat{C},\Set)\simeq(\cat{C}/\CompCat)_{b.o.o.}$.
 \end{corollary}
 
