@@ -325,14 +325,14 @@ Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect ou
 
 \chapter{Traced Categories and cobordism algebras}\label{sec:traced categories}
 
-Let $(\cat{M},\otimes,I)$ be a symmetric monoidal category where for any $X,Y\in\Ob(\cat{M})$ we write $\gamma_{X,Y}:X\otimes Y\To{\sim} Y\otimes X$ for the distinguished symmetry isomorphisms. Recall that we have $\gamma_{Y,X}=\gamma_{X,Y}^{-1}$.  We define the {\em monoid of scalars in $\cat{M}$} to be the set $S_{\cat{M}}:=\Hom(I,I)$ with multiplication given by composition.  Note that $S_{\cat{M}}$ is commutative since $\cat{M}$ is \todo[color=yellow]{it can be proved without this assumption, should we just say "note that $S_{\cat{M}}$ is commutative"?}symmetric.  There is an action of $S_{\cat{M}}$ on the set $\Hom_{\cat{M}}(X,Y)$ for each $(X,Y)\in\Ob(\cat{M}^{op}\times\cat{M})$, where $s\in S_{\cat{M}}$ acts on a morphism $f\colon X\to Y$ by sending it to the composite morphism
-$$s\bullet f:X\to I\otimes X\To{s\otimes f}I\otimes Y\to Y.$$
-We write $|X|:=\Hom(I,X)$ for the \emph{elements} of $X$.
+Let $(\cat{M},\otimes,I)$ be a symmetric monoidal category where for any $X,Y\in\Ob(\cat{M})$ we write $\gamma_{X,Y}:X\otimes Y\To{\sim} Y\otimes X$ for the distinguished symmetry isomorphisms. Recall that we have $\gamma_{Y,X}=\gamma_{X,Y}^{-1}$.  We define the {\em monoid of scalars in $\cat{M}$} to be the set $S_{\cat{M}}:=\Hom(I,I)$ with multiplication given by composition; in fact $S_{\cat{M}}$ is a commutative monoid.  
 
-The functor $|\cdot|=\Hom(I,\cdot)\colon\cat{M}\to\Set$ is an algebra, i.e., a lax monoidal functor, with unit map
-\[\eta:\{1\}\To{\id_{I}}S_{\cat{M}}\]
+There is an action of $S_{\cat{M}}$ on the set $\Hom_{\cat{M}}(X,Y)$ for each $(X,Y)\in\Ob(\cat{M}^{op}\times\cat{M})$, where $s\in S_{\cat{M}}$ acts on a morphism $f\colon X\to Y$ by sending it to the composite morphism
+$$s\bullet f:X\to I\otimes X\To{s\otimes f}I\otimes Y\to Y.$$
+We write $|X|:=\Hom(I,X)$ for the set of \emph{elements} of $X$. The functor $|\cdot|=\Hom(I,\cdot)\colon\cat{M}\to\Set$ is an $\cat{M}$-algebra, i.e., a lax monoidal functor, with unit map
+\[\eta:\{1\}\To{\id_{I}}\Hom(I,I)\]
 and multiplication map
-\[\mu:\Hom(I,X)\otimes\Hom(I,X')\to\Hom(I\otimes I,X\otimes X')\iso\Hom(I,X\otimes X').\]
+\[\mu:\Hom(I,X)\otimes\Hom(I,X')\To{\otimes}\Hom(I\otimes I,X\otimes X')\iso\Hom(I,X\otimes X').\]
 
 \section{Definition of traced category}\label{sec:define traced}
 
