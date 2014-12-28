@@ -114,7 +114,7 @@ Traced symmetric monoidal categories, hereafter \emph{traced categories}, have b
 %   \end{tikzpicture}
 % \end{align}
 
-\[
+\begin{equation}\label{dia:string diagram}
 \begin{tikzpicture}[wiring diagram]
   \node[bb={2}{1}, bb name=$X_1$] (X1) {};
   \node[bb={2}{2}, right=of X1, bb name=$X_2$] (X2) {};
@@ -138,12 +138,12 @@ Traced symmetric monoidal categories, hereafter \emph{traced categories}, have b
   \draw[ar] let \p1=(X2.south east), \p2=(X1.south west), \n1={\y1-\bby}, \n2=\bbportlen in
           (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
 \end{tikzpicture}
-\]
-represent compositions, i.e., new morphisms are constructed from old by specifying which outputs will be fed back into which inputs. In fact, these generalize Penrose diagrams in $\Cat{Vect}$, and the word \emph{traced} originates in vector space terminology.  
+\end{equation}
+represent compositions, i.e., new morphisms are constructed from old by specifying which outputs will be fed back into which inputs. In fact, these generalize Penrose diagrams in $\Cat{Vect}$ and the word \emph{traced} originates in this vector space terminology.  
 
-A string diagram usually does not explicitly include the outer box $Y$. If we include it, as in (\ref{dia:string diagram}), the resulting \emph{wiring diagram} can be given another interpretation: it represents a 1-dimensional cobordism between oriented 0-manifolds. For example, the box $X_1$ in the picture includes only the data of a pair of finite sets, $(\inp{X_1},\outp{X_1})=(\{1a,1b\},\{1c\})$, which can be interpreted as an oriented 0-manifold.  And the wiring diagram itself, in which boxes $X_1,\ldots,X_n$ are wired together inside a larger box $Y$, can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$. This is a morphism in the multicategory $\Cat{Cob}$, underlying the symmetric monoidal category of oriented 1-cobordisms.
+A string diagram usually does not explicitly include the outer box $Y$. If we include it, as in (\ref{dia:string diagram}), the resulting \emph{wiring diagram} can be given another interpretation: it represents a 1-dimensional cobordism between oriented 0-manifolds. For example, the box $X_1$ in the picture includes only the data of a pair of finite sets, $(\inp{X_1},\outp{X_1})=(\{1a,1b\},\{1c\})$, which can be interpreted as an oriented 0-manifold.  Moreover, the wiring diagram itself, in which boxes $X_1,\ldots,X_n$ are wired together inside a larger box $Y$, can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$. This is a morphism in the multicategory $\Cat{Cob}$, underlying the symmetric monoidal category of oriented 1-cobordisms.
 
-There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{C}$. Namely, each input and output of a box must be labeled by an object of $\cat{C}$, and the strings must respect these labels. We will thus consider the multicategory $\Cat{Cob}/\cat{O}$ of oriented 1-dimensional cobordisms over a fixed set $\cat{O}$ of labels. 
+There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{C}$. Namely, each input and output of a box must be labeled by an object of $\cat{C}$ and the strings must respect these labels. We will thus consider the multicategory $\Cat{Cob}/\cat{O}$ of oriented 1-dimensional cobordisms over a fixed set of labels $\cat{O}$. 
 
 In the table below, we record these two interpretations of a string diagram. Note the "degree shift" between the second and third columns.
 \begin{center}
@@ -689,7 +689,7 @@ For example, there is an orthogonal factorization system on $\Cat{Cat}$ in which
 
 \begin{lemma}\label{lemma:factorization system}
 
-Let $\XCat$ denote the category of strong $\Cat{X}$-functors between $\Cat{X}$-categories,  where $\Cat{X}$ is monoidal or traced. Then $\XCat$ admits an orthogonal factorization system $(\cat{L},\cat{R})$, where the morphisms in $\cat{L}$ are bijective-on-objects functors, and the morphisms in $\cat{R}$ are fully faithful functors.
+Let $\XCat$ denote the category of strong $\Cat{X}$-functors between $\Cat{X}$-categories,  where $\Cat{X}$ is monoidal or traced. Then $\XCat$ admits an orthogonal factorization system $(\cat{L},\cat{R})$, where the morphisms in $\cat{L}$ are bijective-on-objects functors and the morphisms in $\cat{R}$ are fully faithful functors.
 
 \end{lemma}
 
