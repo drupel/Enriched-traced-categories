@@ -141,6 +141,8 @@ Traced symmetric monoidal categories, hereafter \emph{traced categories}, have b
 \end{equation}
 represent compositions, i.e., new morphisms are constructed from old by specifying which outputs will be fed back into which inputs. In fact, these generalize Penrose diagrams in $\Cat{Vect}$ and the word \emph{traced} originates in this vector space terminology.  
 
+\section{String diagrams as cobordisms}
+
 A string diagram usually does not explicitly include the outer box $Y$. If we include it, as in (\ref{dia:string diagram}), the resulting \emph{wiring diagram} can be given another interpretation: it represents a 1-dimensional cobordism between oriented 0-manifolds. For example, the box $X_1$ in the picture includes only the data of a pair of finite sets, $(\inp{X_1},\outp{X_1})=(\{1a,1b\},\{1c\})$, which can be interpreted as an oriented 0-manifold.  Moreover, the wiring diagram itself, in which boxes $X_1,\ldots,X_n$ are wired together inside a larger box $Y$, can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$. This is a morphism in the multicategory $\Cat{Cob}$, underlying the symmetric monoidal category of oriented 1-cobordisms.
 
 There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{C}$. Namely, each input and output of a box must be labeled by an object of $\cat{C}$ and the strings must respect these labels. We will thus consider the multicategory $\Cat{Cob}/\cat{O}$ of oriented 1-dimensional cobordisms over a fixed set of labels $\cat{O}$. 
@@ -325,6 +327,172 @@ The paper is organized as follows. In Section~\ref{sec:traced categories} we giv
 Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect our operad-algebra picture to the traced one. 
 
 \chapter{Traced Categories and cobordism algebras}\label{sec:traced categories}
+
+\section{Preliminaries}
+
+Let $\cat{C}$ and $\cat{D}$ be monoidal categories. Recall that a functor $F\colon\cat{C}\to\cat{D}$ is called \emph{lax monoidal} if it is equipped with a morphism
+\[
+\begin{tikzcd}
+	I_D \rar{\epsilon} & F(I_C)
+\end{tikzcd}
+\]
+and a natural transformation
+\[
+\begin{tikzcd}
+	F(X) \otimes_D F(Y) \rar{\mu_{X,Y}} & F(X\otimes_C Y)
+\end{tikzcd}
+\]
+such that for all $X,Y,Z\in\cat{C}$, the diagram (suppressing associators)
+\[
+\begin{tikzcd}
+	F(X)\otimes F(Y) \otimes F(Z)
+		\rar{\id\otimes\mu}
+		\dar[swap]{\mu\otimes\id}
+	& F(X)\otimes F(Y\otimes Z)
+		\dar{\mu} \\
+	F(X\otimes Y)\otimes F(Z)
+		\rar[swap]{\mu}
+	& F(X\otimes Y\otimes Z)
+\end{tikzcd}
+\]
+commutes, and for all $X\in\cat{C}$ the two diagrams
+\[
+\begin{tikzcd}
+	I_D\otimes F(X)
+		\dar[swap]{\epsilon\otimes\id}
+	& F(X)
+		\lar[swap]{l_{F(X)}}
+		\dar{F(l_X)} \\
+	F(I_C)\otimes F(X)
+		\rar[swap]{\mu}
+	& F(I_C\otimes X)
+\end{tikzcd}
+\qquad
+\begin{tikzcd}
+	F(X) \otimes I_D
+		\dar[swap]{\id\otimes\epsilon}
+	& F(X)
+		\lar[swap]{r_{F(X)}}
+		\dar{F(r_X)} \\
+	F(X)\otimes F(I_C)
+		\rar[swap]{\mu}
+	& F(X\otimes I_C)
+\end{tikzcd}
+\]
+commute. If $\epsilon$ and $\mu$ are isomorphisms, then $F$ is \emph{strong}.
+
+If $\cat{C}$ and $\cat{D}$ are symmetric monoidal, then $F$ is a \emph{lax symmetric monoidal functor} if it is lax monoidal, and commutes with the symmetries, in the sense that the diagram
+\[
+\begin{tikzcd}
+	F(X)\otimes F(Y)
+		\rar{\sigma}
+		\dar[swap]{\mu}
+	& F(Y)\otimes F(X)
+		\dar{\mu} \\
+	F(X\otimes Y)
+		\rar[swap]{F(\sigma)}
+	& F(Y\otimes X)
+\end{tikzcd}
+\]
+commutes.
+
+If $F$ and $G$ are lax monoidal functors (possibly symmetric), then a natural transformation $\alpha\colon F\to G$ is called a \emph{monoidal transformation} if the diagrams
+\[
+\begin{tikzcd}
+	F(X)\otimes F(Y)
+		\rar{\alpha_X\otimes\alpha_Y}
+		\dar[swap]{\mu}
+	& G(X)\otimes G(Y)
+		\dar{\mu} \\
+	F(X\otimes Y)
+		\rar[swap]{\alpha_{X\otimes Y}}
+	& G(X\otimes Y)
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[column sep=tiny]
+	{} & I_D \dlar[swap]{\epsilon} \drar{\epsilon} & \\
+	F(I_C) \ar{rr}[swap]{\alpha_I} && G(I_C)
+\end{tikzcd}
+\]
+commute.
+
+Let $\SymMonCat$ denote the bicategory of symmetric monoidal categories and strong monoidal functors, and let $\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal transformations from $\cat{C}$ to $\cat{D}$. Let $\CompCat$ denote the full subcategory of $\SymMonCat$ spanned by the compact categories.
+
+% \begin{theorem}
+% 	Let $\cat{C}$ be a compact category. There is an equivalence of categories
+% 	\[
+% 		\Lax(\cat{C},\Set) \simeq (\cat{C}\backslash\CompCat)_{\text{boo}}
+% 	\]
+% 	between the lax functor category from $\cat{C}$ to $\Set$ equipped with the cartesian monoidal structure, and the full subcategory of the undercategory $\cat{C}\backslash\CompCat$ spanned by the bijective-on-objects functors.
+% \end{theorem}
+% \begin{proof}
+% 	Fix a lax symmetric functor $F\colon\cat{C}\to\Set$. We can construct a compact category $\hat{F}$ and a strong bijective-on-objects functor $\tilde{F}\colon\cat{C}\to\hat{F}$ as follows:
+% 	\begin{compactitem}
+% 		\item The objects of $\hat{F}$ are the objects of $\cat{C}$.
+% 		\item $\Hom_{\hat{F}}(A,B)=F(A^{\star}\otimes B)$.
+% 		\item Composition $\Hom(A,B)\times\Hom(B,C)\to\Hom(A,C)$ is defined by
+% 		\[
+% 		\begin{tikzcd}[column sep=-2ex]
+% 			{} & F(A^{\star}\otimes B\otimes B^{\star}\otimes C)
+% 				\drar{F(\id\otimes\epsilon_B\otimes\id)} & \\
+% 			F(A^{\star}\otimes B)\times F(B^{\star}\otimes C)
+% 				\urar{\mu_F}
+% 			&& F(A^{\star}\otimes B)
+% 		\end{tikzcd}
+% 		\]
+% 		\item Identities $1\to\Hom(A,A)$ are defined by
+% 		\[
+% 		\begin{tikzcd}
+% 			1 \rar{\epsilon_F} & F(I) \rar{F(\eta_A)} & F(A^{\star}\otimes A).
+% 		\end{tikzcd}
+% 		\]
+% 		\item The tensor product
+% 		\[
+% 		\begin{tikzcd}
+% 			\Hom(A,A')\times\Hom(B,B') \rar{\otimes}
+% 			& \Hom(A\otimes B,A'\otimes B')
+% 		\end{tikzcd}
+% 		\]
+% 		is defined by
+% 		\[
+% 		\begin{tikzcd}[column sep=-3ex]
+% 			{} & F(A^{\star}\otimes A'\otimes B^{\star}\otimes B')
+% 				\drar{F(\id\otimes\sigma\otimes\id)} & \\
+% 			F(A^{\star}\otimes A')\times F(B^{\star}\otimes B')
+% 				\urar{\mu_F}
+% 			&& F(A^{\star}\otimes B^{\star}\otimes A'\otimes B')
+% 		\end{tikzcd}
+% 		\]
+% 		\item $\tilde{F}$ is identity on objects, and for any $f\colon A\to B$ in $\cat{C}$, define $\tilde{F}(f)$ by
+% 		\[
+% 		\begin{tikzcd}
+% 			1 \rar{\epsilon_F}
+% 			& F(I) \rar{F(\eta_A)}
+% 			& F(A^{\star}\otimes A) \rar{F(\id\otimes f)}
+% 			& F(A^{\star}\otimes B)
+% 		\end{tikzcd}
+% 		\]
+% 		\item The associator and symmetry isomorphisms of $\hat{F}$ are given by the image under $\tilde{F}$ of those in $\cat{C}$.
+% 	\end{compactitem}
+
+% 	In the other direction, suppose we are given a compact category $\hat{F}$ and a strong bijective-on-objects functor $\tilde{F}\colon\cat{C}\to\hat{F}$. Define $F$ by
+% 	\begin{compactitem}
+% 		\item $F(A)=\Hom_{\hat{F}}(I,A)$.
+% 		\item For $f\colon A\to B$ in $\cat{C}$, define $F(f)\colon\Hom(I,A)\to\Hom(I,B)$ by post-composition with $\tilde{F}(f)$.
+% 		\item $\epsilon\colon 1\to F(I)$ is defined by $\id_I\in\Hom_{\hat{F}}(I,I)$.
+% 		\item $\mu\colon F(A)\times F(B)\to F(A\otimes B)$ is defined by
+% 		\[
+% 		\begin{tikzcd}[column sep=-3ex]
+% 			{} & \Hom(I\otimes I,A\otimes B)
+% 				\drar & \\
+% 			\Hom(I,A)\times\Hom(I,B)
+% 				\urar{\otimes_{\hat{F}}}
+% 			&& \Hom(I,A\otimes B)
+% 		\end{tikzcd}
+% 		\]
+% 	\end{compactitem}
+% \end{proof}
+
 
 Let $(\cat{M},\otimes,I)$ be a symmetric monoidal category where for any $X,Y\in\Ob(\cat{M})$ we write $\gamma_{X,Y}:X\otimes Y\To{\sim} Y\otimes X$ for the distinguished symmetry isomorphisms. Recall that we have $\gamma_{Y,X}=\gamma_{X,Y}^{-1}$.  We define the {\em monoid of scalars in $\cat{M}$} to be the set $S_{\cat{M}}:=\Hom(I,I)$ with multiplication given by composition; in fact $S_{\cat{M}}$ is a commutative monoid.  
 
@@ -898,170 +1066,6 @@ commutes, where the right-hand functor is obtained using the factorization syste
 
 \chapter{Proof of Theorem~\ref{thm:compact lax and strong}}\label{sec:generalization}
 
-\section{Preliminaries}
-
-Let $\cat{C}$ and $\cat{D}$ be monoidal categories. Recall that a functor $F\colon\cat{C}\to\cat{D}$ is called \emph{lax monoidal} if it is equipped with a morphism
-\[
-\begin{tikzcd}
-	I_D \rar{\epsilon} & F(I_C)
-\end{tikzcd}
-\]
-and a natural transformation
-\[
-\begin{tikzcd}
-	F(X) \otimes_D F(Y) \rar{\mu_{X,Y}} & F(X\otimes_C Y)
-\end{tikzcd}
-\]
-such that for all $X,Y,Z\in\cat{C}$, the diagram (suppressing associators)
-\[
-\begin{tikzcd}
-	F(X)\otimes F(Y) \otimes F(Z)
-		\rar{\id\otimes\mu}
-		\dar[swap]{\mu\otimes\id}
-	& F(X)\otimes F(Y\otimes Z)
-		\dar{\mu} \\
-	F(X\otimes Y)\otimes F(Z)
-		\rar[swap]{\mu}
-	& F(X\otimes Y\otimes Z)
-\end{tikzcd}
-\]
-commutes, and for all $X\in\cat{C}$ the two diagrams
-\[
-\begin{tikzcd}
-	I_D\otimes F(X)
-		\dar[swap]{\epsilon\otimes\id}
-	& F(X)
-		\lar[swap]{l_{F(X)}}
-		\dar{F(l_X)} \\
-	F(I_C)\otimes F(X)
-		\rar[swap]{\mu}
-	& F(I_C\otimes X)
-\end{tikzcd}
-\qquad
-\begin{tikzcd}
-	F(X) \otimes I_D
-		\dar[swap]{\id\otimes\epsilon}
-	& F(X)
-		\lar[swap]{r_{F(X)}}
-		\dar{F(r_X)} \\
-	F(X)\otimes F(I_C)
-		\rar[swap]{\mu}
-	& F(X\otimes I_C)
-\end{tikzcd}
-\]
-commute. If $\epsilon$ and $\mu$ are isomorphisms, then $F$ is \emph{strong}.
-
-If $\cat{C}$ and $\cat{D}$ are symmetric monoidal, then $F$ is a \emph{lax symmetric monoidal functor} if it is lax monoidal, and commutes with the symmetries, in the sense that the diagram
-\[
-\begin{tikzcd}
-	F(X)\otimes F(Y)
-		\rar{\sigma}
-		\dar[swap]{\mu}
-	& F(Y)\otimes F(X)
-		\dar{\mu} \\
-	F(X\otimes Y)
-		\rar[swap]{F(\sigma)}
-	& F(Y\otimes X)
-\end{tikzcd}
-\]
-commutes.
-
-If $F$ and $G$ are lax monoidal functors (possibly symmetric), then a natural transformation $\alpha\colon F\to G$ is called a \emph{monoidal transformation} if the diagrams
-\[
-\begin{tikzcd}
-	F(X)\otimes F(Y)
-		\rar{\alpha_X\otimes\alpha_Y}
-		\dar[swap]{\mu}
-	& G(X)\otimes G(Y)
-		\dar{\mu} \\
-	F(X\otimes Y)
-		\rar[swap]{\alpha_{X\otimes Y}}
-	& G(X\otimes Y)
-\end{tikzcd}
-\qquad
-\begin{tikzcd}[column sep=tiny]
-	{} & I_D \dlar[swap]{\epsilon} \drar{\epsilon} & \\
-	F(I_C) \ar{rr}[swap]{\alpha_I} && G(I_C)
-\end{tikzcd}
-\]
-commute.
-
-Let $\SymMonCat$ denote the bicategory of symmetric monoidal categories and strong monoidal functors, and let $\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal transformations from $\cat{C}$ to $\cat{D}$. Let $\CompCat$ denote the full subcategory of $\SymMonCat$ spanned by the compact categories.
-
-% \begin{theorem}
-% 	Let $\cat{C}$ be a compact category. There is an equivalence of categories
-% 	\[
-% 		\Lax(\cat{C},\Set) \simeq (\cat{C}\backslash\CompCat)_{\text{boo}}
-% 	\]
-% 	between the lax functor category from $\cat{C}$ to $\Set$ equipped with the cartesian monoidal structure, and the full subcategory of the undercategory $\cat{C}\backslash\CompCat$ spanned by the bijective-on-objects functors.
-% \end{theorem}
-% \begin{proof}
-% 	Fix a lax symmetric functor $F\colon\cat{C}\to\Set$. We can construct a compact category $\hat{F}$ and a strong bijective-on-objects functor $\tilde{F}\colon\cat{C}\to\hat{F}$ as follows:
-% 	\begin{compactitem}
-% 		\item The objects of $\hat{F}$ are the objects of $\cat{C}$.
-% 		\item $\Hom_{\hat{F}}(A,B)=F(A^{\star}\otimes B)$.
-% 		\item Composition $\Hom(A,B)\times\Hom(B,C)\to\Hom(A,C)$ is defined by
-% 		\[
-% 		\begin{tikzcd}[column sep=-2ex]
-% 			{} & F(A^{\star}\otimes B\otimes B^{\star}\otimes C)
-% 				\drar{F(\id\otimes\epsilon_B\otimes\id)} & \\
-% 			F(A^{\star}\otimes B)\times F(B^{\star}\otimes C)
-% 				\urar{\mu_F}
-% 			&& F(A^{\star}\otimes B)
-% 		\end{tikzcd}
-% 		\]
-% 		\item Identities $1\to\Hom(A,A)$ are defined by
-% 		\[
-% 		\begin{tikzcd}
-% 			1 \rar{\epsilon_F} & F(I) \rar{F(\eta_A)} & F(A^{\star}\otimes A).
-% 		\end{tikzcd}
-% 		\]
-% 		\item The tensor product
-% 		\[
-% 		\begin{tikzcd}
-% 			\Hom(A,A')\times\Hom(B,B') \rar{\otimes}
-% 			& \Hom(A\otimes B,A'\otimes B')
-% 		\end{tikzcd}
-% 		\]
-% 		is defined by
-% 		\[
-% 		\begin{tikzcd}[column sep=-3ex]
-% 			{} & F(A^{\star}\otimes A'\otimes B^{\star}\otimes B')
-% 				\drar{F(\id\otimes\sigma\otimes\id)} & \\
-% 			F(A^{\star}\otimes A')\times F(B^{\star}\otimes B')
-% 				\urar{\mu_F}
-% 			&& F(A^{\star}\otimes B^{\star}\otimes A'\otimes B')
-% 		\end{tikzcd}
-% 		\]
-% 		\item $\tilde{F}$ is identity on objects, and for any $f\colon A\to B$ in $\cat{C}$, define $\tilde{F}(f)$ by
-% 		\[
-% 		\begin{tikzcd}
-% 			1 \rar{\epsilon_F}
-% 			& F(I) \rar{F(\eta_A)}
-% 			& F(A^{\star}\otimes A) \rar{F(\id\otimes f)}
-% 			& F(A^{\star}\otimes B)
-% 		\end{tikzcd}
-% 		\]
-% 		\item The associator and symmetry isomorphisms of $\hat{F}$ are given by the image under $\tilde{F}$ of those in $\cat{C}$.
-% 	\end{compactitem}
-
-% 	In the other direction, suppose we are given a compact category $\hat{F}$ and a strong bijective-on-objects functor $\tilde{F}\colon\cat{C}\to\hat{F}$. Define $F$ by
-% 	\begin{compactitem}
-% 		\item $F(A)=\Hom_{\hat{F}}(I,A)$.
-% 		\item For $f\colon A\to B$ in $\cat{C}$, define $F(f)\colon\Hom(I,A)\to\Hom(I,B)$ by post-composition with $\tilde{F}(f)$.
-% 		\item $\epsilon\colon 1\to F(I)$ is defined by $\id_I\in\Hom_{\hat{F}}(I,I)$.
-% 		\item $\mu\colon F(A)\times F(B)\to F(A\otimes B)$ is defined by
-% 		\[
-% 		\begin{tikzcd}[column sep=-3ex]
-% 			{} & \Hom(I\otimes I,A\otimes B)
-% 				\drar & \\
-% 			\Hom(I,A)\times\Hom(I,B)
-% 				\urar{\otimes_{\hat{F}}}
-% 			&& \Hom(I,A\otimes B)
-% 		\end{tikzcd}
-% 		\]
-% 	\end{compactitem}
-% \end{proof}
 
 \section{Profunctors}
 
