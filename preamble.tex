@@ -138,11 +138,13 @@
 	bb port length=4pt,
 	bb min width/.store in=\bbminwidth,
 	bb min width=.8cm,
+	bb rounded corners/.store in=\bbcorners,
+	bb rounded corners=2pt,
 	bb small/.style={bb port sep=1, bb port length=2.5pt, bbx=.4cm, bb min width=.4cm, bby=.7ex},
 	bb/.code 2 args={
 		\pgfmathsetlengthmacro{\bbheight}{\bbportsep * (max(#1,#2)+1) * \bby}
 		\pgfkeysalso{draw,minimum height=\bbheight,minimum width=\bbminwidth,outer sep=0pt,
-			rounded corners=2pt,thick,
+			rounded corners=\bbcorners,thick,
 			prefix after command={\pgfextra{\let\fixname\tikzlastnode}},
 			append after command={\pgfextra{\draw
 				\ifnum #1=0{} \else foreach \i in {1,...,#1} {
