@@ -965,7 +965,7 @@ where $\cat{F}$ is the category with $\Ob\cat{F}:=\Ob\cat{C}$, $\Hom_{\cat{F}}(c
 
 Note that to establish the factorization system for $\XCat$, the only thing that needs to be checked is that the factorization in $\Cat{Cat}$ lifts to $\XCat$. The isomorphism containment, closure under composition, and uniqueness of factorization all follow immediately from those same properties in $\Cat{Cat}$.
 
-Now we will show that this factorisation system lifts to $\MonCat$. If $\cat{C}$ and $\cat{D}$ are monoidal categories, and $F$ is a strong monoidal functor, then we can define a monoidal structure on $\cat{F}$. On objects, define $c_1\otimes_{\cat{F}}c_2:=c_1\otimes_{\cat{C}}c_2$ with monoidal unit $I_{\cat{F}}:=I_{\cat{C}}$, and given morphisms $f_1\colon c_1\to c_1'$ and $f_2\colon c_2\to c_2'$ in $\cat{F}$, i.e.~morphisms $f_1\colon Fc_1\to Fc_1'$ and $f_2\colon Fc_2\to Fc_2'$ in $\cat{D}$, define $f_1\otimes_{\cat{F}}f_2$ to be the composition
+Now we will show that this factorization system lifts to $\MonCat$. If $\cat{C}$ and $\cat{D}$ are monoidal categories, and $F$ is a strong monoidal functor, then we can define a monoidal structure on $\cat{F}$. On objects, define $c_1\otimes_{\cat{F}}c_2:=c_1\otimes_{\cat{C}}c_2$ with monoidal unit $I_{\cat{F}}:=I_{\cat{C}}$, and given morphisms $f_1\colon c_1\to c_1'$ and $f_2\colon c_2\to c_2'$ in $\cat{F}$, i.e.~morphisms $f_1\colon Fc_1\to Fc_1'$ and $f_2\colon Fc_2\to Fc_2'$ in $\cat{D}$, define $f_1\otimes_{\cat{F}}f_2$ to be the composition
 \[
 \begin{tikzcd}
   F(c_1\otimes_{\cat{C}}c_2) \ar[r,"\mu^{-1}"] & F(c_1)\otimes_{\cat{D}}F(c_2) \ar[r,"f_1\otimes_{\cat{D}}f_2"] & F(c_1')\otimes_{\cat{D}}F(c_2') \ar[r,"\mu"] & F(c_1'\otimes_{\cat{C}}c_2').
@@ -981,7 +981,7 @@ Finally, if $\Cat{C}$ and $\cat{D}$ are traced, then \cite[Proposition 2.4]{Joya
 
 \begin{proposition}\label{prop:free objects}
 
-Let $\XCat$ denote the category of strong $\Cat{X}$-functors between $\Cat{X}$-categories,  where $\Cat{X}$ is monoidal or traced, and let $\Cat{XFrObCat}$ denote the full subcategory spanned by strict, free-on-objects $\Cat{X}$-categories, i.e., for which the symmetric monoid of objects is free. There is an adjoint 2-equivalence:
+Let $\XCat$ denote the category of strong $\Cat{X}$-functors between $\Cat{X}$-categories,  where $\Cat{X}$ is monoidal, traced, or compact, and let $\Cat{XFrObCat}$ denote the full subcategory spanned by strict, free-on-objects $\Cat{X}$-categories, i.e., for which the symmetric monoid of objects is free. There is an adjoint 2-equivalence:
 $$
 \begin{tikzcd}
 \XCat\arrow[r, shift left=.5ex, "\Fun{FrOb}"]&\Cat{XFrObCat}\arrow[l, shift left=.5ex,"U"]
@@ -1271,15 +1271,18 @@ Let $\MProf(\cat{C},\cat{C})_*$ denote the category of pointed monoidal endo-pro
 We now prove Theorem~\ref{thm:compact lax and strong} and Corollary~\ref{cor:traced lax and strong} as the following two corollaries.
 
  \begin{corollary}\label{cor:ccc's lax and strong}
- 	There is an equivalence of categories $\Lax(\cat{C},\Set)\simeq(\cat{C}/\CompCat)_{bo}$.
+ 	There is an equivalence of categories
+  \[
+    \Lax(\cat{C},\Set)\simeq(\cat{C}/\CompCat)_{bo}.
+  \]
  \end{corollary}
 
 \begin{proof}
-The equivalence
+The equivalence follows easily from proposition~\ref{Prop:mon prof equivalence} and lemma~\ref{Lem:mon profs equal boo functors}, together with the easy observation that if $\cat{C}$ is a compact category, then
 \[
-  \Lax(\cat{C},\Cat{Set})\cong\cat{C}/\CompCat_{\boo},
+  \cat{C}/\MonCat_{bo}\iso\cat{C}/\CompCat_{bo}
 \]
-now follows as a simple corollary of proposition~\ref{Prop:mon prof equivalence} and lemma~\ref{Lem:mon profs equal boo functors}, together with the easy observation that if $\cat{C}$ is a compact category, then $\cat{C}/\MonCat_{\boo}\iso\cat{C}/\CompCat_{\boo}$ (if $F\colon\cat{C}\to\cat{X}$ is a monoidal functor and $a\in\cat{C}$ has a dual, then $Fa$ has a dual in $\cat{X}$).
+(if $F\colon\cat{C}\to\cat{X}$ is a monoidal functor and $a\in\cat{C}$ has a dual, then $Fa$ has a dual in $\cat{X}$).
 
 \end{proof} 
 
