@@ -192,12 +192,12 @@ First, for each box $(\inp{X},\outp{X})$ that might appear in a string diagram, 
 
 The definition of compact closed symmetric monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact and int}, or in \cite{}.
 
-It is most convenient to prove Theorem~\ref{thm:traced as cob-alg} by proving a much more general result, which relates the category of lax functors out of any compact category $\cat{C}$ to the category of strong, bijective-on-objects functors out of $\cat{C}$. Let $\CompCat$ denote the category of compact categories and strong monoidal functors between them. We show in Lemma~\ref{lemma:factorization system} that there is a factorization system on $\CompCat$, in which the left class consists of bijective-on-objects functors and the right class consists of fully faithful functors. Let $\CompCat_{\boo}\ss\CompCat$ denote the left class. 
+It is most convenient to prove Theorem~\ref{thm:traced as cob-alg} by proving a much more general result, which relates the category of lax functors out of any compact category $\cat{C}$ to the category of strong, bijective-on-objects functors out of $\cat{C}$. Let $\CompCat$ denote the category of compact categories and strong monoidal functors between them. We show in Lemma~\ref{lemma:factorization system} that there is a factorization system on $\CompCat$, in which the left class consists of bijective-on-objects functors and the right class consists of fully faithful functors. Let $\CompCat_{\bo}\ss\CompCat$ denote the left class. 
 
 \begin{theorem}\label{thm:compact lax and strong}
- Let $\cat{C}$ be a compact category. If $\Lax(\cat{C},\Cat{Set})$ denotes the category of lax monoidal set-valued functors out of $\cat{C}$, and $\cat{C}/\CompCat_{\boo}$ denotes the coslice category of compact categories and strong bijective-on-objects functors under $\cat{C}$, then there is an equivalence of categories
+ Let $\cat{C}$ be a compact category. If $\Lax(\cat{C},\Cat{Set})$ denotes the category of lax monoidal set-valued functors out of $\cat{C}$, and $\cat{C}/\CompCat_{\bo}$ denotes the coslice category of compact categories and strong bijective-on-objects functors under $\cat{C}$, then there is an equivalence of categories
 \begin{equation}\label{dia:compact lax strong}
-  \Lax(\cat{C},\Cat{Set})\cong\cat{C}/\CompCat_{\boo}
+  \Lax(\cat{C},\Cat{Set})\cong\cat{C}/\CompCat_{\bo}
 \end{equation}
 \end{theorem}
 
@@ -209,7 +209,7 @@ It turns out that if our compact category $\cat{C}$ is the compact closure of a 
 \begin{corollary}\label{cor:traced lax and strong}
 Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=\Int(\cat{D})$. Then there is an equivalence of categories
 \begin{align}\label{dia:traced lax strong}
-\Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\boo}
+\Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\bo}
 \end{align}
 This equivalence is natural in the traced category $\cat{D}$, using the factorization system on $\TrCat$ from Lemma~\ref{lemma:factorization system}.
 \end{corollary}
@@ -571,7 +571,7 @@ This can be recognized as a cobordism between oriented 0-manifolds, as we will d
 \[\tikzset{bbx=.8cm,bb port sep=1.5}
 \begin{tikzpicture}[wiring diagram,baseline=(current bounding box.center)] 
   \node[bb={2}{2}, bb name=$f$] (X1) {};
-  \node[bb={1}{1}, below=2 of X1, bb name=$g$] (X2) {};
+  \node[bb port sep=1,bb={1}{1}, below=2 of X1, bb name=$g$] (X2) {};
   \node[bb={1}{1}, fit={(X1) ($(X1.north)+(0,1)$)}, dashed] (Z) {};
   \node[bb={2}{2}, fit={(Z) (X2)}] (Y) {};
   \draw[ar] (Y_in1') to (Z_in1);
@@ -597,7 +597,7 @@ This can be recognized as a cobordism between oriented 0-manifolds, as we will d
 =
 \begin{tikzpicture}[wiring diagram,baseline=(current bounding box.center)] 
   \node[bb={2}{2}, bb name=$f$] (X1) {};
-  \node[bb={1}{1}, below=of X1, bb name=$g$] (X2) {};
+  \node[bb port sep=1,bb={1}{1}, below=of X1, bb name=$g$] (X2) {};
   \node[bb={3}{3}, fit={(X1) (X2)}, dashed] (Z) {};
   \node[bb={2}{2}, fit={(Z) ($(Z.north)+(0,1)$)}] (Y) {};
   \draw[ar] (Y_in1') to (Z_in2);
@@ -954,11 +954,11 @@ Let $\XCat$ denote the category of strong $\Cat{X}$-functors between $\Cat{X}$-c
 
 \begin{proof}
 
-We first recall the factorization system (bo,ff) on $\Cat{Cat}$. Let $\cat{C}$ and $\cat{D}$ be categories, and let $F\colon\cat{C}\to\cat{D}$ be a functor. Then there is a factorization
+We first recall the factorization system $(\bo,\ff)$ on $\Cat{Cat}$. Let $\cat{C}$ and $\cat{D}$ be categories, and let $F\colon\cat{C}\to\cat{D}$ be a functor. Then there is a factorization
 \[
 \begin{tikzcd}[column sep=small, row sep=small]
-  \cat{C} \ar[rr, "F"] \ar[dr, "bo"'] && \cat{D} \\
-  & \cat{F} \ar[ur, "ff"']
+  \cat{C} \ar[rr, "F"] \ar[dr, "\bo"'] && \cat{D} \\
+  & \cat{F} \ar[ur, "\ff"']
 \end{tikzcd}
 \]
 where $\cat{F}$ is the category with $\Ob\cat{F}:=\Ob\cat{C}$, $\Hom_{\cat{F}}(c_1,c_2):=\Hom_{\cat{D}}(Fc_1,Fc_2)$, and composition defined by composition in $\cat{D}$. The ``bo'' functor is the identity on objects, and $F$ on morphisms, while the ``ff'' functor is $F$ on objects and the identity on morphisms.
@@ -1132,7 +1132,7 @@ Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure. The unit is a profu
 \end{gather*}
 
 \begin{lemma}
-	There is an equivalence of categories $\Mon(\Prof(\cat{C},\cat{C}))\iso (\cat{C}/\Cat{Cat})_{bo}$ between the category of monoids in $\Prof(\cat{C},\cat{C})$ and the full subcategory of the coslice category $\cat{C}/\Cat{Cat}$ spanned by the bijective-on-objects functors.
+	There is an equivalence of categories $\Mon(\Prof(\cat{C},\cat{C}))\iso \cat{C}/\Cat{Cat}_{\bo}$ between the category of monoids in $\Prof(\cat{C},\cat{C})$ and the full subcategory of the coslice category $\cat{C}/\Cat{Cat}$ spanned by the bijective-on-objects functors.
 \end{lemma}
 \begin{proof}
 	Simple to check. The unit provides the identities and the functor from $\cat{C}$, while the multiplication provides the composition.
@@ -1163,7 +1163,7 @@ A unit for a monoidal profunctor $M\in\MProf(\cat{C},\cat{C})$ is a unit $i\colo
 for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e')$.
 
 \begin{lemma}\label{Lem:mon profs equal boo functors}
-	Let $\cat{C}$ be a monoidal category. There is an equivalence of categories $\Mon(\MProf(\cat{C},\cat{C}))\iso (\cat{C}/\MonCat)_{bo}$ between the category of monoids in $\MProf(\cat{C},\cat{C})$ and the full subcategory of the coslice category $\cat{C}/\MonCat$ spanned by the bijective-on-objects functors.
+	Let $\cat{C}$ be a monoidal category. There is an equivalence of categories $\Mon(\MProf(\cat{C},\cat{C}))\iso \cat{C}/\MonCat_{\bo}$.
 \end{lemma}
 
 \section{Compact closed categories}\label{sec:ccc's}
@@ -1273,14 +1273,14 @@ We now prove Theorem~\ref{thm:compact lax and strong} and Corollary~\ref{cor:tra
  \begin{corollary}\label{cor:ccc's lax and strong}
  	There is an equivalence of categories
   \[
-    \Lax(\cat{C},\Set)\simeq(\cat{C}/\CompCat)_{bo}.
+    \Lax(\cat{C},\Set)\simeq(\cat{C}/\CompCat)_{\bo}.
   \]
  \end{corollary}
 
 \begin{proof}
 The equivalence follows easily from proposition~\ref{Prop:mon prof equivalence} and lemma~\ref{Lem:mon profs equal boo functors}, together with the easy observation that if $\cat{C}$ is a compact category, then
 \[
-  \cat{C}/\MonCat_{bo}\iso\cat{C}/\CompCat_{bo}
+  \cat{C}/\MonCat_{\bo}\iso\cat{C}/\CompCat_{\bo}
 \]
 (if $F\colon\cat{C}\to\cat{X}$ is a monoidal functor and $a\in\cat{C}$ has a dual, then $Fa$ has a dual in $\cat{X}$).
 
@@ -1304,38 +1304,38 @@ This is straightforward, but the calculation is \todo{has not been checked, but 
 \begin{proposition}\label{prop:slice boo int}
 	Let $\cat{C}$ be a traced category. Then the Int construction provides an equivalence of categories
 	\[
-		\cat{C}/\TrCat_{bo} \simeq \Int(\cat{C})/\CompCat_{bo}
+		\cat{C}/\TrCat_{\bo} \simeq \Int(\cat{C})/\CompCat_{\bo}
 	\]
 \end{proposition}
 
 \begin{proof}
 
 Suppose that a traced functor $F\colon\cat{C}\to\cat{D}$ is bijective on objects. It is easy to see that $\Int(F)$ is also bijective on objects, so we can regard $\Int$ as a functor 
-$$\Int\colon\cat{C}/\TrCat_{bo} \to\Int(\cat{C})/\CompCat_{bo}$$
+$$\Int\colon\cat{C}/\TrCat_{\bo} \to\Int(\cat{C})/\CompCat_{\bo}$$
 We now define a candidate for its inverse. 
 
 Given a compact category $\cat{D}$ and a bijective-on-objects functor $\Int(\cat{C})\to\cat{D}$, we can consider both as traced categories by (\ref{dia:traced compact adjunction}), and there is a fully faithful inclusion $\cat{C}\to\Int(\cat{C})$ by Lemma~\ref{lemma:fully faithful and trace}. Using the orthogonal factorization system from Lemma~\ref{lemma:factorization system}, there is a unique way to fill out the bottom left part of a commutative square in $\TrCat$:
 \begin{equation}\label{dia:factoring square}
 \begin{tikzcd}
-\cat{C}\arrow[r,"ff"]\arrow[d,"bo"']&\Int(\cat{C})\arrow[d,"bo"]\\
-\cat{F}\arrow[r,"ff"']&\cat{D}
+\cat{C}\arrow[r,"\ff"]\arrow[d,"\bo"']&\Int(\cat{C})\arrow[d,"\bo"]\\
+\cat{F}\arrow[r,"\ff"']&\cat{D}
 \end{tikzcd}
 \end{equation}
 with the bijective-on-objects and fully faithful properties as labeled. Because the factorization system is functorial, we have defined a functor
-$$Q\colon\Int(\cat{C})/\CompCat_{bo}\to\cat{C}/\TrCat_{bo}$$
+$$Q\colon\Int(\cat{C})/\CompCat_{\bo}\to\cat{C}/\TrCat_{\bo}$$
 
 We now prove that $Q$ and $\Int$ are mutually inverse. If $G\colon\cat{C}\to\cat{D}$ is traced and bijective on objects, then $Q(\Int(G))=G$ by the uniqueness of the bottom left part of the square
 $$
 \begin{tikzcd}
-\cat{C}\arrow[r,"ff"]\arrow[d,"bo"']&\Int(\cat{C})\arrow[d,"bo"]\\
-\cat{D}\arrow[r,"ff"']&\Int(\cat{D})
+\cat{C}\arrow[r,"\ff"]\arrow[d,"\bo"']&\Int(\cat{C})\arrow[d,"\bo"]\\
+\cat{D}\arrow[r,"\ff"']&\Int(\cat{D})
 \end{tikzcd}
 $$
 Finally, suppose that $F\colon\Int(\cat{C})\to\cat{D}$ is a bijective-on-objects functor between compact categories. To see that $\Int(Q(F))=F$, consider the diagram below, where the outer square is obtained by $Q$ as in (\ref{dia:factoring square}):
 $$
 \begin{tikzcd}[column sep=small, row sep=small]
-\cat{C}\arrow[rr,"ff"]\arrow[dd,"bo"']&~&\Int(\cat{C})\arrow[dd,"bo"']\arrow[dddr,bend left,"bo"]\\~\\
-\cat{F}\arrow[rr,"ff"]\arrow[drrr,bend right, "ff"']&&\Int(\cat{F})\arrow[dr,dashed]\\
+\cat{C}\arrow[rr,"\ff"]\arrow[dd,"\bo"']&~&\Int(\cat{C})\arrow[dd,"\bo"']\arrow[dddr,bend left,"\bo"]\\~\\
+\cat{F}\arrow[rr,"\ff"]\arrow[drrr,bend right, "\ff"']&&\Int(\cat{F})\arrow[dr,dashed]\\
 &&&\cat{D}
 \end{tikzcd}
 $$
@@ -1347,7 +1347,7 @@ Applying $\Int$ to the left-hand map, we obtain the right-hand map of the inner 
  \begin{corollary}
 Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=\Int(\cat{D})$. Then there is an equivalence of categories
 \begin{align}\label{dia:traced lax strong}
-\Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\boo}
+\Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\bo}
 \end{align}
 This equivalence is natural in the traced category $\cat{D}$, using the factorization system on $\TrCat$ from Lemma~\ref{lemma:factorization system}.
 \end{corollary}
@@ -1355,14 +1355,14 @@ This equivalence is natural in the traced category $\cat{D}$, using the factoriz
 \begin{proof}
 
 By Corollary~\ref{cor:ccc's lax and strong}, there is an equivalence of categories 
-$$\Lax(\cat{C},\Set)\simeq(\cat{C}/\CompCat)_{\boo}$$
+$$\Lax(\cat{C},\Set)\simeq(\cat{C}/\CompCat)_{\bo}$$
 and the equivalence (\ref{dia:traced lax strong}) follows from Proposition~\ref{prop:slice boo int}. 
 
 We need to show that this equivalence is natural in the following sense. Suppose that $F\colon\cat{D'}\to\cat{D}$ is a strong traced functor, and let $\cat{C'}:=\Int(D')$. We want to show that the diagram 
 $$
 \begin{tikzcd}
-\Lax(\cat{C},\Cat{Set})\arrow[r]\arrow[d,"\Int(F)"']&\cat{D}/\TrCat_{\boo}\arrow[d,"\ref{lemma:factorization system}"]\\
-\Lax(\cat{C},\Cat{Set})\arrow[r]&\cat{D'}/\TrCat_{\boo}
+\Lax(\cat{C},\Cat{Set})\arrow[r]\arrow[d,"\Int(F)"']&\cat{D}/\TrCat_{\bo}\arrow[d,"\ref{lemma:factorization system}"]\\
+\Lax(\cat{C},\Cat{Set})\arrow[r]&\cat{D'}/\TrCat_{\bo}
 \end{tikzcd}
 $$
 commutes, where the right-hand functor is obtained using the factorization system on traced categories from Lemma~\ref{lemma:factorization system}.
