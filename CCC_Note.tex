@@ -976,7 +976,19 @@ The coherence isomorphisms of $\cat{F}$ are defined by applying $F$ to the coher
 Suppose that $\cat{C}$ and $\cat{D}$ are both compact categories. Every object of $\cat{F}$ is the image of an object in $\cat{C}$, and every object of $\cat{C}$ has a dual, hence every object of $\cat{F}$ has a dual because monoidal functors always preserve duals. This shows that the (bo,ff) factorization system lifts to $\CompCat$.
 
 Finally, if $\Cat{C}$ and $\cat{D}$ are traced, then \cite[Proposition 2.4]{Joyal-Street-Vertity} implies that there is a unique traced structure on $\cat{F}$, where the trace of a morphism in $\cat{F}$ is defined to be the trace in $\cat{D}$. The ``ff'' functor preserves the trace by construction, and the ``bo'' functor preserves the trace because $F$ does.
+\end{proof}
 
+\begin{proposition}
+  There is a contravariant functor $\XCat\to\Cat{Cat}$ sending any $\cat{C}\in\XCat$ to the category $\cat{C}/\XCat_{\bo}$.
+\end{proposition}
+\begin{proof}
+  We only need to verify the functoriality of this construction. Given a strong functor $F\colon\cat{C}\to\cat{D}$ in $\XCat$, we can define a functor $F^*\colon\cat{D}/\XCat_{\bo}\to\cat{C}/\XCat_{\bo}$. For any object $\phi\in\cat{D}/\XCat_{\bo}$, i.e.~ a bijective-on-objects functor $\phi\colon\cat{D}\to\cat{X}$, define $F^*(\phi)$ by applying the factorization system of \ref{lemma:factorization system} as in the diagram
+  \[
+  \begin{tikzcd}
+    \cat{C} \ar[r,"F"] \ar[d,"F^*(\phi)"'] & \cat{D} \ar[d,"\phi"] \\
+    \cat{X}' \ar[r,"\ff"'] & \cat{X}
+  \end{tikzcd}
+  \]
 \end{proof}
 
 \begin{proposition}\label{prop:free objects}
@@ -1122,7 +1134,7 @@ where the two maps are given by the right action of $\cat{D}$ on $M$ and by the 
 
 For any category $\cat{C}$, there is a profunctor $\Hom_{\cat{C}}\colon\op{\cat{C}}\times\cat{C}\to\Set$, and these hom profunctors act as units for the tensor product. Precisely, if $M$ is as above, there are canonical isomorphisms $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 
-Given a category $\cat{C}$, there is a monoidal category $\Prof(\cat{C},\cat{C})$ of profunctors from $\cat{C}$ to itself and morphisms of profunctors, with the tensor product given above and $\Hom_{\cat{C}}$ as the monoidal unit. We would now like to investigate monoids in this monoidal category.
+Given a category $\cat{C}$, there is a monoidal category $\Prof(\cat{C},\cat{C})$ of profunctors from $\cat{C}$ to itself and morphisms of profunctors, with the tensor product given above and $\Hom_{\cat{C}}$ as the monoidal unit. We would now like to investigate monoids in this monoidal category.\todo[author=Patrick]{Discuss the functoriality of $\Prof(\cat{C},\cat{C})$ in $\cat{C}$}
 
 Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure. The unit is a profunctor morphism $i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element $i(f)\in M(c,d)$, such that $f\cdot i(g)\cdot h = i(f\circ g\circ h)$ whenever this makes sense. The multiplication $M\otimes M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative, and satisfies the following equations whenever they make sense:
 \begin{gather*}
@@ -1132,7 +1144,7 @@ Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure. The unit is a profu
 \end{gather*}
 
 \begin{lemma}
-	There is an equivalence of categories $\Mon(\Prof(\cat{C},\cat{C}))\iso \cat{C}/\Cat{Cat}_{\bo}$ between the category of monoids in $\Prof(\cat{C},\cat{C})$ and the full subcategory of the coslice category $\cat{C}/\Cat{Cat}$ spanned by the bijective-on-objects functors.
+	There is an equivalence of categories $\Mon(\Prof(\cat{C},\cat{C}))\iso \cat{C}/\Cat{Cat}_{\bo}$ between the category of monoids in $\Prof(\cat{C},\cat{C})$ and the full subcategory of the coslice category $\cat{C}/\Cat{Cat}$ spanned by the bijective-on-objects functors. \todo[author=Patrick]{Natural in $\cat{C}$}
 \end{lemma}
 \begin{proof}
 	Simple to check. The unit provides the identities and the functor from $\cat{C}$, while the multiplication provides the composition.
@@ -1181,7 +1193,7 @@ Let $\MProf(\cat{C},\cat{C})_*$ denote the category of pointed monoidal endo-pro
 
 
 \begin{proposition}\label{Prop:unit implies monoid}
-	Let $N\in\MProf(\cat{C},\cat{C})$ be a monoidal profunctor equipped with a unit $\eta\colon\Hom_{\cat{C}}\to N$. Then $N$ has a canonical multiplication $\mu\colon N\otimes N\to N$ making $N$ a monoid in $\MProf(\cat{C},\cat{C})$. This construction is functorial, defining a functor (in fact an equivalence) $\MProf(\cat{C},\cat{C})_*\to\Mon(\MProf(\cat{C},\cat{C}))$.
+	Let $N\in\MProf(\cat{C},\cat{C})$ be a monoidal profunctor equipped with a unit $\eta\colon\Hom_{\cat{C}}\to N$. Then $N$ has a canonical multiplication $\mu\colon N\otimes N\to N$ making $N$ a monoid in $\MProf(\cat{C},\cat{C})$. This construction is natural, defining a functor (in fact an equivalence) $\MProf(\cat{C},\cat{C})_*\to\Mon(\MProf(\cat{C},\cat{C}))$ which is natural in $\cat{C}$.
 \end{proposition}
 \begin{proof}
 	We can define a multiplication on $N$ by the following formula: given any $n_1\in N(c,d)$ and $n_2\in N(d,e)$,
@@ -1273,7 +1285,7 @@ We now prove Theorem~\ref{thm:compact lax and strong} and Corollary~\ref{cor:tra
  \begin{corollary}\label{cor:ccc's lax and strong}
  	There is an equivalence of categories
   \[
-    \Lax(\cat{C},\Set)\simeq(\cat{C}/\CompCat)_{\bo}.
+    \Lax(\cat{C},\Set)\simeq\cat{C}/\CompCat_{\bo}.
   \]
  \end{corollary}
 
@@ -1293,10 +1305,11 @@ The equivalence follows easily from proposition~\ref{Prop:mon prof equivalence} 
 \end{lemma}
 
 \begin{proof}
-This is straightforward, but the calculation is \todo{has not been checked, but should be something like this} shown below:
+This is straightforward, but the calculation is shown below:
 \begin{align*}
 \Hom_{\Int(\cat{C})}((\inp{X},\outp{X}),(\inp{Y},\outp{Y}))&=\Hom_{\cat{C}}(\inp{X}\otimes\outp{Y},\outp{X}\otimes\inp{Y})\\
-&\iso\Hom_{\cat{D}}(F(\inp{X}\otimes \outp{Y}),F(\outp{X}\otimes\inp{Y}))\\
+&\iso\Hom_{\cat{D}}(F(\inp{X})\otimes F(\outp{Y}),F(\outp{X})\otimes F(\inp{Y}))\\
+&\iso\Hom_{\cat{D}}(F(\inp{X})\otimes F((\outp{X})^*),F(\inp{Y})\otimes F((\outp{Y})^*))
 \end{align*}
 
 \end{proof}
@@ -1355,14 +1368,14 @@ This equivalence is natural in the traced category $\cat{D}$, using the factoriz
 \begin{proof}
 
 By Corollary~\ref{cor:ccc's lax and strong}, there is an equivalence of categories 
-$$\Lax(\cat{C},\Set)\simeq(\cat{C}/\CompCat)_{\bo}$$
+$$\Lax(\cat{C},\Set)\simeq\cat{C}/\CompCat_{\bo}$$
 and the equivalence (\ref{dia:traced lax strong}) follows from Proposition~\ref{prop:slice boo int}. 
 
 We need to show that this equivalence is natural in the following sense. Suppose that $F\colon\cat{D'}\to\cat{D}$ is a strong traced functor, and let $\cat{C'}:=\Int(D')$. We want to show that the diagram 
 $$
 \begin{tikzcd}
 \Lax(\cat{C},\Cat{Set})\arrow[r]\arrow[d,"\Int(F)"']&\cat{D}/\TrCat_{\bo}\arrow[d,"\ref{lemma:factorization system}"]\\
-\Lax(\cat{C},\Cat{Set})\arrow[r]&\cat{D'}/\TrCat_{\bo}
+\Lax(\cat{C}',\Cat{Set})\arrow[r]&\cat{D'}/\TrCat_{\bo}
 \end{tikzcd}
 $$
 commutes, where the right-hand functor is obtained using the factorization system on traced categories from Lemma~\ref{lemma:factorization system}.
