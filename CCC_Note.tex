@@ -802,7 +802,7 @@ For a fixed set $\cat{O}$, a $\Cat{Cob}/\cat{O}$-algebra is a lax functor $I\col
 
 \section{A factorization system for strong functors}
 
-In this section we prove that an orthogonal factorization system exists on the categories $\SymMonCat$ and $\TrCat$ of symmetric monoidal (resp. traced) categories and strong functors (resp. traced functors; see Definition~\ref{def:traced functor}). 
+In this section we prove that an orthogonal factorization system exists on the categories $\SymMonCat$, $\TrCat$, and $\CompCat$ of symmetric monoidal (resp. traced, compact) categories and strong functors (resp. traced functors; see Definition~\ref{def:traced functor}). 
 
 Recall from \cite{} that an \emph{orthogonal factorization system} on a category $\cat{C}$ consists of a class $\cat{L}$ and a class $\cat{R}$ of morphisms in $\cat{C}$, called the \emph{left class} and \emph{right class} of the factorization system, respectively, satisfying the following properties:
 \begin{enumerate}
@@ -816,22 +816,34 @@ For example, there is an orthogonal factorization system on $\Cat{Cat}$ in which
 
 \begin{lemma}\label{lemma:factorization system}
 
-Let $\XCat$ denote the category of strong $\Cat{X}$-functors between $\Cat{X}$-categories,  where $\Cat{X}$ is monoidal or traced. Then $\XCat$ admits an orthogonal factorization system $(\cat{L},\cat{R})$, where the morphisms in $\cat{L}$ are bijective-on-objects functors and the morphisms in $\cat{R}$ are fully faithful functors.
+Let $\XCat$ denote the category of strong $\Cat{X}$-functors between $\Cat{X}$-categories,  where $\Cat{X}$ is plain, monoidal, traced, or compact. Then $\XCat$ admits an orthogonal factorization system $(\cat{L},\cat{R})$, where the morphisms in $\cat{L}$ are bijective-on-objects functors and the morphisms in $\cat{R}$ are fully faithful functors.
 
 \end{lemma}
 
 \begin{proof}[Sketch of proof]
 
-Let $(\cat{C},\otimes_{\cat{C}})$ and $(\cat{D},\otimes_{\cat{D}})$ be $\Cat{X}$-categories, and let $F\colon\cat{C}\to\cat{D}$ be a strong $\Cat{X}$-functor. Define an $\Cat{X}$-category $(\cat{F},\otimes_{\cat{F}})$ to act like $\cat{C}$ on objects and like $\cat{D}$ on morphisms. That is, $\Ob\cat{F}:=\Ob\cat{C}$, and $\Hom_{\cat{F}}(c_1,c_2):=\Hom_{\cat{D}}(Fc_1,Fc_2).$ On objects, put $c_1\otimes_{\cat{F}}c_2:=c_1\otimes_{\cat{C}}c_2$. Given morphisms $f_1\colon c_1\to c_1'$ and $f_2\colon c_2\to c_2'$ in $\cat{F}$, put $f_1\otimes_{\cat{F}}f_2:=f_1\otimes_{\cat{D}}f_2$, using the coherence isomorphisms.
-
-There is an induced commutative diagram of strong $\Cat{X}$-functors:
-$$
-\begin{tikzcd}[column sep=small]
-(\cat{C},\otimes_{\cat{C}})\arrow[dr, "b.o.o."']\arrow[rr, "F"]&&(\cat{D},\otimes_{\cat{D}})\\
-&(\cat{F},\otimes_{\cat{F}})\arrow[ur,"f.f."']
+We first recall the factorization system (bo,ff) on $\Cat{Cat}$. Let $\cat{C}$ and $\cat{D}$ be categories, and let $F\colon\cat{C}\to\cat{D}$ be a functor. Then there is a factorization
+\[
+\begin{tikzcd}[column sep=small, row sep=small]
+  \cat{C} \ar[rr, "F"] \ar[dr, "bo"'] && \cat{D} \\
+  & \cat{F} \ar[ur, "ff"']
 \end{tikzcd}
-$$
-such that the left-hand functor is bijective on objects and the right-hand functor is fully faithful. If $\Cat{X}$ is ``traced", then \cite[Proposition 2.4]{Joyal-Street-Vertity} implies that there is a unique traced structure on $(\cat{F},\otimes_{\cat{F}})$. The proof of orthogonality is straightforward.\todo{None of this has been rigorously checked.}
+\]
+where $\cat{F}$ is the category with $\Ob\cat{F}:=\Ob\cat{C}$, $\Hom_{\cat{F}}(c_1,c_2):=\Hom_{\cat{D}}(Fc_1,Fc_2)$, and composition defined by composition in $\cat{D}$. The ``bo'' functor is the identity on objects, and $F$ on morphisms, while the ``ff'' functor is $F$ on objects and the identity on morphisms.
+
+Note that to establish the factorization system for $\XCat$, the only thing that needs to be checked is that the factorization in $\Cat{Cat}$ lifts to $\XCat$. The isomorphism containment, closure under composition, and uniqueness of factorization all follow immediately from those same properties in $\Cat{Cat}$.
+
+Now we will show that this factorisation system lifts to $\MonCat$. If $\cat{C}$ and $\cat{D}$ are monoidal categories, and $F$ is a strong monoidal functor, then we can define a monoidal structure on $\cat{F}$. On objects, define $c_1\otimes_{\cat{F}}c_2:=c_1\otimes_{\cat{C}}c_2$ with monoidal unit $I_{\cat{F}}:=I_{\cat{C}}$, and given morphisms $f_1\colon c_1\to c_1'$ and $f_2\colon c_2\to c_2'$ in $\cat{F}$, i.e.~morphisms $f_1\colon Fc_1\to Fc_1'$ and $f_2\colon Fc_2\to Fc_2'$ in $\cat{D}$, define $f_1\otimes_{\cat{F}}f_2$ to be the composition
+\[
+\begin{tikzcd}
+  F(c_1\otimes_{\cat{C}}c_2) \ar[r,"\mu^{-1}"] & F(c_1)\otimes_{\cat{D}}F(c_2) \ar[r,"f_1\otimes_{\cat{D}}f_2"] & F(c_1')\otimes_{\cat{D}}F(c_2') \ar[r,"\mu"] & F(c_1'\otimes_{\cat{C}}c_2').
+\end{tikzcd}
+\]
+The coherence isomorphisms of $\cat{F}$ are defined by applying $F$ to the coherence isomorphisms of $\cat{C}$, e.g.~the left unitor $l_{\cat{F}}\colon c\to I_{\cat{C}}\otimes_{\cat{C}}c$ is defined to be $F(l_{\cat{C}})\colon F(c)\to F(I_{\cat{C}}\otimes_{\cat{C}}c)$. The monoidal category axioms can then be checked for $\cat{F}$ using the fact that $F$ is strong monoidal. Finally, the ``bo'' functor is trivialy strict monoidal, and the ``ff'' functor has a strong monoidal structure using the same coherence isomorphsisms as $F$.
+
+Suppose that $\cat{C}$ and $\cat{D}$ are both compact categories. Every object of $\cat{F}$ is the image of an object in $\cat{C}$, and every object of $\cat{C}$ has a dual, hence every object of $\cat{F}$ has a dual because monoidal functors always preserve duals. This shows that the (bo,ff) factorization system lifts to $\CompCat$.
+
+Finally, if $\Cat{C}$ and $\cat{D}$ are ``traced", then \cite[Proposition 2.4]{Joyal-Street-Vertity} implies that there is a unique traced structure on $\cat{F}$, where the trace of a morphism in $\cat{F}$ is defined to be the trace in $\cat{D}$. The ``ff'' functor preserves the trace by construction, and the ``bo'' functor preserves the trace because $F$ does.
 
 \end{proof}
 
