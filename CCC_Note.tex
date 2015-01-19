@@ -54,69 +54,7 @@ Global todo's:
 \chapter{Introduction}
 
 Traced symmetric monoidal categories, hereafter \emph{traced categories}, have been used to model processes with feedback (\cite{http://arxiv.org/pdf/1401.5113v1.pdf})  or operators with fixed points (\cite{http://arxiv.org/pdf/1107.6032.pdf}). A graphical calculus for traced categories was developed by Joyal, Street, and Verity (\cite{JoyalStreetVerity}), in which string diagrams of the form
-%
-%
-%WITHOUT OUTER BOX:
-%
-%
-%\begin{align}\label{dia:string diagram}
-%\begin{tikzpicture}
-%	%little box 1
-%	\path(2,1.5);
-%	\blackbox{(2,2)}{2}{1}{$X_1$}{.5}
-%	%little box 2
-%	\path(6,1.5);
-%	\blackbox{(2,2)}{2}{2}{$X_2$}{.5}
-%	%wires
-%	\directarc{(4.25,2.5)}{(5.75,2.16667)} % X_1 -> X_2
-%	\directarc{(0.35,2.833333)}{(1.75,2.83333)} % Y -> X_1
-%	\fancyarc{(0.35,4)}{(5.75,2.83333)}{-35}{16} % Y -> X_2
-%	\directarc{(8.25,2.8333)}{(9.65,2.83333)} % X_2 -> Y
-%	\fancyarc{(1.75,2.16667)}{(8.25,2.16667)}{20}{-45} % X_2 -> X_1
-%\end{tikzpicture}
-%\end{align}
-%
-%
-%WITH OUTER BOX:
-%
-%
-% \begin{align}\label{dia:string diagram}
-% \begin{tikzpicture}
-%    %big box
-% 	\path(0,0);
-% 	\dashblackbox{(10,5)}{2}{1}{$Y$}{.7}
-% 	    %inner wires
-% 	        \node at (.4,3.6) {\tiny $\inp{Y}_{a}$};
-% 	        \node at (.4,1.9) {\tiny $\inp{Y}_{b}$};
-% 	    %outer wire
-% 	        \node at (9.6,2.75) {\tiny $\outp{Y}_a$};
-% 	%little box 1
-% 	\path(2,1.5);
-% 	\blackbox{(2,2)}{2}{1}{$X_1$}{.5}
-% 	    %tank info
-% 	    %inner wires
-% 	        \node at (1.75,3.03) {\tiny $\inp{X}_{1a}$};
-% 	        \node at (1.75,2.35) {\tiny $\inp{X}_{1b}$};
-% 	    %outer wire
-% 	        \node at (4.33,2.68) {\tiny $\outp{X}_{1c}$};
-% 	%little box 2
-% 	\path(6,1.5);
-% 	\blackbox{(2,2)}{2}{2}{$X_2$}{.5}
-% 	    %tank info
-% 	    %inner wires
-% 	        \node at (5.75,3.03) {\tiny $\inp{X}_{2a}$};
-% 	        \node at (5.75,2.35) {\tiny $\inp{X}_{2b}$};
-% 	    %outer wires
-% 	        \node at (8.33,3.03) {\tiny $\outp{X}_{2c}$};
-% 	        \node at (8.33,2.35) {\tiny $\outp{X}_{2d}$};
-% 	%wires
-% 	\directarc{(4.25,2.5)}{(5.75,2.16667)} % X_1 -> X_2
-% 	\directarc{(0.35,1.6667)}{(1.75,2.83333)} % Y -> X_1
-% 	\fancyarc{(0.35,3.3333)}{(5.75,2.83333)}{-40}{25} % Y -> X_2
-% 	\directarc{(8.25,2.8333)}{(9.65,2.5)} % X_2 -> Y
-% 	\fancyarc{(1.75,2.16667)}{(8.25,2.16667)}{20}{-45} % X_2 -> X_1
-%   \end{tikzpicture}
-% \end{align}
+
 
 \begin{equation}\label{dia:string diagram}
 \begin{tikzpicture}[wiring diagram]
@@ -877,7 +815,7 @@ Wiring diagrams seem to be a new way to visualize morphisms in the symmetric mon
   \node [below=0 of X2c, "$\outp{X}_{2d}$" left] (X2d) {$+$};
   \node [below right=1.5 and 2 of X1a, "$\inp{Y}_a$" right] (Ya) {$-$};
   \node [below=1.5 of Ya, "$\inp{Y}_b$" right] (Yb) {$-$};
-  \node [below=1.5 of Yb, "$\outp{Y}_a$" right] (Yc) {$+$};
+  \node [below=1.5 of Yb, "$\outp{Y}_c$" right] (Yc) {$+$};
   \draw (X1a) to (Yb);
   \draw (X1b) to[in=0] (X2d);
   \draw (X1c) to[in=0] (X2b);
