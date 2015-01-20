@@ -91,22 +91,13 @@ There is actually a bit more data in a string (or wiring) diagram for a traced c
 
 In the table below, we record these two interpretations of a string diagram. Note the ``degree shift'' between the second and third columns.
 \begin{center}
-% \begin{tabular}{| l | l | l |}
-% \hline
-% \multicolumn{3}{|c|}{Interpretations of string diagrams}\\\hline
-% String diagram & Traced category $\cat{C}$ & $\Cat{Cob}/\cat{O}$\\\bhline
-% Wire label set, $\cat{O}$&Objects, $\cat{O}:=\Ob(\cat{C})$&Label set, $\cat{O}$\\
-% Box & Morphism & Object (oriented 0-mfd over $\cat{O}$)\\
-% String diagram & Composition & Morphism (Cobordism over $\cat{O}$)\\
-% Nesting & Axioms of TSMCs & Composition\\\hline
-% \end{tabular}
 \begin{tabular}{lll}
 \toprule
 \multicolumn{3}{c}{Interpretations of string diagrams} \\
 \midrule
 String diagram & Traced category $\cat{C}$ & $\Cat{Cob}/\cat{O}$ \\
 \midrule
-Wire label set, $\cat{O}$ & Objects, $\cat{O}:=\Ob(\cat{C})$ & Label set, $\cat{O}$ \\
+Wire label set, $\cat{O}$ & Objects, $\cat{O}\coloneqq\Ob(\cat{C})$ & Label set, $\cat{O}$ \\
 Box \tikz[wiring diagram,bb port sep=1,bby=2.4pt,bb min width=5.5pt,bb port length=2pt,bb rounded corners=1pt,baseline=(B.south)]{\node[bb={1}{2}] (B) {};}
   & Morphism & Object (oriented 0-mfd over $\cat{O}$) \\
 String diagram & Composition & Morphism (Cobordism over $\cat{O}$) \\
@@ -387,11 +378,11 @@ Let $\SymMonCat$ denote the bicategory of symmetric monoidal categories and stro
 % \end{proof}
 
 
-Let $(\cat{M},\otimes,I)$ be a symmetric monoidal category where for any $X,Y\in\Ob(\cat{M})$ we write $\gamma_{X,Y}\colon X\otimes Y\To{\sim} Y\otimes X$ for the distinguished symmetry isomorphisms. Recall that we have $\gamma_{Y,X}=\gamma_{X,Y}^{-1}$.  We define the {\em monoid of scalars in $\cat{M}$} to be the set $S_{\cat{M}}:=\Hom(I,I)$ with multiplication given by composition; in fact $S_{\cat{M}}$ is a commutative monoid.  
+Let $(\cat{M},\otimes,I)$ be a symmetric monoidal category where for any $X,Y\in\Ob(\cat{M})$ we write $\gamma_{X,Y}\colon X\otimes Y\To{\sim} Y\otimes X$ for the distinguished symmetry isomorphisms. Recall that we have $\gamma_{Y,X}=\gamma_{X,Y}^{-1}$.  We define the {\em monoid of scalars in $\cat{M}$} to be the set $S_{\cat{M}}\coloneqq\Hom(I,I)$ with multiplication given by composition; in fact $S_{\cat{M}}$ is a commutative monoid.  
 
 There is an action of $S_{\cat{M}}$ on the set $\Hom_{\cat{M}}(X,Y)$ for each $(X,Y)\in\Ob(\cat{M}^{op}\times\cat{M})$, where $s\in S_{\cat{M}}$ acts on a morphism $f\colon X\to Y$ by sending it to the composite morphism
 $$s\bullet f\colon X\to I\otimes X\To{s\otimes f}I\otimes Y\to Y.$$
-We write $|X|:=\Hom(I,X)$ for the set of \emph{elements} of $X$. The functor $|\cdot|=\Hom(I,\cdot)\colon\cat{M}\to\Set$ is an $\cat{M}$-algebra, i.e., a lax monoidal functor, with unit map
+We write $|X|\coloneqq\Hom(I,X)$ for the set of \emph{elements} of $X$. The functor $|\cdot|=\Hom(I,\cdot)\colon\cat{M}\to\Set$ is an $\cat{M}$-algebra, i.e., a lax monoidal functor, with unit map
 \[\eta\colon\{1\}\To{\id_{I}}\Hom(I,I)\]
 and multiplication map
 \[\mu\colon\Hom(I,X)\otimes\Hom(I,X')\To{\otimes}\Hom(I\otimes I,X\otimes X')\iso\Hom(I,X\otimes X').\]
@@ -548,7 +539,7 @@ for $U,X,Y\in\Ob(\cat{M})$ satisfying the following axioms:
  \[\Tr^X_{X,X}\big[\gamma_{X,X}\big]=\id_X.\]
 \end{description}
 %ERASED
-For an object $X$ in a traced category $\cat{M}$ we write $\dim(X):=\Tr^X_{I,I}\big[\id_X\big]\in S_{\cat{M}}$ for the {\em dimension} of $X$.  Note also that for any endomorphism $f\colon X\to X$ there is a scalar $s_f=\Tr^X_{I,I}[f]\in S_{\cat{M}}$.
+For an object $X$ in a traced category $\cat{M}$ we write $\dim(X)\coloneqq\Tr^X_{I,I}\big[\id_X\big]\in S_{\cat{M}}$ for the {\em dimension} of $X$.  Note also that for any endomorphism $f\colon X\to X$ there is a scalar $s_f=\Tr^X_{I,I}[f]\in S_{\cat{M}}$.
 %ERASED
 \begin{proposition}\label{prop:dinaturality}\mbox{}
 Let $\cat{M}$ be a symmetric monoidal category.
@@ -675,7 +666,7 @@ I\otimes X^*\arrow[d,"\eta_X\otimes X^*"']&X^*\otimes I\arrow[u,"\cong"']\\
 $$
 
 Every compact category $\cat{C}$ has a canonical trace structure, defined on a morphism $f\colon U\otimes X\to U\otimes Y$ to morally be $\epsilon_U\circ f\circ \eta_U$. More precisely, if $s_{A,B}$ is the symmetry isomorphism, one defines
-$$\Tr^U_{X,Y}[f]:=(\epsilon_U\otimes Y)\circ (s_{U^*,U}\otimes Y)\circ (U^*\otimes f)\circ (\eta_U\otimes X)$$
+$$\Tr^U_{X,Y}[f]\coloneqq(\epsilon_U\otimes Y)\circ (s_{U^*,U}\otimes Y)\circ (U^*\otimes f)\circ (\eta_U\otimes X)$$
 %\todo[color=yellow]{does this formula make sense as written? i.e. it doesn't seem to give a map $X\to Y$?} 
 Thus we have a functor 
 $U\colon\CompCat\to\TrCat$. It is shown in \cite{Joyal-Street-Verity} that this functor is the right half of an adjunction 
@@ -689,10 +680,10 @@ the left half of which we describe now describe.
 For a traced category $\cat{M}$ let $\widetilde{\cat{M}}=\Int(\cat{M})$ denote the category with objects given by pairs $(\inp{X},\outp{X})$ where $\inp{X},\outp{X}\in \Ob(\cat{M})$ and morphisms given by 
 \[\Hom_{\widetilde{\cat{M}}}\big((\inp{X},\outp{X}),(\inp{Y},\outp{Y})\big)=\Hom_{\cat{M}}(\inp{X}\otimes \outp{Y},\outp{X}\otimes \inp{Y}).\]
 For morphisms $\Phi:(\inp{X},\outp{X})\to(\inp{Y},\outp{Y})$ and $\Psi:(\inp{Y},\outp{Y})\to(\inp{Z},\outp{Z})$ in $\widetilde{\cat{M}}$ we define their composition to be
-\[\Psi\circ\Phi:=\Tr^{\outp{Y}}_{\inp{X}\otimes \outp{Z},\outp{X}\otimes \inp{Z}}\Big[\big(\gamma_{\outp{X},\outp{Y}}\otimes \inp{Z}\big)\circ\big(\outp{X}\otimes\Psi\big)\circ\big(\Phi\otimes \outp{Z}\big)\circ\big(\gamma_{\outp{Y},\inp{X}}\otimes \outp{Z}\big)\Big].\]
+\[\Psi\circ\Phi\coloneqq\Tr^{\outp{Y}}_{\inp{X}\otimes \outp{Z},\outp{X}\otimes \inp{Z}}\Big[\big(\gamma_{\outp{X},\outp{Y}}\otimes \inp{Z}\big)\circ\big(\outp{X}\otimes\Psi\big)\circ\big(\Phi\otimes \outp{Z}\big)\circ\big(\gamma_{\outp{Y},\inp{X}}\otimes \outp{Z}\big)\Big].\]
 It is shown in \cite{JoyalStreetVerity} that $\widetilde{\cat{M}}$ is a compact  category whose tensor is given by
-\[(\inp{X},\outp{X})\odot(\inp{Y},\outp{Y}):=(\inp{X}\otimes \inp{Y},\outp{X}\otimes \outp{Y})\]
-with unit object $\tilde I:=(I,I)$ and duality $(\inp{X},\outp{X})^\vee:=(\outp{X},\inp{X})$.  The following is immediate from the definitions.
+\[(\inp{X},\outp{X})\odot(\inp{Y},\outp{Y})\coloneqq(\inp{X}\otimes \inp{Y},\outp{X}\otimes \outp{Y})\]
+with unit object $\tilde I\coloneqq(I,I)$ and duality $(\inp{X},\outp{X})^\vee\coloneqq(\outp{X},\inp{X})$.  The following is immediate from the definitions.
 
 \begin{lemma}\todo{This lemma has a sign-error. Either change definition of $\Hom_{\widetilde{\cat{M}}}$ or lemma statement.}
 
@@ -726,11 +717,11 @@ The objects of the free monoidal category $F_M(\cat{C})$ are lists of objects in
 The objects of the free symmetric monoidal category $F_{SM}(\cat{C})$ are again lists of objects in $\cat{C}$, however morphisms now come equipped with a permutation.  More formally, a morphism from $(n,X)$ to $(n,Y)$ is a pair $(f,\pi)$ where $f\in\prod_{i=1}^n\Hom_{\cat{C}}(X_i,Y_{\pi(i)})$ and $\pi\in S(n)$ is a permutation.  By abuse of notation a permutation can be thought of as an isomorphism $\pi:Y_1\otimes\cdots\otimes Y_n\To{\sim} Y_{\pi(1)}\otimes\cdots\otimes Y_{\pi(n)}$ and thus we may think of the pair $(f,\pi)$ as the composite 
 \[\pi^{-1}\circ \bigotimes_{i=1}^n f_i:\bigotimes_{i=1}^n X_i\to\bigotimes_{i=1}^n Y_i.\]
 The symmetry isomorphisms are subject to the naturality condition $\otimes_{i=1}^n g_{\pi(i)}\circ\pi=\pi\circ\otimes_{i=1}^n g_i$ for functions $g_i:Y_i\to Z_i$.  Then the composition of morphisms is given by 
-$$(g,\sigma)\circ(f,\pi):=\Big(\bigotimes_{i=1}^n (g_{\pi(i)}\circ f_i),\sigma\circ\pi\Big)$$ 
+$$(g,\sigma)\circ(f,\pi)\coloneqq\Big(\bigotimes_{i=1}^n (g_{\pi(i)}\circ f_i),\sigma\circ\pi\Big)$$ 
 and the tensor is given by 
-$$(f,\pi)\otimes(g,\sigma):=(f\otimes g,\pi\otimes\sigma).$$
+$$(f,\pi)\otimes(g,\sigma)\coloneqq(f\otimes g,\pi\otimes\sigma).$$
 
-The objects of the free traced symmetric monoidal category $F_{Tr}(\cat{C})$ are once again lists of objects in $\cat{C}$.  To describe the morphisms we need more notation.  Write $L[\cat{C}]$ for the set of \emph{loops} of $\cat{C}$, i.e. the set of all composable sequences of morphisms $A_1\To{f_1} A_2\To{f_2}\cdots\To{f_{m-1}} A_m\To{f_m} A_1$ in $\cat{C}$.  Because we are in the traced setting each such sequence $f$ determines a scalar $s_f:=\Tr_{I,I}^{A_1}[f_m\circ\cdots\circ f_1]$ which is invariant under cyclic permutation of the morphisms, thus we only consider loops in $\cat{C}$ up to cyclic rotation.  Now a morphism in $F_{Tr}(\cat{C})$ is a triple $(f,\pi,S)$ where $(f,\pi)$ is a morphism in $F_{SM}(\cat{C})$ and $S$ is an element of the free commutative monoid generated by $L[\cat{C}]$.  The composition and tensor of morphisms are given by
+The objects of the free traced symmetric monoidal category $F_{Tr}(\cat{C})$ are once again lists of objects in $\cat{C}$.  To describe the morphisms we need more notation.  Write $L[\cat{C}]$ for the set of \emph{loops} of $\cat{C}$, i.e. the set of all composable sequences of morphisms $A_1\To{f_1} A_2\To{f_2}\cdots\To{f_{m-1}} A_m\To{f_m} A_1$ in $\cat{C}$.  Because we are in the traced setting each such sequence $f$ determines a scalar $s_f\coloneqq\Tr_{I,I}^{A_1}[f_m\circ\cdots\circ f_1]$ which is invariant under cyclic permutation of the morphisms, thus we only consider loops in $\cat{C}$ up to cyclic rotation.  Now a morphism in $F_{Tr}(\cat{C})$ is a triple $(f,\pi,S)$ where $(f,\pi)$ is a morphism in $F_{SM}(\cat{C})$ and $S$ is an element of the free commutative monoid generated by $L[\cat{C}]$.  The composition and tensor of morphisms are given by
 \[(g,\sigma,T)\circ(f,\pi,S)=\Big(\bigotimes_{i=1}^n (g_{\pi(i)}\circ f_i),\sigma\circ\pi,S\cdot T\Big)\]
 and
 \[(f,\pi,S)\otimes(g,\sigma,T)=(f\otimes g,\pi\otimes\sigma,S\cdot T).\]
@@ -859,11 +850,11 @@ We first recall the factorization system $(\bo,\ff)$ on $\Cat{Cat}$. Let $\cat{C
   & \cat{F} \ar[ur, "\ff"']
 \end{tikzcd}
 \]
-where $\cat{F}$ is the category with $\Ob\cat{F}:=\Ob\cat{C}$, $\Hom_{\cat{F}}(c_1,c_2):=\Hom_{\cat{D}}(Fc_1,Fc_2)$, and composition defined by composition in $\cat{D}$. The ``bo'' functor is the identity on objects, and $F$ on morphisms, while the ``ff'' functor is $F$ on objects and the identity on morphisms.
+where $\cat{F}$ is the category with $\Ob\cat{F}\coloneqq \Ob\cat{C}$, $\Hom_{\cat{F}}(c_1,c_2)\coloneqq\Hom_{\cat{D}}(Fc_1,Fc_2)$, and composition defined by composition in $\cat{D}$. The ``bo'' functor is the identity on objects, and $F$ on morphisms, while the ``ff'' functor is $F$ on objects and the identity on morphisms.
 
 Note that to establish the factorization system for $\XCat$, the only thing that needs to be checked is that the factorization in $\Cat{Cat}$ lifts to $\XCat$. The isomorphism containment, closure under composition, and uniqueness of factorization all follow immediately from those same properties in $\Cat{Cat}$.
 
-Now we will show that this factorization system lifts to $\MonCat$. If $\cat{C}$ and $\cat{D}$ are monoidal categories, and $F$ is a strong monoidal functor, then we can define a monoidal structure on $\cat{F}$. On objects, define $c_1\otimes_{\cat{F}}c_2:=c_1\otimes_{\cat{C}}c_2$ with monoidal unit $I_{\cat{F}}:=I_{\cat{C}}$, and given morphisms $f_1\colon c_1\to c_1'$ and $f_2\colon c_2\to c_2'$ in $\cat{F}$, i.e.~morphisms $f_1\colon Fc_1\to Fc_1'$ and $f_2\colon Fc_2\to Fc_2'$ in $\cat{D}$, define $f_1\otimes_{\cat{F}}f_2$ to be the composition
+Now we will show that this factorization system lifts to $\MonCat$. If $\cat{C}$ and $\cat{D}$ are monoidal categories, and $F$ is a strong monoidal functor, then we can define a monoidal structure on $\cat{F}$. On objects, define $c_1\otimes_{\cat{F}}c_2\coloneqq c_1\otimes_{\cat{C}}c_2$ with monoidal unit $I_{\cat{F}}\coloneqq I_{\cat{C}}$, and given morphisms $f_1\colon c_1\to c_1'$ and $f_2\colon c_2\to c_2'$ in $\cat{F}$, i.e.~morphisms $f_1\colon Fc_1\to Fc_1'$ and $f_2\colon Fc_2\to Fc_2'$ in $\cat{D}$, define $f_1\otimes_{\cat{F}}f_2$ to be the composition
 \[
 \begin{tikzcd}
   F(c_1\otimes_{\cat{C}}c_2) \ar[r,"\mu^{-1}"] & F(c_1)\otimes_{\cat{D}}F(c_2) \ar[r,"f_1\otimes_{\cat{D}}f_2"] & F(c_1')\otimes_{\cat{D}}F(c_2') \ar[r,"\mu"] & F(c_1'\otimes_{\cat{C}}c_2').
@@ -877,14 +868,23 @@ Finally, if $\Cat{C}$ and $\cat{D}$ are traced, then \cite[Proposition 2.4]{Joya
 \end{proof}
 
 \begin{proposition}
-  There is a contravariant functor $\XCat\to\Cat{Cat}$ sending any $\cat{C}\in\XCat$ to the category $\cat{C}/\XCat_{\bo}$.
+  There is a contravariant pseudo-functor $\XCat\to\Cat{Cat}$ sending any $\cat{C}\in\XCat$ to the category $\cat{C}/\XCat_{\bo}$.
 \end{proposition}
 \begin{proof}
-  We only need to verify the functoriality of this construction. Given a strong functor $F\colon\cat{C}\to\cat{D}$ in $\XCat$, we can define a functor $F^*\colon\cat{D}/\XCat_{\bo}\to\cat{C}/\XCat_{\bo}$. For any object $\phi\in\cat{D}/\XCat_{\bo}$, i.e.~ a bijective-on-objects functor $\phi\colon\cat{D}\to\cat{X}$, define $F^*(\phi)$ by applying the factorization system of \ref{lemma:factorization system} as in the diagram
+  We only need to verify the functoriality of this construction. Given a strong functor $F\colon\cat{C}\to\cat{D}$ in $\XCat$, we can define a functor $F^*\colon\cat{D}/\XCat_{\bo}\to\cat{C}/\XCat_{\bo}$. For any object $\phi\in\cat{D}/\XCat_{\bo}$, i.e.~a bijective-on-objects functor $\phi\colon\cat{D}\to\cat{X}$, define $F^*(\phi)$ by applying the factorization system of \ref{lemma:factorization system} as in the diagram
   \[
   \begin{tikzcd}
     \cat{C} \ar[r,"F"] \ar[d,"F^*(\phi)"'] & \cat{D} \ar[d,"\phi"] \\
     \cat{X}' \ar[r,"\ff"'] & \cat{X}
+  \end{tikzcd}
+  \]
+  Given another strong functor $G\colon\cat{D}\to\cat{E}$, the fact that $(G\circ F)^*\iso F^*\circ G^*$ follows from the uniqueness of the factorization of $\psi\circ G\circ F$ in the diagram
+  \[
+  \begin{tikzcd}
+    \cat{C} \ar[r,"F"] \ar[d] 
+      & \cat{D} \ar[r,"G"] \ar[d,"G^*(\psi)"] 
+      & \cat{E} \ar[d,"\psi"] \\
+    \cat{X}'' \ar[r,"\ff"'] & \cat{X}' \ar[r,"\ff"'] & \cat{X}
   \end{tikzcd}
   \]
 \end{proof}
@@ -937,13 +937,13 @@ For any set $\cat{O}$, let $\SList(\cat{O})$ denote the set of symmetric lists i
  \bigskip
 
  Let $\cat{M}$ be a traced category with objects $\SList(\cat{O})$. We will define a $\Cat{Cob}/\cat{O}$-algebra $\cat{P}=R(\cat{M})\colon\Cat{Cob}/\cat{O}\to\Cat{Set}$ as follows. For an object $X\in\Ob(\Cat{Cob}/\cat{O})$, set 
-$$\cat{P}(X):=\Hom_{\cat{M}}(\vinp{X},\voutp{X}).$$
+$$\cat{P}(X)\coloneqq\Hom_{\cat{M}}(\vinp{X},\voutp{X}).$$
 We next consider morphisms.
 
 Following Proposition~\ref{prop:set theoretic cob1} (borrow notation/setup from Abramsky instead) a morphism $\Phi\colon X\longrightarrow Y$ consists of a typed bijection 
 $$\varphi\colon\inp{X}\sqcup \outp{Y}\xrightarrow{\iso}\outp{X}\sqcup \inp{Y},$$ 
 together with a typed finite set $S$. Given an element $f\in\cat{P}(X)$ we must construct $\cat{P}(\Phi)(f)\in\cat{P}(Y)$. Let $\dim(\overline{S})=\textnormal{Tr}^{\overline{S}}_{I,I}\big[\id_{\overline{S}}\big]\in\cat{S}_\cat{M}$. Then we use the formula
-$$\cat{P}(\Phi)(f):=
+$$\cat{P}(\Phi)(f)\coloneqq
 \textnormal{Tr}^{\voutp{X}}_{\vinp{Y},\voutp{Y}}\Big[\big(f\otimes\id_{\voutp{Y}}\big)\circ\overline{\varphi}\Big]
 \otimes\dim(\overline{S}).  
 $$
@@ -1032,7 +1032,18 @@ where the two maps are given by the right action of $\cat{D}$ on $M$ and by the 
 
 For any category $\cat{C}$, there is a profunctor $\Hom_{\cat{C}}\colon\op{\cat{C}}\times\cat{C}\to\Set$, and these hom profunctors act as units for the tensor product. Precisely, if $M$ is as above, there are canonical isomorphisms $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 
-Given a category $\cat{C}$, there is a monoidal category $\Prof(\cat{C},\cat{C})$ of profunctors from $\cat{C}$ to itself and morphisms of profunctors, with the tensor product given above and $\Hom_{\cat{C}}$ as the monoidal unit. We would now like to investigate monoids in this monoidal category.\todo[author=Patrick]{Discuss the functoriality of $\Prof(\cat{C},\cat{C})$ in $\cat{C}$}
+Given a category $\cat{C}$, there is a monoidal category $\Prof(\cat{C},\cat{C})$ of profunctors from $\cat{C}$ to itself and morphisms of profunctors, with the tensor product given above and $\Hom_{\cat{C}}$ as the monoidal unit. Moreover, this construction is functorial, being the object part of a functor
+\[
+  \EndoProf\colon \op{\Cat{Cat}} \to \MonCatLax.
+\]
+To see the action of this functor on morphisms, consider a functor $F\colon\cat{C}\to\cat{D}$. We want to define a lax functor 
+\[
+  F^*\colon\Prof(\cat{D},\cat{D})\to\Prof(\cat{C},\cat{C}).
+\]
+Given a profunctor $M\in\Prof(\cat{D},\cat{D})$, define $F^*(M)\coloneqq M(F,F)$. If $\phi\colon M\Rightarrow N$ is a profunctor morphism in $\Prof(\cat{D},\cat{D})$, define $F^*(\phi)\colon M(F,F)\to N(F,F)$ by sending $m\in M(Fc_1,Fc_2)$ to $\phi(m)\in N(Fc_1,Fc_2)$.
+\todo[author=Patrick]{Finish}
+
+We would now like to investigate monoids in this monoidal category.
 
 Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure. The unit is a profunctor morphism $i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element $i(f)\in M(c,d)$, such that $f\cdot i(g)\cdot h = i(f\circ g\circ h)$ whenever this makes sense. The multiplication $M\otimes M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative, and satisfies the following equations whenever they make sense:
 \begin{gather*}
@@ -1269,7 +1280,7 @@ By Corollary~\ref{cor:ccc's lax and strong}, there is an equivalence of categori
 $$\Lax(\cat{C},\Set)\simeq\cat{C}/\CompCat_{\bo}$$
 and the equivalence (\ref{dia:traced lax strong}) follows from Proposition~\ref{prop:slice boo int}. 
 
-We need to show that this equivalence is natural in the following sense. Suppose that $F\colon\cat{D'}\to\cat{D}$ is a strong traced functor, and let $\cat{C'}:=\Int(D')$. We want to show that the diagram 
+We need to show that this equivalence is natural in the following sense. Suppose that $F\colon\cat{D'}\to\cat{D}$ is a strong traced functor, and let $\cat{C'}\coloneqq\Int(D')$. We want to show that the diagram 
 $$
 \begin{tikzcd}
 \Lax(\cat{C},\Cat{Set})\arrow[r]\arrow[d,"\Int(F)"']&\cat{D}/\TrCat_{\bo}\arrow[d,"\ref{lemma:factorization system}"]\\
