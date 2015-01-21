@@ -347,7 +347,9 @@ Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect ou
 
 \chapter{Categorical preliminaries}\label{sec:traced categories}
 
-\section{Monoidal categories}
+In this section we remind the reader of some categorical preliminaries. Basic definitions and facts about monoidal, traced, and compact categories, lax and strong functors, and the Int construction are given in Sections~\ref{sec:prelim monoidal},~through~\ref{sec:compact and int}. The fact that the free compact category on a set has an algebraic description in terms of bijections between signed sets, and the fact that it has a geometric description in terms of 1-dimensional oriented cobordisms is recalled in Section~\ref{sec:free and geometry}. In Section~\ref{sec:factorization system} we discuss an orthogonal factorization system on our three flavors of monoidal categories, which we will use repeatedly throughout the rest of the paper. Finally, in Section~\ref{sec:profunctors}, we discuss profunctors between categories and monoidal categories.
+
+\section{Monoidal categories}\label{sec:prelim monoidal}\todo[author=David]{Is all this really about symmetric monoidal categories? How do we deal with this?}
 
 Let $\cat{C}$ and $\cat{D}$ be monoidal categories. Recall that a functor $F\colon\cat{C}\to\cat{D}$ is called \emph{lax monoidal} if it is equipped with a morphism
 \[
@@ -885,11 +887,11 @@ These are all shown in \cite{Joyal-Street-Verity}.
 %
 
 
-\section{Free traced and compact categories, and geometry}
+\section{Free traced and compact categories, and geometry}\label{sec:free and geometry}
 
 \begin{proposition}
 
-Let $\cat{C}$ be a category. The free traced category on $\cat{C}$ is... The free compact category on $\cat{C}$ is $\Fun{Int}(...)$.\todo{Fill this in}
+Let $\cat{C}$ be a category. The free traced category on $\cat{C}$ is... The free compact category on $\cat{C}$ is $\Int(...)$.\todo{Fill this in}
 
 \end{proposition}
 
@@ -910,7 +912,7 @@ See Kelly, Laplaza ``Coherence for compact closed categories'' and Freyd, Yetter
 \end{proof}
 
 
-\section{A factorization system for strong functors}
+\section{A factorization system for strong functors}\label{sec:factorization system}
 
 In this section we prove that an orthogonal factorization system exists on the categories $\SymMonCat$, $\TrCat$, and $\CompCat$ of symmetric monoidal (resp. traced, compact) categories and strong functors (resp. traced functors; see Definition~\ref{def:traced functor}). 
 
@@ -1012,7 +1014,7 @@ The right-hand functor is fully faithful and clearly surjective, so it is an equ
 
 \end{proof}
 
-\section{Profunctors}
+\section{Profunctors}\label{sec:profunctors}
 
 Let $\cat{C}$ and $\cat{D}$ be categories. Recall that a profunctor $M$ from $\cat{C}$ to $\cat{D}$, written
 \[
