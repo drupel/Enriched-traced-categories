@@ -120,7 +120,11 @@ This will be proved in Section~\ref{sec:proof of A}, but we sketch the equivalen
 
 First, for each box $(\inp{X},\outp{X})$ that might appear in a string diagram, both $P$ and $\cat{C}$ require a set, $P(\inp{X},\outp{X})$ and $\Hom_{\cat{C}}(\inp{X},\outp{X})$, respectively. Second, for each string diagram, both $P$ and $\cat{C}$ require a function: an action on morphisms, in the case of $P$, and a formula for performing the required compositions, tensors, and traces, in the case of $\cat{C}$. The condition that $P$ is functorial corresponds to the fact that $\cat{C}$ satisfies the axioms of traced categories. 
 
-To make precise the equivalence of Theorem~\ref{thm:traced as cob-alg} we will specify here how to construct a $(\Cat{Cob}/\Ob\cat{C})$-algebra from a traced category $\cat{C}$.  First, given a set $Z$ over $\Ob\cat{C}$ we will abuse notation slightly and denote by the same symbol $Z$ the tensor of all objects in $\cat{C}$ labeling elements of $Z$.  Then for an oriented 0-manifold $X=X^-\sqcup X^+$ over  we set $P(X)=\Hom_{\cat{C}}(X^-,X^+)$.  Given a cobordism $\Phi:X\to Y$ we may find $A,B,C,D,E\in\Ob\cat{C}$ such that $X^-\cong C\otimes A$, $X^+=C\otimes B$, $Y^-\cong A\otimes D$, $Y^+\cong B\otimes D$ and $E$ is the tensor of all labels on floating loops in $\Phi$, thus $\Phi$ is essentially equivalent to the cobordism below.  With this notation, for $f\in P(X)$ we define $P(\Phi)(f)=\Tr_{A,B}^C\big[f\big]\otimes D\otimes\dim(E)$.  This can be visualized via the following string diagram (where we have drawn a left trace).
+To make precise the equivalence of Theorem~\ref{thm:traced as cob-alg} we will specify here how to construct a $(\Cat{Cob}/\Ob\cat{C})$-algebra from a traced category $\cat{C}$.  First, given a set $Z$ over $\Ob\cat{C}$ we will abuse notation slightly and denote by the same symbol $Z$ the tensor of all objects in $\cat{C}$ labeling elements of $Z$.  Then for an oriented 0-manifold $X=X^-\sqcup X^+$ over  we set $P(X)=\Hom_{\cat{C}}(X^-,X^+)$.  Given a cobordism $\Phi:X\to Y$ we may find $A,B,C,D,E\in\Ob\cat{C}$ such that $X^-\cong C\otimes A$, $X^+=C\otimes B$, $Y^-\cong A\otimes D$, $Y^+\cong B\otimes D$ and $E$ is the tensor of all labels on floating loops in $\Phi$, thus $\Phi$ is essentially equivalent to the cobordism below.  With this notation, for $f\in P(X)$ we define 
+\begin{equation}\label{eq:cob algebra formula}
+ P(\Phi)(f)=\Tr_{A,B}^C\big[f\big]\otimes D\otimes\dim(E).
+\end{equation}
+This can be visualized via the following string diagram (where we have drawn a left trace).
 $$
 \begin{tikzpicture}[wiring diagram, baseline=(current bounding box.center)]
   \node[bb port sep=1.5, bb={2}{2}, bb name=$f$] (domain) {};
@@ -1372,7 +1376,7 @@ and this equivalence is natural in $\cat{O}$.
 
 \begin{remark}
 
-The proof of Proposition~\ref{prop:natural equivalence cob-O and traced-O} is written at an abstract level, and it can be difficult to extract exactly how one converts back and forth between traced categories and cobordism algebras. It is fairly straightforward to convert a cobordism algebra to a traced category. Anyone wishing for a more concrete description of the formula for converting a traced category to a cobordism algebra can find the formula in Section~\ref{sec:statement of main thm} and a combinatorial proof in the appendix, Section~\ref{sec:combinatorial proof}.
+The proof of Proposition~\ref{prop:natural equivalence cob-O and traced-O} is written at an abstract level, and it can be difficult to extract exactly how one converts back and forth between traced categories and cobordism algebras. It is fairly straightforward to convert a cobordism algebra to a traced category. Anyone wishing for a more concrete description of the conversion from a traced category to a cobordism algebra can find the formula \eqref{eq:cob algebra formula} in Section~\ref{sec:statement of main thm} and a combinatorial proof in the appendix, Section~\ref{sec:combinatorial proof}.
 
 \end{remark}
 
@@ -1444,7 +1448,7 @@ These are given as follows:
 \\\nonumber\\
 \label{eq:composition 2}
 \cat{P}(\Psi\circ\Phi)(f)&=
-\Tr^{G\otimes M}_{K,L}\big[f\big]\otimes J\otimes H\otimes \dim(\overline{N\otimes S\otimes T})
+\Tr^{G\otimes M}_{K,L}\big[f\big]\otimes J\otimes H\otimes \dim(N\otimes S\otimes T)
 \end{align}
 where there are isomorphsims $A\cong K\otimes J$, $B\cong L\otimes J$, $E\cong M\otimes K$, $F\cong M\otimes L$, $D\cong N^\ell\otimes J^k$, and $C\cong M\otimes N^\ell\otimes J^{k-1}$ which we suppress from the notation.  We distinguish the permutation isomorphism $C\otimes A\cong E\otimes D$ which interchanges the factors of $J$ from $C$ and from $A$.  We similarly distinguish the permutation isomorphism $F\otimes D\cong C\otimes B$ which maintains the order of $J$ factors but acts on $N^\ell$ by the cyclic permutation of factors.
 
