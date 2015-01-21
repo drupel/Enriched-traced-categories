@@ -1310,14 +1310,14 @@ Given a compact category $\cat{D}$ and a bijective-on-objects functor $\Int(\cat
 with the bijective-on-objects and fully faithful properties as labeled. Because the factorization system is functorial, we have defined a functor
 $$Q\colon\Int(\cat{C})/\CompCat_{\bo}\to\cat{C}/\TrCat_{\bo}$$
 
-We now prove that $Q$ and $\Int$ are mutually inverse. If $G\colon\cat{C}\to\cat{D}$ is traced and bijective on objects, then $Q(\Int(G))=G$ by the uniqueness of the bottom left part of the square
+We now prove that $Q$ and $\Int$ are mutually inverse. If $G\colon\cat{C}\to\cat{D}$ is traced and bijective on objects, then $Q(\Int(G))\iso G$ by the uniqueness of the bottom left part of the square
 $$
 \begin{tikzcd}
 \cat{C}\arrow[r,"\ff"]\arrow[d,"\bo"']&\Int(\cat{C})\arrow[d,"\bo"]\\
 \cat{D}\arrow[r,"\ff"']&\Int(\cat{D})
 \end{tikzcd}
 $$
-Finally, suppose that $F\colon\Int(\cat{C})\to\cat{D}$ is a bijective-on-objects functor between compact categories. To see that $\Int(Q(F))=F$, consider the diagram below, where the outer square is obtained by $Q$ as in (\ref{dia:factoring square}):
+Finally, suppose that $F\colon\Int(\cat{C})\to\cat{D}$ is a bijective-on-objects functor between compact categories. To see that $\Int(Q(F))\iso F$, consider the diagram below, where the outer square is obtained by $Q$ as in (\ref{dia:factoring square}):
 $$
 \begin{tikzcd}[column sep=small, row sep=small]
 \cat{C}\arrow[rr,"\ff"]\arrow[dd,"\bo"']&~&\Int(\cat{C})\arrow[dd,"\bo"']\arrow[dddr,bend left,"\bo"]\\~\\
@@ -1333,14 +1333,14 @@ Applying $\Int$ to the left-hand map, we obtain the right-hand map of the inner 
  \begin{named}{Corollary B}
 Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=\Int(\cat{D})$. Then there is an equivalence of categories
 \begin{align}\label{dia:traced lax strong}
-\Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\bo}
+\Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\bo}.
 \end{align}
 This equivalence is natural in the traced category $\cat{D}$, using the factorization system on $\TrCat$ from Lemma~\ref{lemma:factorization system}.
 \end{named}
 
 \begin{proof}
 
-By Corollary~\ref{cor:ccc's lax and strong}, there is an equivalence of categories 
+By \ref{thm:Theorem B}, there is an equivalence of categories 
 $$\Lax(\cat{C},\Set)\simeq\cat{C}/\CompCat_{\bo}$$
 and the equivalence (\ref{dia:traced lax strong}) follows from Proposition~\ref{prop:slice boo int}. 
 
