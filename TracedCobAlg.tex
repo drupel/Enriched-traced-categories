@@ -995,6 +995,8 @@ Given a profunctor $M\in\Prof(\cat{D},\cat{D})$, define $F^*(M)\coloneqq M(F,F)$
 
 We would now like to investigate monoids in this monoidal category.
 
+\subsection{$\Cat{Mon}(\Cat{Prof}(\cat{C},\cat{C}))$: Monoid objects in $(\cat{C},\cat{C})$-profunctors}
+
 Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure. The unit is a profunctor morphism $i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element $i(f)\in M(c,d)$, such that $f\cdot i(g)\cdot h = i(f\circ g\circ h)$ whenever this makes sense. The multiplication $M\otimes M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative, and satisfies the following equations whenever they make sense:
 \begin{gather*}
 	(f\cdot m_2)\bullet(m_1\cdot h) = f\cdot(m_2\bullet m_1)\cdot h \\
@@ -1009,6 +1011,7 @@ Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure. The unit is a profu
 	Simple to check. The unit provides the identities and the functor from $\cat{C}$, while the multiplication provides the composition.
 \end{proof}
 
+\subsection{$\Cat{MProf}(\cat{C},\cat{D})$: monoidal profunctors between monoidal categories}
 Now suppose $\cat{C}$ and $\cat{D}$ are symmetric monoidal categories. We will write
 \begin{gather*}
 	a_{c,d,e}\colon (c\otimes d)\otimes e \to c\otimes(d\otimes e), \\
@@ -1042,7 +1045,7 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
 
 \chapter{Results}\label{sec:generalization}
 
-
+In this section, we prove our main results.... It is laid out as follows. \todo{Fill this in.}
 
 \section{Compact closed categories}\label{sec:ccc's}
 
@@ -1249,9 +1252,33 @@ commutes, where the right-hand functor is obtained using the factorization syste
 **\todo{finish proof}
 \end{proof}
 
+\section{Free traced and compact categories, and geometry}
 
-\section{Some stuff David moved}
+\begin{proposition}
 
+Let $\cat{C}$ be a category. The free traced category on $\cat{C}$ is... The free compact category on $\cat{C}$ is $\Fun{Int}(...)$.\todo{Fill this in}
+
+\end{proposition}
+
+\begin{proof}
+
+**Abramsky. 
+
+\end{proof}
+
+\begin{proposition}
+
+The geometry of $\Cat{Cob}$ matches the algebra.\todo{Fill this in}
+
+\end{proposition}
+
+\begin{proof}
+
+**
+
+\end{proof}
+
+\section{Proof of Main theorem}
 
 \begin{proposition}\label{prop:naturality of equivalence cob-O and traced-O}
 
@@ -1289,12 +1316,14 @@ The left-hand side is fibered over set; it is the Grothendieck construction of a
 
 \appendix
 
-\chapter{Appendix: Conmbinatorial proof of the main theorem}
+\chapter{Combinatorial proof of the main theorem}
 
+\todo{Feel free to reorder this, feel free to get rid of sectioning, etc.}
 
-\section{The equivalence $\TrCat\simeq(\Cat{Cob}/\bullet)\alg$}\label{sec:first equivalence}
+\section{The easy direction $(\Cat{Cob}/\bullet)\alg\to\TrCat$}
 
-\todo{The point of this proof is not to be rigorous, because we already prove this elsewhere. The point is to give better intuition for the result. Rewrite with that in mind. Use more pictures.}
+\section{The functor $\TrCat\to(\Cat{Cob}/\bullet)\alg$ on objects}
+
 
 \begin{theorem}\label{thm:cob-O and traced-O}
 For any set $\cat{O}$, let $\SList(\cat{O})$ denote the set of symmetric lists in $\cat{O}$. There is an equivalence of categories 
@@ -1403,5 +1432,6 @@ Finally applying Vanishing II we get
 \end{proof}
 
 
-\todo{We still need on morphisms-part, and the other direction of the equivalence.}
+\section{The functor $\TrCat\to(\Cat{Cob}/\bullet)\alg$ on morphisms}
+
 \end{document} 
