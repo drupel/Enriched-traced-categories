@@ -120,10 +120,10 @@ This will be proved in Section~\ref{sec:proof of A}, but we sketch the equivalen
 
 First, for each box $(\inp{X},\outp{X})$ that might appear in a string diagram, both $P$ and $\cat{C}$ require a set, $P(\inp{X},\outp{X})$ and $\Hom_{\cat{C}}(\inp{X},\outp{X})$, respectively. Second, for each string diagram, both $P$ and $\cat{C}$ require a function: an action on morphisms, in the case of $P$, and a formula for performing the required compositions, tensors, and traces, in the case of $\cat{C}$. The condition that $P$ is functorial corresponds to the fact that $\cat{C}$ satisfies the axioms of traced categories. 
 
-To make precise the equivalence of Theorem~\ref{thm:traced as cob-alg} we will specify here how to construct a $(\Cat{Cob}/\Ob\cat{C})$-algebra from a traced category $\cat{C}$.  First, given a set $Z$ over $\Ob\cat{C}$ we will abuse notation slightly and denote by the same symbol $Z$ the tensor of all objects in $\cat{C}$ labeling elements of $Z$.  Then for an oriented 0-manifold $X=X^-\sqcup X^+$ over  we set $P(X)=\Hom_{\cat{C}}(X^-,X^+)$.  Given a cobordism $\Phi:X\to Y$ we may find $A,B,C,D,E\in\Ob\cat{C}$ such that $X^-\cong C\otimes A$, $X^+=C\otimes B$, $Y^-\cong A\otimes D$, $Y^+\cong B\otimes D$ and $E$ is the tensor of all labels on floating loops in $\Phi$.  With this notation, for $f\in P(X)$ we define $P(\Phi)(f)=\Tr_{A,B}^C\big[f\big]\otimes D\otimes\dim(E)$.  This can be visualized via the following string diagram (where we have drawn a left trace).
+To make precise the equivalence of Theorem~\ref{thm:traced as cob-alg} we will specify here how to construct a $(\Cat{Cob}/\Ob\cat{C})$-algebra from a traced category $\cat{C}$.  First, given a set $Z$ over $\Ob\cat{C}$ we will abuse notation slightly and denote by the same symbol $Z$ the tensor of all objects in $\cat{C}$ labeling elements of $Z$.  Then for an oriented 0-manifold $X=X^-\sqcup X^+$ over  we set $P(X)=\Hom_{\cat{C}}(X^-,X^+)$.  Given a cobordism $\Phi:X\to Y$ we may find $A,B,C,D,E\in\Ob\cat{C}$ such that $X^-\cong C\otimes A$, $X^+=C\otimes B$, $Y^-\cong A\otimes D$, $Y^+\cong B\otimes D$ and $E$ is the tensor of all labels on floating loops in $\Phi$, thus $\Phi$ is essentially equivalent to the cobordism below.  With this notation, for $f\in P(X)$ we define $P(\Phi)(f)=\Tr_{A,B}^C\big[f\big]\otimes D\otimes\dim(E)$.  This can be visualized via the following string diagram (where we have drawn a left trace).
 $$
-\begin{tikzpicture}[wiring diagram]
-  \node[bb={2}{2}, bb name=$f$] (domain) {};
+\begin{tikzpicture}[wiring diagram, baseline=(current bounding box.center)]
+  \node[bb port sep=1.5, bb={2}{2}, bb name=$f$] (domain) {};
   \node[bb={2}{2}, fit={(domain) ($(domain.north)+(0,1)$) ($(domain.south)-(0,1)$)}] (codomain) {};
   \draw[ar] (codomain_in1') to (domain_in2);
   \draw[ar] (domain_out2) to (codomain_out1');
@@ -138,12 +138,31 @@ $$
         node[below left=of codomain_in2]     {$D$}
         node[below right=of codomain_out1]    {$B$}
         node[below right=of codomain_out2]    {$D$}
-        node[above left=.8 and 0 of codomain_out1']  {$E$}
+        node[above left=.6 and 0 of codomain_out1']  {$E$}
         node[below left=of domain_in1]     {$C$}
         node[below left=of domain_in2]     {$A$}
         node[below right=of domain_out2]    {$B$}
         node[below right=of domain_out1]   {$C$};
- 
+\end{tikzpicture}
+\quad\quad\quad
+\begin{tikzpicture}[x=1cm,y=1ex,node distance=1 and 1,semithick,every label quotes/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},every to/.style={out=0,in=180},baseline=(current bounding box.center)]
+  \node ["$A$" left] (X1a) {$-$};
+  \node [above=0.25 of X1a] {$X$};
+  \node [below=0 of X1a, "$C$" left] (X1b) {$-$};
+  \node [below=0 of X1b, "$C$" left] (X2a) {$+$};
+  \node [below=0 of X2a, "$B$" left] (X2b) {$+$};
+  \node [right=2 of X1a, "$A$" right] (Y1a) {$-$};
+  \node [above=0.25 of Y1a] {$Y$};
+  \node [below=0 of Y1a, "$D$" right] (Y1b) {$-$};
+  \node [below=0 of Y1b, "$D$" right] (Y2a) {$+$};
+  \node [below=0 of Y2a, "$B$" right] (Y2b) {$+$};
+  \node [right=1.45 of X2a, "$E$" left] {};
+  \draw (X1a) to (Y1a);
+  \draw (X1b) to[in=0] (X2a);
+  \draw (X2b) to (Y2b);
+  \draw (Y1b) to[in=180,out=180] (Y2a);
+  \draw ($(X1b)+(1.25,-2.75)$) to[in=0] ($(X1b)+(1.25,-0.25)$);
+  \draw ($(X1b)+(1.25,-0.25)$) to[in=180,out=180] ($(X1b)+(1.25,-2.75)$);
 \end{tikzpicture}
 $$
 
