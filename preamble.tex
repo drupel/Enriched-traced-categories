@@ -38,13 +38,21 @@
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem*{theorem*}{Theorem}
-\newtheorem*{theoremA}{Theorem A}
-\newtheorem*{theoremB}{Theorem B}
+
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
-\newtheorem*{corollaryB}{Corollary B}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem*{lemma*}{Lemma}
+
+\newtheorem*{namedthm}{\namedthmname}
+\newcounter{namedthm}
+\makeatletter
+\newenvironment{named}[1]
+  {\def\namedthmname{#1}%
+   \refstepcounter{namedthm}%
+   \namedthm\def\@currentlabel{#1}}
+  {\endnamedthm}
+\makeatother
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
@@ -53,6 +61,7 @@
 \theoremstyle{remark}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{remark}[theorem]{Remark}
+
 
 \newcommand{\prodb}{\mathbin{\Pi}}
 \newcommand{\iso}{\cong}
@@ -206,6 +215,7 @@
 
 \newcommand{\into}{\hookrightarrow}
 \newcommand{\onto}{\to\!\!\!\!\!\to}
+\def\tn{\textnormal}
 \newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
 \newcommand{\cev}[1]{\reflectbox{\ensuremath{\vec{\reflectbox{\ensuremath{#1}}}}}}
 \newtheorem{claim}[subsubsection]{Claim}
