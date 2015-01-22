@@ -42,7 +42,8 @@ We give an alternate conception of string diagrams as 1-dimensional oriented cob
 Global todo's:
 \begin{enumerate}
 \item Add appropriate symmetric monoidal throughout.
-\item Add appropriate 2-categorical language throughout.
+\item Add appropriate Kleisli language throughout.
+\item Remove inappropriate 2-categorical language throughout.
 \item Define the 2-category $\Cat{XFrObCat}$ as the 2-Grothendieck construction of $\Set\To{\Fun{XFr}}\Cat{XCat}\To{-/\XCat_{\bo}}\op{\2Cat}$
 \item Prove Lemma~\ref{Lem:mon profs equal boo functors}.
 \item Patrick: fill all profunctor naturality holes.
@@ -794,9 +795,6 @@ We generally suppress the upper left subscripts from the trace symbols, if no co
 }%ERASED
 
 \section{Compact categories and the Int construction}\label{sec:compact and int}
-
-\todo{Reference here that $\Fun{Int}(\Cat{Bij})=\Cat{Cob})$.}
-\todo{Move stuff to appendix?}
 
 Let $\SymMonCat$ denote the category of symmetric monoidal functors and strong morphisms between them. We will denote by $\CompCat\ss\SymMonCat$ the full subcategory spanned by compact categories. Recall that a compact category is a symmetric monoidal category $(\cat{C},\otimes,I)$ with the property that for every object $X\in\Ob\cat{C}$ there exists an object $X^*$ and morphisms $\eta_X\colon I\to X^*\otimes X$ and $\epsilon_X\colon X\otimes X^*\to I$ such that the following diagrams commute:
 $$\begin{tikzcd}[column sep=small]
