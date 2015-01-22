@@ -41,6 +41,11 @@ We give an alternate conception of string diagrams as 1-dimensional oriented cob
 \end{abstract}
 Global todo's:
 \begin{enumerate}
+\item Add appropriate symmetric monoidal throughout.
+\item Add appropriate 2-categorical language throughout.
+\item Define the 2-category $\Cat{XFrObCat}$ as the 2-Grothendieck construction of $\op{\Set}\To{\Fun{XFr}}\op{\Cat{XCat}}\To{-/\XCat_{\bo}}\Cat{2-Cat}$
+\item Prove Lemma~\ref{Lem:mon profs equal boo functors}.
+\item Patrick: fill all profunctor naturality holes.
 \item Add bibliography.
 \end{enumerate}
 
@@ -168,32 +173,53 @@ This can be visualized via the following string diagram (where we have drawn a l
   \draw ($(X1b)+(1.25,-0.25)$) to[in=180,out=180] ($(X1b)+(1.25,-2.75)$);
  \end{tikzpicture}
 \end{equation}
-
 \ref{thm:Theorem A} will be proved in Section~\ref{sec:proof of A}.
+
+
+
+\section{Generalization: Lax algebras on compact category}
+
+It is most convenient to prove \ref{thm:Theorem A} by proving a much more general result, which relates the category of lax functors out of any compact category $\cat{C}$ to the category of strong, bijective-on-objects functors out of $\cat{C}$. The definition of compact closed symmetric monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact and int}, or in \cite{}. Let $\CompCat$ denote the category of compact categories and strong monoidal functors between them. We show in Lemma~\ref{lemma:factorization system} that there is a factorization system on $\CompCat$, in which the left class consists of bijective-on-objects functors and the right class consists of fully faithful functors. Let $\CompCat_{\bo}\ss\CompCat$ denote the left class. 
+
+\begin{named}{Theorem B}\label{thm:Theorem B}
+ Let $\cat{C}$ be a compact category. If $\Lax(\cat{C},\Cat{Set})$ denotes the category of lax monoidal set-valued functors out of $\cat{C}$, and $\cat{C}/\CompCat_{\bo}$ denotes the coslice category of compact categories and strong bijective-on-objects functors under $\cat{C}$, then there is an equivalence of categories
+\begin{equation}\label{dia:compact lax strong}
+  \Lax(\cat{C},\Cat{Set})\cong\cat{C}/\CompCat_{\bo}
+\end{equation}
+\end{named}
+
+
+Recall from \cite{JoyalStreetVerity} that traced categories are full subcategories of compact categories. The Int construction, applied to a traced category $\cat{C}$, returns the smallest compact category $\Int(\cat{C})$ of which it is a subcategory; we call $\Int(\cat{C})$ the \emph{compact closure} of $\cat{C}$. 
+
+It turns out that if our compact category $\cat{C}$ is the compact closure of a traced category $\cat{D}$, then \ref{thm:Theorem B} lifts to a result about $\cat{D}$. We record this result as \ref{cor:Corollary B}, from which \ref{thm:Theorem A} follows. These are proved in Section~\ref{sec:generalization}. 
+
+\begin{named}{Corollary B}\label{cor:Corollary B}
+Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=\Int(\cat{D})$. Then there is an equivalence of categories
+\begin{align}\label{dia:traced lax strong}
+\Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\bo}
+\end{align}
+This equivalence is natural in the traced category $\cat{D}$, using the factorization system on $\TrCat$ from Lemma~\ref{lemma:factorization system}.
+\end{named}
 
 \section{Wiring Diagrams and $\Cat{Cob}$}\label{sec:wds and cob}
 
 In this section, we more carefully explain the equivalence between the category of traced categories and the category of cobordism algebras.
-
-\subsection{Objects in $\Cat{Cob}$ as interfaces}
 
 The objects in $\Cat{Cob}$ are signed sets $(\inp{X},\outp{X})$, each of which can be drawn as a box with input wires $\inp{X}$ drawn entering the box, on its left, and output wires $\outp{X}$ drawn exiting the box, on its right. We call the latter style \emph{an interface}.
 
 \[
 \begin{tikzpicture}[node distance=0 and 0, baseline=(current bounding box.center)]
   \node (A1) {$-$};
-  \node[below=of A1] (A2) {$-$};
-  \node[below=of A2] (A3) {$-$};
-  \node[below=of A3] (B1) {$+$};
-  \node[below=of B1] (B2) {$+$};
+  \node[below=-.1 of A1] (A2) {$-$};
+  \node[below=-.1 of A2] (A3) {$-$};
+  \node[below=-.1 of A3] (B1) {$+$};
+  \node[below=-.1 of B1] (B2) {$+$};
 \end{tikzpicture}
 \hspace{4em}
-\begin{tikzpicture}[wiring diagram, bby=1.5ex, baseline=(current bounding box.center)]
+\begin{tikzpicture}[wiring diagram, bby=1.2ex, baseline=(current bounding box.center)]
   \node[bb={3}{2},bb name=$X$] {};
 \end{tikzpicture}
 \]
-
-\subsection{Morphisms in $\Cat{Cob}$ as wiring diagrams}\label{sec:Cob morphisms as wds}
 
 Wiring diagrams seem to be a new way to visualize morphisms in the symmetric monoidal category $\Cat{Cob}$ of 1-dimensional oriented cobordisms.
 
@@ -240,40 +266,6 @@ Wiring diagrams seem to be a new way to visualize morphisms in the symmetric mon
   \draw (X2c) to (Yc);
 \end{tikzpicture}
 \]
-
-
-
-\subsection{The $\Cat{Cob}$-algebra perspective: building nested structures}
-
-For a fixed set $\cat{O}$, a $\Cat{Cob}/\cat{O}$-algebra is a lax functor $I\colon\Cat{Cob}/\cat{O}\to\Set$. In this perspective, each box $X\in\Cat{Cob}/\cat{O}$ is an interface, and $I(X)$ is the set of \emph{inhabitants} that conform to that interface. A morphism $\varphi\colon X_1,\ldots,X_n\to Y$ in $\Cat{Cob}/\cat{O}$ is a wiring-together of interfaces, and if an inhabitant is given for each of the $X_i$, the algebra $I$ gives a formula for producing an inhabitant of $Y$. Nested structures, given by composition of such morphisms, may be useful for the kind of chunking that humans use to understand complex systems. \cite{Miller, George A. "The magical number seven, plus or minus two: some limits on our capacity for processing information." Psychological review 63.2 (1956): 81.}
-
-
-
-\section{Generalization: Lax algebras on compact category}
-
-The definition of compact closed symmetric monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact and int}, or in \cite{}.
-
-It is most convenient to prove \ref{thm:Theorem A} by proving a much more general result, which relates the category of lax functors out of any compact category $\cat{C}$ to the category of strong, bijective-on-objects functors out of $\cat{C}$. Let $\CompCat$ denote the category of compact categories and strong monoidal functors between them. We show in Lemma~\ref{lemma:factorization system} that there is a factorization system on $\CompCat$, in which the left class consists of bijective-on-objects functors and the right class consists of fully faithful functors. Let $\CompCat_{\bo}\ss\CompCat$ denote the left class. 
-
-\begin{named}{Theorem B}\label{thm:Theorem B}
- Let $\cat{C}$ be a compact category. If $\Lax(\cat{C},\Cat{Set})$ denotes the category of lax monoidal set-valued functors out of $\cat{C}$, and $\cat{C}/\CompCat_{\bo}$ denotes the coslice category of compact categories and strong bijective-on-objects functors under $\cat{C}$, then there is an equivalence of categories
-\begin{equation}\label{dia:compact lax strong}
-  \Lax(\cat{C},\Cat{Set})\cong\cat{C}/\CompCat_{\bo}
-\end{equation}
-\end{named}
-
-
-Recall from \cite{JoyalStreetVerity} that traced categories are full subcategories of compact categories. The Int construction, applied to a traced category $\cat{C}$, returns the smallest compact category $\Int(\cat{C})$ of which it is a subcategory; we call $\Int(\cat{C})$ the \emph{compact closure} of $\cat{C}$. 
-
-It turns out that if our compact category $\cat{C}$ is the compact closure of a traced category $\cat{D}$, then \ref{thm:Theorem B} lifts to a result about $\cat{D}$. We record this result as \ref{cor:Corollary B}, from which \ref{thm:Theorem A} follows. These are proved in Section~\ref{sec:generalization}. 
-
-\begin{named}{Corollary B}\label{cor:Corollary B}
-Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=\Int(\cat{D})$. Then there is an equivalence of categories
-\begin{align}\label{dia:traced lax strong}
-\Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\bo}
-\end{align}
-This equivalence is natural in the traced category $\cat{D}$, using the factorization system on $\TrCat$ from Lemma~\ref{lemma:factorization system}.
-\end{named}
 
 \section{Applications of the operadic perspective}
 
@@ -324,7 +316,8 @@ An algebra $P\colon\Cat{Cob}\to\Cat{Set}$ provides semantics for these boxes. Fo
 \end{tikzpicture}
 \]
 
-The story we tell for modular design is that any way to chunk the small boxes inside the big one will give the same result. This is a reflection of the functoriality of $P\colon\Cat{Cob}\to\Set$, which says that commutative diagrams in $\Cat{Cob}$ are sent to commutative diagrams of sets.
+In our model for modular design, any way to chunk the small boxes inside the big one will give the same result. This is a reflection of the functoriality of $P\colon\Cat{Cob}\to\Set$, which says that commutative diagrams in $\Cat{Cob}$ are sent to commutative diagrams of sets. Nested structures, given by composition of such morphisms, may be useful for the kind of chunking that humans use to understand complex systems. \cite{Miller, George A. "The magical number seven, plus or minus two: some limits on our capacity for processing information." Psychological review 63.2 (1956): 81.}
+
 
 \subsection{Mathematical application: varying the operad}
 
@@ -352,7 +345,7 @@ So while it is difficult to see how to make subtle changes in the axioms of trac
 
 \section{Plan of the paper}
 
-The paper is organized as follows. In Section~\ref{sec:traced categories} we give more details on the connection between traced monoidal categories, their string diagrams, and algebras on the operad of cobordisms. We conclude that section with a low-tech proof of our main result, \ref{thm:Theorem A}, which says that traced categories are $\Cat{Cob}$-algebras. In Section~\ref{sec:generalization} we prove a generalization of that theorem, namely \ref{thm:Theorem B} and \ref{cor:Corollary B}, which compare lax set-valued functors to strong bijective-on-objects functors, respectively for compact and traced categories.
+The paper is organized as follows. In Section~\ref{sec:traced categories} we give more details on the connection between traced monoidal categories, their string diagrams, and algebras on the operad of cobordisms. In Section~\ref{sec:generalization} we prove \ref{thm:Theorem B} and \ref{cor:Corollary B}, which compare lax set-valued functors to strong bijective-on-objects functors, respectively for compact and traced categories. Our main result, \ref{thm:Theorem A}, which says that traced categories are $\Cat{Cob}$-algebras, follows easily.
 
 \section*{Acknowledgments}
 
@@ -837,7 +830,9 @@ For morphisms $\Phi:(\inp{X},\outp{X})\to(\inp{Y},\outp{Y})$ and $\Psi:(\inp{Y},
 \[\Psi\circ\Phi\coloneqq\Tr^{\outp{Y}}_{\inp{X}\otimes \outp{Z},\outp{X}\otimes \inp{Z}}\Big[\big(\gamma_{\outp{X},\outp{Y}}\otimes \inp{Z}\big)\circ\big(\outp{X}\otimes\Psi\big)\circ\big(\Phi\otimes \outp{Z}\big)\circ\big(\gamma_{\outp{Y},\inp{X}}\otimes \outp{Z}\big)\Big].\]
 It is shown in \cite{JoyalStreetVerity} that $\widetilde{\cat{M}}$ is a compact  category whose tensor is given by
 \[(\inp{X},\outp{X})\odot(\inp{Y},\outp{Y})\coloneqq(\inp{X}\otimes \inp{Y},\outp{X}\otimes \outp{Y})\]
-with unit object $\tilde I\coloneqq(I,I)$ and duality $(\inp{X},\outp{X})^\vee\coloneqq(\outp{X},\inp{X})$.  The following is immediate from the definitions above and in Section~\ref{sec:scalars and elements}.
+with unit object $\tilde I\coloneqq(I,I)$ and duality $(\inp{X},\outp{X})^\vee\coloneqq(\outp{X},\inp{X})$.  
+
+%The following is immediate from the definitions above and in Section~\ref{sec:scalars and elements}.
 
 %\todo{Do we use Lemma~\ref{lemma:elements in traced}? Does it give intuition?}
 %\begin{lemma}\label{lemma:elements in traced}\todo{This lemma has a sign-error. Either change definition of $\Hom_{\widetilde{\cat{M}}}$ or lemma statement.}
@@ -903,7 +898,7 @@ These are all shown in \cite{Joyal-Street-Verity}.
 
 \section{Free traced and compact categories, and geometry}\label{sec:free and geometry}
 
-\begin{proposition}
+\begin{proposition}\label{prop:free traced and compact}
 
 Let $\cat{C}$ be a category. The free traced category on $\cat{C}$ is... The free compact category on $\cat{C}$ is $\Int(...)$.\todo{Fill this in}
 
@@ -919,7 +914,8 @@ See Abramsky.
 
 
 \todo{Mention that this is folklore, though the proof is probably easily adapted}
-\begin{proposition}
+
+\begin{proposition}\label{prop:free compact is Cob}
 
 The free compact closed category on a set $\cat{O}$ is equivalent to $\Cat{Cob}/\cat{O}$
 
@@ -949,7 +945,7 @@ For example, there is an orthogonal factorization system on $\Cat{Cat}$ in which
 
 \begin{lemma}\label{lemma:factorization system}
 
-Let $\XCat$ denote the category of strong $\Cat{X}$-functors between $\Cat{X}$-categories,  where $\Cat{X}$ is plain, monoidal, traced, or compact. Then $\XCat$ admits an orthogonal factorization system $(\cat{L},\cat{R})$, where the morphisms in $\cat{L}$ are bijective-on-objects functors and the morphisms in $\cat{R}$ are fully faithful functors.
+Let $\XCat$ denote the 2-category of strong $\Cat{X}$-functors between $\Cat{X}$-categories,  where $\Cat{X}$ is plain, monoidal, traced, or compact. Then $\XCat$ admits an orthogonal factorization system $(\cat{L},\cat{R})$, where the morphisms in $\cat{L}$ are bijective-on-objects functors and the morphisms in $\cat{R}$ are fully faithful functors.
 
 \end{lemma}
 
@@ -979,8 +975,8 @@ Suppose that $\cat{C}$ and $\cat{D}$ are both compact categories. Every object o
 Finally, if $\Cat{C}$ and $\cat{D}$ are traced, then \cite[Proposition 2.4]{Joyal-Street-Vertity} implies that there is a unique traced structure on $\cat{F}$, where the trace of a morphism in $\cat{F}$ is defined to be the trace in $\cat{D}$. The ``ff'' functor preserves the trace by construction, and the ``bo'' functor preserves the trace because $F$ does.
 \end{proof}
 
-\begin{proposition}
-  There is a contravariant pseudo-functor $\XCat\to\Cat{Cat}$ sending any $\cat{C}\in\XCat$ to the category $\cat{C}/\XCat_{\bo}$.
+\begin{proposition}\label{prop:coslice Xbo}
+  There is a pseudo-functor $-/\XCat_{\bo}\colon\op{\XCat}\to\Cat{Cat}$ sending any $\cat{C}\in\XCat$ to the category $\cat{C}/\XCat_{\bo}$.
 \end{proposition}
 \begin{proof}
   We only need to verify the functoriality of this construction. Given a strong functor $F\colon\cat{C}\to\cat{D}$ in $\XCat$, we can define a functor $F^*\colon\cat{D}/\XCat_{\bo}\to\cat{C}/\XCat_{\bo}$. For any object $\phi\in\cat{D}/\XCat_{\bo}$, i.e.~a bijective-on-objects functor $\phi\colon\cat{D}\to\cat{X}$, define $F^*(\phi)$ by applying the factorization system of \ref{lemma:factorization system} as in the diagram
@@ -1001,37 +997,49 @@ Finally, if $\Cat{C}$ and $\cat{D}$ are traced, then \cite[Proposition 2.4]{Joya
   \]
 \end{proof}
 
-\begin{proposition}\label{prop:free objects}
 
-Let $\XCat$ denote the category of strong $\Cat{X}$-functors between $\Cat{X}$-categories,  where $\Cat{X}$ is monoidal, traced, or compact, and let $\Cat{XFrObCat}$ denote the full subcategory spanned by strict, free-on-objects $\Cat{X}$-categories, i.e., for which the symmetric monoid of objects is free. There is an adjoint 2-equivalence:
+
+For a set $\cat{O}$, let $\Fun{FrMon}(\cat{O})$ denote the free symmetric monoid on $\cat{O}$. Let $\XCat$ continue to denote the category of strong $\Cat{X}$-functors between $\Cat{X}$-categories, where $\Cat{X}$ is monoidal, traced, or compact. Let $\Cat{XFrObCat}$ denote the category whose objects are $X$-categories $\cat{C}$ equipped with a set $\cat{O}$ and a bijection $\Ob(\cat{C})\iso\Fun{FrMon}(\cat{O})$. Morphisms in $\Cat{XFrObCat}$ are defined so that the functor $\Cat{XFrObCat}\to\Cat{XCat}$ is fully faithful. In \ref{**} we will prove that the functor $\Cat{XFrObCat}\to\Set$ given by $\cat{C}\mapsto\cat{O}$ is a fibration.\todo{Move this paragraph to a proposition using 2.5.2}
+
+\cite{Abramsky} provides a free-forgetful adjunction
 $$
 \begin{tikzcd}
-\XCat\arrow[r, shift left=.5ex, "\Fun{FrOb}"]&\Cat{XFrObCat}\arrow[l, shift left=.5ex,"U"]
+\Cat{Set}\arrow[r, shift left=.5ex, "\Fun{XFr}"]&\XCat\arrow[l, shift left=.5ex,"\Ob"]
 \end{tikzcd}
 $$
-where $U$ is the forgetful inclusion. In particular, for every $\Cat{X}$-category $\cat{C}$ there is a strict $\Cat{X}$-category $\Fun{FrOb}(\cat{C})$, whose symmetric monoid of objects is free, and an equivalence in $\XCat$:
-$$\Fun{FrOb}(\cat{C})\simeq\cat{C}.$$
+
+
+\begin{proposition}\label{prop:free objects}
+
+Let $\XCat$ and $\Cat{XFrObCat}$ be as above. There is a 2-equivalence:
+$$
+\begin{tikzcd}
+\XCat\arrow[r, shift left=.5ex, "\Fun{XFrOb}"]&\Cat{XFrObCat}\arrow[l, shift left=.5ex,"U"]
+\end{tikzcd}
+$$
+where $U$ is the forgetful functor. In particular, for every $\Cat{X}$-category $\cat{C}$ there is a strict $\Cat{X}$-category $\Fun{FrOb}(\cat{C})$, whose symmetric monoid of objects is free, and an equivalence in $\XCat$:
+$$\Fun{XFrOb}(\cat{C})\simeq\cat{C}.$$
 
 \end{proposition}
 
 \begin{proof}
 
-\cite{Abramsky} provides a free-forgetful adjunction
+Consider the free-forgetful adjunction
 $$
 \begin{tikzcd}
-\Cat{Cat}\arrow[r, shift left=.5ex, "F"]&\XCat\arrow[l, shift left=.5ex,"G"]
+\Cat{Set}\arrow[r, shift left=.5ex, "\Fun{XFr}"]&\XCat\arrow[l, shift left=.5ex,"\Ob"]
 \end{tikzcd}
 $$
-For any $\Cat{X}$-category $\cat{C}$, we have a counit $FG(\cat{C})\to\cat{C}$, which is surjective on objects. We define $\Fun{FrOb}(\cat{C})$ to be the factorizing object for the factorization system from Lemma~\ref{lemma:factorization system}:
+For any $\Cat{X}$-category $\cat{C}$, we have a counit $\Fun{XFr}\Ob(\cat{C})\to\cat{C}$, which is surjective on objects. We define $\Fun{XFrOb}(\cat{C})$ to be the factorizing object for the factorization system from Lemma~\ref{lemma:factorization system}:
 $$
 \begin{tikzcd}[column sep=small]
-FG(\cat{C})\arrow[dr, "bo"']\arrow[rr, "F"]&&\cat{C}\\
-&\Fun{FrOb}(\cat{C})\arrow[ur, "ff"']
+\Fun{XFr}\Ob(\cat{C})\arrow[dr, "\bo"']\arrow[rr, "\Fun{XFr}"]&&\cat{C}\\
+&\Fun{XFrOb}(\cat{C})\arrow[ur, "\ff"']
 \end{tikzcd}
 $$
-The right-hand functor is fully faithful and clearly surjective, so it is an equivalence of categories. This proves that $\Fun{FrOb}\circ\fun{U}\iso\id$, and because $U$ is a monomorphism, we have $U\circ\Fun{FrOb}\iso\id$ as well.
+The right-hand functor is fully faithful and clearly surjective, so it is an equivalence of categories. This proves that $\Fun{XFrOb}\circ\fun{U}\iso\id$, and because $U$ is a monomorphism, we have $U\circ\Fun{XFrOb}\iso\id$ as well.
 
-\todo{This has not been checked.}
+\todo{Finish proof (2-categorical).}
 
 \end{proof}
 
@@ -1140,17 +1148,31 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
 \[
 \Mon(\MProf(\cat{C},\cat{C}))\iso \cat{C}/\MonCat_{\bo}.
 \]
-	It follows that if $\cat{C}$ is compact then there is an equivalence of categories
+\todo{Make this natural in $\cat{C}$.}
+\begin{proof}
+
+\todo{Basic idea: this builds on Lemma~\ref{lemma:CCprofunctors}}
+
+\end{proof}
+
+
+\begin{lemma}\label{lemma:easy compcat}
+
+If $\cat{C}$ is a compact category, then
 \[
-\Mon(\MProf(\cat{C},\cat{C}))\iso \cat{C}/\CompCat_{\bo}.
+  \cat{C}/\MonCat_{\bo}\iso\cat{C}/\CompCat_{\bo}
 \]
+\todo{Make this natural in $\cat{C}$.}
+\end{lemma}
+
 
 \end{lemma}
 
 \begin{proof}
+(if $F\colon\cat{C}\to\cat{X}$ is a monoidal functor and $a\in\cat{C}$ has a dual, then $Fa$ has a dual in $\cat{X}$).
 
-\todo{Basic idea: this builds on Lemma~\ref{lemma:CCprofunctors}}
 \end{proof}
+
 
 
 %%%%%%%%%%%%%%%%%%
@@ -1162,7 +1184,7 @@ In this section, we prove \ref{thm:Theorem B}, from which \ref{cor:Corollary B} 
 \begin{tikzcd}[column sep=3cm,row sep=1.5cm]
 \Lax(\cat{C},\Set)\ar[r,dashed,"\tn{\ref{cor:Corollary B}}"]\ar[d,equal]&\cat{D}/\TrCat_{\bo}\\
 \Lax(\cat{C},\Set)\ar[r,dashed,"\tn{\ref{thm:Theorem B}}"]\ar[d,equal]&\cat{C}/\CompCat_{\bo}\ar[u,"\tn{Proposition~\ref{prop:slice boo int}}"']\\
-\MProf(1,\cat{C})\ar[r,"\tn{Proposition~\ref{Prop:mon prof equivalence}}"']&\Mon(\MProf(\cat{C},\cat{C}))\ar[u,"\tn{Lemma~\ref{Lem:mon profs equal boo functors}}"']
+\MProf(1,\cat{C})\ar[r,"\tn{Proposition~\ref{Prop:mon prof equivalence}}"']&\Mon(\MProf(\cat{C},\cat{C}))\ar[u,"\tn{Lemmas~\ref{Lem:mon profs equal boo functors},\ \ref{lemma:easy compcat}}"']
 \end{tikzcd}
 \]
 This diagram shows that to prove \ref{thm:Theorem B}, we must prove Proposition~\ref{Prop:mon prof equivalence}, which is the purpose of Section~\ref{sec:ccc's}, at which point \ref{cor:Corollary B} will follow from Proposition~\ref{prop:slice boo int}. Finally, \ref{thm:Theorem A} is just making functorial use of \ref{cor:Corollary B} in cases where $\cat{D}$ is the free traced category on a set of objects.
@@ -1209,6 +1231,8 @@ Let $\MProf(\cat{C},\cat{C})_*$ denote the category of pointed monoidal endo-pro
 	The equation $i(f)\bullet n=f\cdot n$ follows similarly, and the associativity of $\bullet$ is a straightforward verification.
 
 	Finally we check the equation $(n_2\boxtimes n'_2)\bullet(n_1\boxtimes n'_1)=(n_2\bullet n_1)\boxtimes(n'_2\bullet n'_1)$ for any $n_1\in N(c,d)$, $n'_1\in N(c',d')$, $n_2\in N(d,e)$, and $n'_2\in N(d',e')$, after which the remaining equations follow directly.
+
+% \allowdisplaybreaks called in preamble
 
 	\begin{align*}
 		&(n_2\boxtimes n'_2)\bullet(n_1\boxtimes n'_1) \\
@@ -1268,6 +1292,7 @@ Let $\MProf(\cat{C},\cat{C})_*$ denote the category of pointed monoidal endo-pro
   \[
     \MProf(1,\cat{C})\simeq\Mon(\MProf(\cat{C},\cat{C})).
   \]
+  \todo{Add that this is natural in $\cat{C}$.}
 \end{proposition}
 \begin{proof}
   If $M\in\MProf(1,\cat{C})$ then $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any $a\in\cat{C}$. On the other hand, given $N\in\Mon(\MProf(\cat{C},\cat{C}))$, $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from lemma~\ref{Lem:comp prof bijection}.
@@ -1280,14 +1305,11 @@ Let $\MProf(\cat{C},\cat{C})_*$ denote the category of pointed monoidal endo-pro
   \[
     \Lax(\cat{C},\Set)\simeq\cat{C}/\CompCat_{\bo}.
   \]
+  \todo{Add that this is natural in $\cat{C}$.}
  \end{named}
 
 \begin{proof}
-The equivalence follows easily from proposition~\ref{Prop:mon prof equivalence} and lemma~\ref{Lem:mon profs equal boo functors}, together with the easy observation that if $\cat{C}$ is a compact category, then
-\[
-  \cat{C}/\MonCat_{\bo}\iso\cat{C}/\CompCat_{\bo}
-\]
-(if $F\colon\cat{C}\to\cat{X}$ is a monoidal functor and $a\in\cat{C}$ has a dual, then $Fa$ has a dual in $\cat{X}$).
+The equivalence follows easily from proposition~\ref{Prop:mon prof equivalence}, Lemma~\ref{Lem:mon profs equal boo functors} and Lemma~\ref{lemma:easy compcat}.
 
 \end{proof} 
 
@@ -1310,6 +1332,7 @@ This is straightforward, but the calculation is shown below:
 	\[
 		\cat{C}/\TrCat_{\bo} \simeq \Int(\cat{C})/\CompCat_{\bo}
 	\]
+\todo{Add that this is natural in $\cat{C}$}
 \end{proposition}
 
 \begin{proof}
@@ -1360,44 +1383,37 @@ This equivalence is natural in the traced category $\cat{D}$, using the factoriz
 
 By \ref{thm:Theorem B}, there is an equivalence of categories 
 $$\Lax(\cat{C},\Set)\simeq\cat{C}/\CompCat_{\bo}$$
-and the equivalence (\ref{dia:traced lax strong}) follows from Proposition~\ref{prop:slice boo int}. 
+and the equivalence (\ref{dia:traced lax strong}) follows from Proposition~\ref{prop:slice boo int}. All these constructions are natural in $\cat{C}$. \todo{Pretty this up.}
 
-We need to show that this equivalence is natural in the following sense. Suppose that $F\colon\cat{D'}\to\cat{D}$ is a strong traced functor, and let $\cat{C'}\coloneqq\Int(D')$. We want to show that the diagram 
-$$
-\begin{tikzcd}
-\Lax(\cat{C},\Cat{Set})\arrow[r]\arrow[d,"\Int(F)"']&\cat{D}/\TrCat_{\bo}\arrow[d,"\ref{lemma:factorization system}"]\\
-\Lax(\cat{C}',\Cat{Set})\arrow[r]&\cat{D'}/\TrCat_{\bo}
-\end{tikzcd}
-$$
-commutes, where the right-hand functor is obtained using the factorization system on traced categories from Lemma~\ref{lemma:factorization system}.
-
-**\todo{finish proof}
 \end{proof}
 
 \section{Proof of \ref{thm:Theorem A}}\label{sec:proof of A}
 
 In this section, we prove an equivalence between traced categories and algebras on cobordism categories, indexed by a set of objects. \todo{Add more guidance to this section}
 
+For any symmetric monoid $X$, let $\TrCat_{\boo X}$ denote the full subcategory of $\TrCat_{\bo}$ spanned by those traced categories whose monoid of objects is isomorphic to $X$.
+
 \begin{proposition}\label{prop:natural equivalence cob-O and traced-O}
 
-For any set $\cat{O}$, let $\SList(\cat{O})$ denote the set of symmetric lists in $\cat{O}$. There is an equivalence of categories 
-$$(\Cat{Cob}/\cat{O})\alg\simeq\TrCat_{\boo\SList(\cat{O})}$$
+For any set $\cat{O}$, let $\Fun{FrMon}(\cat{O})$ denote the free symmetric monoid $\cat{O}$. There is an equivalence of categories 
+$$(\Cat{Cob}/\cat{O})\alg\simeq\Fun{TrFrObCat}(\cat{O})$$
 and this equivalence is natural in $\cat{O}$.
 
 \end{proposition}
 
 \begin{proof}
 
-**
+This is an application of \ref{cor:Corollary B} in the case that $\cat{D}\coloneqq\Fun{TrFrOb}(\cat{O})$ is the free traced category on the set $\cat{O}$. By Proposition~\ref{prop:free traced and compact}, the objects of $\cat{D}$ are symmetric lists, $\Ob\cat{D}\iso\Fun{FrMon}(\cat{O})$. With the addition of Proposition~\ref{prop:free compact is Cob}, we have that $\Cat{Cob}/\cat{O}\iso\Int(\cat{D})$ is the free compact category on $\cat{O}$. Since all of these results are natural in $\cat{O}$, so too is the desired equivalence:
+$$(\Cat{Cob}/\cat{O})\alg=\Lax(\Cat{Cob},\Cat{Set})\simeq\cat{D}/\TrCat_{\bo}=\TrCat_{\boo\Fun{FrMon}(\cat{O})}$$\todo{rewrite proof using new language}
 
 \end{proof}
 
-\begin{remark}
-
-The proof of Proposition~\ref{prop:natural equivalence cob-O and traced-O} is written at an abstract level, and it can be difficult to extract exactly how one converts back and forth between traced categories and cobordism algebras. It is fairly straightforward to convert a cobordism algebra to a traced category. Anyone wishing for a more concrete description of the conversion from a traced category to a cobordism algebra can find the formula \eqref{eq:cob algebra formula} in Section~\ref{sec:statement of main thm} and a combinatorial proof in the appendix, Section~\ref{sec:combinatorial proof}.
-
-\end{remark}
-
+%\begin{remark}
+%
+%The proof of Proposition~\ref{prop:natural equivalence cob-O and traced-O} is written at an abstract level, and it can be difficult to extract exactly how one converts back and forth between traced categories and cobordism algebras. It is fairly straightforward to convert a cobordism algebra to a traced category. Anyone wishing for a more concrete description of the conversion from a traced category to a cobordism algebra can find the formula \eqref{eq:cob algebra formula} in Section~\ref{sec:statement of main thm} and a combinatorial proof in the appendix, Section~\ref{sec:combinatorial proof}.
+%
+%\end{remark}
+%
 \begin{named}{Theorem A}
 
 Consider the functor $\op\Set\to\Cat{Cat}$, given by $\cat{O}\mapsto(\Cat{Cob}/\cat{O})\alg$, and let $(\Cat{Cob}/\bullet)\alg$ denote the total category of corresponding split Grothendieck fibration. Then there is an equivalence of categories
@@ -1409,7 +1425,8 @@ $$(\Cat{Cob}/\bullet)\alg\simeq\TrCat.$$
 
 By Proposition~\ref{prop:free objects}, there is an equivalence of categories 
 $$\Cat{TrFrObCat}\simeq\Cat{TrCat}.$$ 
-The left-hand side is fibered over set; it is the Grothendieck construction of a functor $\op\Set\to\Cat{Cat}$ given on objects by $\cat{O}\mapsto\TrCat_{\boo\SList(\cat{O})}$, and on morphisms by Lemma~\ref{lemma:factorization system}. The result follows by Theorem~\ref{thm:cob-O and traced-O} and Proposition~\ref{prop:naturality of equivalence cob-O and traced-O}. \todo{This has not been rigorously checked.}
+Consider the functor $\Cat{TrFrObCat}\to\Cat{Set}$ sending a  To see this, first note that if $\cat{C}$ is a traced category with objects $\cat{O}=\Ob\cat{C}$, then for any function $\cat{O'}\to\cat{O}$, there is a bijective on objects functor $\cat{O'}$
+The left-hand side is fibered over set; $\Cat{TrFrObCat}$ is the Grothendieck construction of the functor $\op\Set\to\Cat{Cat}$ given on objects by $\cat{O}\mapsto\TrCat_{\boo\Fun{FrMon}(\cat{O})}$, and on morphisms by Lemma~\ref{lemma:factorization system}. The result follows by Proposition~\ref{prop:natural equivalence cob-O and traced-O}. \todo{This has not been rigorously checked.}
 
 
 
