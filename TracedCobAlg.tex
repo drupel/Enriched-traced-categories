@@ -1412,12 +1412,12 @@ which is functorial in $\cat{O}$.
 
 Consider the following diagram, in which the left-hand triangle commutes, as in Definition~\ref{def:XKls XFrObCat}:
 $$
-\begin{tikzcd}[column sep=large]
-\Set\ar[d,"\eta_{Tr}"']\ar[rr,bend left,"\Fun{CompFr}"]\ar[r,"\Fun{TrFr}"]&\TrCat\ar[r,"\Fun{Int}"]\ar[dr,"-/\TrCat_{\bo}"']&\CompCat\ar[d,"\alg"]\\
-\Cat{TrKls}\ar[ur,"i_{Tr}"']&&\Cat{Cat}
+\begin{tikzcd}
+&\Set\ar[rr,"\Cat{Cob/-}"]\ar[dl,"\eta_{Tr}"']\ar[dr,"\Fun{TrFr}"]&&\Cat{CompCat}\ar[dr,"\alg"]\\
+\Cat{TrKls}\ar[rr,"i_{Tr}"']&&\Cat{TrCat}\ar[ur,"\Fun{Int}"]\ar[rr,"-/\TrCat_{\bo}"']&&\Cat{Cat}
 \end{tikzcd}
 $$
-The top triangle commutes by Proposition~\ref{prop:free traced and compact}, and the right-hand triangle commutes by \ref{cor:Corollary B}.  \todo{Very easy to finish this.}
+The top triangle commutes by Proposition~\ref{prop:free traced and compact}, and the right-hand triangle commutes by \ref{cor:Corollary B}.
 
 \end{proof}
 
