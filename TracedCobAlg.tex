@@ -43,7 +43,7 @@ Global todo's:
 \begin{enumerate}
 \item Add appropriate symmetric monoidal throughout.
 \item Add appropriate 2-categorical language throughout.
-\item Define the 2-category $\Cat{XFrObCat}$ as the 2-Grothendieck construction of $\op{\Set}\To{\Fun{XFr}}\op{\Cat{XCat}}\To{-/\XCat_{\bo}}\Cat{2-Cat}$
+\item Define the 2-category $\Cat{XFrObCat}$ as the 2-Grothendieck construction of $\Set\To{\Fun{XFr}}\Cat{XCat}\To{-/\XCat_{\bo}}\op{\2Cat}$
 \item Prove Lemma~\ref{Lem:mon profs equal boo functors}.
 \item Patrick: fill all profunctor naturality holes.
 \item Add bibliography.
@@ -115,7 +115,7 @@ Nesting & Axioms of TSMCs & Composition \\
 The relationship between these interpretations is made precise in the following first main theorem, which will be proved in Section~\ref{sec:proof of A}. For any multicategory $\cat{M}$, we denote by $\cat{M}\alg$ the category of lax functors $\cat{M}\to\Cat{Set}$. Let $\TrCat$ denote the category of traced categories and strong traced functors.
 
 \begin{named}{Theorem A}\label{thm:Theorem A}
-Consider the functor $\op\Set\to\Cat{Cat}$, given by $\cat{O}\mapsto(\Cat{Cob}/\cat{O})\alg$, and let $(\Cat{Cob}/\bullet)\alg$ denote the total category of the corresponding Grothendieck fibration. Then there is an equivalence of categories
+Consider the functor $\Set\to\op{\Cat{Cat}}$, given by $\cat{O}\mapsto(\Cat{Cob}/\cat{O})\alg$, and let $(\Cat{Cob}/\bullet)\alg$ denote the total category of the corresponding Grothendieck fibration. Then there is an equivalence of categories
 $$(\Cat{Cob}/\bullet)\alg\iso\TrCat.$$
 \end{named}
 
@@ -945,7 +945,7 @@ For example, there is an orthogonal factorization system on $\Cat{Cat}$ in which
 
 \begin{lemma}\label{lemma:factorization system}
 
-Let $\XCat$ denote the 2-category of strong $\Cat{X}$-functors between $\Cat{X}$-categories,  where $\Cat{X}$ is plain, monoidal, traced, or compact. Then $\XCat$ admits an orthogonal factorization system $(\cat{L},\cat{R})$, where the morphisms in $\cat{L}$ are bijective-on-objects functors and the morphisms in $\cat{R}$ are fully faithful functors.
+Let $\XCat$ denote the 2-category of strong $\Cat{X}$-functors and monoidal natural transformations, between $\Cat{X}$-categories, where $\Cat{X}$ is symmetric monoidal, traced, or compact. Then $\XCat$ admits an orthogonal factorization system $(\cat{L},\cat{R})$, where the morphisms in $\cat{L}$ are bijective-on-objects functors and the morphisms in $\cat{R}$ are fully faithful functors.
 
 \end{lemma}
 
@@ -972,12 +972,20 @@ The coherence isomorphisms of $\cat{F}$ are defined by applying $F$ to the coher
 
 Suppose that $\cat{C}$ and $\cat{D}$ are both compact categories. Every object of $\cat{F}$ is the image of an object in $\cat{C}$, and every object of $\cat{C}$ has a dual, hence every object of $\cat{F}$ has a dual because monoidal functors always preserve duals. This shows that the (bo,ff) factorization system lifts to $\CompCat$.
 
-Finally, if $\Cat{C}$ and $\cat{D}$ are traced, then \cite[Proposition 2.4]{Joyal-Street-Vertity} implies that there is a unique traced structure on $\cat{F}$, where the trace of a morphism in $\cat{F}$ is defined to be the trace in $\cat{D}$. The ``ff'' functor preserves the trace by construction, and the ``bo'' functor preserves the trace because $F$ does.
+Finally, if $\cat{C}$ and $\cat{D}$ are traced, then \cite[Proposition 2.4]{Joyal-Street-Vertity} implies that there is a unique traced structure on $\cat{F}$, where the trace of a morphism in $\cat{F}$ is defined to be the trace in $\cat{D}$. The ``ff'' functor preserves the trace by construction, and the ``bo'' functor preserves the trace because $F$ does.
 \end{proof}
 
+\begin{definition}
+
+Define $\XCat_{\bo}$ and $\cat{C}/\XCat_{\bo}$.\todo{finish}
+
+\end{definition} 
+
 \begin{proposition}\label{prop:coslice Xbo}
-  There is a pseudo-functor $-/\XCat_{\bo}\colon\op{\XCat}\to\Cat{Cat}$ sending any $\cat{C}\in\XCat$ to the category $\cat{C}/\XCat_{\bo}$.
-\end{proposition}
+  There is a pseudo-functor 
+  $$-/\XCat_{\bo}\colon\XCat\to\op{\2Cat}$$
+  sending any $\cat{C}\in\XCat$ to 2-category $\cat{C}/\XCat_{\bo}$.
+  \end{proposition}
 \begin{proof}
   We only need to verify the functoriality of this construction. Given a strong functor $F\colon\cat{C}\to\cat{D}$ in $\XCat$, we can define a functor $F^*\colon\cat{D}/\XCat_{\bo}\to\cat{C}/\XCat_{\bo}$. For any object $\phi\in\cat{D}/\XCat_{\bo}$, i.e.~a bijective-on-objects functor $\phi\colon\cat{D}\to\cat{X}$, define $F^*(\phi)$ by applying the factorization system of \ref{lemma:factorization system} as in the diagram
   \[
@@ -997,16 +1005,13 @@ Finally, if $\Cat{C}$ and $\cat{D}$ are traced, then \cite[Proposition 2.4]{Joya
   \]
 \end{proof}
 
-
-
-For a set $\cat{O}$, let $\Fun{FrMon}(\cat{O})$ denote the free symmetric monoid on $\cat{O}$. Let $\XCat$ continue to denote the category of strong $\Cat{X}$-functors between $\Cat{X}$-categories, where $\Cat{X}$ is monoidal, traced, or compact. Let $\Cat{XFrObCat}$ denote the category whose objects are $X$-categories $\cat{C}$ equipped with a set $\cat{O}$ and a bijection $\Ob(\cat{C})\iso\Fun{FrMon}(\cat{O})$. Morphisms in $\Cat{XFrObCat}$ are defined so that the functor $\Cat{XFrObCat}\to\Cat{XCat}$ is fully faithful. In \ref{**} we will prove that the functor $\Cat{XFrObCat}\to\Set$ given by $\cat{C}\mapsto\cat{O}$ is a fibration.\todo{Move this paragraph to a proposition using 2.5.2}
-
-\cite{Abramsky} provides a free-forgetful adjunction
+In \cite{Abramsky}, Abramsky provides a free-forgetful adjunction
 $$
 \begin{tikzcd}
 \Cat{Set}\arrow[r, shift left=.5ex, "\Fun{XFr}"]&\XCat\arrow[l, shift left=.5ex,"\Ob"]
 \end{tikzcd}
 $$
+Consider the composition $\Set\To{\Fun{XFr}}\XCat\To{-/\XCat_{\bo}}\op{\2Cat}$, where the second functor is as defined in Proposition~\ref{prop:coslice Xbo}. Grothendieck....\todo{!}
 
 
 \begin{proposition}\label{prop:free objects}
@@ -1061,7 +1066,7 @@ If $F\colon\cat{C}'\to\cat{C}$ and $G\colon\cat{D}'\to\cat{D}$ are functors, and
 		& \Set.
 \end{tikzcd}
 \]
-In other words, for any objects $c\in\Cat{C}'$ and $d\in\Cat{D}'$, the profunctor $M(F,G)$ has elements $M(Fc,Gd)$, and if $m\in M(Fc,Gd)$ and $g\colon d\to d'$ is a morphism in $\cat{D}'$, then the element $m\cdot g$ in $M(F,G)$ is defined by the element $m\cdot G(g)$ in $M$, and similarly for the $\cat{C}'$ action.
+In other words, for any objects $c\in\cat{C}'$ and $d\in\cat{D}'$, the profunctor $M(F,G)$ has elements $M(Fc,Gd)$, and if $m\in M(Fc,Gd)$ and $g\colon d\to d'$ is a morphism in $\cat{D}'$, then the element $m\cdot g$ in $M(F,G)$ is defined by the element $m\cdot G(g)$ in $M$, and similarly for the $\cat{C}'$ action.
 
 Given two profunctors
 \[
@@ -1416,7 +1421,7 @@ $$(\Cat{Cob}/\cat{O})\alg=\Lax(\Cat{Cob},\Cat{Set})\simeq\cat{D}/\TrCat_{\bo}=\T
 %
 \begin{named}{Theorem A}
 
-Consider the functor $\op\Set\to\Cat{Cat}$, given by $\cat{O}\mapsto(\Cat{Cob}/\cat{O})\alg$, and let $(\Cat{Cob}/\bullet)\alg$ denote the total category of corresponding split Grothendieck fibration. Then there is an equivalence of categories
+Consider the functor $\Set\to\op{\Cat{Cat}}$, given by $\cat{O}\mapsto(\Cat{Cob}/\cat{O})\alg$, and let $(\Cat{Cob}/\bullet)\alg$ denote the total category of corresponding split Grothendieck fibration. Then there is an equivalence of categories
 $$(\Cat{Cob}/\bullet)\alg\simeq\TrCat.$$
 
 \end{named}
@@ -1426,7 +1431,7 @@ $$(\Cat{Cob}/\bullet)\alg\simeq\TrCat.$$
 By Proposition~\ref{prop:free objects}, there is an equivalence of categories 
 $$\Cat{TrFrObCat}\simeq\Cat{TrCat}.$$ 
 Consider the functor $\Cat{TrFrObCat}\to\Cat{Set}$ sending a  To see this, first note that if $\cat{C}$ is a traced category with objects $\cat{O}=\Ob\cat{C}$, then for any function $\cat{O'}\to\cat{O}$, there is a bijective on objects functor $\cat{O'}$
-The left-hand side is fibered over set; $\Cat{TrFrObCat}$ is the Grothendieck construction of the functor $\op\Set\to\Cat{Cat}$ given on objects by $\cat{O}\mapsto\TrCat_{\boo\Fun{FrMon}(\cat{O})}$, and on morphisms by Lemma~\ref{lemma:factorization system}. The result follows by Proposition~\ref{prop:natural equivalence cob-O and traced-O}. \todo{This has not been rigorously checked.}
+The left-hand side is fibered over set; $\Cat{TrFrObCat}$ is the Grothendieck construction of the functor $\Set\to\op{\Cat{Cat}}$ given on objects by $\cat{O}\mapsto\TrCat_{\boo\Fun{FrMon}(\cat{O})}$, and on morphisms by Lemma~\ref{lemma:factorization system}. The result follows by Proposition~\ref{prop:natural equivalence cob-O and traced-O}. \todo{This has not been rigorously checked.}
 
 
 
