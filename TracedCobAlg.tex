@@ -22,11 +22,11 @@
 
 \title{Traced Categories as Lax Functors out of Free Compact Categories}
 \author{
-Dylan Rupel 
- \and 
 David I. Spivak\thanks{Spivak and Schultz were supported by AFOSR grant FA9550-14-1-0031, ONR grant N000141310260, and NASA grant NNH13ZEA001N.}
  \and 
  Patrick Schultz${}^*$%\footnotemark[1]
+ \and
+ Dylan Rupel 
  }
 
 
@@ -41,9 +41,7 @@ We give an alternate conception of string diagrams as 1-dimensional oriented cob
 \end{abstract}
 Global todo's:
 \begin{enumerate}
-\item Change $-_{\Ob\iso}$ to $-_{bo}$. 
-\item Make sure that the main theorem is proven explicitly somewhere.
-\item Some aspect of the factorization system from Lemma~\ref{lemma:factorization system} is used  in several constructions. There may be a tighter formulation of the aspect that is being used. 
+\item Add bibliography.
 \end{enumerate}
 
 
@@ -120,7 +118,7 @@ This will be proved in Section~\ref{sec:proof of A}, but we sketch the equivalen
 
 First, for each box $(\inp{X},\outp{X})$ that might appear in a string diagram, both $P$ and $\cat{C}$ require a set, $P(\inp{X},\outp{X})$ and $\Hom_{\cat{C}}(\inp{X},\outp{X})$, respectively. Second, for each string diagram, both $P$ and $\cat{C}$ require a function: an action on morphisms, in the case of $P$, and a formula for performing the required compositions, tensors, and traces, in the case of $\cat{C}$. The condition that $P$ is functorial corresponds to the fact that $\cat{C}$ satisfies the axioms of traced categories. 
 
-To make precise the equivalence of Theorem~\ref{thm:traced as cob-alg} we will specify here how to construct a $(\Cat{Cob}/\Ob\cat{C})$-algebra from a traced category $\cat{C}$.  First, given a set $Z$ over $\Ob\cat{C}$ we will abuse notation slightly and denote by the same symbol $Z$ the tensor of all objects in $\cat{C}$ labeling elements of $Z$.  Then for an oriented 0-manifold $X=X^-\sqcup X^+$ over  we set $P(X)=\Hom_{\cat{C}}(X^-,X^+)$.  Given a cobordism $\Phi:X\to Y$ we may find $A,B,C,D,E\in\Ob\cat{C}$ such that $X^-\cong C\otimes A$, $X^+=C\otimes B$, $Y^-\cong A\otimes D$, $Y^+\cong B\otimes D$ and $E$ is the tensor of all labels on floating loops in $\Phi$, thus $\Phi$ is essentially equivalent to the cobordism below.  With this notation, for $f\in P(X)$ we define 
+To make precise the equivalence of \ref{thm:Theorem A} we will specify here how to construct a $(\Cat{Cob}/\Ob\cat{C})$-algebra from a traced category $\cat{C}$.  First, given a set $Z$ over $\Ob\cat{C}$ we will abuse notation slightly and denote by the same symbol $Z$ the tensor of all objects in $\cat{C}$ labeling elements of $Z$.  Then for an oriented 0-manifold $X=X^-\sqcup X^+$ over  we set $P(X)=\Hom_{\cat{C}}(X^-,X^+)$.  Given a cobordism $\Phi:X\to Y$ we may find $A,B,C,D,E\in\Ob\cat{C}$ such that $X^-\cong C\otimes A$, $X^+=C\otimes B$, $Y^-\cong A\otimes D$, $Y^+\cong B\otimes D$ and $E$ is the tensor of all labels on floating loops in $\Phi$, thus $\Phi$ is essentially equivalent to the cobordism below.  With this notation, for $f\in P(X)$ we define 
 \begin{equation}\label{eq:cob algebra formula}
  P(\Phi)(f)=\Tr_{A,B}^C\big[f\big]\otimes D\otimes\dim(E).
 \end{equation}
@@ -171,7 +169,7 @@ $$
 $$
 
 
-A technical proof of \ref{thm:Theorem A} will be given in Section~\ref{sec:first equivalence} (see Corollary~\ref{cor:traced as cob-alg}), but see Section~\ref{sec:first equivalence} for an intuitive picture-proof.
+\ref{thm:Theorem A} will be proved in Section~\ref{sec:proof of A}.
 
 \section{Wiring Diagrams and $\Cat{Cob}$}\label{sec:wds and cob}
 
@@ -270,7 +268,7 @@ It is most convenient to prove \ref{thm:Theorem A} by proving a much more genera
 
 Recall from \cite{JoyalStreetVerity} that traced categories are full subcategories of compact categories. The Int construction, applied to a traced category $\cat{C}$, returns the smallest compact category $\Int(\cat{C})$ of which it is a subcategory; we call $\Int(\cat{C})$ the \emph{compact closure} of $\cat{C}$. 
 
-It turns out that if our compact category $\cat{C}$ is the compact closure of a traced category $\cat{D}$, then \ref{thm:Theorem B} lifts to a result about $\cat{D}$. We record this result as \ref{cor:Corollary B}, from which \ref{thm:Theorem A} follows. These are proved in Sections~\ref{**},~\ref{**}, and~\ref{**}, respectively. 
+It turns out that if our compact category $\cat{C}$ is the compact closure of a traced category $\cat{D}$, then \ref{thm:Theorem B} lifts to a result about $\cat{D}$. We record this result as \ref{cor:Corollary B}, from which \ref{thm:Theorem A} follows. These are proved in Section~\ref{sec:generalization}. 
 
 \begin{named}{Corollary B}\label{cor:Corollary B}
 Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=\Int(\cat{D})$. Then there is an equivalence of categories
@@ -901,10 +899,14 @@ Let $\cat{C}$ be a category. The free traced category on $\cat{C}$ is... The fre
 
 \begin{proof}
 
-**Abramsky. 
+Kelly, Laplaza ``Coherence for compact closed categories'' gives a combinatorial description of the free compact category on one object. 
+
+See Abramsky. 
 
 \end{proof}
 
+
+\todo{Mention that this is folklore, though the proof is probably easily adapted}
 \begin{proposition}
 
 The free compact closed category on a set $\cat{O}$ is equivalent to $\Cat{Cob}/\cat{O}$
@@ -912,7 +914,10 @@ The free compact closed category on a set $\cat{O}$ is equivalent to $\Cat{Cob}/
 \end{proposition}
 
 \begin{proof}
-See Kelly, Laplaza ``Coherence for compact closed categories'' and Freyd, Yetter ``Braided compact closed categories with applications to low dimensional topology''
+Freyd, Yetter ``Braided compact closed categories with applications to low dimensional topology'' proves something more general: the category of 1-dim tangles is the free braided compact category. 
+
+Joachim Kock proves that 2-cob is the free compact category on a frobenius algebra object, and the proof can be adapted.
+\todo{Fix this.}
 \end{proof}
 
 
@@ -1358,7 +1363,7 @@ commutes, where the right-hand functor is obtained using the factorization syste
 
 \section{Proof of \ref{thm:Theorem A}}\label{sec:proof of A}
 
-In this section, we prove an equivalence between traced categories and algebras on cobordism categories, indexed by a set of objects. 
+In this section, we prove an equivalence between traced categories and algebras on cobordism categories, indexed by a set of objects. \todo{Add more guidance to this section}
 
 \begin{proposition}\label{prop:natural equivalence cob-O and traced-O}
 
@@ -1400,124 +1405,124 @@ The left-hand side is fibered over set; it is the Grothendieck construction of a
 
 
 
-\appendix
-
-\chapter{Combinatorial proof of the main theorem}\label{sec:combinatorial proof}
-
-\todo{Feel free to reorder this, feel free to get rid of sectioning, etc.}
-
-\section{The easy direction $(\Cat{Cob}/\bullet)\alg\to\TrCat$}
-
-\section{The functor $\TrCat\to(\Cat{Cob}/\bullet)\alg$ on objects}
-
-
-\begin{theorem}\label{thm:cob-O and traced-O}
-For any set $\cat{O}$, let $\SList(\cat{O})$ denote the set of symmetric lists in $\cat{O}$. There is an equivalence of categories 
- $$(\Cat{Cob}/\cat{O})\alg\simeq\TrCat_{\boo\SList(\cat{O})}$$
-\end{theorem}
-\begin{proof}
- Let $\cat{C}$ be the free traced category generated by $\cat{O}$.  We will define a $\Cat{Cob}/\cat{O}$-algebra $\cat{P}=R(\cat{C})\colon\Cat{Cob}/\cat{O}\to\Cat{Set}$ as follows. For an object $X\in\Ob(\Cat{Cob}/\cat{O})$, set
-$$\cat{P}(X):=\Hom_{\cat{C}}(\vinp{X},\voutp{X}).$$
-A morphism $\Phi\colon X\longrightarrow Y$ consists of a typed bijection(?)
-$$\varphi\colon\inp{X}\sqcup \outp{Y}\xrightarrow{\iso}\outp{X}\sqcup \inp{Y},$$
-together with a typed finite set $S$. Given an element $f\in\cat{P}(X)$ we must construct $\cat{P}(\Phi)(f)\in\cat{P}(Y)$. Let $\dim(\overline{S})=\textnormal{Tr}^{\overline{S}}_{I,I}\big[\id_{\overline{S}}\big]\in\cat{S}_\cat{C}$. Then we use the formula
-$$\cat{P}(\Phi)(f):=
-\textnormal{Tr}^{\voutp{X}}_{\vinp{Y},\voutp{Y}}\Big[\big(f\otimes\id_{\voutp{Y}}\big)\circ\overline{\varphi}\Big]
-\otimes\dim(\overline{S}).
-$$
-
-
-A morphism $\Phi:[\inp{X},\outp{X}]\to[\inp{Y},\outp{Y}]$ consists of a typed bijection
-$$\varphi:\inp{X}\sqcup \outp{Y}\To{\iso}\outp{X}\sqcup \inp{Y},$$
-together with a typed finite set $S$. Given an element $f\in\cat{P}[\inp{X},\outp{X}]$ we must construct $\cat{P}(\Phi)(f)\in\cat{P}[\inp{Y},\outp{Y}]$. Let $\dim(S)=\Tr^{S}_{I,I}\big[S\big]$. Then we use the formula
-$$\cat{P}(\Phi)(f):=
-\id_{\overline{\feedcc{\varphi}{Y}{Y}}}\otimes\Tr^{\overline{\feeddd{\varphi}{X}{X}}}_{\overline{\feedcd{\varphi}{Y}{X}},\overline{\feeddc{\varphi}{X}{Y}}}\big[f\big]
-\otimes\dim(\overline{S})
-$$
-$$\cat{P}(\Phi)(f):=\Tr^G_{E,F}\big[f\big]\otimes D\otimes\dim(S).
-$$
-
-Given also $\Psi:[\inp{Y},\outp{Y}]\to[\inp{Z},\outp{Z}]$, we need to show that the following equation holds:
-$$\cat{P}(\Psi)\circ\cat{P}(\Phi)(f)=^?\cat{P}(\Psi\circ\Phi)(f).$$
-These are given as follows:
-\todo{better notation is probably needed}
-\begin{align}
-\label{eq:composition 1}
-\cat{P}(\Psi)\circ\cat{P}(\Phi)(f)
-&=\Tr^C_{A,B}\Big[\Tr^G_{E,F}\big[f\big]\otimes D\Big]\otimes H\otimes\dim(S\otimes T)
-\\\nonumber\\
-\label{eq:composition 2}
-\cat{P}(\Psi\circ\Phi)(f)&=
-\Tr^{G\otimes M}_{K,L}\big[f\big]\otimes J\otimes H\otimes \dim(N\otimes S\otimes T)
-\end{align}
-where there are isomorphsims $A\cong K\otimes J$, $B\cong L\otimes J$, $E\cong M\otimes K$, $F\cong M\otimes L$, $D\cong N^\ell\otimes J^k$, and $C\cong M\otimes N^\ell\otimes J^{k-1}$ which we suppress from the notation.  We distinguish the permutation isomorphism $C\otimes A\cong E\otimes D$ which interchanges the factors of $J$ from $C$ and from $A$.  We similarly distinguish the permutation isomorphism $F\otimes D\cong C\otimes B$ which maintains the order of $J$ factors but acts on $N^\ell$ by the cyclic permutation of factors.
-
-\begin{lemma}\label{le:combining traces}
-Let $A,B,C,D,E,F,G$ be objects in a traced monoidal category.  Suppose there exist isomorphism $C\otimes A\cong E\otimes D$ and $F\otimes D\cong C\otimes B$ which we suppress from the notation.  Then for any function $f:G\otimes E\to G\otimes F$ we have
-\begin{align*}
- \Tr^C_{A,B}\bigg[\Tr^G_{E,F}\big[f\big]\otimes D\bigg]=\Tr^G_{A,B}\bigg[\Tr^C_{G\otimes A,G\otimes B}\Big[\gamma^{G,C,B}_{C,G,B}\circ\big(f\otimes D\big)\circ\gamma^{C,G,A}_{G,C,A}\Big]\bigg].
-\end{align*}
-\end{lemma}
-\begin{proof}
- Applying the Superposing axiom and then Vanishing II we get
- \begin{align*}
-  \Tr^C_{A,B}\bigg[\Tr^G_{E,F}\big[f\big]\otimes D\bigg]
-  &=\Tr^C_{A,B}\bigg[\Tr^G_{E\otimes D,F\otimes D}\big[f\otimes D\big]\bigg]\\
-  &=\Tr^C_{A,B}\bigg[\Tr^G_{C\otimes A,C\otimes B}\big[f\otimes D\big]\bigg]\\
-  &=\Tr^{G\otimes C}_{A,B}\big[f\otimes D\big].
- \end{align*}
- The Dinaturality axiom gives the equivalence
- \[\Tr^{G\otimes C}_{A,B}\big[f\otimes D\big]=\Tr^{C\otimes G}_{A,B}\Big[\gamma^{G,C,B}_{C,G,B}\circ\big(f\otimes D\big)\circ\gamma^{C,G,A}_{G,C,A}\Big].\]
- Then applying Vanishing II again we get
- \begin{align*}
-  &\Tr^{C\otimes G}_{A,B}\Big[\gamma^{G,C,B}_{C,G,B}\circ\big(f\otimes D\big)\circ\gamma^{C,G,A}_{G,C,A}\Big]\\
-  &\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad=\Tr^G_{A,B}\bigg[\Tr^C_{G\otimes A,G\otimes B}\Big[\gamma^{G,C,B}_{C,G,B}\circ\big(f\otimes D\big)\circ\gamma^{C,G,A}_{G,C,A}\Big]\bigg]
- \end{align*}
- as desired.
-\end{proof}
-
-\begin{lemma}\label{le:C to M}
- Let $A,B,C,D,G,J,K,L,M$ be objects in a traced monoidal category.  Suppose there exist isomorphisms $A\cong K\otimes J$, $B\cong L\otimes J$, $C\cong M\otimes N^\ell\otimes J^{k-1}$, and $D\cong N^\ell\otimes J^k$ which we suppress from the notation.  Then for any function $f:G\otimes M\otimes K\to G\otimes M\otimes L$ we have
- \begin{align*}
-  &\Tr^C_{G\otimes A,G\otimes B}\Big[\gamma^{G,C,B}_{C,G,B}\circ\big(f\otimes D\big)\circ\gamma^{C,G,A}_{G,C,A}\Big]\\
-  &\quad\quad\quad\quad\quad\quad\quad\quad=\Tr^M_{G\otimes K,G\otimes L}\Big[\gamma^{G,M,L}_{M,G,L}\circ f\circ\gamma^{M,G,K}_{G,M,K}\Big]\otimes J\otimes \dim(N).
- \end{align*}
-\end{lemma}
-\begin{proof}
- By Dinaturality I' we may rewrite the left hand side as
- \begin{align*}
-   &\Tr^C_{G\otimes A,G\otimes B}\Big[\gamma^{G,C,B}_{C,G,B}\circ\big(f\otimes D\big)\circ\gamma^{C,G,A}_{G,C,A}\Big]\\
-   &\quad\quad=\Tr^{M\otimes N^\ell\otimes J^{k-1}}_{G\otimes A,G\otimes B}\Big[\gamma^{G,M\otimes N^\ell\otimes J^{k-1},B}_{M\otimes N^\ell\otimes J^{k-1},G,B}\circ\big(f\otimes N^\ell\otimes J^k\big)\circ\gamma_{G,M\otimes N^\ell\otimes J^{k-1},A}^{M\otimes N^\ell\otimes J^{k-1},G,A}\Big]\\
-   &\quad\quad=\Tr^{N^\ell\otimes J^{k-1}\otimes M}_{G\otimes A,G\otimes B}\Big[\gamma^{G,M,N^\ell\otimes J^{k-1},B}_{N^\ell\otimes J^{k-1},M,G,B}\circ\big(f\otimes N^\ell\otimes J^k\big)\circ\gamma_{G,M,N^\ell\otimes J^{k-1},A}^{N^\ell\otimes J^{k-1},M,G,A}\Big].
-  \end{align*}
-  Using the distinguished permutation isomorphisms rectifying the tensors $C\otimes A$ and $C\otimes B$ this becomes
-  \begin{align*}
-   &\Tr^{N^\ell\otimes J^{k-1}\otimes M}_{G\otimes K\otimes J,G\otimes L\otimes J}\bigg[\gamma^{G,M,L,N^\ell\otimes J^{k-1},J}_{N^\ell\otimes J^{k-1},M,G,L,J}\circ\Big(f\otimes\gamma^{N^{\ell-1},N,J^{k-1},J}_{N,N^{\ell-1},J,J^{k-1}}\Big)\circ\gamma_{G,M,K,N^\ell\otimes J^{k-1},J}^{N^\ell\otimes J^{k-1},M,G,K,J}\bigg]\\
-   &=\Tr^{N^\ell\otimes J^{k-1}\otimes M}_{G\otimes K\otimes J,G\otimes L\otimes J}\bigg[\gamma^{M\otimes G\otimes L,N^\ell\otimes J^{k-1},J}_{N^\ell\otimes J^{k-1},M\otimes G\otimes L,J}\circ\Big(\Big(\gamma^{G,M,L}_{M,G,L}\circ f\circ\gamma^{M,G,K}_{G,M,K}\Big)\otimes\gamma^{N^{\ell-1},N,J^{k-1},J}_{N,N^{\ell-1},J,J^{k-1}}\Big)\circ\gamma_{M\otimes G\otimes K,N^\ell\otimes J^{k-1},J}^{N^\ell\otimes J^{k-1},M\otimes G\otimes K,J}\bigg].
-  \end{align*}
-  By Proposition~\ref{prop:dinaturality} this is equal to
-  \begin{align*}
-   &\Tr^M_{G\otimes K,G\otimes L}\Big[\gamma^{G,M,L}_{M,G,L}\circ f\circ\gamma^{M,G,K}_{G,M,K}\Big]\otimes\Tr^{N^\ell\otimes J^{k-1}}_{J,J}\Big[\gamma^{N^{\ell-1},N,J^{k-1},J}_{N,N^{\ell-1},J,J^{k-1}}\Big]\\
-   &\quad\quad\quad\quad=\Tr^M_{G\otimes K,G\otimes L}\Big[\gamma^{G,M,L}_{M,G,L}\circ f\circ\gamma^{M,G,K}_{G,M,K}\Big]\otimes J\otimes\dim(N).
- \end{align*}
-\end{proof}
-
-Now we can complete the proof of Theorem~\ref{thm:cob-O and traced-O}.  By Lemma~\ref{le:C to M} we have
-\begin{align*}
- &\Tr^G_{A,B}\bigg[\Tr^C_{G\otimes A,G\otimes B}\Big[\gamma^{G,C,B}_{C,G,B}\circ\big(f\otimes D\big)\circ\gamma^{C,G,A}_{G,C,A}\Big]\bigg]\otimes H\otimes\dim(S\otimes T)\\
- &=\Tr^G_{K\otimes J,L\otimes J}\Big[\Tr^M_{G\otimes K,G\otimes L}\big[\gamma^{G,M,L}_{M,G,L}\circ f\circ\gamma^{M,G,K}_{G,M,K}\big]\otimes J\otimes\dim(N)\Big]\otimes H\otimes\dim(S\otimes T)
-\end{align*}
-which is equal via Superposing to
-\begin{align*}
- \Tr^G_{K,L}\Big[\Tr^M_{G\otimes K,G\otimes L}\big[\gamma^{G,M,L}_{M,G,L}\circ f\circ\gamma^{M,G,K}_{G,M,K}\big]\Big]\otimes J\otimes H\otimes\dim(N)\otimes \dim(S\otimes T).
-\end{align*}
-Finally applying Vanishing II we get
-\begin{align*}
- \Tr^{G\otimes M}_{K,L}\big[f\big]\otimes J\otimes H\otimes\dim(N\otimes S\otimes T).
-\end{align*}
-\end{proof}
-
-
-\section{The functor $\TrCat\to(\Cat{Cob}/\bullet)\alg$ on morphisms}
-
+%\appendix
+%
+%\chapter{Combinatorial proof of the main theorem}\label{sec:combinatorial proof}
+%
+%\todo{Feel free to reorder this, feel free to get rid of sectioning, etc.}
+%
+%\section{The easy direction $(\Cat{Cob}/\bullet)\alg\to\TrCat$}
+%
+%\section{The functor $\TrCat\to(\Cat{Cob}/\bullet)\alg$ on objects}
+%
+%
+%\begin{theorem}\label{thm:cob-O and traced-O}
+%For any set $\cat{O}$, let $\SList(\cat{O})$ denote the set of symmetric lists in $\cat{O}$. There is an equivalence of categories 
+% $$(\Cat{Cob}/\cat{O})\alg\simeq\TrCat_{\boo\SList(\cat{O})}$$
+%\end{theorem}
+%\begin{proof}
+% Let $\cat{C}$ be the free traced category generated by $\cat{O}$.  We will define a $\Cat{Cob}/\cat{O}$-algebra $\cat{P}=R(\cat{C})\colon\Cat{Cob}/\cat{O}\to\Cat{Set}$ as follows. For an object $X\in\Ob(\Cat{Cob}/\cat{O})$, set
+%$$\cat{P}(X):=\Hom_{\cat{C}}(\vinp{X},\voutp{X}).$$
+%A morphism $\Phi\colon X\longrightarrow Y$ consists of a typed bijection(?)
+%$$\varphi\colon\inp{X}\sqcup \outp{Y}\xrightarrow{\iso}\outp{X}\sqcup \inp{Y},$$
+%together with a typed finite set $S$. Given an element $f\in\cat{P}(X)$ we must construct $\cat{P}(\Phi)(f)\in\cat{P}(Y)$. Let $\dim(\overline{S})=\textnormal{Tr}^{\overline{S}}_{I,I}\big[\id_{\overline{S}}\big]\in\cat{S}_\cat{C}$. Then we use the formula
+%$$\cat{P}(\Phi)(f):=
+%\textnormal{Tr}^{\voutp{X}}_{\vinp{Y},\voutp{Y}}\Big[\big(f\otimes\id_{\voutp{Y}}\big)\circ\overline{\varphi}\Big]
+%\otimes\dim(\overline{S}).
+%$$
+%
+%
+%A morphism $\Phi:[\inp{X},\outp{X}]\to[\inp{Y},\outp{Y}]$ consists of a typed bijection
+%$$\varphi:\inp{X}\sqcup \outp{Y}\To{\iso}\outp{X}\sqcup \inp{Y},$$
+%together with a typed finite set $S$. Given an element $f\in\cat{P}[\inp{X},\outp{X}]$ we must construct $\cat{P}(\Phi)(f)\in\cat{P}[\inp{Y},\outp{Y}]$. Let $\dim(S)=\Tr^{S}_{I,I}\big[S\big]$. Then we use the formula
+%$$\cat{P}(\Phi)(f):=
+%\id_{\overline{\feedcc{\varphi}{Y}{Y}}}\otimes\Tr^{\overline{\feeddd{\varphi}{X}{X}}}_{\overline{\feedcd{\varphi}{Y}{X}},\overline{\feeddc{\varphi}{X}{Y}}}\big[f\big]
+%\otimes\dim(\overline{S})
+%$$
+%$$\cat{P}(\Phi)(f):=\Tr^G_{E,F}\big[f\big]\otimes D\otimes\dim(S).
+%$$
+%
+%Given also $\Psi:[\inp{Y},\outp{Y}]\to[\inp{Z},\outp{Z}]$, we need to show that the following equation holds:
+%$$\cat{P}(\Psi)\circ\cat{P}(\Phi)(f)=^?\cat{P}(\Psi\circ\Phi)(f).$$
+%These are given as follows:
+%\todo{better notation is probably needed}
+%\begin{align}
+%\label{eq:composition 1}
+%\cat{P}(\Psi)\circ\cat{P}(\Phi)(f)
+%&=\Tr^C_{A,B}\Big[\Tr^G_{E,F}\big[f\big]\otimes D\Big]\otimes H\otimes\dim(S\otimes T)
+%\\\nonumber\\
+%\label{eq:composition 2}
+%\cat{P}(\Psi\circ\Phi)(f)&=
+%\Tr^{G\otimes M}_{K,L}\big[f\big]\otimes J\otimes H\otimes \dim(N\otimes S\otimes T)
+%\end{align}
+%where there are isomorphsims $A\cong K\otimes J$, $B\cong L\otimes J$, $E\cong M\otimes K$, $F\cong M\otimes L$, $D\cong N^\ell\otimes J^k$, and $C\cong M\otimes N^\ell\otimes J^{k-1}$ which we suppress from the notation.  We distinguish the permutation isomorphism $C\otimes A\cong E\otimes D$ which interchanges the factors of $J$ from $C$ and from $A$.  We similarly distinguish the permutation isomorphism $F\otimes D\cong C\otimes B$ which maintains the order of $J$ factors but acts on $N^\ell$ by the cyclic permutation of factors.
+%
+%\begin{lemma}\label{le:combining traces}
+%Let $A,B,C,D,E,F,G$ be objects in a traced monoidal category.  Suppose there exist isomorphism $C\otimes A\cong E\otimes D$ and $F\otimes D\cong C\otimes B$ which we suppress from the notation.  Then for any function $f:G\otimes E\to G\otimes F$ we have
+%\begin{align*}
+% \Tr^C_{A,B}\bigg[\Tr^G_{E,F}\big[f\big]\otimes D\bigg]=\Tr^G_{A,B}\bigg[\Tr^C_{G\otimes A,G\otimes B}\Big[\gamma^{G,C,B}_{C,G,B}\circ\big(f\otimes D\big)\circ\gamma^{C,G,A}_{G,C,A}\Big]\bigg].
+%\end{align*}
+%\end{lemma}
+%\begin{proof}
+% Applying the Superposing axiom and then Vanishing II we get
+% \begin{align*}
+%  \Tr^C_{A,B}\bigg[\Tr^G_{E,F}\big[f\big]\otimes D\bigg]
+%  &=\Tr^C_{A,B}\bigg[\Tr^G_{E\otimes D,F\otimes D}\big[f\otimes D\big]\bigg]\\
+%  &=\Tr^C_{A,B}\bigg[\Tr^G_{C\otimes A,C\otimes B}\big[f\otimes D\big]\bigg]\\
+%  &=\Tr^{G\otimes C}_{A,B}\big[f\otimes D\big].
+% \end{align*}
+% The Dinaturality axiom gives the equivalence
+% \[\Tr^{G\otimes C}_{A,B}\big[f\otimes D\big]=\Tr^{C\otimes G}_{A,B}\Big[\gamma^{G,C,B}_{C,G,B}\circ\big(f\otimes D\big)\circ\gamma^{C,G,A}_{G,C,A}\Big].\]
+% Then applying Vanishing II again we get
+% \begin{align*}
+%  &\Tr^{C\otimes G}_{A,B}\Big[\gamma^{G,C,B}_{C,G,B}\circ\big(f\otimes D\big)\circ\gamma^{C,G,A}_{G,C,A}\Big]\\
+%  &\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad=\Tr^G_{A,B}\bigg[\Tr^C_{G\otimes A,G\otimes B}\Big[\gamma^{G,C,B}_{C,G,B}\circ\big(f\otimes D\big)\circ\gamma^{C,G,A}_{G,C,A}\Big]\bigg]
+% \end{align*}
+% as desired.
+%\end{proof}
+%
+%\begin{lemma}\label{le:C to M}
+% Let $A,B,C,D,G,J,K,L,M$ be objects in a traced monoidal category.  Suppose there exist isomorphisms $A\cong K\otimes J$, $B\cong L\otimes J$, $C\cong M\otimes N^\ell\otimes J^{k-1}$, and $D\cong N^\ell\otimes J^k$ which we suppress from the notation.  Then for any function $f:G\otimes M\otimes K\to G\otimes M\otimes L$ we have
+% \begin{align*}
+%  &\Tr^C_{G\otimes A,G\otimes B}\Big[\gamma^{G,C,B}_{C,G,B}\circ\big(f\otimes D\big)\circ\gamma^{C,G,A}_{G,C,A}\Big]\\
+%  &\quad\quad\quad\quad\quad\quad\quad\quad=\Tr^M_{G\otimes K,G\otimes L}\Big[\gamma^{G,M,L}_{M,G,L}\circ f\circ\gamma^{M,G,K}_{G,M,K}\Big]\otimes J\otimes \dim(N).
+% \end{align*}
+%\end{lemma}
+%\begin{proof}
+% By Dinaturality I' we may rewrite the left hand side as
+% \begin{align*}
+%   &\Tr^C_{G\otimes A,G\otimes B}\Big[\gamma^{G,C,B}_{C,G,B}\circ\big(f\otimes D\big)\circ\gamma^{C,G,A}_{G,C,A}\Big]\\
+%   &\quad\quad=\Tr^{M\otimes N^\ell\otimes J^{k-1}}_{G\otimes A,G\otimes B}\Big[\gamma^{G,M\otimes N^\ell\otimes J^{k-1},B}_{M\otimes N^\ell\otimes J^{k-1},G,B}\circ\big(f\otimes N^\ell\otimes J^k\big)\circ\gamma_{G,M\otimes N^\ell\otimes J^{k-1},A}^{M\otimes N^\ell\otimes J^{k-1},G,A}\Big]\\
+%   &\quad\quad=\Tr^{N^\ell\otimes J^{k-1}\otimes M}_{G\otimes A,G\otimes B}\Big[\gamma^{G,M,N^\ell\otimes J^{k-1},B}_{N^\ell\otimes J^{k-1},M,G,B}\circ\big(f\otimes N^\ell\otimes J^k\big)\circ\gamma_{G,M,N^\ell\otimes J^{k-1},A}^{N^\ell\otimes J^{k-1},M,G,A}\Big].
+%  \end{align*}
+%  Using the distinguished permutation isomorphisms rectifying the tensors $C\otimes A$ and $C\otimes B$ this becomes
+%  \begin{align*}
+%   &\Tr^{N^\ell\otimes J^{k-1}\otimes M}_{G\otimes K\otimes J,G\otimes L\otimes J}\bigg[\gamma^{G,M,L,N^\ell\otimes J^{k-1},J}_{N^\ell\otimes J^{k-1},M,G,L,J}\circ\Big(f\otimes\gamma^{N^{\ell-1},N,J^{k-1},J}_{N,N^{\ell-1},J,J^{k-1}}\Big)\circ\gamma_{G,M,K,N^\ell\otimes J^{k-1},J}^{N^\ell\otimes J^{k-1},M,G,K,J}\bigg]\\
+%   &=\Tr^{N^\ell\otimes J^{k-1}\otimes M}_{G\otimes K\otimes J,G\otimes L\otimes J}\bigg[\gamma^{M\otimes G\otimes L,N^\ell\otimes J^{k-1},J}_{N^\ell\otimes J^{k-1},M\otimes G\otimes L,J}\circ\Big(\Big(\gamma^{G,M,L}_{M,G,L}\circ f\circ\gamma^{M,G,K}_{G,M,K}\Big)\otimes\gamma^{N^{\ell-1},N,J^{k-1},J}_{N,N^{\ell-1},J,J^{k-1}}\Big)\circ\gamma_{M\otimes G\otimes K,N^\ell\otimes J^{k-1},J}^{N^\ell\otimes J^{k-1},M\otimes G\otimes K,J}\bigg].
+%  \end{align*}
+%  By Proposition~\ref{prop:dinaturality} this is equal to
+%  \begin{align*}
+%   &\Tr^M_{G\otimes K,G\otimes L}\Big[\gamma^{G,M,L}_{M,G,L}\circ f\circ\gamma^{M,G,K}_{G,M,K}\Big]\otimes\Tr^{N^\ell\otimes J^{k-1}}_{J,J}\Big[\gamma^{N^{\ell-1},N,J^{k-1},J}_{N,N^{\ell-1},J,J^{k-1}}\Big]\\
+%   &\quad\quad\quad\quad=\Tr^M_{G\otimes K,G\otimes L}\Big[\gamma^{G,M,L}_{M,G,L}\circ f\circ\gamma^{M,G,K}_{G,M,K}\Big]\otimes J\otimes\dim(N).
+% \end{align*}
+%\end{proof}
+%
+%Now we can complete the proof of Theorem~\ref{thm:cob-O and traced-O}.  By Lemma~\ref{le:C to M} we have
+%\begin{align*}
+% &\Tr^G_{A,B}\bigg[\Tr^C_{G\otimes A,G\otimes B}\Big[\gamma^{G,C,B}_{C,G,B}\circ\big(f\otimes D\big)\circ\gamma^{C,G,A}_{G,C,A}\Big]\bigg]\otimes H\otimes\dim(S\otimes T)\\
+% &=\Tr^G_{K\otimes J,L\otimes J}\Big[\Tr^M_{G\otimes K,G\otimes L}\big[\gamma^{G,M,L}_{M,G,L}\circ f\circ\gamma^{M,G,K}_{G,M,K}\big]\otimes J\otimes\dim(N)\Big]\otimes H\otimes\dim(S\otimes T)
+%\end{align*}
+%which is equal via Superposing to
+%\begin{align*}
+% \Tr^G_{K,L}\Big[\Tr^M_{G\otimes K,G\otimes L}\big[\gamma^{G,M,L}_{M,G,L}\circ f\circ\gamma^{M,G,K}_{G,M,K}\big]\Big]\otimes J\otimes H\otimes\dim(N)\otimes \dim(S\otimes T).
+%\end{align*}
+%Finally applying Vanishing II we get
+%\begin{align*}
+% \Tr^{G\otimes M}_{K,L}\big[f\big]\otimes J\otimes H\otimes\dim(N\otimes S\otimes T).
+%\end{align*}
+%\end{proof}
+%
+%
+%\section{The functor $\TrCat\to(\Cat{Cob}/\bullet)\alg$ on morphisms}
+%
 \end{document} 
