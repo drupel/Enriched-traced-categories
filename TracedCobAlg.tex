@@ -332,7 +332,21 @@ Formalizing modular design using operads, as in \cite{Spivak}, \cite{Rupel-Spiva
 
 It is easy to imagine operads with the same objects as $\Cat{Cob}$, but different morphisms, simply by imagining generalizations of the pictures. String diagrams $\varphi\colon X\to Y$ in $\Cat{Cob}$ include no split wires and no ``dangling" wires, but those conditions can be relaxed. Said mathematically, an oriented cobordism $\varphi$ includes the data of a function
 $$\varphi_1\colon\inp{X}\sqcup\outp{Y}\to\outp{X}\sqcup\inp{Y},$$
-which is both injective and surjective. Either of those conditions can be dropped to generalize the indexing category. 
+which is both injective and surjective. Either of those conditions can be dropped, e.g., requiring surjectivity but not requiring injectivity
+\begin{center}
+\begin{tikzpicture}[wiring diagram,bb min width =.7cm, bb port sep =1, bbx=.6cm,bb port length=3pt] 
+  \node[bb port sep=1.6, bb={2}{2}, bb name=$f$] (X1) {};
+  \node[bb port sep=.8,bb={1}{1}, right=.7 of X1_out1, bb name=$g$] (X2) {};
+  \node[bb={1}{2}, fit={(X1) (X2) ($(X1.north)+(0,1)$)}] (Y) {};
+  \draw[ar] (Y_in1') to (X1_in2);
+  \draw[ar,pos=.8] (X1_out1) to (X2_in1);
+  \draw (X2_out1) to (Y_out1');
+  \draw[ar] (X1_out2) to (Y_out2');
+  \draw[ar] let \p1=(X2.north east), \p2=(X1.north west), \n1={\y2+\bby}, \n2=\bbportlen in
+          (X2_out1) to[in=0] (\x1+.7*\n2,\n1) -- (\x2-.7*\n2,\n1) to[out=180] (X1_in1);
+\end{tikzpicture}
+\end{center}
+to generalize the indexing category. 
 
 So while it is difficult to see how to make subtle changes in the axioms of traced categories, it is much more straightforward to see how to make subtle changes in the cobordism operads, which index traced categories.
 
@@ -840,6 +854,7 @@ The following facts hold for any traced category $\cat{C}$:
 \begin{compactitem}
 	\item The unit $\cat{C}\to\Int(\cat{C})$ is fully faithful.
 	\item If $\cat{D}$ is a category and $F\colon\cat{D}\to\cat{C}$ a fully faithful symmetric monoidal functor, then $\cat{D}$ has a unique trace for which $F$ is a traced functor.
+	\item If $\cat{C}$ is compact then the unit $\cat{C}\to\Int(\cat{C})$ is an equivalence.
 \end{compactitem}
 \end{lemma}
 
@@ -1150,7 +1165,7 @@ In this section, we prove \ref{thm:Theorem B}, from which \ref{cor:Corollary B} 
 \MProf(1,\cat{C})\ar[r,"\tn{Proposition~\ref{Prop:mon prof equivalence}}"']&\Mon(\MProf(\cat{C},\cat{C}))\ar[u,"\tn{Lemma~\ref{Lem:mon profs equal boo functors}}"']
 \end{tikzcd}
 \]
-If $\cat{C}$ is a compact category, the top equivalence in the diagram above is \ref{thm:Theorem B}, which we will defined as the composite of the other three equivalences. Our first goal, then, is to prove Proposition~\ref{Prop:mon prof equivalence}, which is the purpose of Section~\ref{sec:ccc's}. 
+This diagram shows that to prove \ref{thm:Theorem B}, we must prove Proposition~\ref{Prop:mon prof equivalence}, which is the purpose of Section~\ref{sec:ccc's}, at which point \ref{cor:Corollary B} will follow from Proposition~\ref{prop:slice boo int}. Finally, \ref{thm:Theorem A} is just making functorial use of \ref{cor:Corollary B} in cases where $\cat{D}$ is the free traced category on a set of objects.
 
 \section{Compact closed categories}\label{sec:ccc's}
 
