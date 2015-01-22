@@ -1006,8 +1006,7 @@ In \cite{Abramsky}, Abramsky provides a free-forgetful adjunction
 
 \begin{definition}\label{def:XKls XFrObCat}
 
-Let $\Cat{XKls}$ be the Kleisli category of the monad induced by (\ref{eq:abramsky}). There is an induced fully faithful functor $\Cat{XKls}\to\XCat$ (see \cite[Proposition 4.2.1]{Borceux vol 2}. 
-Let $\Fun{XFrObCat}\colon\Cat{XKls}\to\op{\Cat{Cat}}$ be the composite
+Let $\Cat{XKls}$ be the Kleisli category of the monad induced by (\ref{eq:abramsky}). It factors $\Fun{XFr}$ as the composite $\Set\To{\eta_X}\Cat{XKls}\To{\fun{i_X}}\XCat$, where $i_X$ is fully faithful  (see \cite[Proposition 4.2.1]{Borceux vol 2}.  Let $\Fun{XFrObCat}\colon\Cat{XKls}\to\op{\Cat{Cat}}$ be the composite
 $$\Cat{XKls}\to\XCat\To{-/\XCat_{\bo}}\op{\Cat{Cat}}.$$
 We define the fibration $\Cat{XFrObCat}\to\Cat{XKls}$ to be the Grothendieck construction of $\Fun{XFrObCat}$.
 
@@ -1381,12 +1380,12 @@ Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=
 \cat{C}\alg\iso\cat{D}/\TrCat_{\bo}.
 \end{align}
 This equivalence is natural in $\cat{D}$; i.e., the following diagram commutes:
-\begin{equation}
+\begin{equation*}
 \begin{tikzcd}
 \TrCat\ar[r,"\Fun{Int}"]\ar[dr,"-/\TrCat_{\bo}"']&\CompCat\ar[d,"\alg"]\\
 &\Cat{Cat}
 \end{tikzcd}
-\end{equation}
+\end{equation*}
 \end{named}
 
 \begin{proof}
@@ -1405,19 +1404,20 @@ In this section, we prove an equivalence between traced categories and algebras 
 
 Let $\cat{O}$ be a set. There is an equivalence of categories 
 $$(\Cat{Cob}/\cat{O})\alg\simeq\Fun{TrFrObCat}(\cat{O})$$
-This construction is functorial, in the sense that 
+which is functorial in $\cat{O}$.
 
 \end{proposition}
 
 \begin{proof}
 
-Use this diagram:
+Consider the following diagram, in which the left-hand triangle commutes, as in Definition~\ref{def:XKls XFrObCat}:
 $$
-\begin{tikzcd}
-\Set\ar[d]\ar[r,"\Fun{TrFr}"]&\TrCat\ar[r,"\Fun{Int}"]\ar[dr,"-/\TrCat_{\bo}"']&\CompCat\ar[d,"\alg"]\\
-\Cat{TrKls}\ar[ur]&&\Cat{Cat}
+\begin{tikzcd}[column sep=large]
+\Set\ar[d,"\eta_{Tr}"']\ar[rr,bend left,"\Fun{CompFr}"]\ar[r,"\Fun{TrFr}"]&\TrCat\ar[r,"\Fun{Int}"]\ar[dr,"-/\TrCat_{\bo}"']&\CompCat\ar[d,"\alg"]\\
+\Cat{TrKls}\ar[ur,"i_{Tr}"']&&\Cat{Cat}
 \end{tikzcd}
 $$
+The top triangle commutes by Proposition~\ref{prop:free traced and compact}, and the right-hand triangle commutes by \ref{cor:Corollary B}.  \todo{Very easy to finish this.}
 
 \end{proof}
 
