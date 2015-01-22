@@ -44,7 +44,6 @@ Global todo's:
 \item Add appropriate symmetric monoidal throughout.
 \item Add appropriate Kleisli language throughout.
 \item Remove inappropriate 2-categorical language throughout.
-\item Define the 2-category $\Cat{XFrObCat}$ as the 2-Grothendieck construction of $\Set\To{\Fun{XFr}}\Cat{XCat}\To{-/\XCat_{\bo}}\op{\2Cat}$
 \item Prove Lemma~\ref{Lem:mon profs equal boo functors}.
 \item Patrick: fill all profunctor naturality holes.
 \item Add bibliography.
@@ -973,16 +972,11 @@ Suppose that $\cat{C}$ and $\cat{D}$ are both compact categories. Every object o
 Finally, if $\cat{C}$ and $\cat{D}$ are traced, then \cite[Proposition 2.4]{Joyal-Street-Vertity} implies that there is a unique traced structure on $\cat{F}$, where the trace of a morphism in $\cat{F}$ is defined to be the trace in $\cat{D}$. The ``ff'' functor preserves the trace by construction, and the ``bo'' functor preserves the trace because $F$ does.
 \end{proof}
 
-\begin{definition}
-
-Define $\XCat_{\bo}$ and $\cat{C}/\XCat_{\bo}$.\todo{finish}
-
-\end{definition} 
-
 \begin{proposition}\label{prop:coslice Xbo}
-  There is a pseudo-functor 
-  $$-/\XCat_{\bo}\colon\XCat\to\op{\2Cat}$$
-  sending any $\cat{C}\in\XCat$ to 2-category $\cat{C}/\XCat_{\bo}$.
+  Let $\XCat_{\bo}\ss\XCat$ denote the wide subcategory in which all morphisms are bijective on objects.
+ There is a functor 
+  $$-/\XCat_{\bo}\colon\XCat\to\op{\Cat{Cat}}$$
+  sending any $\cat{C}\in\XCat$ to the coslice category $\cat{C}/\XCat_{\bo}$.
   \end{proposition}
 \begin{proof}
   We only need to verify the functoriality of this construction. Given a strong functor $F\colon\cat{C}\to\cat{D}$ in $\XCat$, we can define a functor $F^*\colon\cat{D}/\XCat_{\bo}\to\cat{C}/\XCat_{\bo}$. For any object $\phi\in\cat{D}/\XCat_{\bo}$, i.e.~a bijective-on-objects functor $\phi\colon\cat{D}\to\cat{X}$, define $F^*(\phi)$ by applying the factorization system of \ref{lemma:factorization system} as in the diagram
@@ -1004,23 +998,30 @@ Define $\XCat_{\bo}$ and $\cat{C}/\XCat_{\bo}$.\todo{finish}
 \end{proof}
 
 In \cite{Abramsky}, Abramsky provides a free-forgetful adjunction
-$$
+\begin{equation}\label{eq:abramsky}
 \begin{tikzcd}
 \Cat{Set}\arrow[r, shift left=.5ex, "\Fun{XFr}"]&\XCat\arrow[l, shift left=.5ex,"\Ob"]
 \end{tikzcd}
-$$
-Consider the composition $\Set\To{\Fun{XFr}}\XCat\To{-/\XCat_{\bo}}\op{\2Cat}$, where the second functor is as defined in Proposition~\ref{prop:coslice Xbo}. Grothendieck....\todo{!}
+\end{equation}
 
+\begin{definition}\label{def:XKls XFrObCat}
+
+Let $\Cat{XKls}$ be the Kleisli category of the monad induced by (\ref{eq:abramsky}). There is an induced fully faithful functor $\Cat{XKls}\to\XCat$ (see \cite[Proposition 4.2.1]{Borceux vol 2}. 
+Let $\Fun{XFrObCat}\colon\Cat{XKls}\to\op{\Cat{Cat}}$ be the composite
+$$\Cat{XKls}\to\XCat\To{-/\XCat_{\bo}}\op{\Cat{Cat}}.$$
+We define the fibration $\Cat{XFrObCat}\to\Cat{XKls}$ to be the Grothendieck construction of $\Fun{XFrObCat}$.
+
+\end{definition}
 
 \begin{proposition}\label{prop:free objects}
 
-Let $\XCat$ and $\Cat{XFrObCat}$ be as above. There is a 2-equivalence:
+Let $\XCat$ and $\Cat{XFrObCat}$ be as above. There is a equivalence:
 $$
 \begin{tikzcd}
 \XCat\arrow[r, shift left=.5ex, "\Fun{XFrOb}"]&\Cat{XFrObCat}\arrow[l, shift left=.5ex,"U"]
 \end{tikzcd}
 $$
-where $U$ is the forgetful functor. In particular, for every $\Cat{X}$-category $\cat{C}$ there is a strict $\Cat{X}$-category $\Fun{FrOb}(\cat{C})$, whose symmetric monoid of objects is free, and an equivalence in $\XCat$:
+where $U$ is the forgetful functor. In particular, for every $\Cat{X}$-category $\cat{C}$ there is a strict $\Cat{X}$-category $\Fun{XFrOb}(\cat{C})$, whose symmetric monoid of objects is free, and an equivalence in $\XCat$:
 $$\Fun{XFrOb}(\cat{C})\simeq\cat{C}.$$
 
 \end{proposition}
@@ -1033,16 +1034,16 @@ $$
 \Cat{Set}\arrow[r, shift left=.5ex, "\Fun{XFr}"]&\XCat\arrow[l, shift left=.5ex,"\Ob"]
 \end{tikzcd}
 $$
-For any $\Cat{X}$-category $\cat{C}$, we have a counit $\Fun{XFr}\Ob(\cat{C})\to\cat{C}$, which is surjective on objects. We define $\Fun{XFrOb}(\cat{C})$ to be the factorizing object for the factorization system from Lemma~\ref{lemma:factorization system}:
+For any $\Cat{X}$-category $\cat{C}$, we have a counit $\Fun{XFr}(\Ob\cat{C})\to\cat{C}$, an $X$-functor which is surjective on objects. We define $\Fun{XFrOb}(\cat{C})$ to be the factorizing object for the factorization system from Lemma~\ref{lemma:factorization system}:
 $$
 \begin{tikzcd}[column sep=small]
-\Fun{XFr}\Ob(\cat{C})\arrow[dr, "\bo"']\arrow[rr, "\Fun{XFr}"]&&\cat{C}\\
+\Fun{XFr}(\Ob\cat{C})\arrow[dr, "\bo"']\arrow[rr, "\Fun{XFr}"]&&\cat{C}\\
 &\Fun{XFrOb}(\cat{C})\arrow[ur, "\ff"']
 \end{tikzcd}
 $$
-The right-hand functor is fully faithful and clearly surjective, so it is an equivalence of categories. This proves that $\Fun{XFrOb}\circ\fun{U}\iso\id$, and because $U$ is a monomorphism, we have $U\circ\Fun{XFrOb}\iso\id$ as well.
+The right-hand functor is fully faithful and clearly surjective, so it is an equivalence of categories. This proves that $\fun{U}$ is essentially surjective. It remains to show that $\fun{U}$ is fully faithful.
 
-\todo{Finish proof (2-categorical).}
+\todo{Show that $\fun{U}$ is fully faithful}
 
 \end{proof}
 
@@ -1308,7 +1309,7 @@ Let $\MProf(\cat{C},\cat{C})_*$ denote the category of pointed monoidal endo-pro
   \[
     \Lax(\cat{C},\Set)\simeq\cat{C}/\CompCat_{\bo}.
   \]
-  \todo{Add that this is natural in $\cat{C}$.}
+  \todo{Add that this is natural in the compact category $\cat{C}$.}
  \end{named}
 
 \begin{proof}
@@ -1377,9 +1378,15 @@ Applying $\Int$ to the left-hand map, we obtain the right-hand map of the inner 
  \begin{named}{Corollary B}
 Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=\Int(\cat{D})$. Then there is an equivalence of categories
 \begin{align}\label{dia:traced lax strong}
-\Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\bo}.
+\cat{C}\alg\iso\cat{D}/\TrCat_{\bo}.
 \end{align}
-This equivalence is natural in the traced category $\cat{D}$, using the factorization system on $\TrCat$ from Lemma~\ref{lemma:factorization system}.
+This equivalence is natural in $\cat{D}$; i.e., the following diagram commutes:
+\begin{equation}
+\begin{tikzcd}
+\TrCat\ar[r,"\Fun{Int}"]\ar[dr,"-/\TrCat_{\bo}"']&\CompCat\ar[d,"\alg"]\\
+&\Cat{Cat}
+\end{tikzcd}
+\end{equation}
 \end{named}
 
 \begin{proof}
@@ -1394,20 +1401,23 @@ and the equivalence (\ref{dia:traced lax strong}) follows from Proposition~\ref{
 
 In this section, we prove an equivalence between traced categories and algebras on cobordism categories, indexed by a set of objects. \todo{Add more guidance to this section}
 
-For any symmetric monoid $X$, let $\TrCat_{\boo X}$ denote the full subcategory of $\TrCat_{\bo}$ spanned by those traced categories whose monoid of objects is isomorphic to $X$.
-
 \begin{proposition}\label{prop:natural equivalence cob-O and traced-O}
 
-For any set $\cat{O}$, let $\Fun{FrMon}(\cat{O})$ denote the free symmetric monoid $\cat{O}$. There is an equivalence of categories 
+Let $\cat{O}$ be a set. There is an equivalence of categories 
 $$(\Cat{Cob}/\cat{O})\alg\simeq\Fun{TrFrObCat}(\cat{O})$$
-and this equivalence is natural in $\cat{O}$.
+This construction is functorial, in the sense that 
 
 \end{proposition}
 
 \begin{proof}
 
-This is an application of \ref{cor:Corollary B} in the case that $\cat{D}\coloneqq\Fun{TrFrOb}(\cat{O})$ is the free traced category on the set $\cat{O}$. By Proposition~\ref{prop:free traced and compact}, the objects of $\cat{D}$ are symmetric lists, $\Ob\cat{D}\iso\Fun{FrMon}(\cat{O})$. With the addition of Proposition~\ref{prop:free compact is Cob}, we have that $\Cat{Cob}/\cat{O}\iso\Int(\cat{D})$ is the free compact category on $\cat{O}$. Since all of these results are natural in $\cat{O}$, so too is the desired equivalence:
-$$(\Cat{Cob}/\cat{O})\alg=\Lax(\Cat{Cob},\Cat{Set})\simeq\cat{D}/\TrCat_{\bo}=\TrCat_{\boo\Fun{FrMon}(\cat{O})}$$\todo{rewrite proof using new language}
+Use this diagram:
+$$
+\begin{tikzcd}
+\Set\ar[d]\ar[r,"\Fun{TrFr}"]&\TrCat\ar[r,"\Fun{Int}"]\ar[dr,"-/\TrCat_{\bo}"']&\CompCat\ar[d,"\alg"]\\
+\Cat{TrKls}\ar[ur]&&\Cat{Cat}
+\end{tikzcd}
+$$
 
 \end{proof}
 
