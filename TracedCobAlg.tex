@@ -41,10 +41,10 @@ We give an alternate conception of string diagrams as 1-dimensional oriented cob
 \end{abstract}
 Global todo's:
 \begin{enumerate}
-\item Add appropriate symmetric monoidal throughout.
-\item Add appropriate Kleisli language throughout.
-\item Remove inappropriate 2-categorical language throughout.
-\item Prove Lemma~\ref{Lem:mon profs equal boo functors}.
+\item Add appropriate {\em symmetric} monoidal throughout.
+\item Patrick: Add appropriate Kleisli language throughout.
+\item Patrick: Add appropriate 2-categorical language to $\Lax$ throughout.
+\item Patrick: Give proof of Lemmas~\ref{Lem:mon profs equal boo functors}~and~\ref{lemma:easy compcat}.
 \item Patrick: fill all profunctor naturality holes.
 \item Add bibliography.
 \end{enumerate}
@@ -85,11 +85,11 @@ Traced symmetric monoidal categories, hereafter \emph{traced categories}, have b
           (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
 \end{tikzpicture}
 \end{equation}
-represent compositions. That is, new morphisms are constructed from old by specifying which outputs will be fed back into which inputs. In fact, these generalize Penrose diagrams in $\Cat{Vect}$ \todo{true?}\cite{}, and the word \emph{traced} originates in this vector space terminology.  
+represent compositions. That is, new morphisms are constructed from old by specifying which outputs will be fed back into which inputs. In fact, these generalize Penrose diagrams in $\Cat{Vect}$ \cite{}, and the word \emph{traced} originates in this vector space terminology.  
 
 \section{String diagrams as cobordisms}
 
-A string diagram usually does not explicitly include the outer box $Y$. If we include it, as in (\ref{dia:string diagram}), the resulting \emph{wiring diagram} can be given another interpretation: it represents a 1-dimensional cobordism between oriented 0-manifolds. For example, the box $X_1$ in the picture includes only the data of a pair of finite sets, $(\inp{X_1},\outp{X_1})=(\{1a,1b\},\{1c\})$, which can be interpreted as an oriented 0-manifold.  Moreover, the wiring diagram itself, in which boxes $X_1,\ldots,X_n$ are wired together inside a larger box $Y$, can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$. This is a morphism in the multicategory $\Cat{Cob}$, underlying the symmetric monoidal category of oriented 1-cobordisms; see Section~\ref{sec:Cob morphisms as wds}. 
+A string diagram usually does not explicitly include the outer box $Y$. If we include it, as in (\ref{dia:string diagram}), the resulting \emph{wiring diagram} can be given another interpretation: it represents a 1-dimensional cobordism between oriented 0-manifolds. For example, the box $X_1$ in the picture includes only the data of a pair of finite sets, $(\inp{X_1},\outp{X_1})=(\{1a,1b\},\{1c\})$, which can be interpreted as an oriented 0-manifold.  Moreover, the wiring diagram itself, in which boxes $X_1,\ldots,X_n$ are wired together inside a larger box $Y$, can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$. This is a morphism in the multicategory $\Cat{Cob}$, underlying the symmetric monoidal category of oriented 1-cobordisms; see Section~\ref{sec:wds and cob}. 
 
 There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{C}$. Namely, each input and output of a box must be labeled by an object of $\cat{C}$ and the strings must respect these labels \todo[author=Patrick]{And boxes labeled by morphisms?}. We will thus consider the multicategory $\Cat{Cob}/\cat{O}$ of oriented 1-dimensional cobordisms over a fixed set of labels $\cat{O}$. 
 
@@ -1039,7 +1039,7 @@ $$\Fun{XFrOb}(\cat{C})\simeq\cat{C}.$$
 \end{proposition}
 
 \begin{proof}
-
+\todo{Can we streamline this proof?}
 Consider the diagram below, in which $\pi_{\Fun{X}}$ and $p$ are split Grothendieck fibrations:
 $$
 \begin{tikzcd}[row sep=large,column sep=large]
