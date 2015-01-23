@@ -1033,7 +1033,7 @@ $$
 \XCat\arrow[r, shift left=.5ex, "\Fun{XFrOb}"]&\Cat{XFrObCat}\arrow[l, shift left=.5ex,"U"]
 \end{tikzcd}
 $$
-where $U$ is the forgetful functor. In particular, for every $\Cat{X}$-category $\cat{C}$ there is a strict $\Cat{X}$-category $\Fun{XFrOb}(\cat{C})$, whose symmetric monoid of objects is free, and an equivalence in $\XCat$:
+where $U$ is the forgetful functor. In particular, for every $\Cat{X}$-category $\cat{C}$ there is a strict $\Cat{X}$-category $\Fun{XFrOb}(\cat{C})$, whose monoid of objects is free, and an equivalence in $\XCat$:
 $$\Fun{XFrOb}(\cat{C})\simeq\cat{C}.$$
 
 \end{proposition}
@@ -1447,7 +1447,7 @@ $$
 \Cat{TrKlSet}\ar[rr,"i_{\Fun{Tr}}"']&&\Cat{TrCat}\ar[ur,"\Fun{Int}"]\ar[rr,"-/\TrCat_{\bo}"']&&\Cat{Cat}
 \end{tikzcd}
 $$
-The middle triangle commutes by Proposition~\ref{prop:free traced and compact} and the labeled isomorphism holds by Proposition~\ref{prop:free compact is Cob}. The right-hand triangle commutes by \ref{cor:Corollary B}. For a set $\cat{O}$, the path across the top to $\Cat{Cat}$ is $\Cat{Cob}/\cat{O})\alg$, which equals $\Fun{TrFrObCat}(\cat{O})$, the path along the left and bottom.
+The middle triangle commutes by Proposition~\ref{prop:free traced and compact} and the labeled isomorphism holds by Proposition~\ref{prop:free compact is Cob}. The right-hand triangle commutes by \ref{cor:Corollary B}. For a set $\cat{O}$, the path across the top to $\Cat{Cat}$ is $(\Cat{Cob}/\cat{O})\alg$, which equals $\Fun{TrFrObCat}(\cat{O})$, the path along the left and bottom.
 
 \end{proof}
 
@@ -1466,12 +1466,9 @@ $$(\Cat{Cob}/\bullet)\alg\simeq\TrCat.$$
 
 \begin{proof}
 
-By Proposition~\ref{prop:free objects}, there is an equivalence of categories 
+By Proposition~\ref{prop:free objects}, there is an equivalence\todo{2-equivalence?} of categories 
 $$\Cat{TrFrObCat}\simeq\Cat{TrCat}.$$ 
-Consider the functor $\Cat{TrFrObCat}\to\Cat{Set}$ sending a  To see this, first note that if $\cat{C}$ is a traced category with objects $\cat{O}=\Ob\cat{C}$, then for any function $\cat{O'}\to\cat{O}$, there is a bijective on objects functor $\cat{O'}$
-The left-hand side is fibered over set; $\Cat{TrFrObCat}$ is the Grothendieck construction of the functor $\Set\to\op{\Cat{Cat}}$ given on objects by $\cat{O}\mapsto\TrCat_{\boo\Fun{FrMon}(\cat{O})}$, and on morphisms by Lemma~\ref{lemma:factorization system}. The result follows by Proposition~\ref{prop:natural equivalence cob-O and traced-O}. \todo{This has not been rigorously checked.}
-
-
+The result follows by taking the Grothendieck construction of the equivalence in Proposition~\ref{prop:natural equivalence cob-O and traced-O}.\todo{Finish proof}
 
 \end{proof}
 
