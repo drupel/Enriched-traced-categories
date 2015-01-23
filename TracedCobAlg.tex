@@ -114,7 +114,7 @@ Nesting & Axioms of TSMCs & Composition \\
 
 The relationship between these interpretations is made precise in the following first main theorem, which will be proved in Section~\ref{sec:proof of A}. For any multicategory $\cat{M}$, we denote by $\cat{M}\alg$ the category of lax functors $\cat{M}\to\Cat{Set}$. Let $\TrCat$ denote the category of traced categories and strong traced functors.
 
-\begin{named}{Theorem A}\label{thm:Theorem A}
+\begin{named}{Theorem A}
 Consider the functor $\Set\to\op{\Cat{Cat}}$, given by $\cat{O}\mapsto(\Cat{Cob}/\cat{O})\alg$, and let $(\Cat{Cob}/\bullet)\alg$ denote the total category of the corresponding Grothendieck fibration. Then there is an equivalence of categories
 $$(\Cat{Cob}/\bullet)\alg\iso\TrCat.$$
 \end{named}
@@ -181,7 +181,7 @@ This can be visualized via the following string diagram (where we have drawn a l
 
 It is most convenient to prove \ref{thm:Theorem A} by proving a much more general result, which relates the category of lax functors out of any compact category $\cat{C}$ to the category of strong, bijective-on-objects functors out of $\cat{C}$. The definition of compact closed symmetric monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact and int}, or in \cite{}. Let $\CompCat$ denote the category of compact categories and strong monoidal functors between them. We show in Lemma~\ref{lemma:factorization system} that there is a factorization system on $\CompCat$, in which the left class consists of bijective-on-objects functors and the right class consists of fully faithful functors. Let $\CompCat_{\bo}\ss\CompCat$ denote the left class. 
 
-\begin{named}{Theorem B}\label{thm:Theorem B}
+\begin{named}{Theorem B}
  Let $\cat{C}$ be a compact category. If $\Lax(\cat{C},\Cat{Set})$ denotes the category of lax monoidal set-valued functors out of $\cat{C}$, and $\cat{C}/\CompCat_{\bo}$ denotes the coslice category of compact categories and strong bijective-on-objects functors under $\cat{C}$, then there is an equivalence of categories
 \begin{equation}\label{dia:compact lax strong}
   \Lax(\cat{C},\Cat{Set})\cong\cat{C}/\CompCat_{\bo}
@@ -193,7 +193,7 @@ Recall from \cite{JoyalStreetVerity} that traced categories are full subcategori
 
 It turns out that if our compact category $\cat{C}$ is the compact closure of a traced category $\cat{D}$, then \ref{thm:Theorem B} lifts to a result about $\cat{D}$. We record this result as \ref{cor:Corollary B}, from which \ref{thm:Theorem A} follows. These are proved in Section~\ref{sec:generalization}. 
 
-\begin{named}{Corollary B}\label{cor:Corollary B}
+\begin{named}{Corollary B}
 Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=\Int(\cat{D})$. Then there is an equivalence of categories
 \begin{align}\label{dia:traced lax strong}
 \Lax(\cat{C},\Cat{Set})\iso\cat{D}/\TrCat_{\bo}
@@ -1004,13 +1004,26 @@ In \cite{Abramsky}, Abramsky provides a free-forgetful adjunction
 \end{tikzcd}
 \end{equation}
 
-\begin{definition}\label{def:XKls XFrObCat}
+\begin{definition}\label{def:XKlSet XFrObCat}
 
-Let $\Cat{XKls}$ be the Kleisli category of the monad induced by (\ref{eq:abramsky}). It factors $\Fun{XFr}$ as the composite $\Set\To{\eta_X}\Cat{XKls}\To{\fun{i_X}}\XCat$, where $i_X$ is fully faithful  (see \cite[Proposition 4.2.1]{Borceux vol 2}.  Let $\Fun{XFrObCat}\colon\Cat{XKls}\to\op{\Cat{Cat}}$ be the composite
-$$\Cat{XKls}\to\XCat\To{-/\XCat_{\bo}}\op{\Cat{Cat}}.$$
-We define the fibration $\Cat{XFrObCat}\to\Cat{XKls}$ to be the Grothendieck construction of $\Fun{XFrObCat}$.
+Let $\Cat{XKlSet}$ be the Kleisli category of the monad induced by (\ref{eq:abramsky}). The functor $\Fun{XFr}=i_{\Fun{X}}\circ\eta_{\Fun{X}}$ factors through it as the composite 
+$$\Set\To{\eta_{\Fun{X}}}\Cat{XKlSet}\To{\fun{i_{\Fun{X}}}}\XCat,$$ 
+where $i_{\Fun{X}}$ is fully faithful (see \cite[Proposition 4.2.1]{Borceux vol 2}.  Let $-/\XCat_{\bo}\colon\XCat\to\op{\Cat{Cat}}$ be the functor from Proposition~\ref{prop:coslice Xbo}, and define $\Fun{XFrObCat}\colon\Cat{XKlSet}\to\op{\Cat{Cat}}$ to be the composite
+$$\Cat{XKlSet}\To{i_{\Fun{X}}}\XCat\To{-/\XCat_{\bo}}\op{\Cat{Cat}}.$$
+We define the fibration $\Cat{XFrObCat}\To{\pi_{\Fun{X}}}\Cat{XKlSet}$ to be the Grothendieck construction of $\Fun{XFrObCat}$. 
+
+Sometimes we abuse notation and write $\Fun{XFrObCat}\colon\Set\to\op{\Cat{Cat}}$ to denote what is actually the composite $\Fun{XFrObCat}\circ\eta_{\Fun{X}}$.
 
 \end{definition}
+
+An object of $\Cat{XFrObCat}$ can be identified with a pair $(\cat{O},\Fun{XFr}(\cat{O})\To{\bo}\cat{C})$, where $\cat{O}$ is a set and $\cat{C}$ is an $\Cat{X}$-category; we may denote it by $(\cat{O},\cat{C})$. A morphism in $\Cat{XFrObCat}$ can be identified with a function and a commutative diagram in $\XCat$:
+$$
+\begin{tikzcd}
+\cat{O}\ar[d]&\Fun{XFr}\cat{O}\ar[r,"\bo"]\ar[d]&\cat{C}\ar[d]\\
+\Ob(\Fun{XFr}\cat{O'})&\Fun{XFr}\cat{O'}\ar[r,"\bo"]&\cat{C'}
+\end{tikzcd}
+$$
+Note that the forgetful functor $U\colon\Cat{XFrObCat}\to\XCat$ sending $(\cat{O},\cat{C})\mapsto\cat{C}$ is \emph{not} the composite $U\neq i_{\Fun{X}}\circ\pi_{\Fun{X}}$; a comparison is given in Proposition~\ref{prop:free objects}.
 
 \begin{proposition}\label{prop:free objects}
 
@@ -1027,20 +1040,37 @@ $$\Fun{XFrOb}(\cat{C})\simeq\cat{C}.$$
 
 \begin{proof}
 
-Consider the free-forgetful adjunction
+Consider the diagram below, in which $\pi_{\Fun{X}}$ and $p$ are split Grothendieck fibrations:
+$$
+\begin{tikzcd}[row sep=large,column sep=large]
+&
+\Cat{XFrObCat}\ar[r,"j"]\ar[d,"\pi_{\Fun{X}}"']\ar[dr,bend left=15pt,"U"]\ar[dr,bend right=15pt]\ar[dr,phantom,"\Nearrow"]&
+\int(-/\XCat_{\bo})\ar[d,"p"']\\
+\Set\ar[r,"\eta_{\Fun{X}}"']&\Cat{XKlSet}\ar[r,"i_{\Fun{X}}"']&
+\XCat\ar[u,bend right,"\id_{-}"']\ar[r,"-/\XCat_{\bo}"']&\op{\Cat{Cat}}
+\end{tikzcd}
+$$
+The square is a lax pullback, i.e., it is universal with respect to its functors $\pi_{\Fun{X}}$ and $j$ and natural transformation $i_{\Fun{X}}\circ\pi_{\Fun{X}}\to p\circ j=U$. A section of $p$ is shown, sending $\cat{C}\in\Ob(\XCat)$ to the identity $\id_{\cat{C}}\in\Ob(\cat{C}/\XCat_{\bo})$. 
+
+Consider the counit $\epsilon\colon (i_{\Fun{X}}\circ\eta_{\Fun{X}}\circ\Ob)\to\id_{\XCat}$ of the adjunction from (\ref{eq:abramsky}),
 $$
 \begin{tikzcd}
-\Cat{Set}\arrow[r, shift left=.5ex, "\Fun{XFr}"]&\XCat\arrow[l, shift left=.5ex,"\Ob"]
+\Cat{Set}\arrow[r, shift left=.5ex, "i_{\Fun{X}}\circ\eta_{\Fun{X}}"]&\XCat\arrow[l, shift left=.5ex,"\Ob"]
 \end{tikzcd}
 $$
-For any $\Cat{X}$-category $\cat{C}$, we have a counit $\Fun{XFr}(\Ob\cat{C})\to\cat{C}$, an $X$-functor which is surjective on objects. We define $\Fun{XFrOb}(\cat{C})$ to be the factorizing object for the factorization system from Lemma~\ref{lemma:factorization system}:
+We have functors $\XCat\To{\eta_{\Fun{X}}\circ\Ob}\Cat{XKlSet}$ and $\XCat\To{\id_{-}}\int(-/\XCat_{\bo})$, and a natural transformation $i_{\Fun{X}}\circ\eta_{\Fun{X}}\circ\Ob\to p\circ\id_{-}=\id_{\XCat}$. This defines a functor to the lax pullback, which we denote
+$$\Fun{XFrOb}\colon\XCat\to\Cat{XFrObCat}.$$
+
+To bring this down to earth, for any $\Cat{X}$-category $\cat{C}$, we begin with the counit functor $\epsilon_{\cat{C}}\colon\Fun{XFr}(\Ob\cat{C})\to\cat{C}$. As in Proposition~\ref{prop:coslice Xbo}, we define $\Fun{XFrOb}(\cat{C})=\epsilon_{\cat{C}}^*(\id_{\cat{C}})$ to be the left-hand map in the diagram below, which was obtained by factoring the top right composite:
 $$
-\begin{tikzcd}[column sep=small]
-\Fun{XFr}(\Ob\cat{C})\arrow[dr, "\bo"']\arrow[rr, "\Fun{XFr}"]&&\cat{C}\\
-&\Fun{XFrOb}(\cat{C})\arrow[ur, "\ff"']
+\begin{tikzcd}
+\Fun{XFr}(\Ob\cat{C})\arrow[d, "\bo"']\arrow[r, "\epsilon_{\cat{C}}"]&\cat{C}\ar[d,"\id_{\cat{C}}"]\\
+\cat{C'}\arrow[r, "\ff"']&\cat{C}
 \end{tikzcd}
 $$
-The right-hand functor is fully faithful and clearly surjective, so it is an equivalence of categories. This proves that $\fun{U}$ is essentially surjective. It remains to show that $\fun{U}$ is fully faithful.
+
+
+For any $\cat{C}\in\XCat$, the functor $\epsilon_{\cat{C}}$ is surjective on objects, so the bottom functor is surjective and fully faithful, hence, an equivalence of categories. This proves that $\fun{U}$ is essentially surjective.\todo{Is it a 2-equivalence? It seems like we don't get $\cat{C}$ on the nose.} It remains to show that $\fun{U}$ is fully faithful.
 
 \todo{Show that $\fun{U}$ is fully faithful}
 
@@ -1303,7 +1333,7 @@ Let $\MProf(\cat{C},\cat{C})_*$ denote the category of pointed monoidal endo-pro
 
 \section{Proof of \ref{thm:Theorem B} and \ref{cor:Corollary B}}\label{sec:proof of Bs}
 
- \begin{named}{Theorem B}
+ \begin{named}{Theorem B}\label{thm:Theorem B}
  	Let $\cat{C}$ be a compact category. There is an equivalence of categories
   \[
     \Lax(\cat{C},\Set)\simeq\cat{C}/\CompCat_{\bo}.
@@ -1374,7 +1404,7 @@ Applying $\Int$ to the left-hand map, we obtain the right-hand map of the inner 
 
 \end{proof}
 
- \begin{named}{Corollary B}
+ \begin{named}{Corollary B}\label{cor:Corollary B}
 Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=\Int(\cat{D})$. Then there is an equivalence of categories
 \begin{align}\label{dia:traced lax strong}
 \cat{C}\alg\iso\cat{D}/\TrCat_{\bo}.
@@ -1410,14 +1440,14 @@ which is functorial in $\cat{O}$.
 
 \begin{proof}
 
-Consider the following diagram, in which the left-hand triangle commutes, as in Definition~\ref{def:XKls XFrObCat}:
+Consider the following diagram of categories, in which the left-hand triangle commutes, as in Definition~\ref{def:XKlSet XFrObCat}:
 $$
 \begin{tikzcd}
-&\Set\ar[rr,"\Cat{Cob/-}"]\ar[dl,"\eta_{Tr}"']\ar[dr,"\Fun{TrFr}"]&&\Cat{CompCat}\ar[dr,"\alg"]\\
-\Cat{TrKls}\ar[rr,"i_{Tr}"']&&\Cat{TrCat}\ar[ur,"\Fun{Int}"]\ar[rr,"-/\TrCat_{\bo}"']&&\Cat{Cat}
+&\Set\ar[rr,"\Fun{CompFr}\iso\Cat{Cob/-}"]\ar[dl,"\eta_{\Fun{Tr}}"']\ar[dr,"\Fun{TrFr}"]&&\Cat{CompCat}\ar[dr,"\alg"]\\
+\Cat{TrKlSet}\ar[rr,"i_{\Fun{Tr}}"']&&\Cat{TrCat}\ar[ur,"\Fun{Int}"]\ar[rr,"-/\TrCat_{\bo}"']&&\Cat{Cat}
 \end{tikzcd}
 $$
-The top triangle commutes by Proposition~\ref{prop:free traced and compact}, and the right-hand triangle commutes by \ref{cor:Corollary B}.
+The middle triangle commutes by Proposition~\ref{prop:free traced and compact} and the labeled isomorphism holds by Proposition~\ref{prop:free compact is Cob}. The right-hand triangle commutes by \ref{cor:Corollary B}. For a set $\cat{O}$, the path across the top to $\Cat{Cat}$ is $\Cat{Cob}/\cat{O})\alg$, which equals $\Fun{TrFrObCat}(\cat{O})$, the path along the left and bottom.
 
 \end{proof}
 
@@ -1427,7 +1457,7 @@ The top triangle commutes by Proposition~\ref{prop:free traced and compact}, and
 %
 %\end{remark}
 %
-\begin{named}{Theorem A}
+\begin{named}{Theorem A}\label{thm:Theorem A}
 
 Consider the functor $\Set\to\op{\Cat{Cat}}$, given by $\cat{O}\mapsto(\Cat{Cob}/\cat{O})\alg$, and let $(\Cat{Cob}/\bullet)\alg$ denote the total category of corresponding split Grothendieck fibration. Then there is an equivalence of categories
 $$(\Cat{Cob}/\bullet)\alg\simeq\TrCat.$$
