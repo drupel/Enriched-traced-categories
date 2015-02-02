@@ -22,7 +22,7 @@
 
 \title{Traced Categories as Lax Functors out of Free Compact Categories}
 \author{
-David I. Spivak\thanks{Spivak and Schultz were supported by AFOSR grant FA9550-14-1-0031, ONR grant N000141310260, and NASA grant NNH13ZEA001N.}
+David I. Spivak\thanks{Spivak and Schultz were supported by AFOSR grant FA9550--14--1--0031, ONR grant N000141310260, and NASA grant NNH13ZEA001N.}
  \and 
  Patrick Schultz${}^*$%\footnotemark[1]
  \and
@@ -41,7 +41,7 @@ We give an alternate conception of string diagrams as 1-dimensional oriented cob
 \end{abstract}
 Global todo's:
 \begin{enumerate}
-\item Add appropriate {\em symmetric} monoidal throughout.
+\item Add appropriate {\em symmetric\/} monoidal throughout.
 \item Patrick: Add appropriate Kleisli language throughout.
 \item Patrick: Add appropriate 2-categorical language to $\Lax$ throughout.
 \item Patrick: Give proof of Lemmas~\ref{Lem:mon profs equal boo functors}~and~\ref{lemma:easy compcat}.
@@ -85,7 +85,7 @@ Traced symmetric monoidal categories, hereafter \emph{traced categories}, have b
           (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
 \end{tikzpicture}
 \end{equation}
-represent compositions. That is, new morphisms are constructed from old by specifying which outputs will be fed back into which inputs. In fact, these generalize Penrose diagrams in $\Cat{Vect}$ \cite{}, and the word \emph{traced} originates in this vector space terminology.  
+represent compositions. That is, new morphisms are constructed from old by specifying which outputs will be fed back into which inputs. In fact, these generalize Penrose diagrams in $\Cat{Vect}$~\cite{}, and the word \emph{traced} originates in this vector space terminology.  
 
 \section{String diagrams as cobordisms}
 
@@ -123,7 +123,7 @@ This will be proved in Section~\ref{sec:proof of A}, but we sketch the equivalen
 
 First, for each box $(\inp{X},\outp{X})$ that might appear in a string diagram, both $P$ and $\cat{C}$ require a set, $P(\inp{X},\outp{X})$ and $\Hom_{\cat{C}}(\inp{X},\outp{X})$, respectively. Second, for each string diagram, both $P$ and $\cat{C}$ require a function: an action on morphisms, in the case of $P$, and a formula for performing the required compositions, tensors, and traces, in the case of $\cat{C}$. The condition that $P$ is functorial corresponds to the fact that $\cat{C}$ satisfies the axioms of traced categories. 
 
-To give a sense of the equivalence in \ref{thm:Theorem A} we will specify here how to construct a $(\Cat{Cob}/\Ob\cat{C})$-algebra from a traced category $\cat{C}$.  First, given a relative set $\iota\colon Z\to\Ob\cat{C}$, we will abuse notation slightly and use the same symbol $Z$ to denote the tensor $\bigotimes_{z\in Z}\iota(z)$.  Then for an oriented 0-manifold $X=X^-\sqcup X^+$ over we set $P(X)=\Hom_{\cat{C}}(X^-,X^+)$.  Given a cobordism $\Phi\colon X\to Y$, there exist $A,B,C,D,E\in\Ob\cat{C}$ such that $\inp{X}\cong C\sqcup A$, $\outp{X}\cong C\sqcup B$, $\inp{Y}\cong A\sqcup D$, $\outp{Y}\cong B\sqcup D$, and $E$ is the set of floating loops in $\Phi$; thus $\Phi$ is essentially equivalent to the cobordism (right side (\ref{eq:cob and trace pic})).  With this notation, for $f\in P(X)$ we define 
+To give a sense of the equivalence in~\ref{thm:Theorem A} we will specify here how to construct a $(\Cat{Cob}/\Ob\cat{C})$-algebra from a traced category $\cat{C}$.  First, given a relative set $\iota\colon Z\to\Ob\cat{C}$, we will abuse notation slightly and use the same symbol $Z$ to denote the tensor $\bigotimes_{z\in Z}\iota(z)$.  Then for an oriented 0-manifold $X=X^-\sqcup X^+$ over we set $P(X)=\Hom_{\cat{C}}(X^-,X^+)$.  Given a cobordism $\Phi\colon X\to Y$, there exist $A,B,C,D,E\in\Ob\cat{C}$ such that $\inp{X}\cong C\sqcup A$, $\outp{X}\cong C\sqcup B$, $\inp{Y}\cong A\sqcup D$, $\outp{Y}\cong B\sqcup D$, and $E$ is the set of floating loops in $\Phi$; thus $\Phi$ is essentially equivalent to the cobordism (right side (\ref{eq:cob and trace pic})).  With this notation, for $f\in P(X)$ we define 
 \begin{equation}\label{eq:cob algebra formula}
  P(\Phi)(f)=\Tr_{A,B}^C\big[f\big]\otimes D\otimes\Tr^E_{I,I}(E).
 \end{equation}
@@ -179,7 +179,7 @@ This can be visualized via the following string diagram (where we have drawn a l
 
 \section{Generalization: Lax algebras on compact category}
 
-It is most convenient to prove \ref{thm:Theorem A} by proving a much more general result, which relates the category of lax functors out of any compact category $\cat{C}$ to the category of strong, bijective-on-objects functors out of $\cat{C}$. The definition of compact closed symmetric monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact and int}, or in \cite{}. Let $\CompCat$ denote the category of compact categories and strong monoidal functors between them. We show in Lemma~\ref{lemma:factorization system} that there is a factorization system on $\CompCat$, in which the left class consists of bijective-on-objects functors and the right class consists of fully faithful functors. Let $\CompCat_{\bo}\ss\CompCat$ denote the left class. 
+It is most convenient to prove~\ref{thm:Theorem A} by proving a much more general result, which relates the category of lax functors out of any compact category $\cat{C}$ to the category of strong, bijective-on-objects functors out of $\cat{C}$. The definition of compact closed symmetric monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact and int}, or in~\cite{}. Let $\CompCat$ denote the category of compact categories and strong monoidal functors between them. We show in Lemma~\ref{lemma:factorization system} that there is a factorization system on $\CompCat$, in which the left class consists of bijective-on-objects functors and the right class consists of fully faithful functors. Let $\CompCat_{\bo}\ss\CompCat$ denote the left class. 
 
 \begin{named}{Theorem B}
  Let $\cat{C}$ be a compact category. If $\Lax(\cat{C},\Cat{Set})$ denotes the category of lax monoidal set-valued functors out of $\cat{C}$, and $\cat{C}/\CompCat_{\bo}$ denotes the coslice category of compact categories and strong bijective-on-objects functors under $\cat{C}$, then there is an equivalence of categories
@@ -189,9 +189,9 @@ It is most convenient to prove \ref{thm:Theorem A} by proving a much more genera
 \end{named}
 
 
-Recall from \cite{JoyalStreetVerity} that traced categories are full subcategories of compact categories. The Int construction, applied to a traced category $\cat{C}$, returns the smallest compact category $\Int(\cat{C})$ of which it is a subcategory; we call $\Int(\cat{C})$ the \emph{compact closure} of $\cat{C}$. 
+Recall from~\cite{JoyalStreetVerity} that traced categories are full subcategories of compact categories. The Int construction, applied to a traced category $\cat{C}$, returns the smallest compact category $\Int(\cat{C})$ of which it is a subcategory; we call $\Int(\cat{C})$ the \emph{compact closure} of $\cat{C}$. 
 
-It turns out that if our compact category $\cat{C}$ is the compact closure of a traced category $\cat{D}$, then \ref{thm:Theorem B} lifts to a result about $\cat{D}$. We record this result as \ref{cor:Corollary B}, from which \ref{thm:Theorem A} follows. These are proved in Section~\ref{sec:generalization}. 
+It turns out that if our compact category $\cat{C}$ is the compact closure of a traced category $\cat{D}$, then~\ref{thm:Theorem B} lifts to a result about $\cat{D}$. We record this result as~\ref{cor:Corollary B}, from which~\ref{thm:Theorem A} follows. These are proved in Section~\ref{sec:generalization}. 
 
 \begin{named}{Corollary B}
 Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=\Int(\cat{D})$. Then there is an equivalence of categories
@@ -275,7 +275,7 @@ The operadic perspective on traced categories may be useful in concrete applicat
 
 When designing or investigating a complex system, it is often useful to think in terms of interacting subsystems, put together to make a larger whole. In manufacturing, this is often called \emph{modular design}. Each object in $\Cat{Cob}$ represents an interface, or \emph{module}, with a fixed number and type of inputs and outputs. The morphisms in $\Cat{Cob}$ correspond to strategies by which these interfaces can be put together into a process, which itself has an interface. 
 
-An algebra $P\colon\Cat{Cob}\to\Cat{Set}$ provides semantics for these boxes. For each interface $X$, the set $P(X)$ represents the set of ``fillers" for this interface. For example, one might imagine that each interface $X$ can be filled by any state machine having that interface; in this case $P(X)$ is the set of such state machines. For a morphism $\varphi\colon X_1,\ldots,X_n\to Y$, the function $P(\varphi)$ tells us how to construct a filler of type $Y$, given fillers on each $X_i$. Composition of cobordisms are drawn as nested diagrams:
+An algebra $P\colon\Cat{Cob}\to\Cat{Set}$ provides semantics for these boxes. For each interface $X$, the set $P(X)$ represents the set of ``fillers'' for this interface. For example, one might imagine that each interface $X$ can be filled by any state machine having that interface; in this case $P(X)$ is the set of such state machines. For a morphism $\varphi\colon X_1,\ldots,X_n\to Y$, the function $P(\varphi)$ tells us how to construct a filler of type $Y$, given fillers on each $X_i$. Composition of cobordisms are drawn as nested diagrams:
 
 \[
 \begin{tikzpicture}[wiring diagram, bb small]
@@ -316,14 +316,14 @@ An algebra $P\colon\Cat{Cob}\to\Cat{Set}$ provides semantics for these boxes. Fo
 \end{tikzpicture}
 \]
 
-In our model for modular design, any way to chunk the small boxes inside the big one will give the same result. This is a reflection of the functoriality of $P\colon\Cat{Cob}\to\Set$, which says that commutative diagrams in $\Cat{Cob}$ are sent to commutative diagrams of sets. Nested structures, given by composition of such morphisms, may be useful for the kind of chunking that humans use to understand complex systems. \cite{Miller, George A. "The magical number seven, plus or minus two: some limits on our capacity for processing information." Psychological review 63.2 (1956): 81.}
+In our model for modular design, any way to chunk the small boxes inside the big one will give the same result. This is a reflection of the functoriality of $P\colon\Cat{Cob}\to\Set$, which says that commutative diagrams in $\Cat{Cob}$ are sent to commutative diagrams of sets. Nested structures, given by composition of such morphisms, may be useful for the kind of chunking that humans use to understand complex systems.~\cite{Miller, George A. "The magical number seven, plus or minus two: some limits on our capacity for processing information." Psychological review 63.2 (1956): 81.}
 
 
 \subsection{Mathematical application: varying the operad}
 
-Formalizing modular design using operads, as in \cite{Spivak}, \cite{Rupel-Spivak}, and \cite{Vagner-Spivak-Lerman} was the original motivation for the present paper, as the drawings had strong similarities to those found in traced categories. However, it should be noted that none of these papers actually uses $\Cat{Cob}$ as the indexing category for their algebras. In fact, they use three different operads, of varying degrees of similarity to $\Cat{Cob}$. For example, there is an orthogonal factorization system on $\Cat{Cob}$, for which morphisms in the left class $\cat{L}$ include no closed loops, and \cite{Vagner-Spivak-Lerman} is based on the suboperad spanned by $\cat{L}$.
+Formalizing modular design using operads, as in~\cite{Spivak},~\cite{Rupel-Spivak}, and~\cite{Vagner-Spivak-Lerman} was the original motivation for the present paper, as the drawings had strong similarities to those found in traced categories. However, it should be noted that none of these papers actually uses $\Cat{Cob}$ as the indexing category for their algebras. In fact, they use three different operads, of varying degrees of similarity to $\Cat{Cob}$. For example, there is an orthogonal factorization system on $\Cat{Cob}$, for which morphisms in the left class $\cat{L}$ include no closed loops, and~\cite{Vagner-Spivak-Lerman} is based on the suboperad spanned by $\cat{L}$.
 
-It is easy to imagine operads with the same objects as $\Cat{Cob}$, but different morphisms, simply by imagining generalizations of the pictures. String diagrams $\varphi\colon X\to Y$ in $\Cat{Cob}$ include no split wires and no ``dangling" wires, but those conditions can be relaxed. Said mathematically, an oriented cobordism $\varphi$ includes the data of a function
+It is easy to imagine operads with the same objects as $\Cat{Cob}$, but different morphisms, simply by imagining generalizations of the pictures. String diagrams $\varphi\colon X\to Y$ in $\Cat{Cob}$ include no split wires and no ``dangling'' wires, but those conditions can be relaxed. Said mathematically, an oriented cobordism $\varphi$ includes the data of a function
 $$\varphi_1\colon\inp{X}\sqcup\outp{Y}\to\outp{X}\sqcup\inp{Y},$$
 which is both injective and surjective. Either of those conditions can be dropped, e.g., requiring surjectivity but not requiring injectivity
 \begin{center}
@@ -345,7 +345,7 @@ So while it is difficult to see how to make subtle changes in the axioms of trac
 
 \section{Plan of the paper}
 
-The paper is organized as follows. In Section~\ref{sec:traced categories} we give more details on the connection between traced monoidal categories, their string diagrams, and algebras on the operad of cobordisms. In Section~\ref{sec:generalization} we prove \ref{thm:Theorem B} and \ref{cor:Corollary B}, which compare lax set-valued functors to strong bijective-on-objects functors, respectively for compact and traced categories. Our main result, \ref{thm:Theorem A}, which says that traced categories are $\Cat{Cob}$-algebras, follows easily.
+The paper is organized as follows. In Section~\ref{sec:traced categories} we give more details on the connection between traced monoidal categories, their string diagrams, and algebras on the operad of cobordisms. In Section~\ref{sec:generalization} we prove~\ref{thm:Theorem B} and~\ref{cor:Corollary B}, which compare lax set-valued functors to strong bijective-on-objects functors, respectively for compact and traced categories. Our main result,~\ref{thm:Theorem A}, which says that traced categories are $\Cat{Cob}$-algebras, follows easily.
 
 \section*{Acknowledgments}
 
@@ -660,7 +660,7 @@ This can be recognized as a cobordism between oriented 0-manifolds, as we will d
 \]
 \end{itemize} 
 
-The definition of traced categories and traced functors can be found in \cite{JoyalStreetVerity}.
+The definition of traced categories and traced functors can be found in~\cite{JoyalStreetVerity}.
 
 \erase{%ERASED
 \section{Definition of traced category}\label{sec:define traced}
@@ -683,7 +683,7 @@ for $U,X,Y\in\Ob(\cat{M})$ satisfying the following axioms:
  \[\Tr^X_{X,X}\big[\gamma_{X,X}\big]=\id_X.\]
 \end{description}
 %ERASED
-For an object $X$ in a traced category $\cat{M}$ we write $\dim(X)\coloneqq\Tr^X_{I,I}\big[\id_X\big]\in S_{\cat{M}}$ for the {\em dimension} of $X$.  Note also that for any endomorphism $f\colon X\to X$ there is a scalar $s_f=\Tr^X_{I,I}[f]\in S_{\cat{M}}$.
+For an object $X$ in a traced category $\cat{M}$ we write $\dim(X)\coloneqq\Tr^X_{I,I}\big[\id_X\big]\in S_{\cat{M}}$ for the \emph{dimension} of $X$.  Note also that for any endomorphism $f\colon X\to X$ there is a scalar $s_f=\Tr^X_{I,I}[f]\in S_{\cat{M}}$.
 %ERASED
 \begin{proposition}\label{prop:dinaturality}\mbox{}
 Let $\cat{M}$ be a symmetric monoidal category.
@@ -813,7 +813,7 @@ Every compact category $\cat{C}$ has a canonical trace structure, defined on a m
 $$\Tr^U_{X,Y}[f]\coloneqq(\epsilon_U\otimes Y)\circ (s_{U^*,U}\otimes Y)\circ (U^*\otimes f)\circ (\eta_U\otimes X)$$
 %\todo[color=yellow]{does this formula make sense as written? i.e. it doesn't seem to give a map $X\to Y$?} 
 Thus we have a functor 
-$U\colon\CompCat\to\TrCat$. It is shown in \cite{Joyal-Street-Verity} that this functor is the right half of an adjunction 
+$U\colon\CompCat\to\TrCat$. It is shown in~\cite{Joyal-Street-Verity} that this functor is the right half of an adjunction 
 \begin{equation}\label{dia:traced compact adjunction}
 \begin{tikzcd}
 \TrCat\arrow[r,shift left=.5ex, "\Int"]&\CompCat\arrow[l,shift left=.5ex,"U"]
@@ -825,7 +825,7 @@ For a traced category $\cat{M}$ let $\widetilde{\cat{M}}=\Int(\cat{M})$ denote t
 \[\Hom_{\widetilde{\cat{M}}}\big((\inp{X},\outp{X}),(\inp{Y},\outp{Y})\big)=\Hom_{\cat{M}}(\inp{X}\otimes \outp{Y},\outp{X}\otimes \inp{Y}).\]
 For morphisms $\Phi:(\inp{X},\outp{X})\to(\inp{Y},\outp{Y})$ and $\Psi:(\inp{Y},\outp{Y})\to(\inp{Z},\outp{Z})$ in $\widetilde{\cat{M}}$ we define their composition to be
 \[\Psi\circ\Phi\coloneqq\Tr^{\outp{Y}}_{\inp{X}\otimes \outp{Z},\outp{X}\otimes \inp{Z}}\Big[\big(\gamma_{\outp{X},\outp{Y}}\otimes \inp{Z}\big)\circ\big(\outp{X}\otimes\Psi\big)\circ\big(\Phi\otimes \outp{Z}\big)\circ\big(\gamma_{\outp{Y},\inp{X}}\otimes \outp{Z}\big)\Big].\]
-It is shown in \cite{JoyalStreetVerity} that $\widetilde{\cat{M}}$ is a compact  category whose tensor is given by
+It is shown in~\cite{JoyalStreetVerity} that $\widetilde{\cat{M}}$ is a compact  category whose tensor is given by
 \[(\inp{X},\outp{X})\odot(\inp{Y},\outp{Y})\coloneqq(\inp{X}\otimes \inp{Y},\outp{X}\otimes \outp{Y})\]
 with unit object $\tilde I\coloneqq(I,I)$ and duality $(\inp{X},\outp{X})^\vee\coloneqq(\outp{X},\inp{X})$.  
 
@@ -852,7 +852,7 @@ The following facts hold for any traced category $\cat{C}$:
 
 \begin{proof}
 
-These are all shown in \cite{Joyal-Street-Verity}.
+These are all shown in~\cite{Joyal-Street-Verity}.
 
 \end{proof}
 
@@ -928,9 +928,9 @@ Joachim Kock proves that 2-cob is the free compact category on a frobenius algeb
 
 \section{A factorization system for strong functors}\label{sec:factorization system}
 
-In this section we prove that an orthogonal factorization system exists on the categories $\SymMonCat$, $\TrCat$, and $\CompCat$ of symmetric monoidal (resp. traced, compact) categories and strong functors (resp. traced functors; see Definition~\ref{def:traced functor}). 
+In this section we prove that an orthogonal factorization system exists on the categories $\SymMonCat$, $\TrCat$, and $\CompCat$ of symmetric monoidal (resp.\ traced, compact) categories and strong functors (resp.\ traced functors; see Definition~\ref{def:traced functor}). 
 
-Recall from \cite{} that an \emph{orthogonal factorization system} on a category $\cat{C}$ consists of a class $\cat{L}$ and a class $\cat{R}$ of morphisms in $\cat{C}$, called the \emph{left class} and \emph{right class} of the factorization system, respectively, satisfying the following properties:
+Recall from~\cite{} that an \emph{orthogonal factorization system} on a category $\cat{C}$ consists of a class $\cat{L}$ and a class $\cat{R}$ of morphisms in $\cat{C}$, called the \emph{left class} and \emph{right class} of the factorization system, respectively, satisfying the following properties:
 \begin{enumerate}
 \item $\cat{L}$ (resp. $\cat{R}$) contains every isomorphism in $\cat{C}$, 
 \item $\cat{L}$ (resp. $\cat{R}$) is closed under composition, and
@@ -969,7 +969,7 @@ The coherence isomorphisms of $\cat{F}$ are defined by applying $F$ to the coher
 
 Suppose that $\cat{C}$ and $\cat{D}$ are both compact categories. Every object of $\cat{F}$ is the image of an object in $\cat{C}$, and every object of $\cat{C}$ has a dual, hence every object of $\cat{F}$ has a dual because monoidal functors always preserve duals. This shows that the (bo,ff) factorization system lifts to $\CompCat$.
 
-Finally, if $\cat{C}$ and $\cat{D}$ are traced, then \cite[Proposition 2.4]{Joyal-Street-Vertity} implies that there is a unique traced structure on $\cat{F}$, where the trace of a morphism in $\cat{F}$ is defined to be the trace in $\cat{D}$. The ``ff'' functor preserves the trace by construction, and the ``bo'' functor preserves the trace because $F$ does.
+Finally, if $\cat{C}$ and $\cat{D}$ are traced, then~\cite[Proposition 2.4]{Joyal-Street-Vertity} implies that there is a unique traced structure on $\cat{F}$, where the trace of a morphism in $\cat{F}$ is defined to be the trace in $\cat{D}$. The ``ff'' functor preserves the trace by construction, and the ``bo'' functor preserves the trace because $F$ does.
 \end{proof}
 
 \begin{proposition}\label{prop:coslice Xbo}
@@ -979,14 +979,14 @@ Finally, if $\cat{C}$ and $\cat{D}$ are traced, then \cite[Proposition 2.4]{Joya
   sending any $\cat{C}\in\XCat$ to the coslice category $\cat{C}/\XCat_{\bo}$.
   \end{proposition}
 \begin{proof}
-  We only need to verify the functoriality of this construction. Given a strong functor $F\colon\cat{C}\to\cat{D}$ in $\XCat$, we can define a functor $F^*\colon\cat{D}/\XCat_{\bo}\to\cat{C}/\XCat_{\bo}$. For any object $\phi\in\cat{D}/\XCat_{\bo}$, i.e.~a bijective-on-objects functor $\phi\colon\cat{D}\to\cat{X}$, define $F^*(\phi)$ by applying the factorization system of \ref{lemma:factorization system} as in the diagram
+  We only need to verify the functoriality of this construction. Given a strong functor $F\colon\cat{C}\to\cat{D}$ in $\XCat$, we can define a functor $F^*\colon\cat{D}/\XCat_{\bo}\to\cat{C}/\XCat_{\bo}$. For any object $\phi\in\cat{D}/\XCat_{\bo}$, i.e.~a bijective-on-objects functor $\phi\colon\cat{D}\to\cat{X}$, define $F^*(\phi)$ by applying the factorization system of~\ref{lemma:factorization system} as in the diagram
   \[
   \begin{tikzcd}
     \cat{C} \ar[r,"F"] \ar[d,"F^*(\phi)"'] & \cat{D} \ar[d,"\phi"] \\
     \cat{X}' \ar[r,"\ff"'] & \cat{X}
   \end{tikzcd}
   \]
-  Given another strong functor $G\colon\cat{D}\to\cat{E}$, the fact that $(G\circ F)^*\iso F^*\circ G^*$ follows from the uniqueness of the factorization of $\psi\circ G\circ F$ in the diagram
+  Given another strong functor $G\colon\cat{D}\to\cat{E}$, the fact that ${(G\circ F)}^*\iso F^*\circ G^*$ follows from the uniqueness of the factorization of $\psi\circ G\circ F$ in the diagram
   \[
   \begin{tikzcd}
     \cat{C} \ar[r,"F"] \ar[d] 
@@ -997,7 +997,7 @@ Finally, if $\cat{C}$ and $\cat{D}$ are traced, then \cite[Proposition 2.4]{Joya
   \]
 \end{proof}
 
-In \cite{Abramsky}, Abramsky provides a free-forgetful adjunction
+In~\cite{Abramsky}, Abramsky provides a free-forgetful adjunction
 \begin{equation}\label{eq:abramsky}
 \begin{tikzcd}
 \Cat{Set}\arrow[r, shift left=.5ex, "\Fun{XFr}"]&\XCat\arrow[l, shift left=.5ex,"\Ob"]
@@ -1008,7 +1008,7 @@ In \cite{Abramsky}, Abramsky provides a free-forgetful adjunction
 
 Let $\Cat{XKlSet}$ be the Kleisli category of the monad induced by (\ref{eq:abramsky}). The functor $\Fun{XFr}=i_{\Fun{X}}\circ\eta_{\Fun{X}}$ factors through it as the composite 
 $$\Set\To{\eta_{\Fun{X}}}\Cat{XKlSet}\To{\fun{i_{\Fun{X}}}}\XCat,$$ 
-where $i_{\Fun{X}}$ is fully faithful (see \cite[Proposition 4.2.1]{Borceux vol 2}.  Let $-/\XCat_{\bo}\colon\XCat\to\op{\Cat{Cat}}$ be the functor from Proposition~\ref{prop:coslice Xbo}, and define $\Fun{XFrObCat}\colon\Cat{XKlSet}\to\op{\Cat{Cat}}$ to be the composite
+where $i_{\Fun{X}}$ is fully faithful (see~\cite[Proposition 4.2.1]{Borceux vol 2}.  Let $-/\XCat_{\bo}\colon\XCat\to\op{\Cat{Cat}}$ be the functor from Proposition~\ref{prop:coslice Xbo}, and define $\Fun{XFrObCat}\colon\Cat{XKlSet}\to\op{\Cat{Cat}}$ to be the composite
 $$\Cat{XKlSet}\To{i_{\Fun{X}}}\XCat\To{-/\XCat_{\bo}}\op{\Cat{Cat}}.$$
 We define the fibration $\Cat{XFrObCat}\To{\pi_{\Fun{X}}}\Cat{XKlSet}$ to be the Grothendieck construction of $\Fun{XFrObCat}$. 
 
@@ -1212,7 +1212,7 @@ If $\cat{C}$ is a compact category, then
 
 \chapter{Results}\label{sec:generalization}
 
-In this section, we prove \ref{thm:Theorem B}, from which \ref{cor:Corollary B} and \ref{thm:Theorem A} follow (see in particular Sections~\ref{sec:proof of Bs}~and~\ref{sec:proof of A}). We offer the following diagram as a guide through this section. Suppose $\cat{D}$ is a traced category and $\cat{C}=\Int(\cat{D})$ is its compact closure. 
+In this section, we prove~\ref{thm:Theorem B}, from which~\ref{cor:Corollary B} and~\ref{thm:Theorem A} follow (see in particular Sections~\ref{sec:proof of Bs}~and~\ref{sec:proof of A}). We offer the following diagram as a guide through this section. Suppose $\cat{D}$ is a traced category and $\cat{C}=\Int(\cat{D})$ is its compact closure. 
 \[
 \begin{tikzcd}[column sep=3cm,row sep=1.5cm]
 \Lax(\cat{C},\Set)\ar[r,dashed,"\tn{\ref{cor:Corollary B}}"]\ar[d,equal]&\cat{D}/\TrCat_{\bo}\\
@@ -1220,7 +1220,7 @@ In this section, we prove \ref{thm:Theorem B}, from which \ref{cor:Corollary B} 
 \MProf(1,\cat{C})\ar[r,"\tn{Proposition~\ref{Prop:mon prof equivalence}}"']&\Mon(\MProf(\cat{C},\cat{C}))\ar[u,"\tn{Lemmas~\ref{Lem:mon profs equal boo functors},\ \ref{lemma:easy compcat}}"']
 \end{tikzcd}
 \]
-This diagram shows that to prove \ref{thm:Theorem B}, we must prove Proposition~\ref{Prop:mon prof equivalence}, which is the purpose of Section~\ref{sec:ccc's}, at which point \ref{cor:Corollary B} will follow from Proposition~\ref{prop:slice boo int}. Finally, \ref{thm:Theorem A} is just making functorial use of \ref{cor:Corollary B} in cases where $\cat{D}$ is the free traced category on a set of objects.
+This diagram shows that to prove~\ref{thm:Theorem B}, we must prove Proposition~\ref{Prop:mon prof equivalence}, which is the purpose of Section~\ref{sec:ccc's}, at which point~\ref{cor:Corollary B} will follow from Proposition~\ref{prop:slice boo int}. Finally,~\ref{thm:Theorem A} is just making functorial use of~\ref{cor:Corollary B} in cases where $\cat{D}$ is the free traced category on a set of objects.
 
 \section{Compact closed categories}\label{sec:ccc's}
 
@@ -1235,7 +1235,7 @@ Throughout this section, $\cat{C}$ will denote a compact closed category. Consid
 \end{equation}
 where $FM\colon\op{\cat{C}}\times\cat{C}\to\Set$ is defined by $FM(A,B)=M(A^*\otimes B)$, and in the other direction, $N\colon\op{\cat{C}}\times\cat{C}\to\Set$ is given by $UN(A)=N(I,A)$.
 
-Let $\MProf(\cat{C},\cat{C})_*$ denote the category of pointed monoidal endo-profunctors, i.e.~profunctors $M$ equipped with a unit $i\colon\Hom_{\cat{C}}\to M$, with monoidal profunctor morphisms which preserve the units.
+Let $\MProf(\cat{C},\cat{C})_{\ast}$ denote the category of pointed monoidal endo-profunctors, i.e.~profunctors $M$ equipped with a unit $i\colon\Hom_{\cat{C}}\to M$, with monoidal profunctor morphisms which preserve the units.
 
 
 \begin{proposition}\label{Prop:unit implies monoid}
@@ -1330,10 +1330,10 @@ Let $\MProf(\cat{C},\cat{C})_*$ denote the category of pointed monoidal endo-pro
 \begin{proof}
   By Propositions~\ref{Prop:canonical unit}~and~\ref{Prop:canonical unit}, the functor $F\colon\MProf(1,\cat{C}) \to \MProf(\cat{C},\cat{C})$ naturally factors through $\Mon(\MProf(\cat{C},\cat{C}))\simeq\MProf(\cat{C},\cat{C})_*$. 
   
-  If $M\in\MProf(1,\cat{C})$ then $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any $a\in\cat{C}$. On the other hand, given $N\in\Mon(\MProf(\cat{C},\cat{C}))$, $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from lemma~\ref{Lem:comp prof bijection}.
+  If $M\in\MProf(1,\cat{C})$ then $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any $a\in\cat{C}$. On the other hand, given $N\in\Mon(\MProf(\cat{C},\cat{C}))$, $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from Lemma~\ref{Lem:comp prof bijection}.
 \end{proof}
 
-\section{Proof of \ref{thm:Theorem B} and \ref{cor:Corollary B}}\label{sec:proof of Bs}
+\section{Proof of~\ref{thm:Theorem B} and~\ref{cor:Corollary B}}\label{sec:proof of Bs}
 
  \begin{named}{Theorem B}\label{thm:Theorem B}
  	Let $\cat{C}$ be a compact category. There is an equivalence of categories
@@ -1366,7 +1366,7 @@ This is straightforward, but the calculation is shown below:
 \begin{align*}
 \Hom_{\Int(\cat{C})}((\inp{X},\outp{X}),(\inp{Y},\outp{Y}))&=\Hom_{\cat{C}}(\inp{X}\otimes\outp{Y},\outp{X}\otimes\inp{Y})\\
 &\iso\Hom_{\cat{D}}(F(\inp{X})\otimes F(\outp{Y}),F(\outp{X})\otimes F(\inp{Y}))\\
-&\iso\Hom_{\cat{D}}(F(\inp{X})\otimes F((\outp{X})^*),F(\inp{Y})\otimes F((\outp{Y})^*))
+&\iso\Hom_{\cat{D}}(F(\inp{X})\otimes F({(\outp{X})}^*),F(\inp{Y})\otimes F({(\outp{Y})}^*))
 \end{align*}
 
 \end{proof}
@@ -1431,13 +1431,13 @@ This equivalence is natural in $\cat{D}$; i.e., the following diagram commutes:
 
 \begin{proof}
 
-By \ref{thm:Theorem B}, there is an equivalence of categories 
+By~\ref{thm:Theorem B}, there is an equivalence of categories 
 $$\Lax(\cat{C},\Set)\simeq\cat{C}/\CompCat_{\bo}$$
 and the equivalence (\ref{dia:traced lax strong}) follows from Proposition~\ref{prop:slice boo int}. All these constructions are natural in $\cat{C}$. \todo{Pretty this up.}
 
 \end{proof}
 
-\section{Proof of \ref{thm:Theorem A}}\label{sec:proof of A}
+\section{Proof of~\ref{thm:Theorem A}}\label{sec:proof of A}
 
 In this section, we prove an equivalence between traced categories and algebras on cobordism categories, indexed by a set of objects. \todo{Add more guidance to this section}
 
@@ -1458,7 +1458,7 @@ $$
 \Cat{TrKlSet}\ar[rr,"i_{\Fun{Tr}}"']&&\Cat{TrCat}\ar[ur,"\Fun{Int}"]\ar[rr,"-/\TrCat_{\bo}"']&&\Cat{Cat}
 \end{tikzcd}
 $$
-The middle triangle commutes by Proposition~\ref{prop:free traced and compact} and the labeled isomorphism holds by Proposition~\ref{prop:free compact is Cob}. The right-hand triangle commutes by \ref{cor:Corollary B}. For a set $\cat{O}$, the path across the top to $\Cat{Cat}$ is $(\Cat{Cob}/\cat{O})\alg$, which equals $\Fun{TrFrObCat}(\cat{O})$, the path along the left and bottom.
+The middle triangle commutes by Proposition~\ref{prop:free traced and compact} and the labeled isomorphism holds by Proposition~\ref{prop:free compact is Cob}. The right-hand triangle commutes by~\ref{cor:Corollary B}. For a set $\cat{O}$, the path across the top to $\Cat{Cat}$ is $(\Cat{Cob}/\cat{O})\alg$, which equals $\Fun{TrFrObCat}(\cat{O})$, the path along the left and bottom.
 
 \end{proof}
 
