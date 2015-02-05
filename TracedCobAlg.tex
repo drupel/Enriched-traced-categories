@@ -117,12 +117,22 @@ Note the ``degree shift'' between the second and third columns.
 
 The relationship between these interpretations is made precise in the following first main theorem, which will be proved in Section~\ref{sec:proof of A}.
 For any multicategory $\cat{M}$, we denote by $\cat{M}\alg$ the category of lax functors $\cat{M}\to\Cat{Set}$.
-Let $\TrCat$ denote the category of traced categories and strong traced functors.
+Let $\TrCat$ denote the category of traced categories and strong traced functors.\todo{Introduce props}
 
 \begin{named}{Theorem A}
 	Consider the functor $\Set\to\op{\Cat{Cat}}$, given by $\cat{O}\mapsto(\Cat{Cob}/\cat{O})\alg$, and let $(\Cat{Cob}/\bullet)\alg$ denote the total category of the corresponding Grothendieck fibration.
-	Then there is an equivalence of categories
-	$$(\Cat{Cob}/\bullet)\alg\simeq\TrCat.$$
+	Then there is an equivalence of 1-categories
+	$$\CobSetAlg\simeq\TrProp.$$
+\end{named}
+
+Let $\Cat{FrCompCat}$ denote the double category whose objects are free compact categories, whose vertical arrows are strong functors, whose horizontal cells are lax monoidal profunctors, and whose 2-cells are monoidal natural transformations. Let $\MMon(\Cat{FrCompCat})$ denote the 2-category of monoid objects in $\Cat{FrCompCat}$.
+
+\begin{named}{Theorem A'}
+ Then there is an equivalence of 2-categories
+	$$\MMon(\Cat{FrCompCat})\simeq\TrCat$$
+and an equivalence of 1-categories
+	$$\Mon(\Cat{FrCompCat})\simeq\CobKlsAlg.$$
+\todo{Make nicer.}
 \end{named}
 
 This will be proved in Section~\ref{sec:proof of A}, but we sketch the equivalence here, with a few minor abuses of notation.
@@ -202,6 +212,7 @@ Let $\CompCat_{\bo}\ss\CompCat$ denote the left class.
 	\begin{equation}\label{dia:compact lax strong}
 		\Lax(\cat{C},\Cat{Set})\simeq\cat{C}/\CompCat_{\bo}
 	\end{equation}
+\todo{Make functorial in $\cat{C}$.}
 \end{named}
 
 Recall from~\cite{JoyalStreetVerity} that traced categories are full subcategories of compact categories.
@@ -490,6 +501,8 @@ commute.
 Let $\SymMonCat$ denote the bicategory of symmetric monoidal categories and strong monoidal functors, and let $\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal transformations from $\cat{C}$ to $\cat{D}$.
 Let $\CompCat$ denote the full subcategory of $\SymMonCat$ spanned by the compact categories.
 
+\todo{Add stuff about props.}
+
 \section{Traced categories}\label{sec:intuition for traced}
 
 A trace on a symmetric monoidal category is a collection of functions
@@ -628,137 +641,7 @@ For example, here are the axioms of \emph{dinaturality} and \emph{superposition}
 
 The definition of traced categories and traced functors can be found in~\cite{JoyalStreetVerity}.
 
-\erase{%ERASED
-\section{Definition of traced category}\label{sec:define traced}
-
-A (left) \emph{trace} on a symmetric monoidal category is a collection of functions 
-\[\Tr^U_{X,Y}\colon\Hom(U\otimes X,U\otimes Y)\to\Hom(X,Y)\]
-for $U,X,Y\in\Ob(\cat{M})$ satisfying the following axioms:
-\begin{description}
- \item [Dinaturality I:] for every $f\colon U\otimes X\to V\otimes Y$ and $g:V\to U$ we have
- \[\Tr^U_{X,Y}\Big[\big(g\otimes Y\big)\circ f\Big]=\Tr^V_{X,Y}\Big[f\circ\big(g\otimes X\big)\Big];\] 
- \item [Naturality:] for every $f\colon U\otimes X\to U\otimes Y$, $g\colon X'\to X$, and $h\colon Y\to Y'$ we have
- \[\Tr^U_{X',Y'}\Big[\big(U\otimes h\big)\circ f\circ\big(U\otimes g\big)\Big]=h\circ\Tr^U_{X,Y}\big[f\big]\circ g;\]
- \item [Superposing:] for every $f\colon U\otimes X\to U\otimes Y$ and $g\colon W\to Z$ we have
- \[\Tr^U_{X,Y}\big[f\big]\otimes g=\Tr^U_{X\otimes W,Y\otimes Z}\big[f\otimes g\big];\]
- \item [Vanishing I:] for every $f\colon X\to Y$ we have
- \[\Tr^{I}_{X,Y}\big[f\big]=f;\]
- \item [Vanishing II:] for every $f\colon U\otimes V\otimes X\to U\otimes V\otimes Y$ we have
- \[\Tr^{U\otimes V}_{X,Y}\big[f\big]=\Tr^V_{X,Y}\Big[\Tr^U_{V\otimes X,V\otimes Y}\big[f\big]\Big];\]
- \item [Yanking:] for any $X\in\Ob(\cat{M})$ we have
- \[\Tr^X_{X,X}\big[\gamma_{X,X}\big]=\id_X.\]
-\end{description}
-%ERASED
-For an object $X$ in a traced category $\cat{M}$ we write $\dim(X)\coloneqq\Tr^X_{I,I}\big[\id_X\big]\in S_{\cat{M}}$ for the \emph{dimension} of $X$.
-Note also that for any endomorphism $f\colon X\to X$ there is a scalar $s_f=\Tr^X_{I,I}[f]\in S_{\cat{M}}$.
-%ERASED
-\begin{proposition}\label{prop:dinaturality}\mbox{}
-Let $\cat{M}$ be a symmetric monoidal category.
-\begin{enumerate}
- \item If $\cat{M}$ is traced then for every $f\colon X\to Y$ and $g\colon Y\to Z$ in $\cat{M}$, we have
- \[g\circ f=\Tr^Y_{X,Z}\Big[\big(f\otimes g\big)\circ\gamma_{Y,X}\Big].\]
- \item Consider the following axiom:
- \begin{description}
-  \item [Dinaturality I':] for every $h\colon U\otimes V\otimes X\to U\otimes V\otimes Y$ we have
- \[\Tr^{U\otimes V}_{X,Y}\big[h\big]=\Tr^{V\otimes U}_{X,Y}\Big[\big(\gamma_{U,V}\otimes Y\big)\circ h\circ\big(\gamma_{V,U}\otimes X\big)\Big].\]
- \end{description}
- In the presence of the other five Axioms, the axioms Dinaturality~I and Dinaturality~I' are equivalent.
-\end{enumerate}
-\end{proposition}
-\begin{proof}
- (1) can be shown from the Naturality and Yanking axioms of the trace as follows:
- \begin{align*}
-  \Tr^Y_{X,Z}\Big[\big(f\otimes g\big)\circ\gamma_{Y,X}\Big]
-  &=\Tr^Y_{X,Z}\Big[\big(Y\otimes g\big)\circ\big(f\otimes Y\big)\circ\gamma_{Y,X}\Big]\\
-  &=\Tr^Y_{X,Z}\Big[\big(Y\otimes g\big)\circ\gamma_{Y,Y}\circ\big(Y\otimes f\big)\Big]\\
-  &=g\circ\Tr^Y_{Y,Y}\big[\gamma_{Y,Y}\big]\circ f=g\circ f.
- \end{align*}
- %ERASED
- Dinaturality I' is an immediate consequence of Dinaturality I, indeed apply Dinaturality I with $f=h\circ\big(\gamma_{V,U}\otimes X\big)$ and $g=\gamma_{U,V}$.
- For the other direction we apply the composition formula of (1) to the left side of the Dinaturality I equation to get
- \begin{align*}
-  \Tr^U_{X,Y}\Big[\big(g\otimes Y\big)\circ f\Big]
-  &=\Tr^U_{X,Y}\bigg[\Tr^{V\otimes Y}_{U\otimes X,U\otimes Y}\Big[\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\Big]\bigg]\\
- &=\Tr^{V\otimes Y\otimes U}_{X,Y}\Big[\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\Big]\\
-  &=\Tr^{V\otimes Y\otimes U}_{X,Y}\Big[\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\Big]\circ\Tr^X_{X,X}\big[\gamma_{X,X}\big],
- \end{align*}
- where the last two equalities follow from Vanishing II and a trivial application of Yanking.  
- %ERASED
- By Naturality we may bring the first trace into the second to get
- \begin{align*}
-  &\Tr^X_{X,Y}\Bigg[\bigg(X\otimes \Tr^{V\otimes Y\otimes U}_{X,Y}\Big[\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\Big]\bigg)\circ\gamma_{X,X}\Bigg]\\
-  &\quad=\Tr^X_{X,Y}\Bigg[\gamma_{Y,X}\circ\bigg(\Tr^{V\otimes Y\otimes U}_{X,Y}\Big[\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\Big]\otimes X\bigg)\Bigg]\\
-  &\quad=\Tr^X_{X,Y}\bigg[\gamma_{Y,X}\circ\Tr^{V\otimes Y\otimes U}_{X\otimes X,Y\otimes X}\Big[\big(f\otimes g\otimes Y\otimes X\big)\circ\big(\gamma_{V\otimes Y,U\otimes X}\otimes X\big)\Big]\bigg]\\
-  &\quad=\Tr^X_{X,Y}\bigg[\Tr^{V\otimes Y\otimes U}_{X\otimes X,X\otimes Y}\Big[\big(V\otimes Y\otimes U\otimes \gamma_{Y,X}\big)\circ\big(f\otimes g\otimes Y\otimes X\big)\circ\big(\gamma_{V\otimes Y,U\otimes X}\otimes X\big)\Big]\bigg]\\
-  &\quad=\Tr^X_{X,Y}\bigg[\Tr^{V\otimes Y\otimes U}_{X\otimes X,X\otimes Y}\Big[\big(f\otimes g\otimes \gamma_{Y,X}\big)\circ\big(\gamma_{V\otimes Y,U\otimes X}\otimes X\big)\Big]\bigg]\\
-  &\quad=\Tr^{V\otimes Y\otimes U\otimes X}_{X,Y}\Big[\big(f\otimes g\otimes \gamma_{Y,X}\big)\circ\big(\gamma_{V\otimes Y,U\otimes X}\otimes X\big)\Big],
- \end{align*}
- where we apply Superposing to get the second equality, Naturality to get the third, and Vanishing II for the last.
- %ERASED
- Now we are ready to apply Dinaturality I' to get
- \begin{align*}
-  \Tr^{U\otimes X\otimes V\otimes Y}_{X,Y}\Big[\big(\gamma_{V\otimes Y,U\otimes X}\otimes Y\big)\circ\big(f\otimes g\otimes \gamma_{Y,X}\big)\Big]
- \end{align*}
- from which we may apply, in reverse, an analogous sequence of equalities to that above to get the right hand side of the Dinaturality I equation.
- \erase{\begin{align*}%begin erase
-  &=\Tr^Y_{X,Y}\bigg[\Tr^{U\otimes X\otimes V}_{Y\otimes X,Y\otimes Y}\Big[\big(\gamma_{V\otimes Y,U\otimes X}\otimes Y\big)\circ\big(f\otimes g\otimes \gamma_{Y,X}\big)\Big]\bigg]\\
-  &=\Tr^Y_{X,Y}\bigg[\Tr^{U\otimes X\otimes V}_{Y\otimes X,Y\otimes Y}\Big[\big(\gamma_{V\otimes Y,U\otimes X}\otimes Y\big)\circ\big(f\otimes g\otimes X\otimes Y\big)\circ\big(U\otimes X\otimes V\otimes \gamma_{Y,X}\big)\Big]\bigg]\\
-  &=\Tr^Y_{X,Y}\bigg[\Tr^{U\otimes X\otimes V}_{X\otimes Y,Y\otimes Y}\Big[\big(\gamma_{V\otimes Y,U\otimes X}\otimes Y\big)\circ\big(f\otimes g\otimes X\otimes Y\big)\Big]\circ\gamma_{Y,X}\bigg]\\
-  &=\Tr^Y_{X,Y}\Bigg[\bigg(\Tr^{U\otimes X\otimes V}_{X,Y}\Big[\gamma_{V\otimes Y,U\otimes X}\circ\big(f\otimes g\otimes X\big)\Big]\otimes Y\bigg)\circ\gamma_{Y,X}\Bigg]\\
-  &=\Tr^Y_{X,Y}\Bigg[\gamma_{Y,Y}\circ\bigg(Y\otimes\Tr^{U\otimes X\otimes V}_{X,Y}\Big[\gamma_{V\otimes Y,U\otimes X}\circ\big(f\otimes g\otimes X\big)\Big]\bigg)\Bigg]\\
-  &=\Tr^Y_{Y,Y}\big[\gamma_{Y,Y}\big]\circ\Tr^{U\otimes X\otimes V}_{X,Y}\Big[\gamma_{V\otimes Y,U\otimes X}\circ\big(f\otimes g\otimes X\big)\Big]\\
-  &=\Tr^{U\otimes X\otimes V}_{X,Y}\Big[\gamma_{V\otimes Y,U\otimes X}\circ\big(f\otimes g\otimes X\big)\Big]\\
-  &=\Tr^{U\otimes X\otimes V}_{X,Y}\Big[\big(g\otimes X\otimes f\big)\circ\gamma_{U\otimes X,V\otimes X}\Big]\\
-  &=\Tr^V_{X,Y}\bigg[\Tr^{U\otimes X}_{V\otimes X,V\otimes Y}\Big[\big(g\otimes X\otimes f\big)\circ\gamma_{U\otimes X, V\otimes X}\Big]\bigg]\\
-  &=\Tr^V_{X,Y}\Big[f\circ\big(g\otimes X\big)\Big].
- \end{align*}}%end erase
- %%Another proof
- \erase{By Dinaturality I' this becomes%begin erase
- \[\Tr^U_{X,Y}\bigg[\Tr^{Y\otimes V}_{U\otimes X,U\otimes Y}\Big[\big(\gamma_{V,Y}\otimes U\otimes Y\big)\circ\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\circ\big(\gamma_{Y,V}\otimes U\otimes X\big)\Big]\bigg]\]
- which is equal via Vanishing II and Naturality to
- \begin{align*}
-  &\Tr^U_{X,Y}\Bigg[\Tr^V_{U\otimes X,U\otimes Y}\bigg[\Tr^Y_{V\otimes U\otimes X,V\otimes U\otimes Y}\Big[\big(\gamma_{V,Y}\otimes U\otimes Y\big)\circ\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\circ\big(\gamma_{Y,V}\otimes U\otimes X\big)\Big]\bigg]\Bigg]\\
-  &\quad=\Tr^{V\otimes U}_{X,Y}\bigg[\Tr^Y_{V\otimes U\otimes X,V\otimes U\otimes Y}\Big[\big(Y\otimes V\otimes g\otimes Y\big)\circ\big(\gamma_{V,Y}\otimes V\otimes Y\big)\circ\gamma_{V\otimes Y,V\otimes Y}\circ\big(\gamma_{Y,V}\otimes V\otimes Y\big)\circ\big(Y\otimes V\otimes f\big)\Big]\bigg]\\
-  &\quad=\Tr^{V\otimes U}_{X,Y}\bigg[\big(V\otimes g\otimes Y\big)\circ\Tr^Y_{V\otimes V\otimes Y,V\otimes V\otimes Y}\Big[\big(\gamma_{V,Y}\otimes V\otimes Y\big)\circ\gamma_{V\otimes Y,V\otimes Y}\circ\big(\gamma_{Y,V}\otimes V\otimes Y\big)\Big]\circ\big(V\otimes f\big)\bigg]\\
-  &\quad=\Tr^{V\otimes U}_{X,Y}\bigg[\big(V\otimes g\otimes Y\big)\circ\big(\gamma_{V,V}\otimes Y\big)\circ\big(V\otimes f\big)\bigg].
- \end{align*}
- Applying Dinaturality I' again we get
- \begin{align*}
-  &\Tr^{U\otimes V}_{X,Y}\bigg[\big(\gamma_{V,U}\otimes Y\big)\circ\big(V\otimes g\otimes Y\big)\circ\big(\gamma_{V,V}\otimes Y\big)\circ\big(V\otimes f\big)\circ\big(\gamma_{U,V}\otimes X\big)\bigg]\\
-  &=\Tr^{U\otimes V}_{X,Y}\bigg[\big(g\otimes f\big)\circ\big(\gamma_{U,V}\otimes X\big)\bigg]\\
-  &=\Tr^{U\otimes V}_{X,Y}\bigg[\big(U\otimes f\big)\circ\big(\gamma_{U,U}\otimes X\big)\circ\big(U\otimes g\otimes X\big)\bigg]\\
-  &=\Tr^{U\otimes V}_{X,Y}\bigg[\big(U\otimes f\big)\circ\Tr^X_{U\otimes U\otimes X,U\otimes U\otimes X}\Big[\big(\gamma_{U,X}\otimes U\otimes X\big)\circ\gamma_{U\otimes X, U\otimes X}\circ\big(\gamma_{X,U}\otimes U\otimes X\big)\Big]\circ\big(U\otimes g\otimes X\big)\bigg]
- \end{align*}
- Now using Naturality and Vanishing II we get
- \begin{align*}
-  &\Tr^{U\otimes V}_{X,Y}\bigg[\Tr^X_{U\otimes V\otimes X,U\otimes V\otimes Y}\Big[\big(X\otimes U\otimes f\big)\circ\big(\gamma_{U,X}\otimes U\otimes X\big)\circ\gamma_{U\otimes X, U\otimes X}\circ\big(\gamma_{X,U}\otimes U\otimes X\big)\circ\big(X\otimes U\otimes g\otimes X\big)\Big]\bigg]\\
-  &=\Tr^V_{X,Y}\Bigg[\Tr^U_{V\otimes X,V\otimes Y}\bigg[\Tr^X_{U\otimes V\otimes X,U\otimes V\otimes Y}\Big[\big(\gamma_{U,X}\otimes V\otimes Y\big)\circ\big(g\otimes X\otimes f\big)\circ\gamma_{U\otimes X, V\otimes X}\circ\big(\gamma_{X,U}\otimes V\otimes X\big)\Big]\bigg]\Bigg]\\
-  &=\Tr^V_{X,Y}\bigg[\Tr^{X\otimes U}_{V\otimes X,V\otimes Y}\Big[\big(\gamma_{U,X}\otimes V\otimes Y\big)\circ\big(g\otimes X\otimes f\big)\circ\gamma_{U\otimes X, V\otimes X}\circ\big(\gamma_{X,U}\otimes V\otimes X\big)\Big]\bigg]
- \end{align*}
- which by Dinaturality I' is equal to
- \[\Tr^V_{X,Y}\bigg[\Tr^{U\otimes X}_{V\otimes X,V\otimes Y}\Big[\big(g\otimes X\otimes f\big)\circ\gamma_{U\otimes X, V\otimes X}\Big]\bigg],\]
- but this is exactly the composition formula applied to the right hand side of Dinaturality I.}%end erase
-\end{proof}
-%ERASED
-\begin{definition}\label{def:traced functor}
-	Let $(\cat{M},\otimes,\tensor*[^{\cat{M}}]{\Tr}{})$ and $(\cat{N},\odot,\tensor*[^{\cat{N}}]{\Tr}{})$ be traced categories.
-	A \emph{traced functor} is a strong monoidal functor $F\colon\cat{M}\to\cat{N}$, such that for any objects $X,Y,U\in\cat{M}$, the following diagram commutes:
-	$$
-	\begin{tikzcd}
-		\Hom_{\cat{M}}(U\otimes X,U\otimes Y)
-			\rar{F}
-			\dar[swap]{\tensor*[^{\cat{M}}]{\Tr}{^U_{X,Y}}}
-		& \Hom_{\cat{N}}(FU\odot FX,FU\odot FY)
-			\dar{\tensor*[^{\cat{N}}]{\Tr}{^{FU}_{FX,FY}}} \\
-		\Hom_{\cat{M}}(X,Y)
-			\rar[swap]{F}
-		& \Hom_{\cat{N}}(FX,FY)
-	\end{tikzcd}
-	$$
-	We generally suppress the upper left subscripts from the trace symbols, if no confusion is likely to arise.
-\end{definition}
-
-}%ERASED
+\todo{Add something about traced props.}
 
 \section{Compact categories and the Int construction}\label{sec:compact and int}
 
@@ -892,7 +775,7 @@ The following facts hold for any traced category $\cat{C}$:
 
 \section{A factorization system for strong functors}\label{sec:factorization system}
 
-In this section we prove that an orthogonal factorization system exists on the categories $\SymMonCat$, $\TrCat$, and $\CompCat$ of symmetric monoidal (resp.\ traced, compact) categories and strong functors (resp.\ traced functors; see Definition~\ref{def:traced functor}). 
+In this section we prove that an orthogonal factorization system exists on the categories $\SymMonCat$, $\TrCat$, and $\CompCat$ of symmetric monoidal (resp.\ traced, compact) categories and strong functors (resp.\ traced functors; see~\cite{JoyalStreetVerity}). 
 
 Recall (see e.g.~\cite{AdamekHerrlichStrecker}) that an \emph{orthogonal factorization system} on a category $\cat{C}$ consists of a class $\cat{L}$ and a class $\cat{R}$ of morphisms in $\cat{C}$, called the \emph{left class} and \emph{right class} of the factorization system, respectively, satisfying the following properties:
 \begin{enumerate}
@@ -1001,57 +884,56 @@ $$
 Note that the forgetful functor $U\colon\Cat{XFrObCat}\to\XCat$ sending $(\cat{O},\cat{C})\mapsto\cat{C}$ is \emph{not} the composite $U\neq i_{\Fun{X}}\circ\pi_{\Fun{X}}$; a comparison is given in Proposition~\ref{prop:free objects}.
 
 \begin{proposition}\label{prop:free objects}
-	Let $\XCat$ and $\Cat{XFrObCat}$ be as above.
+	Let $\XCat$ and let $\Cat{XFrObCat}$ be the full subcategory spanned by the $X$-categories that are free on objects. 
 	There is a equivalence:
 	$$
 	\begin{tikzcd}
 		\XCat\arrow[r, shift left=.5ex, "\Fun{XFrOb}"]&\Cat{XFrObCat}\arrow[l, shift left=.5ex,"U"]
 	\end{tikzcd}
 	$$
-	where $U$ is the forgetful functor.
-	In particular, for every $\Cat{X}$-category $\cat{C}$ there is a strict $\Cat{X}$-category $\Fun{XFrOb}(\cat{C})$, whose monoid of objects is free, and an equivalence in $\XCat$:
-		$$\Fun{XFrOb}(\cat{C})\simeq\cat{C}.$$
 \end{proposition}
 \begin{proof}
-	\todo{Can we streamline this proof?}
-	Consider the diagram below, in which $\pi_{\Fun{X}}$ and $p$ are split Grothendieck fibrations:
-	$$
-	\begin{tikzcd}[row sep=large,column sep=large]
-		&\Cat{XFrObCat}\ar[r,"j"]\ar[d,"\pi_{\Fun{X}}"']\ar[dr,bend left=15pt,"U"]\ar[dr,bend right=15pt]\ar[dr,phantom,"\Nearrow"]
-			&\int(-/\XCat_{\bo})\ar[d,"p"'] \\
-		\Set\ar[r,"\eta_{\Fun{X}}"']&\Cat{XKlSet}\ar[r,"i_{\Fun{X}}"']
-			&\XCat\ar[u,bend right,"\id_{-}"']\ar[r,"-/\XCat_{\bo}"']&\op{\Cat{Cat}}
-	\end{tikzcd}
-	$$
-	The square is a lax pullback, i.e., it is universal with respect to its functors $\pi_{\Fun{X}}$ and $j$ and natural transformation $i_{\Fun{X}}\circ\pi_{\Fun{X}}\to p\circ j=U$.
-	A section of $p$ is shown, sending $\cat{C}\in\Ob(\XCat)$ to the identity $\id_{\cat{C}}\in\Ob(\cat{C}/\XCat_{\bo})$. 
-
-	Consider the counit $\epsilon\colon (i_{\Fun{X}}\circ\eta_{\Fun{X}}\circ\Ob)\to\id_{\XCat}$ of the adjunction from (\ref{eq:abramsky}),
-	$$
-	\begin{tikzcd}
-		\Cat{Set}\arrow[r, shift left=.5ex, "i_{\Fun{X}}\circ\eta_{\Fun{X}}"]&\XCat\arrow[l, shift left=.5ex,"\Ob"]
-	\end{tikzcd}
-	$$
-	We have functors $\XCat\To{\eta_{\Fun{X}}\circ\Ob}\Cat{XKlSet}$ and $\XCat\To{\id_{-}}\int(-/\XCat_{\bo})$, and a natural transformation $i_{\Fun{X}}\circ\eta_{\Fun{X}}\circ\Ob\to p\circ\id_{-}=\id_{\XCat}$.
-	This defines a functor to the lax pullback, which we denote
-		$$\Fun{XFrOb}\colon\XCat\to\Cat{XFrObCat}.$$
-
-	To bring this down to earth, for any $\Cat{X}$-category $\cat{C}$, we begin with the counit functor $\epsilon_{\cat{C}}\colon\Fun{XFr}(\Ob\cat{C})\to\cat{C}$.
-	As in Proposition~\ref{prop:coslice Xbo}, we define $\Fun{XFrOb}(\cat{C})=\epsilon_{\cat{C}}^*(\id_{\cat{C}})$ to be the left-hand map in the diagram below, which was obtained by factoring the top right composite:
-	$$
-	\begin{tikzcd}
-		\Fun{XFr}(\Ob\cat{C})\arrow[d, "\bo"']\arrow[r, "\epsilon_{\cat{C}}"]&\cat{C}\ar[d,"\id_{\cat{C}}"]\\
-		\cat{C'}\arrow[r, "\ff"']&\cat{C}
-	\end{tikzcd}
-	$$
-
-	For any $\cat{C}\in\XCat$, the functor $\epsilon_{\cat{C}}$ is surjective on objects, so the bottom functor is surjective and fully faithful, hence, an equivalence of categories.
-	This proves that $\fun{U}$ is essentially surjective.\todo{Is it a 2-equivalence? It seems like we don't get $\cat{C}$ on the nose.} It remains to show that $\fun{U}$ is fully faithful.
-
-	\todo{Show that $\fun{U}$ is fully faithful}
+%	\todo{Can we streamline this proof?}
+%	Consider the diagram below, in which $\pi_{\Fun{X}}$ and $p$ are split Grothendieck fibrations:
+%	$$
+%	\begin{tikzcd}[row sep=large,column sep=large]
+%		&\Cat{XFrObCat}\ar[r,"j"]\ar[d,"\pi_{\Fun{X}}"']\ar[dr,bend left=15pt,"U"]\ar[dr,bend right=15pt]\ar[dr,phantom,"\Nearrow"]
+%			&\int(-/\XCat_{\bo})\ar[d,"p"'] \\
+%		\Set\ar[r,"\eta_{\Fun{X}}"']&\Cat{XKlSet}\ar[r,"i_{\Fun{X}}"']
+%			&\XCat\ar[u,bend right,"\id_{-}"']\ar[r,"-/\XCat_{\bo}"']&\op{\Cat{Cat}}
+%	\end{tikzcd}
+%	$$
+%	The square is a lax pullback, i.e., it is universal with respect to its functors $\pi_{\Fun{X}}$ and $j$ and natural transformation $i_{\Fun{X}}\circ\pi_{\Fun{X}}\to p\circ j=U$.
+%	A section of $p$ is shown, sending $\cat{C}\in\Ob(\XCat)$ to the identity $\id_{\cat{C}}\in\Ob(\cat{C}/\XCat_{\bo})$. 
+%
+%	Consider the counit $\epsilon\colon (i_{\Fun{X}}\circ\eta_{\Fun{X}}\circ\Ob)\to\id_{\XCat}$ of the adjunction from (\ref{eq:abramsky}),
+%	$$
+%	\begin{tikzcd}
+%		\Cat{Set}\arrow[r, shift left=.5ex, "i_{\Fun{X}}\circ\eta_{\Fun{X}}"]&\XCat\arrow[l, shift left=.5ex,"\Ob"]
+%	\end{tikzcd}
+%	$$
+%	We have functors $\XCat\To{\eta_{\Fun{X}}\circ\Ob}\Cat{XKlSet}$ and $\XCat\To{\id_{-}}\int(-/\XCat_{\bo})$, and a natural transformation $i_{\Fun{X}}\circ\eta_{\Fun{X}}\circ\Ob\to p\circ\id_{-}=\id_{\XCat}$.
+%	This defines a functor to the lax pullback, which we denote
+%		$$\Fun{XFrOb}\colon\XCat\to\Cat{XFrObCat}.$$
+%
+%	To bring this down to earth, for any $\Cat{X}$-category $\cat{C}$, we begin with the counit functor $\epsilon_{\cat{C}}\colon\Fun{XFr}(\Ob\cat{C})\to\cat{C}$.
+%	As in Proposition~\ref{prop:coslice Xbo}, we define $\Fun{XFrOb}(\cat{C})=\epsilon_{\cat{C}}^*(\id_{\cat{C}})$ to be the left-hand map in the diagram below, which was obtained by factoring the top right composite:
+%	$$
+%	\begin{tikzcd}
+%		\Fun{XFr}(\Ob\cat{C})\arrow[d, "\bo"']\arrow[r, "\epsilon_{\cat{C}}"]&\cat{C}\ar[d,"\id_{\cat{C}}"]\\
+%		\cat{C'}\arrow[r, "\ff"']&\cat{C}
+%	\end{tikzcd}
+%	$$
+%
+%	For any $\cat{C}\in\XCat$, the functor $\epsilon_{\cat{C}}$ is surjective on objects, so the bottom functor is surjective and fully faithful, hence, an equivalence of categories.
+%	This proves that $\fun{U}$ is essentially surjective.\todo{Is it a 2-equivalence? It seems like we don't get $\cat{C}$ on the nose.} It remains to show that $\fun{U}$ is fully faithful.
+%
+%	\todo{Show that $\fun{U}$ is fully faithful}
 \end{proof}
 
 \section{Profunctors}\label{sec:profunctors}
+
+\todo{Introduce equipments and refactor.}
 
 Let $\cat{C}$ and $\cat{D}$ be categories.
 Recall that a profunctor $M$ from $\cat{C}$ to $\cat{D}$, written
