@@ -22,11 +22,20 @@
 
 \title{Traced Categories as Lax Functors out of Free Compact Categories}
 \author{
+<<<<<<< HEAD
 	David I. Spivak
 		\thanks{Spivak and Schultz were supported by AFOSR grant FA9550--14--1--0031, ONR grant N000141310260, and NASA grant NNH13ZEA001N.}
 	\and Patrick Schultz${}^*$%\footnotemark[1]
 	\and Dylan Rupel 
 }
+=======
+David I. Spivak\thanks{Spivak and Schultz were supported by AFOSR grant FA9550--14--1--0031, ONR grant N000141310260, and NASA grant NNH13ZEA001N.}
+ \and 
+ Patrick Schultz${}^*$%\footnotemark[1]
+ \and
+ Dylan Rupel
+ }
+>>>>>>> dfa60ecf244e050682e6ddf1be9139f616f97521
 
 
 
@@ -36,6 +45,7 @@
 
 \maketitle
 \begin{abstract}
+<<<<<<< HEAD
 	We give an alternate conception of string diagrams as 1-dimensional oriented cobordisms, the operad of which we denote $\Cat{Cob}$.
 	The axioms of traced categories are fully encoded by $\Cat{Cob}$, in the sense that there is an equivalence of categories between $\Cat{Cob}$-algebras and enriched traced categories.
 	We also prove a substantial generalization of this fact, which characterizes lax functors out of compact or traced categories.
@@ -48,6 +58,18 @@ Global todo's:
 	\item Patrick: Give proof of Lemmas~\ref{Lem:mon profs equal boo functors}~and~\ref{lemma:easy compcat}.
 	\item Patrick: fill all profunctor naturality holes.
 	\item Add bibliography.
+=======
+We give an alternate conception of string diagrams as 1-dimensional oriented cobordisms, the operad of such we denote by $\Cat{Cob}$. The axioms of traced categories are fully encoded by $\Cat{Cob}$ in the sense that there is an equivalence of categories between $\Cat{Cob}$-algebras and enriched traced categories. We also prove a substantial generalization of this fact which characterizes lax functors out of compact or traced categories.
+\end{abstract}
+Global todo's:
+\begin{enumerate}
+\item Add appropriate {\em symmetric\/} monoidal throughout.
+\item Patrick: Add appropriate Kleisli language throughout as well as a brief definition in categorical preliminaries section.
+\item Patrick: Add appropriate 2-categorical language to $\Lax$ throughout.
+\item Patrick: Give proof of Lemmas~\ref{Lem:mon profs equal boo functors}~and~\ref{lemma:easy compcat}.
+\item Patrick: fill all profunctor naturality holes.
+\item Add missing reference \cite{Abramsky?} on page 14.
+>>>>>>> dfa60ecf244e050682e6ddf1be9139f616f97521
 \end{enumerate}
 
 \setcounter{tocdepth}{1}
@@ -55,8 +77,14 @@ Global todo's:
 
 \chapter{Introduction}
 
+<<<<<<< HEAD
 Traced symmetric monoidal categories, hereafter \emph{traced categories}, have been used to model processes with feedback (\cite{http://arxiv.org/pdf/1401.5113v1.pdf}) or operators with fixed points (\cite{http://arxiv.org/pdf/1107.6032.pdf}).
 A graphical calculus for traced categories was developed by Joyal, Street, and Verity (\cite{JoyalStreetVerity}), in which string diagrams of the form
+=======
+Traced symmetric monoidal categories, hereafter \emph{traced categories}, have been used to model processes with feedback~\cite{Abramsky1}  or operators with fixed points~\cite{PontoShulman}. A graphical calculus for traced categories was developed by Joyal, Street, and Verity~\cite{JoyalStreetVerity}, in which string diagrams of the form
+
+
+>>>>>>> dfa60ecf244e050682e6ddf1be9139f616f97521
 \begin{equation}\label{dia:string diagram}
 \begin{tikzpicture}[wiring diagram]
 	\node[bb={2}{1}, bb name=$X_1$] (X1) {};
@@ -82,9 +110,13 @@ A graphical calculus for traced categories was developed by Joyal, Street, and V
 		(X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
 \end{tikzpicture}
 \end{equation}
+<<<<<<< HEAD
 represent compositions.
 That is, new morphisms are constructed from old by specifying which outputs will be fed back into which inputs.
 In fact, these generalize Penrose diagrams in $\Cat{Vect}$~\cite{}, and the word \emph{traced} originates in this vector space terminology.  
+=======
+represent compositions. That is, new morphisms are constructed from old by specifying which outputs will be fed back into which inputs. In fact, these generalize \todo{according to Wikipedia this is not accurate}Penrose diagrams in $\Cat{Vect}$~\cite{}, and the word \emph{traced} originates in this vector space terminology.
+>>>>>>> dfa60ecf244e050682e6ddf1be9139f616f97521
 
 \section{String diagrams as cobordisms}
 
@@ -193,11 +225,15 @@ This can be visualized via the following string diagram (where we have drawn a l
 
 \section{Generalization: Lax algebras on compact category}
 
+<<<<<<< HEAD
 It is most convenient to prove~\ref{thm:Theorem A} by proving a much more general result, which relates the category of lax functors out of any compact category $\cat{C}$ to the category of strong, bijective-on-objects functors out of $\cat{C}$.
 The definition of compact closed symmetric monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact and int}, or in~\cite{}.
 Let $\CompCat$ denote the category of compact categories and strong monoidal functors between them.
 We show in Lemma~\ref{lemma:factorization system} that there is a factorization system on $\CompCat$, in which the left class consists of bijective-on-objects functors and the right class consists of fully faithful functors.
 Let $\CompCat_{\bo}\ss\CompCat$ denote the left class. 
+=======
+It is most convenient to prove \ref{thm:Theorem A} by proving a much more general result, which relates the category of lax functors out of any compact category $\cat{C}$ to the category of strong, bijective-on-objects functors out of $\cat{C}$. The definition of compact closed symmetric monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact and int}, or in~\cite{MacLane}. Let $\CompCat$ denote the category of compact categories and strong monoidal functors between them. We show in Lemma~\ref{lemma:factorization system} that there is a factorization system on $\CompCat$, in which the left class consists of bijective-on-objects functors and the right class consists of fully faithful functors. Let $\CompCat_{\bo}\ss\CompCat$ denote the left class.
+>>>>>>> dfa60ecf244e050682e6ddf1be9139f616f97521
 
 \begin{named}{Theorem B}
 	Let $\cat{C}$ be a compact category.
@@ -346,6 +382,7 @@ Composition of cobordisms are drawn as nested diagrams:
 \end{tikzpicture}
 \]
 
+<<<<<<< HEAD
 In our model for modular design, any way to chunk the small boxes inside the big one will give the same result.
 This is a reflection of the functoriality of $P\colon\Cat{Cob}\to\Set$, which says that commutative diagrams in $\Cat{Cob}$ are sent to commutative diagrams of sets.
 Nested structures, given by composition of such morphisms, may be useful for the kind of chunking that humans use to understand complex systems.~\cite{Miller, George A. "The magical number seven, plus or minus two: some limits on our capacity for processing information." Psychological review 63.2 (1956): 81.}
@@ -356,6 +393,14 @@ Formalizing modular design using operads, as in~\cite{Spivak},~\cite{Rupel-Spiva
 However, it should be noted that none of these papers actually uses $\Cat{Cob}$ as the indexing category for their algebras.
 In fact, they use three different operads, of varying degrees of similarity to $\Cat{Cob}$.
 For example, there is an orthogonal factorization system on $\Cat{Cob}$, for which morphisms in the left class $\cat{L}$ include no closed loops, and~\cite{Vagner-Spivak-Lerman} is based on the suboperad spanned by $\cat{L}$.
+=======
+In our model for modular design, any way to chunk the small boxes inside the big one will give the same result. This is a reflection of the functoriality of $P\colon\Cat{Cob}\to\Set$, which says that commutative diagrams in $\Cat{Cob}$ are sent to commutative diagrams of sets. Nested structures, given by composition of such morphisms, may be useful for the kind of chunking that humans use to understand complex systems~\cite{Miller}.
+
+
+\subsection{Mathematical application: varying the operad}
+
+Formalizing modular design using operads, as in \todo{Are these in print yet?}~\cite{Spivak},~\cite{RupelSpivak}, and~\cite{VagnerSpivakLerman} was the original motivation for the present paper, as the drawings had strong similarities to those found in traced categories. However, it should be noted that none of these papers actually uses $\Cat{Cob}$ as the indexing category for their algebras. In fact, they use three different operads, of varying degrees of similarity to $\Cat{Cob}$. For example, there is an orthogonal factorization system on $\Cat{Cob}$, for which morphisms in the left class $\cat{L}$ include no closed loops, and~\cite{VagnerSpivakLerman} is based on the suboperad spanned by $\cat{L}$.
+>>>>>>> dfa60ecf244e050682e6ddf1be9139f616f97521
 
 It is easy to imagine operads with the same objects as $\Cat{Cob}$, but different morphisms, simply by imagining generalizations of the pictures.
 String diagrams $\varphi\colon X\to Y$ in $\Cat{Cob}$ include no split wires and no ``dangling'' wires, but those conditions can be relaxed.
@@ -394,11 +439,15 @@ Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect ou
 
 \chapter{Categorical preliminaries}\label{sec:traced categories}
 
+<<<<<<< HEAD
 In this section we remind the reader of some categorical preliminaries.
 Basic definitions and facts about monoidal, traced, and compact categories, lax and strong functors, and the Int construction are given in Sections~\ref{sec:prelim monoidal},~through~\ref{sec:compact and int}.
 The fact that the free compact category on a set has an algebraic description in terms of bijections between signed sets, and the fact that it has a geometric description in terms of 1-dimensional oriented cobordisms is recalled in Section~\ref{sec:free and geometry}.
 In Section~\ref{sec:factorization system} we discuss an orthogonal factorization system on our three flavors of monoidal categories, which we will use repeatedly throughout the rest of the paper.
 Finally, in Section~\ref{sec:profunctors}, we discuss profunctors between categories and monoidal categories.
+=======
+In this section we remind the reader of some categorical preliminaries. Basic definitions and facts about monoidal, traced, and compact categories, lax and strong functors, and the Int construction are given in Sections~\ref{sec:prelim monoidal}~through~\ref{sec:compact and int}. The fact that the free compact category on a set has an algebraic description in terms of bijections between signed sets, and the fact that it has a geometric description in terms of 1-dimensional oriented cobordisms is recalled in Section~\ref{sec:free and geometry}. In Section~\ref{sec:factorization system} we discuss an orthogonal factorization system on our three flavors of monoidal categories, which we will use repeatedly throughout the rest of the paper. Finally, in Section~\ref{sec:profunctors} we discuss profunctors between categories and monoidal categories.
+>>>>>>> dfa60ecf244e050682e6ddf1be9139f616f97521
 
 \section{Monoidal categories}\label{sec:prelim monoidal}\todo[author=David]{Is all this really about symmetric monoidal categories? How do we deal with this?}
 
@@ -786,8 +835,13 @@ Every compact category $\cat{C}$ has a canonical trace structure, defined on a m
 More precisely, if $s_{A,B}$ is the symmetry isomorphism, one defines
 	$$\Tr^U_{X,Y}[f]\coloneqq(\epsilon_U\otimes Y)\circ (s_{U^*,U}\otimes Y)\circ (U^*\otimes f)\circ (\eta_U\otimes X)$$
 %\todo[color=yellow]{does this formula make sense as written? i.e. it doesn't seem to give a map $X\to Y$?} 
+<<<<<<< HEAD
 Thus we have a functor $U\colon\CompCat\to\TrCat$.
 It is shown in~\cite{Joyal-Street-Verity} that this functor is the right half of an adjunction 
+=======
+Thus we have a functor 
+$U\colon\CompCat\to\TrCat$. It is shown in~\cite{JoyalStreetVerity} that this functor is the right half of an adjunction
+>>>>>>> dfa60ecf244e050682e6ddf1be9139f616f97521
 \begin{equation}\label{dia:traced compact adjunction}
 \begin{tikzcd}
 	\TrCat\arrow[r,shift left=.5ex, "\Int"]&\CompCat\arrow[l,shift left=.5ex,"U"]
@@ -830,9 +884,54 @@ The following facts hold for any traced category $\cat{C}$:
 \end{compactitem}
 \end{lemma}
 \begin{proof}
+<<<<<<< HEAD
 	These are all shown in~\cite{Joyal-Street-Verity}.
 \end{proof}
 
+=======
+
+These are all shown in~\cite{JoyalStreetVerity}.
+
+\end{proof}
+
+%\section{Free Constructions}
+%
+%\todo{Is any of this actually being used?}
+%
+%To continue we recall the constructions of various free monoidal structures on a category $\cat{C}$ following \cite{Abramsky2}.  These are defined inductively by successively including additional structure into the constructions.
+%
+%The objects of the free monoidal category $F_M(\cat{C})$ are lists of objects in $\cat{C}$ with componentwise morphisms.  More formally the objects are pairs $(n,X)$ where $n\in\NN$ and $X$ is a map $X\colon[n]\to \Ob\cat{C}$ and a morphism $f:(n,X)\to(m,Y)$ exists if and only if $n=m$ in which case $f\in\prod_{i=1}^n\Hom_{\cat{C}}(X_i,Y_i)$ with compositions formed as expected.  The tensor product is given by concatenation of lists, i.e. $(n,X)\otimes(m,Y)=(n+m,X+Y)$, with tensor unit $(0,!)$ where $!$ is the unique function from the empty set.
+%
+%The objects of the free symmetric monoidal category $F_{SM}(\cat{C})$ are again lists of objects in $\cat{C}$, however morphisms now come equipped with a permutation.  More formally, a morphism from $(n,X)$ to $(n,Y)$ is a pair $(f,\pi)$ where $f\in\prod_{i=1}^n\Hom_{\cat{C}}(X_i,Y_{\pi(i)})$ and $\pi\in S(n)$ is a permutation.  By abuse of notation a permutation can be thought of as an isomorphism $\pi:Y_1\otimes\cdots\otimes Y_n\To{\sim} Y_{\pi(1)}\otimes\cdots\otimes Y_{\pi(n)}$ and thus we may think of the pair $(f,\pi)$ as the composite 
+%\[\pi^{-1}\circ \bigotimes_{i=1}^n f_i:\bigotimes_{i=1}^n X_i\to\bigotimes_{i=1}^n Y_i.\]
+%The symmetry isomorphisms are subject to the naturality condition $\otimes_{i=1}^n g_{\pi(i)}\circ\pi=\pi\circ\otimes_{i=1}^n g_i$ for functions $g_i:Y_i\to Z_i$.  Then the composition of morphisms is given by 
+%$$(g,\sigma)\circ(f,\pi)\coloneqq\Big(\bigotimes_{i=1}^n (g_{\pi(i)}\circ f_i),\sigma\circ\pi\Big)$$ 
+%and the tensor is given by 
+%$$(f,\pi)\otimes(g,\sigma)\coloneqq(f\otimes g,\pi\otimes\sigma).$$
+%
+%The objects of the free traced symmetric monoidal category $F_{Tr}(\cat{C})$ are once again lists of objects in $\cat{C}$.  To describe the morphisms we need more notation.  Write $L[\cat{C}]$ for the set of \emph{loops} of $\cat{C}$, i.e. the set of all composable sequences of morphisms $A_1\To{f_1} A_2\To{f_2}\cdots\To{f_{m-1}} A_m\To{f_m} A_1$ in $\cat{C}$.  Because we are in the traced setting each such sequence $f$ determines a scalar $s_f\coloneqq\Tr_{I,I}^{A_1}[f_m\circ\cdots\circ f_1]$ which is invariant under cyclic permutation of the morphisms, thus we only consider loops in $\cat{C}$ up to cyclic rotation.  Now a morphism in $F_{Tr}(\cat{C})$ is a triple $(f,\pi,S)$ where $(f,\pi)$ is a morphism in $F_{SM}(\cat{C})$ and $S$ is an element of the free commutative monoid generated by $L[\cat{C}]$.  The composition and tensor of morphisms are given by
+%\[(g,\sigma,T)\circ(f,\pi,S)=\Big(\bigotimes_{i=1}^n (g_{\pi(i)}\circ f_i),\sigma\circ\pi,S\cdot T\Big)\]
+%and
+%\[(f,\pi,S)\otimes(g,\sigma,T)=(f\otimes g,\pi\otimes\sigma,S\cdot T).\]
+%The trace requires yet more notation.  For a permutation $\pi\in S(n+m)$ and $1\le i\le n$ write $P_\pi(i)$ for the unique sequence $i,\pi(i),\pi^2(i),\ldots,\pi^r(i)=j$ such that $1\le j\le n$ and $\pi^t(i)>n$ for $0<t<r$, in this case we write $\pi^*(i)=j$.  Thus we may obtain a permutation $\pi^*\in S(n)$ by removing all occurences of $\{n+1,\ldots,n+m\}$ from a cycle decomposition of $\pi$.  This process may produce empty cycles which we will want to keep track of.  Write $L_\pi$ for the collection of loops of $\pi$, i.e. sequences $j,\pi(j),\pi^2(j),\ldots,\pi^s(j)=j$ (taken up to cyclic symmetry) such that $n+1\le \pi^t(j)\le n+m$ for $0\le t\le s$.  Now we define the trace of a morphism $(f,\pi,S)$ as
+%\[\Tr_{n,n}^m[(f,\pi,S)]=(g,\pi^*,S\cdot T)\]
+%where $g_i=f_{\pi^r(i)}\circ\cdots\circ f_{\pi(i)}\circ f_i$ and $T=\prod\limits_{j\in L_\pi} \Tr_{I,I}^{X_j}[f_{\pi^s(j)}\circ\cdots f_{\pi(j)}\circ f_j]$.
+%
+%By \cite{Abramsky2}, $\Cat{Cob}/\cat{O}$ is the free compact category on the set $\cat{O}$ of objects. The objects in $\Cat{Cob}/\cat{O}$ are signed symmetric lists in $\cat{O}$, the set of which we denote by $\Ob(\Cat{Cob}/\cat{O})=\SSList(\cat{O})$. \ref{thm:Theorem B} amounts to the following equivalence of categories, when $\cat{C}=\Cat{Cob}/\cat{O}$:\todo{This and the following remark probably don't go here.}
+%$$\Lax(\Cat{Cob}/\cat{O},\Cat{Set})\iso\CompCat_{\boo\SSList(\cat{O})}.$$
+%
+%\begin{remark}
+%
+%Let $\cat{V}$ denote a symmetric monoidal category. To the best of our knowledge, neither the category of $\cat{V}$-enriched compact categories nor the category of $\cat{V}$-enriched traced categories has been defined in the literature. \ref{thm:Theorem B} and \ref{cor:Corollary B} could be used to motivate a definition of these categories by replacing $\Cat{Set}$ with $\cat{V}$ in (\ref{dia:compact lax strong}) and (\ref{dia:traced lax strong}). That is, one could define a $\cat{V}$-enriched compact category to be a set $\cat{O}$ and a lax functor $\Cat{Cob}/\cat{O}\to\cat{V}$. 
+%
+%It is worth exploring whether this definition agrees with other possible or existing definitions of enriched traced categories and enriched compact categories.
+%
+%\end{remark}
+%
+%
+
+
+>>>>>>> dfa60ecf244e050682e6ddf1be9139f616f97521
 \section{Free traced and compact categories, and geometry}\label{sec:free and geometry}
 
 \begin{proposition}\label{prop:free traced and compact}
@@ -861,7 +960,7 @@ The following facts hold for any traced category $\cat{C}$:
 
 In this section we prove that an orthogonal factorization system exists on the categories $\SymMonCat$, $\TrCat$, and $\CompCat$ of symmetric monoidal (resp.\ traced, compact) categories and strong functors (resp.\ traced functors; see Definition~\ref{def:traced functor}). 
 
-Recall from~\cite{} that an \emph{orthogonal factorization system} on a category $\cat{C}$ consists of a class $\cat{L}$ and a class $\cat{R}$ of morphisms in $\cat{C}$, called the \emph{left class} and \emph{right class} of the factorization system, respectively, satisfying the following properties:
+Recall (see e.g.~\cite{AdamekHerrlichStrecker}) that an \emph{orthogonal factorization system} on a category $\cat{C}$ consists of a class $\cat{L}$ and a class $\cat{R}$ of morphisms in $\cat{C}$, called the \emph{left class} and \emph{right class} of the factorization system, respectively, satisfying the following properties:
 \begin{enumerate}
 	\item $\cat{L}$ (resp. $\cat{R}$) contains every isomorphism in $\cat{C}$, 
 	\item $\cat{L}$ (resp. $\cat{R}$) is closed under composition, and
@@ -869,6 +968,11 @@ Recall from~\cite{} that an \emph{orthogonal factorization system} on a category
 \end{enumerate}
 For example, there is an orthogonal factorization system on $\Cat{Cat}$ in which the left class consists of functors that are bijective on objects and the right class consists of functors that are fully faithful. 
 
+<<<<<<< HEAD
+=======
+
+\todo{Define $\Cat{X}$-categories and $\Cat{X}$-functors.}
+>>>>>>> dfa60ecf244e050682e6ddf1be9139f616f97521
 \begin{lemma}\label{lemma:factorization system}
 	Let $\XCat$ denote the 2-category of strong $\Cat{X}$-functors and monoidal natural transformations, between $\Cat{X}$-categories, where $\Cat{X}$ is symmetric monoidal, traced, or compact.
 	Then $\XCat$ admits an orthogonal factorization system $(\cat{L},\cat{R})$, where the morphisms in $\cat{L}$ are bijective-on-objects functors and the morphisms in $\cat{R}$ are fully faithful functors.
@@ -905,8 +1009,12 @@ For example, there is an orthogonal factorization system on $\Cat{Cat}$ in which
 	Every object of $\cat{F}$ is the image of an object in $\cat{C}$, and every object of $\cat{C}$ has a dual, hence every object of $\cat{F}$ has a dual because monoidal functors always preserve duals.
 	This shows that the (bo,ff) factorization system lifts to $\CompCat$.
 
+<<<<<<< HEAD
 	Finally, if $\cat{C}$ and $\cat{D}$ are traced, then~\cite[Proposition 2.4]{Joyal-Street-Vertity} implies that there is a unique traced structure on $\cat{F}$, where the trace of a morphism in $\cat{F}$ is defined to be the trace in $\cat{D}$.
 	The ``ff'' functor preserves the trace by construction, and the ``bo'' functor preserves the trace because $F$ does.
+=======
+Finally, if $\cat{C}$ and $\cat{D}$ are traced, then~\cite[Proposition 2.4]{JoyalStreetVertity} implies that there is a unique traced structure on $\cat{F}$, where the trace of a morphism in $\cat{F}$ is defined to be the trace in $\cat{D}$. The ``ff'' functor preserves the trace by construction, and the ``bo'' functor preserves the trace because $F$ does.
+>>>>>>> dfa60ecf244e050682e6ddf1be9139f616f97521
 \end{proof}
 
 \begin{proposition}\label{prop:coslice Xbo}
@@ -936,7 +1044,7 @@ For example, there is an orthogonal factorization system on $\Cat{Cat}$ in which
 	\]
 \end{proof}
 
-In~\cite{Abramsky}, Abramsky provides a free-forgetful adjunction
+In~\cite{Abramsky?}, Abramsky provides a free-forgetful adjunction
 \begin{equation}\label{eq:abramsky}
 \begin{tikzcd}
 	\Cat{Set}\arrow[r, shift left=.5ex, "\Fun{XFr}"]&\XCat\arrow[l, shift left=.5ex,"\Ob"]
@@ -944,6 +1052,7 @@ In~\cite{Abramsky}, Abramsky provides a free-forgetful adjunction
 \end{equation}
 
 \begin{definition}\label{def:XKlSet XFrObCat}
+<<<<<<< HEAD
 	Let $\Cat{XKlSet}$ be the Kleisli category of the monad induced by (\ref{eq:abramsky}).
 	The functor $\Fun{XFr}=i_{\Fun{X}}\circ\eta_{\Fun{X}}$ factors through it as the composite 
 		$$\Set\To{\eta_{\Fun{X}}}\Cat{XKlSet}\To{\fun{i_{\Fun{X}}}}\XCat,$$ 
@@ -953,6 +1062,17 @@ In~\cite{Abramsky}, Abramsky provides a free-forgetful adjunction
 	We define the fibration $\Cat{XFrObCat}\To{\pi_{\Fun{X}}}\Cat{XKlSet}$ to be the Grothendieck construction of $\Fun{XFrObCat}$. 
 
 	Sometimes we abuse notation and write $\Fun{XFrObCat}\colon\Set\to\op{\Cat{Cat}}$ to denote what is actually the composite $\Fun{XFrObCat}\circ\eta_{\Fun{X}}$.
+=======
+
+Let $\Cat{XKlSet}$ be the Kleisli category of the monad induced by (\ref{eq:abramsky}). The functor $\Fun{XFr}=i_{\Fun{X}}\circ\eta_{\Fun{X}}$ factors through it as the composite 
+$$\Set\To{\eta_{\Fun{X}}}\Cat{XKlSet}\To{\fun{i_{\Fun{X}}}}\XCat,$$ 
+where $i_{\Fun{X}}$ is fully faithful (see~\cite[Proposition 4.2.1]{BorceuxV2}.  Let $-/\XCat_{\bo}\colon\XCat\to\op{\Cat{Cat}}$ be the functor from Proposition~\ref{prop:coslice Xbo}, and define $\Fun{XFrObCat}\colon\Cat{XKlSet}\to\op{\Cat{Cat}}$ to be the composite
+$$\Cat{XKlSet}\To{i_{\Fun{X}}}\XCat\To{-/\XCat_{\bo}}\op{\Cat{Cat}}.$$
+We define the fibration $\Cat{XFrObCat}\To{\pi_{\Fun{X}}}\Cat{XKlSet}$ to be the Grothendieck construction of $\Fun{XFrObCat}$. 
+
+Sometimes we abuse notation and write $\Fun{XFrObCat}\colon\Set\to\op{\Cat{Cat}}$ to denote what is actually the composite $\Fun{XFrObCat}\circ\eta_{\Fun{X}}$.
+
+>>>>>>> dfa60ecf244e050682e6ddf1be9139f616f97521
 \end{definition}
 
 An object of $\Cat{XFrObCat}$ can be identified with a pair $(\cat{O},\Fun{XFr}(\cat{O})\To{\bo}\cat{C})$, where $\cat{O}$ is a set and $\cat{C}$ is an $\Cat{X}$-category; we may denote it by $(\cat{O},\cat{C})$.
@@ -1568,4 +1688,43 @@ In this section, we prove an equivalence between traced categories and algebras 
 %
 %\section{The functor $\TrCat\to(\Cat{Cob}/\bullet)\alg$ on morphisms}
 %
+
+\begin{thebibliography}{XXX}
+ \bibitem{Abramsky1}
+ S.~Abramsky, Retracing some paths in process algebra, CONCUR'96: Concurrency Theory (1996), pp.~1--17.
+
+ \bibitem{Abramsky2}
+ S.~Abramsky, Abstract scalars, loops, and free traced and strongly compact closed categories, Proceedings of CALCO (2005), pp.~1--31.
+
+ \bibitem{Abramsky?}
+ S.~Abramsky, ...
+
+ \bibitem{AdamekHerrlichStrecker}
+ J.~Adamek, H.~Herrlich, and G.E.~Strecker, Abstract and Concrete Categories, Wiley–Interscience (1990).
+
+ \bibitem{BorceuxV2}
+ F.~Borceux, Handbook of Categorical Algebra: Volume 2, Categories and Structures, Cambridge University Press (1994).
+
+ \bibitem{JoyalStreetVerity}
+ A.~Joyal, R.~Street, and D.~Verity, Traced monoidal categories, Mathematical Proceedings of the Cambridge Philosophical Society 119, no. 3 (1996), pp.~447--468.
+
+ \bibitem{MacLane}
+ S.~MacLane, Categories for the Working Mathematician, Springer Science \& Business Media (1978).
+
+ \bibitem{Miller}
+ G.~Miller, The magical number seven, plus or minus two: Some limits on our capacity for processing information, Psychological review 63, no. 2 (1956), pp.~81.
+
+ \bibitem{PontoShulman}
+ K.~Ponto and M.~Shulman, Traces in symmetric monoidal categories, Expositiones Mathematicae 32, no. 3 (2014), pp.~248--273.
+
+ \bibitem{RupelSpivak}
+ D.~Rupel and D.~I.~Spivak, The operad of temporal wiring diagrams: Formalizing a graphical language for discrete-time processes, Preprint: arXiv:1307.6894 (2013).
+
+ \bibitem{Spivak}
+ D.~I.~Spivak, The operad of wiring diagrams: Formalizing a graphical language for databases, recursion, and plug-and-play circuits, Preprint: arXiv:1305.0297 (2013).
+
+ \bibitem{VagnerSpivakLerman}
+ D.~Vagner, D.~I.~Spivak, and E.~Lerman, Algebras of open dynamical systems on the operad of wiring diagrams, Preprint: arXiv:1408.1598 (2014).
+
+\end{thebibliography}
 \end{document} 
