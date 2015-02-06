@@ -1408,6 +1408,28 @@ In this section, we prove an equivalence between traced categories and algebras 
 \end{proof}
 
 
+\chapter{``Intertwiners"}
+
+In this section, which should be moved later, we define a new notion of \emph{intertwiners}. 
+
+\begin{definition}
+
+Suppose that $(\cat{C},I_{\cat{C}},\otimes)$ is a compact category, let $(\cat{D},I_{\cat{D}},\otimes)$ be any symmetric monoidal category, let $F,G\colon\cat{C}\to\cat{D}$ be lax functors, and let $p,q\colon F\to G$ be natural transformations. 
+An \emph{intertwiner} $\alpha\colon p\to q$ consists of a morphism $\alpha_X\colon I_{\cat{D}}\to G(X^\ast\otimes X)$ for each $X\in\Ob\cat{C}$, called the \emph{$X$-component of $\alpha$}, satisfying the following conditions:
+\begin{itemize}
+	\item we have $\alpha_{I_\cat{C}}=\id_{I_\cat{C}}$.
+	\item for any $X,Y\in\Ob\cat{C}$, we have $\alpha_{X\otimes Y}=\alpha_X\otimes\alpha_Y$.
+	\item for any $X\in\Ob\cat{C}$ the component $q_X\colon FX\to GX$ is the composite of the morphisms
+		$$FX\To{p_X}GX\To{GX\otimes\alpha_X}
+		GX\otimes G(X^\ast\otimes X)\To{\tn{lax}_G}
+		G(X\otimes X^\ast\otimes X)\To{G(\epsilon_X\otimes X)}
+		GX
+		$$
+	where $\epsilon_X$ is the counit in $\cat{C}$.
+\end{itemize}	
+The \emph{identity intertwiner} is the one whose $X$-component is $G(\eta_X)$, where $\eta$ is the unit in $\cat{C}$.
+
+\end{definition}
 
 
 %\appendix
