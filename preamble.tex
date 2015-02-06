@@ -16,12 +16,12 @@
 \usepackage{euscript}
 %\usepackage{MnSymbol}
 \usepackage{paralist}
-\usepackage[textsize=small]{todonotes}
 \usepackage{makecell}
 \usepackage{booktabs}
 \usepackage{tikz}
 \usepackage{tensor}
 \usepackage{pbox}
+\usepackage{todonotes}
 
 \usetikzlibrary{decorations.markings,arrows.meta,calc,fit,quotes,cd}
 \hypersetup{final}
@@ -73,19 +73,22 @@
 \newcommand{\dcat}[1]{\mathbb{#1}} %double category variable
 \newcommand{\fun}[1]{#1}               %functor variable
 \newcommand{\Fun}[1]{\mathsf{#1}}  %named functor
-%\newcommand{\hom}{\mathrm{hom}}
-\newcommand{\twocat}[1]{\mathcal{#1}}
-\newcommand{\dblcat}[1]{\mathbb{#1}}
+% \newcommand{\hom}{\mathrm{hom}}
+% \newcommand{\twocat}[1]{\mathcal{#1}}
+% \newcommand{\dblcat}[1]{\mathbb{#1}}
 \newcommand{\Mon}{\Cat{Mon}}
-\newcommand{\MMon}{\mathbb{M}\Cat{on}}
-\newcommand{\Prof}{\Cat{Prof}}
-\newcommand{\MProf}{\Cat{MProf}}
+\newcommand{\MMon}{\dcat{M}\Cat{on}}
+\newcommand{\Prof}{\ccat{P}\Cat{rof}}
+\newcommand{\dProf}{\dcat{P}\Cat{rof}}
+\newcommand{\MProf}{\ccat{M}\Cat{Prof}}
+\newcommand{\dMProf}{\dcat{M}\Cat{Prof}}
+\newcommand{\dSpan}{\dcat{S}\Cat{pan}}
 \newcommand{\EndoProf}{\Cat{EndoProf}}
-\newcommand{\MonCat}{\Cat{MonCat}}
+\newcommand{\MonCat}{\ccat{M}\Cat{onCat}}
 \newcommand{\MonCatLax}{\MonCat_{\mathrm{lax}}}
-\newcommand{\SymMonCat}{\Cat{SymMonCat}}
-\newcommand{\CompCat}{\Cat{CompCat}}
-\newcommand{\TrCat}{\Cat{TrCat}}
+\newcommand{\SymMonCat}{\ccat{S}\Cat{ymMonCat}}
+\newcommand{\CompCat}{\ccat{C}\Cat{ompCat}}
+\newcommand{\TrCat}{\ccat{T}\Cat{rCat}}
 \newcommand{\TrProp}{\Cat{TrProp}}
 \newcommand{\Prop}{\Cat{Prop}}
 \newcommand{\Set}{\Cat{Set}}

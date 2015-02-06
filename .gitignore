@@ -10,3 +10,4 @@
 *.fls
 Output/*
 TracedCobAlg.tdo
+.DS_Store
