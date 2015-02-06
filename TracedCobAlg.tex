@@ -430,7 +430,7 @@ The fact that the free compact category on a set has an algebraic description in
 In Section~\ref{sec:factorization system} we discuss an orthogonal factorization system on our three flavors of monoidal categories, which we will use repeatedly throughout the rest of the paper.
 Finally, in Section~\ref{sec:profunctors} we discuss profunctors between categories and monoidal categories.
 
-\section{Monoidal categories}\label{sec:prelim monoidal}\todo[author=David]{Is all this really about symmetric monoidal categories? How do we deal with this?}
+\section{Monoidal categories}\label{sec:prelim monoidal}
 
 Let $\cat{C}$ and $\cat{D}$ be monoidal categories.
 Recall that a functor $F\colon\cat{C}\to\cat{D}$ is called \emph{lax monoidal} if it is equipped with a morphism
@@ -523,7 +523,16 @@ commute.
 Let $\SymMonCat$ denote the bicategory of symmetric monoidal categories and strong monoidal functors, and let $\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal transformations from $\cat{C}$ to $\cat{D}$.
 Let $\CompCat$ denote the full subcategory of $\SymMonCat$ spanned by the compact categories.
 
-\todo{Add stuff about props.}
+\subsection{The category of props}
+
+One can think of props as symmetric monoidal categories that are free on a fixed \emph{label set} (also known as its set of colors). Functors between props need to descend to a function between label sets. Thus one can define the category $\Prop$ of props and prop functors as the pullback
+$$
+\begin{tikzcd}
+\Prop\ar[r]\ar[d,"\Ob"']&\SymMonCat\ar[d,"\Ob"]\\
+\Set\ar[r,"\Fun{List}"']&\Set
+\end{tikzcd}
+$$
+where $\Fun{List}\colon\Set\to\Set$ is the free monoid monad.
 
 \section{Traced categories}\label{sec:intuition for traced}
 
