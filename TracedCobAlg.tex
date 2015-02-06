@@ -524,17 +524,6 @@ commute.
 Let $\SymMonCat$ denote the bicategory of symmetric monoidal categories and strong monoidal functors, and let $\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal transformations from $\cat{C}$ to $\cat{D}$.
 Let $\CompCat$ denote the full subcategory of $\SymMonCat$ spanned by the compact categories.
 
-\subsection{The category of props}
-
-One can think of props as symmetric monoidal categories that are free on a fixed \emph{label set} (also known as its set of colors). Functors between props need to descend to a function between label sets. Thus one can define the category $\Prop$ of props and prop functors as the pullback
-$$
-\begin{tikzcd}
-\Prop\ar[r]\ar[d,"\Ob"']&\SymMonCat\ar[d,"\Ob"]\\
-\Set\ar[r,"\Fun{List}"']&\Set
-\end{tikzcd}
-$$
-where $\Fun{List}\colon\Set\to\Set$ is the free monoid monad.
-
 \section{Traced categories}\label{sec:intuition for traced}
 
 A trace on a symmetric monoidal category is a collection of functions
@@ -671,9 +660,19 @@ For example, here are the axioms of \emph{dinaturality} and \emph{superposition}
 		\]
 \end{itemize} 
 
-The definition of traced categories and traced functors can be found in~\cite{JoyalStreetVerity}.
+The definition of traced categories and traced functors can be found in~\cite{JoyalStreetVerity}, where they define the 2-morphisms between traced functors to be monoidal transformations. We denote this 2-category by $\TrCat$. 
 
-\todo{Add something about traced props.}
+\subsection{The categories $\Prop$ and $\TrProp$ of props and traced props}
+
+One can think of props as symmetric monoidal categories that are free on a fixed \emph{label set} (also known as its set of colors). Functors between props need to descend to a function between label sets. We define a traced prop to be a traced category whose underlying symmetric monoidal category has the structure of a prop. Thus we have defined the 1-categories $\Prop$ and $\TrProp$; we summarize our definitions by the pullback diagram
+$$
+\begin{tikzcd}
+\TrProp\ar[r]\ar[d]\arrow[dr, phantom, "\lrcorner", very near start]&\TrCat_1\ar[d]\\
+\Prop\ar[r]\ar[d,"\Ob"']\arrow[dr, phantom, "\lrcorner", very near start]&\SymMonCat_1\ar[d,"\Ob"]\\
+\Set\ar[r,"\Fun{List}"']&\Set
+\end{tikzcd}
+$$
+where $\SymMonCat_1$ (resp. $\TrCat_1$) is the underlying 1-category of $\SymMonCat$ (resp. of $\TrCat$), and where $\Fun{List}\colon\Set\to\Set$ is the free monoid monad. This definition of $\Prop$ agrees with that in \cite{Robertson}.\todo{Check this.}
 
 \section{Compact categories and the Int construction}\label{sec:compact and int}
 
