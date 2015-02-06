@@ -44,10 +44,10 @@ Global todo's:
 	\item Patrick: Give proof of Lemmas~\ref{Lem:mon profs equal boo functors}~and~\ref{lemma:easy compcat}.
 	\item Patrick: fill all profunctor naturality holes.
 \end{enumerate}
+\listoftodos
 
 \setcounter{tocdepth}{1}
 \tableofcontents*
-
 
 \chapter{Introduction}
 
@@ -1016,6 +1016,15 @@ The coequalizer then implies that $(m\cdot f)\otimes n=m\otimes(f\cdot n)$ whene
 For any category $\cat{C}$, there is a profunctor $\Hom_{\cat{C}}\colon\op{\cat{C}}\times\cat{C}\to\Set$, and these hom profunctors act as units for the tensor product.
 Precisely, if $M$ is as above, there are canonical isomorphisms $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 
+\subsection{Framed bicategories}
+\todo[author=Patrick,inline]{Introduce framed bicategories, give examples}
+
+\subsection{The monoids and bimodules construction}
+\todo[author=Patrick,inline]{Give construction, examples, monad structure}
+
+\subsection{$\Cat{Mon}(\Cat{Prof}(\cat{C},\cat{C}))$: Monoid objects in $(\cat{C},\cat{C})$-profunctors}
+\todo[author=Patrick,inline]{This section and the next should be revisited after framed bicategory material}
+
 Given a category $\cat{C}$, there is a monoidal category $\Prof(\cat{C},\cat{C})$ of profunctors from $\cat{C}$ to itself and morphisms of profunctors, with the tensor product given above and $\Hom_{\cat{C}}$ as the monoidal unit.
 Moreover, this construction is functorial, being the object part of a functor
 \[
@@ -1031,8 +1040,6 @@ If $\phi\colon M\Rightarrow N$ is a profunctor morphism in $\Prof(\cat{D},\cat{D
 \todo[author=Patrick]{Finish}
 
 We would now like to investigate monoids in this monoidal category.
-
-\subsection{$\Cat{Mon}(\Cat{Prof}(\cat{C},\cat{C}))$: Monoid objects in $(\cat{C},\cat{C})$-profunctors}
 
 Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure.
 The unit is a profunctor morphism $i\colon\Hom_{\cat{C}}\to M$.
