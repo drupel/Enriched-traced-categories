@@ -1,27 +1,22 @@
 % !TEX root = ./TracedCobAlg.tex
-
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{txfonts}
+\RequirePackage{fixltx2e}
 \usepackage{mathtools}
-%\usepackage{datetime}
-\usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[bookmarks=true,colorlinks=true, linkcolor=MidnightBlue, citecolor=cyan]{hyperref}
+\usepackage{amsthm}
+\usepackage{amssymb}
 \usepackage[T1]{fontenc}
-\usepackage[sc]{mathpazo}
+\usepackage{newpxtext}
+\usepackage[varg,bigdelims,varbb]{newpxmath}
 \linespread{1.05}
-\usepackage{mathrsfs}
-\usepackage{euscript}
-%\usepackage{MnSymbol}
+\usepackage[cal=euler,scr=rsfso]{mathalfa}
+\usepackage{bm}
+\usepackage{inputenc}
+\usepackage{microtype}
+\usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{paralist}
-\usepackage{makecell}
 \usepackage{booktabs}
 \usepackage{tikz}
-\usepackage{tensor}
-\usepackage{pbox}
 \usepackage{todonotes}
+\usepackage[bookmarks=true,colorlinks=true, linkcolor=MidnightBlue, citecolor=cyan]{hyperref}
 
 \usetikzlibrary{decorations.markings,arrows.meta,calc,fit,quotes,cd}
 \hypersetup{final}
@@ -78,25 +73,24 @@
 % \newcommand{\dblcat}[1]{\mathbb{#1}}
 \newcommand{\Mon}{\Cat{Mon}}
 \newcommand{\MMon}{\dcat{M}\Cat{on}}
-\newcommand{\Prof}{\ccat{P}\Cat{rof}}
+\newcommand{\Prof}{\bm{\ccat{P}}\Cat{rof}}
 \newcommand{\dProf}{\dcat{P}\Cat{rof}}
-\newcommand{\MProf}{\ccat{M}\Cat{Prof}}
+\newcommand{\MProf}{\bm{\ccat{M}}\Cat{Prof}}
 \newcommand{\dMProf}{\dcat{M}\Cat{Prof}}
 \newcommand{\dSpan}{\dcat{S}\Cat{pan}}
 \newcommand{\EndoProf}{\Cat{EndoProf}}
-\newcommand{\MonCat}{\ccat{M}\Cat{onCat}}
+\newcommand{\MonCat}{\bm{\ccat{M}}\Cat{onCat}}
 \newcommand{\MonCatLax}{\MonCat_{\mathrm{lax}}}
-\newcommand{\SymMonCat}{\ccat{S}\Cat{ymMonCat}}
-\newcommand{\CompCat}{\ccat{C}\Cat{ompCat}}
-\newcommand{\TrCat}{\ccat{T}\Cat{rCat}}
+\newcommand{\SymMonCat}{\bm{\ccat{S}}\Cat{ymMonCat}}
+\newcommand{\CompCat}{\bm{\ccat{C}}\Cat{ompCat}}
+\newcommand{\TrCat}{\bm{\ccat{T}}\Cat{rCat}}
 \newcommand{\TrProp}{\Cat{TrProp}}
 \newcommand{\Prop}{\Cat{Prop}}
 \newcommand{\Set}{\Cat{Set}}
 \newcommand{\Int}{\Fun{Int}}
-\def\2Cat{\tn{$2$-$\Cat{Cat}$}}
-\def\CobSetAlg{\int^{\Set}(\Cat{Cob}/\bullet)\alg}
-\def\CobKlsAlg{\int^{\Cat{Kls}}(\Cat{Cob}/\bullet)\alg}
-
+% \def\2Cat{\tn{$2$-$\Cat{Cat}$}}
+\newcommand{\CobSetAlg}{\int^{\Set}(\Cat{Cob}/\bullet)\alg}
+\newcommand{\CobKlsAlg}{\int^{\Cat{Kls}}(\Cat{Cob}/\bullet)\alg}
 \newcommand{\op}[1]{{#1}^{\text{op}}}
 \newcommand{\vop}[1]{{#1}^{\text{vop}}}
 \newcommand{\hop}[1]{{#1}^{\text{hop}}}
@@ -137,7 +131,6 @@
 
 
 \tikzset{
-	%label/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},
 	wiring diagram/.style={
 		every to/.style={out=0,in=180,draw},
 		label/.style={

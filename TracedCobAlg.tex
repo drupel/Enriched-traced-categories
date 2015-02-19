@@ -1,3 +1,4 @@
+\RequirePackage[l2tabu,orthodox]{nag}
 \documentclass[12pt,oneside,article,draft]{memoir}
 \input{preamble.tex}
 
@@ -59,21 +60,21 @@ A graphical calculus for traced categories was developed by Joyal, Street, and V
 	\node[bb={2}{2}, right=of X1, bb name=$X_2$] (X2) {};
 	\node[bb={2}{1}, dashed, fit={(X1) (X2) ($(X1.north)+(0,1.5)$) ($(X1.south)-(0,1)$)}, bb name=$Y$] (Y) {};
 	\draw[label]
-	    node[above left=of Y_in1]     {$Y_a^-$}
-	    node[above left=of Y_in2]     {$Y_b^-$}
-	    node[above right=of Y_out1]   {$Y^+_a$}
-	    node[above left=of X1_in1]    {$X^-_{1a}$}
-	    node[above left=of X1_in2]    {$X^-_{1b}$}
-	    node[above right=of X1_out1]  {$X^+_{1c}$}
-	    node[above left=of X2_in1]    {$X^-_{2a}$}
-	    node[above left=of X2_in2]    {$X^-_{2b}$}
-	    node[above right=of X2_out1]  {$X^+_{2c}$}
-	    node[above right=of X2_out2]  {$X^+_{2d}$};
+		node[above left=of Y_in1]     {$Y_a^-$}
+		node[above left=of Y_in2]     {$Y_b^-$}
+		node[above right=of Y_out1]   {$Y^+_a$}
+		node[above left=of X1_in1]    {$X^-_{1a}$}
+		node[above left=of X1_in2]    {$X^-_{1b}$}
+		node[above right=of X1_out1]  {$X^+_{1c}$}
+		node[above left=of X2_in1]    {$X^-_{2a}$}
+		node[above left=of X2_in2]    {$X^-_{2b}$}
+		node[above right=of X2_out1]  {$X^+_{2c}$}
+		node[above right=of X2_out2]  {$X^+_{2d}$};
 	\draw[ar] (Y_in2') to (X1_in1);
 	\draw[ar] (X1_out1) to (X2_in2);
 	\draw[ar] (X2_out1) to (Y_out1');
 	\draw[ar] let \p1=(X1.north west), \p2=(X1.north east), \n1={\y1+\bby}, \n2=\bbportlen in
-	    (Y_in1') to (\x1-\n2,\n1) -- (\x2+\n2,\n1) to (X2_in1);
+		(Y_in1') to (\x1-\n2,\n1) -- (\x2+\n2,\n1) to (X2_in1);
 	\draw[ar] let \p1=(X2.south east), \p2=(X1.south west), \n1={\y1-\bby}, \n2=\bbportlen in
 		(X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
 \end{tikzpicture}
@@ -665,13 +666,13 @@ The definition of traced categories and traced functors can be found in~\cite{Jo
 \subsection{The categories $\Prop$ and $\TrProp$ of props and traced props}\label{sec:defining props}
 
 One can think of props as symmetric monoidal categories that are free on a fixed \emph{label set} (also known as its set of colors). Functors between props need to descend to a function between label sets. We define a traced prop to be a traced category whose underlying symmetric monoidal category has the structure of a prop. Thus we have defined the 1-categories $\Prop$ and $\TrProp$; we summarize our definitions by the pullback diagram
-$$
+\[
 \begin{tikzcd}
-\TrProp\ar[r]\ar[d]\arrow[dr, phantom, "\lrcorner", very near start]&\TrCat_1\ar[d]\\
-\Prop\ar[r]\ar[d,"\Ob"']\arrow[dr, phantom, "\lrcorner", very near start]&\SymMonCat_1\ar[d,"\Ob"]\\
-\Set\ar[r,"\Fun{List}"']&\Set
+	\TrProp\ar[r]\ar[d]\arrow[dr, phantom, "\lrcorner", very near start]&\TrCat_1\ar[d]\\
+	\Prop\ar[r]\ar[d,"\Ob"']\arrow[dr, phantom, "\lrcorner", very near start]&\SymMonCat_1\ar[d,"\Ob"]\\
+	\Set\ar[r,"\Fun{List}"']&\Set
 \end{tikzcd}
-$$
+\]
 where $\SymMonCat_1$ (resp. $\TrCat_1$) is the underlying 1-category of $\SymMonCat$ (resp.\ of $\TrCat$), and where $\Fun{List}\colon\Set\to\Set$ is the free monoid monad. This definition of $\Prop$ agrees with that in~\cite{HackneyRobertson}.\todo{Check this.}
 
 \section{Compact categories and the Int construction}\label{sec:compact and int}
