@@ -212,12 +212,15 @@ There is an equipment $\Cat{FrCompCat}$ whose objects are free compact categorie
 Let $\MMon(\Cat{FrCompCat})$ denote the 2-category of monoid objects in $\Cat{FrCompCat}$, and let $\Mon(\Cat{FrCompCat})$ be the underlying 1-category, obtained by forgetting the 2-morphisms.
 
 \begin{named}{Theorem A'}
-	There is a equivalence of 2-categories
-		$$\MMon(\Cat{FrCompCat})\simeq\TrCat$$
+	There is an equivalence of 2-categories
+	\[
+		\MMon(\Cat{FrCompCat})\simeq\TrCat
+	\]
 	and an equivalence of 1-categories
-		$$\Mon(\Cat{FrCompCat})\simeq\CobKlsAlg.$$
+	\[
+		\Mon(\Cat{FrCompCat})\simeq\CobKlsAlg.
+	\]
 \end{named}
-
 
 
 \section{Generalization: Lax algebras on compact category}
@@ -252,6 +255,7 @@ These are proved in Section~\ref{sec:generalization}.
 	\end{align}
 	This equivalence is natural in the traced category $\cat{D}$, using the factorization system on $\TrCat$ from Lemma~\ref{lemma:factorization system}.
 \end{named}
+
 
 \section{Wiring Diagrams and $\Cat{Cob}$}\label{sec:wds and cob}
 
@@ -319,6 +323,7 @@ Wiring diagrams seem to be a new way to visualize morphisms in the symmetric mon
 		\draw (X2c) to (Yc);
 	\end{tikzpicture}
 \]
+
 
 \section{Applications of the operadic perspective}
 
@@ -412,6 +417,7 @@ to generalize the indexing category.
 
 So while it is difficult to see how to make subtle changes in the axioms of traced categories, it is much more straightforward to see how to make subtle changes in the cobordism operads, which index traced categories.
 
+
 \section{Plan of the paper}
 
 The paper is organized as follows.
@@ -431,6 +437,7 @@ Basic definitions and facts about monoidal, traced, and compact categories, lax 
 The fact that the free compact category on a set has an algebraic description in terms of bijections between signed sets, and the fact that it has a geometric description in terms of 1-dimensional oriented cobordisms is recalled in Section~\ref{sec:free and geometry}.
 In Section~\ref{sec:factorization system} we discuss an orthogonal factorization system on our three flavors of monoidal categories, which we will use repeatedly throughout the rest of the paper.
 Finally, in Section~\ref{sec:profunctors} we discuss profunctors between categories and monoidal categories.
+
 
 \section{Monoidal categories}\label{sec:prelim monoidal}
 
@@ -524,6 +531,7 @@ commute.
 
 Let $\SymMonCat$ denote the bicategory of symmetric monoidal categories and strong monoidal functors, and let $\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal transformations from $\cat{C}$ to $\cat{D}$.
 Let $\CompCat$ denote the full subcategory of $\SymMonCat$ spanned by the compact categories.
+
 
 \section{Traced categories}\label{sec:intuition for traced}
 
@@ -675,6 +683,7 @@ One can think of props as symmetric monoidal categories that are free on a fixed
 \]
 where $\SymMonCat_1$ (resp. $\TrCat_1$) is the underlying 1-category of $\SymMonCat$ (resp.\ of $\TrCat$), and where $\Fun{List}\colon\Set\to\Set$ is the free monoid monad. This definition of $\Prop$ agrees with that in~\cite{HackneyRobertson}.\todo{Check this.}
 
+
 \section{Compact categories and the Int construction}\label{sec:compact and int}
 
 Let $\SymMonCat$ denote the category of symmetric monoidal functors and strong morphisms between them.
@@ -781,6 +790,7 @@ The following facts hold for any traced category $\cat{C}$:
 %
 %
 
+
 \section{Free traced and compact categories, and geometry}\label{sec:free and geometry}
 
 \begin{proposition}\label{prop:free traced and compact}
@@ -805,163 +815,167 @@ The following facts hold for any traced category $\cat{C}$:
 	\todo{Fix this.}
 \end{proof}
 
-\section{A factorization system for strong functors}\label{sec:factorization system}
+% Probably will cut this section
+%-----
+	% \section{A factorization system for strong functors}\label{sec:factorization system}
 
-In this section we prove that an orthogonal factorization system exists on the categories $\SymMonCat$, $\TrCat$, and $\CompCat$ of symmetric monoidal (resp.\ traced, compact) categories and strong functors (resp.\ traced functors; see~\cite{JoyalStreetVerity}).
+	% In this section we prove that an orthogonal factorization system exists on the categories $\SymMonCat$, $\TrCat$, and $\CompCat$ of symmetric monoidal (resp.\ traced, compact) categories and strong functors (resp.\ traced functors; see~\cite{JoyalStreetVerity}).
 
-Recall (see e.g.~\cite{AdamekHerrlichStrecker}) that an \emph{orthogonal factorization system} on a category $\cat{C}$ consists of a class $\cat{L}$ and a class $\cat{R}$ of morphisms in $\cat{C}$, called the \emph{left class} and \emph{right class} of the factorization system, respectively, satisfying the following properties:
-\begin{enumerate}
-	\item $\cat{L}$ (resp. $\cat{R}$) contains every isomorphism in $\cat{C}$,
-	\item $\cat{L}$ (resp. $\cat{R}$) is closed under composition, and
-	\item every morphism $f\in\cat{C}$ can be uniquely and functorially factored as $f=r\circ\ell$ where $r\in\cat{R}$ and $\ell\in\cat{L}$
-\end{enumerate}
-For example, there is an orthogonal factorization system on $\Cat{Cat}$ in which the left class consists of functors that are bijective on objects and the right class consists of functors that are fully faithful.
+	% Recall (see e.g.~\cite{AdamekHerrlichStrecker}) that an \emph{orthogonal factorization system} on a category $\cat{C}$ consists of a class $\cat{L}$ and a class $\cat{R}$ of morphisms in $\cat{C}$, called the \emph{left class} and \emph{right class} of the factorization system, respectively, satisfying the following properties:
+	% \begin{enumerate}
+	% 	\item $\cat{L}$ (resp. $\cat{R}$) contains every isomorphism in $\cat{C}$,
+	% 	\item $\cat{L}$ (resp. $\cat{R}$) is closed under composition, and
+	% 	\item every morphism $f\in\cat{C}$ can be uniquely and functorially factored as $f=r\circ\ell$ where $r\in\cat{R}$ and $\ell\in\cat{L}$
+	% \end{enumerate}
+	% For example, there is an orthogonal factorization system on $\Cat{Cat}$ in which the left class consists of functors that are bijective on objects and the right class consists of functors that are fully faithful.
 
-\todo{Define $\Cat{X}$-categories and $\Cat{X}$-functors.}
+	% \todo{Define $\Cat{X}$-categories and $\Cat{X}$-functors.}
 
-\begin{lemma}\label{lemma:factorization system}
-	Let $\XCat$ denote the 2-category of strong $\Cat{X}$-functors and monoidal natural transformations, between $\Cat{X}$-categories, where $\Cat{X}$ is symmetric monoidal, traced, or compact.
-	Then $\XCat$ admits an orthogonal factorization system $(\cat{L},\cat{R})$, where the morphisms in $\cat{L}$ are bijective-on-objects functors and the morphisms in $\cat{R}$ are fully faithful functors.
-\end{lemma}
-\begin{proof}
-	We first recall the factorization system $(\bo,\ff)$ on $\Cat{Cat}$.
-	Let $\cat{C}$ and $\cat{D}$ be categories, and let $F\colon\cat{C}\to\cat{D}$ be a functor.
-	Then there is a factorization
-	\[
-	\begin{tikzcd}[column sep=small, row sep=small]
-		\cat{C} \ar[rr, "F"] \ar[dr, "\bo"'] && \cat{D} \\
-		& \cat{F} \ar[ur, "\ff"']
-	\end{tikzcd}
-	\]
-	where $\cat{F}$ is the category with $\Ob\cat{F}\coloneqq \Ob\cat{C}$, $\Hom_{\cat{F}}(c_1,c_2)\coloneqq\Hom_{\cat{D}}(Fc_1,Fc_2)$, and composition defined by composition in $\cat{D}$.
-	The ``bo'' functor is the identity on objects, and $F$ on morphisms, while the ``ff'' functor is $F$ on objects and the identity on morphisms.
+	% \begin{lemma}\label{lemma:factorization system}
+	% 	Let $\XCat$ denote the 2-category of strong $\Cat{X}$-functors and monoidal natural transformations, between $\Cat{X}$-categories, where $\Cat{X}$ is symmetric monoidal, traced, or compact.
+	% 	Then $\XCat$ admits an orthogonal factorization system $(\cat{L},\cat{R})$, where the morphisms in $\cat{L}$ are bijective-on-objects functors and the morphisms in $\cat{R}$ are fully faithful functors.
+	% \end{lemma}
+	% \begin{proof}
+	% 	We first recall the factorization system $(\bo,\ff)$ on $\Cat{Cat}$.
+	% 	Let $\cat{C}$ and $\cat{D}$ be categories, and let $F\colon\cat{C}\to\cat{D}$ be a functor.
+	% 	Then there is a factorization
+	% 	\[
+	% 	\begin{tikzcd}[column sep=small, row sep=small]
+	% 		\cat{C} \ar[rr, "F"] \ar[dr, "\bo"'] && \cat{D} \\
+	% 		& \cat{F} \ar[ur, "\ff"']
+	% 	\end{tikzcd}
+	% 	\]
+	% 	where $\cat{F}$ is the category with $\Ob\cat{F}\coloneqq \Ob\cat{C}$, $\Hom_{\cat{F}}(c_1,c_2)\coloneqq\Hom_{\cat{D}}(Fc_1,Fc_2)$, and composition defined by composition in $\cat{D}$.
+	% 	The ``bo'' functor is the identity on objects, and $F$ on morphisms, while the ``ff'' functor is $F$ on objects and the identity on morphisms.
 
-	Note that to establish the factorization system for $\XCat$, the only thing that needs to be checked is that the factorization in $\Cat{Cat}$ lifts to $\XCat$.
-	The isomorphism containment, closure under composition, and uniqueness of factorization all follow immediately from those same properties in $\Cat{Cat}$.
+	% 	Note that to establish the factorization system for $\XCat$, the only thing that needs to be checked is that the factorization in $\Cat{Cat}$ lifts to $\XCat$.
+	% 	The isomorphism containment, closure under composition, and uniqueness of factorization all follow immediately from those same properties in $\Cat{Cat}$.
 
-	Now we will show that this factorization system lifts to $\MonCat$.
-	If $\cat{C}$ and $\cat{D}$ are monoidal categories, and $F$ is a strong monoidal functor, then we can define a monoidal structure on $\cat{F}$.
-	On objects, define $c_1\otimes_{\cat{F}}c_2\coloneqq c_1\otimes_{\cat{C}}c_2$ with monoidal unit $I_{\cat{F}}\coloneqq I_{\cat{C}}$, and given morphisms $f_1\colon c_1\to c_1'$ and $f_2\colon c_2\to c_2'$ in $\cat{F}$, i.e.~morphisms $f_1\colon Fc_1\to Fc_1'$ and $f_2\colon Fc_2\to Fc_2'$ in $\cat{D}$, define $f_1\otimes_{\cat{F}}f_2$ to be the composition
-	\[
-	\begin{tikzcd}
-		F(c_1\otimes_{\cat{C}}c_2) \ar[r,"\mu^{-1}"] & F(c_1)\otimes_{\cat{D}}F(c_2) \ar[r,"f_1\otimes_{\cat{D}}f_2"] & F(c_1')\otimes_{\cat{D}}F(c_2') \ar[r,"\mu"] & F(c_1'\otimes_{\cat{C}}c_2').
-	\end{tikzcd}
-	\]
-	The coherence isomorphisms of $\cat{F}$ are defined by applying $F$ to the coherence isomorphisms of $\cat{C}$, e.g.~the left unitor $l_{\cat{F}}\colon c\to I_{\cat{C}}\otimes_{\cat{C}}c$ is defined to be $F(l_{\cat{C}})\colon F(c)\to F(I_{\cat{C}}\otimes_{\cat{C}}c)$.
-	The monoidal category axioms can then be checked for $\cat{F}$ using the fact that $F$ is strong monoidal.
-	Finally, the ``bo'' functor is trivialy strict monoidal, and the ``ff'' functor has a strong monoidal structure using the same coherence isomorphsisms as $F$.
+	% 	Now we will show that this factorization system lifts to $\MonCat$.
+	% 	If $\cat{C}$ and $\cat{D}$ are monoidal categories, and $F$ is a strong monoidal functor, then we can define a monoidal structure on $\cat{F}$.
+	% 	On objects, define $c_1\otimes_{\cat{F}}c_2\coloneqq c_1\otimes_{\cat{C}}c_2$ with monoidal unit $I_{\cat{F}}\coloneqq I_{\cat{C}}$, and given morphisms $f_1\colon c_1\to c_1'$ and $f_2\colon c_2\to c_2'$ in $\cat{F}$, i.e.~morphisms $f_1\colon Fc_1\to Fc_1'$ and $f_2\colon Fc_2\to Fc_2'$ in $\cat{D}$, define $f_1\otimes_{\cat{F}}f_2$ to be the composition
+	% 	\[
+	% 	\begin{tikzcd}
+	% 		F(c_1\otimes_{\cat{C}}c_2) \ar[r,"\mu^{-1}"] & F(c_1)\otimes_{\cat{D}}F(c_2) \ar[r,"f_1\otimes_{\cat{D}}f_2"] & F(c_1')\otimes_{\cat{D}}F(c_2') \ar[r,"\mu"] & F(c_1'\otimes_{\cat{C}}c_2').
+	% 	\end{tikzcd}
+	% 	\]
+	% 	The coherence isomorphisms of $\cat{F}$ are defined by applying $F$ to the coherence isomorphisms of $\cat{C}$, e.g.~the left unitor $l_{\cat{F}}\colon c\to I_{\cat{C}}\otimes_{\cat{C}}c$ is defined to be $F(l_{\cat{C}})\colon F(c)\to F(I_{\cat{C}}\otimes_{\cat{C}}c)$.
+	% 	The monoidal category axioms can then be checked for $\cat{F}$ using the fact that $F$ is strong monoidal.
+	% 	Finally, the ``bo'' functor is trivialy strict monoidal, and the ``ff'' functor has a strong monoidal structure using the same coherence isomorphsisms as $F$.
 
-	Suppose that $\cat{C}$ and $\cat{D}$ are both compact categories.
-	Every object of $\cat{F}$ is the image of an object in $\cat{C}$, and every object of $\cat{C}$ has a dual, hence every object of $\cat{F}$ has a dual because monoidal functors always preserve duals.
-	This shows that the (bo,ff) factorization system lifts to $\CompCat$.
+	% 	Suppose that $\cat{C}$ and $\cat{D}$ are both compact categories.
+	% 	Every object of $\cat{F}$ is the image of an object in $\cat{C}$, and every object of $\cat{C}$ has a dual, hence every object of $\cat{F}$ has a dual because monoidal functors always preserve duals.
+	% 	This shows that the (bo,ff) factorization system lifts to $\CompCat$.
 
-	Finally, if $\cat{C}$ and $\cat{D}$ are traced, then~\cite[Proposition 2.4]{JoyalStreetVertity} implies that there is a unique traced structure on $\cat{F}$, where the trace of a morphism in $\cat{F}$ is defined to be the trace in $\cat{D}$.
-	The ``ff'' functor preserves the trace by construction, and the ``bo'' functor preserves the trace because $F$ does.
-\end{proof}
+	% 	Finally, if $\cat{C}$ and $\cat{D}$ are traced, then~\cite[Proposition 2.4]{JoyalStreetVertity} implies that there is a unique traced structure on $\cat{F}$, where the trace of a morphism in $\cat{F}$ is defined to be the trace in $\cat{D}$.
+	% 	The ``ff'' functor preserves the trace by construction, and the ``bo'' functor preserves the trace because $F$ does.
+	% \end{proof}
 
-\begin{proposition}\label{prop:coslice Xbo}
-	Let $\XCat_{\bo}\ss\XCat$ denote the wide subcategory in which all morphisms are bijective on objects.
-	There is a functor
-	$$-/\XCat_{\bo}\colon\XCat\to\op{\Cat{Cat}}$$
-	sending any $\cat{C}\in\XCat$ to the coslice category $\cat{C}/\XCat_{\bo}$.
-\end{proposition}
-\begin{proof}
-	We only need to verify the functoriality of this construction.
-	Given a strong functor $F\colon\cat{C}\to\cat{D}$ in $\XCat$, we can define a functor $F^*\colon\cat{D}/\XCat_{\bo}\to\cat{C}/\XCat_{\bo}$.
-	For any object $\phi\in\cat{D}/\XCat_{\bo}$, i.e.~a bijective-on-objects functor $\phi\colon\cat{D}\to\cat{X}$, define $F^*(\phi)$ by applying the factorization system of~\ref{lemma:factorization system} as in the diagram
-	\[
-	\begin{tikzcd}
-		\cat{C} \ar[r,"F"] \ar[d,"F^*(\phi)"'] & \cat{D} \ar[d,"\phi"] \\
-		\cat{X}' \ar[r,"\ff"'] & \cat{X}
-	\end{tikzcd}
-	\]
-	Given another strong functor $G\colon\cat{D}\to\cat{E}$, the fact that ${(G\circ F)}^*\iso F^*\circ G^*$ follows from the uniqueness of the factorization of $\psi\circ G\circ F$ in the diagram
-	\[
-	\begin{tikzcd}
-		\cat{C} \ar[r,"F"] \ar[d]
-			& \cat{D} \ar[r,"G"] \ar[d,"G^*(\psi)"]
-		    & \cat{E} \ar[d,"\psi"] \\
-		\cat{X}'' \ar[r,"\ff"'] & \cat{X}' \ar[r,"\ff"'] & \cat{X}
-	\end{tikzcd}
-	\]
-\end{proof}
+	% \begin{proposition}\label{prop:coslice Xbo}
+	% 	Let $\XCat_{\bo}\ss\XCat$ denote the wide subcategory in which all morphisms are bijective on objects.
+	% 	There is a functor
+	% 	$$-/\XCat_{\bo}\colon\XCat\to\op{\Cat{Cat}}$$
+	% 	sending any $\cat{C}\in\XCat$ to the coslice category $\cat{C}/\XCat_{\bo}$.
+	% \end{proposition}
+	% \begin{proof}
+	% 	We only need to verify the functoriality of this construction.
+	% 	Given a strong functor $F\colon\cat{C}\to\cat{D}$ in $\XCat$, we can define a functor $F^*\colon\cat{D}/\XCat_{\bo}\to\cat{C}/\XCat_{\bo}$.
+	% 	For any object $\phi\in\cat{D}/\XCat_{\bo}$, i.e.~a bijective-on-objects functor $\phi\colon\cat{D}\to\cat{X}$, define $F^*(\phi)$ by applying the factorization system of~\ref{lemma:factorization system} as in the diagram
+	% 	\[
+	% 	\begin{tikzcd}
+	% 		\cat{C} \ar[r,"F"] \ar[d,"F^*(\phi)"'] & \cat{D} \ar[d,"\phi"] \\
+	% 		\cat{X}' \ar[r,"\ff"'] & \cat{X}
+	% 	\end{tikzcd}
+	% 	\]
+	% 	Given another strong functor $G\colon\cat{D}\to\cat{E}$, the fact that ${(G\circ F)}^*\iso F^*\circ G^*$ follows from the uniqueness of the factorization of $\psi\circ G\circ F$ in the diagram
+	% 	\[
+	% 	\begin{tikzcd}
+	% 		\cat{C} \ar[r,"F"] \ar[d]
+	% 			& \cat{D} \ar[r,"G"] \ar[d,"G^*(\psi)"]
+	% 		    & \cat{E} \ar[d,"\psi"] \\
+	% 		\cat{X}'' \ar[r,"\ff"'] & \cat{X}' \ar[r,"\ff"'] & \cat{X}
+	% 	\end{tikzcd}
+	% 	\]
+	% \end{proof}
 
-In~\cite{Abramsky2}, Abramsky provides a free-forgetful adjunction
-\begin{equation}\label{eq:abramsky}
-\begin{tikzcd}
-	\Cat{Set}\arrow[r, shift left=.5ex, "\Fun{XFr}"]&\XCat\arrow[l, shift left=.5ex,"\Ob"]
-\end{tikzcd}
-\end{equation}
+	% In~\cite{Abramsky2}, Abramsky provides a free-forgetful adjunction
+	% \begin{equation}\label{eq:abramsky}
+	% \begin{tikzcd}
+	% 	\Cat{Set}\arrow[r, shift left=.5ex, "\Fun{XFr}"]&\XCat\arrow[l, shift left=.5ex,"\Ob"]
+	% \end{tikzcd}
+	% \end{equation}
 
-\begin{definition}\label{def:XKlSet XFrObCat}
-	Let $\Cat{XKlSet}$ be the Kleisli category of the monad induced by (\ref{eq:abramsky}).
-	The functor $\Fun{XFr}=i_{\Fun{X}}\circ\eta_{\Fun{X}}$ factors through it as the composite
-		$$\Set\To{\eta_{\Fun{X}}}\Cat{XKlSet}\To{\fun{i_{\Fun{X}}}}\XCat,$$
-	where $i_{\Fun{X}}$ is fully faithful (see~\cite[Proposition 4.2.1]{BorceuxV2}.
-	Let $-/\XCat_{\bo}\colon\XCat\to\op{\Cat{Cat}}$ be the functor from Proposition~\ref{prop:coslice Xbo}, and define $\Fun{XFrObCat}\colon\Cat{XKlSet}\to\op{\Cat{Cat}}$ to be the composite
-		$$\Cat{XKlSet}\To{i_{\Fun{X}}}\XCat\To{-/\XCat_{\bo}}\op{\Cat{Cat}}.$$
-	We define the fibration $\Cat{XFrObCat}\To{\pi_{\Fun{X}}}\Cat{XKlSet}$ to be the Grothendieck construction of $\Fun{XFrObCat}$.
+	% \begin{definition}\label{def:XKlSet XFrObCat}
+	% 	Let $\Cat{XKlSet}$ be the Kleisli category of the monad induced by (\ref{eq:abramsky}).
+	% 	The functor $\Fun{XFr}=i_{\Fun{X}}\circ\eta_{\Fun{X}}$ factors through it as the composite
+	% 		$$\Set\To{\eta_{\Fun{X}}}\Cat{XKlSet}\To{\fun{i_{\Fun{X}}}}\XCat,$$
+	% 	where $i_{\Fun{X}}$ is fully faithful (see~\cite[Proposition 4.2.1]{BorceuxV2}.
+	% 	Let $-/\XCat_{\bo}\colon\XCat\to\op{\Cat{Cat}}$ be the functor from Proposition~\ref{prop:coslice Xbo}, and define $\Fun{XFrObCat}\colon\Cat{XKlSet}\to\op{\Cat{Cat}}$ to be the composite
+	% 		$$\Cat{XKlSet}\To{i_{\Fun{X}}}\XCat\To{-/\XCat_{\bo}}\op{\Cat{Cat}}.$$
+	% 	We define the fibration $\Cat{XFrObCat}\To{\pi_{\Fun{X}}}\Cat{XKlSet}$ to be the Grothendieck construction of $\Fun{XFrObCat}$.
 
-	Sometimes we abuse notation and write $\Fun{XFrObCat}\colon\Set\to\op{\Cat{Cat}}$ to denote what is actually the composite $\Fun{XFrObCat}\circ\eta_{\Fun{X}}$.
-\end{definition}
+	% 	Sometimes we abuse notation and write $\Fun{XFrObCat}\colon\Set\to\op{\Cat{Cat}}$ to denote what is actually the composite $\Fun{XFrObCat}\circ\eta_{\Fun{X}}$.
+	% \end{definition}
 
-An object of $\Cat{XFrObCat}$ can be identified with a pair $(\cat{O},\Fun{XFr}(\cat{O})\To{\bo}\cat{C})$, where $\cat{O}$ is a set and $\cat{C}$ is an $\Cat{X}$-category; we may denote it by $(\cat{O},\cat{C})$.
-A morphism in $\Cat{XFrObCat}$ can be identified with a function and a commutative diagram in $\XCat$:
-$$
-\begin{tikzcd}
-	\cat{O}\ar[d]&\Fun{XFr}\cat{O}\ar[r,"\bo"]\ar[d]&\cat{C}\ar[d]\\
-	\Ob(\Fun{XFr}\cat{O'})&\Fun{XFr}\cat{O'}\ar[r,"\bo"]&\cat{C'}
-\end{tikzcd}
-$$
-Note that the forgetful functor $U\colon\Cat{XFrObCat}\to\XCat$ sending $(\cat{O},\cat{C})\mapsto\cat{C}$ is \emph{not} the composite $U\neq i_{\Fun{X}}\circ\pi_{\Fun{X}}$; a comparison is given in Proposition~\ref{prop:free objects}.
+	% An object of $\Cat{XFrObCat}$ can be identified with a pair $(\cat{O},\Fun{XFr}(\cat{O})\To{\bo}\cat{C})$, where $\cat{O}$ is a set and $\cat{C}$ is an $\Cat{X}$-category; we may denote it by $(\cat{O},\cat{C})$.
+	% A morphism in $\Cat{XFrObCat}$ can be identified with a function and a commutative diagram in $\XCat$:
+	% $$
+	% \begin{tikzcd}
+	% 	\cat{O}\ar[d]&\Fun{XFr}\cat{O}\ar[r,"\bo"]\ar[d]&\cat{C}\ar[d]\\
+	% 	\Ob(\Fun{XFr}\cat{O'})&\Fun{XFr}\cat{O'}\ar[r,"\bo"]&\cat{C'}
+	% \end{tikzcd}
+	% $$
+	% Note that the forgetful functor $U\colon\Cat{XFrObCat}\to\XCat$ sending $(\cat{O},\cat{C})\mapsto\cat{C}$ is \emph{not} the composite $U\neq i_{\Fun{X}}\circ\pi_{\Fun{X}}$; a comparison is given in Proposition~\ref{prop:free objects}.
 
-\begin{proposition}\label{prop:free objects}
-	Let $\XCat$ and let $\Cat{XFrObCat}$ be the full subcategory spanned by the $X$-categories that are free on objects.
-	There is a equivalence:
-	$$
-	\begin{tikzcd}
-		\XCat\arrow[r, shift left=.5ex, "\Fun{XFrOb}"]&\Cat{XFrObCat}\arrow[l, shift left=.5ex,"U"]
-	\end{tikzcd}
-	$$
-\end{proposition}
-\begin{proof}
-%	\todo{Can we streamline this proof?}
-%	Consider the diagram below, in which $\pi_{\Fun{X}}$ and $p$ are split Grothendieck fibrations:
-%	$$
-%	\begin{tikzcd}[row sep=large,column sep=large]
-%		&\Cat{XFrObCat}\ar[r,"j"]\ar[d,"\pi_{\Fun{X}}"']\ar[dr,bend left=15pt,"U"]\ar[dr,bend right=15pt]\ar[dr,phantom,"\Nearrow"]
-%			&\int(-/\XCat_{\bo})\ar[d,"p"'] \\
-%		\Set\ar[r,"\eta_{\Fun{X}}"']&\Cat{XKlSet}\ar[r,"i_{\Fun{X}}"']
-%			&\XCat\ar[u,bend right,"\id_{-}"']\ar[r,"-/\XCat_{\bo}"']&\op{\Cat{Cat}}
-%	\end{tikzcd}
-%	$$
-%	The square is a lax pullback, i.e., it is universal with respect to its functors $\pi_{\Fun{X}}$ and $j$ and natural transformation $i_{\Fun{X}}\circ\pi_{\Fun{X}}\to p\circ j=U$.
-%	A section of $p$ is shown, sending $\cat{C}\in\Ob(\XCat)$ to the identity $\id_{\cat{C}}\in\Ob(\cat{C}/\XCat_{\bo})$.
-%
-%	Consider the counit $\epsilon\colon (i_{\Fun{X}}\circ\eta_{\Fun{X}}\circ\Ob)\to\id_{\XCat}$ of the adjunction from (\ref{eq:abramsky}),
-%	$$
-%	\begin{tikzcd}
-%		\Cat{Set}\arrow[r, shift left=.5ex, "i_{\Fun{X}}\circ\eta_{\Fun{X}}"]&\XCat\arrow[l, shift left=.5ex,"\Ob"]
-%	\end{tikzcd}
-%	$$
-%	We have functors $\XCat\To{\eta_{\Fun{X}}\circ\Ob}\Cat{XKlSet}$ and $\XCat\To{\id_{-}}\int(-/\XCat_{\bo})$, and a natural transformation $i_{\Fun{X}}\circ\eta_{\Fun{X}}\circ\Ob\to p\circ\id_{-}=\id_{\XCat}$.
-%	This defines a functor to the lax pullback, which we denote
-%		$$\Fun{XFrOb}\colon\XCat\to\Cat{XFrObCat}.$$
-%
-%	To bring this down to earth, for any $\Cat{X}$-category $\cat{C}$, we begin with the counit functor $\epsilon_{\cat{C}}\colon\Fun{XFr}(\Ob\cat{C})\to\cat{C}$.
-%	As in Proposition~\ref{prop:coslice Xbo}, we define $\Fun{XFrOb}(\cat{C})=\epsilon_{\cat{C}}^*(\id_{\cat{C}})$ to be the left-hand map in the diagram below, which was obtained by factoring the top right composite:
-%	$$
-%	\begin{tikzcd}
-%		\Fun{XFr}(\Ob\cat{C})\arrow[d, "\bo"']\arrow[r, "\epsilon_{\cat{C}}"]&\cat{C}\ar[d,"\id_{\cat{C}}"]\\
-%		\cat{C'}\arrow[r, "\ff"']&\cat{C}
-%	\end{tikzcd}
-%	$$
-%
-%	For any $\cat{C}\in\XCat$, the functor $\epsilon_{\cat{C}}$ is surjective on objects, so the bottom functor is surjective and fully faithful, hence, an equivalence of categories.
-%	This proves that $\fun{U}$ is essentially surjective.\todo{Is it a 2-equivalence? It seems like we don't get $\cat{C}$ on the nose.} It remains to show that $\fun{U}$ is fully faithful.
-%
-%	\todo{Show that $\fun{U}$ is fully faithful}
-\end{proof}
+	% \begin{proposition}\label{prop:free objects}
+	% 	Let $\XCat$ and let $\Cat{XFrObCat}$ be the full subcategory spanned by the $X$-categories that are free on objects.
+	% 	There is a equivalence:
+	% 	$$
+	% 	\begin{tikzcd}
+	% 		\XCat\arrow[r, shift left=.5ex, "\Fun{XFrOb}"]&\Cat{XFrObCat}\arrow[l, shift left=.5ex,"U"]
+	% 	\end{tikzcd}
+	% 	$$
+	% \end{proposition}
+	% \begin{proof}
+	%	\todo{Can we streamline this proof?}
+	%	Consider the diagram below, in which $\pi_{\Fun{X}}$ and $p$ are split Grothendieck fibrations:
+	%	$$
+	%	\begin{tikzcd}[row sep=large,column sep=large]
+	%		&\Cat{XFrObCat}\ar[r,"j"]\ar[d,"\pi_{\Fun{X}}"']\ar[dr,bend left=15pt,"U"]\ar[dr,bend right=15pt]\ar[dr,phantom,"\Nearrow"]
+	%			&\int(-/\XCat_{\bo})\ar[d,"p"'] \\
+	%		\Set\ar[r,"\eta_{\Fun{X}}"']&\Cat{XKlSet}\ar[r,"i_{\Fun{X}}"']
+	%			&\XCat\ar[u,bend right,"\id_{-}"']\ar[r,"-/\XCat_{\bo}"']&\op{\Cat{Cat}}
+	%	\end{tikzcd}
+	%	$$
+	%	The square is a lax pullback, i.e., it is universal with respect to its functors $\pi_{\Fun{X}}$ and $j$ and natural transformation $i_{\Fun{X}}\circ\pi_{\Fun{X}}\to p\circ j=U$.
+	%	A section of $p$ is shown, sending $\cat{C}\in\Ob(\XCat)$ to the identity $\id_{\cat{C}}\in\Ob(\cat{C}/\XCat_{\bo})$.
+	%
+	%	Consider the counit $\epsilon\colon (i_{\Fun{X}}\circ\eta_{\Fun{X}}\circ\Ob)\to\id_{\XCat}$ of the adjunction from (\ref{eq:abramsky}),
+	%	$$
+	%	\begin{tikzcd}
+	%		\Cat{Set}\arrow[r, shift left=.5ex, "i_{\Fun{X}}\circ\eta_{\Fun{X}}"]&\XCat\arrow[l, shift left=.5ex,"\Ob"]
+	%	\end{tikzcd}
+	%	$$
+	%	We have functors $\XCat\To{\eta_{\Fun{X}}\circ\Ob}\Cat{XKlSet}$ and $\XCat\To{\id_{-}}\int(-/\XCat_{\bo})$, and a natural transformation $i_{\Fun{X}}\circ\eta_{\Fun{X}}\circ\Ob\to p\circ\id_{-}=\id_{\XCat}$.
+	%	This defines a functor to the lax pullback, which we denote
+	%		$$\Fun{XFrOb}\colon\XCat\to\Cat{XFrObCat}.$$
+	%
+	%	To bring this down to earth, for any $\Cat{X}$-category $\cat{C}$, we begin with the counit functor $\epsilon_{\cat{C}}\colon\Fun{XFr}(\Ob\cat{C})\to\cat{C}$.
+	%	As in Proposition~\ref{prop:coslice Xbo}, we define $\Fun{XFrOb}(\cat{C})=\epsilon_{\cat{C}}^*(\id_{\cat{C}})$ to be the left-hand map in the diagram below, which was obtained by factoring the top right composite:
+	%	$$
+	%	\begin{tikzcd}
+	%		\Fun{XFr}(\Ob\cat{C})\arrow[d, "\bo"']\arrow[r, "\epsilon_{\cat{C}}"]&\cat{C}\ar[d,"\id_{\cat{C}}"]\\
+	%		\cat{C'}\arrow[r, "\ff"']&\cat{C}
+	%	\end{tikzcd}
+	%	$$
+	%
+	%	For any $\cat{C}\in\XCat$, the functor $\epsilon_{\cat{C}}$ is surjective on objects, so the bottom functor is surjective and fully faithful, hence, an equivalence of categories.
+	%	This proves that $\fun{U}$ is essentially surjective.\todo{Is it a 2-equivalence? It seems like we don't get $\cat{C}$ on the nose.} It remains to show that $\fun{U}$ is fully faithful.
+	%
+	%	\todo{Show that $\fun{U}$ is fully faithful}
+	% \end{proof}
+%-----
+
 
 \section{Profunctors}\label{sec:profunctors}
 
@@ -1025,6 +1039,20 @@ Precisely, if $M$ is as above, there are canonical isomorphisms $\Hom_{\cat{C}}\
 \todo[author=Patrick,inline]{Define monoids construction}
 \todo[author=Patrick,inline]{Examples: $\MMon(\dSpan)\iso\dProf$, $\MMon(\dSpan(\Mon))\iso\dMProf$}
 \todo[author=Patrick,inline]{Give monad structure}
+\todo[author=Patrick,inline]{Discuss Kliesli objects}
+
+\subsection{The $(\bo,\ff)$ factorization system}
+
+\begin{theorem}
+	Let $\dcat{D}$ be a framed bicategory with Kliesli objects. Then the vertical category $\dcat{D}_0$ has an orthogonal factorization system $(\bo,\ff)$.
+\end{theorem}
+
+\begin{theorem}
+	Let $\dcat{D}$ be a framed bicategory with Kliesli objects. Then there is an equivalence
+	\[
+		\MMon(\dcat{D}) \iso \dcat{D}^{\bo}.
+	\]
+\end{theorem}
 
 \subsection{$\Cat{Mon}(\Cat{Prof}(\cat{C},\cat{C}))$: Monoid objects in $(\cat{C},\cat{C})$-profunctors}
 \todo[author=Patrick,inline]{This section and the next should be revisited after framed bicategory material}
@@ -1096,30 +1124,32 @@ Similarly, a multiplication on $M$ is as above, with the additional conditions
 \end{gather*}
 for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e')$.
 
-\begin{lemma}\label{Lem:mon profs equal boo functors}
-	Let $\cat{C}$ be a monoidal category.
-	There is an equivalence of categories
-	\[
-		\Mon(\MProf(\cat{C},\cat{C}))\simeq \cat{C}/\MonCat_{\bo}.
-	\]
-	\todo{Make this natural in $\cat{C}$.}
-\end{lemma}
-\begin{proof}
-	\todo{Basic idea: this builds on Lemma~\ref{lemma:CCprofunctors}}
-\end{proof}
+% Cut
+%-----
+	% \begin{lemma}\label{Lem:mon profs equal boo functors}
+	% 	Let $\cat{C}$ be a monoidal category.
+	% 	There is an equivalence of categories
+	% 	\[
+	% 		\Mon(\MProf(\cat{C},\cat{C}))\simeq \cat{C}/\MonCat_{\bo}.
+	% 	\]
+	% 	\todo{Make this natural in $\cat{C}$.}
+	% \end{lemma}
+	% \begin{proof}
+	% 	\todo{Basic idea: this builds on Lemma~\ref{lemma:CCprofunctors}}
+	% \end{proof}
 
-\begin{lemma}\label{lemma:easy compcat}
-	If $\cat{C}$ is a compact category, then
-	\[
-		\cat{C}/\MonCat_{\bo}\iso\cat{C}/\CompCat_{\bo}
-	\]
-	\todo{Make this natural in $\cat{C}$.}
-\end{lemma}
-\begin{proof}
-	(if $F\colon\cat{C}\to\cat{X}$ is a monoidal functor and $a\in\cat{C}$ has a dual, then $Fa$ has a dual in $\cat{X}$).
-\end{proof}
+	% \begin{lemma}\label{lemma:easy compcat}
+	% 	If $\cat{C}$ is a compact category, then
+	% 	\[
+	% 		\cat{C}/\MonCat_{\bo}\iso\cat{C}/\CompCat_{\bo}
+	% 	\]
+	% 	\todo{Make this natural in $\cat{C}$.}
+	% \end{lemma}
+	% \begin{proof}
+	% 	(if $F\colon\cat{C}\to\cat{X}$ is a monoidal functor and $a\in\cat{C}$ has a dual, then $Fa$ has a dual in $\cat{X}$).
+	% \end{proof}
+%-----
 
-%%%%%%%%%%%%%%%%%%
 
 \chapter{Results}\label{sec:generalization}
 
@@ -1133,8 +1163,10 @@ Suppose $\cat{D}$ is a traced category and $\cat{C}=\Int(\cat{D})$ is its compac
 	\MProf(1,\cat{C})\ar[r,"\tn{Proposition~\ref{Prop:mon prof equivalence}}"'] & \Mon(\MProf(\cat{C},\cat{C}))\ar[u,"\tn{Lemmas~\ref{Lem:mon profs equal boo functors},\ \ref{lemma:easy compcat}}"']
 \end{tikzcd}
 \]
+\todo[author=Patrick,inline]{Using equipment language, we can restate this entire diagram to be variable in $\cat{C}$.}
 This diagram shows that to prove~\ref{thm:Theorem B}, we must prove Proposition~\ref{Prop:mon prof equivalence}, which is the purpose of Section~\ref{sec:ccc's}, at which point~\ref{cor:Corollary B} will follow from Proposition~\ref{prop:slice boo int}.
 Finally,~\ref{thm:Theorem A} is just making functorial use of~\ref{cor:Corollary B} in cases where $\cat{D}$ is the free traced category on a set of objects.
+
 
 \section{Compact closed categories}\label{sec:ccc's}
 
