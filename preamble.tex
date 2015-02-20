@@ -1,8 +1,8 @@
 % !TEX root = ./TracedCobAlg.tex
-\RequirePackage{fixltx2e}
 \usepackage{mathtools}
 \usepackage{amsthm}
 \usepackage{amssymb}
+\usepackage{fixltx2e}
 \usepackage[T1]{fontenc}
 \usepackage{newpxtext}
 \usepackage[varg,bigdelims,varbb]{newpxmath}
@@ -63,34 +63,47 @@
 \newcommand{\iso}{\cong}
 
 \newcommand{\cat}[1]{\mathscr{#1}} %category variable
-\newcommand{\Cat}[1]{\mathbf{#1}} %named category
+\newcommand{\ncat}[1]{\mathbf{#1}} %named category
 \newcommand{\ccat}[1]{\mathcal{#1}} % 2-category variable
 \newcommand{\dcat}[1]{\mathbb{#1}} %double category variable
 \newcommand{\fun}[1]{#1}               %functor variable
 \newcommand{\Fun}[1]{\mathsf{#1}}  %named functor
-% \newcommand{\hom}{\mathrm{hom}}
-% \newcommand{\twocat}[1]{\mathcal{#1}}
-% \newcommand{\dblcat}[1]{\mathbb{#1}}
-\newcommand{\Mon}{\Cat{Mon}}
-\newcommand{\MMon}{\dcat{M}\Cat{on}}
-\newcommand{\Prof}{\bm{\ccat{P}}\Cat{rof}}
-\newcommand{\dProf}{\dcat{P}\Cat{rof}}
-\newcommand{\MProf}{\bm{\ccat{M}}\Cat{Prof}}
-\newcommand{\dMProf}{\dcat{M}\Cat{Prof}}
-\newcommand{\dSpan}{\dcat{S}\Cat{pan}}
-\newcommand{\EndoProf}{\Cat{EndoProf}}
-\newcommand{\MonCat}{\bm{\ccat{M}}\Cat{onCat}}
-\newcommand{\MonCatLax}{\MonCat_{\mathrm{lax}}}
-\newcommand{\SymMonCat}{\bm{\ccat{S}}\Cat{ymMonCat}}
-\newcommand{\CompCat}{\bm{\ccat{C}}\Cat{ompCat}}
-\newcommand{\TrCat}{\bm{\ccat{T}}\Cat{rCat}}
-\newcommand{\TrProp}{\Cat{TrProp}}
-\newcommand{\Prop}{\Cat{Prop}}
-\newcommand{\Set}{\Cat{Set}}
-\newcommand{\Int}{\Fun{Int}}
-% \def\2Cat{\tn{$2$-$\Cat{Cat}$}}
-\newcommand{\CobSetAlg}{\int^{\Set}(\Cat{Cob}/\bullet)\alg}
-\newcommand{\CobKlsAlg}{\int^{\Cat{Kls}}(\Cat{Cob}/\bullet)\alg}
+
+\newcommand{\Set}{\ncat{Set}} % 1-cat Set
+\newcommand{\Span}{\bm{\ccat{S}}\ncat{pan}} % bicat Span
+\newcommand{\dSpan}{\dcat{S}\ncat{pan}} % double cat Span
+\newcommand{\Cat}{\ncat{Cat}} % 1-cat Cat
+\newcommand{\CCat}{\bm{\ccat{C}}\ncat{at}} % 2-cat Cat
+\newcommand{\Prof}{\bm{\ccat{P}}\ncat{rof}} % bicat Prof(unctors)
+\newcommand{\dProf}{\dcat{P}\ncat{rof}} % double cat Prof(unctors)
+\newcommand{\MMonCat}{\bm{\ccat{M}}\ncat{onCat}} % 2-cat MonCat
+\newcommand{\SSymMonCat}{\bm{\ccat{S}}\ncat{ymMonCat}} % 2-cat SymMonCat
+\newcommand{\MProf}{\bm{\ccat{M}}\ncat{Prof}} % bicat MProf (monoidal Prof)
+\newcommand{\dMProf}{\dcat{M}\ncat{Prof}} % double cat MProf (monoidal Prof)
+%\newcommand{\EndoProf}{\ncat{EndoProf}}
+\newcommand{\MMonCatLax}{\MMonCat_{\mathrm{lax}}}
+\newcommand{\CompCat}{\ncat{CompCat}} % 1-cat CompCat
+\newcommand{\CCompCat}{\bm{\ccat{C}}\ncat{ompCat}} % 2-cat CompCat
+\newcommand{\CompProf}{\bm{\ccat{C}}\ncat{ompProf}} % bicat CompProf
+\newcommand{\dCompProf}{\dcat{C}\ncat{ompProf}} % bicat CompProf
+\newcommand{\TrCat}{\ncat{TrCat}} % 1-cat TrCat
+\newcommand{\TTrCat}{\bm{\ccat{T}}\ncat{rCat}} % 2-cat TrCat
+\newcommand{\TrProp}{\ncat{TrProp}}
+\newcommand{\Prop}{\ncat{Prop}}
+% \def\2Cat{\tn{$2$-$\ncat{Cat}$}}
+
+\newcommand{\Int}{\ncat{Int}}
+\newcommand{\Mon}{\ncat{Mon}} % 1-cat Mon(oids/ads)
+\newcommand{\MMon}{\bm{\ccat{M}}\ncat{on}} % 2-cat Mon(oids/ads)
+\newcommand{\Mod}{\bm{\ccat{M}}\ncat{on}} % bicat cat Mod(ules)
+\newcommand{\dMod}{\dcat{M}\ncat{on}} % double cat Mod(ules)
+\newcommand{\Ver}{\ncat{Vert}} % vertical 1-cat
+\newcommand{\VVer}{\bm{\ccat{V}}\ncat{ert}} % vertical 2-cat
+\newcommand{\HHor}{\bm{\ccat{H}}\ncat{or}} % horizontal bicat
+
+\newcommand{\Cob}{\ncat{Cob}}
+\newcommand{\CobSetAlg}{\int^{\Set}(\Cob/\bullet)\alg}
+\newcommand{\CobKlsAlg}{\int^{\ncat{Kls}}(\Cob/\bullet)\alg}
 \newcommand{\op}[1]{{#1}^{\text{op}}}
 \newcommand{\vop}[1]{{#1}^{\text{vop}}}
 \newcommand{\hop}[1]{{#1}^{\text{hop}}}
@@ -186,8 +199,8 @@
 
 % \def\bhline{\Xhline{2\arrayrulewidth}}
 % \def\bbhline{\Xhline{2.5\arrayrulewidth}}
-\def\alg{{\text \textendash}\Cat{Alg}}
-\def\XCat{\Cat{XCat}}
+\def\alg{{\text \textendash}\ncat{Alg}}
+\def\XCat{\ncat{XCat}}
 \def\To{\xrightarrow}
 \def\ul{\underline}
 \def\List{\textnormal{List}}
