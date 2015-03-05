@@ -61,6 +61,7 @@
 
 \newcommand{\prodb}{\mathbin{\Pi}}
 \newcommand{\iso}{\cong}
+\renewcommand{\equiv}{\simeq}
 
 \newcommand{\cat}[1]{\mathscr{#1}} %category variable
 \newcommand{\ncat}[1]{\mathbf{#1}} %named category
@@ -76,16 +77,25 @@
 \newcommand{\CCat}{\bm{\ccat{C}}\ncat{at}} % 2-cat Cat
 \newcommand{\Prof}{\bm{\ccat{P}}\ncat{rof}} % bicat Prof(unctors)
 \newcommand{\dProf}{\dcat{P}\ncat{rof}} % double cat Prof(unctors)
+\newcommand{\MonCat}{\ncat{MonCat}}
 \newcommand{\MMonCat}{\bm{\ccat{M}}\ncat{onCat}} % 2-cat MonCat
 \newcommand{\SSymMonCat}{\bm{\ccat{S}}\ncat{ymMonCat}} % 2-cat SymMonCat
 \newcommand{\MProf}{\bm{\ccat{M}}\ncat{Prof}} % bicat MProf (monoidal Prof)
 \newcommand{\dMProf}{\dcat{M}\ncat{Prof}} % double cat MProf (monoidal Prof)
+\newcommand{\FrMonCat}{\ncat{FrMonCat}}
+\newcommand{\FFrMonCat}{\bm{\ccat{F}}\ncat{rMonCat}}
+\newcommand{\FrMonProf}{\bm{\ccat{F}}\ncat{rMonProf}}
+\newcommand{\dFrMonProf}{\dcat{F}\ncat{rMonProf}}
 %\newcommand{\EndoProf}{\ncat{EndoProf}}
 \newcommand{\MMonCatLax}{\MMonCat_{\mathrm{lax}}}
 \newcommand{\CompCat}{\ncat{CompCat}} % 1-cat CompCat
 \newcommand{\CCompCat}{\bm{\ccat{C}}\ncat{ompCat}} % 2-cat CompCat
 \newcommand{\CompProf}{\bm{\ccat{C}}\ncat{ompProf}} % bicat CompProf
 \newcommand{\dCompProf}{\dcat{C}\ncat{ompProf}} % bicat CompProf
+\newcommand{\FrCompCat}{\ncat{FrCompCat}}
+\newcommand{\FFrCompCat}{\bm{\ccat{F}}\ncat{rCompCat}}
+\newcommand{\FrCompProf}{\bm{\ccat{F}}\ncat{rCompProf}}
+\newcommand{\dFrCompProf}{\dcat{F}\ncat{rCompProf}}
 \newcommand{\TrCat}{\ncat{TrCat}} % 1-cat TrCat
 \newcommand{\TTrCat}{\bm{\ccat{T}}\ncat{rCat}} % 2-cat TrCat
 \newcommand{\TrProp}{\ncat{TrProp}}
@@ -94,10 +104,11 @@
 
 \newcommand{\Int}{\ncat{Int}}
 \newcommand{\Pt}{\ncat{Pt}} % 1-cat Pointed endo-bimodules
+\newcommand{\PPt}{\bm{\ccat{P}}\ncat{t}} % 2-cat Pointed endo-bimodules
 \newcommand{\Mon}{\ncat{Mon}} % 1-cat Mon(oids/ads)
 \newcommand{\MMon}{\bm{\ccat{M}}\ncat{on}} % 2-cat Mon(oids/ads)
-\newcommand{\Mod}{\bm{\ccat{M}}\ncat{on}} % bicat cat Mod(ules)
-\newcommand{\dMod}{\dcat{M}\ncat{on}} % double cat Mod(ules)
+\newcommand{\Mod}{\bm{\ccat{M}}\ncat{od}} % bicat cat Mod(ules)
+\newcommand{\dMod}{\dcat{M}\ncat{od}} % double cat Mod(ules)
 \newcommand{\Ver}{\ncat{Vert}} % vertical 1-cat
 \newcommand{\VVer}{\bm{\ccat{V}}\ncat{ert}} % vertical 2-cat
 \newcommand{\HHor}{\bm{\ccat{H}}\ncat{or}} % horizontal bicat
