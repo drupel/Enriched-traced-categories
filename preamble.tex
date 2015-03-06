@@ -68,13 +68,13 @@
 \newcommand{\ccat}[1]{\mathcal{#1}} % 2-category variable
 \newcommand{\dcat}[1]{\mathbb{#1}} %double category variable
 \newcommand{\fun}[1]{#1}               %functor variable
-\newcommand{\Fun}[1]{\mathsf{#1}}  %named functor
+\newcommand{\nfun}[1]{\mathbf{#1}}  %named functor
 
 \newcommand{\Set}{\ncat{Set}} % 1-cat Set
 \newcommand{\Span}{\bm{\ccat{S}}\ncat{pan}} % bicat Span
 \newcommand{\dSpan}{\dcat{S}\ncat{pan}} % double cat Span
 \newcommand{\Cat}{\ncat{Cat}} % 1-cat Cat
-\newcommand{\CCat}{\bm{\ccat{C}}\ncat{at}} % 2-cat Cat
+\newcommand{\CCat}{\bm{\ccat{C}}\ncat{at}} % F-cat Cat
 \newcommand{\Prof}{\bm{\ccat{P}}\ncat{rof}} % bicat Prof(unctors)
 \newcommand{\dProf}{\dcat{P}\ncat{rof}} % double cat Prof(unctors)
 \newcommand{\MonCat}{\ncat{MonCat}}
@@ -102,7 +102,11 @@
 \newcommand{\Prop}{\ncat{Prop}}
 % \def\2Cat{\tn{$2$-$\ncat{Cat}$}}
 
-\newcommand{\Int}{\ncat{Int}}
+\newcommand{\Int}{\nfun{Int}}
+\newcommand{\List}{\nfun{List}}
+\newcommand{\TrFrObCat}{\nfun{TrFrObCat}}
+\newcommand{\TrFr}{\nfun{TrFr}}
+\newcommand{\CompFr}{\nfun{CompFr}}
 \newcommand{\Pt}{\ncat{Pt}} % 1-cat Pointed endo-bimodules
 \newcommand{\PPt}{\bm{\ccat{P}}\ncat{t}} % 2-cat Pointed endo-bimodules
 \newcommand{\Mon}{\ncat{Mon}} % 1-cat Mon(oids/ads)
