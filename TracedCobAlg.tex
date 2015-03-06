@@ -1100,8 +1100,51 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
 \todo[author=Patrick,inline]{Examples: $\dMod(\dSpan)\iso\dProf$}
 \todo[author=Patrick,inline]{Give monad structure}
 There is a double functor $\eta\colon\dcat{D}\to\dMod(\dcat{D})$ sending an object to the trivial monoid on it. There is also a simple double funtor $\mu\colon\dMod(\dMod(\dcat{D}))\to\dMod(\dcat{D})$ making $\dMod$ into a monad.
-\todo[author=Patrick,inline]{Discuss Kliesli objects}
-A framed bicategory $\dcat{D}$ has Kliesli objects (rename?) when $\dcat{D}$ admits an algebra structure from the monad $\dMod$, equivalently when the unit $\dcat{D}\to\dMod(\dcat{D})$ has a left adjoint ($\dMod$ is a lax-idempotent monad).
+
+The $\dMod$ construction can be seen as a kind of free cocompletion.
+In particular, $\eta\colon\dcat{D}\to\dMod(\dcat{D})$ is the free cocompletion of $\dcat{D}$ under ``collages''.
+Though this fact won't be neccessary for this paper, the notion of the collage of a monad will be very usefull.
+
+\begin{definition}
+   Let $\begin{tikzcd}[column sep=small] C \ar[r,tick,"M"] & C \end{tikzcd}$ be a monad in a framed bicategory $\dcat{D}$.
+   The \emph{collage} of $M$ is an object $\Col{M}$ of $\dcat{D}$ together with a vertical morphism $\eta_M\colon C\to\Col{M}$ and a 2-cell
+   \[
+      \begin{tikzcd}
+         C \ar[r,tick,"M" domA] \ar[d,"\eta_M"']
+         & C \ar[d,"\eta_M"]
+         \\
+         \Col{M} \ar[r,tick,"\Col{M}"' codA]
+         & \Col{M}
+         \twocellA{\vec{\eta}_M}
+      \end{tikzcd}
+   \]
+   such that $\vec{\eta}_M$ is cartesian, $(\eta_M,\vec{\eta}_M)$ is a morphism of monads from $M$ to $\Col{M}$ (the unit horizontal 1-cell on $\Col{M}$), and satisfies the universal property that for any other object $X$ and morphism of monads $(f,\phi)$ as below, there exists a unique vertical morphism $\hat\phi\colon\Col{M}\to X$ such that
+\[
+   \begin{tikzcd}
+      C \ar[r,tick,"M" domA] \ar[d,"f"']
+      & C \ar[d,"f"]
+      \\
+      X \ar[r,tick,"X"']
+      & X
+      \twocellA{\phi}
+   \end{tikzcd}
+   \quad = \quad
+   \begin{tikzcd}
+      C \ar[r,tick,"M" domA] \ar[d,"\eta_M"']
+      & C \ar[d,"\eta_M"]
+      \\
+      \Col{M} \ar[r,tick,"\Col{M}"' {domB,codA}] \ar[d,"\hat{\phi}"']
+      & \Col{M} \ar[d,"\hat{\phi}"]
+      \\
+      X \ar[r,tick,"X"' codB]
+      & X
+      \twocellA{\vec{\eta}_M}
+      \twocellB[pos=.6]{\id_{\hat{\phi}}}
+   \end{tikzcd}
+\]
+\end{definition}
+
+A framed bicategory $\dcat{D}$ has collages when $\dcat{D}$ admits an algebra structure from the monad $\dMod$, equivalently when the unit $\dcat{D}\to\dMod(\dcat{D})$ has a left adjoint ($\dMod$ is a lax-idempotent monad).
 
 \subsection{The $(\bo,\ff)$ factorization system}
 
@@ -1131,13 +1174,26 @@ The horizontal morphisms and 2-cells are determined by the codomain of the $\bo$
 If we want to modify the previous theorem to get an equivalence with $\dcat{D}$ itself, we need to restrict to objects of $\dcat{D}$ which are ``discrete''.
 To provide a notion of discreteness, suppose we have a category $\cat{C}$ and an ``underlying'' functor $U\colon\dcat{D}_0\to\cat{C}$ with a left adjoint $F\colon\cat{C}\to\dcat{D}_0$.
 Assume furthermore that $U(\bo)\subseteq\mathrm{iso}(\cat{C})$ and that the components of the counit of the adjunction are left pseudo-orthogonal to $\ff$ in the vertical 2-category of $\dcat{D}$.
+In particular, if $\epsilon_x=g\circ f\colon FUx\to x$ is a $(\bo,\ff)$ factorization of a counit $\epsilon_x$, then $g$ is an equivalence in $\VVer(\dcat{D})$ (but not necessarily an isomorphism).
 Let $\dcat{D}'\subseteq\dcat{D}$ be the full subcategory spanned by the objects in the image of $F$ (the ``discrete'' objects).
 
 \begin{theorem}
    Under the assumptions of the previous paragraph, there is an equivalence of 2-categories $\VVer(\dMod(\dcat{D}'))\iso\VVer(\dcat{D})$.
 \end{theorem}
 
-In particular, the adjunctions between $\Set$ and $\MonCat$ and between $\Set$ and $\CompCat$ respectively satisfy the conditions of the previous theorem, so we get equivalences $\MMon(\dFrMonProf)\equiv\MMonCat$ and $\MMon(\dFrCompProf)\equiv\CCompCat$ respectively. There is a double functor $\dFrMonProf\to\dFrCompProf$, and if we take $\dcat{D}$ to be the double category which factors this functor, whose vertical category is $\FrMonCat$ and whose horizontal 1-cells and 2-cells are from $\dFrCompProf$, then we get $\MMon(\dcat{D})\equiv\TTrCat$.
+In particular, the adjunctions between $\Set$ and $\MonCat$ and between $\Set$ and $\CompCat$ respectively satisfy the conditions of the previous theorem, so we get equivalences $\MMon(\dFrMonProf)\equiv\MMonCat$ and $\MMon(\dFrCompProf)\equiv\CCompCat$ respectively.
+Consider the double functor $\dFrMonProf\to\dFrCompProf$, and define $\dcat{D}$ to be the double category which factors this functor, whose vertical category is $\FrMonCat$ and whose horizontal 1-cells and 2-cells are from $\dFrCompProf$.
+In other words, $\dcat{D}_0=\FrMonCat$ and $\dcat{D}_1$ is defined by the pullback
+\[
+   \begin{tikzcd}
+      \dcat{D}_1 \ar[r] \ar[d] \ar[dr,phantom,"\lrcorner"very near start]
+      & \dFrCompProf_1 \ar[d]
+      \\
+      \FrMonCat\times\FrMonCat \ar[r]
+      & \FrCompCat\times\FrCompCat
+   \end{tikzcd}
+\]
+then we get $\MMon(\dcat{D})\equiv\TTrCat$.
 
 \subsection{$\Mon(\Prof(\cat{C},\cat{C}))$: Monoid objects in $(\cat{C},\cat{C})$-profunctors}
 \todo[author=Patrick,inline]{This section and the next should be revisited after framed bicategory material}
