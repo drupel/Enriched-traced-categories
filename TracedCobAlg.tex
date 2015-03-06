@@ -214,7 +214,7 @@ Let $\MMon(\ncat{FrCompCat})$ denote the 2-category of monoid objects in $\ncat{
 \begin{named}{Theorem A'}
    There is an equivalence of 2-categories
    \[
-      \MMon(\ncat{FrCompCat})\simeq\TrCat
+      \MMon(\ncat{FrCompCat})\simeq\TTrCat
    \]
    and an equivalence of 1-categories
    \[
@@ -237,7 +237,7 @@ Let $\CompCat_{\bo}\ss\CompCat$ denote the left class.
    \begin{equation}\label{dia:compact lax strong}
       \Lax(\cat{C},\Set)\simeq\cat{C}/\CompCat_{\bo}
    \end{equation}
-\todo{Make functorial in $\cat{C}$.}
+This is functorial in $\cat{C}$ in the sense of Theorem~\ref{PATRICK-todo}.
 \end{named}
 
 Recall from~\cite{JoyalStreetVerity} that traced categories are full subcategories of compact categories.
@@ -678,10 +678,10 @@ One can think of props as symmetric monoidal categories that are free on a fixed
 \begin{tikzcd}
    \TrProp\ar[r]\ar[d]\arrow[dr, phantom, "\lrcorner", very near start]&\TrCat_1\ar[d]\\
    \Prop\ar[r]\ar[d,"\Ob"']\arrow[dr, phantom, "\lrcorner", very near start]&\SSymMonCat_1\ar[d,"\Ob"]\\
-   \Set\ar[r,"\Fun{List}"']&\Set
+   \Set\ar[r,"\List"']&\Set
 \end{tikzcd}
 \]
-where $\SSymMonCat_1$ (resp. $\TrCat_1$) is the underlying 1-category of $\SSymMonCat$ (resp.\ of $\TrCat$), and where $\Fun{List}\colon\Set\to\Set$ is the free monoid monad. This definition of $\Prop$ agrees with that in~\cite{HackneyRobertson}.\todo{Check this.}
+where $\SSymMonCat_1$ (resp. $\TrCat_1$) is the underlying 1-category of $\SSymMonCat$ (resp.\ of $\TrCat$), and where $\List\colon\Set\to\Set$ is the free monoid monad. This definition of $\Prop$ agrees with that in~\cite{HackneyRobertson}.\todo{Check this.}
 
 
 \section{Compact categories and the Int construction}\label{sec:compact and int}
@@ -1121,19 +1121,19 @@ The horizontal morphisms and 2-cells are determined by the codomain of the $\bo$
 \end{tikzcd}
 \]
 
-\begin{theorem}
+\begin{theorem}\label{thm:Mod vs bo}
    Let $\dcat{D}$ be a framed bicategory with Kliesli objects. Then there is an equivalence
    \[
       \dMod(\dcat{D}) \iso \dcat{D}^{\bo}.
    \]
 \end{theorem}
 
-If we want to modify the previous theorem to get an equivalence with $\dcat{D}$ itself, we need to restrict to objects of $\dcat{D}$ which are ``discrete''.
+If we want to modify the previous theorem to get an equivalence with $\dcat{D}$ rather than $\dcat{D}^{\bo}$, we need to restrict to objects of $\dcat{D}$ which are ``discrete''.
 To provide a notion of discreteness, suppose we have a category $\cat{C}$ and an ``underlying'' functor $U\colon\dcat{D}_0\to\cat{C}$ with a left adjoint $F\colon\cat{C}\to\dcat{D}_0$.
 Assume furthermore that $U(\bo)\subseteq\mathrm{iso}(\cat{C})$ and that the components of the counit of the adjunction are left pseudo-orthogonal to $\ff$ in the vertical 2-category of $\dcat{D}$.
 Let $\dcat{D}'\subseteq\dcat{D}$ be the full subcategory spanned by the objects in the image of $F$ (the ``discrete'' objects).
 
-\begin{theorem}
+\begin{theorem}\label{thm:Verts}
    Under the assumptions of the previous paragraph, there is an equivalence of 2-categories $\VVer(\dMod(\dcat{D}'))\iso\VVer(\dcat{D})$.
 \end{theorem}
 
@@ -1215,7 +1215,7 @@ For any framed bicategory $\dcat{D}$ with a terminal object, we can consider the
 \end{equation}
 
 The primary goal of this section is to establish the equivalences of 1-categories
-\begin{equation}
+\begin{equation}\label{eqn:primary goal}
    \begin{tikzcd}
       \dCompProf(1,-) \equiv \Pt(\dCompProf) \equiv \Mon(\dCompProf).
    \end{tikzcd}
@@ -1335,6 +1335,8 @@ Let $\MProf{(\cat{C},\cat{C})}_{\ast}$ denote the category of pointed monoidal e
 
 \section{Proof of~\ref{thm:Theorem B} and~\ref{cor:Corollary B}}\label{sec:proof of Bs}
 
+\todo[inline]{The following theorem, with naturality built in, is (\ref{eqn:primary goal}) + \ref{thm:Mod vs bo} on verts.}
+
 \begin{named}{Theorem B}\label{thm:Theorem B}
    Let $\cat{C}$ be a compact category.
    There is an equivalence of categories
@@ -1368,6 +1370,8 @@ Let $\MProf{(\cat{C},\cat{C})}_{\ast}$ denote the category of pointed monoidal e
       &\iso\Hom_{\cat{D}}(F(\inp{X})\otimes F({(\outp{X})}^*),F(\inp{Y})\otimes F({(\outp{Y})}^*))
    \end{align*}
 \end{proof}
+
+\todo[inline]{See paragraph after \ref{thm:Verts}, and consult Patrick.}
 
 \begin{proposition}\label{prop:slice boo int}
    Let $\cat{C}$ be a traced category.
@@ -1422,6 +1426,8 @@ Let $\MProf{(\cat{C},\cat{C})}_{\ast}$ denote the category of pointed monoidal e
    Thus the dashed arrow is an isomorphism, which completes the proof.
 \end{proof}
 
+\todo[inline]{See Section 2.5}
+
 \begin{named}{Corollary B}\label{cor:Corollary B}
    Suppose that $\cat{D}$ is a traced category and its compact closure is $\cat{C}=\Int(\cat{D})$.
    Then there is an equivalence of categories
@@ -1431,7 +1437,7 @@ Let $\MProf{(\cat{C},\cat{C})}_{\ast}$ denote the category of pointed monoidal e
    This equivalence is natural in $\cat{D}$; i.e., the following diagram commutes:
    \begin{equation*}
    \begin{tikzcd}
-      \TrCat\ar[r,"\Fun{Int}"]\ar[dr,"-/\TrCat_{\bo}"']
+      \TrCat\ar[r,"\Int"]\ar[dr,"-/\TrCat_{\bo}"']
          &\CompCat\ar[d,"\alg"] \\
       &\Cat
    \end{tikzcd}
@@ -1447,26 +1453,29 @@ Let $\MProf{(\cat{C},\cat{C})}_{\ast}$ denote the category of pointed monoidal e
 
 \section{Proof of~\ref{thm:Theorem A}}\label{sec:proof of A}
 
+\todo[inline]{All this will be replaced once 3.2 is finished}
+
+
 In this section, we prove an equivalence between traced categories and algebras on cobordism categories, indexed by a set of objects. \todo{Add more guidance to this section}
 
 \begin{proposition}\label{prop:natural equivalence cob-O and traced-O}
    Let $\cat{O}$ be a set.
    There is an equivalence of categories
-      $$(\Cob/\cat{O})\alg\simeq\Fun{TrFrObCat}(\cat{O})$$
+      $$(\Cob/\cat{O})\alg\simeq\TrFrObCat(\cat{O})$$
    which is functorial in $\cat{O}$.
 \end{proposition}
 \begin{proof}
    Consider the following diagram of categories, in which the left-hand triangle commutes, as in Definition~\ref{def:XKlSet XFrObCat}:
    $$
    \begin{tikzcd}
-      &\Set\ar[rr,"\Fun{CompFr}\iso\Cob/-"]\ar[dl,"\eta_{\Fun{Tr}}"']\ar[dr,"\Fun{TrFr}"]&&\CompCat\ar[dr,"\alg"] \\
-      \ncat{TrKlSet}\ar[rr,"i_{\Fun{Tr}}"']&&\TrCat\ar[ur,"\Fun{Int}"]\ar[rr,"-/\TrCat_{\bo}"']
+      &\Set\ar[rr,"\CompFr\iso\Cob/-"]\ar[dl,"\eta"']\ar[dr,"\TrFr"]&&\CompCat\ar[dr,"\alg"] \\
+      \ncat{TrKlSet}\ar[rr,"i"']&&\TrCat\ar[ur,"\Int"]\ar[rr,"-/\TrCat_{\bo}"']
          &&\Cat
    \end{tikzcd}
    $$
    The middle triangle commutes by Proposition~\ref{prop:free traced and compact} and the labeled isomorphism holds by Proposition~\ref{prop:free compact is Cob}.
    The right-hand triangle commutes by~\ref{cor:Corollary B}.
-   For a set $\cat{O}$, the path across the top to $\Cat$ is $(\Cob/\cat{O})\alg$, which equals $\Fun{TrFrObCat}(\cat{O})$, the path along the left and bottom.
+   For a set $\cat{O}$, the path across the top to $\Cat$ is $(\Cob/\cat{O})\alg$, which equals $\TrFrObCat(\cat{O})$, the path along the left and bottom.
 \end{proof}
 
 %\begin{remark}
