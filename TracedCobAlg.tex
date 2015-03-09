@@ -995,6 +995,7 @@ Recall that a profunctor $M$ from $\cat{C}$ to $\cat{D}$, written
 \]
 is defined to be a functor $M\colon\op{\cat{C}}\times\cat{D}\to\Set$.
 We can think of a profunctor as a sort of graded bimodule: for each object $c\in\cat{C}$ and $d\in\cat{D}$ there is a set $M(c,d)$ of elements in the bimodule, and given an element $m\in M(c,d)$ and morphisms $f\colon c'\to c$ in $\cat{C}$ and $g\colon d\to d'$ in $\cat{D}$, there are elements $g\cdot m\in M(c,d')$ and $m\cdot f\in F(c',d)$, such that $(g\cdot m)\cdot f=g\cdot(m\cdot f)$, and $g'\cdot(g\cdot m)=(g'\circ g)\cdot m$ and $(m\cdot f)\cdot f'=m\cdot(f\circ f')$ whenever they make sense.
+TEST
 
 If $F\colon\cat{C}'\to\cat{C}$ and $G\colon\cat{D}'\to\cat{D}$ are functors, and $M$ is a profunctor as before, then there is a profunctor $M(F,G)$ from $\cat{C}'$ to $\cat{D}'$, defined to be the composite
 \[
