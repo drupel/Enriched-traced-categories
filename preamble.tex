@@ -69,38 +69,39 @@
 \newcommand{\dcat}[1]{\mathbb{#1}} %double category variable
 \newcommand{\fun}[1]{#1}               %functor variable
 \newcommand{\nfun}[1]{\mathbf{#1}}  %named functor
+\newcommand{\nncat}[2]{\bm{\ccat{#1}}\ncat{#2}} %named 2-category
 
 \newcommand{\Set}{\ncat{Set}} % 1-cat Set
-\newcommand{\Span}{\bm{\ccat{S}}\ncat{pan}} % bicat Span
+\newcommand{\Span}{\nncat{S}{pan}} % bicat Span
 \newcommand{\dSpan}{\dcat{S}\ncat{pan}} % double cat Span
 \newcommand{\Cat}{\ncat{Cat}} % 1-cat Cat
-\newcommand{\CCat}{\bm{\ccat{C}}\ncat{at}} % F-cat Cat
-\newcommand{\Prof}{\bm{\ccat{P}}\ncat{rof}} % bicat Prof(unctors)
+\newcommand{\CCat}{\nncat{C}{at}} % F-cat Cat
+\newcommand{\Prof}{\nncat{P}{rof}} % bicat Prof(unctors)
 \newcommand{\dProf}{\dcat{P}\ncat{rof}} % double cat Prof(unctors)
 \newcommand{\MonCat}{\ncat{MonCat}}
-\newcommand{\MMonCat}{\bm{\ccat{M}}\ncat{onCat}} % 2-cat MonCat
-\newcommand{\SSymMonCat}{\bm{\ccat{S}}\ncat{ymMonCat}} % 2-cat SymMonCat
-\newcommand{\MonProf}{\bm{\ccat{M}}\ncat{onProf}} % bicat MProf (monoidal Prof)
+\newcommand{\MMonCat}{\nncat{M}{onCat}} % 2-cat MonCat
+\newcommand{\SSymMonCat}{\nncat{S}{ymMonCat}} % 2-cat SymMonCat
+\newcommand{\MonProf}{\nncat{M}{onProf}} % bicat MProf (monoidal Prof)
 \newcommand{\dMonProf}{\dcat{M}\ncat{onProf}} % double cat MProf (monoidal Prof)
-\newcommand{\MProf}{\bm{\ccat{M}}\ncat{onProf}} % just to get old version to compile -- can delete
+\newcommand{\MProf}{\nncat{M}{onProf}} % just to get old version to compile -- can delete
 \newcommand{\dMProf}{\dcat{M}\ncat{Prof}} % just to get old version to compile -- can delete
 \newcommand{\FrMonCat}{\ncat{FrMonCat}}
-\newcommand{\FFrMonCat}{\bm{\ccat{F}}\ncat{rMonCat}}
-\newcommand{\FrMonProf}{\bm{\ccat{F}}\ncat{rMonProf}}
+\newcommand{\FFrMonCat}{\nncat{F}{rMonCat}}
+\newcommand{\FrMonProf}{\nncat{F}{rMonProf}}
 \newcommand{\dFrMonProf}{\dcat{F}\ncat{rMonProf}}
 %\newcommand{\EndoProf}{\ncat{EndoProf}}
 \newcommand{\MMonCatLax}{\MMonCat_{\mathrm{lax}}}
 \newcommand{\CompCat}{\ncat{CompCat}} % 1-cat CompCat
-\newcommand{\CCompCat}{\bm{\ccat{C}}\ncat{ompCat}} % 2-cat CompCat
-\newcommand{\CompProf}{\bm{\ccat{C}}\ncat{ompProf}} % bicat CompProf
+\newcommand{\CCompCat}{\nncat{C}{ompCat}} % 2-cat CompCat
+\newcommand{\CompProf}{\nncat{C}{ompProf}} % bicat CompProf
 \newcommand{\dCompProf}{\dcat{C}\ncat{ompProf}} % bicat CompProf
 \newcommand{\FrCompCat}{\ncat{FrCompCat}}
-\newcommand{\FFrCompCat}{\bm{\ccat{F}}\ncat{rCompCat}}
-\newcommand{\FrCompProf}{\bm{\ccat{F}}\ncat{rCompProf}}
+\newcommand{\FFrCompCat}{\nncat{F}{rCompCat}}
+\newcommand{\FrCompProf}{\nncat{F}{rCompProf}}
 \newcommand{\dFrCompProf}{\dcat{F}\ncat{rCompProf}}
 \newcommand{\TrCat}{\ncat{TrCat}} % 1-cat TrCat
-\newcommand{\TTrCat}{\bm{\ccat{T}}\ncat{rCat}} % 2-cat TrCat
-\newcommand{\TTrFrObCat}{\ccat{T}\nfun{rFrObCat}}
+\newcommand{\TTrCat}{\nncat{T}{rCat}} % 2-cat TrCat
+\newcommand{\TTrFrObCat}{\nncat{T}{rFrObCat}}
 \newcommand{\TrProp}{\ncat{TrProp}}
 \newcommand{\Prop}{\ncat{Prop}}
 % \def\2Cat{\tn{$2$-$\ncat{Cat}$}}
