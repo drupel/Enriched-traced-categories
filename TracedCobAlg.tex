@@ -19,7 +19,7 @@
 \setsecheadstyle{\bfseries\large\raggedright}
 \setsubsecheadstyle{\bfseries\raggedright}
 
-\title{Traced Categories as Lax Functors out of Free Compact Categories}
+\title{String diagrams for traced categories are oriented 1-cobordisms}
 \author{
    David I. Spivak
       \thanks{Spivak and Schultz were supported by AFOSR grant FA9550--14--1--0031, ONR grant N000141310260, and NASA grant NNH13ZEA001N.}
@@ -35,8 +35,8 @@
 \maketitle
 \begin{abstract}
    We give an alternate conception of string diagrams as 1-dimensional oriented cobordisms, the
-   operad of such we denote by $\Cob$.  The axioms of traced categories are fully encoded by $\Cob$
-   in the sense that there is an equivalence of categories between $\Cob$-algebras and enriched
+   operad of which we denote by $\Cob$.  The axioms of traced categories are fully encoded by $\Cob$
+   in the sense that there is an equivalence between $\Cob$-algebras and
    traced categories.  We also prove a substantial generalization of this fact which characterizes
    lax functors out of compact or traced categories.
 \end{abstract}
@@ -63,16 +63,16 @@ Verity~\cite{JoyalStreetVerity}, in which string diagrams of the form
    \node[bb={2}{1}, dashed, fit={(X1) (X2) ($(X1.north)+(0,1.5)$) ($(X1.south)-(0,1)$)},
             bb name=$Y$] (Y) {};
    \draw[label]
-      node[above left=of Y_in1]     {$Y_a^-$}
-      node[above left=of Y_in2]     {$Y_b^-$}
-      node[above right=of Y_out1]   {$Y^+_a$}
-      node[above left=of X1_in1]    {$X^-_{1a}$}
-      node[above left=of X1_in2]    {$X^-_{1b}$}
-      node[above right=of X1_out1]  {$X^+_{1c}$}
-      node[above left=of X2_in1]    {$X^-_{2a}$}
-      node[above left=of X2_in2]    {$X^-_{2b}$}
-      node[above right=of X2_out1]  {$X^+_{2c}$}
-      node[above right=of X2_out2]  {$X^+_{2d}$};
+      node[above left=of Y_in1]     {$a$}
+      node[above left=of Y_in2]     {$b$}
+      node[above right=of Y_out1]   {$c$}
+      node[above left=of X1_in1]    {$1a$}
+      node[above left=of X1_in2]    {$1b$}
+      node[above right=of X1_out1]  {$1c$}
+      node[above left=of X2_in1]    {$2a$}
+      node[above left=of X2_in2]    {$2b$}
+      node[above right=of X2_out1]  {$2c$}
+      node[above right=of X2_out2]  {$2d$};
    \draw[ar] (Y_in2') to (X1_in1);
    \draw[ar] (X1_out1) to (X2_in2);
    \draw[ar] (X2_out1) to (Y_out1');
@@ -83,8 +83,7 @@ Verity~\cite{JoyalStreetVerity}, in which string diagrams of the form
 \end{tikzpicture}
 \end{equation}
 represent compositions.  That is, new morphisms are constructed from old by specifying which outputs
-will be fed back into which inputs.  In fact, these generalize \todo{according to Wikipedia this is
-not accurate}Penrose diagrams in $\ncat{Vect}$~\cite{}, and the word \emph{traced} originates in
+will be fed back into which inputs.  In fact, these are related to Penrose diagrams in $\ncat{Vect}$~\cite{}, and the word \emph{traced} originates in
 this vector space terminology.
 
 \section{Traced string diagrams as cobordisms}
@@ -96,13 +95,11 @@ the picture includes only the data of a pair of finite sets,
 $(\inp{X_1},\outp{X_1})=(\{1a,1b\},\{1c\})$, which can be interpreted as an oriented 0-manifold.
 Moreover, the wiring diagram itself, in which boxes $X_1,\ldots,X_n$ are wired together inside a
 larger box $Y$, can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$.
-This is a morphism in the multicategory $\Cob$, underlying the symmetric monoidal category of
+This is a morphism in the (colored) operad $\Cob$, underlying the symmetric monoidal category of
 oriented 1-cobordisms; see Section~\ref{sec:wds and cob}.
 
-There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{C}$.
-Namely, each input and output of a box must be labeled by an object of $\cat{C}$ and the strings
-must respect these labels \todo[author=Patrick]{And boxes labeled by morphisms?}.  We will thus
-consider the multicategory $\Cob/\cat{O}$ of oriented 1-dimensional cobordisms over a fixed set of
+There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{C}$ than in a cobordism.
+Namely, each input and output of a box must be labeled by an object of $\cat{C}$ and the wires connecting boxes must respect the labels. We will thus consider the operad $\Cob/\cat{O}$ of oriented 1-dimensional cobordisms over a fixed set of
 labels $\cat{O}$.
 
 In the table below, we record these two interpretations of a string diagram.  Note the ``degree
@@ -115,12 +112,12 @@ shift'' between the second and third columns.
       String diagram & Traced category $\cat{C}$ & $\Cob/\cat{O}$ \\
    \midrule
       Wire label set, $\cat{O}$ & Objects, $\cat{O}\coloneqq\Ob(\cat{C})$ & Label set, $\cat{O}$ \\
-      Box \tikz[wiring diagram,bb port sep=1,bby=2.4pt,bb min width=5.5pt,
+      Boxes, e.g., \tikz[wiring diagram,bb port sep=1,bby=2.4pt,bb min width=5.5pt,
                   bb port length=2pt,bb rounded corners=1pt,baseline=(B.south)]
                {\node[bb={1}{2}] (B) {};}
-         & Morphism & Object (oriented 0-mfd over $\cat{O}$) \\
-      String diagram & Composition & Morphism (Cobordism over $\cat{O}$) \\
-      Nesting & Axioms of TSMCs & Composition \\
+         & Morphisms in $\cat{C}$& Objects (oriented 0-mfds over $\cat{O}$) \\
+      String diagrams & Compositions in $\cat{C}$& Morphisms (cobordisms over $\cat{O}$) \\
+      Nesting & Axioms of traced cats & Composition (of cobordisms) \\
    \bottomrule
 \end{tabular}
 \end{center}
@@ -129,26 +126,59 @@ shift'' between the second and third columns.
    \label{sec:statement of main thm}
 
 The relationship between these interpretations of string diagrams is most easily made precise when
-the set $\cat{O}$ of labels is fixed. Let $\TrCat$ denote the 2-category of traced categories,
-strong traced functors, and monoidal natural isomorphisms, and let $\TrCat_{\cat{O}}$ denote the
-1-category of traced categories for which the set of objects is free on the set $\cat{O}$---which we
-call its label set---together with label preserving strong traced functors. For any operad
+the set $\cat{O}$ of labels is fixed. Let $\TTrCat$ denote the 2-category of traced categories,
+strong traced functors, and monoidal natural isomorphisms, and let $\TrCat$ denote its underlying 1-category. Finally, let $\TrCat_{\cat{O}}$ denote the subcategory in which the object set is fixed to be free on the set $\cat{O}$---which we
+call its label set---together with label-preserving maps. For any operad
 $\cat{M}$, we denote by $\cat{M}\alg$ the category of operad functors $\cat{M}\to\Set$. Then there
 is an equivalence of categories
 \begin{equation}\label{eq:single fiber}
    \LCob{\cat{O}}\alg\simeq\TrCat_{\cat{O}}.
 \end{equation}
-This will be proved in Section~\ref{sec:proof of A}, but we sketch the equivalence here, with a few
+This will be proved in Section~\ref{sec:proof_of_A}, but we sketch the equivalence here, with a few
 minor abuses of notation. We will show that the same data are required, and the same conditions are
 satisfied, whether one is specifying a lax functor $P\colon\LCob{\cat{O}}\to\Set$ or a traced category
 $\cat{C}$ with objects generated by $\cat{O}$.
 
-First, for each box $(\inp{X},\outp{X})$ that might appear in a string diagram, both $P$ and
-$\cat{C}$ require a set, $P(\inp{X},\outp{X})$ and $\Hom_{\cat{C}}(\inp{X},\outp{X})$, respectively.
+First, for each box $(\inp{X},\outp{X})$ that might appear in a string diagram, both $P\in \LCob{\cat{O}}\alg$ and
+$\cat{C}\in\TrCat_{\cat{O}}$ require a set, $P(\inp{X},\outp{X})$ and $\Hom_{\cat{C}}(\inp{X},\outp{X})$, respectively.
 Second, for each string diagram, both $P$ and $\cat{C}$ require a function: an action on morphisms,
 in the case of $P$, and a formula for performing the required compositions, tensors, and traces, in
 the case of $\cat{C}$.  The condition that $P$ is functorial corresponds to the fact that $\cat{C}$
 satisfies the axioms of traced categories.
+
+\subsection{The main results}
+
+For a given set $\cat{O}$ of labels, we have an equivalence of categories $\Cob/\cat{O}\alg\simeq\TrCat_{\cat{O}}$. This statement has two drawbacks: the object set of our traced categories is fixed, and it is assumed to be free. Much of the work in this paper is to relax these two conditions. For 
+
+A strong functor between traced categories 
+
+
+A morphism of traced categories can sen
+
+\todo{fix language}
+The second approach, whose goal is to get closer to $\TrCat$ rather than $\TrProp$, allows the label
+set to vary by Kleisli morphisms $\cat{O}\to\cat{O'}$, i.e., functions which send a label in
+$\cat{O}$ to a finite sequence of labels in $\cat{O'}$.  Putting the various $\Cob$-algebras
+together in this way, the resulting category $\CobKlsAlg$ is more closely related to $\TrCat$.
+Namely, we can add certain 2-morphisms to $\CobKlsAlg$ and thus make it equivalent to $\TrCat$.
+See~\ref{**} for an intrinsic description of the necessary 2-morphisms.
+
+This result can be solidly stated by comparing both $\CobKlsAlg$ and $\TrCat$ to a third 2-category,
+which has a nice formal description in terms of \emph{equipments}, also known as \emph{framed
+bicategories}.  There is an equipment $\ncat{FrCompCat}$ whose objects are free compact categories
+(i.e., various $\Cob/\cat{O}$), whose vertical arrows are strong functors, whose horizontal cells
+are lax monoidal profunctors, and whose 2-cells are monoidal natural transformations.  Let
+$\MMon(\ncat{FrCompCat})$ denote the 2-category of monoid objects in $\ncat{FrCompCat}$, and let
+$\Mon(\ncat{FrCompCat})$ be the underlying 1-category, obtained by forgetting the 2-morphisms.
+
+\todo{make clear $\ncat{Kls}$ is for free monoid monad}
+\begin{named}{Theorem A}
+   There is a fully-faithful functor of 1-categories
+   \begin{equation*}
+      \CobKlsAlg \to \TrCat
+   \end{equation*}
+   such that the induced 2-functor $\CobKlsAlg\to\TTrCat$ is 2-essentially surjective.
+\end{named}
 
 To give a sense of the equivalence in~\ref{thm:Theorem A} we will specify here how to construct a
 $(\Cob/\Ob\cat{C})$-algebra from a traced category $\cat{C}$.  First, given a relative set
@@ -207,38 +237,7 @@ This can be visualized via the following string diagram (where we have drawn a l
       \draw ($(X1b)+(1.25,-0.25)$) to[in=180,out=180] ($(X1b)+(1.25,-2.75)$);
    \end{tikzpicture}
 \end{equation}
-\ref{thm:Theorem A} will be proved in Section~\ref{sec:proof of A}.
-
-\subsection{The main results}
-
-For a given set $\cat{O}$ of labels, we have $\Cob/\cat{O}\alg\simeq\TrCat_{\cat{O}}$.  The question
-is how to relate these various $\Cob$-algebras to traced categories in a result that does not fix a
-label set $\cat{O}$.
-
-\todo{fix language}
-The second approach, whose goal is to get closer to $\TrCat$ rather than $\TrProp$, allows the label
-set to vary by Kleisli morphisms $\cat{O}\to\cat{O'}$, i.e., functions which send a label in
-$\cat{O}$ to a finite sequence of labels in $\cat{O'}$.  Putting the various $\Cob$-algebras
-together in this way, the resulting category $\CobKlsAlg$ is more closely related to $\TrCat$.
-Namely, we can add certain 2-morphisms to $\CobKlsAlg$ and thus make it equivalent to $\TrCat$.
-See~\ref{**} for an intrinsic description of the necessary 2-morphisms.
-
-This result can be solidly stated by comparing both $\CobKlsAlg$ and $\TrCat$ to a third 2-category,
-which has a nice formal description in terms of \emph{equipments}, also known as \emph{framed
-bicategories}.  There is an equipment $\ncat{FrCompCat}$ whose objects are free compact categories
-(i.e., various $\Cob/\cat{O}$), whose vertical arrows are strong functors, whose horizontal cells
-are lax monoidal profunctors, and whose 2-cells are monoidal natural transformations.  Let
-$\MMon(\ncat{FrCompCat})$ denote the 2-category of monoid objects in $\ncat{FrCompCat}$, and let
-$\Mon(\ncat{FrCompCat})$ be the underlying 1-category, obtained by forgetting the 2-morphisms.
-
-\todo{make clear $\ncat{Kls}$ is for free monoid monad}
-\begin{named}{Theorem A}
-   There is a fully-faithful functor of 1-categories
-   \begin{equation*}
-      \CobKlsAlg \to \TrCat
-   \end{equation*}
-   such that the induced 2-functor $\CobKlsAlg\to\TTrCat$ is 2-essentially surjective.
-\end{named}
+\ref{thm:Theorem A} will be proved in Section~\ref{sec:proof_of_A}.
 
 
 \section{Generalization: Lax algebras on compact category}
@@ -474,8 +473,8 @@ which says that traced categories are $\Cob$-algebras, follows easily.
 
 \section*{Acknowledgments}
 
-Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect our operad-algebra
-picture to the traced one.
+Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect the operad-algebra
+picture in \cite{RupelSpivak} to string diagrams in traced categories.
 
 \chapter{Categorical preliminaries}\label{sec:traced categories}
 
@@ -1060,6 +1059,11 @@ by the pullback
 \]
 then we get $\MMon(\dcat{D})\equiv\TTrCat$.
 
+\begin{proposition}
+
+$\TTrCat\equiv\TTrFrObCat$
+
+\end{proposition}
 
 \section{Other stuff}
 
@@ -1252,6 +1256,8 @@ morphisms which preserve the units.
 \chapter{Main results}
 
 \section{Restatement of main theorems}
+
+\section{Proof of theorem A}\label{sec:proof_of_A}
 
 
 \begin{thebibliography}{XXX}
