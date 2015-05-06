@@ -1242,16 +1242,57 @@ morphisms which preserve the units.
    \todo[author=Patrick]{Fix proof.}
 \end{proposition}
 \begin{proof}
-   By Propositions~\ref{Prop:canonical unit}~and~\ref{Prop:canonical unit}, the functor $F\colon\MProf(1,\cat{C}) \to \MProf(\cat{C},\cat{C})$ naturally factors through $\Mon(\MProf(\cat{C},\cat{C}))\simeq\MProf{(\cat{C},\cat{C})}_*$.
+   By Propositions~\ref{Prop:canonical unit}~and~\ref{Prop:canonical unit}, the functor
+   $F\colon\MProf(1,\cat{C}) \to \MProf(\cat{C},\cat{C})$ naturally factors through
+   $\Mon(\MProf(\cat{C},\cat{C}))\simeq\MProf{(\cat{C},\cat{C})}_*$.
 
-   If $M\in\MProf(1,\cat{C})$ then $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any $a\in\cat{C}$.
-   On the other hand, given $N\in\Mon(\MProf(\cat{C},\cat{C}))$, $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from Lemma~\ref{Lem:comp prof bijection}.
+   If $M\in\MProf(1,\cat{C})$ then $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any
+   $a\in\cat{C}$.  On the other hand, given $N\in\Mon(\MProf(\cat{C},\cat{C}))$,
+   $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from Lemma~\ref{Lem:comp prof
+   bijection}.
 \end{proof}
 
+\section{Other equipments}
+\todo[inline]{Define $\dFrMonProf$, $\dFrCompProf$, $\dFrMonCompProf$, etc.}
 
 \chapter{Main results}
 
 \section{Restatement of main theorems}
+
+To prove the main theorems stated in the introduction, we would first like to restate those theorems
+using the language of equipments. We begin with a somewhat odd looking equipment which will prove to
+be technically convenient.
+
+\begin{definition}
+   The equipment $\dFrMonCompProf$ has vertical category $\dFrMonCompProf_0\coloneqq \FrMonCat$,
+   while $\dFrMonCompProf_1$ is defined by the pullback
+   \begin{equation*}
+      \begin{tikzcd}
+         \dFrMonCompProf_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+            & \dFrCompProf_1 \ar[d,two heads] \\
+         \FrMonCat\times\FrMonCat \ar[r]
+            & \FrCompCat \times \FrCompCat
+      \end{tikzcd}
+   \end{equation*}
+\end{definition}
+
+\begin{proposition}
+   There is an isomorphism of categories
+   \begin{equation*}
+      \CobKlsAlg\iso\dFrMonCompProf(1,\textrm{--}).
+   \end{equation*}
+\end{proposition}
+
+Using this, we can restate~\ref{thm:Theorem A} as
+
+\begin{named}{Theorem A'}
+   There is a fully-faithful functor of 1-categories
+   \begin{equation*}
+      \dFrMonCompProf(1,\textrm{--})\to\TrCat
+   \end{equation*}
+   such that the composition with the 1-skeleton inclusion $\TrCat\to\TTrCat$ is 2-essentially
+   surjective.
+\end{named}
 
 
 \begin{thebibliography}{XXX}
