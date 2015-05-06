@@ -1019,11 +1019,22 @@ pullback
 \]
 
 \begin{theorem}\label{thm:Mod vs bo}
-   Let $\dcat{D}$ be a framed bicategory with Kliesli objects. Then there is an equivalence
+   Let $\dcat{D}$ be an exact equipment. There is an equivalence of equipments
    \[
       \dMod(\dcat{D}) \iso \dcat{D}^{\bo}.
    \]
 \end{theorem}
+
+\begin{corollary}
+   Let $\dcat{D}$ be an exact equipment. There is an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=0em]
+         \Mon(\dcat{D}) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \dcat{D}_0^{\bo} \ar[dl,two heads,"\dom"] \\
+         & \dcat{D}_0 &
+      \end{tikzcd}
+   \end{equation*}
+\end{corollary}
 
 If we want to modify the previous theorem to get an equivalence with $\dcat{D}$ rather than
 $\dcat{D}^{\bo}$, we need to restrict to objects of $\dcat{D}$ which are ``discrete''.  To provide a
