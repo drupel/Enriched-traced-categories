@@ -1,0 +1,1153 @@
+\documentclass{amsart}
+
+\usepackage{savesym}
+\usepackage{txfonts,stmaryrd,accents}
+\savesymbol{lrcorner}\savesymbol{ulcorner}
+\usepackage{amssymb, amscd,setspace,mathtools,makecell}
+\usepackage{enumerate}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[bookmarks=true,colorlinks=true, linkcolor=MidnightBlue, citecolor=cyan]{hyperref}
+\usepackage{lmodern}
+\usepackage{graphicx,float}
+\restoresymbol{txfonts}{lrcorner}\restoresymbol{txfonts}{ulcorner}
+\usepackage{tensor}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,chains,matrix,positioning,scopes,snakes}
+%
+%%Begin tikz macros
+%\def\blackbox#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+%  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+%  \path #1;
+%  \pgfgetlastxy{\w}{\h}
+%  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+%  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+%  \draw (\llx,\lly) rectangle (\urx,\ury);
+%  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+%  \pgfmathsetlengthmacro{\yave}{\ury-8}
+%  \node at (\xave,\yave) {#4};
+%  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+%  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+%  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+%  \ifnum #2=0{}\else{ 
+%   \foreach \l in {1,...,#2}{
+%    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+%  \ifnum #3=0{}\else{
+%   \foreach \r in {1,...,#3}{
+%    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+%}
+%
+%\def\blackboxinners#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+%  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+%  \path #1;
+%  \pgfgetlastxy{\w}{\h}
+%  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+%  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+%  \draw (\llx,\lly) rectangle (\urx,\ury);
+%  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+%  \pgfmathsetlengthmacro{\yave}{\ury-8}
+%  \node at (\xave,\yave) {#4};
+%  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+%  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+%  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+%  \ifnum #2=0{}\else{ 
+%   \foreach \l in {1,...,#2}{
+%    \pgfmathsetlengthmacro{\newx}{\llx+#5*28.45274/2}
+%    \pgfmathsetlengthmacro{\newy}{\lly+\l*\lstep}
+%    \node at ($(\newx,\newy)+(-1.5,\l*12-\l*\lstep)$) {\tiny$(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+%    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+%  \ifnum #3=0{}\else{
+%   \foreach \r in {1,...,#3}{
+%    \pgfmathsetlengthmacro{\newx}{\urx-#5*28.45274/2}
+%    \pgfmathsetlengthmacro{\newy}{\ury-\r*\rstep}
+%    \node at ($(\newx,\newy)+(1.5,-\r*12+\r*\rstep)$) {\tiny $(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+%    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+%}
+%
+%\def\blackboxouters#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+%  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+%  \path #1;
+%  \pgfgetlastxy{\w}{\h}
+%  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+%  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+%  \draw (\llx,\lly) rectangle (\urx,\ury);
+%  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+%  \pgfmathsetlengthmacro{\yave}{\ury-8}
+%  \node at (\xave,\yave) {#4};
+%  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+%  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+%  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+%  \ifnum #2=0{}\else{ 
+%   \foreach \l in {1,...,#2}{
+%    \pgfmathsetlengthmacro{\newx}{\llx-#5*28.45274/2}
+%    \pgfmathsetlengthmacro{\newy}{\lly+\l*\lstep}
+%    \node at ($(\newx,\newy)+(-1.5,\l*12-\l*\lstep)$) {\tiny$(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+%    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+%  \ifnum #3=0{}\else{
+%   \foreach \r in {1,...,#3}{
+%    \pgfmathsetlengthmacro{\newx}{\urx+#5*28.45274/2}
+%    \pgfmathsetlengthmacro{\newy}{\ury-\r*\rstep}
+%    \node at ($(\newx,\newy)+(1.5,-\r*12+\r*\rstep)$) {\tiny $(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+%    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+%}
+%
+%\def\dashbox#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+%  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+%  \path #1;
+%  \pgfgetlastxy{\w}{\h}
+%  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+%  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+%  \draw [dashed] (\llx,\lly) rectangle (\urx,\ury);
+%  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+%  \pgfmathsetlengthmacro{\yave}{\ury-8}
+%  \node at (\xave,\yave) {#4};
+%  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+%  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+%  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+%  \ifnum #2=0{}\else{ 
+%   \foreach \l in {1,...,#2}{
+%    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+%  \ifnum #3=0{}\else{
+%   \foreach \r in {1,...,#3}{
+%    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+%}
+%
+%\def\fillbox#1#2#3#4#5#6{%(width,height), number inputs, number outputs, label, arrow length, fill strength
+%  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+%  \path #1;
+%  \pgfgetlastxy{\w}{\h}
+%  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+%  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+%  \filldraw [fill=gray!#6] (\llx,\lly) rectangle (\urx,\ury);
+%  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+%  \pgfmathsetlengthmacro{\yave}{\ury-8}
+%  \node at (\xave,\yave) {#4};
+%  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+%  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+%  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+%  \ifnum #2=0{}\else{ 
+%   \foreach \l in {1,...,#2}{
+%    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+%  \ifnum #3=0{}\else{
+%   \foreach \r in {1,...,#3}{
+%    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+%}
+%
+%
+%\def\delaynode#1#2#3{%(x-coord,y-coord), size, arrow length
+%  \path #1;
+%  \pgfgetlastxy{\lx}{\ly}
+%  \pgfmathsetlengthmacro{\rx}{\lx+#2*3+#3}
+%  \pgfmathsetlengthmacro{\ry}{\ly}
+%  \filldraw (\lx,\ly) circle (#2 pt);
+%  \draw [->] (\lx,\ly) -- (\rx,\ry);
+%}
+%
+%\def\delaynodeouters#1#2#3{%(x-coord,y-coord), size, arrow length
+%  \path #1;
+%  \pgfgetlastxy{\lx}{\ly}
+%  \pgfmathsetlengthmacro{\rx}{\lx+#2*3+#3}
+%  \pgfmathsetlengthmacro{\ry}{\ly}
+%  \filldraw (\lx,\ly) circle (#2 pt);
+%  \draw [->] (\lx,\ly) -- (\rx,\ry);
+%   \node at (\rx+15,\ry+15){\tiny $(\pgfmathparse{\rx/28.45274}\pgfmathresult cm,\pgfmathparse{\ry/28.45274}\pgfmathresult cm)$};
+%}
+%
+%
+%\def\directarc#1#2{%left endpoint, right endpoint
+%  \path #1;
+%  \pgfgetlastxy{\lx}{\ly}
+%  \path #2;
+%  \pgfgetlastxy{\rx}{\ry}
+%  \pgfmathsetlengthmacro{\xave}{(\lx+\rx)/2}
+%  \draw #1 .. controls (\xave,\ly) and (\xave,\ry) .. #2;
+%}
+%
+%\def\backarc#1#2{%left coordinate, right coordinate
+%  \path #1;
+%  \pgfgetlastxy{\lx}{\ly}
+%  \path #2;
+%  \pgfgetlastxy{\rx}{\ry}
+%  \pgfmathsetlengthmacro{\xave}{(\lx+\rx)/2}
+%  \draw #1 .. controls (\xave,\ry) and (\xave,\ly) .. #2;
+%}
+%
+%\def\loopright#1#2#3{%upper coordinate, lower coordinate, stretch width
+%  \path #1;
+%  \pgfgetlastxy{\ux}{\uy}
+%  \path #2;
+%  \pgfgetlastxy{\lx}{\ly}
+%  \pgfmathsetlengthmacro{\maxx}{max(\ux,\lx)}
+%  \pgfmathsetlengthmacro{\farx}{\maxx+#3}
+%  \draw #1 .. controls (\farx,\uy) and (\farx,\ly) .. #2;
+%}
+%
+%\def\loopleft#1#2#3{%upper coordinate, lower coordinate, stretch width
+%  \path #1;
+%  \pgfgetlastxy{\ux}{\uy}
+%  \path #2;
+%  \pgfgetlastxy{\lx}{\ly}
+%  \pgfmathsetlengthmacro{\minx}{min(\ux,\lx)}
+%  \pgfmathsetlengthmacro{\farx}{\minx-#3}
+%  \draw #1 .. controls (\farx,\uy) and (\farx,\ly) .. #2;
+%}
+%
+%\def\fancyarc#1#2#3#4{%upper coordinate, lower coordinate, stretch width, max height adjust
+%  \path #1;
+%  \pgfgetlastxy{\ux}{\uy}
+%  \path #2;
+%  \pgfgetlastxy{\lx}{\ly}
+%  \pgfmathsetlengthmacro{\xave}{(\lx+\ux)/2}
+%%  \node at (\lx,\ly+20){\tiny $\pgfmathparse{\lx/28.45274}\pgfmathresult cm$,\hsp$\pgfmathparse{\ux/28.45274}\pgfmathresult cm$};
+%%  \node at (\xave,\ly+50){\tiny $\pgfmathparse{\xave/28.45274}\pgfmathresult cm$};
+%  \pgfmathsetlengthmacro{\yave}{(\ly+\uy)/2+#4}
+%  \loopleft{#1}{(\xave,\yave)}{#3}
+%  \loopright{#2}{(\xave,\yave)}{#3}
+%}
+%
+%\def\activetikz#1{$$\begin{tikzpicture}#1\end{tikzpicture}$$}
+%\def\inactivetikz#1{}
+%%End tikz macros
+
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+\usepackage{xy,color}
+\newcommand{\comment}[1]{}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\shortnote}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\start}[1]{\shortnote{Start here: #1.}}
+\newcommand{\q}[1]{\begin{question}#1\end{question}}
+\newcommand{\g}[1]{\begin{guess}#1\end{guess}}
+\newcommand{\erase}[1]{{}}
+
+\def\tn{\textnormal}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\AA{{\mathbb A}}
+\def\PP{{\mathbb P}}
+\def\NN{{\mathbb N}}
+\def\SS{{\mathbb S}}
+\def\HH{{\mathbb H}}
+
+\def\acts{\lefttorightarrow}
+\def\Hom{\tn{Hom}}
+\def\iHom{\Rightarrow}
+\def\Aut{\tn{Aut}}
+\def\Sub{\tn{Sub}}
+\def\Mor{\tn{Mor}}
+\def\Fun{\tn{Fun}}
+\def\Path{\tn{Path}}
+\def\im{\tn{im}}
+\def\Ob{\tn{Ob}}
+\def\dim{\tn{dim}}
+\def\Trace{\tn{Tr}}
+\def\Op{\tn{Op}}
+\def\SEL*{\tn{SEL*}}
+\def\Res{\tn{Res}}
+\def\hsp{\hspace{.3in}}
+\newcommand{\hsps}[1]{{\hspace{2mm} #1\hspace{2mm}}}
+\newcommand{\tin}[1]{\text{\tiny #1}}
+
+\def\singleton{{\{*\}}}
+\newcommand{\boxtitle}[1]{\begin{center}#1\end{center}}
+\def\Loop{{\mcL oop}}
+\def\LoopSchema{{\parbox{.5in}{\fbox{\xymatrix{\LMO{s}\ar@(l,u)[]^f}}}}}
+\def\Wks{{\mcW ks}}
+\def\lcone{^\triangleleft}
+\def\rcone{^\triangleright}
+\def\to{\rightarrow}
+\def\from{\leftarrow}
+\def\down{\downarrrow}
+\def\Down{\Downarrow}
+\def\Up{\Uparrow}
+\def\taking{\colon}
+\def\pls{``\!+\!"}
+\newcommand{\pathto}[1]{\stackrel{#1}\leadsto}
+\def\inj{\hookrightarrow}
+\def\surj{\twoheadrightarrow}
+\def\surjj{\longtwoheadrightarrow}
+\def\pfunc{\rightharpoonup}
+\def\Pfunc{\xrightharpoonup}
+\def\too{\longrightarrow}
+\def\fromm{\longleftarrow}
+\def\tooo{\longlongrightarrow}
+\def\tto{\rightrightarrows}
+\def\ttto{\equiv\!\!>}
+\newcommand{\xyto}[2]{\xymatrix@=1pt{\ar[rr]^-{#1}&\hspace{#2}&}}
+\newcommand{\xyequals}[1]{\xymatrix@=1pt{\ar@{=}[rr]&\hspace{#1}&}}
+\def\ss{\subseteq}
+\def\superset{\supseteq}
+\def\iso{\cong}
+\def\down{\downarrow}
+\def\|{{\;|\;}}
+\def\m1{{-1}}
+\def\op{^\tn{op}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\we{\simeq}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\vect{\overrightarrow}
+\def\qeq{\mathop{=}^?}
+
+\def\rr{\raggedright}
+
+%\newcommand{\LMO}[1]{\bullet^{#1}}
+%\newcommand{\LTO}[1]{\bullet^{\tn{#1}}}
+\newcommand{\LMO}[1]{\stackrel{#1}{\bullet}}
+\newcommand{\LTO}[1]{\stackrel{\tt{#1}}{\bullet}}
+\newcommand{\LA}[2]{\ar[#1]^-{\tn {#2}}}
+\newcommand{\LAL}[2]{\ar[#1]_-{\tn {#2}}}
+\newcommand{\obox}[3]{\stackrel{#1}{\fbox{\parbox{#2}{#3}}}}
+\newcommand{\labox}[2]{\obox{#1}{1.6in}{#2}}
+\newcommand{\mebox}[2]{\obox{#1}{1in}{#2}}
+\newcommand{\smbox}[2]{\stackrel{#1}{\fbox{#2}}}
+\newcommand{\fakebox}[1]{\tn{$\ulcorner$#1$\urcorner$}}
+\newcommand{\sq}[4]{\xymatrix{#1\ar[r]\ar[d]&#2\ar[d]\\#3\ar[r]&#4}}
+\newcommand{\namecat}[1]{\begin{center}$#1:=$\end{center}}
+
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.25)*+{\ulcorner}}
+\def\ulhlimit{\ar@{}[rd]|(.3)*+{\diamond}}
+\def\urhlimit{\ar@{}[ld]|(.3)*+{\diamond}}
+\def\llhlimit{\ar@{}[ru]|(.3)*+{\diamond}}
+\def\lrhlimit{\ar@{}[lu]|(.3)*+{\diamond}}
+\newcommand{\clabel}[1]{\ar@{}[rd]|(.5)*+{#1}}
+\newcommand{\TriRight}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longrightarrow}\ar@{}[u]|>>>>{#7}}}
+\newcommand{\TriLeft}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longleftarrow}\ar@{}[u]|>>>>{#7}}}
+\newcommand{\TriIso}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longleftrightarrow}\ar@{}[u]|>>>>{#7}}}
+
+
+\newcommand{\arr}[1]{\ar@<.5ex>[#1]\ar@<-.5ex>[#1]}
+\newcommand{\arrr}[1]{\ar@<.7ex>[#1]\ar@<0ex>[#1]\ar@<-.7ex>[#1]}
+\newcommand{\arrrr}[1]{\ar@<.9ex>[#1]\ar@<.3ex>[#1]\ar@<-.3ex>[#1]\ar@<-.9ex>[#1]}
+\newcommand{\arrrrr}[1]{\ar@<1ex>[#1]\ar@<.5ex>[#1]\ar[#1]\ar@<-.5ex>[#1]\ar@<-1ex>[#1]}
+
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\onto}{\to\!\!\!\!\!\to}
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+\newcommand{\Fromm}[1]{\xleftarrow{\ \ #1\ \ }}
+\def\qeq{\stackrel{?}{=}}
+\newcommand{\cev}[1]{\reflectbox{\ensuremath{\vec{\reflectbox{\ensuremath{#1}}}}}}
+
+\newcommand{\Adjoint}[4]{\xymatrix@1{{#2}\ar@<.5ex>[r]^-{#1} &{#3} \ar@<.5ex>[l]^-{#4}}}
+
+\def\id{\tn{id}}
+\def\dom{\tn{dom}}
+\def\cod{\tn{cod}}
+\def\Top{{\bf Top}}
+\def\Kls{{\bf Kls}}
+\def\Cat{{\bf Cat}}
+\def\Oprd{{\bf Oprd}}
+\def\LH{{\bf LH}}
+\def\Monad{{\bf Monad}}
+\def\Mon{{\bf Mon}}
+\def\CMon{{\bf CMon}}
+\def\cpo{{\bf cpo}}
+\def\Vect{\text{Vect}}
+\def\Rep{{\bf Rep}}
+\def\HCat{{\bf HCat}}
+\def\Cnst{{\bf Cnst}}
+\def\Str{\tn{Str}}
+\def\List{\tn{List}}
+\def\Exc{\tn{Exc}}
+\def\Sets{{\bf Sets}}
+\def\Ord{{\bf Ord}}
+\def\Cob{{\bf Cob}}
+\def\Grph{{\bf Grph}}
+\def\SGrph{{\bf SGrph}}
+\def\Rel{\mcR\tn{el}}
+\def\JRel{J\mcR\tn{el}}
+\def\Inst{{\bf Inst}}
+\def\Type{{\bf Type}}
+\def\Set{{\bf Set}}
+\def\TFS{{\bf TFS}}
+\def\Qry{{\bf Qry}}
+\def\set{{\text \textendash}{\bf Set}}
+\def\sets{{\text \textendash}{\bf Alg}}
+\def\alg{{\text \textendash}{\bf Alg}}
+\def\rel{{\text \textendash}{\bf Rel}}
+\def\inst{{{\text \textendash}\bf \Inst}}
+\def\sSet{{\bf sSet}}
+\def\sSets{{\bf sSets}}
+\def\Grp{{\bf Grp}}
+\def\Grpd{{\bf Grpd}}
+\def\Pre{{\bf Pre}}
+\def\Shv{{\bf Shv}}
+\def\Rings{{\bf Rings}}
+\def\bD{{\bf \Delta}}
+\def\dispInt{\parbox{.1in}{$\int$}}
+\def\bhline{\Xhline{2\arrayrulewidth}}
+\def\bbhline{\Xhline{2.5\arrayrulewidth}}
+
+
+\def\Comp{\tn{Comp}}
+\def\Supp{\tn{Supp}}
+\def\Dmnd{\tn{Dmnd}}
+
+
+\def\colim{\mathop{\tn{colim}}}
+\def\hocolim{\mathop{\tn{hocolim}}}
+\def\undsc{\rule{2mm}{0.4pt}}
+
+
+\def\mcA{\mc{A}}
+\def\mcB{\mc{B}}
+\def\mcC{\mc{C}}
+\def\mcD{\mc{D}}
+\def\mcE{\mc{E}}
+\def\mcF{\mc{F}}
+\def\mcG{\mc{G}}
+\def\mcH{\mc{H}}
+\def\mcI{\mc{I}}
+\def\mcJ{\mc{J}}
+\def\mcK{\mc{K}}
+\def\mcL{\mc{L}}
+\def\mcM{\mc{M}}
+\def\mcN{\mc{N}}
+\def\mcO{\mc{O}}
+\def\mcP{\mc{P}}
+\def\mcQ{\mc{Q}}
+\def\mcR{\mc{R}}
+\def\mcS{\mc{S}}
+\def\mcT{\mc{T}}
+\def\mcU{\mc{U}}
+\def\mcV{\mc{V}}
+\def\mcW{\mc{W}}
+\def\mcX{\mc{X}}
+\def\mcY{\mc{Y}}
+\def\mcZ{\mc{Z}}
+
+\def\bfe{{\bf e}}
+\def\bfo{{\bf o}}
+\def\bfS{{\bf S}}\def\bfSs{{\bf Ss}}
+\def\bfT{{\bf T}}\def\bfTs{{\bf Ts}}
+\def\bfW{{\bf W}}
+
+\def\tnN{\tn{N}}
+
+
+\def\bE{\bar{E}}
+\def\bF{\bar{F}}
+\def\bG{\bar{G}}
+\def\bH{\bar{H}}
+\def\bX{\bar{X}}
+\def\bY{\bar{Y}}
+
+\newcommand{\subsub}[1]{\setcounter{subsubsection}{\value{theorem}}\subsubsection{#1}\addtocounter{theorem}{1}}
+
+\def\Finm{{\bf Fin_{m}}}
+\def\Bag{\tn{Bag}}
+\newcommand{\back}[1]{\stackrel{\from}{#1}\!}
+%\newcommand{\kls}[1]{{\text \textendash}\wt{\bf Kls}({#1})}
+\def\Dist{\text{Dist}}
+\def\Dst{{\bf Dst}}
+\def\WkFlw{{\bf WkFlw}}
+\def\monOb{{\blacktriangle}}
+\def\Infl{{\bf Infl}}
+\def\Tur{\tn{Tur}}
+\def\Halt{\{\text{Halt}\}}
+\def\Tape{{T\!ape}}
+\def\Prb{{\bf Prb}}
+\def\Prbs{{\wt{\bf Prb}}}
+\def\El{{\bf El}}
+\def\Gr{{\bf Gr}}
+\def\DT{{\bf DT}}
+\def\DB{{\bf DB}}
+\def\Tables{{\bf Tables}}
+\def\Sch{{\bf Sch}}
+\def\Fin{{\bf Fin}}
+\def\PrO{{\bf PrO}}
+\def\PrOs{{\bf PrOs}}
+\def\JLat{{\bf JLat}}
+\def\JLats{{\bf JLats}}
+\def\P{{\bf P}}
+\def\SC{{\bf SC}}
+\def\ND{{\bf ND}}
+\def\Poset{{\bf Poset}}
+\def\Bool{\tn{Bool}}
+\newcommand{\labelDisp}[2]{\begin{align}\label{#1}\text{#2}\end{align}}
+
+\newcommand{\inp}[1]{{#1_-}}
+\newcommand{\outp}[1]{{#1_+}}
+\newcommand{\vset}[1]{#1_{\tt type}}
+\newcommand{\loc}[1]{{\tt loc}(#1)}
+\newcommand{\extr}[1]{{\tt ext}(#1)}
+\newcommand{\domn}[1]{{\accentset{\bullet}{#1}}}
+\newcommand{\codomn}[1]{{\underaccent{\bullet}{#1}}}
+\newcommand{\outpm}[1]{{{\scriptstyle\bullet}#1}}
+\newcommand{\inpm}[1]{{#1{\scriptstyle\bullet}}}
+%\newcommand{\domn}[1]{{{\scriptstyle\bullet}#1}}
+%\newcommand{\codomn}[1]{{#1{\scriptstyle\bullet}}}
+%\newcommand{\inpm}[1]{{\underset{\bullet}{#1}}}
+%\newcommand{\outpm}[1]{{\overset{\bullet}{#1}}}
+
+%sets:
+\newcommand{\feeddd}[3]{{\tensor*[^{#2}_{\color{white}{!}}]{{#1}}{^{#3}}}}%the color thing is to get overlines to be the same height.
+\newcommand{\feeddc}[3]{{\tensor*[^{#2}]{{#1}}{_{#3}}}}
+\newcommand{\feedcd}[3]{{\tensor*[_{#2}]{{#1}}{^{#3}}}}
+\newcommand{\feedcc}[3]{{\tensor*[^{\color{white}{!}}_{#2}]{{#1}}{_{#3}}}}
+%maps
+\newcommand{\feeddb}[2]{{\tensor*[^{#2}]{{#1}}{}}}
+\newcommand{\feedbc}[2]{{\tensor*{{#1}}{^~_{#2}}}}
+\newcommand{\feedcb}[2]{{\tensor*[^~_{#2}]{{#1}}{}}}
+\newcommand{\feedbd}[2]{{\tensor*{{#1}}{^{#2}}}}
+%horrible maps
+\newcommand{\feedda}[3]{{\tensor*[^{#2}_{\color{white}{!}}]{{#1}}{^{#2}_{#3}}}}
+\newcommand{\feedca}[3]{{\tensor*[_{#2}]{{#1}}{_{#2}^{#3}}}}
+\newcommand{\feedad}[3]{{\tensor*[^{#2}_{#3}]{{#1}}{^{#2}}}}
+\newcommand{\feedac}[3]{{\tensor*[_{#2}^{#3}]{{#1}}{_{#2}}}}
+
+
+
+\newcommand{\vLst}[1]{\ol{#1}}
+\newcommand{\Strm}[1]{{\tn{Strm}(#1)}}
+\newcommand{\SP}[2]{{\tn{SP}(#1,#2)}}
+\newcommand{\LP}[2]{{\tn{LP}(#1,#2)}}
+\newcommand{\LPP}[2]{{\tn{LP}'(#1,#2)}}
+\newcommand{\Hist}{\tn{Hist}}
+\newcommand{\xleadsto}[1]{\stackrel{#1}{\leadsto}}
+\newcommand{\strst}[1]{\big|_{[1,#1]}} %"stream restriction"
+\newcommand{\Del}[1]{DN_{#1}}
+\newcommand{\Dem}[1]{{Dm_{#1}}}
+\newcommand{\Sup}[1]{{Sp_{#1}}}
+%\newcommand{\Con}[1]{{Con_{#1}}}
+\newcommand{\inDem}[1]{{in\Dem{#1}}}
+\newcommand{\inSup}[1]{{in\Sup{#1}}}
+\newcommand{\vinSup}[1]{\vLst{\inSup{#1}}}
+\newcommand{\vinDem}[1]{\vLst{\inDem{#1}}}
+\newcommand{\vSup}[1]{\vLst{\Sup{#1}}}
+\newcommand{\vDem}[1]{\vLst{\Dem{#1}}}
+\newcommand{\vDel}[1]{\vLst{\Del{#1}}}
+\newcommand{\vinp}[1]{\vLst{\inp{#1}}}
+\newcommand{\vintr}[1]{\vLst{\loc{#1}}}
+\newcommand{\voutp}[1]{\vLst{\outp{#1}}}
+\def\zipwith{\;\raisebox{3pt}{${}_\varcurlyvee$}\;}
+\def\tbzipwith{\!\;\raisebox{2pt}{${}_\varcurlyvee$}\;\!}
+\newcommand{\ffootnote}[2]{\hspace{#1}\footnote{#2}}
+
+
+
+\def\lin{\ell\tn{In}}
+\def\lout{\ell\tn{Out}}
+\def\gin{g\tn{In}}
+\def\gout{g\tn{Out}}
+\def\min{m^{in}}
+\def\mout{m^{out}}
+\def\sin{s^{in}}
+\def\sout{s^{out}}
+\newcommand{\disc}[1]{{\ul{#1}}}
+
+\newcommand{\Wir}[1]{\bfW_{#1}}
+\def\SMC{{\bf SMC}}
+\def\TSMC{{\bf TSMC}}
+\newcommand{\FS}[1]{\tn{FS}_{/\mathcal{#1}}}
+\def\TFSO{\text{\bf TSMC}_{\Ob(\FS{O})}}
+\newcommand{\Bij}[1]{\mcB_{\mathcal{#1}}}
+\def\Int{\tn{Int}}
+
+%\newcommand{\strm}[1]{{\left(#1\right)^\NN}}
+
+\makeatletter\let\c@figure\c@equation\makeatother %Aligns figure numbering and equation numbering.
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{lemma}[subsection]{Lemma}
+\newtheorem{proposition}[subsection]{Proposition}
+\newtheorem{corollary}[subsection]{Corollary}
+\newtheorem{fact}[subsection]{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}[subsection]{Remark}
+\newtheorem{example}[subsection]{Example}
+\newtheorem{application}[subsection]{Application}
+\newtheorem{warning}[subsection]{Warning}
+\newtheorem{question}[subsection]{Question}
+\newtheorem{guess}[subsection]{Guess}
+\newtheorem{answer}[subsection]{Answer}
+\newtheorem{claim}[subsection]{Claim}
+
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+\newtheorem{notation}[subsection]{Notation}
+\newtheorem{conjecture}[subsection]{Conjecture}
+\newtheorem{postulate}[subsection]{Postulate}
+\newtheorem{construction}[subsection]{Construction}
+\newtheorem{ann}[subsection]{Announcement}
+\newenvironment{announcement}{\begin{ann}}{\hspace*{\fill}$\lozenge$\end{ann}}
+
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+
+
+%Standard geometry (DO NOT CHANGE) seems to be: \newgeometry{left=1.76in,right=1.76in,top=1.6in,bottom=1.3in}
+
+\usepackage[paperwidth=8.5in,paperheight=11in,text={5.7in,8in},centering]{geometry}
+%\newgeometry{left=1.55in,right=1.55in,top=1.6in,bottom=1.3in}
+\usepackage{lscape}
+
+\begin{document}
+
+\title{0-dimensional TQFTs and traced monoidal categories}
+
+\author{Dylan Rupel}
+\address{Northeastern University\\360 Huntington Ave.\\Boston, MA 02115}
+\email{dylanrupel@gmail.com}
+
+\author{David I. Spivak}
+\address{Massachusetts Institute of Technology\\77 Massachusetts Ave.\\Cambridge, MA 02139}
+\email{dspivak@gmail.com}
+
+\thanks{Spivak acknowledges support by ONR grant N000141310260 and AFOSR grant FA9550-14-1-0031.}
+
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+ strong $\Cob$-algebras are already known by the name of ``Penrose diagrams''. 
+
+
+%%%%%%%%%%%%%%%%%%%%%
+\section{Traced Symmetric Monoidal Categories}
+
+ Let $(\mcM,\otimes,I_\mcM)$ be a symmetric monoidal category where for any $X,Y\in\Ob(\mcM)$ we write $\gamma_{X,Y}:X\otimes Y\Too{\sim} Y\otimes X$ for the distinguished symmetry isomorphisms. Recall that we have $\gamma_{Y,X}=\gamma_{X,Y}^{-1}$.  We define the {\em monoid of scalars in $\mcM$} to be the set $S_\mcM:=\Hom(I_\mcM,I_\mcM)$ with multiplication given by composition.  Note that $S_\mcM$ is commutative since $\mcM$ is symmetric.  There is an action of $S_\mcM$ on the set $\Hom_\mcM(X,Y)$ for each $(X,Y)\in\Ob(\mcM^{op}\times\mcM)$, where $s\in S_\mcM$ acts on a morphism $f\taking X\to Y$ by sending it to the composite morphism
+$$f^s:X\to X\otimes I_\mcM\To{f\otimes s}Y\otimes I_\mcM\to Y.$$
+We write $|X|:=\Hom(I_\mcM,X)$ for the \emph{elements} of $X$.
+
+The functor $|\cdot|=\Hom(I_\mcM,\cdot)\taking\mcM\to\Set$ is a unital algebra on $\mcM$ with unit map
+\[\eta:\{1\}\To{\id_{I_\mcM}}\mcS_M\]
+and multiplication map
+\[\mu:\Hom(I_\mcM,X)\otimes\Hom(I_\mcM,X')\to\Hom(I_\mcM\otimes I_\mcM,X\otimes X')\iso\Hom(I_\mcM,X\otimes X').\]
+
+A (left) \emph{trace} on a symmetric monoidal category is a collection of functions 
+\[\Trace^U_{X,Y}:\Hom(U\otimes X,U\otimes Y)\to\Hom(X,Y)\]
+for $U,X,Y\in\Ob(\mcM)$ satisfying the following axioms:
+\begin{itemize}
+ \item Dinaturality I: for every $f:U\otimes X\to V\otimes Y$ and $g:V\to U$ we have
+ \[\Trace^U_{X,Y}\Big[\big(g\otimes Y\big)\circ f\Big]=\Trace^V_{X,Y}\Big[f\circ\big(g\otimes X\big)\Big];\] 
+ \item Naturality: for every $f:U\otimes X\to U\otimes Y$, $g:X'\to X$, and $h:Y\to Y'$ we have
+ \[\Trace^U_{X',Y'}\Big[\big(U\otimes h\big)\circ f\circ\big(U\otimes g\big)\Big]=h\circ\Trace^U_{X,Y}\big[f\big]\circ g;\]
+ \item Superposing: for every $f:U\otimes X\to U\otimes Y$ and $g:W\to Z$ we have
+ \[\Trace^U_{X,Y}\big[f\big]\otimes g=\Trace^U_{X\otimes W,Y\otimes Z}\big[f\otimes g\big];\]
+ \item Vanishing I: for every $f:X\to Y$ we have
+ \[\Trace^{I_\mcM}_{X,Y}\big[f\big]=f;\]
+ \item Vanishing II: for every $f:U\otimes V\otimes X\to U\otimes V\otimes Y$ we have
+ \[\Trace^{U\otimes V}_{X,Y}\big[f\big]=\Trace^V_{X,Y}\Big[\Trace^U_{V\otimes X,V\otimes Y}\big[f\big]\Big];\]
+ \item Yanking: for any $X\in\Ob(\mcM)$ we have
+ \[\Trace^X_{X,X}\big[\gamma_{X,X}\big].\]
+\end{itemize}
+
+For an object $X$ in a traced symmetric monoidal category $\mcM$ we write $\dim(X):=\Trace^X_{I_\mcM,I_\mcM}(\id_X)\in\mcS_\mcM$ for the {\em dimension} of $X$.
+
+\begin{proposition}\label{prop:dinaturality}\mbox{}
+\begin{enumerate}
+ \item For every $f:X\to Y$ and $g:Y\to Z$ we have
+ \[g\circ f=\Trace^Y_{X,Z}\Big[\big(f\otimes g\big)\circ\gamma_{Y,X}\Big].\]
+ \item The following is equivalent to the axiom Dinaturality I:
+ \begin{itemize}
+  \item Dinaturality I': for every $h:U\otimes V\otimes X\to U\otimes V\otimes Y$ we have
+ \[\Trace^{U\otimes V}_{X,Y}\big[h\big]=\Trace^{V\otimes U}_{X,Y}\Big[\big(\gamma_{U,V}\otimes Y\big)\circ h\circ\big(\gamma_{V,U}\otimes X\big)\Big].\]
+ \end{itemize}
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+ (1) can be shown from the Naturality and Yanking axioms of the trace as follows:
+ \begin{align*}
+  \Trace^Y_{X,Z}\Big[\big(f\otimes g\big)\circ\gamma_{Y,X}\Big]
+  &=\Trace^Y_{X,Z}\Big[\big(Y\otimes g\big)\circ\big(f\otimes Y\big)\circ\gamma_{Y,X}\Big]=\Trace^Y_{X,Z}\Big[\big(Y\otimes g\big)\circ\gamma_{Y,Y}\circ\big(Y\otimes f\big)\Big]\\
+  &=g\circ\Trace^Y_{Y,Y}\big[\gamma_{Y,Y}\big]\circ f=g\circ f.
+ \end{align*}
+ 
+ Dinaturality I' is an immediate consequence of Dinaturality I, indeed apply Dinaturality I with $f=h\circ\big(\gamma_{V,U}\otimes X\big)$ and $g=\gamma_{U,V}$.  For the other direction we apply the composition formula of (1) to the left side of the Dinaturality I equation to get
+ \begin{align*}
+  \Trace^U_{X,Y}\Big[\big(g\otimes Y\big)\circ f\Big]
+  &=\Trace^U_{X,Y}\bigg[\Trace^{V\otimes Y}_{U\otimes X,U\otimes Y}\Big[\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\Big]\bigg]\\
+ &=\Trace^{V\otimes Y\otimes U}_{X,Y}\Big[\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\Big]\\
+  &=\Trace^{V\otimes Y\otimes U}_{X,Y}\Big[\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\Big]\circ\Trace^X_{X,X}\big[\gamma_{X,X}\big],
+ \end{align*}
+ where the last two equalities follow from Vanishing II and a trivial application of Yanking.  
+ 
+ By Naturality we may bring the first trace into the second to get
+ \begin{align*}
+  &\Trace^X_{X,Y}\Bigg[\bigg(X\otimes \Trace^{V\otimes Y\otimes U}_{X,Y}\Big[\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\Big]\bigg)\circ\gamma_{X,X}\Bigg]\\
+  &\quad=\Trace^X_{X,Y}\Bigg[\gamma_{Y,X}\circ\bigg(\Trace^{V\otimes Y\otimes U}_{X,Y}\Big[\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\Big]\otimes X\bigg)\Bigg]\\
+  &\quad=\Trace^X_{X,Y}\bigg[\gamma_{Y,X}\circ\Trace^{V\otimes Y\otimes U}_{X\otimes X,Y\otimes X}\Big[\big(f\otimes g\otimes Y\otimes X\big)\circ\big(\gamma_{V\otimes Y,U\otimes X}\otimes X\big)\Big]\bigg]\\
+  &\quad=\Trace^X_{X,Y}\bigg[\Trace^{V\otimes Y\otimes U}_{X\otimes X,X\otimes Y}\Big[\big(V\otimes Y\otimes U\otimes \gamma_{Y,X}\big)\circ\big(f\otimes g\otimes Y\otimes X\big)\circ\big(\gamma_{V\otimes Y,U\otimes X}\otimes X\big)\Big]\bigg]\\
+  &\quad=\Trace^X_{X,Y}\bigg[\Trace^{V\otimes Y\otimes U}_{X\otimes X,X\otimes Y}\Big[\big(f\otimes g\otimes \gamma_{Y,X}\big)\circ\big(\gamma_{V\otimes Y,U\otimes X}\otimes X\big)\Big]\bigg]\\
+  &\quad=\Trace^{V\otimes Y\otimes U\otimes X}_{X,Y}\Big[\big(f\otimes g\otimes \gamma_{Y,X}\big)\circ\big(\gamma_{V\otimes Y,U\otimes X}\otimes X\big)\Big],
+ \end{align*}
+ where we apply Superposing to get the second equality, Naturality to get the third, and Vanishing II for the last.
+ 
+ Now we are ready to apply Dinaturality I' to get
+ \begin{align*}
+  \Trace^{U\otimes X\otimes V\otimes Y}_{X,Y}\Big[\big(\gamma_{V\otimes Y,U\otimes X}\otimes Y\big)\circ\big(f\otimes g\otimes \gamma_{Y,X}\big)\Big]
+ \end{align*}
+ from which we may apply, in reverse, an analogous sequence of equalities to that above to get the right hand side of the Dinaturality I equation.
+ \erase{\begin{align*}%begin erase
+  &=\Trace^Y_{X,Y}\bigg[\Trace^{U\otimes X\otimes V}_{Y\otimes X,Y\otimes Y}\Big[\big(\gamma_{V\otimes Y,U\otimes X}\otimes Y\big)\circ\big(f\otimes g\otimes \gamma_{Y,X}\big)\Big]\bigg]\\
+  &=\Trace^Y_{X,Y}\bigg[\Trace^{U\otimes X\otimes V}_{Y\otimes X,Y\otimes Y}\Big[\big(\gamma_{V\otimes Y,U\otimes X}\otimes Y\big)\circ\big(f\otimes g\otimes X\otimes Y\big)\circ\big(U\otimes X\otimes V\otimes \gamma_{Y,X}\big)\Big]\bigg]\\
+  &=\Trace^Y_{X,Y}\bigg[\Trace^{U\otimes X\otimes V}_{X\otimes Y,Y\otimes Y}\Big[\big(\gamma_{V\otimes Y,U\otimes X}\otimes Y\big)\circ\big(f\otimes g\otimes X\otimes Y\big)\Big]\circ\gamma_{Y,X}\bigg]\\
+  &=\Trace^Y_{X,Y}\Bigg[\bigg(\Trace^{U\otimes X\otimes V}_{X,Y}\Big[\gamma_{V\otimes Y,U\otimes X}\circ\big(f\otimes g\otimes X\big)\Big]\otimes Y\bigg)\circ\gamma_{Y,X}\Bigg]\\
+  &=\Trace^Y_{X,Y}\Bigg[\gamma_{Y,Y}\circ\bigg(Y\otimes\Trace^{U\otimes X\otimes V}_{X,Y}\Big[\gamma_{V\otimes Y,U\otimes X}\circ\big(f\otimes g\otimes X\big)\Big]\bigg)\Bigg]\\
+  &=\Trace^Y_{Y,Y}\big[\gamma_{Y,Y}\big]\circ\Trace^{U\otimes X\otimes V}_{X,Y}\Big[\gamma_{V\otimes Y,U\otimes X}\circ\big(f\otimes g\otimes X\big)\Big]\\
+  &=\Trace^{U\otimes X\otimes V}_{X,Y}\Big[\gamma_{V\otimes Y,U\otimes X}\circ\big(f\otimes g\otimes X\big)\Big]\\
+  &=\Trace^{U\otimes X\otimes V}_{X,Y}\Big[\big(g\otimes X\otimes f\big)\circ\gamma_{U\otimes X,V\otimes X}\Big]\\
+  &=\Trace^V_{X,Y}\bigg[\Trace^{U\otimes X}_{V\otimes X,V\otimes Y}\Big[\big(g\otimes X\otimes f\big)\circ\gamma_{U\otimes X, V\otimes X}\Big]\bigg]\\
+  &=\Trace^V_{X,Y}\Big[f\circ\big(g\otimes X\big)\Big].
+ \end{align*}}%end erase
+ %%Another proof
+ \erase{By Dinaturality I' this becomes%begin erase
+ \[\Trace^U_{X,Y}\bigg[\Trace^{Y\otimes V}_{U\otimes X,U\otimes Y}\Big[\big(\gamma_{V,Y}\otimes U\otimes Y\big)\circ\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\circ\big(\gamma_{Y,V}\otimes U\otimes X\big)\Big]\bigg]\]
+ which is equal via Vanishing II and Naturality to
+ \begin{align*}
+  &\Trace^U_{X,Y}\Bigg[\Trace^V_{U\otimes X,U\otimes Y}\bigg[\Trace^Y_{V\otimes U\otimes X,V\otimes U\otimes Y}\Big[\big(\gamma_{V,Y}\otimes U\otimes Y\big)\circ\big(f\otimes g\otimes Y\big)\circ\gamma_{V\otimes Y,U\otimes X}\circ\big(\gamma_{Y,V}\otimes U\otimes X\big)\Big]\bigg]\Bigg]\\
+  &\quad=\Trace^{V\otimes U}_{X,Y}\bigg[\Trace^Y_{V\otimes U\otimes X,V\otimes U\otimes Y}\Big[\big(Y\otimes V\otimes g\otimes Y\big)\circ\big(\gamma_{V,Y}\otimes V\otimes Y\big)\circ\gamma_{V\otimes Y,V\otimes Y}\circ\big(\gamma_{Y,V}\otimes V\otimes Y\big)\circ\big(Y\otimes V\otimes f\big)\Big]\bigg]\\
+  &\quad=\Trace^{V\otimes U}_{X,Y}\bigg[\big(V\otimes g\otimes Y\big)\circ\Trace^Y_{V\otimes V\otimes Y,V\otimes V\otimes Y}\Big[\big(\gamma_{V,Y}\otimes V\otimes Y\big)\circ\gamma_{V\otimes Y,V\otimes Y}\circ\big(\gamma_{Y,V}\otimes V\otimes Y\big)\Big]\circ\big(V\otimes f\big)\bigg]\\
+  &\quad=\Trace^{V\otimes U}_{X,Y}\bigg[\big(V\otimes g\otimes Y\big)\circ\big(\gamma_{V,V}\otimes Y\big)\circ\big(V\otimes f\big)\bigg].
+ \end{align*}
+ Applying Dinaturality I' again we get
+ \begin{align*}
+  &\Trace^{U\otimes V}_{X,Y}\bigg[\big(\gamma_{V,U}\otimes Y\big)\circ\big(V\otimes g\otimes Y\big)\circ\big(\gamma_{V,V}\otimes Y\big)\circ\big(V\otimes f\big)\circ\big(\gamma_{U,V}\otimes X\big)\bigg]\\
+  &=\Trace^{U\otimes V}_{X,Y}\bigg[\big(g\otimes f\big)\circ\big(\gamma_{U,V}\otimes X\big)\bigg]\\
+  &=\Trace^{U\otimes V}_{X,Y}\bigg[\big(U\otimes f\big)\circ\big(\gamma_{U,U}\otimes X\big)\circ\big(U\otimes g\otimes X\big)\bigg]\\
+  &=\Trace^{U\otimes V}_{X,Y}\bigg[\big(U\otimes f\big)\circ\Trace^X_{U\otimes U\otimes X,U\otimes U\otimes X}\Big[\big(\gamma_{U,X}\otimes U\otimes X\big)\circ\gamma_{U\otimes X, U\otimes X}\circ\big(\gamma_{X,U}\otimes U\otimes X\big)\Big]\circ\big(U\otimes g\otimes X\big)\bigg]
+ \end{align*}
+ Now using Naturality and Vanishing II we get
+ \begin{align*}
+  &\Trace^{U\otimes V}_{X,Y}\bigg[\Trace^X_{U\otimes V\otimes X,U\otimes V\otimes Y}\Big[\big(X\otimes U\otimes f\big)\circ\big(\gamma_{U,X}\otimes U\otimes X\big)\circ\gamma_{U\otimes X, U\otimes X}\circ\big(\gamma_{X,U}\otimes U\otimes X\big)\circ\big(X\otimes U\otimes g\otimes X\big)\Big]\bigg]\\
+  &=\Trace^V_{X,Y}\Bigg[\Trace^U_{V\otimes X,V\otimes Y}\bigg[\Trace^X_{U\otimes V\otimes X,U\otimes V\otimes Y}\Big[\big(\gamma_{U,X}\otimes V\otimes Y\big)\circ\big(g\otimes X\otimes f\big)\circ\gamma_{U\otimes X, V\otimes X}\circ\big(\gamma_{X,U}\otimes V\otimes X\big)\Big]\bigg]\Bigg]\\
+  &=\Trace^V_{X,Y}\bigg[\Trace^{X\otimes U}_{V\otimes X,V\otimes Y}\Big[\big(\gamma_{U,X}\otimes V\otimes Y\big)\circ\big(g\otimes X\otimes f\big)\circ\gamma_{U\otimes X, V\otimes X}\circ\big(\gamma_{X,U}\otimes V\otimes X\big)\Big]\bigg]
+ \end{align*}
+ which by Dinaturality I' is equal to
+ \[\Trace^V_{X,Y}\bigg[\Trace^{U\otimes X}_{V\otimes X,V\otimes Y}\Big[\big(g\otimes X\otimes f\big)\circ\gamma_{U\otimes X, V\otimes X}\Big]\bigg],\]
+ but this is exactly the composition formula applied to the right hand side of Dinaturality I.}%end erase
+\end{proof}
+
+For a traced symmetric monoidal category $\mcM$ let $\widetilde\mcM=\Int(\mcM)$ denote the category with objects given by pairs $(X_-,X_+)$ where $X_-,X_+\in \Ob(\mcM)$ and morphisms given by 
+\[\Hom_{\widetilde{M}}\big((X_-,X_+),(Y_-,Y_+)\big)=\Hom_\mcM(X_-\otimes Y_+,X_+\otimes Y_-).\]
+For morphisms $\Phi:(X_-,X_+)\to(Y_-,Y_+)$ and $\Psi:(Y_-,Y_+)\to(Z_-,Z_+)$ in $\widetilde\mcM$ we define their composition to be
+\[\Psi\circ\Phi:=\Trace^{Y_+}_{X_-\otimes Z_+,X_+\otimes Z_-}\Big[\big(\gamma_{X_+,Y_+}\otimes Z_-\big)\circ\big(X_+\otimes\Psi\big)\circ\big(\Phi\otimes Z_+\big)\circ\big(\gamma_{Y_+,X_-}\otimes Z_+\big)\Big].\]
+It is well known that $\widetilde{M}$ is a compact closed category whose tensor is given by
+\[(X_-,X_+)\odot(Y_-,Y_+):=(X_-\otimes Y_-,X_+\otimes Y_+)\]
+with unit object $I_{\widetilde\mcM}:=(I_\mcM,I_\mcM)$ and duality $(X_-,X_+)^\vee:=(X_+,X_-)$.  The following is immediate from the definitions.
+
+\begin{lemma}
+
+Let $\mcM$ be a traced symmetric monoidal category.  Then for any object $(X_-,X_+)\in\Ob\big(\widetilde\mcM\big)$ there is a canonical bijection
+\[|(X_-,X_+)|\iso\Hom_\mcM(X_-,X_+).\]
+
+\end{lemma}
+
+
+%%%%%%%%%%%%%%
+\section{Tracing bijections}
+
+Let $\mcB$ be the category whose objects are finite sets and whose morphisms are given by
+$$\Hom_{\mcB}(X,Y)=Bij(X,Y)\times\Ob(\Fin),$$
+i.e. a morphism is a bijection between $X$ and $Y$ together with an auxiliary finite set where composition in the second variable is given by disjoint union of sets.  The category $\mcB$ is symmetric monoidal where the tensor, denoted by $\oplus$, is given by disjoint union of finite sets and the tensor unit is the empty set $\emptyset$.  
+
+We will fix a skeleton $\ul\NN$ of $\mcB$ with objects $\ul{n}:=[1,n]$ for each natural number $n\in\NN$ and also fix a retraction $\mcB\onto\ul\NN$ so that any bijection $\sigma:X\to Y$ identifies with a permutation of some ordered set $\ul{n}$.  Thus we may identify a {\em cycle decomposition} for any bijection $X\To{\iso}Y$.  More precisely, for any permutation $\sigma:\ul{n}\to\ul{n}$ there is a partition $\ul{n}=R_1\oplus\cdots\oplus R_t$ and a factorization $\sigma=\rho_1\oplus\cdots\oplus\rho_t$ where $\rho_i^j:R_i\to R_i$ has no fixed points for $1\le j<|R_i|$.
+
+For sets $U,X,Y$ and a bijection $\sigma:U\oplus X\to U\oplus Y$ we define a bijection $Rem^U_{X,Y}\big[\sigma\big]:X\to Y$ by removing all values corresponding to elements of $U$ from the cycle notation for $\sigma$ and then identifying the remaining entries with elements of $X$ and $Y$ as above.
+
+\begin{example}
+Suppose given the bijection $\sigma\taking\ul{7}\to\ul{7}$ with cycle decomposition $(1 3 7)(6 5)(2 4)$. Then after removing $U=\{4,5,6,7\}$ from these cycles we get $(13)(2)$ and so $Rem^U_{\ul{3},\ul{3}}\big[\sigma\big]=(1 3)(2)$. 
+
+Notice that after removing elements of $U$ we really seemed to get $(13)()(2)$, but the {\em empty cycle} $()$ has been mysteriously dropped.
+\end{example}
+
+Instead of starting with a bijection we could start with $(\sigma,C)\in\Hom_\mcB(U\oplus X,U\oplus Y)$, i.e. a cycle decomposition that also includes a finite set $C$ representing a collection of empty cycles. Applying the above procedure we will opt to not drop the empty cycles entirely, but rather append them to the set $C$; we denote the result of this procedure by $Rem^U_{X,Y}\big[\sigma,C\big]\in\Hom_\mcB(X,Y)$.
+
+\begin{proposition}
+
+The collection of functions $Rem^U_{X,Y}:\Hom_\mcB(U\oplus X,U\oplus Y)\to\Hom_\mcB(X,Y)$ for finite sets $U,X,Y$ defines a trace on the symmetric monoidal category $\mcB$.
+
+\end{proposition}
+
+\begin{proof}
+
+We check each of the axioms in turn.  By Proposition~\ref{prop:dinaturality} we may verify Dinaturality I' but this is obvious since applying the symmetries $\gamma_{U,V}$ and $\gamma_{V,U}$ amounts to at most a relabeling of the elements of $U$ and $V$ in the cycle notation.  Naturality is also easy to see since applying the bijections $g$ and $h$ will simply reorder those elements which remain after the erasing and it doesn't matter if we reorder them before erasing or afterward.  There is nothing to check for the superposing axiom since the map $g$ will contirbuate a collection of cycles disjoint from $U$.  Vanishing I is clear since we erase nothing from the cycle decomposition in this case, similarly Vanishing II is obvious since erasing all elements of $U\oplus V$ from the cycle decomposition is the same as erasing all elements of $U$ and then all elements of $V$.  
+
+Thus the only thing to verify is the yanking axiom.  For this notice that $\gamma_{X,X}$ will be a collection of $2$-cycles, one for each element of $X$.  The erasing procedure will eliminate exactly one entry from each two cycle leaving behind the identity map on $X$ as desired.
+
+\end{proof}
+
+For any set $\mcO$, let $\mcB/\mcO$ be the symmetric monoidal category whose objects are finite sets together with a map to $\mcO$ and whose morphisms are bijections over $\mcO$ with a map from the auxiliary finite set to $\mcO$.
+
+\begin{corollary}
+The trace on $\mcB$ induces a trace on $\mcB/\mcO$.
+\end{corollary}
+We will abuse notation slightly and also denote the trace of $\mcB/\mcO$ by $Rem^U_{X,Y}$.
+\begin{proof}
+
+It suffices to remark that an empty cycle will be labeled by the element of $\mcO$ over which the original cycle lived.
+
+\end{proof}
+
+Consider $\mcO=\Ob(\mcM)$ for a traced symmetric monoidal category $\mcM$. Given any object $X:X\to\mcO$ in $\mcB/\mcO$ we denote by $\ol{X}\in\mcM$ the tensor product 
+$$\ol{X}:=\bigotimes_{i\in X}X(i)$$
+Note that given a morphism $(\sigma,C)\in\Hom_{\mcB/\mcO}(X,Y)$ we get a morphism $\ol{\sigma}^{\dim(\ol{C})}\taking\ol{X}\to\ol{Y}$ in $\mcM$.
+
+\begin{proposition}\label{prop:trace interactions}
+
+Let $\mcO=\Ob(\mcM)$ for a traced symmetric monoidal category $\mcM$.  Let $X,Y,U\in\Ob(\mcB/\mcO)$ be finite sets over $\mcO$. For $(\sigma,C)\in\Hom_{\mcB/\mcO}(U\oplus X,U\oplus Y)$ we have 
+$$\Trace^{\ol{U}}_{\ol{X},\ol{Y}}\big[\ol{\sigma}^{\dim(\ol{C})}\big]=\ol{Rem^U_{X,Y}\big[\sigma,C\big]}.$$
+That is, the functor $\ol{\;\cdot\;}\taking\mcB/\mcO\to\mcM$ is a traced monoidal functor.
+
+\end{proposition}
+
+\begin{proof}
+
+We first reduce to the case where $\sigma$ is a simple cycle.  For this we find the cycle decomposition $\sigma=\rho_1\oplus\cdots\oplus\rho_t$ so that $U_i\oplus X_i\cong R_i\cong U_i\oplus Y_i$.  Then iterating the Vanishing II and Superposing axioms we get
+\[Rem^U_{X,Y}\big[\sigma,C\big]=Rem^U_{X,Y}\big[\rho_1\oplus\cdots\oplus\rho_t,C\big]=Rem^{U_1}_{X_1,Y_1}\big[\rho_1\big]\oplus\cdots\oplus Rem^{U_t}_{X_t,Y_t}\big[\rho_t\big]\]
+
+\begin{align*}
+ \Trace^{\ol{U}}_{\ol{X},\ol{Y}}\big[\ol{\sigma}^{\dim(\ol{C})}\big]
+ &=\Trace^{\ol{U_1}\otimes\cdots\otimes\ol{U_t}}_{\ol{X_1}\otimes\cdots\otimes\ol{X_t},\ol{Y_1}\otimes\cdots\otimes\ol{Y_t}}\big[\ol{\rho_1}\otimes\cdots\otimes\ol{\rho_t}\big]^{\dim(\ol{C})}\\
+ &=\Trace^{\ol{U_2}\otimes\cdots\otimes\ol{U_t}}_{\ol{X_1}\otimes\cdots\otimes\ol{X_t},\ol{Y_1}\otimes\cdots\otimes\ol{Y_t}}\Big[\Trace^{\ol{U_1}}_{\ol{U_2}\otimes\cdots\otimes\ol{U_t}\otimes\ol{X_1}\otimes\cdots\otimes\ol{X_t},\ol{U_2}\otimes\cdots\otimes\ol{U_t}\otimes\ol{Y_1}\otimes\cdots\otimes\ol{Y_t}}\big[\ol{\rho_1}\otimes\cdots\otimes\ol{\rho_t}\big]\Big]\\
+ &=\Trace^{\ol{U_2}\otimes\cdots\otimes\ol{U_t}}_{\ol{X_1}\otimes\cdots\otimes\ol{X_t},\ol{Y_1}\otimes\cdots\otimes\ol{Y_t}}\Big[\Trace^{\ol{U_1}}_{\ol{X_1},\ol{Y_1}}\big[\ol{\rho_1}\big]\otimes\ol{\rho_2}\otimes\cdots\otimes\ol{\rho_t}\Big]\\
+ &=\Trace^{\ol{U_1}}_{\ol{X_1},\ol{Y_1}}\big[\ol{\rho_1}\big]\otimes\Trace^{\ol{U_2}\otimes\cdots\otimes\ol{U_t}}_{\ol{X_2}\otimes\cdots\otimes\ol{X_t},\ol{Y_2}\otimes\cdots\otimes\ol{Y_t}}\big[\ol{\rho_2}\otimes\cdots\otimes\ol{\rho_t}\big]\\
+ &\ \,\vdots\\
+ &=\Trace^{\ol{U_1}}_{\ol{X_1},\ol{Y_1}}\big[\ol{\rho_1}\big]\otimes\cdots\otimes\Trace^{\ol{U_t}}_{\ol{X_t},\ol{Y_t}}\big[\ol{\rho_t}\big]
+\end{align*}
+
+\end{proof}
+
+The following result may not belong in this section.
+
+\begin{proposition}
+
+Let $\mcS$ denote the (skeleton of the) category of finite sets and surjections; each object is of the form $\ul{n}=\{1,2,\ldots,n\}$. There is a functor $\mcS\to\Grp\op$ sending $\ul{n}$ to $S_n$, the symmetric group on $n$ letters.
+
+\end{proposition}
+
+
+%%%%%%%%%%%%
+\section{1-Cobordisms}
+
+By manifold, we always mean manifold with boundary and only finitely many connected components.  When a manifold $Y$ is oriented, we denote the same manifold with opposite orientation by $Y^\vee$.
+
+An {\em oriented 0-manifold} $X$ comes with a canonical decomposition $X=\inp{X}\sqcup\outp{X}$, where $\inp{X}$ consists of negatively oriented points and $\outp{X}$ consists of positively oriented points.  Given any manifold $\mcO$, an {\em oriented 0-manifold over $\mcO$} is an oriented $0$-manifold $X$ together with a function $\tau_X\taking X\to\mcO$. 
+
+For oriented $0$-manifolds $X$ and $Y$ an {\em oriented $1$-cobordism} $\Phi:X\to Y$ consists of an oriented $1$-manifold $\Phi$ whose boundary $\partial \Phi$ is identified with $X\sqcup Y^\vee$. We will always be working with oriented manifolds and oriented cobordisms, so we often speak of them as simply manifolds and cobordisms. 
+
+Given a $1$-cobordism $\Phi:X\to Y$ and a $1$-cobordism $\Psi:Y\to Z$, we compute $\Psi\circ\Phi:X\to Z$ by gluing the 1-manifolds $\Phi$ and $\Psi$ together along a thickening of $Y$ to obtain a $1$-cobordism from $X$ to $Z$. We denote by $\Cob$ the category where objects are oriented $0$-manifolds and where morphisms $\Hom_\Cob(X,Y)$ are oriented $1$-cobordisms from $X$ to $Y$.  
+
+If $X$ and $Y$ are manifolds over $\mcO$, when we speak of a cobordism between them we mean that our manifold $W$ is over $\mcO$.  The category of 0-manifolds and cobordisms over $\mcO$ is written as $\Cob/\mcO$.
+
+The categories $\Cob$ and $\Cob/\mcO$ have natural compact closed structures where the tensor product is given by disjoint union and duality is given by reversing orientations.  However it will be useful for us to give an alternate description of the compact closed structure of these categories by realizing them via the ``Int construction" of Joyal, Street, and Verity \cite{joyal-street-verity}.
+
+\begin{proposition}
+
+The category $\Cob/\mcO$ of cobordisms over $\mcO$ is equivalent to the Int construction applied to $\mcB/\mcO$ above,
+$$\Cob/\mcO\simeq\Int(\mcB/\mcO).$$
+
+\end{proposition}
+
+\begin{proof}
+
+
+
+\end{proof}
+
+This provides another useful description of the category $\Cob/\mcO$.
+
+\begin{proposition}\label{prop:set theoretic cob1}
+We have the following combinatorial description of morphisms and compositions in the category $\Cob/\mcO$.
+
+\begin{description}
+\item[Morphisms]
+A $1$-cobordism $\Phi\taking X\to Y$ in $\Cob/\mcO$ can be identified with a pair $(F,\varphi)$, where $F$ is a typed finite set, called the set of {\em components of $\Phi$} (as a set $F$ identifies with $\pi_0(\Phi)$), and $\varphi\taking X\sqcup Y\to F$ is a typed function, satisfying the following condition, which we call the {\em bijective inclusions property}:
+	\begin{quote}\tn{(Bijective inclusions property:)}
+	The restrictions $\outpm{\varphi}:=\varphi\big|_{\outp{X}\sqcup\inp{Y}}$ and $\inpm{\varphi}:=\varphi\big|_{\inp{X}\sqcup\outp{Y}}$ are monomorphisms, and they are isomorphic as such; i.e. there exists a typed bijection 
+	$$\varphi'\taking\outp{X}\sqcup\inp{Y}\Too{\iso}\inp{X}\sqcup\outp{Y}$$
+	such that the following diagram commutes:
+	$$\xymatrix@C=12pt{
+	\outp{X}\sqcup\inp{Y}\ar[rr]^{\varphi'}\ar@{_(->}[dr]_{\outpm{\varphi}}&&\inp{X}\sqcup\outp{Y}\ar@{^(->}[dl]^{\inpm{\varphi}}\\
+	&F
+	}
+	$$
+	Note that $\varphi'$ is unique if it exists, so it can be recovered from $\varphi$.
+	\end{quote}
+It is often convenient to denote the restrictions $\domn{\varphi}=\varphi\big|_{X}$ and $\codomn{\varphi}=\varphi\big|_{Y}$, which together define the morphism $\varphi$ as a co-relation,
+$$X\Too{\domn{\varphi}}F\Fromm{\codomn{\varphi}}Y.$$
+
+The two typed functions $\inpm{\varphi}$ and $\outpm{\varphi}$ have the same image in $F$; we denote the complement of this image as $\mcL(\Phi)$ called the \emph{loops of $\Phi$} (as a set $\mcL(\Phi)$ identifies with a basis for $H_1(\Phi)$). Thus an equivalent (but less useful) definition for a morphism $\Phi:X\to Y$ in $\Cob/\mcO$ is: a typed finite set $\mcL$ and a typed bijection $\outp{X}\sqcup\inp{Y}\To{\iso}\inp{X}\sqcup\outp{Y}$. 
+\item [Composition] Consider $1$-cobordisms $\Phi\taking X\to Y$ and $\Psi\taking Y\to Z$ which are identified with pairs $(F,\phi)$ and $(G,\psi)$ respectively.  Define $H$ via the pushout of corelations as below:
+$$
+\xymatrix{
+X\ar[r]^{\domn{\varphi}}&F\ar[r]&H\urlimit\\
+&Y\ar[r]^{\domn{\psi}}\ar[u]_{\codomn{\varphi}}&G\ar[u]\\
+&&Z\ar[u]_{\codomn{\psi}}
+}
+$$
+Then the $1$-cobordism $\Psi\circ\Phi:X\to Z$ is identified with the pair $\big(H,\domn{\varphi}\sqcup\codomn{\psi}\big)$.
+\end{description}
+
+\end{proposition}
+
+\begin{proof}
+
+**
+
+$$\xymatrix{
+\inp{X}\ar[rr]\ar[d]&&\inp{X}\sqcup\outp{Z}\ar@{-->}@/_3pc/[dddd]&&\outp{Z}\ar[ll]\ar[d]\\
+\inp{X}\sqcup\outp{Y}\ar[dd]\ar[dr]&\outp{Y}\ar[l]\ar[dr]&&\inp{Y}\ar[r]\ar[dl]&\inp{Y}\sqcup\outp{Z}\ar[dd]\ar[dl]\\
+&F&Y\ar[l]\ar[r]&G\\
+\outp{X}\sqcup\inp{Y}\ar[ur]&\inp{Y}\ar[l]\ar[ur]&&\outp{Y}\ar[ul]\ar[r]&\outp{Y}\sqcup\inp{Z}\ar[ul]\\
+\outp{X}\ar[u]\ar[rr]&&\outp{X}\sqcup\inp{Z}&&\inp{Z}\ar[ll]\ar[u]
+}
+$$
+$$\xymatrix{
+\inp{X}\ar[rr]\ar[d]&&\inp{X}\sqcup\outp{Z}\ar[dd]\ar@{-->}@/_3pc/[dddd]&&\outp{Z}\ar[ll]\ar[d]\\
+\inp{X}\sqcup\outp{Y}\ar[dd]\ar[drr]&\outp{Y}\ar[l]&&\inp{Y}\ar[r]&\inp{Y}\sqcup\outp{Z}\ar[dd]\ar[dll]\\
+&&F\sqcup_{Y}G\\
+\outp{X}\sqcup\inp{Y}\ar[urr]&\inp{Y}\ar[l]&&\outp{Y}\ar[r]&\outp{Y}\sqcup\inp{Z}\ar[ull]\\
+\outp{X}\ar[u]\ar[rr]&&\outp{X}\sqcup\inp{Z}\ar[uu]&&\inp{Z}\ar[ll]\ar[u]
+}
+$$
+The two $\inp{Y}$'s are identified over $F\sqcup_{Y}G$ and so are the two $\outp{Y}$'s. We can show that the dotted arrow is an isomorphism by induction on the cardinality of $Y$.
+
+\end{proof}
+
+Given a typed finite set $s$, we have an object $S:=(s,s)\in\Ob(\Cob/\mcO)$. There is a natural morphism $X\to X\oplus S$ and a natural morphism $X\oplus S\to X$, as shown:
+\begin{align}\label{dia:proto loops}
+|X|\Too{inl}|X|\sqcup|S|\Fromm{\id}|X\oplus S|.\hspace{.7in}
+|X\oplus S|\Too{\id}|X|\sqcup |S|\Fromm{inl}|X|
+\end{align}
+
+
+\begin{lemma}
+
+Let $s$ be a typed finite set and $S=(s,s)$. The composite of the morphisms $X\to X\oplus S\to X$ from (\ref{dia:proto loops}) constitutes a natural transformation 
+$$\Loop(s)\taking\id_{\Cob/\mcO}\to\id_{\Cob/\mcO}$$ 
+whose $X$-component $\Loop(s)_X\taking X\to X$ is given by the co-relation 
+$$|X|\To{inl} |X|\sqcup |S|\From{inl} |X|.$$
+
+\end{lemma}
+
+\begin{proof}
+
+Clearly the composite is given by the co-relation $|X|\to |X|\sqcup |S|\from |X|$, because this is the pushout of the co-relations in (\ref{dia:proto loops}). Thus it remains to show that these co-relations really are morphisms (i.e. that they satisfy the bijective inclusions property), and that these morphisms are natural in $X$.
+
+It is easy to see that these co-relations satisfy the bijective inclusions property, because $\inp{X}\sqcup\outp{(X\oplus S)}=|X|\sqcup|S|=\outp{X}\sqcup\inp{(X\oplus S)}.$ To see that $\Loop(s)$ is natural in $s$, one checks that for any $\varphi\taking X\to Y$, the two co-relations below are identical:
+$$
+\xymatrix{
+|X|\ar[r]^{\domn{\varphi}}&|\varphi|\ar[r]^{inl}&|\varphi|\sqcup|S|\urlimit\\
+&|Y|\ar[u]_{\codomn{\varphi}}\ar[r]^-{inl}&|Y|\sqcup|S|\ar[u]_{\codomn{\varphi}\sqcup|S|}\\
+&&|Y|\ar[u]_{inl}
+}
+\hspace{.8in}
+\xymatrix{
+|X|\ar[r]^-{inl}&|X|\sqcup|S|\ar[r]^{\domn{\varphi}\sqcup|S|}&|\varphi|\sqcup|S|\urlimit\\
+&|X|\ar[u]_{inl}\ar[r]^-{\domn{\varphi}}&|\varphi|\ar[u]_{inl}\\
+&&|Y|\ar[u]_{\codomn{\varphi}}
+}$$
+\end{proof}
+
+\section{Main theorem}
+
+\begin{lemma}
+
+Given a function $f\taking\mcO\to\mcO'$, there is an induced strong monoidal functor $f^*\taking\Cob/\mcO'\to\Cob/\mcO$. This defines a functor 
+$$\Cob/-\taking\Set\to\SMC_{st}\op$$
+from the category of sets to the opposite of the category of SMCs and strong monoidal functors.
+
+\end{lemma}
+
+\begin{proof}
+
+**
+
+\end{proof}
+
+\begin{lemma}
+
+Let $U,U',X,Y$ be typed finite sets, and let $\sigma\taking U\To{\iso} U'$ be an isomorphism. Then the diagram:
+$$\xymatrix{
+\Hom(\ol{X}\otimes\ol{U},\ol{Y}\otimes\ol{U})\ar[rr]\ar[dr]_{Tr^{\ol{U}}_{\ol{X},\ol{Y}}}&&\Hom(\ol{X}\otimes\ol{U'},\ol{Y}\otimes\ol{U'})\ar[dl]_{Tr^{\ol{U'}}_{\ol{X},\ol{Y}}}\\
+&\Hom(\ol{X},\ol{Y})
+}
+$$
+commutes, where the top morphism is conjugation with $\ol{\sigma}$.
+
+\end{lemma}
+
+\begin{proof}
+
+This follows from dinaturality of trace.
+
+\end{proof}
+
+\begin{definition}
+
+Define {\em the category of typed 1-cobordism algebras}, denoted $(\Cob/\bullet)\alg$, to have objects 
+$$\Ob((\Cob/\bullet)\alg):=\{(\mcO,\mcP)\|\mcO\in\Ob(\Set)\tn{ and } \mcP\in\Ob\big((\Cob/\mcO)\alg\big)\},$$
+and to have morphisms
+$$\Hom_{(\Cob/\bullet)\alg}((\mcO,\mcP),(\mcO',\mcP')):=\{(f,r)\|f\taking\mcO\to\mcO', r\taking\mcP\to(\Cob/f)^*(\mcP')\}.$$
+
+\end{definition}
+
+\begin{theorem}\label{thm:cobalg trace adjunction}
+
+Let $(\Cob/\bullet)\alg$ be the category of typed 1-cobordism algebras, and let $\TSMC$ denote the category of traced symmetric monoidal categories (and traced lax monoidal functors between them). There is an adjunction
+$$\xymatrix{L\taking(\Cob/\bullet)\alg\ar@<.5ex>[r]&\TSMC:\!R\ar@<.5ex>[l]}$$
+
+\end{theorem}
+
+\begin{proof}
+
+Let $\mcM$ be a traced monoidal category with objects $\mcO$. We will define a $\Cob/\mcO$-algebra $\mcP=R(\mcM)\taking\Cob/\mcO\to\Set$ as follows. For an object $X\in\Ob(\Cob/\mcO)$, set 
+$$\mcP(X):=\Hom_{\mcM}(\vinp{X},\voutp{X}).$$
+We next consider morphisms.
+
+
+Following Proposition~\ref{prop:set theoretic cob1} a morphism $\Phi\taking X\too Y$ consists of a typed bijection 
+$$\varphi\taking\inp{X}\sqcup \outp{Y}\To{\iso}\outp{X}\sqcup \inp{Y},$$ 
+together with a typed finite set $S$. Given an element $f\in\mcP(X)$ we must construct $\mcP(\Phi)(f)\in\mcP(Y)$. Let $\dim(\ol{S})=\Trace^{\ol{S}}_{I,I}\big[\id_{\ol{S}}\big]\in\mcS_\mcM$. Then we use the formula
+$$\mcP(\Phi)(f):=
+\Trace^{\ol{X_+}}_{\ol{Y_-},\ol{Y_+}}\Big[\big(f\otimes\id_{\ol{Y_+}}\big)\circ\ol{\varphi}\Big]
+\otimes\dim(\ol{S}).	
+$$
+
+Given also $\Psi\taking[\inp{Y},\outp{Y}]\too[\inp{Z},\outp{Z}]$, we need to show that the following equation holds: 
+$$\mcP(\Psi)\circ\mcP(\Phi)(f)=^?\mcP(\Psi\circ\Phi)(f).$$
+These are given as follows (with the isomorphisms above suppressed for readability):
+\begin{align}
+\label{eq:composition 1}
+\mcP(\Psi)\circ\mcP(\Phi)(f)&=
+\Trace^{\ol{Y_+}}_{\ol{Z_-},\ol{Z_+}}
+\Bigg[\bigg(
+\Trace^{\ol{X_+}}_{\ol{Y_-},\ol{Y_+}}\Big[\big(f\otimes\id_{\ol{Y_+}}\big)\circ\ol{\varphi}\Big]\otimes\id_{\ol{Z_+}}\bigg)\circ\ol{\psi}
+\Bigg]
+\otimes\dim(\ol{S\sqcup T})
+\\\nonumber\\
+\label{eq:composition 2}
+\mcP(\Psi\circ\Phi)(f)&=
+\Trace^{\ol{X_+}}_{\ol{Z_-},\ol{Z_+}}\Big[\big(f\otimes\id_{\ol{Z_+}}\big)\circ\ol{\rho}\Big]\otimes\dim(\ol{S\sqcup T\sqcup ``newloops"})
+\end{align}
+where $\rho$ is the permutation corresponding to $\Psi\circ\Phi$, i.e. it is obtained by tracing the bijection $\Trace^{Y_+}_{X_-+Z_+,X_++Z_-}\Big[\big(\id_{X_+}+\psi\big)\circ\big(\varphi+\id_{Z_+}\big)\Big]$.
+
+Our first goal is to combine the traces in \eqref{eq:composition 1}.  First we move the map $\id_{\ol{Z_+}}$ into the trace via Superposing and then the $\ol{\psi}$ using Naturality whence we may apply Vanishing II, i.e. we have
+\begin{align*}
+ &\Trace^{\ol{Y_+}}_{\ol{Z_-},\ol{Z_+}}
+\Bigg[\bigg(
+\Trace^{\ol{X_+}}_{\ol{Y_-},\ol{Y_+}}\Big[\big(f\otimes\id_{\ol{Y_+}}\big)\circ\ol{\varphi}\Big]\otimes\id_{\ol{Z_+}}\bigg)\circ\ol{\psi}
+\Bigg]
+\otimes\dim(\ol{S\sqcup T})\\
+%
+&=\Trace^{\ol{Y_+}}_{\ol{Z_-},\ol{Z_+}}
+\bigg[
+\Trace^{\ol{X_+}}_{\ol{Y_-}\otimes\ol{Z_+},\ol{Y_+}\otimes\ol{Z_+}}\Big[\big(f\otimes\id_{\ol{Y_+}}\otimes\id_{\ol{Z_+}}\big)\circ\big(\ol{\varphi}\otimes\id_{\ol{Z_+}}\big)\Big]\circ\ol{\psi}
+\bigg]
+\otimes\dim(\ol{S\sqcup T})\\
+%
+&=\Trace^{\ol{Y_+}}_{\ol{Z_-},\ol{Z_+}}
+\bigg[
+\Trace^{\ol{X_+}}_{\ol{Y_+}\otimes\ol{Z_-},\ol{Y_+}\otimes\ol{Z_+}}\Big[\big(f\otimes\id_{\ol{Y_+}}\otimes\id_{\ol{Z_+}}\big)\circ\big(\ol{\varphi}\otimes\id_{\ol{Z_+}}\big)\circ\big(\id_{\ol{X_+}}\otimes\ol{\psi}\big)\Big]
+\bigg]
+\otimes\dim(\ol{S\sqcup T})\\
+%
+&=\Trace^{\ol{X_+}\otimes\ol{Y_+}}_{\ol{Z_-},\ol{Z_+}}
+\Big[\big(f\otimes\id_{\ol{Y_+}}\otimes\id_{\ol{Z_+}}\big)\circ\big(\ol{\varphi}\otimes\id_{\ol{Z_+}}\big)\circ\big(\id_{\ol{X_+}}\otimes\ol{\psi}\big)\Big]
+\otimes\dim(\ol{S\sqcup T}).
+\end{align*}
+By Proposition~\ref{prop:dinaturality} we may swap the tensor in the upper index and then apply the Vanishing II to once again separate the traces, i.e. we have
+\begin{align*}
+&\Trace^{\ol{X_+}\otimes\ol{Y_+}}_{\ol{Z_-},\ol{Z_+}}
+\Big[\big(f\otimes\id_{\ol{Y_+}}\otimes\id_{\ol{Z_+}}\big)\circ\big(\ol{\varphi}\otimes\id_{\ol{Z_+}}\big)\circ\big(\id_{\ol{X_+}}\otimes\ol{\psi}\big)\Big]
+\otimes\dim(\ol{S\sqcup T})\\
+%
+&=\Trace^{\ol{Y_+}\otimes\ol{X_+}}_{\ol{Z_-},\ol{Z_+}}
+\Big[\big(\gamma_{\ol{X_+},\ol{Y_+}}\otimes\id_{\ol{Z_+}}\big)\circ\big(f\otimes\id_{\ol{Y_+}}\otimes\id_{\ol{Z_+}}\big)\circ\big(\ol{\varphi}\otimes\id_{\ol{Z_+}}\big)\circ\big(\id_{\ol{X_+}}\otimes\ol{\psi}\big)\circ\big(\gamma_{\ol{Y_+},\ol{X_+}}\otimes\id_{\ol{Z_+}}\big)\Big]
+\otimes\dim(\ol{S\sqcup T})\\
+&=\Trace^{\ol{X_+}}_{\ol{Z_-},\ol{Z_+}}\bigg[
+\Trace^{\ol{Y_+}}_{\ol{X_+}\otimes\ol{Z_-},\ol{X_+}\otimes\ol{Z_+}}\Big[
+\big(\gamma_{\ol{X_+},\ol{Y_+}}\otimes\id_{\ol{Z_+}}\big)\circ\big(f\otimes\id_{\ol{Y_+}}\otimes\id_{\ol{Z_+}}\big)\circ\big(\ol{\varphi}\otimes\id_{\ol{Z_+}}\big)\circ\big(\id_{\ol{X_+}}\otimes\ol{\psi}\big)\circ\big(\gamma_{\ol{Y_+},\ol{X_+}}\otimes\id_{\ol{Z_+}}\big)\Big]\bigg]
+\otimes\dim(\ol{S\sqcup T})\\
+&=\Trace^{\ol{X_+}}_{\ol{Z_-},\ol{Z_+}}\bigg[
+\Trace^{\ol{Y_+}}_{\ol{X_+}\otimes\ol{Z_-},\ol{X_+}\otimes\ol{Z_+}}\Big[
+\big(\id_{\ol{Y_+}}\otimes f\otimes\id_{\ol{Z_+}}\big)\circ\big(\gamma_{\ol{X_-},\ol{Y_+}}\otimes\id_{\ol{Z_+}}\big)\circ\big(\ol{\varphi}\otimes\id_{\ol{Z_+}}\big)\circ\big(\id_{\ol{X_+}}\otimes\ol{\psi}\big)\circ\big(\gamma_{\ol{Y_+},\ol{X_+}}\otimes\id_{\ol{Z_+}}\big)\Big]\bigg]
+\otimes\dim(\ol{S\sqcup T}),
+\end{align*}
+where the last equality used the identity $\gamma_{\ol{X_+},\ol{Y_+}}\circ\big(f\otimes\id_{\ol{Y_+}}\big)=\big(\id_{\ol{Y_+}}\otimes f\big)\circ\gamma_{\ol{X_-},\ol{Y_+}}$.  Finally we apply Vanishing II again, Proposition~\ref{prop:trace interactions}, and the Vanishing I to get the result:
+\begin{align*}
+&\Trace^{\ol{X_+}}_{\ol{Z_-},\ol{Z_+}}\bigg[
+\Trace^{\ol{Y_+}}_{\ol{X_+}\otimes\ol{Z_-},\ol{X_+}\otimes\ol{Z_+}}\Big[
+\big(\id_{\ol{Y_+}}\otimes f\otimes\id_{\ol{Z_+}}\big)\circ\big(\gamma_{\ol{X_-},\ol{Y_+}}\otimes\id_{\ol{Z_+}}\big)\circ\big(\ol{\varphi}\otimes\id_{\ol{Z_+}}\big)\circ\big(\id_{\ol{X_+}}\otimes\ol{\psi}\big)\circ\big(\gamma_{\ol{Y_+},\ol{X_+}}\otimes\id_{\ol{Z_+}}\big)\Big]\bigg]
+\otimes\dim(\ol{S\sqcup T})\\
+%
+&=\Trace^{\ol{X_+}}_{\ol{Z_-},\ol{Z_+}}\bigg[
+\big(f\otimes\id_{\ol{Z_+}}\big)\circ\Trace^{\ol{Y_+}}_{\ol{X_+}\otimes\ol{Z_-},\ol{X_-}\otimes\ol{Z_+}}\Big[
+\big(\gamma_{\ol{X_-},\ol{Y_+}}\otimes\id_{\ol{Z_+}}\big)\circ\big(\ol{\varphi}\otimes\id_{\ol{Z_+}}\big)\circ\big(\id_{\ol{X_+}}\otimes\ol{\psi}\big)\circ\big(\gamma_{\ol{Y_+},\ol{X_+}}\otimes\id_{\ol{Z_+}}\big)\Big]\bigg]
+\otimes\dim(\ol{S\sqcup T})\\
+&=\Trace^{\ol{X_+}}_{\ol{Z_-},\ol{Z_+}}\Big[
+\big(f\otimes\id_{\ol{Z_+}}\big)\circ\big(\ol{\rho}\otimes\dim(\ol{``newloops"})\big)\Big]
+\otimes\dim(\ol{S\sqcup T})\\
+&=\Trace^{\ol{X_+}}_{\ol{Z_-},\ol{Z_+}}\Big[
+\big(f\otimes\id_{\ol{Z_+}}\big)\circ\ol{\rho}\Big]
+\otimes\dim(\ol{S\sqcup T\sqcup ``newloops"}).
+\end{align*}
+
+\shortnote{include wiring diagram pictures?}
+
+\end{proof}
+
+\begin{theorem}
+
+The adjunction of Theorem \ref{thm:cobalg trace adjunction} is monadic. 
+
+\end{theorem}
+
+Every category has an underlying reflexive graph, which includes its objects and morphisms (including identities), but not its composition formula. By {\em symmetric monoidal reflexive graph}, we mean a reflexive graph $\mcG$ together with a vertex $I\in \mcG$ and a graph homomorphism $\otimes\taking\mcG\times\mcG\to\mcG$ that is commutative, associative, and unital with respect to $I$, all up to coherent isomorphisms. By {\em traced symmetric monoidal reflexive graph} we mean a symmetric monoidal reflexive graph with a family of trace functions $Tr$ that satisfy superposition, vanishing, and yanking (all the properties of traced SMCs that don't refer to the composition formula).
+
+\begin{conjecture}
+The category of traced symmetric monoidal categories is equivalent to the category of traced symmetric monoidal relfexive graphs.
+\end{conjecture}
+
+\begin{conjecture}
+Let $\mcM$ be a symmetric monoidal category and let $(\Cob/\bullet)\alg_\mcM$ be the category of algebras in $\mcM$ (e.g. whose objects are pairs $(\mcO,\mcP)$, where $\mcO$ is a set and $\mcP\taking\Cob/\mcO\to\mcM$ is a lax symmetric monoidal functor). Then there is a monadic adjunction 
+$$\xymatrix{L\taking(\Cob/\bullet)\alg_\mcM\ar@<.5ex>[r]&\mcM-\TSMC:\!R,\ar@<.5ex>[l]}$$
+where $\mcM-\TSMC$ is the category of traced SMCs enriched in $\mcM$.
+\end{conjecture}
+
+\section{General Lemmas on TSMC's}
+
+\begin{definition}
+ Let $f:A'\to B'$, $a:A'\To{\sim} A\otimes U$, $b:B'\To{\sim} B\otimes U$.  Then we write $\Trace_{a,b}^U\big[f\big]:=\Trace_{A,B}^U\big[b\circ f\circ a^{-1}\big]$.
+\end{definition}
+\begin{lemma}
+ Let $f:A'\to B'$, $a:A'\To{\sim} A\otimes U$, $b:B'\To{\sim} B\otimes U$, $c:A\To{\sim} C\otimes V$, $d:B\To{\sim} D\otimes V$.  Then we have
+ \begin{equation}
+  \Trace_{c,d}^V\Big[\Trace_{a,b}^U\big[f\big]\Big]=\Trace_{C,D}^U\Big[\Trace_{(C\otimes\gamma_{V,U})\circ(c\otimes U)\circ a,(D\otimes\gamma_{V,U})\circ(d\otimes U)\circ b}^V\big[f\big]\Big].
+ \end{equation}
+\end{lemma}
+\begin{proof}
+ By naturality we may rewrite $\Trace_{c,d}^V\Big[\Trace_{a,b}^U\big[f\big]\Big]$ as
+ \[\Trace_{C,D}^V\Big[\Trace_{C\otimes V,D\otimes V}^U\big[(d\otimes U)\circ b\circ f\circ a^{-1}\circ (c^{-1}\otimes U)\big]\Big]\]
+ which by the second vanishing axiom is equivalent to
+ \[\Trace_{C,D}^{V\otimes U}\Big[(d\otimes U)\circ b\circ f\circ a^{-1}\circ (c^{-1}\otimes U)\Big].\]
+ By dinaturality on either side we may write this as
+ \[\Trace_{C,D}^{U\otimes V}\Big[(D\otimes\gamma_{V,U})\circ(d\otimes U)\circ b\circ f\circ a^{-1}\circ (c^{-1}\otimes U)\circ(C\otimes\gamma_{U,V})\Big]\]
+ which by the second vanishing axiom is equivalent to
+ \[\Trace_{C,D}^U\Big[\Trace_{C\otimes U,D\otimes U}^V\big[(D\otimes\gamma_{V,U})\circ(d\otimes U)\circ b\circ f\circ a^{-1}\circ (c^{-1}\otimes U)\circ(C\otimes\gamma_{U,V})\big]\Big]\]
+ and noting that $\gamma_{U,V}^{-1}=\gamma_{V,U}$ completes the proof.
+\end{proof}
+
+\end{document}

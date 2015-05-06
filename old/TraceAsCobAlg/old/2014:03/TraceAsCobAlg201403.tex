@@ -1,0 +1,1171 @@
+\documentclass{amsart}
+
+\usepackage{savesym}
+\usepackage{txfonts,stmaryrd}
+\savesymbol{lrcorner}\savesymbol{ulcorner}
+\usepackage{amssymb, amscd,setspace,mathtools,makecell}
+\usepackage{enumerate}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[bookmarks=true,colorlinks=true, linkcolor=MidnightBlue, citecolor=cyan]{hyperref}
+\usepackage{lmodern}
+\usepackage{graphicx,float}
+\restoresymbol{txfonts}{lrcorner}\restoresymbol{txfonts}{ulcorner}
+\usepackage{tensor}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,chains,matrix,positioning,scopes,snakes}
+
+%Begin tikz macros
+\def\blackbox#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+  \path #1;
+  \pgfgetlastxy{\w}{\h}
+  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+  \draw (\llx,\lly) rectangle (\urx,\ury);
+  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+  \pgfmathsetlengthmacro{\yave}{\ury-8}
+  \node at (\xave,\yave) {#4};
+  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+  \ifnum #2=0{}\else{ 
+   \foreach \l in {1,...,#2}{
+    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+  \ifnum #3=0{}\else{
+   \foreach \r in {1,...,#3}{
+    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+}
+
+\def\blackboxinners#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+  \path #1;
+  \pgfgetlastxy{\w}{\h}
+  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+  \draw (\llx,\lly) rectangle (\urx,\ury);
+  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+  \pgfmathsetlengthmacro{\yave}{\ury-8}
+  \node at (\xave,\yave) {#4};
+  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+  \ifnum #2=0{}\else{ 
+   \foreach \l in {1,...,#2}{
+    \pgfmathsetlengthmacro{\newx}{\llx+#5*28.45274/2}
+    \pgfmathsetlengthmacro{\newy}{\lly+\l*\lstep}
+    \node at ($(\newx,\newy)+(-1.5,\l*12-\l*\lstep)$) {\tiny$(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+  \ifnum #3=0{}\else{
+   \foreach \r in {1,...,#3}{
+    \pgfmathsetlengthmacro{\newx}{\urx-#5*28.45274/2}
+    \pgfmathsetlengthmacro{\newy}{\ury-\r*\rstep}
+    \node at ($(\newx,\newy)+(1.5,-\r*12+\r*\rstep)$) {\tiny $(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+}
+
+\def\blackboxouters#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+  \path #1;
+  \pgfgetlastxy{\w}{\h}
+  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+  \draw (\llx,\lly) rectangle (\urx,\ury);
+  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+  \pgfmathsetlengthmacro{\yave}{\ury-8}
+  \node at (\xave,\yave) {#4};
+  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+  \ifnum #2=0{}\else{ 
+   \foreach \l in {1,...,#2}{
+    \pgfmathsetlengthmacro{\newx}{\llx-#5*28.45274/2}
+    \pgfmathsetlengthmacro{\newy}{\lly+\l*\lstep}
+    \node at ($(\newx,\newy)+(-1.5,\l*12-\l*\lstep)$) {\tiny$(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+  \ifnum #3=0{}\else{
+   \foreach \r in {1,...,#3}{
+    \pgfmathsetlengthmacro{\newx}{\urx+#5*28.45274/2}
+    \pgfmathsetlengthmacro{\newy}{\ury-\r*\rstep}
+    \node at ($(\newx,\newy)+(1.5,-\r*12+\r*\rstep)$) {\tiny $(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+}
+
+\def\dashbox#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+  \path #1;
+  \pgfgetlastxy{\w}{\h}
+  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+  \draw [dashed] (\llx,\lly) rectangle (\urx,\ury);
+  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+  \pgfmathsetlengthmacro{\yave}{\ury-8}
+  \node at (\xave,\yave) {#4};
+  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+  \ifnum #2=0{}\else{ 
+   \foreach \l in {1,...,#2}{
+    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+  \ifnum #3=0{}\else{
+   \foreach \r in {1,...,#3}{
+    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+}
+
+\def\fillbox#1#2#3#4#5#6{%(width,height), number inputs, number outputs, label, arrow length, fill strength
+  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+  \path #1;
+  \pgfgetlastxy{\w}{\h}
+  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+  \filldraw [fill=gray!#6] (\llx,\lly) rectangle (\urx,\ury);
+  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+  \pgfmathsetlengthmacro{\yave}{\ury-8}
+  \node at (\xave,\yave) {#4};
+  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+  \ifnum #2=0{}\else{ 
+   \foreach \l in {1,...,#2}{
+    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+  \ifnum #3=0{}\else{
+   \foreach \r in {1,...,#3}{
+    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+}
+
+
+\def\delaynode#1#2#3{%(x-coord,y-coord), size, arrow length
+  \path #1;
+  \pgfgetlastxy{\lx}{\ly}
+  \pgfmathsetlengthmacro{\rx}{\lx+#2*3+#3}
+  \pgfmathsetlengthmacro{\ry}{\ly}
+  \filldraw (\lx,\ly) circle (#2 pt);
+  \draw [->] (\lx,\ly) -- (\rx,\ry);
+}
+
+\def\delaynodeouters#1#2#3{%(x-coord,y-coord), size, arrow length
+  \path #1;
+  \pgfgetlastxy{\lx}{\ly}
+  \pgfmathsetlengthmacro{\rx}{\lx+#2*3+#3}
+  \pgfmathsetlengthmacro{\ry}{\ly}
+  \filldraw (\lx,\ly) circle (#2 pt);
+  \draw [->] (\lx,\ly) -- (\rx,\ry);
+   \node at (\rx+15,\ry+15){\tiny $(\pgfmathparse{\rx/28.45274}\pgfmathresult cm,\pgfmathparse{\ry/28.45274}\pgfmathresult cm)$};
+}
+
+
+\def\directarc#1#2{%left endpoint, right endpoint
+  \path #1;
+  \pgfgetlastxy{\lx}{\ly}
+  \path #2;
+  \pgfgetlastxy{\rx}{\ry}
+  \pgfmathsetlengthmacro{\xave}{(\lx+\rx)/2}
+  \draw #1 .. controls (\xave,\ly) and (\xave,\ry) .. #2;
+}
+
+\def\backarc#1#2{%left coordinate, right coordinate
+  \path #1;
+  \pgfgetlastxy{\lx}{\ly}
+  \path #2;
+  \pgfgetlastxy{\rx}{\ry}
+  \pgfmathsetlengthmacro{\xave}{(\lx+\rx)/2}
+  \draw #1 .. controls (\xave,\ry) and (\xave,\ly) .. #2;
+}
+
+\def\loopright#1#2#3{%upper coordinate, lower coordinate, stretch width
+  \path #1;
+  \pgfgetlastxy{\ux}{\uy}
+  \path #2;
+  \pgfgetlastxy{\lx}{\ly}
+  \pgfmathsetlengthmacro{\maxx}{max(\ux,\lx)}
+  \pgfmathsetlengthmacro{\farx}{\maxx+#3}
+  \draw #1 .. controls (\farx,\uy) and (\farx,\ly) .. #2;
+}
+
+\def\loopleft#1#2#3{%upper coordinate, lower coordinate, stretch width
+  \path #1;
+  \pgfgetlastxy{\ux}{\uy}
+  \path #2;
+  \pgfgetlastxy{\lx}{\ly}
+  \pgfmathsetlengthmacro{\minx}{min(\ux,\lx)}
+  \pgfmathsetlengthmacro{\farx}{\minx-#3}
+  \draw #1 .. controls (\farx,\uy) and (\farx,\ly) .. #2;
+}
+
+\def\fancyarc#1#2#3#4{%upper coordinate, lower coordinate, stretch width, max height adjust
+  \path #1;
+  \pgfgetlastxy{\ux}{\uy}
+  \path #2;
+  \pgfgetlastxy{\lx}{\ly}
+  \pgfmathsetlengthmacro{\xave}{(\lx+\ux)/2}
+%  \node at (\lx,\ly+20){\tiny $\pgfmathparse{\lx/28.45274}\pgfmathresult cm$,\hsp$\pgfmathparse{\ux/28.45274}\pgfmathresult cm$};
+%  \node at (\xave,\ly+50){\tiny $\pgfmathparse{\xave/28.45274}\pgfmathresult cm$};
+  \pgfmathsetlengthmacro{\yave}{(\ly+\uy)/2+#4}
+  \loopleft{#1}{(\xave,\yave)}{#3}
+  \loopright{#2}{(\xave,\yave)}{#3}
+}
+
+\def\activetikz#1{$$\begin{tikzpicture}#1\end{tikzpicture}$$}
+\def\inactivetikz#1{}
+%End tikz macros
+
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+\usepackage{xy,color}
+\newcommand{\comment}[1]{}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\shortnote}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\start}[1]{\shortnote{Start here: #1.}}
+\newcommand{\q}[1]{\begin{question}#1\end{question}}
+\newcommand{\g}[1]{\begin{guess}#1\end{guess}}
+
+\def\tn{\textnormal}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\AA{{\mathbb A}}
+\def\PP{{\mathbb P}}
+\def\NN{{\mathbb N}}
+\def\SS{{\mathbb S}}
+\def\HH{{\mathbb H}}
+
+\def\acts{\lefttorightarrow}
+\def\Hom{\tn{Hom}}
+\def\iHom{\Rightarrow}
+\def\Aut{\tn{Aut}}
+\def\Sub{\tn{Sub}}
+\def\Mor{\tn{Mor}}
+\def\Fun{\tn{Fun}}
+\def\Path{\tn{Path}}
+\def\im{\tn{im}}
+\def\Ob{\tn{Ob}}
+\def\dim{\tn{dim}}
+\def\Trace{\tn{Tr}}
+\def\Op{\tn{Op}}
+\def\SEL*{\tn{SEL*}}
+\def\Res{\tn{Res}}
+\def\hsp{\hspace{.3in}}
+\newcommand{\hsps}[1]{{\hspace{2mm} #1\hspace{2mm}}}
+\newcommand{\tin}[1]{\text{\tiny #1}}
+
+\def\singleton{{\{*\}}}
+\newcommand{\boxtitle}[1]{\begin{center}#1\end{center}}
+\def\Loop{{\mcL oop}}
+\def\LoopSchema{{\parbox{.5in}{\fbox{\xymatrix{\LMO{s}\ar@(l,u)[]^f}}}}}
+\def\Wks{{\mcW ks}}
+\def\lcone{^\triangleleft}
+\def\rcone{^\triangleright}
+\def\to{\rightarrow}
+\def\from{\leftarrow}
+\def\down{\downarrrow}
+\def\Down{\Downarrow}
+\def\Up{\Uparrow}
+\def\taking{\colon}
+\def\pls{``\!+\!"}
+\newcommand{\pathto}[1]{\stackrel{#1}\leadsto}
+\def\inj{\hookrightarrow}
+\def\surj{\twoheadrightarrow}
+\def\surjj{\longtwoheadrightarrow}
+\def\pfunc{\rightharpoonup}
+\def\Pfunc{\xrightharpoonup}
+\def\too{\longrightarrow}
+\def\fromm{\longleftarrow}
+\def\tooo{\longlongrightarrow}
+\def\tto{\rightrightarrows}
+\def\ttto{\equiv\!\!>}
+\newcommand{\xyto}[2]{\xymatrix@=1pt{\ar[rr]^-{#1}&\hspace{#2}&}}
+\newcommand{\xyequals}[1]{\xymatrix@=1pt{\ar@{=}[rr]&\hspace{#1}&}}
+\def\ss{\subseteq}
+\def\superset{\supseteq}
+\def\iso{\cong}
+\def\down{\downarrow}
+\def\|{{\;|\;}}
+\def\m1{{-1}}
+\def\op{^\tn{op}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\we{\simeq}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\vect{\overrightarrow}
+\def\qeq{\mathop{=}^?}
+
+\def\rr{\raggedright}
+
+%\newcommand{\LMO}[1]{\bullet^{#1}}
+%\newcommand{\LTO}[1]{\bullet^{\tn{#1}}}
+\newcommand{\LMO}[1]{\stackrel{#1}{\bullet}}
+\newcommand{\LTO}[1]{\stackrel{\tt{#1}}{\bullet}}
+\newcommand{\LA}[2]{\ar[#1]^-{\tn {#2}}}
+\newcommand{\LAL}[2]{\ar[#1]_-{\tn {#2}}}
+\newcommand{\obox}[3]{\stackrel{#1}{\fbox{\parbox{#2}{#3}}}}
+\newcommand{\labox}[2]{\obox{#1}{1.6in}{#2}}
+\newcommand{\mebox}[2]{\obox{#1}{1in}{#2}}
+\newcommand{\smbox}[2]{\stackrel{#1}{\fbox{#2}}}
+\newcommand{\fakebox}[1]{\tn{$\ulcorner$#1$\urcorner$}}
+\newcommand{\sq}[4]{\xymatrix{#1\ar[r]\ar[d]&#2\ar[d]\\#3\ar[r]&#4}}
+\newcommand{\namecat}[1]{\begin{center}$#1:=$\end{center}}
+
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.25)*+{\ulcorner}}
+\def\ulhlimit{\ar@{}[rd]|(.3)*+{\diamond}}
+\def\urhlimit{\ar@{}[ld]|(.3)*+{\diamond}}
+\def\llhlimit{\ar@{}[ru]|(.3)*+{\diamond}}
+\def\lrhlimit{\ar@{}[lu]|(.3)*+{\diamond}}
+\newcommand{\clabel}[1]{\ar@{}[rd]|(.5)*+{#1}}
+\newcommand{\TriRight}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longrightarrow}\ar@{}[u]|>>>>{#7}}}
+\newcommand{\TriLeft}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longleftarrow}\ar@{}[u]|>>>>{#7}}}
+\newcommand{\TriIso}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longleftrightarrow}\ar@{}[u]|>>>>{#7}}}
+
+
+\newcommand{\arr}[1]{\ar@<.5ex>[#1]\ar@<-.5ex>[#1]}
+\newcommand{\arrr}[1]{\ar@<.7ex>[#1]\ar@<0ex>[#1]\ar@<-.7ex>[#1]}
+\newcommand{\arrrr}[1]{\ar@<.9ex>[#1]\ar@<.3ex>[#1]\ar@<-.3ex>[#1]\ar@<-.9ex>[#1]}
+\newcommand{\arrrrr}[1]{\ar@<1ex>[#1]\ar@<.5ex>[#1]\ar[#1]\ar@<-.5ex>[#1]\ar@<-1ex>[#1]}
+
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+\newcommand{\Fromm}[1]{\xleftarrow{\ \ #1\ \ }}
+\def\qeq{\stackrel{?}{=}}
+
+\newcommand{\Adjoint}[4]{\xymatrix@1{{#2}\ar@<.5ex>[r]^-{#1} &{#3} \ar@<.5ex>[l]^-{#4}}}
+
+\def\id{\tn{id}}
+\def\dom{\tn{dom}}
+\def\cod{\tn{cod}}
+\def\Top{{\bf Top}}
+\def\Kls{{\bf Kls}}
+\def\Cat{{\bf Cat}}
+\def\Oprd{{\bf Oprd}}
+\def\LH{{\bf LH}}
+\def\Monad{{\bf Monad}}
+\def\Mon{{\bf Mon}}
+\def\CMon{{\bf CMon}}
+\def\cpo{{\bf cpo}}
+\def\Vect{\text{Vect}}
+\def\Rep{{\bf Rep}}
+\def\HCat{{\bf HCat}}
+\def\Cnst{{\bf Cnst}}
+\def\Str{\tn{Str}}
+\def\List{\tn{List}}
+\def\Exc{\tn{Exc}}
+\def\Sets{{\bf Sets}}
+\def\Cob{{\bf Cob}}
+\def\Grph{{\bf Grph}}
+\def\SGrph{{\bf SGrph}}
+\def\Rel{\mcR\tn{el}}
+\def\JRel{J\mcR\tn{el}}
+\def\Inst{{\bf Inst}}
+\def\Type{{\bf Type}}
+\def\Set{{\bf Set}}
+\def\TFS{{\bf TFS}}
+\def\Qry{{\bf Qry}}
+\def\set{{\text \textendash}{\bf Set}}
+\def\sets{{\text \textendash}{\bf Alg}}
+\def\alg{{\text \textendash}{\bf Alg}}
+\def\rel{{\text \textendash}{\bf Rel}}
+\def\inst{{{\text \textendash}\bf \Inst}}
+\def\sSet{{\bf sSet}}
+\def\sSets{{\bf sSets}}
+\def\Grpd{{\bf Grpd}}
+\def\Pre{{\bf Pre}}
+\def\Shv{{\bf Shv}}
+\def\Rings{{\bf Rings}}
+\def\bD{{\bf \Delta}}
+\def\dispInt{\parbox{.1in}{$\int$}}
+\def\bhline{\Xhline{2\arrayrulewidth}}
+\def\bbhline{\Xhline{2.5\arrayrulewidth}}
+
+
+\def\Comp{\tn{Comp}}
+\def\Supp{\tn{Supp}}
+\def\Dmnd{\tn{Dmnd}}
+
+
+\def\colim{\mathop{\tn{colim}}}
+\def\hocolim{\mathop{\tn{hocolim}}}
+\def\undsc{\rule{2mm}{0.4pt}}
+
+
+\def\mcA{\mc{A}}
+\def\mcB{\mc{B}}
+\def\mcC{\mc{C}}
+\def\mcD{\mc{D}}
+\def\mcE{\mc{E}}
+\def\mcF{\mc{F}}
+\def\mcG{\mc{G}}
+\def\mcH{\mc{H}}
+\def\mcI{\mc{I}}
+\def\mcJ{\mc{J}}
+\def\mcK{\mc{K}}
+\def\mcL{\mc{L}}
+\def\mcM{\mc{M}}
+\def\mcN{\mc{N}}
+\def\mcO{\mc{O}}
+\def\mcP{\mc{P}}
+\def\mcQ{\mc{Q}}
+\def\mcR{\mc{R}}
+\def\mcS{\mc{S}}
+\def\mcT{\mc{T}}
+\def\mcU{\mc{U}}
+\def\mcV{\mc{V}}
+\def\mcW{\mc{W}}
+\def\mcX{\mc{X}}
+\def\mcY{\mc{Y}}
+\def\mcZ{\mc{Z}}
+
+\def\bfS{{\bf S}}\def\bfSs{{\bf Ss}}
+\def\bfT{{\bf T}}\def\bfTs{{\bf Ts}}
+\def\bfW{{\bf W}}
+
+\def\tnN{\tn{N}}
+
+
+\def\bE{\bar{E}}
+\def\bF{\bar{F}}
+\def\bG{\bar{G}}
+\def\bH{\bar{H}}
+\def\bX{\bar{X}}
+\def\bY{\bar{Y}}
+
+\newcommand{\subsub}[1]{\setcounter{subsubsection}{\value{theorem}}\subsubsection{#1}\addtocounter{theorem}{1}}
+
+\def\Finm{{\bf Fin_{m}}}
+\def\Bag{\tn{Bag}}
+\newcommand{\back}[1]{\stackrel{\from}{#1}\!}
+%\newcommand{\kls}[1]{{\text \textendash}\wt{\bf Kls}({#1})}
+\def\Dist{\text{Dist}}
+\def\Dst{{\bf Dst}}
+\def\WkFlw{{\bf WkFlw}}
+\def\monOb{{\blacktriangle}}
+\def\Infl{{\bf Infl}}
+\def\Tur{\tn{Tur}}
+\def\Halt{\{\text{Halt}\}}
+\def\Tape{{T\!ape}}
+\def\Prb{{\bf Prb}}
+\def\Prbs{{\wt{\bf Prb}}}
+\def\El{{\bf El}}
+\def\Gr{{\bf Gr}}
+\def\DT{{\bf DT}}
+\def\DB{{\bf DB}}
+\def\Tables{{\bf Tables}}
+\def\Sch{{\bf Sch}}
+\def\Fin{{\bf Fin}}
+\def\PrO{{\bf PrO}}
+\def\PrOs{{\bf PrOs}}
+\def\JLat{{\bf JLat}}
+\def\JLats{{\bf JLats}}
+\def\P{{\bf P}}
+\def\SC{{\bf SC}}
+\def\ND{{\bf ND}}
+\def\Poset{{\bf Poset}}
+\def\Bool{\tn{Bool}}
+\newcommand{\labelDisp}[2]{\begin{align}\label{#1}\text{#2}\end{align}}
+
+\newcommand{\inp}[1]{{#1_-}}
+\newcommand{\outp}[1]{{#1_+}}
+\newcommand{\vset}[1]{#1_{\tt type}}
+\newcommand{\loc}[1]{{\tt loc}(#1)}
+\newcommand{\extr}[1]{{\tt ext}(#1)}
+\newcommand{\domn}[1]{{\overset{\bullet}{#1}}}
+\newcommand{\codomn}[1]{{\underset{\bullet}{#1}}}
+\newcommand{\inpm}[1]{{{\scriptstyle\bullet}#1}}
+\newcommand{\outpm}[1]{{#1{\scriptstyle\bullet}}}
+%\newcommand{\domn}[1]{{{\scriptstyle\bullet}#1}}
+%\newcommand{\codomn}[1]{{#1{\scriptstyle\bullet}}}
+%\newcommand{\inpm}[1]{{\underset{\bullet}{#1}}}
+%\newcommand{\outpm}[1]{{\overset{\bullet}{#1}}}
+\newcommand{\feeddd}[3]{{\tensor*[^{#2}_{\color{white}{!}}]{{#1}}{^{#3}}}}%the color thing is to get overlines to be the same height.
+\newcommand{\feeddc}[3]{{\tensor*[^{#2}]{{#1}}{_{#3}}}}
+\newcommand{\feedcd}[3]{{\tensor*[_{#2}]{{#1}}{^{#3}}}}
+\newcommand{\feedcc}[3]{{\tensor*[^{\color{white}{!}}_{#2}]{{#1}}{_{#3}}}}
+\newcommand{\feeddb}[2]{{\tensor*[^{#2}]{{#1}}{}}}
+\newcommand{\feedbc}[2]{{\tensor*{{#1}}{^~_{#2}}}}
+\newcommand{\feedcb}[2]{{\tensor*[^~_{#2}]{{#1}}{}}}
+\newcommand{\feedbd}[2]{{\tensor*{{#1}}{^{#2}}}}
+%\newcommand{\feeddd}[3]{{\tensor*[^{#2}_{#3}]{#1}{}}}
+%\newcommand{\feeddc}[3]{{\tensor*[^{#2}]{#1}{_{#3}}}}
+%\newcommand{\feedcd}[3]{{\tensor*[_{#3}]{#1}{^{#2}}}}
+%\newcommand{\feedcc}[3]{{\tensor*{#1}{^{#2}_{#3}}}}
+\newcommand{\vLst}[1]{\ol{#1}}
+\newcommand{\Strm}[1]{{\tn{Strm}(#1)}}
+\newcommand{\SP}[2]{{\tn{SP}(#1,#2)}}
+\newcommand{\LP}[2]{{\tn{LP}(#1,#2)}}
+\newcommand{\LPP}[2]{{\tn{LP}'(#1,#2)}}
+\newcommand{\Hist}{\tn{Hist}}
+\newcommand{\xleadsto}[1]{\stackrel{#1}{\leadsto}}
+\newcommand{\strst}[1]{\big|_{[1,#1]}} %"stream restriction"
+\newcommand{\Del}[1]{DN_{#1}}
+\newcommand{\Dem}[1]{{Dm_{#1}}}
+\newcommand{\Sup}[1]{{Sp_{#1}}}
+%\newcommand{\Con}[1]{{Con_{#1}}}
+\newcommand{\inDem}[1]{{in\Dem{#1}}}
+\newcommand{\inSup}[1]{{in\Sup{#1}}}
+\newcommand{\vinSup}[1]{\vLst{\inSup{#1}}}
+\newcommand{\vinDem}[1]{\vLst{\inDem{#1}}}
+\newcommand{\vSup}[1]{\vLst{\Sup{#1}}}
+\newcommand{\vDem}[1]{\vLst{\Dem{#1}}}
+\newcommand{\vDel}[1]{\vLst{\Del{#1}}}
+\newcommand{\vinp}[1]{\vLst{\inp{#1}}}
+\newcommand{\vintr}[1]{\vLst{\loc{#1}}}
+\newcommand{\voutp}[1]{\vLst{\outp{#1}}}
+\def\zipwith{\;\raisebox{3pt}{${}_\varcurlyvee$}\;}
+\def\tbzipwith{\!\;\raisebox{2pt}{${}_\varcurlyvee$}\;\!}
+\newcommand{\ffootnote}[2]{\hspace{#1}\footnote{#2}}
+
+
+
+\def\lin{\ell\tn{In}}
+\def\lout{\ell\tn{Out}}
+\def\gin{g\tn{In}}
+\def\gout{g\tn{Out}}
+\def\min{m^{in}}
+\def\mout{m^{out}}
+\def\sin{s^{in}}
+\def\sout{s^{out}}
+\newcommand{\disc}[1]{{\ul{#1}}}
+
+\newcommand{\Wir}[1]{\bfW_{#1}}
+\def\SMC{{\bf SMC}}
+\def\TSMC{{\bf TSMC}}
+\newcommand{\FS}[1]{\tn{FS}_{/\mathcal{#1}}}
+\def\TFSO{\text{\bf TSMC}_{\Ob(\FS{O})}}
+\newcommand{\Bij}[1]{\mcB_{\mathcal{#1}}}
+\def\Int{\tn{Int}}
+
+%\newcommand{\strm}[1]{{\left(#1\right)^\NN}}
+
+\makeatletter\let\c@figure\c@equation\makeatother %Aligns figure numbering and equation numbering.
+\newtheorem{theorem}[subsubsection]{Theorem}
+\newtheorem{lemma}[subsubsection]{Lemma}
+\newtheorem{proposition}[subsubsection]{Proposition}
+\newtheorem{corollary}[subsubsection]{Corollary}
+\newtheorem{fact}[subsubsection]{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}[subsubsection]{Remark}
+\newtheorem{example}[subsubsection]{Example}
+\newtheorem{application}[subsubsection]{Application}
+\newtheorem{warning}[subsubsection]{Warning}
+\newtheorem{question}[subsubsection]{Question}
+\newtheorem{guess}[subsubsection]{Guess}
+\newtheorem{answer}[subsubsection]{Answer}
+\newtheorem{claim}[subsubsection]{Claim}
+
+\theoremstyle{definition}
+\newtheorem{definition}[subsubsection]{Definition}
+\newtheorem{notation}[subsubsection]{Notation}
+\newtheorem{conjecture}[subsubsection]{Conjecture}
+\newtheorem{postulate}[subsubsection]{Postulate}
+\newtheorem{construction}[subsubsection]{Construction}
+\newtheorem{ann}[subsubsection]{Announcement}
+\newenvironment{announcement}{\begin{ann}}{\hspace*{\fill}$\lozenge$\end{ann}}
+
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+
+
+%Standard geometry (DO NOT CHANGE) seems to be: \newgeometry{left=1.76in,right=1.76in,top=1.6in,bottom=1.3in}
+
+\usepackage[paperwidth=8.5in,paperheight=11in,text={5.7in,8in},centering]{geometry}
+%\newgeometry{left=1.55in,right=1.55in,top=1.6in,bottom=1.3in}
+\usepackage{lscape}
+
+\begin{document}
+
+\title{String diagrams for traced monoidal categories as Cob(1)-algebras}
+
+\author{Dylan Rupel}
+\address{Northeastern University\\360 Huntington Ave.\\Boston, MA 02115}
+\email{dylanrupel@gmail.com}
+
+\author{David I. Spivak}
+\address{Massachusetts Institute of Technology\\77 Massachusetts Ave.\\Cambridge, MA 02139}
+\email{dspivak@gmail.com}
+
+\thanks{Spivak acknowledges support by ONR grant N000141310260 and AFOSR grant FA9550-14-1-0031.}
+
+
+\maketitle
+
+\tableofcontents
+
+\section{First ideas}
+
+By manifold, we always mean manifold with boundary; we must say {\em closed manifold} if we mean to say that the boundary is empty. When a manifold $Y$ is oriented, we denote the same manifold with opposite orientation by $Y^\vee$.
+
+Recall that an {\em oriented finite 0-manifold} consists of a pair of finite sets $\inp{X},\outp{X}$, where $\inp{X}$ has negative orientation and $\outp{X}$ has positive orientation. Given a manifold $\mcO$, an {\em oriented 0-manifold over $\mcO$} is an oriented $0$-manifold $X$ together with a function $\tau_X\taking\inp{X}\sqcup \outp{X}\to\mcO$. 
+
+If $X$ and $Y$ are oriented $0$-manifolds, an {\em oriented cobordism from $X$ to $Y$} consists of an oriented manifold $W$ whose boundary $\partial W$ is identified with $X\sqcup Y^\vee$. We will always be working with oriented manifolds and cobordisms, so we often speak of them as simply manifolds and cobordisms. 
+
+Given a cobordism $W$ from $X$ to $Y$ and a cobordism $W'$ from $Y$ to $Z$, we can glue them together along a thickening of $Y$ to obtain a cobordism from $X$ to $Z$. If $X$ and $Y$ are manifolds over $\mcO$, when we speak of a cobordism between them, we mean that our manifold $W$ is over $\mcO$.
+
+We denote the category whose objects are oriented $0$-manifolds and oriented cobordisms between them by $\Cob$ (because we will only have occasion to speak of $0$-manifolds in this paper), and the category of 0-manifolds and cobordisms over $\mcO$ by $\Cob/\mcO$.
+
+\begin{proposition}\label{prop:set theoretic cob1}
+We have the following combinatorial description of the category $\Cob/\mcO$.
+
+\begin{description}
+\item [Objects]An object in $X\in\Ob(\Cob/\mcO)$ can be identified with a pair $X=(\inp{X},\outp{X})$ of finite sets, together with a function $\inp{X}\sqcup\outp{X}\to\mcO$. We write $|X|$ to denote the set $\inp{X}\sqcup\outp{X}$.
+\item[Morphisms]
+A morphism $\Phi\taking X\to Y$ in $\Cob/\mcO$ can be identified with a pair $(|\varphi|,\varphi)$, where $|\varphi|$ is a typed finite set, called the set of {\em components of $\Phi$}, and $\varphi\taking |X|\sqcup|Y|\to |\varphi|$ is a typed function, satisfying the following condition, which we call the {\em bijective inclusions property}:
+	\begin{quote}\tn{(Bijective inclusions property:)}
+	The restrictions $\inpm{\varphi}:=\varphi\big|_{\inp{X}\sqcup\outp{Y}}$ and $\outpm{\varphi}:=\varphi\big|_{\outp{X}\sqcup\inp{Y}}$ are monomorphisms, and they are isomorphic as such; i.e. there exists a typed bijection 
+	$$\varphi'\taking\inp{X}\sqcup\outp{Y}\Too{\iso}\outp{X}\sqcup\inp{Y}$$
+	such that the following diagram commutes:
+	$$\xymatrix@C=12pt{
+	\inp{X}\sqcup\outp{Y}\ar[rr]^{\varphi'}\ar@{_(->}[dr]_{\inpm{\varphi}}&&\outp{X}\sqcup\inp{Y}\ar@{^(->}[dl]^{\outpm{\varphi}}\\
+	&|\varphi|
+	}
+	$$
+	Note that $\varphi'$ is unique if it exists, so it can be recovered from $\varphi$.
+	\end{quote}
+It is often convenient to denote the restrictions $\domn{\varphi}=\varphi\big|_{|X|}$ and $\codomn{\varphi}=\varphi\big|_{|Y|}$, which together define the morphism as a co-relation,
+$$|X|\Too{\domn{\varphi}}|\varphi|\Fromm{\codomn{\varphi}}|Y|$$
+
+The two typed functions $\inpm{\varphi}$ and $\outpm{\varphi}$ have the same image in $|\varphi|$; we denote the complement of this image as $|\varphi(\Loop)|$. Thus an equivalent (but less useful) definition for a morphism $X\to Y$ in $\Cob/\mcO$ is: a set $|\varphi(\Loop)|$ and a typed bijection $\inp{X}\sqcup\outp{Y}\To{\iso}\outp{X}\sqcup\inp{Y}$. 
+\item [Identity] Let $X=(\inp{X},\outp{X})\in\Ob(\Cob/\mcO)$. The identity morphism on $X$,  is given by the co-relation $|X|\Too{\id}|X|\Fromm{\id}|X|$.
+\item [Composition] Given composable morphisms $X\To{\Phi}Y\To{\Psi}Z$, their composite is given by taking the pushout of their co-relations:
+$$
+\xymatrix{
+|X|\ar[r]^{\domn{\varphi}}&|\phi|\ar[r]&|\psi\circ\phi|\urlimit\\
+&|Y|\ar[r]^{\domn{\psi}}\ar[u]_{\codomn{\varphi}}&|\psi|\ar[u]\\
+&&|Z|\ar[u]_{\codomn{\psi}}
+}
+$$
+\end{description}
+
+\end{proposition}
+
+\begin{proof}
+
+**
+
+$$\xymatrix{
+\inp{X}\ar[rr]\ar[d]&&\inp{X}\sqcup\outp{Z}\ar@{-->}@/_3pc/[dddd]&&\outp{Z}\ar[ll]\ar[d]\\
+\inp{X}\sqcup\outp{Y}\ar[dd]\ar[dr]&\outp{Y}\ar[l]\ar[dr]&&\inp{Y}\ar[r]\ar[dl]&\inp{Y}\sqcup\outp{Z}\ar[dd]\ar[dl]\\
+&|\phi|&|Y|\ar[l]\ar[r]&|\psi|\\
+\outp{X}\sqcup\inp{Y}\ar[ur]&\inp{Y}\ar[l]\ar[ur]&&\outp{Y}\ar[ul]\ar[r]&\outp{Y}\sqcup\inp{Z}\ar[ul]\\
+\outp{X}\ar[u]\ar[rr]&&\outp{X}\sqcup\inp{Z}&&\inp{Z}\ar[ll]\ar[u]
+}
+$$
+$$\xymatrix{
+\inp{X}\ar[rr]\ar[d]&&\inp{X}\sqcup\outp{Z}\ar[dd]\ar@{-->}@/_3pc/[dddd]&&\outp{Z}\ar[ll]\ar[d]\\
+\inp{X}\sqcup\outp{Y}\ar[dd]\ar[drr]&\outp{Y}\ar[l]&&\inp{Y}\ar[r]&\inp{Y}\sqcup\outp{Z}\ar[dd]\ar[dll]\\
+&&|\phi|\sqcup_{|Y|}|\psi|\\
+\outp{X}\sqcup\inp{Y}\ar[urr]&\inp{Y}\ar[l]&&\outp{Y}\ar[r]&\outp{Y}\sqcup\inp{Z}\ar[ull]\\
+\outp{X}\ar[u]\ar[rr]&&\outp{X}\sqcup\inp{Z}\ar[uu]&&\inp{Z}\ar[ll]\ar[u]
+}
+$$
+The two $\inp{Y}$'s are identified over $|\phi|\sqcup_{|Y|}|\psi|$ and so are the two $\outp{Y}$'s. We can show that the dotted arrow is an isomorphism by induction on the cardinality of $|Y|$.
+
+\end{proof}
+
+\subsection{Feeds}
+The contravariant variable is on top, the covariant variable is on the bottom; the feeding variable is to the left, the fed variable is to the right. So given $\varphi\taking X\to Y$, we have the following.
+
+$$\xymatrix@=30pt{
+\feeddd{\varphi}{X}{X}\ar[r]\ar[d]\ullimit&\inp{X}\ar[d]^{\feedbd{\varphi}{X}}&\feedcd{\varphi}{Y}{X}\ar[l]\ar[d]\urlimit\\
+\outp{X}\ar[r]^{\feeddb{\varphi}{X}}&|\varphi|&\inp{Y}\ar[l]^{\feedcb{\varphi}{Y}}\\
+\feeddc{\varphi}{X}{Y}\ar[u]\ar[r]\lllimit&\outp{Y}\ar[u]^{\feedbc{\varphi}{Y}}&\feedcc{\varphi}{Y}{Y}\ar[l]\ar[u]\lrlimit
+}
+$$
+%It's not too bad of an abuse to redraw this as follows:
+%$$\xymatrix@=30pt{
+%\feeddd{\varphi}{X}{X}\ar[r]\ar[d]\ullimit&\feedbd{\varphi}{X}\ar[d]&\feedcd{\varphi}{Y}{X}\ar[l]\ar[d]\urlimit\\
+%\feeddb{\varphi}{X}\ar[r]&|\varphi|&\feedcb{\varphi}{Y}\ar[l]\\
+%\feeddc{\varphi}{X}{Y}\ar[u]\ar[r]\lllimit&\feedbc{\varphi}{Y}\ar[u]&\feedcc{\varphi}{Y}{Y}\ar[l]\ar[u]\lrlimit
+%}
+%$$
+
+\begin{proposition}[Composition wires]
+
+Suppose given $\Phi\taking X\to Y$ and $\Psi\taking Y\to Z$. Let $P$ be the colimit of the following diagram:
+$$\xymatrix{
+\feeddd{\varphi}{X}{X}\ar[r]\ar[d]&\inp{X}&\feedcd{\varphi}{Y}{X}\ar[l]\ar[d]\\
+\outp{X}&\feeddd{\psi}{Y}{Y}\ar[r]\ar[d]&\inp{Y}&\feedcd{\psi}{Z}{Y}\ar[l]\ar[d]\\
+\feeddc{\varphi}{X}{Y}\ar[u]\ar[r]&\outp{Y}&\feedcc{\varphi}{Y}{Y}\ar[u]\ar[l]&\inp{Z}\\
+&\feeddc{\psi}{Y}{Z}\ar[u]\ar[r]&\outp{Z}&\feedcc{\psi}{Z}{Z}\ar[l]\ar[u]
+}
+$$
+Then we have typed functions as to the left below.
+$$
+\xymatrix{
+&\inp{X}\ar[d]\\
+\outp{X}\ar[r]&P&\inp{Z}\ar[l]\\
+&\outp{Z}\ar[u]
+}
+\hspace{.8in}
+\xymatrix{
+\feeddd{(\psi\circ\phi)}{X}{X}\ar[r]\ar[d]\ullimit&\inp{X}\ar[d]&\feedcd{(\psi\circ\phi)}{Z}{X}\ar[l]\ar[d]\urlimit\\
+\outp{X}\ar[r]&P&\inp{Z}\ar[l]\\
+\feeddc{(\psi\circ\phi)}{X}{Z}\ar[r]\ar[u]\lllimit&\outp{Z}\ar[u]&\feedcc{(\psi\circ\phi)}{Z}{Z}\ar[u]\ar[l]\lrlimit
+}
+$$
+The pullbacks in the righthand diagram are the indicated wires of the composition $\psi\circ\phi$.
+
+\end{proposition}
+
+\begin{proof}
+
+**
+
+\end{proof}
+
+\begin{lemma}[Technical 1]
+
+Define pullbacks:
+$$\xymatrix{
+\feedcd{\varphi}{Y}{X}\ar[d]&thing_1\ar[l]\ar[d]\urlimit\\
+\inp{Y}&\feedcd{\psi}{Z}{Y}\ar[l]
+}
+\hspace{.8in}
+\xymatrix{
+\feeddc{\varphi}{X}{Y}\ar[r]&\outp{Y}\\
+thing_2\ar[r]\ar[u]\lllimit&\feeddc{\psi}{Y}{Z}\ar[u]
+}
+$$
+and
+$$\xymatrix@=15pt{
+&thing_3\ar[rr]\ar[dd]\ullimit&&\feeddd{(\psi\circ\varphi)}{X}{X}\ar[dd]&&thing_4\ar[ll]\ar[dd]\urlimit\\
+&&thing_5\ar[ld]\ar'[r][rr]&&\feedcd{(\psi\circ\varphi)}{Z}{X}\ar[dl]&&thing_6\ar'[l][ll]\ar[dl]\\
+&\feeddd{\psi}{Y}{Y}\ar[rr]&&P&&\feedcc{\varphi}{Y}{Y}\ar[ll]\\
+thing_7\ar[ur]\ar[rr]&&\feeddc{(\psi\circ\varphi)}{X}{Z}\ar[ur]&&thing_8\ar[ll]\ar[ur]\\
+&thing_9\ar'[u][uu]\ar[rr]\lllimit&&\feedcc{(\psi\circ\varphi)}{Z}{Z}\ar'[u][uu]&&thing_{10}\ar[uu]\ar[ll]\lrlimit
+}
+$$
+
+There are injective maps: 
+$$\feeddd{\varphi}{X}{X}\to\feeddd{(\psi\circ\phi)}{X}{X}$$
+$$\feedcc{\psi}{Z}{Z}\to\feedcc{(\psi\circ\phi)}{Z}{Z}$$
+$$thing_1\to\feedcd{(\psi\circ\varphi)}{Z}{X}$$
+$$thing_2\to\feeddc{(\psi\circ\varphi)}{X}{Z}$$
+And surjections
+\begin{align*}
+\feeddd{\varphi}{X}{X}\sqcup thing_3\to\feeddd{(\psi\circ\phi)}{X}{X}
+&\hsp\tn{and}\hsp
+\feeddd{\varphi}{X}{X}\sqcup thing_4\to\feeddd{(\psi\circ\phi)}{X}{X}\\
+\feedcc{\psi}{Z}{Z}\sqcup thing_9\to\feedcc{(\psi\circ\phi)}{Z}{Z}
+&\hsp\tn{and}\hsp
+\feedcc{\psi}{Z}{Z}\sqcup thing_{10}\to\feedcc{(\psi\circ\phi)}{Z}{Z}\\
+thing_1\sqcup thing_5\to\feedcd{(\psi\circ\varphi)}{Z}{X}
+&\hsp\tn{and}\hsp
+thing_1\sqcup thing_6\to\feedcd{(\psi\circ\varphi)}{Z}{X}\\
+thing_2\sqcup thing_7\to\feeddc{(\psi\circ\varphi)}{X}{Z}
+&\hsp\tn{and}\hsp
+thing_2\sqcup thing_8\to\feeddc{(\psi\circ\varphi)}{X}{Z}
+\end{align*}
+
+\end{lemma}
+
+\begin{proposition}
+
+We have the following combinatorial description of a compact closed monoidal structure on $\Cob/\mcO$, in terms of the combinatorial description given in Proposition \ref{prop:set theoretic cob1}.
+\begin{description}
+\item [Tensor object] Given objects $X,X'\in\Cob/\mcO$, their tensor product, written $X\oplus X'$, is given by 
+$$\inp{(X\oplus X')}=\inp{X}\sqcup\inp{X'}, \hsp\tn{and}\hsp \outp{(X\oplus X')}=\outp{X}\sqcup\outp{X'}.$$
+\item [Unit object] The unit object is $(\emptyset,\emptyset)$; it is denoted $\square$.
+\item [Dual object] Given any object $X=(\inp{X},\outp{X})$, its dual is denoted and defined as 
+$$X^\vee=(\outp{X},\inp{X}).$$
+\item [Tensor morphism] Given morphisms $|X|\Too{\domn{\varphi}}|\varphi|\Fromm{\codomn{\varphi}}|Y|$ and $|X'|\Too{\domn{\varphi}\hspace{0pt}'}|\varphi|\Fromm{\codomn{\varphi}'}|Y'|$, their tensor product is given by disjoint union across the board,
+$$|X|\sqcup|X'|\Too{\domn{\varphi}\sqcup\domn{\varphi}'}|\varphi|\sqcup|\varphi'|\Fromm{\codomn{\varphi}\sqcup\codomn{\varphi}\hspace{0in}'}|Y|\sqcup|Y'|$$
+\item [Unit morphism] Given any object $X$, the unit morphism $\eta_X\taking\square\to X\oplus X^\vee$ is given by letting $|\eta_X|=|X|$, noting that $|X\oplus X|=|X|\sqcup|X|$, and using the fold map 
+$$\emptyset\To{!}|X|\From{fold}|X|\sqcup|X|.$$
+\item [Counit morphism] Given any object $X$, the unit morphism $\epsilon_X\taking X\oplus X^\vee\to\square$ is given by letting $|\epsilon_X|=|X|$, noting that $|X\oplus X|=|X|\sqcup|X|$, and using the fold map 
+$$|X|\sqcup|X|\To{fold}|X|\From{!}\emptyset.$$
+
+\end{description}
+
+\end{proposition}
+
+\begin{proof}
+
+The simplicity in the definition of $\oplus$ and $\square$ make it easy to see that the tensor and unit object give $\Cob/\mcO$ the structure of a symmetric monoidal category. It remains to show that the dual object satisfies the necessary equations in terms of its unit and counit morphisms.
+
+Proving that the necessary equation for the unit morphism holds amounts to showing that the following composite is the identity:
+$$|X|\Too{\tn{inl}}|X|\sqcup|X|\Fromm{\left\{\parbox{.1in}{\scriptsize inl\\inr\\inr}\right.}|X|\sqcup|X|\sqcup|X|\Too{\left\{\parbox{.1in}{\scriptsize inl\\inl\\inr}\right.}|X|\sqcup|X|\From{\tn{inr}}|X|.$$
+This easily checked; it may help to picture it as follows, where we take the colimit of the middle seven $|X|$'s in the diagram.
+$$\xymatrix@R=1pt{
+&&|X|\ar[dl]\ar[dr]\\
+|X|\ar[r]&|X|&&|X|\\
+&&|X|\ar[ur]\ar[dl]\\
+&|X|&&|X|&|X|\ar[l]\\
+&&|X|\ar[ul]\ar[ur]
+}
+$$
+The equation for the counit is similar.
+
+\end{proof}
+
+Given a typed finite set $s$, we have an object $S:=(s,s)\in\Ob(\Cob/\mcO)$. There is a natural morphism $X\to X\oplus S$ and a natural morphism $X\oplus S\to X$, as shown:
+\begin{align}\label{dia:proto loops}
+|X|\Too{inl}|X|\sqcup|S|\Fromm{\id}|X\oplus S|.\hspace{.7in}
+|X\oplus S|\Too{\id}|X|\sqcup |S|\Fromm{inl}|X|
+\end{align}
+
+
+\begin{lemma}
+
+Let $s$ be a typed finite set and $S=(s,s)$. The composite of the morphisms $X\to X\oplus S\to X$ from (\ref{dia:proto loops}) constitutes a natural transformation 
+$$\Loop(s)\taking\id_{\Cob/\mcO}\to\id_{\Cob/\mcO}$$ 
+whose $X$-component $\Loop(s)_X\taking X\to X$ is given by the co-relation 
+$$|X|\To{inl} |X|\sqcup |S|\From{inl} |X|.$$
+
+\end{lemma}
+
+\begin{proof}
+
+Clearly the composite is given by the co-relation $|X|\to |X|\sqcup |S|\from |X|$, because this is the pushout of the co-relations in (\ref{dia:proto loops}). Thus it remains to show that these co-relations really are morphisms (i.e. that they satisfy the bijective inclusions property), and that these morphisms are natural in $X$.
+
+It is easy to see that these co-relations satisfy the bijective inclusions property, because $\inp{X}\sqcup\outp{(X\oplus S)}=|X|\sqcup|S|=\outp{X}\sqcup\inp{(X\oplus S)}.$ To see that $\Loop(s)$ is natural in $s$, one checks that for any $\varphi\taking X\to Y$, the two co-relations below are identical:
+$$
+\xymatrix{
+|X|\ar[r]^{\domn{\varphi}}&|\varphi|\ar[r]^{inl}&|\varphi|\sqcup|S|\urlimit\\
+&|Y|\ar[u]_{\codomn{\varphi}}\ar[r]^-{inl}&|Y|\sqcup|S|\ar[u]_{\codomn{\varphi}\sqcup|S|}\\
+&&|Y|\ar[u]_{inl}
+}
+\hspace{.8in}
+\xymatrix{
+|X|\ar[r]^-{inl}&|X|\sqcup|S|\ar[r]^{\domn{\varphi}\sqcup|S|}&|\varphi|\sqcup|S|\urlimit\\
+&|X|\ar[u]_{inl}\ar[r]^-{\domn{\varphi}}&|\varphi|\ar[u]_{inl}\\
+&&|Y|\ar[u]_{\codomn{\varphi}}
+}$$
+\end{proof}
+
+
+
+\section{Main theorem}
+
+\begin{lemma}
+
+Given a function $f\taking\mcO\to\mcO'$, there is an induced strong monoidal functor $f^*\taking\Cob/\mcO'\to\Cob/\mcO$. This defines a functor 
+$$\Cob/-\taking\Set\to\SMC_{st}\op$$
+from the category of sets to the opposite of the category of SMCs and strong monoidal functors.
+
+\end{lemma}
+
+\begin{proof}
+
+**
+
+\end{proof}
+
+\begin{definition}
+
+Define {\em the category of wiring diagram algebras}, denoted $(\Cob/\bullet)\alg$, to have objects 
+$$\Ob((\Cob/\bullet)\alg):=\{(\mcO,\mcP)\|\mcO\in\Ob(\Set)\tn{ and } \mcP\in\Ob\big((\Cob/\mcO)\alg\big)\},$$
+and to have morphisms
+$$\Hom_{(\Cob/\bullet)\alg}((\mcO,\mcP),(\mcO',\mcP')):=\{(f,r)\|f\taking\mcO\to\mcO', r\taking\mcP\to(\Cob/f)^*(\mcP')\}.$$
+
+\end{definition}
+
+\begin{theorem}\label{thm:cobalg trace adjunction}
+
+Let $(\Cob/\bullet)\alg$ be the category of wiring diagram algebras, and let $\TSMC$ denote the category of traced symmetric monoidal categories (and lax monoidal functors between them). There is an adjunction
+$$\xymatrix{L\taking(\Cob/\bullet)\alg\ar@<.5ex>[r]&\TSMC:\!R\ar@<.5ex>[l]}$$
+
+\end{theorem}
+
+\begin{proof}
+
+Let $\mcM$ be a traced monoidal category with objects $\mcO$. We will define a $\Cob/\mcO$-algebra $\mcP=R(\mcM)\taking\Cob/\mcO\to\Set$ as follows. On an object $[\inp{X},\outp{X}]\in\Ob(\Cob/\mcO)$, put 
+$$\mcP[\inp{X},\outp{X}]:=\Hom_{\mcM}(\vinp{X},\voutp{X}).$$
+We next consider morphisms.
+
+
+A morphism $\Phi\taking[\inp{X},\outp{X}]\too[\inp{Y},\outp{Y}]$ consists of a typed bijection 
+$$\phi\taking\inp{X}\sqcup \outp{Y}\To{\iso}\outp{X}\sqcup \inp{Y},$$ 
+together with a typed finite set $S$. Given an element $f\in\mcP[\inp{X},\outp{X}]$ we must construct $\mcP(\Phi)(f)\in\mcP[\inp{Y},\outp{Y}]$. Let $\dim(\ol{S})=\Trace^{\ol{S}}_{I,I}(\id_{\ol{S}})$. Then we use the formula
+$$\mcP(\Phi)(f):=
+\Trace^{\ol{\feeddd{\varphi}{X}{X}}}_{\ol{Y_-},\ol{Y_+}}\Big(
+\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes f
+\Big)
+\otimes\dim(\ol{S})
+$$
+To be pedantic, 
+$$\mcP(\Phi)(f):=
+\Trace^{\ol{\feeddd{\varphi}{X}{X}}}_{\ol{Y_-},\ol{Y_+}}\Big(
+(\ol{\varphi_+}^{-1}\otimes\id_{\ol{\feeddd{\varphi}{X}{X}}})\circ\big(\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes (\ol{\varphi^+}\circ f\circ\ol{\varphi^-}^{-1})\big)\circ(\ol{\varphi_-}\otimes\id_{\ol{\feeddd{\varphi}{X}{X}}})
+\Big)
+\otimes\dim(\ol{S})
+$$
+%$$\mcP(\Phi)(f):=
+%\Trace^{\ol{\feeddd{\varphi}{X}{X}}}_{\ol{Y_-},\ol{Y_+}}\Big(
+%(\id_{\ol{\feeddc{\varphi}{X}{Y}}}\otimes\gamma^{~}_{\ol{\feeddd{\varphi}{X}{X}},\ol{\feedcc{\varphi}{Y}{Y}}})
+%\circ(f\otimes\id_{\ol{\feedcc{\varphi}{Y}{Y}}})
+%\circ(\id_{\ol{\feedcd{\varphi}{Y}{X}}}\otimes\gamma^{~}_{\ol{\feedcc{\varphi}{Y}{Y}},\ol{\feeddd{\varphi}{X}{X}}})
+%\Big)
+%\otimes\dim(\ol{S})
+%$$
+Note, for $\varphi\taking X\to Y$, we're thinking of the domain guys, $\inp{X}$, $\outp{X}$ as follows
+$$
+\ol{\varphi^-}:\ol{\inp{X}}\To{\sim}\ol{\feedcd{\varphi}{Y}{X}}\otimes\ol{\feeddd{\varphi}{X}{X}}
+\hsp\tn{and}\hsp
+\ol{\varphi^+}:\ol{\outp{X}}\To{\sim}\ol{\feeddc{\varphi}{X}{Y}}\otimes\ol{\feeddd{\varphi}{X}{X}}
+$$
+while we're thinking of codomain guys $\inp{Y}$, and $\outp{Y}$ as follows:
+$$
+\ol{\varphi_-}:\ol{\inp{Y}}\To{\sim}\ol{\feedcc{\varphi}{Y}{Y}}\otimes\ol{\feedcd{\varphi}{Y}{X}}
+\hsp\tn{and}\hsp
+\ol{\varphi_+}:\ol{\outp{Y}}\To{\sim}\ol{\feedcc{\varphi}{Y}{Y}}\otimes\ol{\feeddc{\varphi}{X}{Y}}
+$$
+
+Given also $\Psi\taking[\inp{Y},\outp{Y}]\too[\inp{Z},\outp{Z}]$, we need to show that the following equation holds: 
+$$\mcP(\Psi)\circ\mcP(\Phi)(f)=^?\mcP(\Psi\circ\Phi)(f).$$
+These are:
+\begin{align}
+\label{eq:composition 1}
+\mcP(\Psi)\circ\mcP(\Phi)(f)&=
+\Trace^{\ol{\feeddd{\psi}{Y}{Y}}}_{\ol{Z_-},\ol{Z_+}}
+\Big(
+\id_{\ol{\feedcc{\psi}{Z}{Z}}}\otimes
+\Trace^{\ol{\feeddd{\varphi}{X}{X}}}_{\ol{Y_-},\ol{Y_+}}(\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes f)\otimes\dim(\ol{S})
+\Big)
+\otimes\dim(\ol{T})
+\\\nonumber\\
+\label{eq:composition 2}
+\mcP(\Psi\circ\Phi)(f)&=
+\Trace^{\ol{\feeddd{(\psi\circ\varphi)}{X}{X}}}_{\ol{Z_-},\ol{Z_+}}(\id_{\ol{\feedcc{(\psi\circ\varphi)}{Z}{Z}}}\otimes f)\otimes\dim(\ol{S\sqcup T\sqcup ``newloops"})
+\end{align}
+
+We begin by simplifying (2).  Note that $\dim(\ol{S})$ is an automorphism of the trivial object $I$ and thus may be pulled out of the trace $\Trace^{\ol{\feeddd{\psi}{Y}{Y}}}_{\ol{Z_-},\ol{Z_+}}$ (more precise statement needed).  Thus we may restrict our attention to $\Trace^{\ol{\feeddd{\psi}{Y}{Y}}}_{\ol{Z_-},\ol{Z_+}}\Big(\id_{\ol{\feedcc{\psi}{Z}{Z}}}\otimes\Trace^{\ol{\feeddd{\varphi}{X}{X}}}_{\ol{Y_-},\ol{Y_+}}(\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes f)\Big)$.
+
+\begin{lemma}\label{le:combining traces}
+ \begin{align*}
+&\Trace^{\ol{\feeddd{\psi}{Y}{Y}}}_{\ol{Z_-},\ol{Z_+}}
+\Big(
+\id_{\ol{\feedcc{\psi}{Z}{Z}}}\otimes
+\Trace^{\ol{\feeddd{\varphi}{X}{X}}}_{\ol{Y_-},\ol{Y_+}}(\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes f)
+\Big)\\
+&=\Trace^{\ol{\feeddd{\varphi}{X}{X}}}_{\ol{\inp{Z}},\ol{\outp{Z}}}
+\Big(
+\id_{\ol{\feedcc{\psi}{Z}{Z}}}\otimes\Trace^{\ol{\feeddd{\psi}{Y}{Y}}}_{\ol{\feedcd{\psi}{Z}{Y}}\otimes\ol{\feeddd{\varphi}{X}{X}},\ol{\feeddc{\psi}{Y}{Z}}\otimes\ol{\feeddd{\varphi}{X}{X}}}
+\big(
+(\id_{\ol{\feedcd{\psi}{Z}{Y}}}\otimes\gamma_{\ol{\feeddd{\psi}{Y}{Y}},\ol{\feeddd{\varphi}{X}{X}}})\circ(\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes f)\circ(\id_{\ol{\feedcd{\psi}{Z}{Y}}}\otimes\gamma_{\ol{\feeddd{\varphi}{X}{X}},\ol{\feeddd{\psi}{Y}{Y}}})
+\big)
+\Big).
+\end{align*}
+\end{lemma}
+\begin{proof}
+Since $\ol{Z_-}=\ol{\feedcc{\psi}{Z}{Z}}\otimes\ol{\feedcd{\psi}{Z}{Y}}$ and $\ol{Z_+}=\ol{\feedcc{\psi}{Z}{Z}}\otimes\ol{\feeddc{\psi}{Y}{Z}}$ we may apply the superposing axiom of the trace for the map $\id_{\ol{\feedcc{\psi}{Z}{Z}}}$ to get
+\[\Trace^{\ol{\feeddd{\psi}{Y}{Y}}}_{\ol{Z_-},\ol{Z_+}}
+\Big(
+\id_{\ol{\feedcc{\psi}{Z}{Z}}}\otimes\Trace^{\ol{\feeddd{\varphi}{X}{X}}}_{\ol{Y_-},\ol{Y_+}}(\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes f)
+\Big)=\id_{\ol{\feedcc{\psi}{Z}{Z}}}\otimes\Trace^{\ol{\feeddd{\psi}{Y}{Y}}}_{\ol{\feedcd{\psi}{Z}{Y}},\ol{\feeddc{\psi}{Y}{Z}}}
+\Big(
+\Trace^{\ol{\feeddd{\varphi}{X}{X}}}_{\ol{Y_-},\ol{Y_+}}(\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes f)
+\Big).\]
+Using that $\ol{Y_-}=\ol{\feedcd{\psi}{Z}{Y}}\otimes\ol{\feeddd{\psi}{Y}{Y}}$ and $\ol{Y_+}=\ol{\feeddc{\psi}{Y}{Z}}\otimes\ol{\feeddd{\psi}{Y}{Y}}$ we may apply the second vanishing axiom of the trace to get
+\[\Trace^{\ol{\feeddd{\psi}{Y}{Y}}}_{\ol{\feedcd{\psi}{Z}{Y}},\ol{\feeddc{\psi}{Y}{Z}}}
+\Big(\Trace^{\ol{\feeddd{\varphi}{X}{X}}}_{\ol{\inp{Y}},\ol{\outp{Y}}}(f\otimes\id_{\ol{\feedcc{\varphi}{Y}{Y}}})\Big)=\Trace^{\ol{\feeddd{\psi}{Y}{Y}}\otimes\ol{\feeddd{\varphi}{X}{X}}}_{\ol{\feedcd{\psi}{Z}{Y}},\ol{\feeddc{\psi}{Y}{Z}}}
+(\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes f).\]
+By dinaturality using the symmetry $\gamma_{\ol{\feeddd{\varphi}{X}{X}},\ol{\feeddd{\psi}{Y}{Y}}}$ we get
+\[\Trace^{\ol{\feeddd{\psi}{Y}{Y}}\otimes\ol{\feeddd{\varphi}{X}{X}}}_{\ol{\feedcd{\psi}{Z}{Y}},\ol{\feeddc{\psi}{Y}{Z}}}
+(\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes f)
+=\Trace^{\ol{\feeddd{\varphi}{X}{X}}\otimes\ol{\feeddd{\psi}{Y}{Y}}}_{\ol{\feedcd{\psi}{Z}{Y}},\ol{\feeddc{\psi}{Y}{Z}}}
+\big(
+(\id_{\ol{\feedcd{\psi}{Z}{Y}}}\otimes\gamma_{\ol{\feeddd{\psi}{Y}{Y}},\ol{\feeddd{\varphi}{X}{X}}})\circ(\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes f)\circ(\id_{\ol{\feedcd{\psi}{Z}{Y}}}\otimes\gamma_{\ol{\feeddd{\varphi}{X}{X}},\ol{\feeddd{\psi}{Y}{Y}}})
+\big).\]
+Applying the second vanishing axiom again gives
+\begin{align*}
+&\Trace^{\ol{\feeddd{\varphi}{X}{X}}\otimes\ol{\feeddd{\psi}{Y}{Y}}}_{\ol{\feedcd{\psi}{Z}{Y}},\ol{\feeddc{\psi}{Y}{Z}}}
+\big(
+(\id_{\ol{\feedcd{\psi}{Z}{Y}}}\otimes\gamma_{\ol{\feeddd{\psi}{Y}{Y}},\ol{\feeddd{\varphi}{X}{X}}})\circ(\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes f)\circ(\id_{\ol{\feedcd{\psi}{Z}{Y}}}\otimes\gamma_{\ol{\feeddd{\varphi}{X}{X}},\ol{\feeddd{\psi}{Y}{Y}}})
+\big)\\
+&=\Trace^{\ol{\feeddd{\varphi}{X}{X}}}_{\ol{\feedcd{\psi}{Z}{Y}},\ol{\feeddc{\psi}{Y}{Z}}}
+\Big(
+\Trace^{\ol{\feeddd{\psi}{Y}{Y}}}_{\ol{\feedcd{\psi}{Z}{Y}}\otimes\ol{\feeddd{\varphi}{X}{X}},\ol{\feeddc{\psi}{Y}{Z}}\otimes\ol{\feeddd{\varphi}{X}{X}}}
+\big(
+(\id_{\ol{\feedcd{\psi}{Z}{Y}}}\otimes\gamma_{\ol{\feeddd{\psi}{Y}{Y}},\ol{\feeddd{\varphi}{X}{X}}})\circ(\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes f)\circ(\id_{\ol{\feedcd{\psi}{Z}{Y}}}\otimes\gamma_{\ol{\feeddd{\varphi}{X}{X}},\ol{\feeddd{\psi}{Y}{Y}}})
+\big)
+\Big).
+\end{align*}
+Once again applying the superposing axiom of the trace for the map $\id_{\ol{\feedcc{\psi}{Z}{Z}}}$ gives
+\begin{align*}
+&\id_{\ol{\feedcc{\psi}{Z}{Z}}}\otimes\Trace^{\ol{\feeddd{\varphi}{X}{X}}}_{\ol{\feedcd{\psi}{Z}{Y}},\ol{\feeddc{\psi}{Y}{Z}}}
+\Big(
+\Trace^{\ol{\feeddd{\psi}{Y}{Y}}}_{\ol{\feedcd{\psi}{Z}{Y}}\otimes\ol{\feeddd{\varphi}{X}{X}},\ol{\feeddc{\psi}{Y}{Z}}\otimes\ol{\feeddd{\varphi}{X}{X}}}
+\big(
+(\id_{\ol{\feedcd{\psi}{Z}{Y}}}\otimes\gamma_{\ol{\feeddd{\psi}{Y}{Y}},\ol{\feeddd{\varphi}{X}{X}}})\circ(\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes f)\circ(\id_{\ol{\feedcd{\psi}{Z}{Y}}}\otimes\gamma_{\ol{\feeddd{\varphi}{X}{X}},\ol{\feeddd{\psi}{Y}{Y}}})
+\big)
+\Big)\\
+&=\Trace^{\ol{\feeddd{\varphi}{X}{X}}}_{\ol{\inp{Z}},\ol{\outp{Z}}}
+\Big(
+\id_{\ol{\feedcc{\psi}{Z}{Z}}}\otimes\Trace^{\ol{\feeddd{\psi}{Y}{Y}}}_{\ol{\feedcd{\psi}{Z}{Y}}\otimes\ol{\feeddd{\varphi}{X}{X}},\ol{\feeddc{\psi}{Y}{Z}}\otimes\ol{\feeddd{\varphi}{X}{X}}}
+\big(
+(\id_{\ol{\feedcd{\psi}{Z}{Y}}}\otimes\gamma_{\ol{\feeddd{\psi}{Y}{Y}},\ol{\feeddd{\varphi}{X}{X}}})\circ(\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes f)\circ(\id_{\ol{\feedcd{\psi}{Z}{Y}}}\otimes\gamma_{\ol{\feeddd{\varphi}{X}{X}},\ol{\feeddd{\psi}{Y}{Y}}})
+\big)
+\Big).
+\end{align*}
+Combining these observations completes the proof.
+\end{proof}
+
+\begin{lemma}
+ The trace
+ \[\Trace^{\ol{\feeddd{\psi}{Y}{Y}}}_{\ol{\feedcd{\psi}{Z}{Y}}\otimes\ol{\feeddd{\varphi}{X}{X}},\ol{\feeddc{\psi}{Y}{Z}}\otimes\ol{\feeddd{\varphi}{X}{X}}}
+\big(
+(\id_{\ol{\feedcd{\psi}{Z}{Y}}}\otimes\gamma_{\ol{\feeddd{\psi}{Y}{Y}},\ol{\feeddd{\varphi}{X}{X}}})\circ(\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes f)\circ(\id_{\ol{\feedcd{\psi}{Z}{Y}}}\otimes\gamma_{\ol{\feeddd{\varphi}{X}{X}},\ol{\feeddd{\psi}{Y}{Y}}})
+\big)\]
+simplifies to...
+
+\end{lemma}
+
+Possibly useful identities for (2):
+\[\Trace^{\ol{\feeddd{(\psi\circ\varphi)}{X}{X}}}_{\ol{\inp{Z}},\ol{\outp{Z}}}(f\otimes\id_{\ol{\feedcc{(\psi\circ\varphi)}{Z}{Z}}})=\Trace^{\ol{P_X^X}\otimes\ol{\feeddd{\varphi}{X}{X}}}_{\ol{\inp{Z}},\ol{\outp{Z}}}(f\otimes\id_{\ol{\feedcc{(\psi\circ\varphi)}{Z}{Z}}})\]
+\[\Trace^{\ol{P_X^X}\otimes\ol{\feeddd{\varphi}{X}{X}}}_{\ol{\inp{Z}},\ol{\outp{Z}}}(f\otimes\id_{\ol{\feedcc{(\psi\circ\varphi)}{Z}{Z}}})=\Trace^{\ol{P_X^X}\otimes\ol{\feeddd{\varphi}{X}{X}}}_{\ol{\inp{Z}},\ol{\outp{Z}}}(f\otimes\id_{\ol{\feedcc{\psi}{Z}{Z}}}\otimes\id_{\ol{P_Z^Z}})\]
+\shortnote{The result will follow if we can show:}
+\[\Trace^{\ol{\feeddd{\psi}{Y}{Y}}\otimes\ol{\feeddd{\varphi}{X}{X}}}_{\ol{\inp{Z}},\ol{\outp{Z}}}
+(f\otimes\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes\id_{\ol{\feedcc{\psi}{Z}{Z}}})=\Trace^{\ol{\feeddd{\varphi}{X}{X}}\otimes\ol{P_X^X}}_{\ol{\inp{Z}},\ol{\outp{Z}}}(f\otimes\id_{\ol{\feedcc{\psi}{Z}{Z}}}\otimes\id_{\ol{P_Z^Z}})\otimes\dim(\ol{``newloops"})\]
+Using that 
+\[\inp{Z}=\feedcd{(\psi\circ\varphi)}{Z}{X}\sqcup \feedcc{(\psi\circ\varphi)}{Z}{Z}=P_X^Z\sqcup P_Z^Z\sqcup \feedcc{\psi}{Z}{Z}\]
+\[\outp{Z}=\feeddc{(\psi\circ\varphi)}{X}{Z}\sqcup \feedcc{(\psi\circ\varphi)}{Z}{Z}=P_Z^X\sqcup P_Z^Z\sqcup \feedcc{\psi}{Z}{Z},\]
+where each of the final equalities above follow from Lemma~\ref{le:composed wires}, and the superposition axiom of the trace we get
+\[\Trace^{\ol{\feeddd{\psi}{Y}{Y}}\otimes\ol{\feeddd{\varphi}{X}{X}}}_{\ol{\inp{Z}},\ol{\outp{Z}}}
+(f\otimes\id_{\ol{\feedcc{\varphi}{Y}{Y}}}\otimes\id_{\ol{\feedcc{\psi}{Z}{Z}}})=\Trace^{\ol{\feeddd{\psi}{Y}{Y}}\otimes\ol{\feeddd{\varphi}{X}{X}}}_{\ol{P_X^Z}\otimes\ol{P_Z^Z},\ol{P_Z^X}\otimes\ol{P_Z^Z}}
+(f\otimes\id_{\ol{\feedcc{\varphi}{Y}{Y}}})\otimes\id_{\ol{\feedcc{\psi}{Z}{Z}}}\]
+\shortnote{how to eliminate $\ol{P_Z^Z}$ above?} $\feedcc{\varphi}{Y}{Y}$ should decompose as those wires which map to $P_L$ and those wires that map to its complement in $P_Y$, with similar decompositions for $\feeddd{\psi}{Y}{Y}$, this should allow to split off the needed ``newloops'' factor.  A similar statement should hold for the elements of $\feedcc{\varphi}{Y}{Y}$ and $\feeddd{\psi}{Y}{Y}$ that map to $P_Z^Z$.  But what about the remaining elements, i.e. those mapping to $P_X^X\sqcup P_X^Z\sqcup P_Z^X$?
+
+and
+\[\Trace^{\ol{\feeddd{\varphi}{X}{X}}\otimes\ol{P_X^X}}_{\ol{\inp{Z}},\ol{\outp{Z}}}(f\otimes\id_{\ol{\feedcc{\psi}{Z}{Z}}}\otimes\id_{\ol{P_Z^Z}})=\Trace^{\ol{\feeddd{\varphi}{X}{X}}\otimes\ol{P_X^X}}_{\ol{P_X^Z},\ol{P_Z^X}}(f)\otimes\id_{\ol{\feedcc{\psi}{Z}{Z}}}\otimes\id_{\ol{P_Z^Z}}.\]
+
+By dinaturality in the upper factor for the map $r\otimes\id_{\ol{\feeddd{\varphi}{X}{X}}}:\ol{\feeddd{\psi}{Y}{Y}}\otimes\ol{\feeddd{\varphi}{X}{X}}\to\ol{P_X^X}\otimes\ol{\feeddd{\varphi}{X}{X}}$....
+
+\bigskip
+
+Here's a picture that may be useful.
+\inactivetikz{
+	%outer box Z
+	\path(0,0);\blackbox{(10,8)}{3}{3}{$Z$}{.8}
+	%mid box Y
+	\path(2.5,1.5);\blackbox{(5,5)}{4}{4}{$Y$}{.6}
+	%inner box X
+	\path(4,3);\blackbox{(2,2)}{3}{3}{$X$}{.4}
+	%outer morphism
+	% Z feeds Z
+	\fancyarc{(.4,6)}{(9.6,6)}{-30}{30}\node at (5,7.1){\tiny$\feedcc{\psi}{Z}{Z}$};
+	% Z feeds Y
+	\directarc{(.4,4)}{(2.2,5.5)}\node at (1.5,5.1){\tiny$\feedcd{\psi}{Z}{Y}$};
+	\directarc{(.4,2)}{(2.2,4.5)}\node at (1.5,4.1){\tiny$\feedcd{\psi}{Z}{Y}$};
+	% Y feeds Z
+	\directarc{(7.8,5.5)}{(9.6,4)}\node at (8.5,5.1){\tiny$\feeddc{\psi}{Y}{Z}$};
+	\directarc{(7.8,4.5)}{(9.6,2)}\node at (8.5,4.1){\tiny$\feeddc{\psi}{Y}{Z}$};
+	% Y feeds Y
+	\fancyarc{(2.2,3.5)}{(7.8,3.5)}{40}{-90}\node at (5,.8){\tiny$\feeddd{\psi}{Y}{Y}$};
+	\fancyarc{(2.2,2.5)}{(7.8,2.5)}{20}{-50}\node at (5,.4){\tiny$\feeddd{\psi}{Y}{Y}$};
+	%circles
+	\draw(5,1.1) circle(5pt);\node at (5.2,1.1){\tiny$\psi_{loop}$};
+	%inner morphism
+	%Y feeds Y
+	\directarc{(2.8,5.5)}{(7.2,5.5)}\node at (5,5.5){\tiny$\feedcc{\varphi}{Y}{Y}$};
+	\directarc{(2.8,2.5)}{(7.2,2.5)}\node at (5,2.5){\tiny$\feedcc{\varphi}{Y}{Y}$};
+	%Y feeds X
+	\directarc{(2.8,4.5)}{(3.8,4.5)}\node at (3.5,4.5){\tiny$\feedcd{\varphi}{Y}{X}$};
+	\directarc{(2.8,3.5)}{(3.8,4)}\node at (3.5,3.8){\tiny$\feedcd{\varphi}{Y}{X}$};
+	%X feeds Y
+	\directarc{(6.2,4.5)}{(7.2,4.5)}\node at (6.5,4.5){\tiny$\feeddc{\varphi}{X}{Y}$};
+	\directarc{(6.2,4)}{(7.2,3.5)}\node at (6.5,3.8){\tiny$\feeddc{\varphi}{X}{Y}$};
+	%X feeds X 
+	\fancyarc{(3.8,3.5)}{(6.2,3.5)}{10}{-23}\node at (5,2.7){\tiny$\feeddd{\varphi}{X}{X}$};
+	%circles
+	\draw(5,2) circle(5pt);\node at (5.2,2){\tiny$\phi_{loop}$};
+}
+
+\inactivetikz{
+	%outer box Z
+	\path(0,0);\blackbox{(10,8)}{3}{3}{$Z$}{.8}
+	%inner box X
+	\path(4,1.5);\blackbox{(2,2)}{3}{3}{$X$}{.4}
+	% Z feeds Z
+	\directarc{(.4,6)}{(9.6,6)}
+	\directarc{(.4,4)}{(9.6,4)}
+	% Z feeds X
+	\directarc{(.4,2)}{(3.8,3)}
+	% X feeds Z
+	\directarc{(6.2,3)}{(9.6,2)}
+	% X feeds X
+	\fancyarc{(3.8,2.5)}{(6.2,2.5)}{20}{-60}
+	\fancyarc{(3.8,2)}{(6.2,2)}{10}{-30}
+	%circles
+	\draw(2,1) circle(5pt);
+	\draw(2.5,1.2) circle(5pt);
+	\draw(3,.7) circle(5pt);
+}
+
+\end{proof}
+
+\begin{theorem}
+
+The adjunction of Theorem \ref{thm:cobalg trace adjunction} is monadic. 
+
+\end{theorem}
+
+Every category has an underlying reflexive graph, which includes its objects and morphisms (including identities), but not its composition formula. By {\em symmetric monoidal reflexive graph}, we mean a reflexive graph $\mcG$ together with a vertex $I\in \mcG$ and a graph homomorphism $\otimes\taking\mcG\times\mcG\to\mcG$ that is commutative, associative, and unital with respect to $I$, all up to coherent isomorphisms. By {\em traced symmetric monoidal reflexive graph} we mean a symmetric monoidal reflexive graph with a family of trace functions $Tr$ that satisfy superposition, vanishing, and yanking (all the properties of traced SMCs that don't refer to the composition formula).
+
+\begin{conjecture}
+The category of traced symmetric monoidal categories is equivalent to the category of traced symmetric monoidal relfexive graphs.
+\end{conjecture}
+
+\begin{conjecture}
+Let $\mcM$ be a symmetric monoidal category and let $(\Cob/\bullet)\alg_\mcM$ be the category of algebras in $\mcM$ (e.g. whose objects are pairs $(\mcO,\mcP)$, where $\mcO$ is a set and $\mcP\taking\Cob/\mcO\to\mcM$ is a lax symmetric monoidal functor). Then there is a monadic adjunction 
+$$\xymatrix{L\taking(\Cob/\bullet)\alg_\mcM\ar@<.5ex>[r]&\mcM-\TSMC:\!R,\ar@<.5ex>[l]}$$
+where $\mcM-\TSMC$ is the category of traced SMCs enriched in $\mcM$.
+\end{conjecture}
+
+\section{Yanking Compositions of Wiring Diagrams}
+We have some technique ,``yanking", by which we trade $\phi,\psi$ in for $\phi',\psi'$ such that there's an equivalence and two nice facts:
+$$\xymatrix@R=10pt{
+&Y\ar[dr]^\psi\ar@{}[dd]|{\Bigg\Updownarrow}\\
+X\ar[ur]^\phi\ar[dr]_{\phi'}&&Z\\
+&Y'\ar[ur]_{\psi'}
+}
+\hsp\tn{where}
+\hspace{.2in}
+\xymatrix{
+\emptyset\ar[r]\ar[d]\ullimit&\feedcc{\phi'}{Y}{Y}\ar[d]\\
+\feeddd{\psi'}{Y}{Y}\ar[r]&\inp{Y'}
+}
+\hspace{.7in}
+\xymatrix{
+\emptyset\ar[r]\ar[d]\ullimit&\feedcc{\phi'}{Y}{Y}\ar[d]\\
+\feeddd{\psi'}{Y}{Y}\ar[r]&\outp{Y'}
+}
+$$
+
+Then we have $\feeddd{(\psi'\circ\phi')}{X}{X}=\feeddd{\phi'}{X}{X}+\feeddd{\psi'}{Y}{Y}$ and $\feedcc{(\psi'\circ\phi')}{Z}{Z}=\feedcc{\phi'}{Y}{Y}+\feedcc{\psi'}{Z}{Z}$.  And so compatibility of trace and compositions is immediate by comparing equation \eqref{eq:composition 2} and Lemma~\ref{le:combining traces}.
+
+\section{Old stuff}
+
+Suppose given a typed bijection $\phi\taking\inp{X}\sqcup \outp{Y}\To{\iso}\outp{X}\sqcup \inp{Y}$. We'll define $\feeddd{\varphi}{X}{X}, \feeddc{\varphi}{X}{Y}, \feedcd{\varphi}{Y}{X},$ and $\feedcc{\varphi}{Y}{Y}$ below; roughly they are ``$X$'s feed $X$'s", ``$X$'s feed $Y$'s", ``$Y$'s feed $X$'s", and ``$Y$'s feed $Y$'s", respectively. They are given by the following fiber products in $\TFS$.
+$$
+\xymatrix@=35pt{
+\feeddd{\varphi}{X}{X}\ar[r]\ar[d]\ullimit&\inp{X}\ar[d]^{\phi\big|_{\inp{X}}}&\feedcd{\varphi}{Y}{X}\ar[l]\ar[d]\urlimit\\
+\outp{X}\ar[r]&\outp{X}\sqcup \inp{Y}&\inp{Y}\ar[l]\\
+\feeddc{\varphi}{X}{Y}\ar[r]\ar[u]\lllimit&\outp{Y}\ar[u]_{\phi\big|_{\outp{Y}}}&\feedcc{\varphi}{Y}{Y}\ar[l]\ar[u]\lrlimit
+}
+$$
+Note that every arrow above is an injection and we have the following four bijections, 
+\begin{align*}
+\feeddd{\varphi}{X}{X}\sqcup \feeddc{\varphi}{X}{Y}\iso\outp{X},
+&\hsp
+\feedcd{\varphi}{Y}{X}\sqcup \feedcc{\varphi}{Y}{Y}\iso\inp{Y},
+\\
+\feeddd{\varphi}{X}{X}\sqcup \feedcd{\varphi}{Y}{X}\iso\inp{X},
+&\hsp
+\feeddc{\varphi}{X}{Y}\sqcup \feedcc{\varphi}{Y}{Y}\iso\outp{Y}.
+\end{align*}
+
+
+\end{document}

@@ -1,0 +1,753 @@
+\documentclass{amsart}
+
+\usepackage{savesym}
+\usepackage{txfonts,stmaryrd,accents}
+\savesymbol{lrcorner}\savesymbol{ulcorner}
+\usepackage{amssymb, amscd,setspace,mathtools,makecell}
+\usepackage{enumerate}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[bookmarks=true,colorlinks=true, linkcolor=MidnightBlue, citecolor=cyan]{hyperref}
+\usepackage{lmodern}
+\usepackage{graphicx,float}
+\restoresymbol{txfonts}{lrcorner}\restoresymbol{txfonts}{ulcorner}
+\usepackage{tensor}
+
+%\usepackage{tikz}
+%\usetikzlibrary{arrows,calc,chains,matrix,positioning,scopes,snakes}
+%
+%%Begin tikz macros
+%\def\blackbox#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+%  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+%  \path #1;
+%  \pgfgetlastxy{\w}{\h}
+%  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+%  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+%  \draw (\llx,\lly) rectangle (\urx,\ury);
+%  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+%  \pgfmathsetlengthmacro{\yave}{\ury-8}
+%  \node at (\xave,\yave) {#4};
+%  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+%  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+%  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+%  \ifnum #2=0{}\else{ 
+%   \foreach \l in {1,...,#2}{
+%    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+%  \ifnum #3=0{}\else{
+%   \foreach \r in {1,...,#3}{
+%    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+%}
+%
+%\def\blackboxinners#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+%  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+%  \path #1;
+%  \pgfgetlastxy{\w}{\h}
+%  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+%  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+%  \draw (\llx,\lly) rectangle (\urx,\ury);
+%  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+%  \pgfmathsetlengthmacro{\yave}{\ury-8}
+%  \node at (\xave,\yave) {#4};
+%  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+%  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+%  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+%  \ifnum #2=0{}\else{ 
+%   \foreach \l in {1,...,#2}{
+%    \pgfmathsetlengthmacro{\newx}{\llx+#5*28.45274/2}
+%    \pgfmathsetlengthmacro{\newy}{\lly+\l*\lstep}
+%    \node at ($(\newx,\newy)+(-1.5,\l*12-\l*\lstep)$) {\tiny$(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+%    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+%  \ifnum #3=0{}\else{
+%   \foreach \r in {1,...,#3}{
+%    \pgfmathsetlengthmacro{\newx}{\urx-#5*28.45274/2}
+%    \pgfmathsetlengthmacro{\newy}{\ury-\r*\rstep}
+%    \node at ($(\newx,\newy)+(1.5,-\r*12+\r*\rstep)$) {\tiny $(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+%    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+%}
+%
+%\def\blackboxouters#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+%  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+%  \path #1;
+%  \pgfgetlastxy{\w}{\h}
+%  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+%  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+%  \draw (\llx,\lly) rectangle (\urx,\ury);
+%  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+%  \pgfmathsetlengthmacro{\yave}{\ury-8}
+%  \node at (\xave,\yave) {#4};
+%  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+%  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+%  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+%  \ifnum #2=0{}\else{ 
+%   \foreach \l in {1,...,#2}{
+%    \pgfmathsetlengthmacro{\newx}{\llx-#5*28.45274/2}
+%    \pgfmathsetlengthmacro{\newy}{\lly+\l*\lstep}
+%    \node at ($(\newx,\newy)+(-1.5,\l*12-\l*\lstep)$) {\tiny$(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+%    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+%  \ifnum #3=0{}\else{
+%   \foreach \r in {1,...,#3}{
+%    \pgfmathsetlengthmacro{\newx}{\urx+#5*28.45274/2}
+%    \pgfmathsetlengthmacro{\newy}{\ury-\r*\rstep}
+%    \node at ($(\newx,\newy)+(1.5,-\r*12+\r*\rstep)$) {\tiny $(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+%    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+%}
+%
+%\def\dashbox#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+%  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+%  \path #1;
+%  \pgfgetlastxy{\w}{\h}
+%  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+%  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+%  \draw [dashed] (\llx,\lly) rectangle (\urx,\ury);
+%  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+%  \pgfmathsetlengthmacro{\yave}{\ury-8}
+%  \node at (\xave,\yave) {#4};
+%  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+%  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+%  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+%  \ifnum #2=0{}\else{ 
+%   \foreach \l in {1,...,#2}{
+%    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+%  \ifnum #3=0{}\else{
+%   \foreach \r in {1,...,#3}{
+%    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+%}
+%
+%\def\fillbox#1#2#3#4#5#6{%(width,height), number inputs, number outputs, label, arrow length, fill strength
+%  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+%  \path #1;
+%  \pgfgetlastxy{\w}{\h}
+%  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+%  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+%  \filldraw [fill=gray!#6] (\llx,\lly) rectangle (\urx,\ury);
+%  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+%  \pgfmathsetlengthmacro{\yave}{\ury-8}
+%  \node at (\xave,\yave) {#4};
+%  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+%  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+%  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+%  \ifnum #2=0{}\else{ 
+%   \foreach \l in {1,...,#2}{
+%    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+%  \ifnum #3=0{}\else{
+%   \foreach \r in {1,...,#3}{
+%    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+%}
+%
+%
+%\def\delaynode#1#2#3{%(x-coord,y-coord), size, arrow length
+%  \path #1;
+%  \pgfgetlastxy{\lx}{\ly}
+%  \pgfmathsetlengthmacro{\rx}{\lx+#2*3+#3}
+%  \pgfmathsetlengthmacro{\ry}{\ly}
+%  \filldraw (\lx,\ly) circle (#2 pt);
+%  \draw [->] (\lx,\ly) -- (\rx,\ry);
+%}
+%
+%\def\delaynodeouters#1#2#3{%(x-coord,y-coord), size, arrow length
+%  \path #1;
+%  \pgfgetlastxy{\lx}{\ly}
+%  \pgfmathsetlengthmacro{\rx}{\lx+#2*3+#3}
+%  \pgfmathsetlengthmacro{\ry}{\ly}
+%  \filldraw (\lx,\ly) circle (#2 pt);
+%  \draw [->] (\lx,\ly) -- (\rx,\ry);
+%   \node at (\rx+15,\ry+15){\tiny $(\pgfmathparse{\rx/28.45274}\pgfmathresult cm,\pgfmathparse{\ry/28.45274}\pgfmathresult cm)$};
+%}
+%
+%
+%\def\directarc#1#2{%left endpoint, right endpoint
+%  \path #1;
+%  \pgfgetlastxy{\lx}{\ly}
+%  \path #2;
+%  \pgfgetlastxy{\rx}{\ry}
+%  \pgfmathsetlengthmacro{\xave}{(\lx+\rx)/2}
+%  \draw #1 .. controls (\xave,\ly) and (\xave,\ry) .. #2;
+%}
+%
+%\def\backarc#1#2{%left coordinate, right coordinate
+%  \path #1;
+%  \pgfgetlastxy{\lx}{\ly}
+%  \path #2;
+%  \pgfgetlastxy{\rx}{\ry}
+%  \pgfmathsetlengthmacro{\xave}{(\lx+\rx)/2}
+%  \draw #1 .. controls (\xave,\ry) and (\xave,\ly) .. #2;
+%}
+%
+%\def\loopright#1#2#3{%upper coordinate, lower coordinate, stretch width
+%  \path #1;
+%  \pgfgetlastxy{\ux}{\uy}
+%  \path #2;
+%  \pgfgetlastxy{\lx}{\ly}
+%  \pgfmathsetlengthmacro{\maxx}{max(\ux,\lx)}
+%  \pgfmathsetlengthmacro{\farx}{\maxx+#3}
+%  \draw #1 .. controls (\farx,\uy) and (\farx,\ly) .. #2;
+%}
+%
+%\def\loopleft#1#2#3{%upper coordinate, lower coordinate, stretch width
+%  \path #1;
+%  \pgfgetlastxy{\ux}{\uy}
+%  \path #2;
+%  \pgfgetlastxy{\lx}{\ly}
+%  \pgfmathsetlengthmacro{\minx}{min(\ux,\lx)}
+%  \pgfmathsetlengthmacro{\farx}{\minx-#3}
+%  \draw #1 .. controls (\farx,\uy) and (\farx,\ly) .. #2;
+%}
+%
+%\def\fancyarc#1#2#3#4{%upper coordinate, lower coordinate, stretch width, max height adjust
+%  \path #1;
+%  \pgfgetlastxy{\ux}{\uy}
+%  \path #2;
+%  \pgfgetlastxy{\lx}{\ly}
+%  \pgfmathsetlengthmacro{\xave}{(\lx+\ux)/2}
+%%  \node at (\lx,\ly+20){\tiny $\pgfmathparse{\lx/28.45274}\pgfmathresult cm$,\hsp$\pgfmathparse{\ux/28.45274}\pgfmathresult cm$};
+%%  \node at (\xave,\ly+50){\tiny $\pgfmathparse{\xave/28.45274}\pgfmathresult cm$};
+%  \pgfmathsetlengthmacro{\yave}{(\ly+\uy)/2+#4}
+%  \loopleft{#1}{(\xave,\yave)}{#3}
+%  \loopright{#2}{(\xave,\yave)}{#3}
+%}
+%
+%\def\activetikz#1{$$\begin{tikzpicture}#1\end{tikzpicture}$$}
+%\def\inactivetikz#1{}
+%%End tikz macros
+
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+\usepackage{xy,color}
+\newcommand{\comment}[1]{}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\shortnote}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\start}[1]{\shortnote{Start here: #1.}}
+\newcommand{\q}[1]{\begin{question}#1\end{question}}
+\newcommand{\g}[1]{\begin{guess}#1\end{guess}}
+\newcommand{\erase}[1]{{}}
+
+\def\tn{\textnormal}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\AA{{\mathbb A}}
+\def\PP{{\mathbb P}}
+\def\NN{{\mathbb N}}
+\def\SS{{\mathbb S}}
+\def\HH{{\mathbb H}}
+
+\def\acts{\lefttorightarrow}
+\def\Hom{\tn{Hom}}
+\def\Tr{\tn{Tr}}
+\def\iHom{\Rightarrow}
+\def\Aut{\tn{Aut}}
+\def\Sub{\tn{Sub}}
+\def\Mor{\tn{Mor}}
+\def\Fun{\tn{Fun}}
+\def\Path{\tn{Path}}
+\def\im{\tn{im}}
+\def\Ob{\tn{Ob}}
+\def\dim{\tn{dim}}
+\def\Op{\tn{Op}}
+\def\SEL*{\tn{SEL*}}
+\def\Res{\tn{Res}}
+\def\hsp{\hspace{.3in}}
+\newcommand{\hsps}[1]{{\hspace{2mm} #1\hspace{2mm}}}
+\newcommand{\tin}[1]{\text{\tiny #1}}
+
+\def\singleton{{\{*\}}}
+\newcommand{\boxtitle}[1]{\begin{center}#1\end{center}}
+\def\Loop{{\mcL oop}}
+\def\LoopSchema{{\parbox{.5in}{\fbox{\xymatrix{\LMO{s}\ar@(l,u)[]^f}}}}}
+\def\Wks{{\mcW ks}}
+\def\lcone{^\triangleleft}
+\def\rcone{^\triangleright}
+\def\to{\rightarrow}
+\def\from{\leftarrow}
+\def\down{\downarrrow}
+\def\Down{\Downarrow}
+\def\Up{\Uparrow}
+\def\taking{\colon}
+\def\pls{``\!+\!"}
+\newcommand{\pathto}[1]{\stackrel{#1}\leadsto}
+\def\inj{\hookrightarrow}
+\def\surj{\twoheadrightarrow}
+\def\surjj{\longtwoheadrightarrow}
+\def\pfunc{\rightharpoonup}
+\def\Pfunc{\xrightharpoonup}
+\def\too{\longrightarrow}
+\def\fromm{\longleftarrow}
+\def\tooo{\longlongrightarrow}
+\def\tto{\rightrightarrows}
+\def\ttto{\equiv\!\!>}
+\newcommand{\xyto}[2]{\xymatrix@=1pt{\ar[rr]^-{#1}&\hspace{#2}&}}
+\newcommand{\xyequals}[1]{\xymatrix@=1pt{\ar@{=}[rr]&\hspace{#1}&}}
+\def\ss{\subseteq}
+\def\superset{\supseteq}
+\def\iso{\cong}
+\def\down{\downarrow}
+\def\|{{\;|\;}}
+\def\m1{{-1}}
+\def\op{^\tn{op}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\we{\simeq}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\vect{\overrightarrow}
+\def\qeq{\mathop{=}^?}
+
+\def\rr{\raggedright}
+
+%\newcommand{\LMO}[1]{\bullet^{#1}}
+%\newcommand{\LTO}[1]{\bullet^{\tn{#1}}}
+\newcommand{\LMO}[1]{\stackrel{#1}{\bullet}}
+\newcommand{\LTO}[1]{\stackrel{\tt{#1}}{\bullet}}
+\newcommand{\LA}[2]{\ar[#1]^-{\tn {#2}}}
+\newcommand{\LAL}[2]{\ar[#1]_-{\tn {#2}}}
+\newcommand{\obox}[3]{\stackrel{#1}{\fbox{\parbox{#2}{#3}}}}
+\newcommand{\labox}[2]{\obox{#1}{1.6in}{#2}}
+\newcommand{\mebox}[2]{\obox{#1}{1in}{#2}}
+\newcommand{\smbox}[2]{\stackrel{#1}{\fbox{#2}}}
+\newcommand{\fakebox}[1]{\tn{$\ulcorner$#1$\urcorner$}}
+\newcommand{\sq}[4]{\xymatrix{#1\ar[r]\ar[d]&#2\ar[d]\\#3\ar[r]&#4}}
+\newcommand{\namecat}[1]{\begin{center}$#1:=$\end{center}}
+
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.25)*+{\ulcorner}}
+\def\ulhlimit{\ar@{}[rd]|(.3)*+{\diamond}}
+\def\urhlimit{\ar@{}[ld]|(.3)*+{\diamond}}
+\def\llhlimit{\ar@{}[ru]|(.3)*+{\diamond}}
+\def\lrhlimit{\ar@{}[lu]|(.3)*+{\diamond}}
+\newcommand{\clabel}[1]{\ar@{}[rd]|(.5)*+{#1}}
+\newcommand{\TriRight}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longrightarrow}\ar@{}[u]|>>>>{#7}}}
+\newcommand{\TriLeft}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longleftarrow}\ar@{}[u]|>>>>{#7}}}
+\newcommand{\TriIso}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longleftrightarrow}\ar@{}[u]|>>>>{#7}}}
+
+
+\newcommand{\arr}[1]{\ar@<.5ex>[#1]\ar@<-.5ex>[#1]}
+\newcommand{\arrr}[1]{\ar@<.7ex>[#1]\ar@<0ex>[#1]\ar@<-.7ex>[#1]}
+\newcommand{\arrrr}[1]{\ar@<.9ex>[#1]\ar@<.3ex>[#1]\ar@<-.3ex>[#1]\ar@<-.9ex>[#1]}
+\newcommand{\arrrrr}[1]{\ar@<1ex>[#1]\ar@<.5ex>[#1]\ar[#1]\ar@<-.5ex>[#1]\ar@<-1ex>[#1]}
+
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\onto}{\to\!\!\!\!\!\to}
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+\newcommand{\Fromm}[1]{\xleftarrow{\ \ #1\ \ }}
+\def\qeq{\stackrel{?}{=}}
+\newcommand{\cev}[1]{\reflectbox{\ensuremath{\vec{\reflectbox{\ensuremath{#1}}}}}}
+
+\newcommand{\Adjoint}[4]{\xymatrix@1{{#2}\ar@<.5ex>[r]^-{#1} &{#3} \ar@<.5ex>[l]^-{#4}}}
+
+\def\id{\tn{id}}
+\def\dom{\tn{dom}}
+\def\cod{\tn{cod}}
+\def\Top{{\bf Top}}
+\def\Kls{{\bf Kls}}
+\def\Cat{{\bf Cat}}
+\def\Oprd{{\bf Oprd}}
+\def\LH{{\bf LH}}
+\def\Monad{{\bf Monad}}
+\def\Mon{{\bf Mon}}
+\def\CMon{{\bf CMon}}
+\def\cpo{{\bf cpo}}
+\def\Vect{\text{Vect}}
+\def\Rep{{\bf Rep}}
+\def\HCat{{\bf HCat}}
+\def\Cnst{{\bf Cnst}}
+\def\Str{\tn{Str}}
+\def\List{\tn{List}}
+\def\Exc{\tn{Exc}}
+\def\Sets{{\bf Sets}}
+\def\Cob{{\bf Cob}}
+\def\Grph{{\bf Grph}}
+\def\SGrph{{\bf SGrph}}
+\def\Rel{\mcR\tn{el}}
+\def\JRel{J\mcR\tn{el}}
+\def\Inst{{\bf Inst}}
+\def\Type{{\bf Type}}
+\def\Set{{\bf Set}}
+\def\TFS{{\bf TFS}}
+\def\Qry{{\bf Qry}}
+\def\set{{\text \textendash}{\bf Set}}
+\def\sets{{\text \textendash}{\bf Alg}}
+\def\alg{{\text \textendash}{\bf Alg}}
+\def\rel{{\text \textendash}{\bf Rel}}
+\def\inst{{{\text \textendash}\bf \Inst}}
+\def\sSet{{\bf sSet}}
+\def\sSets{{\bf sSets}}
+\def\Grp{{\bf Grp}}
+\def\Grpd{{\bf Grpd}}
+\def\Pre{{\bf Pre}}
+\def\Shv{{\bf Shv}}
+\def\Rings{{\bf Rings}}
+\def\bD{{\bf \Delta}}
+\def\dispInt{\parbox{.1in}{$\int$}}
+\def\bhline{\Xhline{2\arrayrulewidth}}
+\def\bbhline{\Xhline{2.5\arrayrulewidth}}
+
+
+\def\Comp{\tn{Comp}}
+\def\Supp{\tn{Supp}}
+\def\Dmnd{\tn{Dmnd}}
+
+
+\def\colim{\mathop{\tn{colim}}}
+\def\hocolim{\mathop{\tn{hocolim}}}
+\def\undsc{\rule{2mm}{0.4pt}}
+
+
+\def\mcA{\mc{A}}
+\def\mcB{\mc{B}}
+\def\mcC{\mc{C}}
+\def\mcD{\mc{D}}
+\def\mcE{\mc{E}}
+\def\mcF{\mc{F}}
+\def\mcG{\mc{G}}
+\def\mcH{\mc{H}}
+\def\mcI{\mc{I}}
+\def\mcJ{\mc{J}}
+\def\mcK{\mc{K}}
+\def\mcL{\mc{L}}
+\def\mcM{\mc{M}}
+\def\mcN{\mc{N}}
+\def\mcO{\mc{O}}
+\def\mcP{\mc{P}}
+\def\mcQ{\mc{Q}}
+\def\mcR{\mc{R}}
+\def\mcS{\mc{S}}
+\def\mcT{\mc{T}}
+\def\mcU{\mc{U}}
+\def\mcV{\mc{V}}
+\def\mcW{\mc{W}}
+\def\mcX{\mc{X}}
+\def\mcY{\mc{Y}}
+\def\mcZ{\mc{Z}}
+
+\def\bfe{{\bf e}}
+\def\bfo{{\bf o}}
+\def\bfS{{\bf S}}\def\bfSs{{\bf Ss}}
+\def\bfT{{\bf T}}\def\bfTs{{\bf Ts}}
+\def\bfW{{\bf W}}
+
+\def\tnN{\tn{N}}
+
+
+\def\bE{\bar{E}}
+\def\bF{\bar{F}}
+\def\bG{\bar{G}}
+\def\bH{\bar{H}}
+\def\bX{\bar{X}}
+\def\bY{\bar{Y}}
+
+\newcommand{\subsub}[1]{\setcounter{subsubsection}{\value{theorem}}\subsubsection{#1}\addtocounter{theorem}{1}}
+
+\def\Finm{{\bf Fin_{m}}}
+\def\Bag{\tn{Bag}}
+\newcommand{\back}[1]{\stackrel{\from}{#1}\!}
+%\newcommand{\kls}[1]{{\text \textendash}\wt{\bf Kls}({#1})}
+\def\Dist{\text{Dist}}
+\def\Dst{{\bf Dst}}
+\def\WkFlw{{\bf WkFlw}}
+\def\monOb{{\blacktriangle}}
+\def\Infl{{\bf Infl}}
+\def\Tur{\tn{Tur}}
+\def\Halt{\{\text{Halt}\}}
+\def\Tape{{T\!ape}}
+\def\Prb{{\bf Prb}}
+\def\Prbs{{\wt{\bf Prb}}}
+\def\El{{\bf El}}
+\def\Gr{{\bf Gr}}
+\def\DT{{\bf DT}}
+\def\DB{{\bf DB}}
+\def\Tables{{\bf Tables}}
+\def\Sch{{\bf Sch}}
+\def\Fin{{\bf Fin}}
+\def\PrO{{\bf PrO}}
+\def\PrOs{{\bf PrOs}}
+\def\JLat{{\bf JLat}}
+\def\JLats{{\bf JLats}}
+\def\P{{\bf P}}
+\def\SC{{\bf SC}}
+\def\ND{{\bf ND}}
+\def\Poset{{\bf Poset}}
+\def\Bool{\tn{Bool}}
+\newcommand{\labelDisp}[2]{\begin{align}\label{#1}\text{#2}\end{align}}
+
+\newcommand{\inp}[1]{{#1^-}}
+\newcommand{\outp}[1]{{#1^+}}
+\newcommand{\vset}[1]{#1_{\tt type}}
+\newcommand{\loc}[1]{{\tt loc}(#1)}
+\newcommand{\extr}[1]{{\tt ext}(#1)}
+\newcommand{\domn}[1]{{\accentset{\bullet}{#1}}}
+\newcommand{\codomn}[1]{{\underaccent{\bullet}{#1}}}
+\newcommand{\outpm}[1]{{{\scriptstyle\bullet}#1}}
+\newcommand{\inpm}[1]{{#1{\scriptstyle\bullet}}}
+%\newcommand{\domn}[1]{{{\scriptstyle\bullet}#1}}
+%\newcommand{\codomn}[1]{{#1{\scriptstyle\bullet}}}
+%\newcommand{\inpm}[1]{{\underset{\bullet}{#1}}}
+%\newcommand{\outpm}[1]{{\overset{\bullet}{#1}}}
+
+%sets:
+\newcommand{\feeddd}[3]{{\tensor*[^{#2}_{\color{white}{!}}]{{|#1|}}{^{#3}}}}%the color thing is to get overlines to be the same height.
+\newcommand{\feeddc}[3]{{\tensor*[^{#2}]{{|#1|}}{_{#3}}}}
+\newcommand{\feedcd}[3]{{\tensor*[_{#2}]{{|#1|}}{^{#3}}}}
+\newcommand{\feedcc}[3]{{\tensor*[^{\color{white}{!}}_{#2}]{{|#1|}}{_{#3}}}}
+%maps
+\newcommand{\feeddb}[2]{{\tensor*[^{#2}]{{#1}}{}}}
+\newcommand{\feedbc}[2]{{\tensor*{{#1}}{^~_{#2}}}}
+\newcommand{\feedcb}[2]{{\tensor*[^~_{#2}]{{#1}}{}}}
+\newcommand{\feedbd}[2]{{\tensor*{{#1}}{^{#2}}}}
+%horrible maps
+\newcommand{\feedda}[3]{{\tensor*[^{#2}_{\color{white}{!}}]{{#1}}{^{#2}_{#3}}}}
+\newcommand{\feedca}[3]{{\tensor*[_{#2}]{{#1}}{_{#2}^{#3}}}}
+\newcommand{\feedad}[3]{{\tensor*[^{#2}_{#3}]{{#1}}{^{#2}}}}
+\newcommand{\feedac}[3]{{\tensor*[_{#2}^{#3}]{{#1}}{_{#2}}}}
+
+
+
+\newcommand{\vLst}[1]{\ol{#1}}
+\newcommand{\Strm}[1]{{\tn{Strm}(#1)}}
+\newcommand{\SP}[2]{{\tn{SP}(#1,#2)}}
+\newcommand{\LP}[2]{{\tn{LP}(#1,#2)}}
+\newcommand{\LPP}[2]{{\tn{LP}'(#1,#2)}}
+\newcommand{\Hist}{\tn{Hist}}
+\newcommand{\xleadsto}[1]{\stackrel{#1}{\leadsto}}
+\newcommand{\strst}[1]{\big|_{[1,#1]}} %"stream restriction"
+\newcommand{\Del}[1]{DN_{#1}}
+\newcommand{\Dem}[1]{{Dm_{#1}}}
+\newcommand{\Sup}[1]{{Sp_{#1}}}
+%\newcommand{\Con}[1]{{Con_{#1}}}
+\newcommand{\inDem}[1]{{in\Dem{#1}}}
+\newcommand{\inSup}[1]{{in\Sup{#1}}}
+\newcommand{\vinSup}[1]{\vLst{\inSup{#1}}}
+\newcommand{\vinDem}[1]{\vLst{\inDem{#1}}}
+\newcommand{\vSup}[1]{\vLst{\Sup{#1}}}
+\newcommand{\vDem}[1]{\vLst{\Dem{#1}}}
+\newcommand{\vDel}[1]{\vLst{\Del{#1}}}
+\newcommand{\vinp}[1]{\vLst{\inp{#1}}}
+\newcommand{\vintr}[1]{\vLst{\loc{#1}}}
+\newcommand{\voutp}[1]{\vLst{\outp{#1}}}
+\def\zipwith{\;\raisebox{3pt}{${}_\varcurlyvee$}\;}
+\def\tbzipwith{\!\;\raisebox{2pt}{${}_\varcurlyvee$}\;\!}
+\newcommand{\ffootnote}[2]{\hspace{#1}\footnote{#2}}
+
+
+
+\def\lin{\ell\tn{In}}
+\def\lout{\ell\tn{Out}}
+\def\gin{g\tn{In}}
+\def\gout{g\tn{Out}}
+\def\min{m^{in}}
+\def\mout{m^{out}}
+\def\sin{s^{in}}
+\def\sout{s^{out}}
+\newcommand{\disc}[1]{{\ul{#1}}}
+
+\newcommand{\Wir}[1]{\bfW_{#1}}
+\def\SMC{{\bf SMC}}
+\def\TSMC{{\bf TSMC}}
+\newcommand{\FS}[1]{\tn{FS}_{/\mathcal{#1}}}
+\def\TFSO{\text{\bf TSMC}_{\Ob(\FS{O})}}
+\newcommand{\Bij}[1]{\mcB_{\mathcal{#1}}}
+\def\Int{\tn{Int}}
+
+%\newcommand{\strm}[1]{{\left(#1\right)^\NN}}
+
+\makeatletter\let\c@figure\c@equation\makeatother %Aligns figure numbering and equation numbering.
+\newtheorem{theorem}[subsubsection]{Theorem}
+\newtheorem{lemma}[subsubsection]{Lemma}
+\newtheorem{proposition}[subsubsection]{Proposition}
+\newtheorem{corollary}[subsubsection]{Corollary}
+\newtheorem{fact}[subsubsection]{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}[subsubsection]{Remark}
+\newtheorem{example}[subsubsection]{Example}
+\newtheorem{application}[subsubsection]{Application}
+\newtheorem{warning}[subsubsection]{Warning}
+\newtheorem{question}[subsubsection]{Question}
+\newtheorem{guess}[subsubsection]{Guess}
+\newtheorem{answer}[subsubsection]{Answer}
+\newtheorem{claim}[subsubsection]{Claim}
+
+\theoremstyle{definition}
+\newtheorem{definition}[subsubsection]{Definition}
+\newtheorem{notation}[subsubsection]{Notation}
+\newtheorem{conjecture}[subsubsection]{Conjecture}
+\newtheorem{postulate}[subsubsection]{Postulate}
+\newtheorem{construction}[subsubsection]{Construction}
+\newtheorem{ann}[subsubsection]{Announcement}
+\newenvironment{announcement}{\begin{ann}}{\hspace*{\fill}$\lozenge$\end{ann}}
+
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+
+
+%Standard geometry (DO NOT CHANGE) seems to be: \newgeometry{left=1.76in,right=1.76in,top=1.6in,bottom=1.3in}
+
+\usepackage[paperwidth=8.5in,paperheight=11in,text={5.7in,8in},centering]{geometry}
+%\newgeometry{left=1.55in,right=1.55in,top=1.6in,bottom=1.3in}
+\usepackage{lscape}
+
+\begin{document}
+
+\title{0-dimensional TQFTs and traced monoidal categories}
+
+\author{Dylan Rupel}
+\address{Northeastern University\\360 Huntington Ave.\\Boston, MA 02115}
+\email{dylanrupel@gmail.com}
+
+\author{David I. Spivak}
+\address{Massachusetts Institute of Technology\\77 Massachusetts Ave.\\Cambridge, MA 02139}
+\email{dspivak@gmail.com}
+
+\thanks{Spivak acknowledges support by ONR grant N000141310260 and AFOSR grant FA9550-14-1-0031.}
+
+
+\maketitle
+
+\tableofcontents
+
+\section{Tracing bijections}
+
+Let $n\in\NN$ be a natural number and let $\ul{n}:=[1,n]$ be the corresponding finite set. We can write any bijection $\ul{n}\To{\iso}\ul{n}$ in {\em cycle notation}. Suppose $k\in\NN$ is another natural number. Given a bijection $\sigma\taking\ul{n+k}\To{\iso}\ul{n+k}$, we can simply remove all values of $\ul{k}$ from the cycle notation. The result, which we denote $(Rem')^k_{n,n}(\sigma)$, can be considered a bijection $n\To{\iso}n$.
+
+\begin{example}
+
+Let $n=3$ and $k=4$. Suppose given the bijection $\sigma\taking\ul{7}\to\ul{7}$ with cycle decomposition $(1 3 7)(6 5)(2 4)$. Then after removing $4,5,6,7$ from these cycles, we get $(Rem')^k_{n,n}(\sigma)=(1 3)(2)$. 
+
+Notice that we really seemed to get $(1 3)()(2)$, but the {\em empty cycle} $()$ have been mysteriously dropped.
+
+\end{example}
+
+Instead of starting with a bijection, we could start with a cycle decomposition that also includes an integer $\ell\in\NN$ determining a set $\ul\ell$ of empty cycles. Then, applying the above formula we could opt to not drop the empty cycle, but rather append it to the set $\ul\ell$; we denote that procedure by $Rem^k_{n,n}$.
+
+Let $\mcB'$ be the category whose objects are finite sets and whose morphisms are bijections. Let $\mcB$ denote the category with $\Ob(\mcB)=\Ob(\mcB')$ but with 
+$$\Hom_{\mcB}(n,m)=\Hom_{\mcB'}(n,m)\times\Ob(\Fin),$$
+where composition in the second variable is given by addition of natural numbers. There is a wide, full functor $\mcB\to\mcB'$.
+
+\begin{proposition}
+
+The categories $\mcB$ and $\mcB'$ are traced symmetric monoidal categories, where the tensor product, denoted in each case by $\oplus$ is given by disjoint union of finite sets, and the tensor unit is $\emptyset$. The trace in each case is given by removing elements from cycle decompositions, $Rem$ and $Rem'$ above.
+
+For any set $\mcO$ we also have traced symmetric monoidal categories $\mcB/\mcO$ and $\mcB'/\mcO$ of bijections over $\mcO$ with labeled loops. The scalar monoids of these are $Sc_{\mcB/\mcO}\iso\Fin/\mcO$ and the terminal monoid $Sc_{\mcB'/\mcO}\iso\singleton$ respectively. 
+
+\end{proposition}
+
+\begin{proof}
+
+**
+
+\end{proof}
+%
+%\begin{notation}
+%
+%Let $(\mcM,\otimes,I)$ be a traced monoidal category. Suppose that $A,B,U$ and $A',B',U'$ are objects in $\mcM$ and that we are given two \shortnote{iso?}morphisms,
+%\begin{align*}
+%A'\otimes U'&\From{}U\otimes A:\!a\\ 
+%b\taking B'\otimes U'&\To{}U\otimes B
+%\end{align*}
+%Then we define the notation $\Tr^{U',U}_{a,b}\taking\Hom_\mcM(A',B')\to\Hom_\mcM(A,B)$ on $f\taking A'\to B'$ by
+%$$\Tr^{U',U}_{a,b}[f]=\Tr^U_{A,B}\big[b\circ(f\otimes\id_{U'})\circ a\big].$$
+%If $U'=I$ is the unit object we may leave it out of the superscript.\\
+%\longnote{I realize they don't need to be isomorphisms, but then the notation starts to seem more arbitrary.... Does this notation have any nice formal properties?}
+%\end{notation}
+%
+
+\begin{proposition}
+
+We present many definitions of the same category, which we will call $1-\Cob$.
+
+\begin{itemize}
+\item The following monoids, which we denote $\Ob(1-\Cob)$, are equivalent:
+	\begin{enumerate}
+	\item The monoid of oriented 0-manifolds, under disjoint union.
+	\item The monoid of objects in $\Int(\mcB)$.
+	\item The monoid of signed sets $X=(\inp{X},\outp{X})$, under disjoint union.
+	\end{enumerate}
+\item Let $X,Y\in\Ob(1-\Cob)$. The following sets, which we denote $\Hom_{1-\Cob}(X,Y)$, are equivalent:
+	\begin{enumerate}
+	\item An oriented cobordism from $X$ to $Y$.
+	\item A morphism in $\Int(\mcB)$ from $X$ to $Y$.
+	\item A cospan $|X|\to|\varphi|\from|Y|$, such that the restrictions 
+	$$\inp{X}\sqcup\outp{Y}\to|\varphi|\hsp\tn{and}\hsp\outp{X}\sqcup\inp{Y}\to|\varphi|$$
+	are both monomorphic and have the same image in $|\varphi|$.
+	\item A set $L$ and a bijection 
+	$$\inp{X}\sqcup\outp{Y}\sqcup L\To{\iso}\outp{X}\sqcup\inp{Y}\sqcup L$$ 
+	that is guaranteed to be identity on $L$.
+	\item A finite set $L_\varphi$ and a diagram of finite sets:
+	$$\xymatrix{
+	\feeddd{\varphi}{X}{X}\ar[r]\ar[d]&\inp{X}&\feedcd{\varphi}{Y}{X}\ar[l]\ar[d]\\
+	\outp{X}&&\inp{Y}\\
+	\feeddc{\varphi}{X}{Y}\ar[r]\ar[u]&\outp{Y}&\feedcc{\varphi}{Y}{Y}\ar[l]\ar[u]
+	}
+	$$
+	in which every row and column is a coproduct (e.g., $\feeddd{\varphi}{X}{X}\sqcup \feedcd{\varphi}{Y}{X}\iso\inp{X}$).
+%	\item Sets $L,U, U'$ and a system of bijections
+%	\begin{align*}
+%	\inp{X}\sqcup U'&\Fromm{\iso}U\sqcup\inp{Y}:\!\inp{\varphi}\\
+%	\outp{\varphi}\taking\outp{X}\sqcup U'&\Too{\iso}U\sqcup\outp{Y}
+%	\end{align*}
+%	modulo the equivalence relation in which $(L_1,\inp{\varphi_1},\outp{\varphi_1})\sim(L_2,\inp{\varphi_2},\outp{\varphi_2})$ iff we have $L_1\iso L_2$ and, with $\Tr$ the trace in $\mcB$, we have
+%	$$
+%	\Tr^{U_1\sqcup U_1'}_{a_1,b_1}(\inp{\varphi_1}\sqcup\outp{\varphi_1})
+%	=
+%	\Tr^{U_2\sqcup U_2'}_{a_2,b_2}(\inp{\varphi_2}\sqcup\outp{\varphi_2})
+%	$$
+%	where $a_i,b_i$ for $i=1,2$ are the appropriate symmetries,
+%	\begin{align*}
+%	(\inp{Y}\sqcup U_i\sqcup\outp{X}\sqcup U_i')\sqcup(\emptyset)&\Fromm{\iso}(\inp{Y}\sqcup\outp{X})\sqcup (U_i\sqcup U'_i):\!\outp{\varphi}\\
+%	b_i\taking(\inp{X}\sqcup U_i\sqcup\outp{Y}\sqcup U_i')\sqcup(\emptyset)&\Too{\iso}(\inp{X}\sqcup\outp{Y})\sqcup (U_i\sqcup U'_i)
+%	\end{align*}
+%	\longnote{It would be nice to have a more intrinsic version of this equivalence relation, perhaps the following: If there exists a set $U''$ and maps $U\from U''\to U'$ such that both these diagrams commute
+%	$$\xymatrix{U\ar[d]&U''\ar[l]\ar[r]&U'\ar[d]\\
+%	\inp{X}\sqcup U&&\inp{Y}\sqcup U'\ar[ll]^\iso
+%	}
+%	\hsp
+%	\xymatrix{U\ar[d]&U''\ar[l]\ar[r]&U'\ar[d]\\
+%	\outp{X}\sqcup U\ar[rr]_\iso&&\outp{Y}\sqcup U'
+%	}
+%	$$
+%	Then we can trace $U''$ out of $\inp{\varphi}$ and $\outp{\varphi}$ and the result is equivalent.
+%	}
+	\end{enumerate} 
+\item Given morphisms $\Phi\in\Hom_{1-\Cob}(X,Y)$ and $\Psi\in\Hom_{1-\Cob}(Y,Z)$, as expressed in the 4 ways above, the following elements of $\Hom_{1-\Cob}(X,Z)$, expressed respectively, are the same:
+	\begin{enumerate}
+	\item The composite $\Psi\circ\Phi$ as cobordisms.
+	\item The composite $\Psi\circ\Phi$ as morphisms in $\Int(\mcB)$.
+	\item The following pushout:
+	$$\xymatrix{
+	|X|\ar[r]&|\varphi|\ar[r]&|\psi\circ\varphi|\urlimit\\
+	&|Y|\ar[u]\ar[r]&|\psi|\ar[u]\\
+	&&|Z|\ar[u]
+	}
+	$$
+	\item The colimit of the following diagram:
+	$$\fbox{\xymatrix{
+L_\varphi\\
+&\feeddd{\varphi}{X}{X}\ar[r]\ar[d]&\inp{X}&\feedcd{\varphi}{Y}{X}\ar[l]\ar[d]\\
+&\outp{X}&\feeddd{\psi}{Y}{Y}\ar[r]\ar[d]&\inp{Y}&\feedcd{\psi}{Z}{Y}\ar[l]\ar[d]\\
+&\feeddc{\varphi}{X}{Y}\ar[u]\ar[r]&\outp{Y}&\feedcc{\varphi}{Y}{Y}\ar[u]\ar[l]&\inp{Z}\\
+&&\feeddc{\psi}{Y}{Z}\ar[u]\ar[r]&\outp{Z}&\feedcc{\psi}{Z}{Z}\ar[l]\ar[u]\\
+&&&&&L_\psi}
+}
+$$
+
+%	\item The equivalence class containing the sum....
+	\end{enumerate}
+\end{itemize}
+
+\end{proposition}
+\newpage
+
+
+\end{document}

@@ -1,0 +1,941 @@
+\documentclass{amsart}
+
+\usepackage{savesym}
+\usepackage{txfonts,stmaryrd}
+\savesymbol{lrcorner}\savesymbol{ulcorner}
+\usepackage{amssymb, amscd,setspace,mathtools,makecell}
+\usepackage{enumerate}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[bookmarks=true,colorlinks=true, linkcolor=MidnightBlue, citecolor=cyan]{hyperref}
+\usepackage{lmodern}
+\usepackage{graphicx,float}
+\restoresymbol{txfonts}{lrcorner}\restoresymbol{txfonts}{ulcorner}
+
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,chains,matrix,positioning,scopes,snakes}
+
+%Begin tikz macros
+\def\blackbox#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+  \path #1;
+  \pgfgetlastxy{\w}{\h}
+  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+  \draw (\llx,\lly) rectangle (\urx,\ury);
+  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+  \pgfmathsetlengthmacro{\yave}{\ury-8}
+  \node at (\xave,\yave) {#4};
+  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+  \ifnum #2=0{}\else{ 
+   \foreach \l in {1,...,#2}{
+    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+  \ifnum #3=0{}\else{
+   \foreach \r in {1,...,#3}{
+    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+}
+
+\def\blackboxinners#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+  \path #1;
+  \pgfgetlastxy{\w}{\h}
+  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+  \draw (\llx,\lly) rectangle (\urx,\ury);
+  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+  \pgfmathsetlengthmacro{\yave}{\ury-8}
+  \node at (\xave,\yave) {#4};
+  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+  \ifnum #2=0{}\else{ 
+   \foreach \l in {1,...,#2}{
+    \pgfmathsetlengthmacro{\newx}{\llx+#5*28.45274/2}
+    \pgfmathsetlengthmacro{\newy}{\lly+\l*\lstep}
+    \node at ($(\newx,\newy)+(-1.5,\l*12-\l*\lstep)$) {\tiny$(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+  \ifnum #3=0{}\else{
+   \foreach \r in {1,...,#3}{
+    \pgfmathsetlengthmacro{\newx}{\urx-#5*28.45274/2}
+    \pgfmathsetlengthmacro{\newy}{\ury-\r*\rstep}
+    \node at ($(\newx,\newy)+(1.5,-\r*12+\r*\rstep)$) {\tiny $(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+}
+
+\def\blackboxouters#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+  \path #1;
+  \pgfgetlastxy{\w}{\h}
+  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+  \draw (\llx,\lly) rectangle (\urx,\ury);
+  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+  \pgfmathsetlengthmacro{\yave}{\ury-8}
+  \node at (\xave,\yave) {#4};
+  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+  \ifnum #2=0{}\else{ 
+   \foreach \l in {1,...,#2}{
+    \pgfmathsetlengthmacro{\newx}{\llx-#5*28.45274/2}
+    \pgfmathsetlengthmacro{\newy}{\lly+\l*\lstep}
+    \node at ($(\newx,\newy)+(-1.5,\l*12-\l*\lstep)$) {\tiny$(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+  \ifnum #3=0{}\else{
+   \foreach \r in {1,...,#3}{
+    \pgfmathsetlengthmacro{\newx}{\urx+#5*28.45274/2}
+    \pgfmathsetlengthmacro{\newy}{\ury-\r*\rstep}
+    \node at ($(\newx,\newy)+(1.5,-\r*12+\r*\rstep)$) {\tiny $(\pgfmathparse{\newx/28.45274}\pgfmathresult cm,\pgfmathparse{\newy/28.45274}\pgfmathresult cm)$};
+    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+}
+
+\def\dashbox#1#2#3#4#5{%(width,height), number inputs, number outputs, label, arrow length
+  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+  \path #1;
+  \pgfgetlastxy{\w}{\h}
+  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+  \draw [dashed] (\llx,\lly) rectangle (\urx,\ury);
+  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+  \pgfmathsetlengthmacro{\yave}{\ury-8}
+  \node at (\xave,\yave) {#4};
+  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+  \ifnum #2=0{}\else{ 
+   \foreach \l in {1,...,#2}{
+    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+  \ifnum #3=0{}\else{
+   \foreach \r in {1,...,#3}{
+    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+}
+
+\def\fillbox#1#2#3#4#5#6{%(width,height), number inputs, number outputs, label, arrow length, fill strength
+  \pgfgetlastxy{\llx}{\lly}%assumes path has been set to a point representing the lower left corner of the box
+  \path #1;
+  \pgfgetlastxy{\w}{\h}
+  \pgfmathsetlengthmacro{\urx}{\llx+\w}
+  \pgfmathsetlengthmacro{\ury}{\lly+\h}
+  \filldraw [fill=gray!#6] (\llx,\lly) rectangle (\urx,\ury);
+  \pgfmathsetlengthmacro{\xave}{(\llx+\urx)/2}
+  \pgfmathsetlengthmacro{\yave}{\ury-8}
+  \node at (\xave,\yave) {#4};
+  \pgfmathsetlengthmacro{\ydiff}{\ury-\lly}
+  \pgfmathsetlengthmacro{\lstep}{\ydiff/(#2+1)}
+  \pgfmathsetlengthmacro{\rstep}{\ydiff/(#3+1)}
+  \ifnum #2=0{}\else{ 
+   \foreach \l in {1,...,#2}{
+    \draw [->] ($(\llx,\lly)+(-#5/2,0)+\l*(0,\lstep)$) -- ($(\llx,\lly)+(#5/2,0)+\l*(0,\lstep)$);}}\fi
+  \ifnum #3=0{}\else{
+   \foreach \r in {1,...,#3}{
+    \draw [->] ($(\urx,\ury)+(-#5/2,0)-\r*(0,\rstep)$) -- ($(\urx,\ury)+(#5/2,0)-\r*(0,\rstep)$);}}\fi
+}
+
+
+\def\delaynode#1#2#3{%(x-coord,y-coord), size, arrow length
+  \path #1;
+  \pgfgetlastxy{\lx}{\ly}
+  \pgfmathsetlengthmacro{\rx}{\lx+#2*3+#3}
+  \pgfmathsetlengthmacro{\ry}{\ly}
+  \filldraw (\lx,\ly) circle (#2 pt);
+  \draw [->] (\lx,\ly) -- (\rx,\ry);
+}
+
+\def\delaynodeouters#1#2#3{%(x-coord,y-coord), size, arrow length
+  \path #1;
+  \pgfgetlastxy{\lx}{\ly}
+  \pgfmathsetlengthmacro{\rx}{\lx+#2*3+#3}
+  \pgfmathsetlengthmacro{\ry}{\ly}
+  \filldraw (\lx,\ly) circle (#2 pt);
+  \draw [->] (\lx,\ly) -- (\rx,\ry);
+   \node at (\rx+15,\ry+15){\tiny $(\pgfmathparse{\rx/28.45274}\pgfmathresult cm,\pgfmathparse{\ry/28.45274}\pgfmathresult cm)$};
+}
+
+
+\def\directarc#1#2{%left endpoint, right endpoint
+  \path #1;
+  \pgfgetlastxy{\lx}{\ly}
+  \path #2;
+  \pgfgetlastxy{\rx}{\ry}
+  \pgfmathsetlengthmacro{\xave}{(\lx+\rx)/2}
+  \draw #1 .. controls (\xave,\ly) and (\xave,\ry) .. #2;
+}
+
+\def\backarc#1#2{%left coordinate, right coordinate
+  \path #1;
+  \pgfgetlastxy{\lx}{\ly}
+  \path #2;
+  \pgfgetlastxy{\rx}{\ry}
+  \pgfmathsetlengthmacro{\xave}{(\lx+\rx)/2}
+  \draw #1 .. controls (\xave,\ry) and (\xave,\ly) .. #2;
+}
+
+\def\loopright#1#2#3{%upper coordinate, lower coordinate, stretch width
+  \path #1;
+  \pgfgetlastxy{\ux}{\uy}
+  \path #2;
+  \pgfgetlastxy{\lx}{\ly}
+  \pgfmathsetlengthmacro{\maxx}{max(\ux,\lx)}
+  \pgfmathsetlengthmacro{\farx}{\maxx+#3}
+  \draw #1 .. controls (\farx,\uy) and (\farx,\ly) .. #2;
+}
+
+\def\loopleft#1#2#3{%upper coordinate, lower coordinate, stretch width
+  \path #1;
+  \pgfgetlastxy{\ux}{\uy}
+  \path #2;
+  \pgfgetlastxy{\lx}{\ly}
+  \pgfmathsetlengthmacro{\minx}{min(\ux,\lx)}
+  \pgfmathsetlengthmacro{\farx}{\minx-#3}
+  \draw #1 .. controls (\farx,\uy) and (\farx,\ly) .. #2;
+}
+
+\def\fancyarc#1#2#3#4{%upper coordinate, lower coordinate, stretch width, max height adjust
+  \path #1;
+  \pgfgetlastxy{\ux}{\uy}
+  \path #2;
+  \pgfgetlastxy{\lx}{\ly}
+  \pgfmathsetlengthmacro{\xave}{(\lx+\ux)/2}
+%  \node at (\lx,\ly+20){\tiny $\pgfmathparse{\lx/28.45274}\pgfmathresult cm$,\hsp$\pgfmathparse{\ux/28.45274}\pgfmathresult cm$};
+%  \node at (\xave,\ly+50){\tiny $\pgfmathparse{\xave/28.45274}\pgfmathresult cm$};
+  \pgfmathsetlengthmacro{\yave}{(\ly+\uy)/2+#4}
+  \loopleft{#1}{(\xave,\yave)}{#3}
+  \loopright{#2}{(\xave,\yave)}{#3}
+}
+
+\def\activetikz#1{$$\begin{tikzpicture}#1\end{tikzpicture}$$}
+\def\inactivetikz#1{}
+%End tikz macros
+
+
+\input xy
+\xyoption{all} \xyoption{poly} \xyoption{knot}\xyoption{curve}
+\usepackage{xy,color}
+\newcommand{\comment}[1]{}
+
+\newcommand{\longnote}[2][4.9in]{\fcolorbox{black}{yellow}{\parbox{#1}{\color{black} #2}}}
+\newcommand{\shortnote}[1]{\fcolorbox{black}{yellow}{\color{black} #1}}
+\newcommand{\start}[1]{\shortnote{Start here: #1.}}
+\newcommand{\q}[1]{\begin{question}#1\end{question}}
+\newcommand{\g}[1]{\begin{guess}#1\end{guess}}
+
+\def\tn{\textnormal}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+
+\def\ZZ{{\mathbb Z}}
+\def\QQ{{\mathbb Q}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\AA{{\mathbb A}}
+\def\PP{{\mathbb P}}
+\def\NN{{\mathbb N}}
+\def\SS{{\mathbb S}}
+\def\HH{{\mathbb H}}
+
+\def\acts{\lefttorightarrow}
+\def\Hom{\tn{Hom}}
+\def\iHom{\Rightarrow}
+\def\Aut{\tn{Aut}}
+\def\Sub{\tn{Sub}}
+\def\Mor{\tn{Mor}}
+\def\Fun{\tn{Fun}}
+\def\Path{\tn{Path}}
+\def\im{\tn{im}}
+\def\Ob{\tn{Ob}}
+\def\Trace{\tn{Tr}}
+\def\Op{\tn{Op}}
+\def\SEL*{\tn{SEL*}}
+\def\Res{\tn{Res}}
+\def\hsp{\hspace{.3in}}
+\newcommand{\hsps}[1]{{\hspace{2mm} #1\hspace{2mm}}}
+\newcommand{\tin}[1]{\text{\tiny #1}}
+
+\def\singleton{{\{*\}}}
+\newcommand{\boxtitle}[1]{\begin{center}#1\end{center}}
+\def\Loop{{\mcL oop}}
+\def\LoopSchema{{\parbox{.5in}{\fbox{\xymatrix{\LMO{s}\ar@(l,u)[]^f}}}}}
+\def\Wks{{\mcW ks}}
+\def\lcone{^\triangleleft}
+\def\rcone{^\triangleright}
+\def\to{\rightarrow}
+\def\from{\leftarrow}
+\def\down{\downarrrow}
+\def\Down{\Downarrow}
+\def\tensor{\otimes}
+\def\Up{\Uparrow}
+\def\taking{\colon}
+\def\pls{``\!+\!"}
+\newcommand{\pathto}[1]{\stackrel{#1}\leadsto}
+\def\inj{\hookrightarrow}
+\def\surj{\twoheadrightarrow}
+\def\surjj{\longtwoheadrightarrow}
+\def\pfunc{\rightharpoonup}
+\def\Pfunc{\xrightharpoonup}
+\def\too{\longrightarrow}
+\def\fromm{\longleftarrow}
+\def\tooo{\longlongrightarrow}
+\def\tto{\rightrightarrows}
+\def\ttto{\equiv\!\!>}
+\newcommand{\xyto}[2]{\xymatrix@=1pt{\ar[rr]^-{#1}&\hspace{#2}&}}
+\newcommand{\xyequals}[1]{\xymatrix@=1pt{\ar@{=}[rr]&\hspace{#1}&}}
+\def\ss{\subseteq}
+\def\superset{\supseteq}
+\def\iso{\cong}
+\def\down{\downarrow}
+\def\|{{\;|\;}}
+\def\m1{{-1}}
+\def\op{^\tn{op}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\we{\simeq}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\vect{\overrightarrow}
+\def\qeq{\mathop{=}^?}
+
+\def\rr{\raggedright}
+
+%\newcommand{\LMO}[1]{\bullet^{#1}}
+%\newcommand{\LTO}[1]{\bullet^{\tn{#1}}}
+\newcommand{\LMO}[1]{\stackrel{#1}{\bullet}}
+\newcommand{\LTO}[1]{\stackrel{\tt{#1}}{\bullet}}
+\newcommand{\LA}[2]{\ar[#1]^-{\tn {#2}}}
+\newcommand{\LAL}[2]{\ar[#1]_-{\tn {#2}}}
+\newcommand{\obox}[3]{\stackrel{#1}{\fbox{\parbox{#2}{#3}}}}
+\newcommand{\labox}[2]{\obox{#1}{1.6in}{#2}}
+\newcommand{\mebox}[2]{\obox{#1}{1in}{#2}}
+\newcommand{\smbox}[2]{\stackrel{#1}{\fbox{#2}}}
+\newcommand{\fakebox}[1]{\tn{$\ulcorner$#1$\urcorner$}}
+\newcommand{\sq}[4]{\xymatrix{#1\ar[r]\ar[d]&#2\ar[d]\\#3\ar[r]&#4}}
+\newcommand{\namecat}[1]{\begin{center}$#1:=$\end{center}}
+
+
+\def\ullimit{\ar@{}[rd]|(.3)*+{\lrcorner}}
+\def\urlimit{\ar@{}[ld]|(.3)*+{\llcorner}}
+\def\lllimit{\ar@{}[ru]|(.3)*+{\urcorner}}
+\def\lrlimit{\ar@{}[lu]|(.25)*+{\ulcorner}}
+\def\ulhlimit{\ar@{}[rd]|(.3)*+{\diamond}}
+\def\urhlimit{\ar@{}[ld]|(.3)*+{\diamond}}
+\def\llhlimit{\ar@{}[ru]|(.3)*+{\diamond}}
+\def\lrhlimit{\ar@{}[lu]|(.3)*+{\diamond}}
+\newcommand{\clabel}[1]{\ar@{}[rd]|(.5)*+{#1}}
+\newcommand{\TriRight}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longrightarrow}\ar@{}[u]|>>>>{#7}}}
+\newcommand{\TriLeft}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longleftarrow}\ar@{}[u]|>>>>{#7}}}
+\newcommand{\TriIso}[7]{\xymatrix{#1\ar[dr]_{#2}\ar[rr]^{#3}&&#4\ar[dl]^{#5}\\&#6\ar@{}[u] |{\Longleftrightarrow}\ar@{}[u]|>>>>{#7}}}
+
+
+\newcommand{\arr}[1]{\ar@<.5ex>[#1]\ar@<-.5ex>[#1]}
+\newcommand{\arrr}[1]{\ar@<.7ex>[#1]\ar@<0ex>[#1]\ar@<-.7ex>[#1]}
+\newcommand{\arrrr}[1]{\ar@<.9ex>[#1]\ar@<.3ex>[#1]\ar@<-.3ex>[#1]\ar@<-.9ex>[#1]}
+\newcommand{\arrrrr}[1]{\ar@<1ex>[#1]\ar@<.5ex>[#1]\ar[#1]\ar@<-.5ex>[#1]\ar@<-1ex>[#1]}
+
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+\newcommand{\Fromm}[1]{\xleftarrow{\ \ #1\ \ }}
+\def\qeq{\stackrel{?}{=}}
+
+\newcommand{\Adjoint}[4]{\xymatrix@1{{#2}\ar@<.5ex>[r]^-{#1} &{#3} \ar@<.5ex>[l]^-{#4}}}
+
+\def\id{\tn{id}}
+\def\dom{\tn{dom}}
+\def\cod{\tn{cod}}
+\def\Top{{\bf Top}}
+\def\Kls{{\bf Kls}}
+\def\Cat{{\bf Cat}}
+\def\Oprd{{\bf Oprd}}
+\def\LH{{\bf LH}}
+\def\Monad{{\bf Monad}}
+\def\Mon{{\bf Mon}}
+\def\CMon{{\bf CMon}}
+\def\cpo{{\bf cpo}}
+\def\Vect{\text{Vect}}
+\def\Rep{{\bf Rep}}
+\def\HCat{{\bf HCat}}
+\def\Cnst{{\bf Cnst}}
+\def\Str{\tn{Str}}
+\def\List{\tn{List}}
+\def\Exc{\tn{Exc}}
+\def\Sets{{\bf Sets}}
+\def\Cob{{\bf Cob}}
+\def\Grph{{\bf Grph}}
+\def\SGrph{{\bf SGrph}}
+\def\Rel{\mcR\tn{el}}
+\def\JRel{J\mcR\tn{el}}
+\def\Inst{{\bf Inst}}
+\def\Type{{\bf Type}}
+\def\Set{{\bf Set}}
+\def\TFS{{\bf TFS}}
+\def\Qry{{\bf Qry}}
+\def\set{{\text \textendash}{\bf Set}}
+\def\sets{{\text \textendash}{\bf Alg}}
+\def\alg{{\text \textendash}{\bf Alg}}
+\def\rel{{\text \textendash}{\bf Rel}}
+\def\inst{{{\text \textendash}\bf \Inst}}
+\def\sSet{{\bf sSet}}
+\def\sSets{{\bf sSets}}
+\def\Grpd{{\bf Grpd}}
+\def\Pre{{\bf Pre}}
+\def\Shv{{\bf Shv}}
+\def\Rings{{\bf Rings}}
+\def\bD{{\bf \Delta}}
+\def\dispInt{\parbox{.1in}{$\int$}}
+\def\bhline{\Xhline{2\arrayrulewidth}}
+\def\bbhline{\Xhline{2.5\arrayrulewidth}}
+
+
+\def\Comp{\tn{Comp}}
+\def\Supp{\tn{Supp}}
+\def\Dmnd{\tn{Dmnd}}
+
+
+\def\colim{\mathop{\tn{colim}}}
+\def\hocolim{\mathop{\tn{hocolim}}}
+\def\undsc{\rule{2mm}{0.4pt}}
+
+
+\def\mcA{\mc{A}}
+\def\mcB{\mc{B}}
+\def\mcC{\mc{C}}
+\def\mcD{\mc{D}}
+\def\mcE{\mc{E}}
+\def\mcF{\mc{F}}
+\def\mcG{\mc{G}}
+\def\mcH{\mc{H}}
+\def\mcI{\mc{I}}
+\def\mcJ{\mc{J}}
+\def\mcK{\mc{K}}
+\def\mcL{\mc{L}}
+\def\mcM{\mc{M}}
+\def\mcN{\mc{N}}
+\def\mcO{\mc{O}}
+\def\mcP{\mc{P}}
+\def\mcQ{\mc{Q}}
+\def\mcR{\mc{R}}
+\def\mcS{\mc{S}}
+\def\mcT{\mc{T}}
+\def\mcU{\mc{U}}
+\def\mcV{\mc{V}}
+\def\mcW{\mc{W}}
+\def\mcX{\mc{X}}
+\def\mcY{\mc{Y}}
+\def\mcZ{\mc{Z}}
+
+\def\bfS{{\bf S}}\def\bfSs{{\bf Ss}}
+\def\bfT{{\bf T}}\def\bfTs{{\bf Ts}}
+\def\bfW{{\bf W}}
+
+\def\tnN{\tn{N}}
+
+
+\def\bE{\bar{E}}
+\def\bF{\bar{F}}
+\def\bG{\bar{G}}
+\def\bH{\bar{H}}
+\def\bX{\bar{X}}
+\def\bY{\bar{Y}}
+
+\newcommand{\subsub}[1]{\setcounter{subsubsection}{\value{theorem}}\subsubsection{#1}\addtocounter{theorem}{1}}
+
+\def\Finm{{\bf Fin_{m}}}
+\def\Bag{\tn{Bag}}
+\newcommand{\back}[1]{\stackrel{\from}{#1}\!}
+%\newcommand{\kls}[1]{{\text \textendash}\wt{\bf Kls}({#1})}
+\def\Dist{\text{Dist}}
+\def\Dst{{\bf Dst}}
+\def\WkFlw{{\bf WkFlw}}
+\def\monOb{{\blacktriangle}}
+\def\Infl{{\bf Infl}}
+\def\Tur{\tn{Tur}}
+\def\Halt{\{\text{Halt}\}}
+\def\Tape{{T\!ape}}
+\def\Prb{{\bf Prb}}
+\def\Prbs{{\wt{\bf Prb}}}
+\def\El{{\bf El}}
+\def\Gr{{\bf Gr}}
+\def\DT{{\bf DT}}
+\def\DB{{\bf DB}}
+\def\Tables{{\bf Tables}}
+\def\Sch{{\bf Sch}}
+\def\Fin{{\bf Fin}}
+\def\PrO{{\bf PrO}}
+\def\PrOs{{\bf PrOs}}
+\def\JLat{{\bf JLat}}
+\def\JLats{{\bf JLats}}
+\def\P{{\bf P}}
+\def\SC{{\bf SC}}
+\def\ND{{\bf ND}}
+\def\Poset{{\bf Poset}}
+\def\Bool{\tn{Bool}}
+\newcommand{\labelDisp}[2]{\begin{align}\label{#1}\text{#2}\end{align}}
+
+\newcommand{\inp}[1]{#1_-}
+\newcommand{\outp}[1]{#1_+}
+\newcommand{\vset}[1]{#1_{\tt type}}
+\newcommand{\loc}[1]{{\tt loc}(#1)}
+\newcommand{\extr}[1]{{\tt ext}(#1)}
+\newcommand{\vLst}[1]{\ol{#1}}
+\newcommand{\Strm}[1]{{\tn{Strm}(#1)}}
+\newcommand{\SP}[2]{{\tn{SP}(#1,#2)}}
+\newcommand{\LP}[2]{{\tn{LP}(#1,#2)}}
+\newcommand{\LPP}[2]{{\tn{LP}'(#1,#2)}}
+\newcommand{\Hist}{\tn{Hist}}
+\newcommand{\xleadsto}[1]{\stackrel{#1}{\leadsto}}
+\newcommand{\strst}[1]{\big|_{[1,#1]}} %"stream restriction"
+\newcommand{\Del}[1]{DN_{#1}}
+\newcommand{\Dem}[1]{{Dm_{#1}}}
+\newcommand{\Sup}[1]{{Sp_{#1}}}
+%\newcommand{\Con}[1]{{Con_{#1}}}
+\newcommand{\inDem}[1]{{in\Dem{#1}}}
+\newcommand{\inSup}[1]{{in\Sup{#1}}}
+\newcommand{\vinSup}[1]{\vLst{\inSup{#1}}}
+\newcommand{\vinDem}[1]{\vLst{\inDem{#1}}}
+\newcommand{\vSup}[1]{\vLst{\Sup{#1}}}
+\newcommand{\vDem}[1]{\vLst{\Dem{#1}}}
+\newcommand{\vDel}[1]{\vLst{\Del{#1}}}
+\newcommand{\vinp}[1]{\vLst{\inp{#1}}}
+\newcommand{\vintr}[1]{\vLst{\loc{#1}}}
+\newcommand{\voutp}[1]{\vLst{\outp{#1}}}
+\def\zipwith{\;\raisebox{3pt}{${}_\varcurlyvee$}\;}
+\def\tbzipwith{\!\;\raisebox{2pt}{${}_\varcurlyvee$}\;\!}
+\newcommand{\ffootnote}[2]{\hspace{#1}\footnote{#2}}
+
+
+
+\def\lin{\ell\tn{In}}
+\def\lout{\ell\tn{Out}}
+\def\gin{g\tn{In}}
+\def\gout{g\tn{Out}}
+\def\min{m^{in}}
+\def\mout{m^{out}}
+\def\sin{s^{in}}
+\def\sout{s^{out}}
+\newcommand{\disc}[1]{{\ul{#1}}}
+
+\newcommand{\Wir}[1]{\bfW_{#1}}
+\def\SMC{{\bf SMC}}
+\def\TSMC{{\bf TSMC}}
+\newcommand{\FS}[1]{\tn{FS}_{/\mathcal{#1}}}
+\def\TFSO{\text{\bf TSMC}_{\Ob(\FS{O})}}
+\newcommand{\Bij}[1]{\mcB_{\mathcal{#1}}}
+\def\Int{\tn{Int}}
+
+%\newcommand{\strm}[1]{{\left(#1\right)^\NN}}
+
+\makeatletter\let\c@figure\c@equation\makeatother %Aligns figure numbering and equation numbering.
+\newtheorem{theorem}[subsubsection]{Theorem}
+\newtheorem{lemma}[subsubsection]{Lemma}
+\newtheorem{proposition}[subsubsection]{Proposition}
+\newtheorem{corollary}[subsubsection]{Corollary}
+\newtheorem{fact}[subsubsection]{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}[subsubsection]{Remark}
+\newtheorem{example}[subsubsection]{Example}
+\newtheorem{application}[subsubsection]{Application}
+\newtheorem{warning}[subsubsection]{Warning}
+\newtheorem{question}[subsubsection]{Question}
+\newtheorem{guess}[subsubsection]{Guess}
+\newtheorem{answer}[subsubsection]{Answer}
+\newtheorem{claim}[subsubsection]{Claim}
+
+\theoremstyle{definition}
+\newtheorem{definition}[subsubsection]{Definition}
+\newtheorem{notation}[subsubsection]{Notation}
+\newtheorem{conjecture}[subsubsection]{Conjecture}
+\newtheorem{postulate}[subsubsection]{Postulate}
+\newtheorem{construction}[subsubsection]{Construction}
+\newtheorem{ann}[subsubsection]{Announcement}
+\newenvironment{announcement}{\begin{ann}}{\hspace*{\fill}$\lozenge$\end{ann}}
+
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+
+
+%Standard geometry (DO NOT CHANGE) seems to be: \newgeometry{left=1.76in,right=1.76in,top=1.6in,bottom=1.3in}
+
+\usepackage[paperwidth=8.5in,paperheight=11in,text={5.7in,8in},centering]{geometry}
+%\newgeometry{left=1.55in,right=1.55in,top=1.6in,bottom=1.3in}
+\usepackage{lscape}
+
+\begin{document}
+
+\title{String diagrams for traced monoidal categories as Cob(1)-algebras}
+
+\author{Dylan Rupel}
+\address{Northeastern University\\360 Huntington Ave.\\Boston, MA 02115}
+\email{dylanrupel@gmail.com}
+
+\author{David I. Spivak}
+\address{Massachusetts Institute of Technology\\77 Massachusetts Ave.\\Cambridge, MA 02139}
+\email{dspivak@gmail.com}
+
+\thanks{Spivak acknowledges support by ONR grant N000141310260 and AFOSR grant FA9550-14-1-0031.}
+
+
+\maketitle
+
+\tableofcontents
+
+By manifold, we always mean manifold with boundary; we must say {\em closed manifold} if we mean to say that the boundary is empty. When a manifold $Y$ is oriented, we denote the same manifold with opposite orientation by $Y^\vee$.
+
+Recall that an {\em oriented finite 0-manifold} consists of a pair of finite sets $\inp{X},\outp{X}$, where $\inp{X}$ has negative orientation and $\outp{X}$ has positive orientation. Given a manifold $\mcO$, an {\em oriented 0-manifold over $\mcO$} is an oriented $0$-manifold $X$ together with a function $\tau_X\taking\inp{X}\sqcup \outp{X}\to\mcO$. 
+
+If $X$ and $Y$ are oriented $0$-manifolds, an {\em oriented cobordism from $X$ to $Y$} consists of an oriented manifold $W$ whose boundary $\partial W$ is identified with $X\sqcup Y^\vee$. We will always be working with oriented manifolds and cobordisms, so we often speak of them as simply manifolds and cobordisms. 
+
+Given a cobordism $W$ from $X$ to $Y$ and a cobordism $W'$ from $Y$ to $Z$, we can glue them together along a thickening of $Y$ to obtain a cobordism from $X$ to $Z$. If $X$ and $Y$ are manifolds over $\mcO$, when we speak of a cobordism between them, we mean that our manifold $W$ is over $\mcO$.
+
+We denote the category whose objects are oriented $0$-manifolds and oriented cobordisms between them by $\Cob$ (because we will only have occasion to speak of $0$-manifolds in this paper), and the category of 0-manifolds and cobordisms over $\mcO$ by $\Cob/\mcO$.
+
+\begin{lemma}\label{lemma:cob as bij}
+
+Let $X,Y\in\Ob(\Cob/\mcO)$ be oriented 0-manifolds over $\mcO$. The set $\Hom_{\Cob/\mcO}(X,Y)$ of cobordisms from $X$ to $Y$ can be identified with the set of pairs $(f,n)$ where 
+$$f\taking\inp{X}\sqcup \outp{Y}\Too{\iso}\outp{X}\sqcup \inp{Y}$$
+is a bijection over $\mcO$, and $n\in\Ob(\Fin/\mcO)$ is a finite set over $\mcO$.
+
+\end{lemma}
+
+\begin{proof}
+
+**
+
+\end{proof}
+
+\begin{warning}
+
+Note that for every injection of finite sets $f\taking m\inj n$ we have a function $Tr^{n-m}_{m,m}\taking |S_n|\to|S_m|$ between the underlying sets of the respective permutation groups. But this {\em does not} extend to a group homomorphism $S_n\to S_m$. Indeed, consider the case $m=2, n=4$ and the permutations $\sigma=(1 4)(2 3)$ and $\tau=(1)(2)(3 4)$. These are drawn below
+$$\xymatrix@R=10pt{
+\bullet\ar@{-}[dddr]&\bullet\ar@{-}[r]&\bullet\\
+\bullet\ar@{-}[dr]&\bullet\ar@{-}[r]&\bullet\\
+\bullet\ar@{-}[ur]&\bullet\ar@{-}[dr]&\bullet\\
+\bullet\ar@{-}[uuur]&\bullet\ar@{-}[ur]&\bullet
+}
+$$
+Then $Tr^{n-m}_{m,m}(\sigma)=(1)(2)$ and $Tr^{n-m}_{m,m}(\tau)=(1)(2)$, whereas $Tr^{n-m}_{m,m}(\tau\circ\sigma)=(1 2)$
+
+\end{warning}
+
+\begin{lemma}
+
+We have a functor $Perm\taking Inj^{op}\to\Set$, given on morphisms by $Tr$.
+
+\end{lemma}
+
+\begin{proof}
+
+**
+
+\end{proof}
+
+Suppose given a typed bijection $\phi\taking\inp{X}\sqcup \outp{Y}\To{\iso}\outp{X}\sqcup \inp{Y}$. We'll define $\phi_X^X, \phi_Y^X, \phi_X^Y,$ and $\phi_Y^Y$ below; roughly they are ``$X$'s feed $X$'s", ``$X$'s feed $Y$'s", ``$Y$'s feed $X$'s", and ``$Y$'s feed $Y$'s", respectively. They are given by the following fiber products in $\TFS$.
+$$
+\xymatrix@=35pt{
+\phi_X^X\ar[r]\ar[d]\ullimit&\inp{X}\ar[d]^{\phi\big|_{\inp{X}}}&\phi_X^Y\ar[l]\ar[d]\urlimit\\
+\outp{X}\ar[r]&\outp{X}\sqcup \inp{Y}&\inp{Y}\ar[l]\\
+\phi_Y^X\ar[r]\ar[u]\lllimit&\outp{Y}\ar[u]_{\phi\big|_{\outp{Y}}}&\phi_Y^Y\ar[l]\ar[u]\lrlimit
+}
+$$
+Note that every arrow above is an injection and we have the following four bijections, 
+\begin{align*}
+\phi_X^X\sqcup \phi_Y^X\iso\outp{X},
+&\hsp
+\phi_X^Y\sqcup \phi_Y^Y\iso\inp{Y},
+\\
+\phi_X^X\sqcup \phi_X^Y\iso\inp{X},
+&\hsp
+\phi_Y^X\sqcup \phi_Y^Y\iso\outp{Y}.
+\end{align*}
+
+\begin{lemma}\label{le:composed wires}
+
+Suppose given $\phi\taking X\to Y$ and $\psi\taking Y\to Z$ in $\Cob/\mcO$, and form the diagram below. 
+$$\xymatrix{
+\phi_X^X\ar[r]\ar[d]&\inp{X}&\phi_X^Y\ar[l]\ar[d]\\
+\outp{X}&\psi_Y^Y\ar[r]\ar[d]&\inp{Y}&\psi_Y^Z\ar[l]\ar[d]\\
+\phi_Y^X\ar[u]\ar[r]&\outp{Y}&\phi_Y^Y\ar[u]\ar[l]&\inp{Z}\\
+&\psi_Z^Y\ar[u]\ar[r]&\outp{Z}&\psi_Z^Z\ar[l]\ar[u]
+}
+$$
+Let $P_Y$ denote the colimit of the central square above (as shown to the left below), and then define four sets, $P_X^X, P_X^Z, P_Z^X,$ and $P_Z^Z$ as the pullbacks shown in the diagram to the right below:
+$$\xymatrix{
+\psi_Y^Y\ar[dr]\ar[rr]\ar[dd]&&\inp{Y}\ar[dl]\\
+&P_Y\\
+\outp{Y}\ar[ur]&&\phi_Y^Y\ar[lu]\ar[ll]\ar[uu]
+}
+\hspace{1in}
+\xymatrix{
+P_X^X\ar[r]\ar[d]\ullimit&\phi_X^Y\ar[d]&P_X^Z\ar[l]\ar[d]\urlimit\\
+\phi_Y^X\ar[r]&P_Y&\psi_Y^Z\ar[l]\\
+P_Z^X\ar[u]\ar[r]\lllimit&\psi_Z^Y\ar[u]&P_Z^Z\ar[u]\ar[l]\lrlimit
+}
+$$
+Then we know the following about the composite morphism $\psi\circ\phi\taking X\to Z$: 
+\begin{itemize}
+\item $(\psi\circ\phi)_Z^X=P_Z^X$,
+\item $(\psi\circ\phi)_X^Z=P_X^Z$, 
+\item $(\psi\circ\phi)_X^X=\phi_X^X\sqcup P_X^X$, 
+\item $(\psi\circ\phi)_Z^Z=\psi_Z^Z\sqcup P_Z^Z$, and
+\item The induced map $P_X^X\sqcup P_X^Z\sqcup P_Z^X\sqcup P_Z^Z\too P_Y$ is injective, and, letting $P_L\ss P_Y$ be the complement of its image, we have
+$$\Loop(\psi\circ\phi)=\Loop(\phi)\sqcup \Loop(\psi)\sqcup P_L.$$
+\end{itemize}
+
+\end{lemma}
+
+\begin{proof}
+
+**
+
+\end{proof}
+
+\begin{proposition}
+
+The category $\Cob/\mcO$ is a compact closed category. 
+
+\end{proposition}
+
+\begin{proof}
+
+**
+
+\end{proof}
+
+
+\begin{lemma}
+
+Given a function $f\taking\mcO\to\mcO'$, there is an induced strong monoidal functor $f_!\taking\Cob/\mcO\to\Cob/\mcO'$.
+
+This defines a functor 
+$$\Cob/-\taking\Set\to\SMC_{st}$$
+from the category of sets to the category of SMCs and strong monoidal functors.
+
+\end{lemma}
+
+\begin{proof}
+
+**
+
+\end{proof}
+
+\begin{definition}
+
+Define {\em the category of wiring diagram algebras}, denoted $(\Cob/\bullet)\alg$, to have objects 
+$$\Ob((\Cob/\bullet)\alg):=\{(\mcO,\mcP)\|\mcO\in\Ob(\Set)\tn{ and } \mcP\in\Ob\big((\Cob/\mcO)\alg\big)\},$$
+and to have morphisms
+$$\Hom_{(\Cob/\bullet)\alg}((\mcO,\mcP),(\mcO',\mcP')):=\{(f,r)\|f\taking\mcO\to\mcO', r\taking\mcP\to(\Cob/f)^*(\mcP')\}.$$
+
+\end{definition}
+
+\begin{theorem}
+
+Let $(\Cob/\bullet)\alg$ be the category of wiring diagram algebras, and let $\TSMC$ denote the category of traced symmetric monoidal categories (and lax monoidal functors between them). There is an adjunction
+$$\xymatrix{L\taking(\Cob/\bullet)\alg\ar@<.5ex>[r]&\TSMC:\!R\ar@<.5ex>[l]}$$
+
+\end{theorem}
+
+\begin{proof}
+
+Let $\mcM$ be a traced monoidal category with objects $\mcO$. We will define a $\Cob/\mcO$-algebra $\mcP=R(\mcM)\taking\Cob/\mcO\to\Set$ as follows. On an object $[\inp{X},\outp{X}]\in\Ob(\Cob/\mcO)$, put 
+$$\mcP[\inp{X},\outp{X}]:=\Hom_{\mcM}(\vinp{X},\voutp{X}).$$
+We next consider morphisms.
+
+
+A morphism $\Phi\taking[\inp{X},\outp{X}]\too[\inp{Y},\outp{Y}]$ consists of a typed bijection 
+$$\phi\taking\inp{X}\sqcup \outp{Y}\To{\iso}\outp{X}\sqcup \inp{Y},$$ 
+together with a typed finite set $N$. Given an element $f\in\mcP[\inp{X},\outp{X}]$ we must construct $\mcP(\Phi)(f)\in\mcP[\inp{Y},\outp{Y}]$. Let $\dim(\ol{S})=\Trace^{\ol{S}}_{I,I}(\id_{\ol{S}})$. Then we use the formula
+$$\mcP(\Phi)(f):=\Trace^{\ol{\phi_X^X}}_{\ol{Y_-},\ol{Y_+}}(f\tensor\id_{\ol{\phi_Y^Y}})\tensor\dim(\ol{S})$$
+
+Given also $\Psi\taking[\inp{Y},\outp{Y}]\too[\inp{Z},\outp{Z}]$, we need to show that the following equation holds: 
+$$\mcP(\Psi)\circ\mcP(\Phi)(f)=^?\mcP(\Psi\circ\Phi)(f).$$
+These are:
+\begin{align}
+\mcP(\Psi)\circ\mcP(\Phi)(f)&=
+\Trace^{\ol{\psi_Y^Y}}_{\ol{Z_-},\ol{Z_+}}
+\Big(
+\Trace^{\ol{\phi_X^X}}_{\ol{Y_-},\ol{Y_+}}(f\tensor\id_{\ol{\phi_Y^Y}})\tensor\dim(\ol{S})\tensor\id_{\ol{\psi_Z^Z}}
+\Big)
+\tensor\dim(\ol{T})
+\\\nonumber\\
+\mcP(\Psi\circ\Phi)(f)&=
+\Trace^{\ol{(\psi\circ\phi)_X^X}}_{\ol{Z_-},\ol{Z_+}}(f\tensor\id_{\ol{(\psi\circ\phi)_Z^Z}})\tensor\dim(\ol{S\sqcup T\sqcup ``newloops"})
+\end{align}
+
+Possibly useful identities for (1):
+\[\Trace^{\ol{\psi_Y^Y}}_{\ol{Z_-},\ol{Z_+}}
+\Big(
+\Trace^{\ol{\phi_X^X}}_{\ol{Y_-},\ol{Y_+}}(f\tensor\id_{\ol{\phi_Y^Y}})\tensor\id_{\ol{\psi_Z^Z}}
+\Big)=\Trace^{\ol{\psi_Y^Y}}_{\ol{\psi_Y^Z},\ol{\psi_Z^Y}}
+\Big(
+\Trace^{\ol{\phi_X^X}}_{\ol{Y_-},\ol{Y_+}}(f\tensor\id_{\ol{\phi_Y^Y}})
+\Big)\tensor\id_{\ol{\psi_Z^Z}}\]
+\[\Trace^{\ol{\psi_Y^Y}}_{\ol{\psi_Y^Z},\ol{\psi_Z^Y}}
+\Big(\Trace^{\ol{\phi_X^X}}_{\ol{\inp{Y}},\ol{\outp{Y}}}(f\tensor\id_{\ol{\phi_Y^Y}})\Big)=\Trace^{\ol{\psi_Y^Y}\otimes\ol{\phi_X^X}}_{\ol{\psi_Y^Z},\ol{\psi_Z^Y}}
+(f\tensor\id_{\ol{\phi_Y^Y}})\]
+\[\Trace^{\ol{\psi_Y^Y}\otimes\ol{\phi_X^X}}_{\ol{\psi_Y^Z},\ol{\psi_Z^Y}}
+(f\tensor\id_{\ol{\phi_Y^Y}})\tensor\id_{\ol{\psi_Z^Z}}=\Trace^{\ol{\psi_Y^Y}\otimes\ol{\phi_X^X}}_{\ol{\inp{Z}},\ol{\outp{Z}}}
+(f\tensor\id_{\ol{\phi_Y^Y}}\tensor\id_{\ol{\psi_Z^Z}})\]
+\shortnote{*****}
+\[\Trace^{\ol{\psi_Y^Y}}_{\ol{\psi_Y^Z},\ol{\psi_Z^Y}}
+\Big(\Trace^{\ol{\phi_X^X}}_{\ol{\inp{Y}},\ol{\outp{Y}}}(f\tensor\id_{\ol{\phi_Y^Y}})\Big)=\Trace^{\ol{\psi_Y^Y}\otimes\ol{\phi_X^X}}_{\ol{\psi_Y^Z},\ol{\psi_Z^Y}}
+(f\tensor\id_{\ol{\phi_Y^Y}})\cong\Trace^{\ol{\phi_X^X}\otimes\ol{\psi_Y^Y}}_{\ol{\psi_Y^Z},\ol{\psi_Z^Y}}
+(f\tensor\id_{\ol{\phi_Y^Y}})=\Trace^{\ol{\phi_X^X}}_{\ol{\psi_Y^Z},\ol{\psi_Z^Y}}\Big(\Trace^{\ol{\psi_Y^Y}}_{\ol{\psi_Y^Z}\otimes\ol{\phi_X^X},\ol{\psi_Z^Y}\otimes\ol{\phi_X^X}}
+(f\tensor\id_{\ol{\phi_Y^Y}})\Big)\]
+\shortnote{*****}
+
+Possibly useful identities for (2):
+\[\Trace^{\ol{(\psi\circ\phi)_X^X}}_{\ol{\inp{Z}},\ol{\outp{Z}}}(f\tensor\id_{\ol{(\psi\circ\phi)_Z^Z}})=\Trace^{\ol{P_X^X}\otimes\ol{\phi_X^X}}_{\ol{\inp{Z}},\ol{\outp{Z}}}(f\tensor\id_{\ol{(\psi\circ\phi)_Z^Z}})\]
+\[\Trace^{\ol{P_X^X}\otimes\ol{\phi_X^X}}_{\ol{\inp{Z}},\ol{\outp{Z}}}(f\tensor\id_{\ol{(\psi\circ\phi)_Z^Z}})=\Trace^{\ol{P_X^X}\otimes\ol{\phi_X^X}}_{\ol{\inp{Z}},\ol{\outp{Z}}}(f\tensor\id_{\ol{\psi_Z^Z}}\otimes\id_{\ol{P_Z^Z}})\]
+\shortnote{The result will follow if we can show:}
+\[\Trace^{\ol{\psi_Y^Y}\otimes\ol{\phi_X^X}}_{\ol{\inp{Z}},\ol{\outp{Z}}}
+(f\tensor\id_{\ol{\phi_Y^Y}}\tensor\id_{\ol{\psi_Z^Z}})=\Trace^{\ol{\phi_X^X}\otimes\ol{P_X^X}}_{\ol{\inp{Z}},\ol{\outp{Z}}}(f\tensor\id_{\ol{\psi_Z^Z}}\otimes\id_{\ol{P_Z^Z}})\otimes\dim(\ol{``newloops"})\]
+Using that 
+\[\inp{Z}=(\psi\circ\phi)_X^Z\sqcup (\psi\circ\phi)_Z^Z=P_X^Z\sqcup P_Z^Z\sqcup \psi_Z^Z\]
+\[\outp{Z}=(\psi\circ\phi)_Z^X\sqcup (\psi\circ\phi)_Z^Z=P_Z^X\sqcup P_Z^Z\sqcup \psi_Z^Z,\]
+where each of the final equalities above follow from Lemma~\ref{le:composed wires}, and the superposition axiom of the trace we get
+\[\Trace^{\ol{\psi_Y^Y}\otimes\ol{\phi_X^X}}_{\ol{\inp{Z}},\ol{\outp{Z}}}
+(f\tensor\id_{\ol{\phi_Y^Y}}\tensor\id_{\ol{\psi_Z^Z}})=\Trace^{\ol{\psi_Y^Y}\otimes\ol{\phi_X^X}}_{\ol{P_X^Z}\otimes\ol{P_Z^Z},\ol{P_Z^X}\otimes\ol{P_Z^Z}}
+(f\tensor\id_{\ol{\phi_Y^Y}})\tensor\id_{\ol{\psi_Z^Z}}\]
+\shortnote{how to eliminate $\ol{P_Z^Z}$ above?} $\phi_Y^Y$ should decompose as those wires which map to $P_L$ and those wires that map to its complement in $P_Y$, with similar decompositions for $\psi_Y^Y$, this should allow to split off the needed ``newloops'' factor.  A similar statement should hold for the elements of $\phi_Y^Y$ and $\psi_Y^Y$ that map to $P_Z^Z$.  But what about the remaining elements, i.e. those mapping to $P_X^X\sqcup P_X^Z\sqcup P_Z^X$?
+
+and
+\[\Trace^{\ol{\phi_X^X}\otimes\ol{P_X^X}}_{\ol{\inp{Z}},\ol{\outp{Z}}}(f\tensor\id_{\ol{\psi_Z^Z}}\otimes\id_{\ol{P_Z^Z}})=\Trace^{\ol{\phi_X^X}\otimes\ol{P_X^X}}_{\ol{P_X^Z},\ol{P_Z^X}}(f)\tensor\id_{\ol{\psi_Z^Z}}\otimes\id_{\ol{P_Z^Z}}.\]
+
+By dinaturality in the upper factor for the map $r\otimes\id_{\ol{\phi_X^X}}:\ol{\psi_Y^Y}\otimes\ol{\phi_X^X}\to\ol{P_X^X}\otimes\ol{\phi_X^X}$....
+
+\bigskip
+
+Here's a picture that may be useful.
+\activetikz{
+	%outer box Z
+	\path(0,0);\blackbox{(10,8)}{3}{3}{$Z$}{.8}
+	%mid box Y
+	\path(2.5,1.5);\blackbox{(5,5)}{4}{4}{$Y$}{.6}
+	%inner box X
+	\path(4,3);\blackbox{(2,2)}{3}{3}{$X$}{.4}
+	%outer morphism
+	% Z feeds Z
+	\fancyarc{(.4,6)}{(9.6,6)}{-30}{30}\node at (5,7.1){\tiny$\psi_Z^Z$};
+	% Z feeds Y
+	\directarc{(.4,4)}{(2.2,5.5)}\node at (1.5,5.1){\tiny$\psi_Y^Z$};
+	\directarc{(.4,2)}{(2.2,4.5)}\node at (1.5,4.1){\tiny$\psi_Y^Z$};
+	% Y feeds Z
+	\directarc{(7.8,5.5)}{(9.6,4)}\node at (8.5,5.1){\tiny$\psi_Z^Y$};
+	\directarc{(7.8,4.5)}{(9.6,2)}\node at (8.5,4.1){\tiny$\psi_Z^Y$};
+	% Y feeds Y
+	\fancyarc{(2.2,3.5)}{(7.8,3.5)}{40}{-90}\node at (5,.8){\tiny$\psi_Y^Y$};
+	\fancyarc{(2.2,2.5)}{(7.8,2.5)}{20}{-50}\node at (5,.4){\tiny$\psi_Y^Y$};
+	%circles
+	\draw(5,1.1) circle(5pt);\node at (5.2,1.1){\tiny$\psi_{loop}$};
+	%inner morphism
+	%Y feeds Y
+	\directarc{(2.8,5.5)}{(7.2,5.5)}\node at (5,5.5){\tiny$\phi_Y^Y$};
+	\directarc{(2.8,2.5)}{(7.2,2.5)}\node at (5,2.5){\tiny$\phi_Y^Y$};
+	%Y feeds X
+	\directarc{(2.8,4.5)}{(3.8,4.5)}\node at (3.5,4.5){\tiny$\phi_X^Y$};
+	\directarc{(2.8,3.5)}{(3.8,4)}\node at (3.5,3.8){\tiny$\phi_X^Y$};
+	%X feeds Y
+	\directarc{(6.2,4.5)}{(7.2,4.5)}\node at (6.5,4.5){\tiny$\phi_Y^X$};
+	\directarc{(6.2,4)}{(7.2,3.5)}\node at (6.5,3.8){\tiny$\phi_Y^X$};
+	%X feeds X 
+	\fancyarc{(3.8,3.5)}{(6.2,3.5)}{10}{-23}\node at (5,2.7){\tiny$\phi_X^X$};
+	%circles
+	\draw(5,2) circle(5pt);\node at (5.2,2){\tiny$\phi_{loop}$};
+}
+
+\activetikz{
+	%outer box Z
+	\path(0,0);\blackbox{(10,8)}{3}{3}{$Z$}{.8}
+	%inner box X
+	\path(4,1.5);\blackbox{(2,2)}{3}{3}{$X$}{.4}
+	% Z feeds Z
+	\directarc{(.4,6)}{(9.6,6)}
+	\directarc{(.4,4)}{(9.6,4)}
+	% Z feeds X
+	\directarc{(.4,2)}{(3.8,3)}
+	% X feeds Z
+	\directarc{(6.2,3)}{(9.6,2)}
+	% X feeds X
+	\fancyarc{(3.8,2.5)}{(6.2,2.5)}{20}{-60}
+	\fancyarc{(3.8,2)}{(6.2,2)}{10}{-30}
+	%circles
+	\draw(2,1) circle(5pt);
+	\draw(2.5,1.2) circle(5pt);
+	\draw(3,.7) circle(5pt);
+}
+
+\end{proof}
+
+\section{An alternate composition formula}
+
+The following composition formula may or may not be the same as the one above. 
+
+Suppose given oriented $0$-manifolds $X,Y,X$ and oriented cobordisms $\phi\taking X\to Y$ and $\psi\taking Y\to Z$. Let's reconsider how to think of $\phi$. Above we formulate it as a bijection $\phi\taking\inp{X}\sqcup\outp{Y}\To{\iso}\outp{X}\sqcup\inp{Y}$, which tells us a kind of supply-meets-demand story, together with a typed set of loops. Below we will understand wiring diagrams in a different way.
+
+A newmap $X\to Y$ consists of a set $P$ together with four typed functions, arranged as to the left below:
+$$\xymatrix{
+&\inp{X}\ar[d]\\
+\outp{X}\ar[r]&P&\outp{Y}\ar[l]\\
+&\inp{Y}\ar[u]
+}
+\hspace{.8in}
+\xymatrix{
+P^X_X\ar[r]\ar[d]\ullimit&\inp{X}\ar[d]&P^X_Y\ar[l]\ar[d]\urlimit\\
+\outp{X}\ar[r]&P&\outp{Y}\ar[l]\\
+P^Y_X\ar[r]\ar[u]\lllimit&\inp{Y}\ar[u]&P_Y^Y\ar[u]\ar[l]\lrlimit
+}
+$$
+with the property that if one forms fiber products as to the right above, then each of: the top horizontal, the bottom horizontal, the left vertical, and the right vertical pairs of morphisms is a coproduct. That is, 
+$$
+P^X_X\sqcup P^Y_X=\inp{X},\;\;\;\;\; P^X_Y\sqcup P^Y_Y=\outp{Y},\;\;\;\;\tn{etc}
+$$
+Then I think the following may be true. Given composable newmaps as below
+$$\xymatrix{
+&\inp{X}\ar[d]\\
+\outp{X}\ar[r]&P&\outp{Y}\ar[l]\ar[d]\\
+&\inp{Y}\ar[u]\ar[r]&Q&\outp{Z}\ar[l]\\
+&&\inp{Z}\ar[u]
+}
+$$
+form the colimit $P\sqcup_YQ$ of the diagram to the left below, and recover a questionable-composite as to the right.
+$$
+\xymatrix{
+P\ar[dr]&&\outp{Y}\ar[ll]\ar[dd]\ar[dl]\\
+&P\sqcup_YQ\\
+\inp{Y}\ar[ur]\ar[uu]\ar[rr]&&Q\ar[ul]
+}
+\hspace{.8in}
+\xymatrix{
+&\inp{X}\ar[d]\\
+\outp{X}\ar[r]&P\sqcup_YQ&\outp{Z}\ar[l]\\
+&\inp{Z}\ar[u]
+}
+$$
+
+\section{Yanking Compositions of Wiring Diagrams}
+We have some technique ,``yanking", by which we trade $\phi,\psi$ in for $\phi',\psi'$ such that there's an equivalence and two nice facts:
+$$\xymatrix@R=10pt{
+&Y\ar[dr]^\psi\ar@{}[dd]|{\Updownarrow}\\
+X\ar[ur]^\phi\ar[dr]_{\phi'}&&Z\\
+&Y'\ar[ur]_{\psi'}
+}
+\hsp\tn{such that}
+\hspace{.7in}
+\xymatrix{
+\emptyset\ar[r]\ar[d]\ullimit&{\phi'}_Y^Y\ar[d]\\
+{\psi'}_Y^Y\ar[r]&\inp{Y'}
+}
+\hspace{.7in}
+\xymatrix{
+\emptyset\ar[r]\ar[d]\ullimit&{\phi'}_Y^Y\ar[d]\\
+{\psi'}_Y^Y\ar[r]&\outp{Y'}
+}
+$$
+
+Then we have $(\psi'\circ\phi')_X^X={\phi'}_X^X+{\psi'}_Y^Y$, ${P'}_X^X={\psi'}_Y^Y$, ${P'}_Z^Z={\phi'}_Y^Y$.  And so compatibility of trace and compositions is immediate.
+
+\end{document}
