@@ -584,10 +584,13 @@ $\alpha\colon F\to G$ is called a \emph{monoidal transformation} if the diagrams
 \]
 commute.
 
-Let $\SSymMonCat$ denote the bicategory of symmetric monoidal categories and strong monoidal
-functors, and let $\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal
-transformations from $\cat{C}$ to $\cat{D}$.  Let $\CompCat$ denote the full subcategory of
-$\SSymMonCat$ spanned by the compact categories.
+Let $\MMonCat$ denote the 2-category of symmetric monoidal categories, strong monoidal functors, and
+monoidal transformations, and let $\MonCat$ denote the underlying 1-category. Let
+$\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal transformations
+from $\cat{C}$ to $\cat{D}$.
+
+There is a free/forgetful adjunction $\FrM\colon\Set\leftrightarrows\MonCat:\!\UM$, and the induced
+monad $\TC=\UM\FrM\colon\Set\to\Set$ is isomorphic to the free-monoid monad.
 
 
 \section{Traced categories}\label{sec:intuition_for_traced}
@@ -730,7 +733,7 @@ the axioms of \emph{dinaturality} and \emph{superposition}:
 
 The definition of traced categories and traced functors can be found in~\cite{JoyalStreetVerity},
 where they define the 2-morphisms between traced functors to be monoidal transformations. We denote
-this 2-category by $\TrCat$.
+this 2-category by $\TTrCat$.
 \todo[author=Patrick,inline]{Fix definition of 2-morphisms to be monoidal natural isos, and cite the
 correction paper as well}
 
@@ -1297,6 +1300,7 @@ There is an orthogonal factorization system on $\CompCat$.
 
 \section{Other equipments}
 \todo[inline]{Define $\dFrMonProf$, $\dFrCompProf$, $\dFrMonCompProf$, etc.}
+
 
 \begin{definition}
    The equipment $\dFrMonCompProf$ has vertical category $\dFrMonCompProf_0\coloneqq \FrMonCat$,
