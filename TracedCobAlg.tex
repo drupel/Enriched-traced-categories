@@ -35,9 +35,9 @@
 \maketitle
 \begin{abstract}
    We give an alternate conception of string diagrams as 1-dimensional oriented cobordisms, the
-   operad of which we denote by $\Cob$.  The axioms of traced categories are fully encoded by $\Cob$
+   operad of which we denote by $\Cob$. The axioms of traced categories are fully encoded by $\Cob$
    in the sense that there is an equivalence between $\Cob$-algebras and
-   traced categories.  We also prove a substantial generalization of this fact which characterizes
+   traced categories. We also prove a substantial generalization of this fact which characterizes
    lax functors out of compact or traced categories.
 \end{abstract}
 Global todo's:
@@ -53,7 +53,7 @@ Global todo's:
 \chapter{Introduction}
 
 Traced symmetric monoidal categories, hereafter \emph{traced categories}, have been used to model
-processes with feedback~\cite{Abramsky1} or operators with fixed points~\cite{PontoShulman}.  A
+processes with feedback~\cite{Abramsky1} or operators with fixed points~\cite{PontoShulman}. A
 graphical calculus for traced categories was developed by Joyal, Street, and
 Verity~\cite{JoyalStreetVerity}, in which string diagrams of the form
 \begin{equation}\label{dia:string_diagram}
@@ -82,15 +82,15 @@ Verity~\cite{JoyalStreetVerity}, in which string diagrams of the form
       (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
 \end{tikzpicture}
 \end{equation}
-represent compositions.  That is, new morphisms are constructed from old by specifying which outputs
-will be fed back into which inputs.  In fact, these are related to Penrose diagrams in $\ncat{Vect}$, and the word \emph{traced} originates in
+represent compositions. That is, new morphisms are constructed from old by specifying which outputs
+will be fed back into which inputs. In fact, these are related to Penrose diagrams in $\ncat{Vect}$, and the word \emph{traced} originates in
 this vector space terminology~\cite{JoyalStreetVerity}.
 
 \section{Traced string diagrams as cobordisms}
 
-A string diagram usually does not explicitly include the outer box $Y$.  If we include it, as in
+A string diagram usually does not explicitly include the outer box $Y$. If we include it, as in
 (\ref{dia:string_diagram}), the resulting \emph{wiring diagram} can be given another interpretation:
-it represents a 1-dimensional cobordism between oriented 0-manifolds.  For example, the box $X_1$ in
+it represents a 1-dimensional cobordism between oriented 0-manifolds. For example, the box $X_1$ in
 the picture includes only the data of a pair of finite sets,
 $(\inp{X_1},\outp{X_1})=(\{1a,1b\},\{1c\})$, which can be interpreted as an oriented 0-manifold.
 Moreover, the wiring diagram itself, in which boxes $X_1,\ldots,X_n$ are wired together inside a
@@ -102,7 +102,7 @@ There is actually a bit more data in a string (or wiring) diagram for a traced c
 Namely, each input and output of a box must be labeled by an object of $\cat{C}$ and the wires connecting boxes must respect the labels (e.g., in (\ref{dia:string_diagram}) object 2d must equal object 1b). We will thus consider the operad $\LCob{\cat{O}}$ of oriented 1-dimensional cobordisms over a fixed set of
 labels $\cat{O}$.
 
-In the table below, we record these two interpretations of a string diagram.  Note the ``degree
+In the table below, we record these two interpretations of a string diagram. Note the ``degree
 shift'' between the second and third columns.
 \begin{center}
 \begin{tabular}{lll}
@@ -168,8 +168,8 @@ strong, bijective-on-objects functors out of $\cat{C}$,
 As in Section~\ref{subsec:main_results}, the difficulty is allowing this equivalence to vary appropriately with $\cat{C}$.
 
 The definition of compact closed symmetric
-monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact_and_int}, or in~\cite{MacLane}.  Let $\CompCat$ denote the category of compact categories and strong
-monoidal functors between them.  We show in Lemma~\ref{lemma:factorization_system} that there is a
+monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact_and_int}, or in~\cite{MacLane}. Let $\CompCat$ denote the category of compact categories and strong
+monoidal functors between them. We show in Lemma~\ref{lemma:factorization_system} that there is a
 factorization system on $\CompCat$, in which the left class consists of bijective-on-objects
 functors and the right class consists of fully faithful functors. Let $\CompCat^{\bo}$ be the full
 subcategory of the arrow category $\CompCat^{\to}$ spanned by the bijective-on-objects functors.
@@ -186,13 +186,13 @@ subcategory of the arrow category $\CompCat^{\to}$ spanned by the bijective-on-o
 \end{named}
 
 Recall from~\cite{JoyalStreetVerity} that traced categories are full subcategories of compact
-categories.  The Int construction, applied to a traced category $\cat{C}$, returns the smallest
+categories. The Int construction, applied to a traced category $\cat{C}$, returns the smallest
 compact category $\Int(\cat{C})$ of which it is a subcategory; we call $\Int(\cat{C})$ the
 \emph{compact closure} of $\cat{C}$. We will recall these notions in Sections~\ref{sec:intuition_for_traced}~and~\ref{sec:compact_and_int}.
 
 It turns out that if our compact category $\cat{C}$ is the compact closure of some traced category
-$\cat{D}$, then~\ref{thm:TheoremB} lifts to a result about $\cat{D}$.  We record this result
-as~\ref{cor:CorollaryB}, from which~\ref{thm:Theorem_A} follows.  These are proved in
+$\cat{D}$, then~\ref{thm:TheoremB} lifts to a result about $\cat{D}$. We record this result
+as~\ref{cor:CorollaryB}, from which~\ref{thm:Theorem_A} follows. These are proved in
 Section~\ref{sec:generalization}.
 
 \begin{named}{Corollary B}\label{cor:CorollaryB}
@@ -216,7 +216,7 @@ and the category of cobordism algebras.
 
 The objects in $\Cob$ are signed sets $(\inp{X},\outp{X})$, each of which can be drawn as a box with
 input wires $\inp{X}$ drawn entering the box, on its left, and output wires $\outp{X}$ drawn exiting
-the box, on its right.  We call the latter style \emph{an interface}.
+the box, on its right. We call the latter style \emph{an interface}.
 
 \[
    \begin{tikzpicture}[node distance=0 and 0, baseline=(current bounding box.center)]
@@ -296,7 +296,7 @@ First, for each box $(\inp{X},\outp{X})$ that might appear in a string diagram, 
 $\cat{C}\in\TrCat_{\cat{O}}$ require a set, $P(\inp{X},\outp{X})$ and $\Hom_{\cat{C}}(\inp{X},\outp{X})$, respectively.
 Second, for each string diagram, both $P$ and $\cat{C}$ require a function: an action on morphisms,
 in the case of $P$, and a formula for performing the required compositions, tensors, and traces, in
-the case of $\cat{C}$.  The condition that $P$ is functorial corresponds to the fact that $\cat{C}$
+the case of $\cat{C}$. The condition that $P$ is functorial corresponds to the fact that $\cat{C}$
 satisfies the axioms of traced categories.
 
 
@@ -304,7 +304,7 @@ To give a sense of the essential surjectivity in~\ref{thm:Theorem_A} we will bri
 $(\Cob/\Ob\cat{C})$-algebra from a traced category $(\cat{C},\otimes,I,\Tr)$. The proof of \ref{thm:Theorem_A} can be found in Section~\ref{sec:proof_of_A}. 
 
 For an oriented 0-manifold $X=X^-\sqcup X^+$ over $\Ob\cat{C}$, we
-set $P(X)=\Hom_{\cat{C}}(X^-,X^+)$.  Given a cobordism $\Phi\colon X\to Y$, there exist
+set $P(X)=\Hom_{\cat{C}}(X^-,X^+)$. Given a cobordism $\Phi\colon X\to Y$, there exist
 $A,B,C,D,E\in\Ob\cat{C}$ such that $\inp{X}\cong C\sqcup A$, $\outp{X}\cong C\sqcup B$,
 $\inp{Y}\cong A\sqcup D$, $\outp{Y}\cong B\sqcup D$, and $E$ is the set of floating loops in $\Phi$;
 thus $\Phi$ is essentially equivalent to the cobordism (right side (\ref{eq:cob and trace pic})).
@@ -362,7 +362,7 @@ This can be visualized via the following string diagram.
 \section{Applications of the operadic perspective}
 
 The operadic perspective on traced categories may be useful in concrete applications, such as for
-modeling nested process diagrams.  It may also be useful in mathematics, because the operad $\Cob$,
+modeling nested process diagrams. It may also be useful in mathematics, because the operad $\Cob$,
 which indexes traced categories, can be easily modified to model a variety of other doctrines.
 These two applications will be discussed in more detail in
 Sections~\ref{sec:modular}~and~\ref{sec:math application} respectively.
@@ -370,15 +370,15 @@ Sections~\ref{sec:modular}~and~\ref{sec:math application} respectively.
 \subsection{Modular design}\label{sec:modular}
 
 When designing or investigating a complex system, it is often useful to think in terms of
-interacting subsystems, put together to make a larger whole.  In manufacturing, this is often called
-\emph{modular design}.  Each object in $\Cob$ represents an interface, or \emph{module}, with a
-fixed number and type of inputs and outputs.  The morphisms in $\Cob$ correspond to strategies by
+interacting subsystems, put together to make a larger whole. In manufacturing, this is often called
+\emph{modular design}. Each object in $\Cob$ represents an interface, or \emph{module}, with a
+fixed number and type of inputs and outputs. The morphisms in $\Cob$ correspond to strategies by
 which these interfaces can be put together into a process, which itself has an interface.
 
-An algebra $P\colon\Cob\to\Set$ provides semantics for these boxes.  For each interface $X$, the set
-$P(X)$ represents the set of ``fillers'' for this interface.  For example, one might imagine that
+An algebra $P\colon\Cob\to\Set$ provides semantics for these boxes. For each interface $X$, the set
+$P(X)$ represents the set of ``fillers'' for this interface. For example, one might imagine that
 each interface $X$ can be filled by any state machine having that interface; in this case $P(X)$ is
-the set of such state machines.  For a morphism $\varphi\colon X_1,\ldots,X_n\to Y$, the function
+the set of such state machines. For a morphism $\varphi\colon X_1,\ldots,X_n\to Y$, the function
 $P(\varphi)$ tells us how to construct a filler of type $Y$, given fillers on each $X_i$.
 Composition of cobordisms are drawn as nested diagrams:
 
@@ -422,8 +422,8 @@ Composition of cobordisms are drawn as nested diagrams:
 \]
 
 In our model for modular design, any way to chunk the small boxes inside the big one will give the
-same result.  This is a reflection of the functoriality of $P\colon\Cob\to\Set$, which says that
-commutative diagrams in $\Cob$ are sent to commutative diagrams of sets.  Nested structures, given
+same result. This is a reflection of the functoriality of $P\colon\Cob\to\Set$, which says that
+commutative diagrams in $\Cob$ are sent to commutative diagrams of sets. Nested structures, given
 by composition of such morphisms, may be useful for the kind of chunking that humans use to
 understand complex systems~\cite{Miller}.
 
@@ -432,18 +432,18 @@ understand complex systems~\cite{Miller}.
 Formalizing modular design using operads, as in\todo{Are these in print yet?}\todo[author=David]{No,
 why do you ask?}~\cite{Spivak},~\cite{RupelSpivak}, and~\cite{VagnerSpivakLerman} was the original
 motivation for the present paper, as the drawings had strong similarities to those found in traced
-categories.  However, it should be noted that none of these papers actually uses $\Cob$ as the
-indexing category for their algebras.  In fact, they use three different operads, of varying degrees
-of similarity to $\Cob$.  For example, there is an orthogonal factorization system on $\Cob$, for
+categories. However, it should be noted that none of these papers actually uses $\Cob$ as the
+indexing category for their algebras. In fact, they use three different operads, of varying degrees
+of similarity to $\Cob$. For example, there is an orthogonal factorization system on $\Cob$, for
 which morphisms in the left class $\cat{L}$ include no closed loops, and~\cite{VagnerSpivakLerman}
 is based on the suboperad spanned by $\cat{L}$.
 
 It is easy to imagine operads with the same objects as $\Cob$, but different morphisms, simply by
-imagining generalizations of the pictures.  String diagrams $\varphi\colon X\to Y$ in $\Cob$ include
-no split wires and no ``dangling'' wires, but those conditions can be relaxed.  Said mathematically,
+imagining generalizations of the pictures. String diagrams $\varphi\colon X\to Y$ in $\Cob$ include
+no split wires and no ``dangling'' wires, but those conditions can be relaxed. Said mathematically,
 an oriented cobordism $\varphi$ includes the data of a function
 $$\varphi_1\colon\inp{X}\sqcup\outp{Y}\to\outp{X}\sqcup\inp{Y},$$ which is both injective and
-surjective.  Either of those conditions can be dropped, e.g., requiring surjectivity but not
+surjective. Either of those conditions can be dropped, e.g., requiring surjectivity but not
 requiring injectivity
 \begin{center}
 \begin{tikzpicture}[wiring diagram,bb min width =.7cm, bb port sep =1, bbx=.6cm,bb port length=3pt]
@@ -467,11 +467,11 @@ traced categories.
 
 \section{Plan of the paper}
 
-The paper is organized as follows.  In Section~\ref{sec:traced categories} we give more details on
+The paper is organized as follows. In Section~\ref{sec:traced categories} we give more details on
 the connection between traced monoidal categories, their string diagrams, and algebras on the operad
-of cobordisms.  In Section~\ref{sec:generalization} we prove~\ref{thm:TheoremB}
+of cobordisms. In Section~\ref{sec:generalization} we prove~\ref{thm:TheoremB}
 and~\ref{cor:CorollaryB}, which compare lax set-valued functors to strong bijective-on-objects
-functors, respectively for compact and traced categories.  Our main result,~\ref{thm:Theorem_A},
+functors, respectively for compact and traced categories. Our main result,~\ref{thm:Theorem_A},
 which says that traced categories are $\Cob$-algebras, follows easily.
 
 \section*{Acknowledgments}
@@ -481,20 +481,20 @@ picture in \cite{RupelSpivak} to string diagrams in traced categories.
 
 \chapter{Categorical preliminaries}\label{sec:traced categories}
 
-In this section we remind the reader of some categorical preliminaries.  Basic definitions and facts
+In this section we remind the reader of some categorical preliminaries. Basic definitions and facts
 about monoidal, traced, and compact categories, lax and strong functors, and the Int construction
-are given in Sections~\ref{sec:prelim monoidal}~through~\ref{sec:compact_and_int}.  The fact that
+are given in Sections~\ref{sec:prelim monoidal}~through~\ref{sec:compact_and_int}. The fact that
 the free compact category on a set has an algebraic description in terms of bijections between
 signed sets, and the fact that it has a geometric description in terms of 1-dimensional oriented
-cobordisms is recalled in Section~\ref{sec:free and geometry}.  In Section~\ref{sec:factorization
+cobordisms is recalled in Section~\ref{sec:free and geometry}. In Section~\ref{sec:factorization
 system} we discuss an orthogonal factorization system on our three flavors of monoidal categories,
-which we will use repeatedly throughout the rest of the paper.  Finally, in
+which we will use repeatedly throughout the rest of the paper. Finally, in
 Section~\ref{sec:profunctors} we discuss profunctors between categories and monoidal categories.
 
 
 \section{Monoidal categories}\label{sec:prelim monoidal}
 
-Let $\cat{C}$ and $\cat{D}$ be monoidal categories.  Recall that a functor
+Let $\cat{C}$ and $\cat{D}$ be monoidal categories. Recall that a functor
 $F\colon\cat{C}\to\cat{D}$ is called \emph{lax monoidal} if it is equipped with a morphism
 \[
 \begin{tikzcd}
@@ -599,8 +599,8 @@ A trace on a symmetric monoidal category is a collection of functions
 \begin{equation}\label{dia:trace function}
    \Tr^U_{X,Y}\colon\Hom(U\otimes X,U\otimes Y)\to\Hom(X,Y)
 \end{equation}
-for $U,X,Y\in\Ob(\cat{M})$ satisfying several axioms.  When traced categories are defined, one often
-sees the trace functions, as well as each of the axioms, accompanied by a picture.  For example,
+for $U,X,Y\in\Ob(\cat{M})$ satisfying several axioms. When traced categories are defined, one often
+sees the trace functions, as well as each of the axioms, accompanied by a picture. For example,
 (\ref{dia:trace function}) applied to an arbitrary $f\colon U\otimes X\to U\otimes Y$ might be
 accompanied by this picture:
 $$
@@ -621,8 +621,8 @@ $$
 \end{tikzpicture}
 $$
 This can be recognized as a cobordism between oriented 0-manifolds, as we will discuss in
-Section~\ref{sec:Cob morphisms as wds}.  Each of the six axioms is vacuous from this perspective, in
-the sense that both sides of the equation correspond to the same cobordism.  For example, here are
+Section~\ref{sec:Cob morphisms as wds}. Each of the six axioms is vacuous from this perspective, in
+the sense that both sides of the equation correspond to the same cobordism. For example, here are
 the axioms of \emph{dinaturality} and \emph{superposition}:
 \begin{itemize}
    \item For every $f\colon U\otimes X\to V\otimes Y$ and $g:V\to U$ we have
@@ -760,7 +760,7 @@ agrees with that in~\cite{HackneyRobertson}.\todo{Check this.}
 
 Let $\SSymMonCat$ denote the 2-category of symmetric monoidal categories, strong monoidal functors,
 and strong monoidal natural transformations. We will denote by $\CCompCat\ss\SSymMonCat$ the full
-sub-2-category spanned by the compact categories.  Recall that a compact category is a symmetric
+sub-2-category spanned by the compact categories. Recall that a compact category is a symmetric
 monoidal category $(\cat{C},\otimes,I)$ with the property that for every object $X\in\Ob\cat{C}$
 there exists an object $X^*$ and morphisms $\eta_X\colon I\to X^*\otimes X$ and $\epsilon_X\colon
 X\otimes X^*\to I$ such that the following diagrams commute:
@@ -779,14 +779,14 @@ X\otimes X^*\to I$ such that the following diagrams commute:
 \end{equation*}
 
 Every compact category $\cat{C}$ has a canonical trace structure, defined on a morphism $f\colon
-U\otimes X\to U\otimes Y$ to morally be $\epsilon_U\circ f\circ \eta_U$.  More precisely, if
+U\otimes X\to U\otimes Y$ to morally be $\epsilon_U\circ f\circ \eta_U$. More precisely, if
 $s_{A,B}$ is the symmetry isomorphism, one defines
 \begin{equation*}
    \Tr^U_{X,Y}[f]\coloneqq(\epsilon_U\otimes Y)\circ (s_{U^*,U}\otimes Y)\circ (U^*\otimes f)\circ (\eta_U\otimes X)
 \end{equation*}
 %\todo[color=yellow]{does this formula make sense as written? i.e. it doesn't seem to give a map
 %$X\to Y$?}
-Thus we have a functor $U\colon\CCompCat\to\TTrCat$.  It is shown in~\cite{JoyalStreetVerity} that
+Thus we have a functor $U\colon\CCompCat\to\TTrCat$. It is shown in~\cite{JoyalStreetVerity} that
 this functor is the right half of a 2-adjunction
 \begin{equation}\label{dia:traced compact adjunction}
 \begin{tikzcd}
@@ -874,7 +874,7 @@ Recall that a profunctor $M$ from $\cat{C}$ to $\cat{D}$, written
    \cat{C} \ar[r,tick,"M"] & \cat{D},
 \end{tikzcd}
 \]
-is defined to be a functor $M\colon\op{\cat{C}}\times\cat{D}\to\Set$.  We can think of a profunctor
+is defined to be a functor $M\colon\op{\cat{C}}\times\cat{D}\to\Set$. We can think of a profunctor
 as a sort of graded bimodule: for each object $c\in\cat{C}$ and $d\in\cat{D}$ there is a set
 $M(c,d)$ of elements in the bimodule, and given an element $m\in M(c,d)$ and morphisms $f\colon
 c'\to c$ in $\cat{C}$ and $g\colon d\to d'$ in $\cat{D}$, there are elements $g\cdot m\in M(c,d')$
@@ -902,7 +902,7 @@ Given two profunctors
    \cat{C} \ar[r,tick,shift left,"M"] \ar[r,tick,shift right,"N"'] & \cat{D}
 \end{tikzcd}
 \]
-define a profunctor morphism $\phi\colon M\Rightarrow N$ to be a natural transformation.  In other
+define a profunctor morphism $\phi\colon M\Rightarrow N$ to be a natural transformation. In other
 words, for each $c\in\cat{C}$ and $d\in\cat{D}$ there is a function $\phi_{c,d}\colon M(c,d)\to
 N(c,d)$ such that $\phi(f\cdot m \cdot g)=f\cdot\phi(m)\cdot g$ whenever it makes sense.
 
@@ -922,13 +922,13 @@ N)(c,e)$ is the coequalizer of the diagram
 \end{tikzcd}
 \]
 where the two maps are given by the right action of $\cat{D}$ on $M$ and by the left action of
-$\cat{D}$ on $N$.  We can write elements of $(M\otimes N)(c,e)$ as tensors $m\otimes n$, where $m\in
-M(c,d)$ and $n\in N(d,e)$ for some $d\in\cat{D}$.  The coequalizer then implies that $(m\cdot
+$\cat{D}$ on $N$. We can write elements of $(M\otimes N)(c,e)$ as tensors $m\otimes n$, where $m\in
+M(c,d)$ and $n\in N(d,e)$ for some $d\in\cat{D}$. The coequalizer then implies that $(m\cdot
 f)\otimes n=m\otimes(f\cdot n)$ whenever the equation makes sense.
 
 For any category $\cat{C}$, there is a profunctor
 $\Hom_{\cat{C}}\colon\op{\cat{C}}\times\cat{C}\to\Set$, and these hom profunctors act as units for
-the tensor product.  Precisely, if $M$ is as above, there are canonical isomorphisms
+the tensor product. Precisely, if $M$ is as above, there are canonical isomorphisms
 $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 
 \section{Equipments}
@@ -938,8 +938,8 @@ $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 \section{The monoids and bimodules construction}
 \todo[author=Patrick,inline]{Review monoids in an equipment}
 
-Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure.  The unit is a profunctor morphism
-$i\colon\Hom_{\cat{C}}\to M$.  So for any $f\colon c\to d$ in $\cat{C}$ there is an element
+Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure. The unit is a profunctor morphism
+$i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element
 $i(f)\in M(c,d)$, such that $f\cdot i(g)\cdot h = i(f\circ g\circ h)$ whenever this makes sense.
 The multiplication $M\otimes M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and
 $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative, and satisfies the
@@ -956,7 +956,7 @@ following equations whenever they make sense:
 \section{Exactness and the $(\bo,\ff)$ factorization}
 
 \begin{definition}
-   Let $C\tickar C$ be a monoid in an equipment $\dcat{D}$.  The \emph{collapse} of $M$ is an object
+   Let $C\tickar C$ be a monoid in an equipment $\dcat{D}$. The \emph{collapse} of $M$ is an object
    $\Col{M}$ of $\dcat{D}$ together with a vertical morphism $i_M\colon C\to\Col{M}$ and a 2-cell
    \begin{equation*}
       \begin{tikzcd}
@@ -1019,9 +1019,9 @@ Recall from~\cite{Schultz:2015}:
 \end{theorem}
 
 If $\dcat{D}$ is an exact equipment, then using the factorization system we can define an equipment
-$\dcat{D}^{\bo}$.  The vertical category of $\dcat{D}^{\bo}$ is the category $\dcat{D}_0^{\bo}$,
+$\dcat{D}^{\bo}$. The vertical category of $\dcat{D}^{\bo}$ is the category $\dcat{D}_0^{\bo}$,
 defined to be the full subcategory of the category of arrows of $\dcat{D}_0$ spanned by the arrows
-in the class $\bo$.  The horizontal morphisms and 2-cells are determined by the codomain of the
+in the class $\bo$. The horizontal morphisms and 2-cells are determined by the codomain of the
 $\bo$ arrows, i.e.~the category $\dcat{D}_1^{\bo}$ is given by the pullback
 \begin{equation*}
 \begin{tikzcd}[column sep=large]
@@ -1083,13 +1083,13 @@ $\dcat{D}_0$ whose fiber over an object $C$ is the category of presheaves on $C$
 \subsection{Monoids on free objects}
 
 If we want to modify theorem~\ref{thm:Mod vs bo} to get an equivalence with $\dcat{D}$ rather than
-$\dcat{D}^{\bo}$, we need to restrict to objects of $\dcat{D}$ which are ``discrete''.  To provide a
+$\dcat{D}^{\bo}$, we need to restrict to objects of $\dcat{D}$ which are ``discrete''. To provide a
 notion of discreteness, suppose we have a category $\cat{C}$ and an ``underlying'' functor
-$U\colon\dcat{D}_0\to\cat{C}$ with a left adjoint $F\colon\cat{C}\to\dcat{D}_0$.  Assume furthermore
+$U\colon\dcat{D}_0\to\cat{C}$ with a left adjoint $F\colon\cat{C}\to\dcat{D}_0$. Assume furthermore
 that $U(\bo)\subseteq\mathrm{iso}(\cat{C})$ and that the components of the counit of the adjunction
-are left pseudo-orthogonal to $\ff$ in the vertical 2-category of $\dcat{D}$.  In particular, if
+are left pseudo-orthogonal to $\ff$ in the vertical 2-category of $\dcat{D}$. In particular, if
 $\epsilon_x=g\circ f\colon FUx\to x$ is a $(\bo,\ff)$ factorization of a counit $\epsilon_x$, then
-$g$ is an equivalence in $\VVer(\dcat{D})$ (but not necessarily an isomorphism).  Let
+$g$ is an equivalence in $\VVer(\dcat{D})$ (but not necessarily an isomorphism). Let
 $\dcat{D}'\subseteq\dcat{D}$ be the full subcategory spanned by the objects in the image of $F$ (the
 ``discrete'' objects).
 
@@ -1100,10 +1100,10 @@ $\dcat{D}'\subseteq\dcat{D}$ be the full subcategory spanned by the objects in t
 
 In particular, the adjunctions between $\Set$ and $\MonCat$ and between $\Set$ and $\CompCat$
 respectively satisfy the conditions of the previous theorem, so we get equivalences
-$\MMon(\dFrMonProf)\equiv\MMonCat$ and $\MMon(\dFrCompProf)\equiv\CCompCat$ respectively.  Consider
+$\MMon(\dFrMonProf)\equiv\MMonCat$ and $\MMon(\dFrCompProf)\equiv\CCompCat$ respectively. Consider
 the double functor $\dFrMonProf\to\dFrCompProf$, and define $\dcat{D}$ to be the double category
 which factors this functor, whose vertical category is $\FrMonCat$ and whose horizontal 1-cells and
-2-cells are from $\dFrCompProf$.  In other words, $\dcat{D}_0=\FrMonCat$ and $\dcat{D}_1$ is defined
+2-cells are from $\dFrCompProf$. In other words, $\dcat{D}_0=\FrMonCat$ and $\dcat{D}_1$ is defined
 by the pullback
 \[
    \begin{tikzcd}
@@ -1120,7 +1120,7 @@ then we get $\MMon(\dcat{D})\equiv\TTrCat$.
 
 \section{Monoidal profunctors}
 
-Suppose $\cat{C}$ and $\cat{D}$ are symmetric monoidal categories.  We will write
+Suppose $\cat{C}$ and $\cat{D}$ are symmetric monoidal categories. We will write
 \begin{gather*}
    a_{c,d,e}\colon (c\otimes d)\otimes e \to c\otimes(d\otimes e), \\
       \lambda_c\colon I\otimes c\to c,
@@ -1132,26 +1132,26 @@ context to make clear whether we are in $\cat{C}$ or $\cat{D}$.
 
 A \emph{monoidal profunctor} $M$ from $\cat{C}$ to $\cat{D}$ is an ordinary profunctor such that the
 functor $M\colon \op{\cat{C}}\times\cat{D}\to\Set$ is equipped with a lax-monoidal structure, with
-the cartesian monoidal structure on $\Set$.  In the bimodule notation, this means that there is an
+the cartesian monoidal structure on $\Set$. In the bimodule notation, this means that there is an
 associative operation assigning to any elements $m_1\in M(c_1,c'_1)$ and $m_2\in M(c_2,c'_2)$ an
 element $m_1\boxtimes m_2\in M(c_1\otimes c_2,c'_1\otimes c'_2)$ such that
 \[
    (f_1\cdot m_1\cdot g_1)\boxtimes(f_2\cdot m_2\cdot g_2) = (f_1\otimes f_2)\cdot(m_1\boxtimes m_2)\cdot(g_1\otimes g_2),
 \]
 as well as a distinguished element $I_M\in M(I,I)$ such that $\lambda_d\cdot(I_M\boxtimes
-m)\cdot\lambda^{-1}_c = m = \rho_d\cdot(m\boxtimes I_M)\cdot\rho^{-1}_c$ for any $m\in M(c,d)$.  If
+m)\cdot\lambda^{-1}_c = m = \rho_d\cdot(m\boxtimes I_M)\cdot\rho^{-1}_c$ for any $m\in M(c,d)$. If
 moreover $m_2\boxtimes m_1 = \sigma_{c'_1,c'_2}\cdot(m_1\boxtimes m_2)\cdot\sigma_{c_1,c_2}^{-1}$,
 we say $M$ is \emph{symmetric monoidal}.
 
-A monoidal profunctor morphism $\phi\colon M\to N$ is simply a monoidal transformation.  Spelling
+A monoidal profunctor morphism $\phi\colon M\to N$ is simply a monoidal transformation. Spelling
 this out in bimodule notation, $\phi$ is an ordinary morphism of profunctors such that
-$\phi(m_1\boxtimes m_2)=\phi(m_1)\boxtimes\phi(m_2)$ and $\phi(I_M)=I_N$.  We will denote the
+$\phi(m_1\boxtimes m_2)=\phi(m_1)\boxtimes\phi(m_2)$ and $\phi(I_M)=I_N$. We will denote the
 category of monoidal profunctors from $\cat{C}$ to $\cat{D}$ and monoidal profunctor morphisms as
 $\MonProf(\cat{C},\cat{D})$.
 
 A unit for a monoidal profunctor $M\in\MonProf(\cat{C},\cat{C})$ is a unit $i\colon\Hom_{\cat{C}}\to
 M$ in $\Prof(\cat{C},\cat{C})$ such that, additionally, $i(\id_{I_{\cat{C}}})=I_M$ and $i(f\otimes
-g)=i(f)\boxtimes i(g)$ for any morphisms $f$ and $g$ in $\cat{C}$.  Similarly, a multiplication on
+g)=i(f)\boxtimes i(g)$ for any morphisms $f$ and $g$ in $\cat{C}$. Similarly, a multiplication on
 $M$ is as above, with the additional conditions
 \begin{gather*}
    I_M\bullet I_M=I_M \\
@@ -1286,7 +1286,7 @@ morphisms which preserve the units.
    $\Mon(\MProf(\cat{C},\cat{C}))\simeq\MProf{(\cat{C},\cat{C})}_*$.
 
    If $M\in\MProf(1,\cat{C})$ then $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any
-   $a\in\cat{C}$.  On the other hand, given $N\in\Mon(\MProf(\cat{C},\cat{C}))$,
+   $a\in\cat{C}$. On the other hand, given $N\in\Mon(\MProf(\cat{C},\cat{C}))$,
    $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from Lemma~\ref{Lem:comp prof
    bijection}.
 \end{proof}
