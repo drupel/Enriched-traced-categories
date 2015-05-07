@@ -1138,8 +1138,11 @@ $M$ is as above, with the additional conditions
 \end{gather*}
 for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e')$.
 
+\section{Definitions of equipments}
+\todo[inline]{Formally define $\dMonProf$, $\dTrProf$, and $\dCompProf$ here.}
 
-\section{Exactness of MonProf}
+\section{Exactness}
+\todo[inline]{Prove exactness of $\dMonProf$, $\dTrProf$, and $\dCompProf$.}
 
 \section{Special properties of CompProf}
 \todo[inline]{CompProf closed under collapse in MonProf}
@@ -1384,6 +1387,8 @@ $\TTrCat\equiv\TTrFrObCat$
 \chapter{Main results}
 
 \section{Restatement of main theorems}
+\todo[inline]{With the organization that is forming, these are all easy corollaries of earlier
+results. Maybe we don't need this ``main results'' section?}
 
 To prove the main theorems stated in the introduction, we would first like to restate those theorems
 using the language of equipments.
@@ -1411,6 +1416,17 @@ using the language of equipments.
    $\CPsh(\dCompProf)\equiv\Mon(\dCompProf)$ by~\ref{Prop:mon prof equivalence}, and by~\ref{cor:Mon
    vs bo} we have the equivalence $\Mon(\dCompProf)\equiv\CompCat^{\bo}$.
 \end{proof}
+
+\begin{named}{Corollary B'}
+   There is an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=0em]
+         \CPsh(\dTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \TrCat^{\bo} \ar[dl,two heads,"\dom"] \\
+            & \TrCat &
+      \end{tikzcd}
+   \end{equation*}
+\end{named}
 
 \section{Proof of Theorem B and Corollary B}\label{sec:generalization}
 
