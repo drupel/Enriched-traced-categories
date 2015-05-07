@@ -1054,7 +1054,7 @@ $\bo$ arrows, i.e.~the category $\dcat{D}_1^{\bo}$ is given by the pullback
    \]
 \end{theorem}
 
-\begin{corollary}
+\begin{corollary}\label{cor:Mon vs bo}
    Let $\dcat{D}$ be an exact equipment. There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=0em]
@@ -1164,6 +1164,15 @@ other direction, $N\colon\op{\cat{C}}\times\cat{C}\to\Set$ is given by $UN(A)=N(
 Let $\MProf{(\cat{C},\cat{C})}_{\ast}$ denote the category of pointed monoidal endo-profunctors,
 i.e.~profunctors $M$ equipped with a unit $i\colon\Hom_{\cat{C}}\to M$, with monoidal profunctor
 morphisms which preserve the units.
+
+\begin{remark}
+   The proofs in this section are very difficult to follow in the equational form presented. We
+   highly recommend that the interested reader convert these equations into string diagrams. If
+   $N\colon\cat{C}\tickar\cat{C}$ is a profunctor, the trick is to draw elements $n\in N(c_1,c_2)$
+   as if they were arrows $c_1\to c_2$, which can be composed on either side with actual morphisms
+   of $\cat{C}$. The operation $\boxtimes$ of a monoidal profunctor then looks like the tensor of
+   morphisms.
+\end{remark}
 
 \begin{proposition}\label{Prop:unit implies monoid}
    Let $N\in\MProf{(\cat{C},\cat{C})}_*$ be a monoidal profunctor equipped with a unit $\eta\colon\Hom_{\cat{C}}\to N$.
@@ -1382,11 +1391,26 @@ using the language of equipments.
 \begin{named}{Theorem A'}
    There is a fully-faithful functor of 1-categories
    \begin{equation*}
-      \dFrMonCompProf(1,\textrm{--})\to\TrCat
+      \CPsh(\dFrMonCompProf)\to\TrCat
    \end{equation*}
    such that the composition with the 1-skeleton inclusion $\TrCat\to\TTrCat$ is 2-essentially
    surjective.
 \end{named}
+
+\begin{named}{Theorem B'}
+   There is an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=0em]
+         \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \CompCat^{\bo} \ar[dl,two heads,"\dom"] \\
+            & \CompCat &
+      \end{tikzcd}
+   \end{equation*}
+\end{named}
+\begin{proof}
+   $\CPsh(\dCompProf)\equiv\Mon(\dCompProf)$ by~\ref{Prop:mon prof equivalence}, and by~\ref{cor:Mon
+   vs bo} we have the equivalence $\Mon(\dCompProf)\equiv\CompCat^{\bo}$.
+\end{proof}
 
 \section{Proof of Theorem B and Corollary B}\label{sec:generalization}
 
