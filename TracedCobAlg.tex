@@ -584,10 +584,6 @@ monoidal transformations, and let $\MonCat$ denote the underlying 1-category. Le
 $\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal transformations
 from $\cat{C}$ to $\cat{D}$.
 
-There is a free/forgetful adjunction $\FrM\colon\Set\leftrightarrows\MonCat:\!\UM$, and the induced
-monad $\TC=\UM\FrM\colon\Set\to\Set$ is isomorphic to the free-monoid monad.
-
-
 \section{Traced categories}\label{sec:intuition_for_traced}
 
 A trace on a symmetric monoidal category is a collection of functions
@@ -753,12 +749,11 @@ agrees with that in~\cite{HackneyRobertson}.\todo{Check this.}
 
 \section{Compact categories and the Int construction}\label{sec:compact_and_int}
 
-Let $\SSymMonCat$ denote the 2-category of symmetric monoidal categories, strong monoidal functors,
-and strong monoidal natural transformations. We will denote by $\CCompCat\ss\SSymMonCat$ the full
-sub-2-category spanned by the compact categories. Recall that a compact category is a symmetric
-monoidal category $(\cat{C},\otimes,I)$ with the property that for every object $X\in\Ob\cat{C}$
-there exists an object $X^*$ and morphisms $\eta_X\colon I\to X^*\otimes X$ and $\epsilon_X\colon
-X\otimes X^*\to I$ such that the following diagrams commute:
+We will denote by $\CCompCat$ the full sub-2-category of $\MMonCat$ spanned by the compact symmetric
+monoidal categories (or just compact categories for short).  Recall that a compact category is a
+symmetric monoidal category $(\cat{C},\otimes,I)$ with the property that for every object
+$X\in\Ob\cat{C}$ there exists an object $X^*$ and morphisms $\eta_X\colon I\to X^*\otimes X$ and
+$\epsilon_X\colon X\otimes X^*\to I$ such that the following diagrams commute:
 \begin{equation*}
    \begin{tikzcd}[column sep=small]
       X\arrow[r,"\id_X"]\arrow[d,"\cong"'] & X \\
@@ -781,11 +776,11 @@ $s_{A,B}$ is the symmetry isomorphism, one defines
 \end{equation*}
 %\todo[color=yellow]{does this formula make sense as written? i.e. it doesn't seem to give a map
 %$X\to Y$?}
-Thus we have a functor $U\colon\CCompCat\to\TTrCat$. It is shown in~\cite{JoyalStreetVerity} that
+Thus we have a functor $\UCT\colon\CCompCat\to\TTrCat$. It is shown in~\cite{JoyalStreetVerity} that
 this functor is the right half of a 2-adjunction
 \begin{equation}\label{dia:traced compact adjunction}
 \begin{tikzcd}
-   \TTrCat\arrow[r,shift left=.5ex, "\Int"]&\CCompCat\arrow[l,shift left=.5ex,"U"]
+   \TTrCat\arrow[r,shift left=.5ex, "\Int"]&\CCompCat\arrow[l,shift left=.5ex,"\UCT"]
 \end{tikzcd}
 \end{equation}
 the left half of which we describe now describe.
@@ -834,6 +829,15 @@ The following facts hold for any traced category $\cat{C}$:
 
 \section{Free traced and compact categories, and geometry}\label{sec:free and geometry}
 
+There are free/forgetful adjunctions
+\begin{align*}
+   \FrM\colon\Set &\leftrightarrows\MonCat:\!\UM \\
+   \FrT\colon\Set &\leftrightarrows\TrCat:\!\UT \\
+   \FrC\colon\Set &\leftrightarrows\CompCat:\!\UC
+\end{align*}
+
+\todo[inline,author=Patrick]{Talk about $\FrMonCat$, etc.\ and the induced $\FrMonCat\to\FrCompCat$}
+
 \begin{proposition}\label{prop:free traced and compact}
    Let $\cat{C}$ be a category.
    The free traced category on $\cat{C}$ is...
@@ -859,6 +863,8 @@ The following facts hold for any traced category $\cat{C}$:
    the proof can be adapted.
    \todo{Fix this.}
 \end{proof}
+
+
 
 \chapter{Background on equipments}
 
