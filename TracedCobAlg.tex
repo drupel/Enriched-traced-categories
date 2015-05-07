@@ -1095,56 +1095,6 @@ $\dcat{D}_0$ whose fiber over an object $C$ is the category of presheaves on $C$
    \end{equation}
 \end{definition}
 
-\subsection{Monoids on free objects}
-
-If we want to modify theorem~\ref{thm:Mod vs bo} to get an equivalence with $\dcat{D}$ rather than
-$\dcat{D}^{\bo}$, we need to restrict to objects of $\dcat{D}$ which are ``free''. To provide a
-notion of freeness, suppose we have a category $\cat{C}$ and an ``underlying'' functor
-$U\colon\dcat{D}_0\to\cat{C}$ with a left adjoint $F\colon\cat{C}\to\dcat{D}_0$. Let $T=UF$ be the
-induced monad on $\cat{C}$.
-
-Let $\dcat{D}_T\subseteq\dcat{D}$ be the full sub-double category spanned by the objects in the image
-of $F$ (the ``discrete'' objects). In other words, $(\dcat{D}_T)_0=\cat{C}_{T}$ is the Kleisli category
-of $T$, and $(\dcat{D}_T)_1$ is defined by the pullback
-\begin{equation*}
-   \begin{tikzcd}
-      (\dcat{D}_T)_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
-         & \dcat{D}_1 \ar[d,two heads] \\
-      \cat{C}_T\times\cat{C}_T \ar[r]
-         & \dcat{D}_0\times\dcat{D}_0
-   \end{tikzcd}
-\end{equation*}
-
-\begin{theorem}\label{thm:Verts}
-   Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
-   $U\colon\dcat{D}_0\leftrightarrows\cat{C}:\!F$, and let $T=UF$ be the induced monad. Suppose
-   moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{C})$, and that the components of the counit of
-   the adjunction are left pseudo-orthogonal to $\ff$ in $\VVer(\dcat{D})$.
-
-   There is an equivalence of 2-categories
-   \begin{equation*}
-      \VVer(\dMod(\dcat{D}_T))\iso\VVer(\dcat{D}).
-   \end{equation*}
-\end{theorem}
-
-In particular, the adjunctions between $\Set$ and $\MonCat$ and between $\Set$ and $\CompCat$
-respectively satisfy the conditions of the previous theorem, so we get equivalences
-$\MMon(\dFrMonProf)\equiv\MMonCat$ and $\MMon(\dFrCompProf)\equiv\CCompCat$ respectively. Consider
-the double functor $\dFrMonProf\to\dFrCompProf$, and define $\dcat{D}$ to be the double category
-which factors this functor, whose vertical category is $\FrMonCat$ and whose horizontal 1-cells and
-2-cells are from $\dFrCompProf$. In other words, $\dcat{D}_0=\FrMonCat$ and $\dcat{D}_1$ is defined
-by the pullback
-\[
-   \begin{tikzcd}
-      \dcat{D}_1 \ar[r] \ar[d] \ar[dr,phantom,"\lrcorner"very near start]
-      & \dFrCompProf_1 \ar[d]
-      \\
-      \FrMonCat\times\FrMonCat \ar[r]
-      & \FrCompCat\times\FrCompCat
-   \end{tikzcd}
-\]
-then we get $\MMon(\dcat{D})\equiv\TTrCat$.
-
 \chapter{Equipments of monoidal categories and profunctors}
 
 \section{Monoidal profunctors}
@@ -1327,22 +1277,87 @@ There is an orthogonal factorization system on $\CompCat$.
 
 \end{lemma}
 
-\section{Other equipments}
-\todo[inline]{Define $\dFrMonProf$, $\dFrCompProf$, $\dFrMonCompProf$, etc.}
+\section{Monoids on free objects}
 
+If we want to modify theorem~\ref{thm:Mod vs bo} to get an equivalence with $\dcat{D}$ rather than
+$\dcat{D}^{\bo}$, we need to restrict to objects of $\dcat{D}$ which are ``free''. To provide a
+notion of freeness, suppose we have a category $\cat{C}$ and an ``underlying'' functor
+$U\colon\dcat{D}_0\to\cat{C}$ with a left adjoint $F\colon\cat{C}\to\dcat{D}_0$. Let $T=UF$ be the
+induced monad on $\cat{C}$.
+
+Let $\dcat{D}_T\subseteq\dcat{D}$ be the full sub-double category spanned by the objects in the image
+of $F$ (the ``discrete'' objects). In other words, $(\dcat{D}_T)_0=\cat{C}_{T}$ is the Kleisli category
+of $T$, and $(\dcat{D}_T)_1$ is defined by the pullback
+\begin{equation*}
+   \begin{tikzcd}
+      (\dcat{D}_T)_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+         & \dcat{D}_1 \ar[d,two heads] \\
+      \cat{C}_T\times\cat{C}_T \ar[r]
+         & \dcat{D}_0\times\dcat{D}_0
+   \end{tikzcd}
+\end{equation*}
+
+\begin{theorem}\label{thm:Verts}
+   Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
+   $U\colon\dcat{D}_0\leftrightarrows\cat{C}:\!F$, and let $T=UF$ be the induced monad. Suppose
+   moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{C})$, and that the components of the counit of
+   the adjunction are left pseudo-orthogonal to $\ff$ in $\VVer(\dcat{D})$.
+
+   There is an equivalence of 2-categories
+   \begin{equation*}
+      \MMon(\dcat{D}_T)\equiv\VVer(\dcat{D}).
+   \end{equation*}
+\end{theorem}
+
+\begin{definition}
+   We define the equipments $\dFrMonProf=\dMonProf_{\TM}$ and $\dFrCompProf=\dCompProf_{\TC}$. In
+   particular, there is a pullback
+   \begin{equation*}
+      \begin{tikzcd}
+         \dFrMonProf_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+            & \dMonProf_1 \ar[d,two heads] \\
+         \FrMonCat\times\FrMonCat \ar[r]
+            & \MonCat\times\MonCat
+      \end{tikzcd}
+   \end{equation*}
+   and similarly for $\dFrCompProf$.
+\end{definition}
+
+\begin{corollary}
+   There are equivalences of 2-categories
+   \begin{align*}
+      \MMon(\dFrMonProf)&\equiv\MMonCat \\
+      \MMon(\dFrCompProf)&\equiv\CCompCat.
+   \end{align*}
+\end{corollary}
+
+\begin{remark}
+   \todo[inline]{Can think of $\MMon(\dFrMonProf)$ as ``object free'' monoidal categories.}
+\end{remark}
+
+By defining an equipment ``halfway between'' $\dFrMonProf$ and $\dFrCompProf$, with vertical
+morphisms from the former and horizontal morphisms from the latter, we can get a similar
+construction of $\TTrCat$.
 
 \begin{definition}
    The equipment $\dFrMonCompProf$ has vertical category $\dFrMonCompProf_0\coloneqq \FrMonCat$,
    while $\dFrMonCompProf_1$ is defined by the pullback
    \begin{equation*}
-      \begin{tikzcd}
+      \begin{tikzcd}[column sep=large]
          \dFrMonCompProf_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
             & \dFrCompProf_1 \ar[d,two heads] \\
-         \FrMonCat\times\FrMonCat \ar[r]
+         \FrMonCat\times\FrMonCat \ar[r,"\FMC\times\FMC"']
             & \FrCompCat \times \FrCompCat
       \end{tikzcd}
    \end{equation*}
 \end{definition}
+
+\begin{proposition}
+   There is an equivalence of 2-categories
+   \begin{equation*}
+      \MMon(\dFrMonCompProf)\equiv\TTrCat
+   \end{equation*}
+\end{proposition}
 
 \begin{proposition}
    There is an isomorphism of categories
