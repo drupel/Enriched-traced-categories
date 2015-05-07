@@ -1044,18 +1044,31 @@ $\bo$ arrows, i.e.~the category $\dcat{D}_1^{\bo}$ is given by the pullback
 
 \subsection{Internal presheaves}
 
-For any framed bicategory $\dcat{D}$ with a terminal object, we can consider the category
-$\dcat{D}(1,-)$, fibered over $\dcat{D}_0$, as defined by the pullback $\dcat{D}_0\times\dcat{D}_0$
-\begin{equation}
-   \begin{tikzcd}
-      \dcat{D}(1,-) \ar[r] \ar[d] \arrow[dr,phantom,"\lrcorner",very near start]
-         & \dcat{D}_1 \ar[d] \\
-      1\times\dcat{D}_0 \ar[r,"{(1,\id)}"']
-         & \dcat{D}_0\times\dcat{D}_0
-   \end{tikzcd}
-\end{equation}
-The fiber of $\dcat{D}(1,-)$ over an object $d\in\dcat{D}_0$ is the category $\HHor(\dcat{D})(1,d)$,
-which we can think of as the category of copresheaves on $d$.
+Presheaves on a category $\cat{C}$ can be identified with profunctors $1\tickar\cat{C}$ in $\dProf$.
+Motivated by this, we will think of proarrows $1\tickar C$ in any equipment $\dcat{D}$ with a
+terminal object 1 as ``internal presheaves'' on the object $C$. For each object, there is a category
+of presheaves $\HHor(\dcat{D})(1,C)$. We can give a direct construction of the bifibration over
+$\dcat{D}_0$ whose fiber over an object $C$ is the category of presheaves on $C$:
+
+\begin{definition}
+   Let $\dcat{D}$ be an equipment with a terminal object 1. We define the category $\Psh(\dcat{D})$,
+   bifibered over $\dcat{D}_0$, and similarly $\CPsh(\dcat{D})$ by the pullbacks
+   \begin{equation}
+      \begin{tikzcd}
+         \Psh(\dcat{D}) \ar[r] \ar[d,two heads] \arrow[dr,phantom,"\lrcorner",very near start]
+            & \dcat{D}_1 \ar[d,two heads] \\
+         1\times\dcat{D}_0 \ar[r,"{(1,\id)}"']
+            & \dcat{D}_0\times\dcat{D}_0
+      \end{tikzcd}
+      \qquad
+      \begin{tikzcd}
+         \CPsh(\dcat{D}) \ar[r] \ar[d,two heads] \arrow[dr,phantom,"\lrcorner",very near start]
+            & \dcat{D}_1 \ar[d,two heads] \\
+         \dcat{D}_0\times 1 \ar[r,"{(\id,1)}"']
+            & \dcat{D}_0\times\dcat{D}_0
+      \end{tikzcd}
+   \end{equation}
+\end{definition}
 
 \subsection{Monoids on free objects}
 
