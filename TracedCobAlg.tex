@@ -919,14 +919,11 @@ the tensor product.  Precisely, if $M$ is as above, there are canonical isomorph
 $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 
 \section{Equipments}
-\todo[author=Patrick,inline]{Introduce framed bicategories}
+\todo[author=Patrick,inline]{Introduce equipments}
 \todo[author=Patrick,inline]{Give examples: $\dProf$, $\dMonProf$, $\dSpan$}
 
 \section{The monoids and bimodules construction}
-\todo[author=Patrick,inline]{Define monoids construction}
-\todo[author=Patrick,inline]{Examples: $\dMod(\dSpan)\iso\dProf$}
-
-\todo[author=Patrick,inline]{Give monad structure}
+\todo[author=Patrick,inline]{Review monoids in an equipment}
 
 Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure.  The unit is a profunctor morphism
 $i\colon\Hom_{\cat{C}}\to M$.  So for any $f\colon c\to d$ in $\cat{C}$ there is an element
@@ -946,70 +943,81 @@ following equations whenever they make sense:
 \section{Exactness and the $(\bo,\ff)$ factorization}
 
 \begin{definition}
-   Let $\begin{tikzcd}[column sep=small] C \ar[r,tick,"M"] & C \end{tikzcd}$ be a monad in a framed bicategory $\dcat{D}$.
-   The \emph{collage} of $M$ is an object $\Col{M}$ of $\dcat{D}$ together with a vertical morphism $\eta_M\colon C\to\Col{M}$ and a 2-cell
-   \[
+   Let $C\tickar C$ be a monoid in an equipment $\dcat{D}$.  The \emph{collapse} of $M$ is an object
+   $\Col{M}$ of $\dcat{D}$ together with a vertical morphism $i_M\colon C\to\Col{M}$ and a 2-cell
+   \begin{equation*}
       \begin{tikzcd}
-         C \ar[r,tick,"M" domA] \ar[d,"\eta_M"']
-         & C \ar[d,"\eta_M"]
+         C \ar[r,tick,"M" domA] \ar[d,"i_M"']
+         & C \ar[d,"i_M"]
          \\
          \Col{M} \ar[r,tick,"\Col{M}"' codA]
          & \Col{M}
-         \twocellA{\vec{\eta}_M}
+         \twocellA{\vec{\imath}_M}
       \end{tikzcd}
-   \]
-   such that $\vec{\eta}_M$ is cartesian, $(\eta_M,\vec{\eta}_M)$ is a morphism of monads from $M$
-   to $\Col{M}$ (the unit horizontal 1-cell on $\Col{M}$), and satisfies the universal property that
-   for any other object $X$ and morphism of monads $(f,\phi)$ as below, there exists a unique
-   vertical morphism $\hat\phi\colon\Col{M}\to X$ such that
-\[
-   \begin{tikzcd}
-      C \ar[r,tick,"M" domA] \ar[d,"f"']
-      & C \ar[d,"f"]
-      \\
-      X \ar[r,tick,"X"']
-      & X
-      \twocellA{\phi}
-   \end{tikzcd}
-   \quad = \quad
-   \begin{tikzcd}
-      C \ar[r,tick,"M" domA] \ar[d,"\eta_M"']
-      & C \ar[d,"\eta_M"]
-      \\
-      \Col{M} \ar[r,tick,"\Col{M}"' {domB,codA}] \ar[d,"\hat{\phi}"']
-      & \Col{M} \ar[d,"\hat{\phi}"]
-      \\
-      X \ar[r,tick,"X"' codB]
-      & X
-      \twocellA{\vec{\eta}_M}
-      \twocellB[pos=.6]{\id_{\hat{\phi}}}
-   \end{tikzcd}
-\]
+   \end{equation*}
+   such that $(i_M,\vec{\imath}_M)$ is a morphism of monoids from $M$ to $\Col{M}$ (the trivial
+   monoid on $\Col{M}$), and satisfies the universal property that for any other object
+   $X$ and morphism of monoids $(f,\vec{f})$ as below, there exists a unique vertical morphism
+   $\tilde{f}\colon\Col{M}\to X$ such that
+   \begin{equation*}
+      \begin{tikzcd}
+         C \ar[r,tick,"M" domA] \ar[d,"f"']
+         & C \ar[d,"f"]
+         \\
+         X \ar[r,tick,"X"']
+         & X
+         \twocellA{\vec{f}}
+      \end{tikzcd}
+      \quad = \quad
+      \begin{tikzcd}
+         C \ar[r,tick,"M" domA] \ar[d,"i_M"']
+         & C \ar[d,"i_M"]
+         \\
+         \Col{M} \ar[r,tick,"\Col{M}"' {domB,codA}] \ar[d,"\tilde{f}"']
+         & \Col{M} \ar[d,"\tilde{f}"]
+         \\
+         X \ar[r,tick,"X"' codB]
+         & X
+         \twocellA{\vec{\imath}_M}
+         \twocellB[pos=.6]{\id_{\tilde{f}}}
+      \end{tikzcd}
+   \end{equation*}
 \end{definition}
 
-A framed bicategory $\dcat{D}$ has collages when $\dcat{D}$ admits an algebra structure from the
-monad $\dMod$, equivalently when the unit $\dcat{D}\to\dMod(\dcat{D})$ has a left adjoint ($\dMod$
-is a lax-idempotent monad).
+Recall from~\cite{Schultz:2015}:
+
+\begin{definition}
+   An equipment $\dcat{D}$ is \emph{exact} if
+   \begin{compactitem}
+      \item every monoid $M\colon c\tickar c$ has a collapse as above, with $\vec{\imath}_M$
+         cartesian, and
+      \item for every pair of monoids $M,N$, the restriction functor
+         \begin{equation*}
+            \HHor(\dcat{D})(\Col{M},\Col{N})\to{}_M\Bimod_N
+         \end{equation*}
+         is an equivalence of categories.
+   \end{compactitem}
+\end{definition}
 
 \begin{theorem}
-   Let $\dcat{D}$ be a framed bicategory with Kliesli objects. Then the vertical category
-   $\dcat{D}_0$ has an orthogonal factorization system $(\bo,\ff)$.
+   If an equipment $\dcat{D}$ is exact (and hence regular), then the vertical 2-category
+   $\VVer(\dcat{D})$ admits a 2-orthogonal factorization system $(\bo,\ff)$. In particular, there is
+   an orthogonal factorization system $(\bo,\ff)$ on the vertical 1-category $\dcat{D}_0$.
 \end{theorem}
 
-If $\dcat{D}$ is a framed bicategory with Kliesli objects, then using the factorization system we
-can define a framed bicategory $\dcat{D}^{\bo}$.  The vertical category of $\dcat{D}^{\bo}$ is the
-category $\dcat{D}_0^{\bo}$, defined to be the full subcategory of the category of arrows of
-$\dcat{D}_0$ spanned by the arrows in the class $\bo$.  The horizontal morphisms and 2-cells are
-determined by the codomain of the $\bo$ arrows, i.e.~the category $\dcat{D}_1^{\bo}$ is given by the
-pullback
-\[
+If $\dcat{D}$ is an exact equipment, then using the factorization system we can define an equipment
+$\dcat{D}^{\bo}$.  The vertical category of $\dcat{D}^{\bo}$ is the category $\dcat{D}_0^{\bo}$,
+defined to be the full subcategory of the category of arrows of $\dcat{D}_0$ spanned by the arrows
+in the class $\bo$.  The horizontal morphisms and 2-cells are determined by the codomain of the
+$\bo$ arrows, i.e.~the category $\dcat{D}_1^{\bo}$ is given by the pullback
+\begin{equation*}
 \begin{tikzcd}[column sep=large]
    \dcat{D}_1^{\bo} \ar[r] \ar[d] \ar[dr,phantom,"\lrcorner" very near start]
       & \dcat{D}_1 \ar[d] \\
    \dcat{D}_0^{\bo}\times\dcat{D}_0^{\bo} \ar[r,"\cod\times\cod"']
       & \dcat{D}_0\times\dcat{D}_0
 \end{tikzcd}
-\]
+\end{equation*}
 
 \begin{theorem}\label{thm:Mod vs bo}
    Let $\dcat{D}$ be an exact equipment. There is an equivalence of equipments
@@ -1029,7 +1037,26 @@ pullback
    \end{equation*}
 \end{corollary}
 
-If we want to modify the previous theorem to get an equivalence with $\dcat{D}$ rather than
+\section{Other stuff}
+
+\subsection{Internal presheaves}
+
+For any framed bicategory $\dcat{D}$ with a terminal object, we can consider the category
+$\dcat{D}(1,-)$, fibered over $\dcat{D}_0$, as defined by the pullback $\dcat{D}_0\times\dcat{D}_0$
+\begin{equation}
+   \begin{tikzcd}
+      \dcat{D}(1,-) \ar[r] \ar[d] \arrow[dr,phantom,"\lrcorner",very near start]
+         & \dcat{D}_1 \ar[d] \\
+      1\times\dcat{D}_0 \ar[r,"{(1,\id)}"']
+         & \dcat{D}_0\times\dcat{D}_0
+   \end{tikzcd}
+\end{equation}
+The fiber of $\dcat{D}(1,-)$ over an object $d\in\dcat{D}_0$ is the category $\HHor(\dcat{D})(1,d)$,
+which we can think of as the category of copresheaves on $d$.
+
+\subsection{Monoids on free objects}
+
+If we want to modify theorem~\ref{thm:Mod vs bo} to get an equivalence with $\dcat{D}$ rather than
 $\dcat{D}^{\bo}$, we need to restrict to objects of $\dcat{D}$ which are ``discrete''.  To provide a
 notion of discreteness, suppose we have a category $\cat{C}$ and an ``underlying'' functor
 $U\colon\dcat{D}_0\to\cat{C}$ with a left adjoint $F\colon\cat{C}\to\dcat{D}_0$.  Assume furthermore
@@ -1062,22 +1089,6 @@ by the pullback
    \end{tikzcd}
 \]
 then we get $\MMon(\dcat{D})\equiv\TTrCat$.
-
-\section{Other stuff}
-
-For any framed bicategory $\dcat{D}$ with a terminal object, we can consider the category
-$\dcat{D}(1,-)$, fibered over $\dcat{D}_0$, as defined by the pullback $\dcat{D}_0\times\dcat{D}_0$
-\begin{equation}
-   \begin{tikzcd}
-      \dcat{D}(1,-) \ar[r] \ar[d] \arrow[dr,phantom,"\lrcorner",very near start]
-         & \dcat{D}_1 \ar[d] \\
-      1\times\dcat{D}_0 \ar[r,"{(1,\id)}"']
-         & \dcat{D}_0\times\dcat{D}_0
-   \end{tikzcd}
-\end{equation}
-The fiber of $\dcat{D}(1,-)$ over an object $d\in\dcat{D}_0$ is the category $\HHor(\dcat{D})(1,d)$,
-which we can think of as the category of copresheaves on $d$.
-
 
 \chapter{Equipments of monoidal categories and profunctors}
 
