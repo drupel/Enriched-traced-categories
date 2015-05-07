@@ -1098,19 +1098,33 @@ $\dcat{D}_0$ whose fiber over an object $C$ is the category of presheaves on $C$
 \subsection{Monoids on free objects}
 
 If we want to modify theorem~\ref{thm:Mod vs bo} to get an equivalence with $\dcat{D}$ rather than
-$\dcat{D}^{\bo}$, we need to restrict to objects of $\dcat{D}$ which are ``discrete''. To provide a
-notion of discreteness, suppose we have a category $\cat{C}$ and an ``underlying'' functor
-$U\colon\dcat{D}_0\to\cat{C}$ with a left adjoint $F\colon\cat{C}\to\dcat{D}_0$. Assume furthermore
-that $U(\bo)\subseteq\mathrm{iso}(\cat{C})$ and that the components of the counit of the adjunction
-are left pseudo-orthogonal to $\ff$ in the vertical 2-category of $\dcat{D}$. In particular, if
-$\epsilon_x=g\circ f\colon FUx\to x$ is a $(\bo,\ff)$ factorization of a counit $\epsilon_x$, then
-$g$ is an equivalence in $\VVer(\dcat{D})$ (but not necessarily an isomorphism). Let
-$\dcat{D}'\subseteq\dcat{D}$ be the full subcategory spanned by the objects in the image of $F$ (the
-``discrete'' objects).
+$\dcat{D}^{\bo}$, we need to restrict to objects of $\dcat{D}$ which are ``free''. To provide a
+notion of freeness, suppose we have a category $\cat{C}$ and an ``underlying'' functor
+$U\colon\dcat{D}_0\to\cat{C}$ with a left adjoint $F\colon\cat{C}\to\dcat{D}_0$. Let $T=UF$ be the
+induced monad on $\cat{C}$.
+
+Let $\dcat{D}_T\subseteq\dcat{D}$ be the full sub-double category spanned by the objects in the image
+of $F$ (the ``discrete'' objects). In other words, $(\dcat{D}_T)_0=\cat{C}_{T}$ is the Kleisli category
+of $T$, and $(\dcat{D}_T)_1$ is defined by the pullback
+\begin{equation*}
+   \begin{tikzcd}
+      (\dcat{D}_T)_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+         & \dcat{D}_1 \ar[d,two heads] \\
+      \cat{C}_T\times\cat{C}_T \ar[r]
+         & \dcat{D}_0\times\dcat{D}_0
+   \end{tikzcd}
+\end{equation*}
 
 \begin{theorem}\label{thm:Verts}
-   Under the assumptions of the previous paragraph, there is an equivalence of 2-categories
-   $\VVer(\dMod(\dcat{D}'))\iso\VVer(\dcat{D})$.
+   Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
+   $U\colon\dcat{D}_0\leftrightarrows\cat{C}:\!F$, and let $T=UF$ be the induced monad. Suppose
+   moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{C})$, and that the components of the counit of
+   the adjunction are left pseudo-orthogonal to $\ff$ in $\VVer(\dcat{D})$.
+
+   There is an equivalence of 2-categories
+   \begin{equation*}
+      \VVer(\dMod(\dcat{D}_T))\iso\VVer(\dcat{D}).
+   \end{equation*}
 \end{theorem}
 
 In particular, the adjunctions between $\Set$ and $\MonCat$ and between $\Set$ and $\CompCat$
