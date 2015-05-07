@@ -96,7 +96,7 @@ $(\inp{X_1},\outp{X_1})=(\{1a,1b\},\{1c\})$, which can be interpreted as an orie
 Moreover, the wiring diagram itself, in which boxes $X_1,\ldots,X_n$ are wired together inside a
 larger box $Y$, can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$.
 This is a morphism in the (colored) operad $\Cob$, underlying the symmetric monoidal category of
-oriented 1-cobordisms; see Section~\ref{sec:wds and cob}.
+oriented 1-cobordisms; see Section~\ref{sec:wds_and_cob}.
 
 There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{C}$ than in a cobordism.
 Namely, each input and output of a box must be labeled by an object of $\cat{C}$ and the wires connecting boxes must respect the labels (e.g., in (\ref{dia:string_diagram}) object 2d must equal object 1b). We will thus consider the operad $\LCob{\cat{O}}$ of oriented 1-dimensional cobordisms over a fixed set of
@@ -212,7 +212,7 @@ Section~\ref{sec:generalization}.
 In this section, we give a bit more intuition about the connection between wiring diagrams and cobordisms, and the equivalence between the category of traced categories
 and the category of cobordism algebras.
 
-\subsection{Wiring diagrams and $\Cob$}\label{sec:wds and cob}
+\subsection{Wiring diagrams and $\Cob$}\label{sec:wds_and_cob}
 
 The objects in $\Cob$ are signed sets $(\inp{X},\outp{X})$, each of which can be drawn as a box with
 input wires $\inp{X}$ drawn entering the box, on its left, and output wires $\outp{X}$ drawn exiting
@@ -470,11 +470,7 @@ about monoidal, traced, and compact categories, lax and strong functors, and the
 are given in Sections~\ref{sec:prelim monoidal}~through~\ref{sec:compact_and_int}. The fact that
 the free compact category on a set has an algebraic description in terms of bijections between
 signed sets, and the fact that it has a geometric description in terms of 1-dimensional oriented
-cobordisms is recalled in Section~\ref{sec:free and geometry}. In Section~\ref{sec:factorization
-system} we discuss an orthogonal factorization system on our three flavors of monoidal categories,
-which we will use repeatedly throughout the rest of the paper. Finally, in
-Section~\ref{sec:profunctors} we discuss profunctors between categories and monoidal categories.
-
+cobordisms is recalled in Section~\ref{sec:free and geometry}. 
 
 \section{Monoidal categories}\label{sec:prelim monoidal}
 
@@ -571,21 +567,21 @@ commute.
 Let $\MMonCat$ denote the 2-category of symmetric monoidal categories, strong monoidal functors, and
 monoidal transformations, and let $\MonCat$ denote the underlying 1-category. Let
 $\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal transformations
-from $\cat{C}$ to $\cat{D}$.
+from $\cat{C}$ to $\cat{D}$. Whenever we discuss monoidal categories in this paper will mean symmetric monoidal.
 
 \section{Traced categories}\label{sec:intuition_for_traced}
 
-A trace on a symmetric monoidal category is a collection of functions
+A trace on a (symmetric) monoidal category is a collection of functions
 \begin{equation}\label{dia:trace function}
    \Tr^U_{X,Y}\colon\Hom(U\otimes X,U\otimes Y)\to\Hom(X,Y)
 \end{equation}
-for $U,X,Y\in\Ob(\cat{M})$ satisfying several axioms. When traced categories are defined, one often
+for $U,X,Y\in\Ob(\cat{M})$ satisfying several, say six, axioms. When traced categories are defined, one often
 sees the trace functions, as well as each of the axioms, accompanied by a picture. For example,
 (\ref{dia:trace function}) applied to an arbitrary $f\colon U\otimes X\to U\otimes Y$ might be
 accompanied by this picture:
 $$
-\begin{tikzpicture}[wiring diagram]
-   \node[bb={2}{2}, bb name=$f$] (domain) {};
+\begin{tikzpicture}[wiring diagram,bby=1.2ex]
+   \node[bb={2}{2}] (domain) {$f$};
    \node[bb={1}{1}, fit={(domain) ($(domain.north)+(0,1)$)}] (codomain) {};
    \draw[ar] (codomain_in1') to (domain_in2);
    \draw[ar] (domain_out2) to (codomain_out1');
@@ -600,8 +596,8 @@ $$
        node[below right=of domain_out1]   {$U$};
 \end{tikzpicture}
 $$
-This can be recognized as a cobordism between oriented 0-manifolds, as we will discuss in
-Section~\ref{sec:Cob morphisms as wds}. Each of the six axioms is vacuous from this perspective, in
+This can be recognized as a cobordism between oriented 0-manifolds, as we discussed in
+Section~\ref{sec:wds_and_cob}. Each of the six axioms is vacuous from this perspective, in
 the sense that both sides of the equation correspond to the same cobordism. For example, here are
 the axioms of \emph{dinaturality} and \emph{superposition}:
 \begin{itemize}
@@ -711,11 +707,7 @@ the axioms of \emph{dinaturality} and \emph{superposition}:
       \]
 \end{itemize}
 
-The definition of traced categories and traced functors can be found in~\cite{JoyalStreetVerity},
-where they define the 2-morphisms between traced functors to be monoidal transformations. We denote
-this 2-category by $\TTrCat$.
-\todo[author=Patrick,inline]{Fix definition of 2-morphisms to be monoidal natural isos, and cite the
-correction paper as well}
+The definition of traced categories and traced functors can be found in~\cite{JoyalStreetVerity}. However, those authors define the 2-morphisms between traced functors to be monoidal transformations, whereas this choice does not behave appropriately with their $\Int$ construction (for example $\Int$ would not be 2-functorial). A correction was made in \cite{HK}, where it was shown that the appropriate 2-morphisms between traced functors are natural \emph{isomorphisms}. We denote by $\TTrCat$ the corrected 2-category of traced categories (where 2-cells are invertible), and we denote its underlying 1-category by $\TrCat$.
 
 \subsection{The categories $\Prop$ and $\TrProp$ of props and traced props}\label{sec:defining props}
 
@@ -943,7 +935,7 @@ following equations whenever they make sense:
 \end{gather*}
 
 
-\section{Exactness and the $(\bo,\ff)$ factorization}
+\section{Exactness and the $(\bo,\ff)$ factorization}\label{sec:exactness_and_boff}
 
 \begin{definition}
    Let $C\tickar C$ be a monoid in an equipment $\dcat{D}$. The \emph{collapse} of $M$ is an object
