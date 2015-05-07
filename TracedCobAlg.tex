@@ -812,12 +812,45 @@ The following facts hold for any traced category $\cat{C}$:
 
 There are free/forgetful adjunctions
 \begin{align*}
-   \FrM\colon\Set &\leftrightarrows\MonCat:\!\UM \\
-   \FrT\colon\Set &\leftrightarrows\TrCat:\!\UT \\
-   \FrC\colon\Set &\leftrightarrows\CompCat:\!\UC
+   \FM\colon\Set &\leftrightarrows\MonCat:\!\UM \\
+   \FT\colon\Set &\leftrightarrows\TrCat:\!\UT \\
+   \FC\colon\Set &\leftrightarrows\CompCat:\!\UC
 \end{align*}
+We will write $\TM$ and $\TC$ for the respective monads induced on $\Set$. Note that $\TM$ is
+isomorphic to the free-monoid monad, while $\TC$ is isomorphic to the free-group monad. We will
+denote by $\FrMonCat$ and $\FrCompCat$ the full subcategories of $\MonCat$ and $\CompCat$
+respectively, spanned by objects which are free on a set. As always, these categories are isomorphic
+to the Kleisli categories of the monads: $\FrMonCat\iso\Set_{\TM}$ and $\FrCompCat\iso\Set_{\TC}$.
 
-\todo[inline,author=Patrick]{Talk about $\FrMonCat$, etc.\ and the induced $\FrMonCat\to\FrCompCat$}
+The forgetful functors between the categories of structured monoidal categories commute with the
+underlying set functors, i.e.~the following diagram commutes:
+\begin{equation*}
+   \begin{tikzcd}
+      & \TrCat \ar[dr,"\UTM"] \ar[dd,"\UT" near start] & \\
+      \CompCat \ar[rr,crossing over,"\UCM"' near start] \ar[dr,"\UC"'] \ar[ru,"\UCT"]
+         && \MonCat \ar[dl,"\UM"] \\
+      & \Set &
+   \end{tikzcd}
+\end{equation*}
+Because the functor $\UCM\colon\CompCat\to\MonCat$ commutes with the right adjoints of the
+adjunctions to $\Set$, it induces a monad morphism $\alpha\colon\TC\to\TM$ (a natural transformation
+$\alpha\colon\TM\to\TC$ compatible with the units and multipications), given by the composition of
+the natural transformations
+\begin{equation*}
+   \begin{tikzcd}[column sep=large,row sep=0ex]
+      \TM=\UM\FM \ar[r,"\UM\FM\eta_C"]
+         & \UM\FM\UC\FC = \UM\FM\UM\UCM\FC \\
+      \UM\FM\UM\UCM\FC \ar[r,"\UM\epsilon_M\UCM\FC"']
+         & \UM\UCM\FC = \UC\FC = \TC
+   \end{tikzcd}
+\end{equation*}
+The components of this transformation are simply the evident inclusion of the free monoid on a set
+$\cat{O}$ into the free group on $\cat{O}$.
+
+This in turn induces a functor between the Kleisli categories in the other direction:
+\begin{equation*}
+   \FMC\colon\FrMonCat\to\FrCompCat
+\end{equation*}
 
 \begin{proposition}\label{prop:free traced and compact}
    Let $\cat{C}$ be a category.
