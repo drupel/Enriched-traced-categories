@@ -1000,6 +1000,14 @@ following equations whenever they make sense:
       i(g)\bullet m = g\cdot m
 \end{gather*}
 
+\begin{lemma}
+   Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor. Then
+   \begin{compactitem}
+      \item if $F$ is fully-faithful, then so is $\dMod(F)$,
+      \item if $F$ is a local equivalence, then so is $\dMod(F)$.
+   \end{compactitem}
+\end{lemma}
+
 \begin{lemma}\label{lem:Mon_pullback}
    Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor, and suppose $F$ is a local equivalence
    (Definition~\ref{def:local_equivalence}). Then the induced square
@@ -1394,8 +1402,9 @@ $U\colon\dcat{D}_0\to\cat{C}$ with a left adjoint $F\colon\cat{C}\to\dcat{D}_0$.
 induced monad on $\cat{C}$.
 
 Let $\dcat{D}_T\subseteq\dcat{D}$ be the full sub-double category spanned by the objects in the image
-of $F$ (the ``discrete'' objects). In other words, $(\dcat{D}_T)_0=\cat{C}_{T}$ is the Kleisli category
-of $T$, and $(\dcat{D}_T)_1$ is defined by the pullback
+of $F$ (the ``discrete'' objects). We will write $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ for the
+inclusion. Concretely, $(\dcat{D}_T)_0=\cat{C}_{T}$ is the Kleisli category of $T$, and
+$(\dcat{D}_T)_1$ is defined by the pullback
 \begin{equation*}
    \begin{tikzcd}
       (\dcat{D}_T)_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
@@ -1405,17 +1414,117 @@ of $T$, and $(\dcat{D}_T)_1$ is defined by the pullback
    \end{tikzcd}
 \end{equation*}
 
+The equipment functor $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ is a fully-faithful local equivalence,
+hence the induced $\dMod(\varphi)\colon\dMod(\dcat{D}_T)\to\dMod(\dcat{D})$ is as well. If
+$\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ to identify
+$\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the
+image. We call this equipment $\dcat{D}_T^{\bo}$, and we can give an explicit construction as
+follows: the vertical category is defined by the pullback
+\begin{equation*}
+   \begin{tikzcd}
+      (\dcat{D}_T^{\bo})_0 \ar[r] \ar[dr,phantom,"\lrcorner" very near start] \ar[d]
+         & \cat{C} \ar[d,"F"] \\
+      \dcat{D}_0^{\bo} \ar[r,"\dom"']
+         & \dcat{D}
+   \end{tikzcd}
+\end{equation*}
+while the category $(\dcat{D}_T^{\bo})_1$ is defined by the pullback
+\begin{equation*}
+   \begin{tikzcd}
+      (\dcat{D}_T^{\bo})_1 \ar[r] \ar[dr,phantom,"\lrcorner" very near start] \ar[d]
+         & \dcat{D}_1^{\bo} \ar[d,two heads] \\
+      (\dcat{D}_T^{\bo})_0\times(\dcat{D}_T^{\bo})_0 \ar[r]
+         & \dcat{D}_0^{\bo}\times\dcat{D}_0^{\bo}.
+   \end{tikzcd}
+\end{equation*}
+We will write $\psi_T\colon\dcat{D}_T^{\bo}\to\dcat{D}^{\bo}$ for the inclusion.
+
+Thus we have the following proposition:
+
+\begin{proposition}\label{prop:object-free_Mod_bo}
+   Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
+   $U\colon\dcat{D}_0\leftrightarrows\cat{C}:\!F$, and let $T=UF$ be the induced monad.  There is a
+   commuting diagram of equipments, in which the vertical functors are equivalences:
+   \begin{equation*}
+      \begin{tikzcd}[column sep=large]
+         \dMod(\dcat{D}_T) \ar[r,"\dMod(\varphi_T)"] \ar[d,"\equiv"']
+            & \dMod(\dcat{D}) \ar[d,"\equiv"] \\
+         \dcat{D}_T^{\bo} \ar[r,"\psi_T"'] & \dcat{D}^{\bo}
+      \end{tikzcd}
+   \end{equation*}
+\end{proposition}
+
+\begin{remark}
+   The objects of $\dcat{D}_T^{\bo}$ are bijective-on-objects morphisms of the form
+   $F(c)\twoheadrightarrow D$ where $c$ is an object in $\cat{C}$ and $D$ is an object in
+   $\dcat{D}$. Intuitively, we can think of the objects of $\dcat{D}_T^{\bo}$ (or equivalently
+   $\dMod(\dcat{D}_T)$ as objects in $\dcat{D}$ which are ``free-on-objects''.
+   
+   For instance, every category is free-on-objects, because every category admits a
+   bijective-on-objects functor from a discrete category. On the other hand, a monoidal category is
+   free-on-objects if the set of objects form a free monoid under the tensor product.
+\end{remark}
+
 \begin{theorem}\label{thm:Verts}
    Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
    $U\colon\dcat{D}_0\leftrightarrows\cat{C}:\!F$, and let $T=UF$ be the induced monad. Suppose
    moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{C})$, and that the components of the counit of
    the adjunction are left pseudo-orthogonal to $\ff$ in $\VVer(\dcat{D})$.
 
-   There is an equivalence of 2-categories
+   The composition
    \begin{equation*}
-      \MMon(\dcat{D}_T)\equiv\VVer(\dcat{D}).
+      \begin{tikzcd}
+         \dMod(\dcat{D}_T)\ar[r,"\dMod(\varphi_T)"] &[1.5em] \dMod(\dcat{D}) \ar[r,"\Col{\textrm{--}}"] & \dcat{D}
+      \end{tikzcd}
    \end{equation*}
+   is a fully-faithful local equivalence, and the induced 2-functor
+   $\rho\colon\MMon(\dcat{D}_T)\to\VVer(\dcat{D})$ is 2-essentially surjective, hence a 2-equivalence.
 \end{theorem}
+\begin{proof}
+   By Proposition~\ref{prop:object-free_Mod_bo}, it suffices to consider the composition
+   \begin{equation*}
+      \begin{tikzcd}
+         \dcat{D}^{\bo}_T \ar[r,"\psi_T"] & \dcat{D}^{\bo} \ar[r,"\cod"] & \dcat{D}
+      \end{tikzcd}
+   \end{equation*}
+   Both $\psi_T$ and $\cod$ are local equivalences, hence the composition is also.
+
+   To see that $\cod\psi_T$ is fully-faithful, consider a pair of objects $p\colon
+   Fc\twoheadrightarrow D$ and $p'\colon Fc'\twoheadrightarrow D'$ in $\dcat{D}_T^{\bo}$, and a
+   vertical morphism $f\colon D\to D'$ in $\dcat{D}$. In the square
+   \begin{equation*}
+      \begin{tikzcd}
+         \dcat{D}_0(Fc,Fc') \ar[r,"\textrm{--}\circ p'"] \ar[d,"\iso"']
+            & \dcat{D}_0(Fc,D') \ar[d,"\iso"] \\
+         \cat{C}(c,UFc') \ar[r,"\textrm{--}\circ Up'"']
+            & \cat{C}(c,UD')
+      \end{tikzcd}
+   \end{equation*}
+   which commutes by naturality of the adjunction bijection, the bottom function is a bijection
+   because of the assumption that $U(p')$ is an isomorphism for any $p'\in\bo$. Hence the top
+   function is a bijection, which shows that there exists a unique lift of $f$ to a morphism in
+   $\dcat{D}_T^{\bo}$:
+   \begin{equation*}
+      \begin{tikzcd}
+         Fc \ar[r,"\hat{f}"] \ar[d,two heads,"p"']
+            & Fc' \ar[d,two heads,"p'"] \\
+         D \ar[r,"f"'] & D'
+      \end{tikzcd}
+   \end{equation*}
+
+   Finally, to see that the restriction to vertical 2-categories is essentially surjective, let
+   $D\in\dcat{D}$ be an object, and consider the $(\bo,\ff)$ factorization of the counit
+   \begin{equation*}
+      \begin{tikzcd}
+         FUD \ar[dr,"\epsilon_D"] \ar[d,two heads,"p"'] & \\
+         D' \ar[r,hook,"f"'] & D.
+      \end{tikzcd}
+   \end{equation*}
+   By assumption, the components of the counit are left pseudo-orthogonal to $\ff$, and $p$ is left
+   orthognal to $\ff$, hence also left pseudo-orthogonal. By the cancellation property of a left
+   orthogonality class, $f$ must also by left pseudo-orthogonal to $\ff$. But $f$ is $\ff$ as well,
+   hence is an equivalence in $\VVer(\dcat{D})$. Thus $D$ is equivalent to $\cod(\psi_T(p))=D'$.
+\end{proof}
 
 \begin{definition}\label{def:FrMonProf_FrCompProf}
    We define the equipments $\dFrMonProf\coloneqq\dMonProf_{\TM}$ and $\dFrCompProf\coloneqq\dCompProf_{\TC}$. In
@@ -1432,6 +1541,7 @@ of $T$, and $(\dcat{D}_T)_1$ is defined by the pullback
 \end{definition}
 
 \begin{remark}
+   \mbox{}
    \todo[inline]{Can think of $\MMon(\dFrMonProf)$ as ``object free'' monoidal categories.}
 \end{remark}
 
