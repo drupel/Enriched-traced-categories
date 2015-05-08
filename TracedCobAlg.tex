@@ -969,6 +969,7 @@ $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 \todo[author=Patrick,inline]{Introduce equipments}
 \todo[author=Patrick,inline]{Give examples: $\dProf$, $\dMonProf$, $\dSpan$}
 \todo[author=David,inline]{Make sure to say that $\dProf_0=\Cat$, etc. I think this could be confusing for non-experts.}
+\todo[author=David,inline]{Discuss (here or elsewhere) that essential surjectivity is left pseudo-orthogonal to $\ff$ in $\Prof$.}
 
 \begin{definition}\label{def:local_equivalence}
    An equipment functor $F\colon\dcat{X}\to\dcat{Y}$ is a \emph{local equivalence} if the square
@@ -1467,7 +1468,7 @@ Thus we have the following proposition:
 
 \begin{theorem}\label{thm:Verts}
    Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
-   $U\colon\dcat{D}_0\leftrightarrows\cat{C}:\!F$, and let $T=UF$ be the induced monad. Suppose
+   $F\colon\cat{C}\leftrightarrows\dcat{D}_0:\!U$, and let $T=UF$ be the induced monad. Suppose
    moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{C})$, and that the components of the counit of
    the adjunction are left pseudo-orthogonal to $\ff$ in $\VVer(\dcat{D})$.
 
@@ -1676,16 +1677,10 @@ $$\CPsh(\dCompProf)\equiv\Mon(\dCompProf)\equiv\CompCat^{\bo}.$$
    \end{equation*}
 \end{named}
 
-\begin{named}{Corollary B'}
-   There is an equivalence of fibrations
-   \begin{equation*}
-      \begin{tikzcd}[column sep=0em]
-         \CPsh(\dTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \TrCat^{\bo} \ar[dl,two heads,"\dom"] \\
-            & \TrCat &
-      \end{tikzcd}
-   \end{equation*}
-\end{named}
+\begin{proof}
+By Definition~\ref{***}, the left-hand side is equivalent to $\CPsh(\dTrProf)$. \todo{Finish proof.}
+\end{proof}
+
 
 
 
