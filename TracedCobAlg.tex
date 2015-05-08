@@ -950,6 +950,19 @@ $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 \todo[author=Patrick,inline]{Introduce equipments}
 \todo[author=Patrick,inline]{Give examples: $\dProf$, $\dMonProf$, $\dSpan$}
 
+\begin{definition}\label{def:local_equivalence}
+   An equipment functor $F\colon\dcat{X}\to\dcat{Y}$ is a \emph{local equivalence} if the square
+   \begin{equation*}
+      \begin{tikzcd}
+         \dcat{X}_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+            & \dcat{Y}_1 \ar[d,two heads] \\
+         \dcat{X}_0\times\dcat{X}_0 \ar[r]
+            & \dcat{Y}_0\times\dcat{Y}_0
+      \end{tikzcd}
+   \end{equation*}
+   is a pullback of categories.
+\end{definition}
+
 \section{The monoids and bimodules construction}
 \todo[author=Patrick,inline]{Review monoids in an equipment}
 
@@ -966,6 +979,20 @@ following equations whenever they make sense:
          \quad\text{and}\quad
       i(g)\bullet m = g\cdot m
 \end{gather*}
+
+\begin{lemma}
+   Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor, and suppose $F$ is a local equivalence
+   (Definition~\ref{def:local_equivalence}). Then the induced square
+   \begin{equation*}
+      \begin{tikzcd}
+         \Mon(\dcat{X}) \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+            & \Mon(\dcat{Y}) \ar[d,two heads] \\
+         \dcat{X}_0 \ar[r]
+            & \dcat{Y}_0
+      \end{tikzcd}
+   \end{equation*}
+   is a pullback of categories.
+\end{lemma}
 
 
 \section{Exactness and the $(\bo,\ff)$ factorization}\label{sec:exactness_and_boff}
@@ -1265,10 +1292,14 @@ morphisms which preserve the units.
 \end{proof}
 
 \begin{proposition}\label{Prop:mon prof equivalence}
-   The functors $F$ and $U$, from (\ref{eqn:functors 1C CC}), induce an equivalence of categories
-   \[
-      \dCompProf(1,-)\equiv\Mon(\dCompProf).
-   \]
+   The functors $F$ and $U$, from (\ref{eqn:functors 1C CC}), induce an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=-1.5em]
+         \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \Mon(\dCompProf) \ar[dl,two heads] \\
+            & \CompCat &
+      \end{tikzcd}
+   \end{equation*}
    \todo[author=Patrick]{Fix proof.}
 \end{proposition}
 \begin{proof}
