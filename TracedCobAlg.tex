@@ -129,7 +129,7 @@ The relationship between these interpretations of string diagrams is most easily
 the set $\cat{O}$ of labels is fixed. Let $\TTrCat$ denote the 2-category of traced categories,
 strong traced functors, and monoidal natural isomorphisms \cite{HK}, and let $\TrCat$ denote its underlying 1-category.%
 \footnote{
-We use a similar notational convention throughout this paper. We denote named 1-categories, monoidal categories, and operads with bold roman letters, e.g., $\ncat{Cob}$, and unnamed 1-categories with script, e.g., $\cat{C}$. For named 2-categories or bicategories we do almost the same, but change the font of the first letter to calligraphic, such as $\nncat{T}{rCat}$; for unnamed 2-categories we use (unbold) calligraphic, e.g., $\ccat{D}$. Finally, for double categories we make the first letter  blackboard bold, whether named (e.g., $\ndcat{P}{rof}$) or unnamed (e.g., $\dcat{D}$).
+We use a similar notational convention throughout this paper. We denote named 1-categories, monoidal categories, and operads with bold roman letters, e.g., $\ncat{Cob}$, and unnamed 1-categories with script, e.g., $\cat{C}$. For named 2-categories or bicategories we do almost the same, but change the font of the first letter to calligraphic, such as $\nncat{T}{rCat}$; for unnamed 2-categories we use (unbold) calligraphic, e.g., $\ccat{D}$. Finally, for equipments (special double categories, see Section~\ref{sec:background_equipments}) we make the first letter blackboard bold, whether named (e.g., $\ndcat{P}{rof}$) or unnamed (e.g., $\dcat{D}$).
 }
 Finally, let $\TrCat_{\cat{O}}$ denote the subcategory in which the object set is fixed to be free on the set $\cat{O}$---which we
 call its label set---together with label-preserving maps. For any monoidal category
@@ -452,7 +452,7 @@ which is both injective and surjective, we can obtain the desired indexing opera
 \section{Plan of the paper} \todo{This plan needs work!}
 
 The paper is organized as follows. In Section~\ref{sec:traced categories} we give more details on
-the connection between traced monoidal categories, their string diagrams, and algebras on the operad
+the connection between traced categories, their string diagrams, and algebras on the operad
 of cobordisms. In Section~\ref{sec:generalization} we prove~\ref{thm:TheoremB}
 and~\ref{cor:CorollaryB}, which compare lax set-valued functors to strong bijective-on-objects
 functors, respectively for compact and traced categories. Our main result,~\ref{thm:Theorem_A},
@@ -467,18 +467,18 @@ picture in \cite{RupelSpivak} to string diagrams in traced categories.
 
 In this section we remind the reader of some categorical preliminaries. Basic definitions and facts
 about monoidal, traced, and compact categories, lax and strong functors, and the Int construction
-are given in Sections~\ref{sec:prelim monoidal}~through~\ref{sec:compact_and_int}. The fact that
+are given in Sections~\ref{sec:prelim_monoidal}~through~\ref{sec:compact_and_int}. The fact that
 the free compact category on a set has an algebraic description in terms of bijections between
 signed sets, and the fact that it has a geometric description in terms of 1-dimensional oriented
 cobordisms is recalled in Section~\ref{sec:free and geometry}. 
 
-\section{Monoidal categories}\label{sec:prelim monoidal}
+\section{Monoidal categories}\label{sec:prelim_monoidal}
 
 Let $\cat{C}$ and $\cat{D}$ be monoidal categories. Recall that a functor
 $F\colon\cat{C}\to\cat{D}$ is called \emph{lax monoidal} if it is equipped with a morphism
 \[
 \begin{tikzcd}
-   I_D \rar{\epsilon} & F(I_C)
+   I_D \rar{\mu} & F(I_C)
 \end{tikzcd}
 \]
 and a natural transformation
@@ -491,8 +491,8 @@ such that for all $X,Y,Z\in\cat{C}$, the diagram (suppressing associators)
 \[
 \begin{tikzcd}
    F(X)\otimes F(Y) \otimes F(Z)
-      \rar{\id\otimes\mu}
-      \dar[swap]{\mu\otimes\id}
+      \rar{F(X)\otimes\mu}
+      \dar[swap]{\mu\otimes F(Z)}
    & F(X)\otimes F(Y\otimes Z)
       \dar{\mu} \\
    F(X\otimes Y)\otimes F(Z)
@@ -504,7 +504,7 @@ commutes, and for all $X\in\cat{C}$ the two diagrams
 \[
 \begin{tikzcd}
    I_D\otimes F(X)
-      \dar[swap]{\epsilon\otimes\id}
+      \dar[swap]{\mu\otimes F(X)}
    & F(X)
       \lar[swap]{l_{F(X)}}
       \dar{F(l_X)} \\
@@ -515,7 +515,7 @@ commutes, and for all $X\in\cat{C}$ the two diagrams
 \qquad
 \begin{tikzcd}
    F(X) \otimes I_D
-      \dar[swap]{\id\otimes\epsilon}
+      \dar[swap]{F(X)\otimes\mu}
    & F(X)
       \lar[swap]{r_{F(X)}}
       \dar{F(r_X)} \\
@@ -524,8 +524,8 @@ commutes, and for all $X\in\cat{C}$ the two diagrams
    & F(X\otimes I_C)
 \end{tikzcd}
 \]
-commute.
-If $\epsilon$ and $\mu$ are isomorphisms, then $F$ is \emph{strong}.
+commute, where $l$ and $r$ are unitors.
+If all $\mu$'s are isomorphisms, then $F$ is \emph{strong}.
 
 If $\cat{C}$ and $\cat{D}$ are symmetric monoidal, then $F$ is a \emph{lax symmetric monoidal
 functor} if it is lax monoidal, and commutes with the symmetries, in the sense that the diagram
@@ -558,7 +558,7 @@ $\alpha\colon F\to G$ is called a \emph{monoidal transformation} if the diagrams
 \end{tikzcd}
 \qquad
 \begin{tikzcd}[column sep=tiny]
-   {} & I_D \dlar[swap]{\epsilon} \drar{\epsilon} & \\
+   {} & I_D \dlar[swap]{\mu} \drar{\mu} & \\
    F(I_C) \ar{rr}[swap]{\alpha_I} && G(I_C)
 \end{tikzcd}
 \]
@@ -567,17 +567,21 @@ commute.
 Let $\MMonCat$ denote the 2-category of symmetric monoidal categories, strong monoidal functors, and
 monoidal transformations, and let $\MonCat$ denote the underlying 1-category. Let
 $\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal transformations
-from $\cat{C}$ to $\cat{D}$. Whenever we discuss monoidal categories in this paper will mean symmetric monoidal.
+from $\cat{C}$ to $\cat{D}$. 
+
+\begin{warning}
+For the rest of this artcile, whenever we discuss monoidal categories, we will mean symmetric monoidal categories. For example, see the definition of $\MMonCat$ above.
+\end{warning}
 
 \section{Traced categories}\label{sec:intuition_for_traced}
 
-A trace on a (symmetric) monoidal category is a collection of functions
+A \emph{trace structure} on a (symmetric) monoidal category $\cat{M}$ is a collection of functions
 \begin{equation}\label{dia:trace function}
-   \Tr^U_{X,Y}\colon\Hom(U\otimes X,U\otimes Y)\to\Hom(X,Y)
+   \Tr^U_{X,Y}\colon\Hom_{\cat{M}}(U\otimes X,U\otimes Y)\to\Hom_{\cat{M}}(X,Y)
 \end{equation}
-for $U,X,Y\in\Ob(\cat{M})$ satisfying several, say six, axioms. When traced categories are defined, one often
+for $U,X,Y\in\Ob(\cat{M})$ satisfying several, say six, equational axioms. When traced categories are defined, e.g., in \cite{JoyalStreetVerity}, one often
 sees the trace functions, as well as each of the axioms, accompanied by a picture. For example,
-(\ref{dia:trace function}) applied to an arbitrary $f\colon U\otimes X\to U\otimes Y$ might be
+(\ref{dia:trace function}) applied to an arbitrary morphism $f\colon U\otimes X\to U\otimes Y$ might be
 accompanied by this picture:
 $$
 \begin{tikzpicture}[wiring diagram,bby=1.2ex]
@@ -598,7 +602,7 @@ $$
 $$
 This can be recognized as a cobordism between oriented 0-manifolds, as we discussed in
 Section~\ref{sec:wds_and_cob}. Each of the six axioms is vacuous from this perspective, in
-the sense that both sides of the equation correspond to the same cobordism. For example, here are
+the sense that both sides of the equation correspond to the same cobordism (up to diffeomorphism). For example, here are
 the axioms of \emph{dinaturality} and \emph{superposition}:
 \begin{itemize}
    \item For every $f\colon U\otimes X\to V\otimes Y$ and $g:V\to U$ we have
@@ -624,7 +628,7 @@ the axioms of \emph{dinaturality} and \emph{superposition}:
                 node[below right=of X1_out2]    {$Y$}
                 node[below right=of X1_out1]   {$V$};
          \end{tikzpicture}
-         =
+         \quad=\quad
          \begin{tikzpicture}[wiring diagram,baseline=(current bounding box.center)]
             \node[bb={2}{2}, bb name=$f$] (X1) {};
             \node[bb port sep=1,bb={1}{1}, left=.7 of X1_in1, bb name=$g$] (X2) {};
@@ -674,7 +678,7 @@ the axioms of \emph{dinaturality} and \emph{superposition}:
              node[below left=of X2_in1] {$W$}
              node[below right=of X2_out1] {$Z$};
       \end{tikzpicture}
-      =
+      \quad=\quad
       \begin{tikzpicture}[wiring diagram,baseline=(current bounding box.center)]
          \node[bb={2}{2}, bb name=$f$] (X1) {};
          \node[bb port sep=1,bb={1}{1}, below=of X1, bb name=$g$] (X2) {};
@@ -880,7 +884,7 @@ This in turn induces a functor between the Kleisli categories in the other direc
 
 
 
-\chapter{Background on equipments}
+\chapter{Background on equipments}\label{sec:background_equipments}
 
 Let $\cat{C}$ and $\cat{D}$ be categories.
 Recall that a profunctor $M$ from $\cat{C}$ to $\cat{D}$, written
