@@ -968,6 +968,7 @@ $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 \section{Equipments}
 \todo[author=Patrick,inline]{Introduce equipments}
 \todo[author=Patrick,inline]{Give examples: $\dProf$, $\dMonProf$, $\dSpan$}
+\todo[author=David,inline]{Make sure to say that $\dProf_0=\Cat$, etc. I think this could be confusing for non-experts.}
 
 \begin{definition}\label{def:local_equivalence}
    An equipment functor $F\colon\dcat{X}\to\dcat{Y}$ is a \emph{local equivalence} if the square
@@ -1099,8 +1100,8 @@ $\bo$ arrows, i.e.~the category $\dcat{D}_1^{\bo}$ is given by the pullback
       \dMod(\dcat{D}) \iso \dcat{D}^{\bo}.
    \]
 \end{theorem}
-
-\begin{corollary}\label{cor:Mon vs bo}
+\todo{need proofs}
+\begin{corollary}\label{cor:Mon_vs_bo}
    Let $\dcat{D}$ be an exact equipment. There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=0em]
@@ -1206,10 +1207,34 @@ $M$ is as above, with the additional conditions
 for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e')$.
 
 \section{Definitions of equipments}
-\todo[inline]{Formally define $\dMonProf$, $\dTrProf$, and $\dCompProf$ here.}
+\todo[inline]{Need definitions}
+
+\begin{definition}\label{def:MonProf}
+The equipment $\dMonProf$ is defined as follows.
+\end{definition}
+
+\begin{definition}\label{def:TrProf}
+The equipment $\dTrProf$ is defined as follows.
+\end{definition}
+
+\begin{definition}\label{def:CompProf}
+The equipment $\dCompProf$ is defined as follows.
+\end{definition}
 
 \section{Exactness}
-\todo[inline]{Prove exactness of $\dMonProf$, $\dTrProf$, and $\dCompProf$.}
+\todo[inline]{Need proofs..}
+
+\begin{proposition}\label{prop:MonProf_exact}
+The equipment $\dMonProf$ is exact.
+\end{proposition}
+
+\begin{proposition}\label{prop:TrProf_exact}
+The equipment $\dTrProf$ is exact.
+\end{proposition}
+
+\begin{proposition}\label{prop:CompProf_exact}
+The equipment $\dCompProf$ is exact.
+\end{proposition}
 
 \section{Special properties of CompProf}
 \todo[inline]{CompProf closed under collapse in MonProf}
@@ -1331,7 +1356,7 @@ morphisms which preserve the units.
    It is simple to check that this defines a bijection.
 \end{proof}
 
-\begin{proposition}\label{Prop:mon prof equivalence}
+\begin{proposition}\label{Prop:mon_prof_equivalence}
    The functors $F$ and $U$, from (\ref{eqn:functors 1C CC}), induce an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1.5em]
@@ -1512,20 +1537,34 @@ The left-hand map is surjective on objects, so the result follows from the chain
 given by (\ref{dia:TMvsFrMonCat}), Proposition~\ref{prop:free_compact_is_Cob}, Definitions~\ref{def:copresheaves},~\ref{def:FrMonProf_FrCompProf},~and~\ref{def:FrMonCompProf}, and Lemma~\ref{lem:FrMonCompProf_Psh_Mon}.
 \end{proof}
 
-\begin{named}{Theorem B'}
+\begin{named}{Theorem B}\label{thm:TheoremB}
    There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=0em]
-         \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+         \int^{\cat{C}\in\CompCat}\Lax(\cat{C},\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
             && \CompCat^{\bo} \ar[dl,two heads,"\dom"] \\
             & \CompCat &
       \end{tikzcd}
    \end{equation*}
 \end{named}
+
 \begin{proof}
-   $\CPsh(\dCompProf)\equiv\Mon(\dCompProf)$ by~\ref{Prop:mon prof equivalence}, and by~\ref{cor:Mon
-   vs bo} we have the equivalence $\Mon(\dCompProf)\equiv\CompCat^{\bo}$.
+By Definitions~\ref{def:CompProf}~and~\ref{def:copresheaves}, there is an equivalence
+$$ \int^{\cat{C}\in\CompCat}\Lax(\cat{C},\Set)\equiv\CPsh(\dCompProf).$$ 
+The equipment $\dCompProf$ is exact by Proposition~\ref{prop:CompProf_exact}. By Proposition~\ref{Prop:mon_prof_equivalence} and Corollary~\ref{cor:Mon_vs_bo}, we have the following equivalences of fibrations over $\CompCat=\dCompProf_0$, completing the proof:
+$$\CPsh(\dCompProf)\equiv\Mon(\dCompProf)\equiv\CompCat^{\bo}.$$ 
 \end{proof}
+
+\begin{named}{Corollary B}\label{cor:CorollaryB}
+   There is an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=0em]
+         \int^{\cat{C}\in\TrCat}\Lax(\Int(\cat{C}),\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \TrCat^{\bo} \ar[dl,two heads,"\dom"] \\
+            & \TrCat &
+      \end{tikzcd}
+   \end{equation*}
+\end{named}
 
 \begin{named}{Corollary B'}
    There is an equivalence of fibrations
