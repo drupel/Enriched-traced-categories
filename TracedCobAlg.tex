@@ -143,9 +143,9 @@ Some intuition for this statement will be given in Section~\ref{subsec:cobalg_an
 
 The equivalence (\ref{eq:single_fiber}) has two drawbacks: the object set of the traced category is fixed, and it is assumed to be free. Much of the work in this paper is to relax these two conditions. For the latter, we prove that the 2-category of traced categories is equivalent to that of \emph{object-free} traced categories (see Proposition~\ref{prop:TrCat_ObjectFree}). For the former, we first explain what kind of variance is appropriate.
 
-A strong functor $F\colon T\to T'$ between object-free traced categories sends each object in $T$ to the tensor product of finitely many objects in $T'$; that is, it induces a function $\Ob F\colon\Ob T\to\List(\Ob T')$, where $\List\colon\Set\to\Set$ is the free monoid monad. Let $\ncat{Kls}$ denote the Kleisli category of this monad, so $\Ob F$ is identified with a morphism in $\ncat{Kls}$. By Lemma~\ref{lemma:monad_morphism}, there is a functor $(\LCob{\bullet})\colon\ncat{Kls}\to\CompCat$, \todo{Patrick: check this paragraph; is $(\LCob{\bullet})$ clear enough notation?}and we can compose it with $\Lax(-,\Set)$ to obtain a functor which we denote
+A strong functor $F\colon \cat{C}\to \cat{C'}$ between object-free traced categories sends each object in $\cat{C}$ to the tensor product of finitely many objects in $\cat{C'}$; that is, it induces a function $\Ob F\colon\Ob\cat{C}\to\TM(\Ob \cat{C'})$, where $\TM\colon\Set\to\Set$ is the free monoid monad. Let $\Set_{\TM}$ denote the Kleisli category of this monad, so $\Ob F$ is identified with a morphism in $\Set_{\TM}$. By Lemma~\ref{lemma:monad_morphism}, there is a functor $(\LCob{\bullet})\colon\Set_{\TM}\to\CompCat$, \todo{Patrick: check this paragraph; is $(\LCob{\bullet})$ clear enough notation?}and we can compose it with $\Lax(-,\Set)$ to obtain a functor which we denote
 \begin{equation}\label{eqn:cob/bullet}
-(\LCob{\bullet})\alg\colon\op{\ncat{Kls}}\too\Cat.
+(\LCob{\bullet})\alg\colon\op{\Set_{\TM}}\too\Cat.
 \end{equation}
 By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect the equivalences (\ref{eq:single_fiber}) for varying $\cat{O}$ into a single functor, and we have the following main result, whose proof can be found in Section~\ref{sec:proof_of_A}.
 
@@ -714,21 +714,21 @@ the axioms of \emph{dinaturality} and \emph{superposition}:
 The definition of traced categories and traced functors can be found in~\cite{JoyalStreetVerity}. However, those authors define the 2-morphisms between traced functors to be monoidal transformations, whereas this choice does not behave appropriately with their $\Int$ construction (for example $\Int$ would not be 2-functorial). A correction was made in \cite{HK}, where it was shown that the appropriate 2-morphisms between traced functors are natural \emph{isomorphisms}. We denote by $\TTrCat$ the corrected 2-category of traced categories (where 2-cells are invertible), and we denote its underlying 1-category by $\TrCat$.
 
 \subsection{The categories $\Prop$ and $\TrProp$ of props and traced props}\label{sec:defining props}
+\todo{Do we want to use this section anywhere?}
 
-One can think of props as symmetric monoidal categories that are free on a fixed \emph{label set}
+One can think of a prop as a symmetric monoidal category whose objects are free on a fixed set of \emph{labels}
 (also known as its set of colors). Functors between props need to descend to a function between
 label sets. We define a traced prop to be a traced category whose underlying symmetric monoidal
 category has the structure of a prop. Thus we have defined the 1-categories $\Prop$ and $\TrProp$;
-we summarize our definitions by the pullback diagram
+we summarize our definitions by the pullback diagram of categories
 \[
 \begin{tikzcd}
-   \TrProp\ar[r]\ar[d]\arrow[dr, phantom, "\lrcorner", very near start]&\TrCat_1\ar[d]\\
-   \Prop\ar[r]\ar[d,"\Ob"']\arrow[dr, phantom, "\lrcorner", very near start]&\SSymMonCat_1\ar[d,"\Ob"]\\
-   \Set\ar[r,"\List"']&\Set
+   \TrProp\ar[r]\ar[d]\arrow[dr, phantom, "\lrcorner", very near start]&\TrCat\ar[d]\\
+   \Prop\ar[r]\ar[d,"\tn{Labels}"']\arrow[dr, phantom, "\lrcorner", very near start]&\MonCat\ar[d,"\Ob"]\\
+   \Set\ar[r,"\TM"']&\Set
 \end{tikzcd}
 \]
-where $\SSymMonCat_1$ (resp. $\TrCat_1$) is the underlying 1-category of $\SSymMonCat$ (resp.\ of
-$\TrCat$), and where $\List\colon\Set\to\Set$ is the free monoid monad. This definition of $\Prop$
+where $\TM\colon\Set\to\Set$ is the free monoid monad. This definition of $\Prop$
 agrees with that in~\cite{HackneyRobertson}.\todo{Check this.}
 
 
@@ -755,22 +755,22 @@ $\epsilon_X\colon X\otimes X^*\to I$ such that the following diagrams commute:
 
 Every compact category $\cat{C}$ has a canonical trace structure, defined on a morphism $f\colon
 U\otimes X\to U\otimes Y$ to morally be $\epsilon_U\circ f\circ \eta_U$. More precisely, if
-$s_{A,B}$ is the symmetry isomorphism, one defines
+$\sigma_{A,B}$ is the symmetry isomorphism, one defines
 \begin{equation*}
-   \Tr^U_{X,Y}[f]\coloneqq(\epsilon_U\otimes Y)\circ (s_{U^*,U}\otimes Y)\circ (U^*\otimes f)\circ (\eta_U\otimes X)
+   \Tr^U_{X,Y}[f]\coloneqq(\epsilon_U\otimes Y)\circ (\sigma_{U^*,U}\otimes Y)\circ (U^*\otimes f)\circ (\eta_U\otimes X)
 \end{equation*}
 %\todo[color=yellow]{does this formula make sense as written? i.e. it doesn't seem to give a map
 %$X\to Y$?}
-Thus we have a functor $\UCT\colon\CCompCat\to\TTrCat$. It is shown in~\cite{JoyalStreetVerity} that
+Thus we have a functor $\UCT\colon\CCompCat\to\TTrCat$. It is shown in~\cite{JoyalStreetVerity}~and~\cite{HK} that
 this functor is the right half of a 2-adjunction
 \begin{equation}\label{dia:traced compact adjunction}
 \begin{tikzcd}
    \TTrCat\arrow[r,shift left=.5ex, "\Int"]&\CCompCat\arrow[l,shift left=.5ex,"\UCT"]
 \end{tikzcd}
 \end{equation}
-the left half of which we describe now describe.
+the left half of which we now describe on the level of objects $\cat{M}\in\Ob\TTrCat$.
 
-For a traced category $\cat{M}$ let $\widetilde{\cat{M}}=\Int(\cat{M})$ denote the category with
+For a traced category $\cat{M}$, let $\widetilde{\cat{M}}$ denote the category with
 objects given by pairs $(\inp{X},\outp{X})$ where $\inp{X},\outp{X}\in \Ob(\cat{M})$ and morphisms
 given by
 \[
@@ -780,7 +780,7 @@ For morphisms $\Phi:(\inp{X},\outp{X})\to(\inp{Y},\outp{Y})$ and $\Psi:(\inp{Y},
 \[
    \Psi\circ\Phi\coloneqq\Tr^{\outp{Y}}_{\inp{X}\otimes \outp{Z},\outp{X}\otimes \inp{Z}}\Big[\big(\gamma_{\outp{X},\outp{Y}}\otimes \inp{Z}\big)\circ\big(\outp{X}\otimes\Psi\big)\circ\big(\Phi\otimes \outp{Z}\big)\circ\big(\gamma_{\outp{Y},\inp{X}}\otimes \outp{Z}\big)\Big].
 \]
-It is shown in~\cite{JoyalStreetVerity} that $\widetilde{\cat{M}}$ is a compact category whose tensor is given by
+It is shown in~\cite{JoyalStreetVerity} that $\Int(\cat{M})\coloneqq\widetilde{\cat{M}}$ is a compact category whose tensor is given by
 \[
    (\inp{X},\outp{X})\odot(\inp{Y},\outp{Y})\coloneqq(\inp{X}\otimes \inp{Y},\outp{X}\otimes \outp{Y})
 \]
@@ -796,10 +796,8 @@ with unit object $\tilde I\coloneqq(I,I)$ and duality ${(\inp{X},\outp{X})}^\vee
 %
 %\end{lemma}
 %
-\todo{Perhaps we should explain somewhere how the adjunction works, and update the proof of
-Lemma~\ref{lemma:more fully faithfulness} if necessary.}
 
-\begin{lemma}\label{lemma:fully faithful and trace}
+\begin{lemma}\label{lemma:fully_faithful_and_trace}
 The following facts hold for any traced category $\cat{C}$:
 \begin{compactitem}
    \item The unit $\cat{C}\to\Int(\cat{C})$ is fully faithful.
@@ -814,20 +812,29 @@ The following facts hold for any traced category $\cat{C}$:
 
 \section{Free traced and compact categories, and geometry}\label{sec:free and geometry}
 
-There are free/forgetful adjunctions
+There are free/forgetful adjunctions\todo{Do we need $\FT$ and $\UT$? Reduce clutter by removing it throughout this section.}
 \begin{align*}
    \FM\colon\Set &\leftrightarrows\MonCat:\!\UM \\
    \FT\colon\Set &\leftrightarrows\TrCat:\!\UT \\
    \FC\colon\Set &\leftrightarrows\CompCat:\!\UC
 \end{align*}
 We will write $\TM$ and $\TC$ for the respective monads induced on $\Set$. Note that $\TM$ is
-isomorphic to the free-monoid monad, while $\TC$ is isomorphic to the free-group monad. We will
-denote by $\FrMonCat$ and $\FrCompCat$ the full subcategories of $\MonCat$ and $\CompCat$
+isomorphic to the free-monoid monad, while $\TC$ is isomorphic to the free-group monad.%
+\footnote{Note that $U_M$ is not the free-\emph{commutative}-monoid monad, even though the objects of $\MonCat$ are \emph{symmetric} monoidal categories, because the symmetries are encoded in natural isomorphisms, not equalities.
+}
+We will denote by $\FrMonCat$ and $\FrCompCat$ the full subcategories of $\MonCat$ and $\CompCat$
 respectively, spanned by objects which are free on a set. As always, these categories are isomorphic
 to the Kleisli categories of the monads: $\FrMonCat\iso\Set_{\TM}$ and $\FrCompCat\iso\Set_{\TC}$.
 
 The forgetful functors between the categories of structured monoidal categories commute with the
 underlying set functors, i.e.~the following diagram commutes:
+%\begin{equation*}
+%	\begin{tikzcd}[column sep=large]
+%	\CompCat\ar[r,"\UCT"]\ar[rd,"\UC"']\ar[rr,bend left,"\UCM"]&\TrCat\ar[r,"\UTM"]\ar[d,"\UT"]&\MonCat\ar[dl,"\UM"]\\
+%	&\Set
+%	\end{tikzcd}
+%\end{equation*}
+
 \begin{equation*}
    \begin{tikzcd}
       & \TrCat \ar[dr,"\UTM"] \ar[dd,"\UT" near start] & \\
@@ -837,37 +844,40 @@ underlying set functors, i.e.~the following diagram commutes:
    \end{tikzcd}
 \end{equation*}
 Because the functor $\UCM\colon\CompCat\to\MonCat$ commutes with the right adjoints of the
-adjunctions to $\Set$, it induces a monad morphism $\alpha\colon\TC\to\TM$ (a natural transformation
+adjunctions to $\Set$, i.e., $\UM\UCM=\UC$, it induces a monad morphism $\alpha\colon\TC\to\TM$ (a natural transformation
 $\alpha\colon\TM\to\TC$ compatible with the units and multipications), given by the composition of
 the natural transformations
+%\begin{equation*}
+%   \begin{tikzcd}[column sep=large,row sep=0ex]
+%      \TM=\UM\FM \ar[r,"\UM\FM\eta_C"]
+%         & \UM\FM\UC\FC = \UM\FM\UM\UCM\FC \\
+%      \UM\FM\UM\UCM\FC \ar[r,"\UM\epsilon_M\UCM\FC"']
+%         & \UM\UCM\FC = \UC\FC = \TC
+%   \end{tikzcd}
+%\end{equation*}
 \begin{equation*}
-   \begin{tikzcd}[column sep=large,row sep=0ex]
-      \TM=\UM\FM \ar[r,"\UM\FM\eta_C"]
-         & \UM\FM\UC\FC = \UM\FM\UM\UCM\FC \\
-      \UM\FM\UM\UCM\FC \ar[r,"\UM\epsilon_M\UCM\FC"']
-         & \UM\UCM\FC = \UC\FC = \TC
-   \end{tikzcd}
+	\begin{tikzcd}[column sep=2cm]
+		\TM\ar[r,equal]\ar[d,dashed,"\alpha"']&\UM\FM\ar[r,"\UM\FM\eta_C"]&\UM\FM\UC\FC\ar[d,equal]\\
+		\TC&\UM\UCM\FC\ar[l,equal]&\UM\FM\UM\UCM\FC\ar[l,"\UM\epsilon_M\UCM\FC"]
+	\end{tikzcd}
 \end{equation*}
-The components of this transformation are simply the evident inclusion of the free monoid on a set
-$\cat{O}$ into the free group on $\cat{O}$.
-
-This in turn induces a functor between the Kleisli categories in the other direction:
+The components $\alpha_{\cat{O}}$ of this transformation are simply the evident inclusion of the free monoid on a set
+$\cat{O}$ into the free group on $\cat{O}$. In this way, $\UCM$ induces a functor between the Kleisli categories in the other direction:
 \begin{equation*}
    \FMC\colon\FrMonCat\to\FrCompCat
 \end{equation*}
 
-\begin{proposition}\label{prop:free traced and compact}
-   Let $\cat{C}$ be a category.
-   The free traced category on $\cat{C}$ is...
-   The free compact category on $\cat{C}$ is $\Int(...)$.\todo{Fill this in}
-\end{proposition}
-\begin{proof}
-   Kelly, Laplaza ``Coherence for compact closed categories'' gives a combinatorial description of
-   the free compact category on one object.
-
-   See Abramsky.
-\end{proof}
-\todo{Mention that this is folklore, though the proof is probably easily adapted}
+%\begin{proposition}\label{prop:free traced and compact}
+%   Let $\cat{C}$ be a category.
+%   The free traced category on $\cat{C}$ is...
+%   The free compact category on $\cat{C}$ is $\Int(...)$.\todo{Fill this in}
+%\end{proposition}
+%\begin{proof}
+%   Kelly, Laplaza ``Coherence for compact closed categories'' gives a combinatorial description of
+%   the free compact category on one object.
+%
+%   See Abramsky.
+%\end{proof}
 
 \begin{proposition}\label{prop:free compact is Cob}
    The free compact closed category on a set $\cat{O}$ is equivalent to $\LCob{\cat{O}}$
