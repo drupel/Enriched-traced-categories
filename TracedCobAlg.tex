@@ -984,7 +984,7 @@ following equations whenever they make sense:
       i(g)\bullet m = g\cdot m
 \end{gather*}
 
-\begin{lemma}
+\begin{lemma}\label{lem:Mon_pullback}
    Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor, and suppose $F$ is a local equivalence
    (Definition~\ref{def:local_equivalence}). Then the induced square
    \begin{equation*}
@@ -1125,6 +1125,20 @@ $\dcat{D}_0$ whose fiber over an object $C$ is the category of presheaves on $C$
       \end{tikzcd}
    \end{equation}
 \end{definition}
+
+\begin{lemma}\label{lem:Psh_pullback}
+   Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor, and suppose $F$ is a local equivalence
+   (Definition~\ref{def:local_equivalence}). Then the induced square
+   \begin{equation*}
+      \begin{tikzcd}
+         \Psh(\dcat{X}) \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+            & \Psh(\dcat{Y}) \ar[d,two heads] \\
+         \dcat{X}_0 \ar[r]
+            & \dcat{Y}_0
+      \end{tikzcd}
+   \end{equation*}
+   is a pullback of categories, and similarly for $\CPsh$.
+\end{lemma}
 
 \chapter{Equipments of monoidal categories and profunctors}
 
@@ -1370,6 +1384,26 @@ of $T$, and $(\dcat{D}_T)_1$ is defined by the pullback
    and similarly for $\dFrCompProf$.
 \end{definition}
 
+\begin{remark}
+   \todo[inline]{Can think of $\MMon(\dFrMonProf)$ as ``object free'' monoidal categories.}
+\end{remark}
+
+\begin{lemma}\label{lem:FrCompProf_Psh_Mon}
+   There is an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=-1.5em]
+         \CPsh(\dFrCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \Mon(\dFrCompProf) \ar[dl,two heads] \\
+            & \FrCompCat &
+      \end{tikzcd}
+   \end{equation*}
+\end{lemma}
+\begin{proof}
+   The equipment functor $\dFrCompProf\to\dCompProf$ is (by definition) a local equivalence
+   (Definition~\ref{def:local_equivalence}), so the lemma follows from~Proposition~\ref{Prop:mon
+   prof equivalence}, and Lemmas~\ref{lem:Mon_pullback} and~\ref{lem:Psh_pullback}.
+\end{proof}
+
 \begin{corollary}
    There are equivalences of 2-categories
    \begin{align*}
@@ -1377,10 +1411,6 @@ of $T$, and $(\dcat{D}_T)_1$ is defined by the pullback
       \MMon(\dFrCompProf)&\equiv\CCompCat.
    \end{align*}
 \end{corollary}
-
-\begin{remark}
-   \todo[inline]{Can think of $\MMon(\dFrMonProf)$ as ``object free'' monoidal categories.}
-\end{remark}
 
 By defining an equipment ``halfway between'' $\dFrMonProf$ and $\dFrCompProf$, with vertical
 morphisms from the former and horizontal morphisms from the latter, we can get a similar
@@ -1399,24 +1429,35 @@ construction of $\TTrCat$.
    \end{equation*}
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:TrCat_2equiv}
    There is an equivalence of 2-categories
    \begin{equation*}
       \MMon(\dFrMonCompProf)\equiv\TTrCat
    \end{equation*}
-\end{proposition}
-
-\begin{proposition}
-   There is an isomorphism of categories
+   which restricts to a fully-faithful functor between the 1-categories
    \begin{equation*}
-      \CobKlsAlg\iso\dFrMonCompProf(1,\textrm{--}).
+      \Mon(\dFrMonCompProf)\to\TrCat.
    \end{equation*}
 \end{proposition}
 
+\begin{lemma}\label{lem:FrMonCompProf_Psh_Mon}
+   There is an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=-1.5em]
+         \CPsh(\dFrMonCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \Mon(\dFrMonCompProf) \ar[dl,two heads] \\
+            & \FrMonCat &
+      \end{tikzcd}
+   \end{equation*}
+\end{lemma}
+\begin{proof}
+   The equipment functor $\dFrMonCompProf\to\dFrCompProf$ is (by definition) a local equivalence
+   (Definition~\ref{def:local_equivalence}), so the lemma follows from
+   Lemmas~\ref{lem:FrCompProf_Psh_Mon}, \ref{lem:Mon_pullback}, and~\ref{lem:Psh_pullback}.
+\end{proof}
+
 \begin{proposition}\label{prop:TrCat_ObjectFree}
-
-$\TTrCat\equiv\TTrFrObCat$
-
+   $\TTrCat\equiv\TTrFrObCat$
 \end{proposition}
 
 \chapter{Main results}
@@ -1436,6 +1477,9 @@ using the language of equipments.
    such that the composition with the 1-skeleton inclusion $\TrCat\to\TTrCat$ is 2-essentially
    surjective.
 \end{named}
+\begin{proof}
+   Lemma~\ref{lem:FrMonCompProf_Psh_Mon} and Proposition~\ref{prop:TrCat_2equiv}.
+\end{proof}
 
 \begin{named}{Theorem B'}
    There is an equivalence of fibrations
