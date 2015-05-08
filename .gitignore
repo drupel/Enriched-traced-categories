@@ -8,6 +8,7 @@
 *.toc
 *.out
 *.fls
+*.swp
 Output/*
 TracedCobAlg.tdo
 .DS_Store

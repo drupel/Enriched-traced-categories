@@ -35,9 +35,9 @@
 \maketitle
 \begin{abstract}
    We give an alternate conception of string diagrams as 1-dimensional oriented cobordisms, the
-   operad of which we denote by $\Cob$.  The axioms of traced categories are fully encoded by $\Cob$
+   operad of which we denote by $\Cob$. The axioms of traced categories are fully encoded by $\Cob$
    in the sense that there is an equivalence between $\Cob$-algebras and
-   traced categories.  We also prove a substantial generalization of this fact which characterizes
+   traced categories. We also prove a substantial generalization of this fact which characterizes
    lax functors out of compact or traced categories.
 \end{abstract}
 Global todo's:
@@ -53,7 +53,7 @@ Global todo's:
 \chapter{Introduction}
 
 Traced symmetric monoidal categories, hereafter \emph{traced categories}, have been used to model
-processes with feedback~\cite{Abramsky1} or operators with fixed points~\cite{PontoShulman}.  A
+processes with feedback~\cite{Abramsky1} or operators with fixed points~\cite{PontoShulman}. A
 graphical calculus for traced categories was developed by Joyal, Street, and
 Verity~\cite{JoyalStreetVerity}, in which string diagrams of the form
 \begin{equation}\label{dia:string_diagram}
@@ -82,34 +82,34 @@ Verity~\cite{JoyalStreetVerity}, in which string diagrams of the form
       (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
 \end{tikzpicture}
 \end{equation}
-represent compositions.  That is, new morphisms are constructed from old by specifying which outputs
-will be fed back into which inputs.  In fact, these are related to Penrose diagrams in $\ncat{Vect}$, and the word \emph{traced} originates in
+represent compositions. That is, new morphisms are constructed from old by specifying which outputs
+will be fed back into which inputs. In fact, these are related to Penrose diagrams in $\ncat{Vect}$, and the word \emph{traced} originates in
 this vector space terminology~\cite{JoyalStreetVerity}.
 
 \section{Traced string diagrams as cobordisms}
 
-A string diagram usually does not explicitly include the outer box $Y$.  If we include it, as in
+A string diagram usually does not explicitly include the outer box $Y$. If we include it, as in
 (\ref{dia:string_diagram}), the resulting \emph{wiring diagram} can be given another interpretation:
-it represents a 1-dimensional cobordism between oriented 0-manifolds.  For example, the box $X_1$ in
+it represents a 1-dimensional cobordism between oriented 0-manifolds. For example, the box $X_1$ in
 the picture includes only the data of a pair of finite sets,
 $(\inp{X_1},\outp{X_1})=(\{1a,1b\},\{1c\})$, which can be interpreted as an oriented 0-manifold.
 Moreover, the wiring diagram itself, in which boxes $X_1,\ldots,X_n$ are wired together inside a
 larger box $Y$, can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$.
 This is a morphism in the (colored) operad $\Cob$, underlying the symmetric monoidal category of
-oriented 1-cobordisms; see Section~\ref{sec:wds and cob}.
+oriented 1-cobordisms; see Section~\ref{sec:wds_and_cob}.
 
 There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{C}$ than in a cobordism.
-Namely, each input and output of a box must be labeled by an object of $\cat{C}$ and the wires connecting boxes must respect the labels (e.g., in (\ref{dia:string_diagram}) object 2d must equal object 1b). We will thus consider the operad $\Cob/\cat{O}$ of oriented 1-dimensional cobordisms over a fixed set of
+Namely, each input and output of a box must be labeled by an object of $\cat{C}$ and the wires connecting boxes must respect the labels (e.g., in (\ref{dia:string_diagram}) object 2d must equal object 1b). We will thus consider the operad $\LCob{\cat{O}}$ of oriented 1-dimensional cobordisms over a fixed set of
 labels $\cat{O}$.
 
-In the table below, we record these two interpretations of a string diagram.  Note the ``degree
+In the table below, we record these two interpretations of a string diagram. Note the ``degree
 shift'' between the second and third columns.
 \begin{center}
 \begin{tabular}{lll}
    \toprule
       \multicolumn{3}{c}{Interpretations of string diagrams} \\
    \midrule
-      String diagram & Traced category $\cat{C}$ & $\Cob/\cat{O}$ \\
+      String diagram & Traced category $\cat{C}$ & $\LCob{\cat{O}}$ \\
    \midrule
       Wire label set, $\cat{O}$ & Objects, $\cat{O}\coloneqq\Ob(\cat{C})$ & Label set, $\cat{O}$ \\
       Boxes, e.g., \tikz[wiring diagram,bb port sep=1,bby=2.4pt,bb min width=5.5pt,
@@ -123,40 +123,33 @@ shift'' between the second and third columns.
 \end{center}
 
 \subsection{The formal connection between Cob-algebras and Traced categories}
-   \label{sec:statement of main thm}
+   \label{sec:statement_of_main_thm}
 
 The relationship between these interpretations of string diagrams is most easily made precise when
 the set $\cat{O}$ of labels is fixed. Let $\TTrCat$ denote the 2-category of traced categories,
-strong traced functors, and monoidal natural isomorphisms, and let $\TrCat$ denote its underlying 1-category. Finally, let $\TrCat_{\cat{O}}$ denote the subcategory in which the object set is fixed to be free on the set $\cat{O}$---which we
+strong traced functors, and monoidal natural isomorphisms \cite{HK}, and let $\TrCat$ denote its underlying 1-category.%
+\footnote{
+We use a similar notational convention throughout this paper. We denote named 1-categories, monoidal categories, and operads with bold roman letters, e.g., $\ncat{Cob}$, and unnamed 1-categories with script, e.g., $\cat{C}$. For named 2-categories or bicategories we do almost the same, but change the font of the first letter to calligraphic, such as $\nncat{T}{rCat}$; for unnamed 2-categories we use (unbold) calligraphic, e.g., $\ccat{D}$. Finally, for equipments (special double categories, see Section~\ref{sec:background_equipments}) we make the first letter blackboard bold, whether named (e.g., $\ndcat{P}{rof}$) or unnamed (e.g., $\dcat{D}$).
+}
+Finally, let $\TrCat_{\cat{O}}$ denote the subcategory in which the object set is fixed to be free on the set $\cat{O}$---which we
 call its label set---together with label-preserving maps. For any monoidal category
 $\cat{M}$, we denote by $\cat{M}\alg=\ncat{Lax}(M,\Set)$ the category of lax functors $\cat{M}\to\Set$. Then there
 is an equivalence of categories
 \begin{equation}\label{eq:single_fiber}
-   \LCob{\cat{O}}\alg\simeq\TrCat_{\cat{O}}.
+   \LCob{\cat{O}}\alg\equiv\TrCat_{\cat{O}}.
 \end{equation}
-This will be proved in Section~\ref{sec:proof_of_A}, but we sketch the equivalence here, with a few
-minor abuses of notation. We will show that the same data are required, and the same conditions are
-satisfied, whether one is specifying a lax functor $P\colon\LCob{\cat{O}}\to\Set$ or a traced category
-$\cat{C}$ with objects generated by $\cat{O}$.
-
-First, for each box $(\inp{X},\outp{X})$ that might appear in a string diagram, both $P\in \LCob{\cat{O}}\alg$ and
-$\cat{C}\in\TrCat_{\cat{O}}$ require a set, $P(\inp{X},\outp{X})$ and $\Hom_{\cat{C}}(\inp{X},\outp{X})$, respectively.
-Second, for each string diagram, both $P$ and $\cat{C}$ require a function: an action on morphisms,
-in the case of $P$, and a formula for performing the required compositions, tensors, and traces, in
-the case of $\cat{C}$.  The condition that $P$ is functorial corresponds to the fact that $\cat{C}$
-satisfies the axioms of traced categories.
-
+Some intuition for this statement will be given in Section~\ref{subsec:cobalg_and_trCat}, and it will be generalized in \ref{thm:TheoremA} and proven as such in Section~\ref{sec:deducing}.
 \subsection{The main results}\label{subsec:main_results}
 
-For a given set $\cat{O}$ of labels, we have an equivalence of categories $\Cob/\cat{O}\alg\simeq\TrCat_{\cat{O}}$. This statement has two drawbacks: the object set of our traced categories is fixed, and it is assumed to be free. Much of the work in this paper is to relax these two conditions. For the latter, we prove that the 2-category of traced categories is equivalent to that of \emph{object-free} traced categories (see Proposition~\ref{prop:TrCat_ObjectFree}). For the former, we first explain what kind of variance is appropriate.
+The equivalence (\ref{eq:single_fiber}) has two drawbacks: the object set of the traced category is fixed, and it is assumed to be free. Much of the work in this paper is to relax these two conditions. For the latter, we prove that the 2-category of traced categories is equivalent to that of \emph{object-free} traced categories (see Proposition~\ref{prop:TrCat_ObjectFree}). For the former, we first explain what kind of variance is appropriate.
 
-A strong functor $F\colon T\to T'$ between object-free traced categories sends each object in $T$ to the tensor product of finitely many objects in $T'$; that is, it induces a function $\Ob F\colon\Ob T\to\List(\Ob T')$, where $\List\colon\Set\to\Set$ is the free monoid monad. Let $\ncat{Kls}$ denote the Kleisli category of this monad, so $\Ob F$ is identified with a morphism in $\ncat{Kls}$. By Lemma~\ref{lemma:monad_morphism_string_diagram_proof}, there is a functor $(\Cob/\bullet)\colon\ncat{Kls}\to\CompCat$, and we can compose it with $\Lax(-,\Set)$ to obtain a functor which we denote
+A strong functor $F\colon \cat{C}\to \cat{C'}$ between object-free traced categories sends each object in $\cat{C}$ to the tensor product of finitely many objects in $\cat{C'}$; that is, it induces a function $\Ob F\colon\Ob\cat{C}\to\TM(\Ob \cat{C'})$, where $\TM\colon\Set\to\Set$ is the free monoid monad. Let $\Set_{\TM}$ denote the Kleisli category of this monad, so $\Ob F$ is identified with a morphism in $\Set_{\TM}$. By Lemma~\ref{lemma:monad_morphism}, there is a functor $(\LCob{\bullet})\colon\Set_{\TM}\to\CompCat$, \todo{Patrick: check this paragraph; is $(\LCob{\bullet})$ clear enough notation?}and we can compose it with $\Lax(-,\Set)$ to obtain a functor which we denote
 \begin{equation}\label{eqn:cob/bullet}
-(\Cob/\bullet)\alg\colon\op{\ncat{Kls}}\too\Cat.
+(\LCob{\bullet})\alg\colon\op{\Set_{\TM}}\too\Cat.
 \end{equation}
-By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect the equivalences (\ref{eq:single_fiber}) for varying $\cat{O}$ into a single functor, and we have the following main result.
+By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect the equivalences (\ref{eq:single_fiber}) for varying $\cat{O}$ into a single functor, and we have the following main result, whose proof can be found in Section~\ref{sec:deducing}.
 
-\begin{named}{Theorem A}\label{thm:Theorem_A}
+\begin{named}{Theorem A}\label{thm:TheoremA}
    There is a fully-faithful functor of 1-categories
    \begin{equation*}
       \CobKlsAlg \to \TrCat
@@ -164,6 +157,7 @@ By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect 
    such that the induced 2-functor $\CobKlsAlg\to\TTrCat$ is 2-essentially surjective.
 \end{named}
 
+<<<<<<< HEAD
 \todo[author=David]{Start here}
 To give a sense of the essential surjectivity in~\ref{thm:Theorem_A} we will briefly specify here how to construct a
 $(\Cob/\Ob\cat{C})$-algebra from a traced category $\cat{C}$. The proof of \ref{thm:Theorem_A} can be found in Section~\ref{sec:proof_of_A}. 
@@ -228,26 +222,30 @@ This can be visualized via the following string diagram.
 \section{Generalization: Lax algebras on compact category}
 
 It is most convenient to prove~\ref{thm:Theorem_A} by proving a much more general result, which
+=======
+\section{Generalization: Lax algebras on compact categories}
+
+It is most convenient to prove~\ref{thm:TheoremA} by proving a more general result, which
+>>>>>>> origin/new_version
 gives an equivalence between the category of lax functors out of any compact category $\cat{C}$ and the category of
 strong, bijective-on-objects functors out of $\cat{C}$,
-$$
+\begin{equation}\label{eqn:lax_compcat_bo}
 \Lax(\cat{C},\Set)\iso\cat{C}/\CompCat^{\bo}.
-$$  
-As in Section~\ref{subsec:main_results}, the difficulty is allowing this to vary appropriately with $\cat{C}$.
+\end{equation}
+As in Section~\ref{subsec:main_results}, the difficulty is allowing this equivalence to vary appropriately with $\cat{C}$.
 
 The definition of compact closed symmetric
-monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact and
-int}, or in~\cite{MacLane}.  Let $\CompCat$ denote the category of compact categories and strong
-monoidal functors between them.  We show in Lemma~\ref{lemma:factorization_system} that there is a
+monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact_and_int}, or in~\cite{MacLane}. Let $\CompCat$ denote the category of compact categories and strong
+monoidal functors between them. We show in Lemma~\ref{lemma:factorization_system} that there is a
 factorization system on $\CompCat$, in which the left class consists of bijective-on-objects
 functors and the right class consists of fully faithful functors. Let $\CompCat^{\bo}$ be the full
-subcategory of the arrow category $\CompCat^{\to}$ spanned by the bijective-on-objects functors.  
+subcategory of the arrow category $\CompCat^{\to}$ spanned by the bijective-on-objects functors.
 
-\begin{named}{Theorem B}
+\begin{named}{Theorem B}\label{thm:TheoremB}
    There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=0em]
-         \int^{\CompCat}\Lax(\textrm{--},\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
+         \int^{\cat{C}\in\CompCat}\Lax(\cat{C},\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
             && \CompCat^{\bo} \ar[dl,two heads,"\dom"] \\
             & \CompCat &
       \end{tikzcd}
@@ -255,20 +253,25 @@ subcategory of the arrow category $\CompCat^{\to}$ spanned by the bijective-on-o
 \end{named}
 
 Recall from~\cite{JoyalStreetVerity} that traced categories are full subcategories of compact
+<<<<<<< HEAD
 categories.  The Int construction, applied to a traced category $\cat{C}$, returns the smallest
 compact category $\Int(\cat{C})$ of which it is a monoidal subcategory; we call $\Int(\cat{C})$ the
+=======
+categories. The Int construction, applied to a traced category $\cat{C}$, returns the smallest
+compact category $\Int(\cat{C})$ of which it is a subcategory; we call $\Int(\cat{C})$ the
+>>>>>>> origin/new_version
 \emph{compact closure} of $\cat{C}$. We will recall these notions in Sections~\ref{sec:intuition_for_traced}~and~\ref{sec:compact_and_int}.
 
-It turns out that if our compact category $\cat{C}$ is the compact closure of a traced category
-$\cat{D}$, then~\ref{thm:Theorem B} lifts to a result about $\cat{D}$.  We record this result
-as~\ref{cor:Corollary B}, from which~\ref{thm:Theorem_A} follows.  These are proved in
-Section~\ref{sec:generalization}.
+It turns out that if our compact category $\cat{C}$ is the compact closure of some traced category
+$\cat{D}$, then~\ref{thm:TheoremB} lifts to a result about $\cat{D}$. We record this result
+as~\ref{cor:CorollaryB}, from which~\ref{thm:TheoremA} follows. These are proved in
+Section~\ref{sec:deducing}.
 
-\begin{named}{Corollary B}
+\begin{named}{Corollary B}\label{cor:CorollaryB}
    There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=0em]
-         \int^{\TrCat}\Lax(\Int(\textrm{--}),\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
+         \int^{\cat{C}\in\TrCat}\Lax(\Int(\cat{C}),\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
             && \TrCat^{\bo} \ar[dl,two heads,"\dom"] \\
             & \TrCat &
       \end{tikzcd}
@@ -276,14 +279,16 @@ Section~\ref{sec:generalization}.
 \end{named}
 
 
-\section{Wiring Diagrams and $\Cob$}\label{sec:wds and cob}
+\section{Wiring Diagrams, cobordisms, and traced categories}
 
-In this section, we more carefully explain the equivalence between the category of traced categories
+In this section, we give a bit more intuition about the connection between wiring diagrams and cobordisms, and the equivalence between the category of traced categories
 and the category of cobordism algebras.
+
+\subsection{Wiring diagrams and $\Cob$}\label{sec:wds_and_cob}
 
 The objects in $\Cob$ are signed sets $(\inp{X},\outp{X})$, each of which can be drawn as a box with
 input wires $\inp{X}$ drawn entering the box, on its left, and output wires $\outp{X}$ drawn exiting
-the box, on its right.  We call the latter style \emph{an interface}.
+the box, on its right. We call the latter style \emph{an interface}.
 
 \[
    \begin{tikzpicture}[node distance=0 and 0, baseline=(current bounding box.center)]
@@ -300,7 +305,7 @@ the box, on its right.  We call the latter style \emph{an interface}.
 \]
 
 Wiring diagrams seem to be a new way to visualize morphisms in the symmetric monoidal category
-$\Cob$ of 1-dimensional oriented cobordisms.
+$\Cob$ of 1-dimensional oriented cobordisms. In fact, they are better suited to the operad associated to $\Cob$. The following shows the two approaches to drawing a 2-ary morphism $X_1,X_2\to Y$:
 
 \[
    \begin{tikzpicture}[wiring diagram, baseline=(current bounding box.center)]
@@ -310,7 +315,7 @@ $\Cob$ of 1-dimensional oriented cobordisms.
       \draw[label]
           node[above left=of Y_in1]     {$\inp{Y}_a$}
           node[above left=of Y_in2]     {$\inp{Y}_b$}
-          node[above right=of Y_out1]   {$\outp{Y}_a$}
+          node[above right=of Y_out1]   {$\outp{Y}_c$}
           node[above left=of X1_in1]    {$\inp{X}_{1a}$}
           node[above left=of X1_in2]    {$\inp{X}_{1b}$}
           node[above right=of X1_out1]  {$\outp{X}_{1c}$}
@@ -346,11 +351,84 @@ $\Cob$ of 1-dimensional oriented cobordisms.
    \end{tikzpicture}
 \]
 
+\subsection{$\Cob$-algebras and traced categories}\label{subsec:cobalg_and_trCat}
+
+Here we sketch the equivalence of categories 
+$$\LCob{\cat{O}}\alg\equiv\TrCat_{\cat{O}}$$
+from Section~\ref{sec:statement_of_main_thm}. We will see that the same data are required, and the same conditions are
+satisfied, whether one is specifying a lax functor $P\in\LCob{\cat{O}}\alg$ or a traced category
+$\cat{C}\in\TrCat_{\cat{O}}$ with objects generated by $\cat{O}$. 
+
+First, for each box $X=(\inp{X},\outp{X})$ that might appear in a string diagram, both $P\colon\LCob{\cat{O}}\to\Set$ and
+$\cat{C}$ require a set, $P(X)$ and $\Hom_{\cat{C}}(\inp{X},\outp{X})$, respectively.
+Second, for each string diagram, both $P$ and $\cat{C}$ require a function: an action on morphisms,
+in the case of $P$, and a formula for performing the required compositions, tensors, and traces, in
+the case of $\cat{C}$. The condition that $P$ is functorial corresponds to the fact that $\cat{C}$
+satisfies the axioms of traced categories. 
+
+We will briefly specifying how to construct a lax functor $P$ from a traced category $(\cat{C},\otimes,I,\Tr)$, whose objects are freely generated by $\cat{O}$. We will abuse notation slightly as follows: Given a relative set
+$\iota\colon Z\to\cat{O}$, we will use the same symbol $Z$ to denote
+the tensor $\bigotimes_{z\in Z}\iota(z)$ in $\cat{C}$. 
+
+For an oriented 0-manifold $X=\inp{X}\sqcup \outp{X}$ over $\cat{O}$, we
+set $P(X)\coloneqq\Hom_{\cat{C}}(\inp{X},\outp{X})$. Given a cobordism $\Phi\colon X\to Y$, we need a function $P(\Phi)\colon P(X)\to P(Y)$. For any cobordism $\Phi$, there exist
+$A,B,C,D,E\in\Ob\cat{C}$ such that $\inp{X}\cong C\otimes A$, $\outp{X}\cong C\otimes B$,
+$\inp{Y}\cong A\otimes D$, $\outp{Y}\cong B\otimes D$, and $E$ is the set of floating loops in $\Phi$;
+thus $\Phi$ is essentially equivalent to the cobordism shown on the right side of (\ref{eq:cob_and_trace_pic}).
+\begin{equation}\label{eq:cob_and_trace_pic}
+   \begin{tikzpicture}[wiring diagram, bby=1.4ex, baseline=(current bounding box.center)]
+      \node[bb port sep=1.5, bb={2}{2}] (domain) {$f$};
+      \node[bb={2}{2}, fit={(domain) ($(domain.north)+(0,3)$) ($(domain.south)-(0,1)$)}, bb name=$P(\Phi)(f)$] (codomain) {};
+      \draw[ar] (codomain_in1') to (domain_in2);
+      \draw[ar] (domain_out2) to (codomain_out1');
+      \draw[ar] let \p1=(domain.north east), \p2=(domain.north west), \n1={\y1+\bby}, \n2=\bbportlen in
+          (domain_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (domain_in1);  %Trace on C
+      \draw[ar] let \p1=(domain.south west), \p2=(domain.south east), \n1={\y1-\bby}, \n2=\bbportlen in
+          (codomain_in2') to[in=180] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=0] (codomain_out2'); %Identity on D
+      \draw[ar] let \p1=(domain.north east) in
+          (\x1+.7*\bbx,\y1+\bby) to[in=0] (\x1+.7*\bbx,\y1+2*\bby) -- (\x1+.6*\bbx,\y1+2*\bby) to[out=180] (\x1+.6*\bbx,\y1+\bby) -- (\x1+.7*\bbx,\y1+\bby);%Loop
+      \draw[label] let \p1=(domain.north east) in
+          node[below left=of codomain_in1]     {$A$}
+          node[below left=of codomain_in2]     {$D$}
+          node[below right=of codomain_out1]    {$B$}
+          node[below right=of codomain_out2]    {$D$}
+          node[above left=.6 and 0 of codomain_out1']  {$E$}
+          node[below left=of domain_in1]     {$C$}
+          node[below left=of domain_in2]     {$A$}
+          node[below right=of domain_out2]    {$B$}
+          node[below right=of domain_out1]   {$C$};
+   \end{tikzpicture}
+   \qquad\qquad
+   \begin{tikzpicture}[x=1cm,y=1ex,node distance=1 and 1,semithick,every label quotes/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},every to/.style={out=0,in=180},baseline=(current bounding box.center)]
+      \node ["$A$" left] (X1a) {$-$};
+      \node [above=0.25 of X1a] {$X$};
+      \node [below=0 of X1a, "$C$" left] (X1b) {$-$};
+      \node [below=0 of X1b, "$C$" left] (X2a) {$+$};
+      \node [below=0 of X2a, "$B$" left] (X2b) {$+$};
+      \node [right=2 of X1a, "$A$" right] (Y1a) {$-$};
+      \node [above=0.25 of Y1a] {$Y$};
+      \node [below=0 of Y1a, "$D$" right] (Y1b) {$-$};
+      \node [below=0 of Y1b, "$D$" right] (Y2a) {$+$};
+      \node [below=0 of Y2a, "$B$" right] (Y2b) {$+$};
+      \node [right=1.45 of X2a, "$E$" left] {};
+      \draw (X1a) to (Y1a);
+      \draw (X1b) to[in=0] (X2a);
+      \draw (X2b) to (Y2b);
+      \draw (Y1b) to[in=180,out=180] (Y2a);
+      \draw ($(X1b)+(1.25,-2.75)$) to[in=0] ($(X1b)+(1.25,-0.25)$);
+      \draw ($(X1b)+(1.25,-0.25)$) to[in=180,out=180] ($(X1b)+(1.25,-2.75)$);
+   \end{tikzpicture}
+\end{equation}
+With the above notation, for $f\in P(X)$ we can follow the string diagram (left of (\ref{eq:cob_and_trace_pic})) and define
+\begin{equation}\label{eq:cob algebra formula}
+   P(\Phi)(f)\coloneqq\Tr_{A,B}^C(f)\otimes D\otimes\Tr^E_{I,I}(\id_E).
+\end{equation}
+
 
 \section{Applications of the operadic perspective}
 
 The operadic perspective on traced categories may be useful in concrete applications, such as for
-modeling nested process diagrams.  It may also be useful in mathematics, because the operad $\Cob$,
+modeling nested process diagrams. It may also be useful in pure mathematics, because the operad $\Cob$,
 which indexes traced categories, can be easily modified to model a variety of other doctrines.
 These two applications will be discussed in more detail in
 Sections~\ref{sec:modular}~and~\ref{sec:math application} respectively.
@@ -358,15 +436,15 @@ Sections~\ref{sec:modular}~and~\ref{sec:math application} respectively.
 \subsection{Modular design}\label{sec:modular}
 
 When designing or investigating a complex system, it is often useful to think in terms of
-interacting subsystems, put together to make a larger whole.  In manufacturing, this is often called
-\emph{modular design}.  Each object in $\Cob$ represents an interface, or \emph{module}, with a
-fixed number and type of inputs and outputs.  The morphisms in $\Cob$ correspond to strategies by
-which these interfaces can be put together into a process, which itself has an interface.
+interacting subsystems, put together to make a larger whole. In manufacturing, this is often called
+\emph{modular design}. Each object in $\Cob$ represents an interface, or \emph{module}, with a
+fixed number and type of inputs and outputs. The morphisms in $\Cob$ correspond to strategies by
+which these interfaces can be wired together into a process, which itself has an interface.
 
-An algebra $P\colon\Cob\to\Set$ provides semantics for these boxes.  For each interface $X$, the set
-$P(X)$ represents the set of ``fillers'' for this interface.  For example, one might imagine that
+An algebra $P\colon\Cob\to\Set$ provides semantics for these boxes (\cite{RupelSpivak},\cite{VagnerSpivakLerman}). For each interface $X$, the set
+$P(X)$ represents the set of ``fillers'' for this interface. For example, one might imagine that
 each interface $X$ can be filled by any state machine having that interface; in this case $P(X)$ is
-the set of such state machines.  For a morphism $\varphi\colon X_1,\ldots,X_n\to Y$, the function
+the set of such state machines. For a morphism $\varphi\colon X_1,\ldots,X_n\to Y$, the function
 $P(\varphi)$ tells us how to construct a filler of type $Y$, given fillers on each $X_i$.
 Composition of cobordisms are drawn as nested diagrams:
 
@@ -409,30 +487,22 @@ Composition of cobordisms are drawn as nested diagrams:
 \end{tikzpicture}
 \]
 
-In our model for modular design, any way to chunk the small boxes inside the big one will give the
-same result.  This is a reflection of the functoriality of $P\colon\Cob\to\Set$, which says that
-commutative diagrams in $\Cob$ are sent to commutative diagrams of sets.  Nested structures, given
+In our model for modular design, any way to chunk the small boxes inside the big one will yield the
+same result. This is a reflection of the functoriality of $P\colon\Cob\to\Set$, which says that
+commutative diagrams in $\Cob$ are sent to commutative diagrams of sets. Nested structures, given
 by composition of such morphisms, may be useful for the kind of chunking that humans use to
 understand complex systems~\cite{Miller}.
 
 \subsection{Mathematical application: varying the operad}\label{sec:math application}
 
-Formalizing modular design using operads, as in\todo{Are these in print yet?}\todo[author=David]{No,
-why do you ask?}~\cite{Spivak},~\cite{RupelSpivak}, and~\cite{VagnerSpivakLerman} was the original
+Formalizing modular design using operads, as in~\cite{Spivak},~\cite{RupelSpivak}, and~\cite{VagnerSpivakLerman} was the original
 motivation for the present paper, as the drawings had strong similarities to those found in traced
-categories.  However, it should be noted that none of these papers actually uses $\Cob$ as the
-indexing category for their algebras.  In fact, they use three different operads, of varying degrees
-of similarity to $\Cob$.  For example, there is an orthogonal factorization system on $\Cob$, for
-which morphisms in the left class $\cat{L}$ include no closed loops, and~\cite{VagnerSpivakLerman}
-is based on the suboperad spanned by $\cat{L}$.
+categories. However, it should be noted that none of these papers actually uses $\Cob$ as the
+indexing category for their algebras. In fact, they use three different operads, of varying degrees
+of similarity to $\Cob$. For example, there is an orthogonal factorization system on $\Cob$, for
+which morphisms in the left class $\cat{L}$ include no closed loops, and the operad of interest in~\cite{VagnerSpivakLerman} is $\cat{L}$.
 
-It is easy to imagine operads with the same objects as $\Cob$, but different morphisms, simply by
-imagining generalizations of the pictures.  String diagrams $\varphi\colon X\to Y$ in $\Cob$ include
-no split wires and no ``dangling'' wires, but those conditions can be relaxed.  Said mathematically,
-an oriented cobordism $\varphi$ includes the data of a function
-$$\varphi_1\colon\inp{X}\sqcup\outp{Y}\to\outp{X}\sqcup\inp{Y},$$ which is both injective and
-surjective.  Either of those conditions can be dropped, e.g., requiring surjectivity but not
-requiring injectivity
+If one wished to make minor modifications in the axioms of traced categories to create some new sort of category $\ncat{Tr'Cat}$, one may proceed by imagining the string diagrams make sense in $\ncat{Tr'Cat}$. For example, one may want to consider cartesian traced categories, in which wires can split or terminate abruptly. Or they may want to allow splitting but not allow abrupt termination. 
 \begin{center}
 \begin{tikzpicture}[wiring diagram,bb min width =.7cm, bb port sep =1, bbx=.6cm,bb port length=3pt]
    \node[bb port sep=1.6, bb={2}{2}, bb name=$f$] (X1) {};
@@ -446,20 +516,18 @@ requiring injectivity
       (X2_out1) to[in=0] (\x1+.7*\n2,\n1) -- (\x2-.7*\n2,\n1) to[out=180] (X1_in1);
 \end{tikzpicture}
 \end{center}
-to generalize the indexing category.
-
-So while it is difficult to see how to make subtle changes in the axioms of traced categories, it is
-much more straightforward to see how to make subtle changes in the cobordism operads, which index
-traced categories.
+We can accommodate the desired notion of string diagrams for $\ncat{Tr'Cat}$ by modifying the indexing operad $\Cob$ to some $\Cob'$. Using $\cat{L}$ for dynamical systems in \cite{VagnerSpivakLerman} is an example of this. As another, suppose that, as above, we want string diagrams in which wires can split but not terminate. Noting that an oriented cobordism $\varphi$ includes the data of a function
+$$\varphi_1\colon\inp{X}\sqcup\outp{Y}\to\outp{X}\sqcup\inp{Y},$$ 
+which is both injective and surjective, we can obtain the desired indexing operad $\Cob'$ by requiring surjectivity but not injectivity in $\varphi$.
 
 
-\section{Plan of the paper}
+\section{Plan of the paper} \todo{This plan needs work!}
 
-The paper is organized as follows.  In Section~\ref{sec:traced categories} we give more details on
-the connection between traced monoidal categories, their string diagrams, and algebras on the operad
-of cobordisms.  In Section~\ref{sec:generalization} we prove~\ref{thm:Theorem B}
-and~\ref{cor:Corollary B}, which compare lax set-valued functors to strong bijective-on-objects
-functors, respectively for compact and traced categories.  Our main result,~\ref{thm:Theorem_A},
+The paper is organized as follows. In Section~\ref{sec:traced categories} we give more details on
+the connection between traced categories, their string diagrams, and algebras on the operad
+of cobordisms. In Section~\ref{sec:deducing} we prove~\ref{thm:TheoremB}
+and~\ref{cor:CorollaryB}, which compare lax set-valued functors to strong bijective-on-objects
+functors, respectively for compact and traced categories. Our main result,~\ref{thm:TheoremA},
 which says that traced categories are $\Cob$-algebras, follows easily.
 
 \section*{Acknowledgments}
@@ -469,24 +537,20 @@ picture in \cite{RupelSpivak} to string diagrams in traced categories.
 
 \chapter{Categorical preliminaries}\label{sec:traced categories}
 
-In this section we remind the reader of some categorical preliminaries.  Basic definitions and facts
+In this section we remind the reader of some categorical preliminaries. Basic definitions and facts
 about monoidal, traced, and compact categories, lax and strong functors, and the Int construction
-are given in Sections~\ref{sec:prelim monoidal}~through~\ref{sec:compact_and_int}.  The fact that
+are given in Sections~\ref{sec:prelim_monoidal}~through~\ref{sec:compact_and_int}. The fact that
 the free compact category on a set has an algebraic description in terms of bijections between
 signed sets, and the fact that it has a geometric description in terms of 1-dimensional oriented
-cobordisms is recalled in Section~\ref{sec:free and geometry}.  In Section~\ref{sec:factorization
-system} we discuss an orthogonal factorization system on our three flavors of monoidal categories,
-which we will use repeatedly throughout the rest of the paper.  Finally, in
-Section~\ref{sec:profunctors} we discuss profunctors between categories and monoidal categories.
+cobordisms is recalled in Section~\ref{sec:free and geometry}. 
 
+\section{Monoidal categories}\label{sec:prelim_monoidal}
 
-\section{Monoidal categories}\label{sec:prelim monoidal}
-
-Let $\cat{C}$ and $\cat{D}$ be monoidal categories.  Recall that a functor
+Let $\cat{C}$ and $\cat{D}$ be monoidal categories. Recall that a functor
 $F\colon\cat{C}\to\cat{D}$ is called \emph{lax monoidal} if it is equipped with a morphism
 \[
 \begin{tikzcd}
-   I_D \rar{\epsilon} & F(I_C)
+   I_D \rar{\mu} & F(I_C)
 \end{tikzcd}
 \]
 and a natural transformation
@@ -499,8 +563,8 @@ such that for all $X,Y,Z\in\cat{C}$, the diagram (suppressing associators)
 \[
 \begin{tikzcd}
    F(X)\otimes F(Y) \otimes F(Z)
-      \rar{\id\otimes\mu}
-      \dar[swap]{\mu\otimes\id}
+      \rar{F(X)\otimes\mu}
+      \dar[swap]{\mu\otimes F(Z)}
    & F(X)\otimes F(Y\otimes Z)
       \dar{\mu} \\
    F(X\otimes Y)\otimes F(Z)
@@ -512,7 +576,7 @@ commutes, and for all $X\in\cat{C}$ the two diagrams
 \[
 \begin{tikzcd}
    I_D\otimes F(X)
-      \dar[swap]{\epsilon\otimes\id}
+      \dar[swap]{\mu\otimes F(X)}
    & F(X)
       \lar[swap]{l_{F(X)}}
       \dar{F(l_X)} \\
@@ -523,7 +587,7 @@ commutes, and for all $X\in\cat{C}$ the two diagrams
 \qquad
 \begin{tikzcd}
    F(X) \otimes I_D
-      \dar[swap]{\id\otimes\epsilon}
+      \dar[swap]{F(X)\otimes\mu}
    & F(X)
       \lar[swap]{r_{F(X)}}
       \dar{F(r_X)} \\
@@ -532,8 +596,8 @@ commutes, and for all $X\in\cat{C}$ the two diagrams
    & F(X\otimes I_C)
 \end{tikzcd}
 \]
-commute.
-If $\epsilon$ and $\mu$ are isomorphisms, then $F$ is \emph{strong}.
+commute, where $l$ and $r$ are unitors.
+If all $\mu$'s are isomorphisms, then $F$ is \emph{strong}.
 
 If $\cat{C}$ and $\cat{D}$ are symmetric monoidal, then $F$ is a \emph{lax symmetric monoidal
 functor} if it is lax monoidal, and commutes with the symmetries, in the sense that the diagram
@@ -566,31 +630,34 @@ $\alpha\colon F\to G$ is called a \emph{monoidal transformation} if the diagrams
 \end{tikzcd}
 \qquad
 \begin{tikzcd}[column sep=tiny]
-   {} & I_D \dlar[swap]{\epsilon} \drar{\epsilon} & \\
+   {} & I_D \dlar[swap]{\mu} \drar{\mu} & \\
    F(I_C) \ar{rr}[swap]{\alpha_I} && G(I_C)
 \end{tikzcd}
 \]
 commute.
 
-Let $\SSymMonCat$ denote the bicategory of symmetric monoidal categories and strong monoidal
-functors, and let $\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal
-transformations from $\cat{C}$ to $\cat{D}$.  Let $\CompCat$ denote the full subcategory of
-$\SSymMonCat$ spanned by the compact categories.
+Let $\MMonCat$ denote the 2-category of symmetric monoidal categories, strong monoidal functors, and
+monoidal transformations, and let $\MonCat$ denote the underlying 1-category. Let
+$\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal transformations
+from $\cat{C}$ to $\cat{D}$. 
 
+\begin{warning}
+For the rest of this artcile, whenever we discuss monoidal categories, we will mean symmetric monoidal categories. For example, see the definition of $\MMonCat$ above.
+\end{warning}
 
 \section{Traced categories}\label{sec:intuition_for_traced}
 
-A trace on a symmetric monoidal category is a collection of functions
+A \emph{trace structure} on a (symmetric) monoidal category $\cat{M}$ is a collection of functions
 \begin{equation}\label{dia:trace function}
-   \Tr^U_{X,Y}\colon\Hom(U\otimes X,U\otimes Y)\to\Hom(X,Y)
+   \Tr^U_{X,Y}\colon\Hom_{\cat{M}}(U\otimes X,U\otimes Y)\to\Hom_{\cat{M}}(X,Y)
 \end{equation}
-for $U,X,Y\in\Ob(\cat{M})$ satisfying several axioms.  When traced categories are defined, one often
-sees the trace functions, as well as each of the axioms, accompanied by a picture.  For example,
-(\ref{dia:trace function}) applied to an arbitrary $f\colon U\otimes X\to U\otimes Y$ might be
+for $U,X,Y\in\Ob(\cat{M})$ satisfying several, say six, equational axioms. When traced categories are defined, e.g., in \cite{JoyalStreetVerity}, one often
+sees the trace functions, as well as each of the axioms, accompanied by a picture. For example,
+(\ref{dia:trace function}) applied to an arbitrary morphism $f\colon U\otimes X\to U\otimes Y$ might be
 accompanied by this picture:
 $$
-\begin{tikzpicture}[wiring diagram]
-   \node[bb={2}{2}, bb name=$f$] (domain) {};
+\begin{tikzpicture}[wiring diagram,bby=1.2ex]
+   \node[bb={2}{2}] (domain) {$f$};
    \node[bb={1}{1}, fit={(domain) ($(domain.north)+(0,1)$)}] (codomain) {};
    \draw[ar] (codomain_in1') to (domain_in2);
    \draw[ar] (domain_out2) to (codomain_out1');
@@ -605,9 +672,9 @@ $$
        node[below right=of domain_out1]   {$U$};
 \end{tikzpicture}
 $$
-This can be recognized as a cobordism between oriented 0-manifolds, as we will discuss in
-Section~\ref{sec:Cob morphisms as wds}.  Each of the six axioms is vacuous from this perspective, in
-the sense that both sides of the equation correspond to the same cobordism.  For example, here are
+This can be recognized as a cobordism between oriented 0-manifolds, as we discussed in
+Section~\ref{sec:wds_and_cob}. Each of the six axioms is vacuous from this perspective, in
+the sense that both sides of the equation correspond to the same cobordism (up to diffeomorphism). For example, here are
 the axioms of \emph{dinaturality} and \emph{superposition}:
 \begin{itemize}
    \item For every $f\colon U\otimes X\to V\otimes Y$ and $g:V\to U$ we have
@@ -633,7 +700,7 @@ the axioms of \emph{dinaturality} and \emph{superposition}:
                 node[below right=of X1_out2]    {$Y$}
                 node[below right=of X1_out1]   {$V$};
          \end{tikzpicture}
-         =
+         \quad=\quad
          \begin{tikzpicture}[wiring diagram,baseline=(current bounding box.center)]
             \node[bb={2}{2}, bb name=$f$] (X1) {};
             \node[bb port sep=1,bb={1}{1}, left=.7 of X1_in1, bb name=$g$] (X2) {};
@@ -683,7 +750,7 @@ the axioms of \emph{dinaturality} and \emph{superposition}:
              node[below left=of X2_in1] {$W$}
              node[below right=of X2_out1] {$Z$};
       \end{tikzpicture}
-      =
+      \quad=\quad
       \begin{tikzpicture}[wiring diagram,baseline=(current bounding box.center)]
          \node[bb={2}{2}, bb name=$f$] (X1) {};
          \node[bb port sep=1,bb={1}{1}, below=of X1, bb name=$g$] (X2) {};
@@ -716,39 +783,34 @@ the axioms of \emph{dinaturality} and \emph{superposition}:
       \]
 \end{itemize}
 
-The definition of traced categories and traced functors can be found in~\cite{JoyalStreetVerity},
-where they define the 2-morphisms between traced functors to be monoidal transformations. We denote
-this 2-category by $\TrCat$.
-\todo[author=Patrick,inline]{Fix definition of 2-morphisms to be monoidal natural isos, and cite the
-correction paper as well}
+The definition of traced categories and traced functors can be found in~\cite{JoyalStreetVerity}. However, those authors define the 2-morphisms between traced functors to be monoidal transformations, whereas this choice does not behave appropriately with their $\Int$ construction (for example $\Int$ would not be 2-functorial). A correction was made in \cite{HK}, where it was shown that the appropriate 2-morphisms between traced functors are natural \emph{isomorphisms}. We denote by $\TTrCat$ the corrected 2-category of traced categories (where 2-cells are invertible), and we denote its underlying 1-category by $\TrCat$.
 
 \subsection{The categories $\Prop$ and $\TrProp$ of props and traced props}\label{sec:defining props}
+\todo{Do we want to use this section anywhere?}
 
-One can think of props as symmetric monoidal categories that are free on a fixed \emph{label set}
+One can think of a prop as a symmetric monoidal category whose objects are free on a fixed set of \emph{labels}
 (also known as its set of colors). Functors between props need to descend to a function between
 label sets. We define a traced prop to be a traced category whose underlying symmetric monoidal
 category has the structure of a prop. Thus we have defined the 1-categories $\Prop$ and $\TrProp$;
-we summarize our definitions by the pullback diagram
+we summarize our definitions by the pullback diagram of categories
 \[
 \begin{tikzcd}
-   \TrProp\ar[r]\ar[d]\arrow[dr, phantom, "\lrcorner", very near start]&\TrCat_1\ar[d]\\
-   \Prop\ar[r]\ar[d,"\Ob"']\arrow[dr, phantom, "\lrcorner", very near start]&\SSymMonCat_1\ar[d,"\Ob"]\\
-   \Set\ar[r,"\List"']&\Set
+   \TrProp\ar[r]\ar[d]\arrow[dr, phantom, "\lrcorner", very near start]&\TrCat\ar[d]\\
+   \Prop\ar[r]\ar[d,"\tn{Labels}"']\arrow[dr, phantom, "\lrcorner", very near start]&\MonCat\ar[d,"\Ob"]\\
+   \Set\ar[r,"\TM"']&\Set
 \end{tikzcd}
 \]
-where $\SSymMonCat_1$ (resp. $\TrCat_1$) is the underlying 1-category of $\SSymMonCat$ (resp.\ of
-$\TrCat$), and where $\List\colon\Set\to\Set$ is the free monoid monad. This definition of $\Prop$
+where $\TM\colon\Set\to\Set$ is the free monoid monad. This definition of $\Prop$
 agrees with that in~\cite{HackneyRobertson}.\todo{Check this.}
 
 
 \section{Compact categories and the Int construction}\label{sec:compact_and_int}
 
-Let $\SSymMonCat$ denote the 2-category of symmetric monoidal categories, strong monoidal functors,
-and strong monoidal natural transformations. We will denote by $\CCompCat\ss\SSymMonCat$ the full
-sub-2-category spanned by the compact categories.  Recall that a compact category is a symmetric
-monoidal category $(\cat{C},\otimes,I)$ with the property that for every object $X\in\Ob\cat{C}$
-there exists an object $X^*$ and morphisms $\eta_X\colon I\to X^*\otimes X$ and $\epsilon_X\colon
-X\otimes X^*\to I$ such that the following diagrams commute:
+We will denote by $\CCompCat$ the full sub-2-category of $\MMonCat$ spanned by the compact symmetric
+monoidal categories (or just compact categories for short).  Recall that a compact category is a
+symmetric monoidal category $(\cat{C},\otimes,I)$ with the property that for every object
+$X\in\Ob\cat{C}$ there exists an object $X^*$ and morphisms $\eta_X\colon I\to X^*\otimes X$ and
+$\epsilon_X\colon X\otimes X^*\to I$ such that the following diagrams commute:
 \begin{equation*}
    \begin{tikzcd}[column sep=small]
       X\arrow[r,"\id_X"]\arrow[d,"\cong"'] & X \\
@@ -764,23 +826,23 @@ X\otimes X^*\to I$ such that the following diagrams commute:
 \end{equation*}
 
 Every compact category $\cat{C}$ has a canonical trace structure, defined on a morphism $f\colon
-U\otimes X\to U\otimes Y$ to morally be $\epsilon_U\circ f\circ \eta_U$.  More precisely, if
-$s_{A,B}$ is the symmetry isomorphism, one defines
+U\otimes X\to U\otimes Y$ to morally be $\epsilon_U\circ f\circ \eta_U$. More precisely, if
+$\sigma_{A,B}$ is the symmetry isomorphism, one defines
 \begin{equation*}
-   \Tr^U_{X,Y}[f]\coloneqq(\epsilon_U\otimes Y)\circ (s_{U^*,U}\otimes Y)\circ (U^*\otimes f)\circ (\eta_U\otimes X)
+   \Tr^U_{X,Y}[f]\coloneqq(\epsilon_U\otimes Y)\circ (\sigma_{U^*,U}\otimes Y)\circ (U^*\otimes f)\circ (\eta_U\otimes X)
 \end{equation*}
 %\todo[color=yellow]{does this formula make sense as written? i.e. it doesn't seem to give a map
 %$X\to Y$?}
-Thus we have a functor $U\colon\CCompCat\to\TTrCat$.  It is shown in~\cite{JoyalStreetVerity} that
+Thus we have a functor $\UCT\colon\CCompCat\to\TTrCat$. It is shown in~\cite{JoyalStreetVerity}~and~\cite{HK} that
 this functor is the right half of a 2-adjunction
 \begin{equation}\label{dia:traced compact adjunction}
 \begin{tikzcd}
-   \TTrCat\arrow[r,shift left=.5ex, "\Int"]&\CCompCat\arrow[l,shift left=.5ex,"U"]
+   \TTrCat\arrow[r,shift left=.5ex, "\Int"]&\CCompCat\arrow[l,shift left=.5ex,"\UCT"]
 \end{tikzcd}
 \end{equation}
-the left half of which we describe now describe.
+the left half of which we now describe on the level of objects $\cat{M}\in\Ob\TTrCat$.
 
-For a traced category $\cat{M}$ let $\widetilde{\cat{M}}=\Int(\cat{M})$ denote the category with
+For a traced category $\cat{M}$, let $\widetilde{\cat{M}}$ denote the category with
 objects given by pairs $(\inp{X},\outp{X})$ where $\inp{X},\outp{X}\in \Ob(\cat{M})$ and morphisms
 given by
 \[
@@ -790,7 +852,7 @@ For morphisms $\Phi:(\inp{X},\outp{X})\to(\inp{Y},\outp{Y})$ and $\Psi:(\inp{Y},
 \[
    \Psi\circ\Phi\coloneqq\Tr^{\outp{Y}}_{\inp{X}\otimes \outp{Z},\outp{X}\otimes \inp{Z}}\Big[\big(\gamma_{\outp{X},\outp{Y}}\otimes \inp{Z}\big)\circ\big(\outp{X}\otimes\Psi\big)\circ\big(\Phi\otimes \outp{Z}\big)\circ\big(\gamma_{\outp{Y},\inp{X}}\otimes \outp{Z}\big)\Big].
 \]
-It is shown in~\cite{JoyalStreetVerity} that $\widetilde{\cat{M}}$ is a compact category whose tensor is given by
+It is shown in~\cite{JoyalStreetVerity} that $\Int(\cat{M})\coloneqq\widetilde{\cat{M}}$ is a compact category whose tensor is given by
 \[
    (\inp{X},\outp{X})\odot(\inp{Y},\outp{Y})\coloneqq(\inp{X}\otimes \inp{Y},\outp{X}\otimes \outp{Y})
 \]
@@ -806,16 +868,14 @@ with unit object $\tilde I\coloneqq(I,I)$ and duality ${(\inp{X},\outp{X})}^\vee
 %
 %\end{lemma}
 %
-\todo{Perhaps we should explain somewhere how the adjunction works, and update the proof of
-Lemma~\ref{lemma:more fully faithfulness} if necessary.}
 
-\begin{lemma}\label{lemma:fully faithful and trace}
+\begin{lemma}\label{lemma:fully_faithful_and_trace}
 The following facts hold for any traced category $\cat{C}$:
 \begin{compactitem}
    \item The unit $\cat{C}\to\Int(\cat{C})$ is fully faithful.
    \item If $\cat{D}$ is a category and $F\colon\cat{D}\to\cat{C}$ a fully faithful symmetric
       monoidal functor, then $\cat{D}$ has a unique trace for which $F$ is a traced functor.
-   \item If $\cat{C}$ is compact then the unit $\cat{C}\To{\simeq}\Int(\cat{C})$ is an equivalence.
+   \item If $\cat{C}$ is compact then the unit $\cat{C}\To{\equiv}\Int(\cat{C})$ is an equivalence.
 \end{compactitem}
 \end{lemma}
 \begin{proof}
@@ -824,21 +884,80 @@ The following facts hold for any traced category $\cat{C}$:
 
 \section{Free traced and compact categories, and geometry}\label{sec:free and geometry}
 
-\begin{proposition}\label{prop:free traced and compact}
-   Let $\cat{C}$ be a category.
-   The free traced category on $\cat{C}$ is...
-   The free compact category on $\cat{C}$ is $\Int(...)$.\todo{Fill this in}
-\end{proposition}
-\begin{proof}
-   Kelly, Laplaza ``Coherence for compact closed categories'' gives a combinatorial description of
-   the free compact category on one object.
+There are free/forgetful adjunctions\todo{Do we need $\FT$ and $\UT$? Reduce clutter by removing it throughout this section.}
+\begin{align*}
+   \FM\colon\Set &\leftrightarrows\MonCat:\!\UM \\
+   \FT\colon\Set &\leftrightarrows\TrCat:\!\UT \\
+   \FC\colon\Set &\leftrightarrows\CompCat:\!\UC
+\end{align*}
+We will write $\TM$ and $\TC$ for the respective monads induced on $\Set$. Note that $\TM$ is
+isomorphic to the free-monoid monad, while $\TC$ is isomorphic to the free-group monad.%
+\footnote{Note that $U_M$ is not the free-\emph{commutative}-monoid monad, even though the objects of $\MonCat$ are \emph{symmetric} monoidal categories, because the symmetries are encoded in natural isomorphisms, not equalities.
+}
+We will denote by $\FrMonCat$ and $\FrCompCat$ the full subcategories of $\MonCat$ and $\CompCat$
+respectively, spanned by objects which are free on a set. As always, these categories are isomorphic
+to the Kleisli categories of the monads: 
+\begin{align}\label{dia:TMvsFrMonCat}
+\FrMonCat&\iso\Set_{\TM}
+\\\nonumber
+\FrCompCat&\iso\Set_{\TC}.
+\end{align}
 
-   See Abramsky.
-\end{proof}
-\todo{Mention that this is folklore, though the proof is probably easily adapted}
+The forgetful functors between the categories of structured monoidal categories commute with the
+underlying set functors, i.e.~the following diagram commutes:
+%\begin{equation*}
+%	\begin{tikzcd}[column sep=large]
+%	\CompCat\ar[r,"\UCT"]\ar[rd,"\UC"']\ar[rr,bend left,"\UCM"]&\TrCat\ar[r,"\UTM"]\ar[d,"\UT"]&\MonCat\ar[dl,"\UM"]\\
+%	&\Set
+%	\end{tikzcd}
+%\end{equation*}
 
-\begin{proposition}\label{prop:free compact is Cob}
-   The free compact closed category on a set $\cat{O}$ is equivalent to $\Cob/\cat{O}$
+\begin{equation*}
+   \begin{tikzcd}
+      & \TrCat \ar[dr,"\UTM"] \ar[dd,"\UT" near start] & \\
+      \CompCat \ar[rr,crossing over,"\UCM"' near start] \ar[dr,"\UC"'] \ar[ru,"\UCT"]
+         && \MonCat \ar[dl,"\UM"] \\
+      & \Set &
+   \end{tikzcd}
+\end{equation*}
+Because the functor $\UCM\colon\CompCat\to\MonCat$ commutes with the right adjoints of the
+adjunctions to $\Set$, i.e., $\UM\UCM=\UC$, it induces a monad morphism $\alpha\colon\TC\to\TM$ (a natural transformation
+$\alpha\colon\TM\to\TC$ compatible with the units and multipications), given by the composition of
+the natural transformations
+%\begin{equation*}
+%   \begin{tikzcd}[column sep=large,row sep=0ex]
+%      \TM=\UM\FM \ar[r,"\UM\FM\eta_C"]
+%         & \UM\FM\UC\FC = \UM\FM\UM\UCM\FC \\
+%      \UM\FM\UM\UCM\FC \ar[r,"\UM\epsilon_M\UCM\FC"']
+%         & \UM\UCM\FC = \UC\FC = \TC
+%   \end{tikzcd}
+%\end{equation*}
+\begin{equation*}
+	\begin{tikzcd}[column sep=2cm]
+		\TM\ar[r,equal]\ar[d,dashed,"\alpha"']&\UM\FM\ar[r,"\UM\FM\eta_C"]&\UM\FM\UC\FC\ar[d,equal]\\
+		\TC&\UM\UCM\FC\ar[l,equal]&\UM\FM\UM\UCM\FC\ar[l,"\UM\epsilon_M\UCM\FC"]
+	\end{tikzcd}
+\end{equation*}
+The components $\alpha_{\cat{O}}$ of this transformation are simply the evident inclusion of the free monoid on a set
+$\cat{O}$ into the free group on $\cat{O}$. In this way, $\UCM$ induces a functor between the Kleisli categories in the other direction:
+\begin{equation}\label{eqn:FMC}
+   \FMC\colon\FrMonCat\to\FrCompCat
+\end{equation}
+
+%\begin{proposition}\label{prop:free traced and compact}
+%   Let $\cat{C}$ be a category.
+%   The free traced category on $\cat{C}$ is...
+%   The free compact category on $\cat{C}$ is $\Int(...)$.\todo{Fill this in}
+%\end{proposition}
+%\begin{proof}
+%   Kelly, Laplaza ``Coherence for compact closed categories'' gives a combinatorial description of
+%   the free compact category on one object.
+%
+%   See Abramsky.
+%\end{proof}
+
+\begin{proposition}\label{prop:free_compact_is_Cob}
+   The free compact closed category $\FC(\cat{O})$ on a set $\cat{O}$ is equivalent to $\LCob{\cat{O}}$
 \end{proposition}
 \begin{proof}
    Freyd, Yetter ``Braided compact closed categories with applications to low dimensional topology''
@@ -850,7 +969,9 @@ The following facts hold for any traced category $\cat{C}$:
    \todo{Fix this.}
 \end{proof}
 
-\chapter{Background on equipments}
+
+
+\chapter{Background on equipments}\label{sec:background_equipments}
 
 Let $\cat{C}$ and $\cat{D}$ be categories.
 Recall that a profunctor $M$ from $\cat{C}$ to $\cat{D}$, written
@@ -859,7 +980,7 @@ Recall that a profunctor $M$ from $\cat{C}$ to $\cat{D}$, written
    \cat{C} \ar[r,tick,"M"] & \cat{D},
 \end{tikzcd}
 \]
-is defined to be a functor $M\colon\op{\cat{C}}\times\cat{D}\to\Set$.  We can think of a profunctor
+is defined to be a functor $M\colon\op{\cat{C}}\times\cat{D}\to\Set$. We can think of a profunctor
 as a sort of graded bimodule: for each object $c\in\cat{C}$ and $d\in\cat{D}$ there is a set
 $M(c,d)$ of elements in the bimodule, and given an element $m\in M(c,d)$ and morphisms $f\colon
 c'\to c$ in $\cat{C}$ and $g\colon d\to d'$ in $\cat{D}$, there are elements $g\cdot m\in M(c,d')$
@@ -887,7 +1008,7 @@ Given two profunctors
    \cat{C} \ar[r,tick,shift left,"M"] \ar[r,tick,shift right,"N"'] & \cat{D}
 \end{tikzcd}
 \]
-define a profunctor morphism $\phi\colon M\Rightarrow N$ to be a natural transformation.  In other
+define a profunctor morphism $\phi\colon M\Rightarrow N$ to be a natural transformation. In other
 words, for each $c\in\cat{C}$ and $d\in\cat{D}$ there is a function $\phi_{c,d}\colon M(c,d)\to
 N(c,d)$ such that $\phi(f\cdot m \cdot g)=f\cdot\phi(m)\cdot g$ whenever it makes sense.
 
@@ -907,27 +1028,39 @@ N)(c,e)$ is the coequalizer of the diagram
 \end{tikzcd}
 \]
 where the two maps are given by the right action of $\cat{D}$ on $M$ and by the left action of
-$\cat{D}$ on $N$.  We can write elements of $(M\otimes N)(c,e)$ as tensors $m\otimes n$, where $m\in
-M(c,d)$ and $n\in N(d,e)$ for some $d\in\cat{D}$.  The coequalizer then implies that $(m\cdot
+$\cat{D}$ on $N$. We can write elements of $(M\otimes N)(c,e)$ as tensors $m\otimes n$, where $m\in
+M(c,d)$ and $n\in N(d,e)$ for some $d\in\cat{D}$. The coequalizer then implies that $(m\cdot
 f)\otimes n=m\otimes(f\cdot n)$ whenever the equation makes sense.
 
 For any category $\cat{C}$, there is a profunctor
 $\Hom_{\cat{C}}\colon\op{\cat{C}}\times\cat{C}\to\Set$, and these hom profunctors act as units for
-the tensor product.  Precisely, if $M$ is as above, there are canonical isomorphisms
+the tensor product. Precisely, if $M$ is as above, there are canonical isomorphisms
 $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 
 \section{Equipments}
-\todo[author=Patrick,inline]{Introduce framed bicategories}
+\todo[author=Patrick,inline]{Introduce equipments}
 \todo[author=Patrick,inline]{Give examples: $\dProf$, $\dMonProf$, $\dSpan$}
+\todo[author=David,inline]{Make sure to say that $\dProf_0=\Cat$, etc. I think this could be confusing for non-experts.}
+\todo[author=David,inline]{Discuss (here or elsewhere) that essential surjectivity is left pseudo-orthogonal to $\ff$ in $\Prof$.}
+
+\begin{definition}\label{def:local_equivalence}
+   An equipment functor $F\colon\dcat{X}\to\dcat{Y}$ is a \emph{local equivalence} if the square
+   \begin{equation*}
+      \begin{tikzcd}
+         \dcat{X}_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+            & \dcat{Y}_1 \ar[d,two heads] \\
+         \dcat{X}_0\times\dcat{X}_0 \ar[r]
+            & \dcat{Y}_0\times\dcat{Y}_0
+      \end{tikzcd}
+   \end{equation*}
+   is a pullback of categories.
+\end{definition}
 
 \section{The monoids and bimodules construction}
-\todo[author=Patrick,inline]{Define monoids construction}
-\todo[author=Patrick,inline]{Examples: $\dMod(\dSpan)\iso\dProf$}
+\todo[author=Patrick,inline]{Review monoids in an equipment}
 
-\todo[author=Patrick,inline]{Give monad structure}
-
-Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure.  The unit is a profunctor morphism
-$i\colon\Hom_{\cat{C}}\to M$.  So for any $f\colon c\to d$ in $\cat{C}$ there is an element
+Suppose $M\in\Prof(\cat{C},\cat{C})$ has a monoid structure. The unit is a profunctor morphism
+$i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element
 $i(f)\in M(c,d)$, such that $f\cdot i(g)\cdot h = i(f\circ g\circ h)$ whenever this makes sense.
 The multiplication $M\otimes M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and
 $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative, and satisfies the
@@ -940,74 +1073,107 @@ following equations whenever they make sense:
       i(g)\bullet m = g\cdot m
 \end{gather*}
 
+\begin{lemma}
+   Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor. Then
+   \begin{compactitem}
+      \item if $F$ is fully-faithful, then so is $\dMod(F)$,
+      \item if $F$ is a local equivalence, then so is $\dMod(F)$.
+   \end{compactitem}
+\end{lemma}
 
-\section{Exactness and the $(\bo,\ff)$ factorization}
+\begin{lemma}\label{lem:Mon_pullback}
+   Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor, and suppose $F$ is a local equivalence
+   (Definition~\ref{def:local_equivalence}). Then the induced square
+   \begin{equation*}
+      \begin{tikzcd}
+         \Mon(\dcat{X}) \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+            & \Mon(\dcat{Y}) \ar[d,two heads] \\
+         \dcat{X}_0 \ar[r]
+            & \dcat{Y}_0
+      \end{tikzcd}
+   \end{equation*}
+   is a pullback of categories.
+\end{lemma}
+
+
+\section{Exactness and the $(\bo,\ff)$ factorization}\label{sec:exactness_and_boff}
 
 \begin{definition}
-   Let $\begin{tikzcd}[column sep=small] C \ar[r,tick,"M"] & C \end{tikzcd}$ be a monad in a framed bicategory $\dcat{D}$.
-   The \emph{collage} of $M$ is an object $\Col{M}$ of $\dcat{D}$ together with a vertical morphism $\eta_M\colon C\to\Col{M}$ and a 2-cell
-   \[
+   Let $C\tickar C$ be a monoid in an equipment $\dcat{D}$. The \emph{collapse} of $M$ is an object
+   $\Col{M}$ of $\dcat{D}$ together with a vertical morphism $i_M\colon C\to\Col{M}$ and a 2-cell
+   \begin{equation*}
       \begin{tikzcd}
-         C \ar[r,tick,"M" domA] \ar[d,"\eta_M"']
-         & C \ar[d,"\eta_M"]
+         C \ar[r,tick,"M" domA] \ar[d,"i_M"']
+         & C \ar[d,"i_M"]
          \\
          \Col{M} \ar[r,tick,"\Col{M}"' codA]
          & \Col{M}
-         \twocellA{\vec{\eta}_M}
+         \twocellA{\vec{\imath}_M}
       \end{tikzcd}
-   \]
-   such that $\vec{\eta}_M$ is cartesian, $(\eta_M,\vec{\eta}_M)$ is a morphism of monads from $M$
-   to $\Col{M}$ (the unit horizontal 1-cell on $\Col{M}$), and satisfies the universal property that
-   for any other object $X$ and morphism of monads $(f,\phi)$ as below, there exists a unique
-   vertical morphism $\hat\phi\colon\Col{M}\to X$ such that
-\[
-   \begin{tikzcd}
-      C \ar[r,tick,"M" domA] \ar[d,"f"']
-      & C \ar[d,"f"]
-      \\
-      X \ar[r,tick,"X"']
-      & X
-      \twocellA{\phi}
-   \end{tikzcd}
-   \quad = \quad
-   \begin{tikzcd}
-      C \ar[r,tick,"M" domA] \ar[d,"\eta_M"']
-      & C \ar[d,"\eta_M"]
-      \\
-      \Col{M} \ar[r,tick,"\Col{M}"' {domB,codA}] \ar[d,"\hat{\phi}"']
-      & \Col{M} \ar[d,"\hat{\phi}"]
-      \\
-      X \ar[r,tick,"X"' codB]
-      & X
-      \twocellA{\vec{\eta}_M}
-      \twocellB[pos=.6]{\id_{\hat{\phi}}}
-   \end{tikzcd}
-\]
+   \end{equation*}
+   such that $(i_M,\vec{\imath}_M)$ is a morphism of monoids from $M$ to $\Col{M}$ (the trivial
+   monoid on $\Col{M}$), and satisfies the universal property that for any other object
+   $X$ and morphism of monoids $(f,\vec{f})$ as below, there exists a unique vertical morphism
+   $\tilde{f}\colon\Col{M}\to X$ such that
+   \begin{equation*}
+      \begin{tikzcd}
+         C \ar[r,tick,"M" domA] \ar[d,"f"']
+         & C \ar[d,"f"]
+         \\
+         X \ar[r,tick,"X"']
+         & X
+         \twocellA{\vec{f}}
+      \end{tikzcd}
+      \quad = \quad
+      \begin{tikzcd}
+         C \ar[r,tick,"M" domA] \ar[d,"i_M"']
+         & C \ar[d,"i_M"]
+         \\
+         \Col{M} \ar[r,tick,"\Col{M}"' {domB,codA}] \ar[d,"\tilde{f}"']
+         & \Col{M} \ar[d,"\tilde{f}"]
+         \\
+         X \ar[r,tick,"X"' codB]
+         & X
+         \twocellA{\vec{\imath}_M}
+         \twocellB[pos=.6]{\id_{\tilde{f}}}
+      \end{tikzcd}
+   \end{equation*}
 \end{definition}
 
-A framed bicategory $\dcat{D}$ has collages when $\dcat{D}$ admits an algebra structure from the
-monad $\dMod$, equivalently when the unit $\dcat{D}\to\dMod(\dcat{D})$ has a left adjoint ($\dMod$
-is a lax-idempotent monad).
+Recall from~\cite{Schultz:2015}:
+
+\begin{definition}
+   An equipment $\dcat{D}$ is \emph{exact} if
+   \begin{compactitem}
+      \item every monoid $M\colon c\tickar c$ has a collapse as above, with $\vec{\imath}_M$
+         cartesian, and
+      \item for every pair of monoids $M,N$, the restriction functor
+         \begin{equation*}
+            \HHor(\dcat{D})(\Col{M},\Col{N})\to{}_M\Bimod_N
+         \end{equation*}
+         is an equivalence of categories.
+   \end{compactitem}
+\end{definition}
 
 \begin{theorem}
-   Let $\dcat{D}$ be a framed bicategory with Kliesli objects. Then the vertical category
-   $\dcat{D}_0$ has an orthogonal factorization system $(\bo,\ff)$.
+   If an equipment $\dcat{D}$ is exact (and hence regular), then the vertical 2-category
+   $\VVer(\dcat{D})$ admits a 2-orthogonal factorization system $(\bo,\ff)$. In particular, there is
+   an orthogonal factorization system $(\bo,\ff)$ on the vertical 1-category $\dcat{D}_0$.
 \end{theorem}
 
-If $\dcat{D}$ is a framed bicategory with Kliesli objects, then using the factorization system we
-can define a framed bicategory $\dcat{D}^{\bo}$.  The vertical category of $\dcat{D}^{\bo}$ is the
-category $\dcat{D}_0^{\bo}$, defined to be the full subcategory of the category of arrows of
-$\dcat{D}_0$ spanned by the arrows in the class $\bo$.  The horizontal morphisms and 2-cells are
-determined by the codomain of the $\bo$ arrows, i.e.~the category $\dcat{D}_1^{\bo}$ is given by the
-pullback
-\[
+If $\dcat{D}$ is an exact equipment, then using the factorization system we can define an equipment
+$\dcat{D}^{\bo}$. The vertical category of $\dcat{D}^{\bo}$ is the category $\dcat{D}_0^{\bo}$,
+defined to be the full subcategory of the category of arrows of $\dcat{D}_0$ spanned by the arrows
+in the class $\bo$. The horizontal morphisms and 2-cells are determined by the codomain of the
+$\bo$ arrows, i.e.~the category $\dcat{D}_1^{\bo}$ is given by the pullback
+\begin{equation*}
 \begin{tikzcd}[column sep=large]
    \dcat{D}_1^{\bo} \ar[r] \ar[d] \ar[dr,phantom,"\lrcorner" very near start]
       & \dcat{D}_1 \ar[d] \\
    \dcat{D}_0^{\bo}\times\dcat{D}_0^{\bo} \ar[r,"\cod\times\cod"']
       & \dcat{D}_0\times\dcat{D}_0
 \end{tikzcd}
-\]
+\end{equation*}
 
 \begin{theorem}\label{thm:Mod vs bo}
    Let $\dcat{D}$ be an exact equipment. There is an equivalence of equipments
@@ -1015,8 +1181,8 @@ pullback
       \dMod(\dcat{D}) \iso \dcat{D}^{\bo}.
    \]
 \end{theorem}
-
-\begin{corollary}
+\todo{need proofs}
+\begin{corollary}\label{cor:Mon_vs_bo}
    Let $\dcat{D}$ be an exact equipment. There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=0em]
@@ -1027,61 +1193,62 @@ pullback
    \end{equation*}
 \end{corollary}
 
-If we want to modify the previous theorem to get an equivalence with $\dcat{D}$ rather than
-$\dcat{D}^{\bo}$, we need to restrict to objects of $\dcat{D}$ which are ``discrete''.  To provide a
-notion of discreteness, suppose we have a category $\cat{C}$ and an ``underlying'' functor
-$U\colon\dcat{D}_0\to\cat{C}$ with a left adjoint $F\colon\cat{C}\to\dcat{D}_0$.  Assume furthermore
-that $U(\bo)\subseteq\mathrm{iso}(\cat{C})$ and that the components of the counit of the adjunction
-are left pseudo-orthogonal to $\ff$ in the vertical 2-category of $\dcat{D}$.  In particular, if
-$\epsilon_x=g\circ f\colon FUx\to x$ is a $(\bo,\ff)$ factorization of a counit $\epsilon_x$, then
-$g$ is an equivalence in $\VVer(\dcat{D})$ (but not necessarily an isomorphism).  Let
-$\dcat{D}'\subseteq\dcat{D}$ be the full subcategory spanned by the objects in the image of $F$ (the
-``discrete'' objects).
-
-\begin{theorem}\label{thm:Verts}
-   Under the assumptions of the previous paragraph, there is an equivalence of 2-categories
-   $\VVer(\dMod(\dcat{D}'))\iso\VVer(\dcat{D})$.
-\end{theorem}
-
-In particular, the adjunctions between $\Set$ and $\MonCat$ and between $\Set$ and $\CompCat$
-respectively satisfy the conditions of the previous theorem, so we get equivalences
-$\MMon(\dFrMonProf)\equiv\MMonCat$ and $\MMon(\dFrCompProf)\equiv\CCompCat$ respectively.  Consider
-the double functor $\dFrMonProf\to\dFrCompProf$, and define $\dcat{D}$ to be the double category
-which factors this functor, whose vertical category is $\FrMonCat$ and whose horizontal 1-cells and
-2-cells are from $\dFrCompProf$.  In other words, $\dcat{D}_0=\FrMonCat$ and $\dcat{D}_1$ is defined
-by the pullback
-\[
-   \begin{tikzcd}
-      \dcat{D}_1 \ar[r] \ar[d] \ar[dr,phantom,"\lrcorner"very near start]
-      & \dFrCompProf_1 \ar[d]
-      \\
-      \FrMonCat\times\FrMonCat \ar[r]
-      & \FrCompCat\times\FrCompCat
-   \end{tikzcd}
-\]
-then we get $\MMon(\dcat{D})\equiv\TTrCat$.
-
 \section{Other stuff}
 
-For any framed bicategory $\dcat{D}$ with a terminal object, we can consider the category
-$\dcat{D}(1,-)$, fibered over $\dcat{D}_0$, as defined by the pullback $\dcat{D}_0\times\dcat{D}_0$
-\begin{equation}
-   \begin{tikzcd}
-      \dcat{D}(1,-) \ar[r] \ar[d] \arrow[dr,phantom,"\lrcorner",very near start]
-         & \dcat{D}_1 \ar[d] \\
-      1\times\dcat{D}_0 \ar[r,"{(1,\id)}"']
-         & \dcat{D}_0\times\dcat{D}_0
-   \end{tikzcd}
-\end{equation}
-The fiber of $\dcat{D}(1,-)$ over an object $d\in\dcat{D}_0$ is the category $\HHor(\dcat{D})(1,d)$,
-which we can think of as the category of copresheaves on $d$.
+\subsection{Internal presheaves}\label{subsec:internal_presheaves}
 
+Presheaves on a category $\cat{C}$ can be identified with profunctors $1\tickar\cat{C}$ in $\dProf$, and similarly for copresheaves, which are more relevant to us. Motivated by this, we will think of proarrows $C\tickar 1$ in any equipment $\dcat{D}$ with a
+terminal object 1 as ``internal copresheaves'' on the object $C$. For each object, there is a category
+of copresheaves $\HHor(\dcat{D})(C,1)$. We can give a direct construction of the bifibration over
+$\dcat{D}_0$ whose fiber over an object $C$ is the category of copresheaves on $C$:
+
+\begin{definition}\label{def:copresheaves}
+   Let $\dcat{D}$ be an equipment with a terminal object 1. We define the category $\CPsh(\dcat{D})$,
+   bifibered over $\dcat{D}_0$, and similarly $\Psh(\dcat{D})$ by the pullbacks
+   \begin{equation}
+     \begin{tikzcd}
+         \CPsh(\dcat{D}) \ar[r] \ar[d,two heads] \arrow[dr,phantom,"\lrcorner",very near start]
+            & \dcat{D}_1 \ar[d,two heads] \\
+         \dcat{D}_0\times 1 \ar[r,"{(\id,1)}"']
+            & \dcat{D}_0\times\dcat{D}_0
+      \end{tikzcd}
+      \qquad
+      \begin{tikzcd}
+         \Psh(\dcat{D}) \ar[r] \ar[d,two heads] \arrow[dr,phantom,"\lrcorner",very near start]
+            & \dcat{D}_1 \ar[d,two heads] \\
+         1\times\dcat{D}_0 \ar[r,"{(1,\id)}"']
+            & \dcat{D}_0\times\dcat{D}_0
+      \end{tikzcd}
+   \end{equation}
+\end{definition}
+
+In other words, an object of $\CPsh(\dcat{D})$ is a pair $(C,F)$, where $C\in\Ob\dcat{D}$ is an object and $F\colon C\to\Set$ is a functor. A morphism $(C,F)\to(C',F')$ is a lax triangle
+\begin{equation*}
+	\begin{tikzcd}[column sep=.6cm]
+		C\ar[rr]\ar[rd,"F"']&\ar[d,phantom,"\Rightarrow"]&C'\ar[dl,"F'"]\\
+		&\Set
+	\end{tikzcd}
+\end{equation*}
+
+\begin{lemma}\label{lem:Psh_pullback}
+   Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor, and suppose $F$ is a local equivalence
+   (Definition~\ref{def:local_equivalence}). Then the induced square
+   \begin{equation*}
+      \begin{tikzcd}
+         \CPsh(\dcat{X}) \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+            & \CPsh(\dcat{Y}) \ar[d,two heads] \\
+         \dcat{X}_0 \ar[r]
+            & \dcat{Y}_0
+      \end{tikzcd}
+   \end{equation*}
+   is a pullback of categories, and similarly for $\Psh$.
+\end{lemma}
 
 \chapter{Equipments of monoidal categories and profunctors}
 
 \section{Monoidal profunctors}
 
-Suppose $\cat{C}$ and $\cat{D}$ are symmetric monoidal categories.  We will write
+Suppose $\cat{C}$ and $\cat{D}$ are symmetric monoidal categories. We will write
 \begin{gather*}
    a_{c,d,e}\colon (c\otimes d)\otimes e \to c\otimes(d\otimes e), \\
       \lambda_c\colon I\otimes c\to c,
@@ -1093,26 +1260,26 @@ context to make clear whether we are in $\cat{C}$ or $\cat{D}$.
 
 A \emph{monoidal profunctor} $M$ from $\cat{C}$ to $\cat{D}$ is an ordinary profunctor such that the
 functor $M\colon \op{\cat{C}}\times\cat{D}\to\Set$ is equipped with a lax-monoidal structure, with
-the cartesian monoidal structure on $\Set$.  In the bimodule notation, this means that there is an
+the cartesian monoidal structure on $\Set$. In the bimodule notation, this means that there is an
 associative operation assigning to any elements $m_1\in M(c_1,c'_1)$ and $m_2\in M(c_2,c'_2)$ an
 element $m_1\boxtimes m_2\in M(c_1\otimes c_2,c'_1\otimes c'_2)$ such that
 \[
    (f_1\cdot m_1\cdot g_1)\boxtimes(f_2\cdot m_2\cdot g_2) = (f_1\otimes f_2)\cdot(m_1\boxtimes m_2)\cdot(g_1\otimes g_2),
 \]
 as well as a distinguished element $I_M\in M(I,I)$ such that $\lambda_d\cdot(I_M\boxtimes
-m)\cdot\lambda^{-1}_c = m = \rho_d\cdot(m\boxtimes I_M)\cdot\rho^{-1}_c$ for any $m\in M(c,d)$.  If
+m)\cdot\lambda^{-1}_c = m = \rho_d\cdot(m\boxtimes I_M)\cdot\rho^{-1}_c$ for any $m\in M(c,d)$. If
 moreover $m_2\boxtimes m_1 = \sigma_{c'_1,c'_2}\cdot(m_1\boxtimes m_2)\cdot\sigma_{c_1,c_2}^{-1}$,
 we say $M$ is \emph{symmetric monoidal}.
 
-A monoidal profunctor morphism $\phi\colon M\to N$ is simply a monoidal transformation.  Spelling
+A monoidal profunctor morphism $\phi\colon M\to N$ is simply a monoidal transformation. Spelling
 this out in bimodule notation, $\phi$ is an ordinary morphism of profunctors such that
-$\phi(m_1\boxtimes m_2)=\phi(m_1)\boxtimes\phi(m_2)$ and $\phi(I_M)=I_N$.  We will denote the
+$\phi(m_1\boxtimes m_2)=\phi(m_1)\boxtimes\phi(m_2)$ and $\phi(I_M)=I_N$. We will denote the
 category of monoidal profunctors from $\cat{C}$ to $\cat{D}$ and monoidal profunctor morphisms as
 $\MonProf(\cat{C},\cat{D})$.
 
 A unit for a monoidal profunctor $M\in\MonProf(\cat{C},\cat{C})$ is a unit $i\colon\Hom_{\cat{C}}\to
 M$ in $\Prof(\cat{C},\cat{C})$ such that, additionally, $i(\id_{I_{\cat{C}}})=I_M$ and $i(f\otimes
-g)=i(f)\boxtimes i(g)$ for any morphisms $f$ and $g$ in $\cat{C}$.  Similarly, a multiplication on
+g)=i(f)\boxtimes i(g)$ for any morphisms $f$ and $g$ in $\cat{C}$. Similarly, a multiplication on
 $M$ is as above, with the additional conditions
 \begin{gather*}
    I_M\bullet I_M=I_M \\
@@ -1120,8 +1287,35 @@ $M$ is as above, with the additional conditions
 \end{gather*}
 for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e')$.
 
+\section{Definitions of equipments}
+\todo[inline]{Need definitions}
 
-\section{Exactness of MonProf}
+\begin{definition}\label{def:MonProf}
+The equipment $\dMonProf$ is defined as follows.
+\end{definition}
+
+\begin{definition}\label{def:TrProf}
+The equipment $\dTrProf$ is defined as follows.
+\end{definition}
+
+\begin{definition}\label{def:CompProf}
+The equipment $\dCompProf$ is defined as follows.
+\end{definition}
+
+\section{Exactness}
+\todo[inline]{Need proofs..}
+
+\begin{proposition}\label{prop:MonProf_exact}
+The equipment $\dMonProf$ is exact.
+\end{proposition}
+
+\begin{proposition}\label{prop:TrProf_exact}
+The equipment $\dTrProf$ is exact.
+\end{proposition}
+
+\begin{proposition}\label{prop:CompProf_exact}
+The equipment $\dCompProf$ is exact.
+\end{proposition}
 
 \section{Special properties of CompProf}
 \todo[inline]{CompProf closed under collapse in MonProf}
@@ -1147,11 +1341,20 @@ Let $\MProf{(\cat{C},\cat{C})}_{\ast}$ denote the category of pointed monoidal e
 i.e.~profunctors $M$ equipped with a unit $i\colon\Hom_{\cat{C}}\to M$, with monoidal profunctor
 morphisms which preserve the units.
 
+\begin{remark}
+   The proofs in this section are very difficult to follow in the equational form presented. We
+   highly recommend that the interested reader convert these equations into string diagrams. If
+   $N\colon\cat{C}\tickar\cat{C}$ is a profunctor, the trick is to draw elements $n\in N(c_1,c_2)$
+   as if they were arrows $c_1\to c_2$, which can be composed on either side with actual morphisms
+   of $\cat{C}$. The operation $\boxtimes$ of a monoidal profunctor then looks like the tensor of
+   morphisms.
+\end{remark}
+
 \begin{proposition}\label{Prop:unit implies monoid}
    Let $N\in\MProf{(\cat{C},\cat{C})}_*$ be a monoidal profunctor equipped with a unit $\eta\colon\Hom_{\cat{C}}\to N$.
    Then $N$ has a canonical multiplication $\mu\colon N\otimes N\to N$ making $N$ a monoid in $\MProf(\cat{C},\cat{C})$.
    This construction defines an equivalence of categories
-      \[\MProf{(\cat{C},\cat{C})}_*\To{\simeq}\Mon(\MProf(\cat{C},\cat{C}))\]
+      \[\MProf{(\cat{C},\cat{C})}_*\To{\equiv}\Mon(\MProf(\cat{C},\cat{C}))\]
    which is natural in $\cat{C}$.
    \todo[author=Patrick]{Make an equivalence of equipments}
 \end{proposition}
@@ -1234,20 +1437,24 @@ morphisms which preserve the units.
    It is simple to check that this defines a bijection.
 \end{proof}
 
-\begin{proposition}\label{Prop:mon prof equivalence}
-   The functors $F$ and $U$, from (\ref{eqn:functors 1C CC}), induce an equivalence of categories
-   \[
-      \dCompProf(1,-)\equiv\Mon(\dCompProf).
-   \]
+\begin{proposition}\label{Prop:mon_prof_equivalence}
+   The functors $F$ and $U$, from (\ref{eqn:functors 1C CC}), induce an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=-1.5em]
+         \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \Mon(\dCompProf) \ar[dl,two heads] \\
+            & \CompCat &
+      \end{tikzcd}
+   \end{equation*}
    \todo[author=Patrick]{Fix proof.}
 \end{proposition}
 \begin{proof}
    By Propositions~\ref{Prop:canonical unit}~and~\ref{Prop:canonical unit}, the functor
    $F\colon\MProf(1,\cat{C}) \to \MProf(\cat{C},\cat{C})$ naturally factors through
-   $\Mon(\MProf(\cat{C},\cat{C}))\simeq\MProf{(\cat{C},\cat{C})}_*$.
+   $\Mon(\MProf(\cat{C},\cat{C}))\equiv\MProf{(\cat{C},\cat{C})}_*$.
 
    If $M\in\MProf(1,\cat{C})$ then $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any
-   $a\in\cat{C}$.  On the other hand, given $N\in\Mon(\MProf(\cat{C},\cat{C}))$,
+   $a\in\cat{C}$. On the other hand, given $N\in\Mon(\MProf(\cat{C},\cat{C}))$,
    $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from Lemma~\ref{Lem:comp prof
    bijection}.
 \end{proof}
@@ -1259,52 +1466,294 @@ There is an orthogonal factorization system on $\CompCat$.
 
 \end{lemma}
 
-\section{Other equipments}
-\todo[inline]{Define $\dFrMonProf$, $\dFrCompProf$, $\dFrMonCompProf$, etc.}
+\section{Monoids on free objects}
 
-\begin{definition}
-   The equipment $\dFrMonCompProf$ has vertical category $\dFrMonCompProf_0\coloneqq \FrMonCat$,
-   while $\dFrMonCompProf_1$ is defined by the pullback
+If we want to modify theorem~\ref{thm:Mod vs bo} to get an equivalence with $\dcat{D}$ rather than
+$\dcat{D}^{\bo}$, we need to restrict to objects of $\dcat{D}$ which are ``free''. To provide a
+notion of freeness, suppose we have a category $\cat{C}$ and an ``underlying'' functor
+$U\colon\dcat{D}_0\to\cat{C}$ with a left adjoint $F\colon\cat{C}\to\dcat{D}_0$. Let $T=UF$ be the
+induced monad on $\cat{C}$.
+
+Let $\dcat{D}_T\subseteq\dcat{D}$ be the full sub-double category spanned by the objects in the image
+of $F$ (the ``discrete'' objects). We will write $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ for the
+inclusion. Concretely, $(\dcat{D}_T)_0=\cat{C}_{T}$ is the Kleisli category of $T$, and
+$(\dcat{D}_T)_1$ is defined by the pullback
+\begin{equation*}
+   \begin{tikzcd}
+      (\dcat{D}_T)_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+         & \dcat{D}_1 \ar[d,two heads] \\
+      \cat{C}_T\times\cat{C}_T \ar[r]
+         & \dcat{D}_0\times\dcat{D}_0
+   \end{tikzcd}
+\end{equation*}
+
+The equipment functor $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ is a fully-faithful local equivalence,
+hence the induced $\dMod(\varphi)\colon\dMod(\dcat{D}_T)\to\dMod(\dcat{D})$ is as well. If
+$\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ to identify
+$\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the
+image. We call this equipment $\dcat{D}_T^{\bo}$, and we can give an explicit construction as
+follows: the vertical category is defined by the pullback
+\begin{equation*}
+   \begin{tikzcd}
+      (\dcat{D}_T^{\bo})_0 \ar[r] \ar[dr,phantom,"\lrcorner" very near start] \ar[d]
+         & \cat{C} \ar[d,"F"] \\
+      \dcat{D}_0^{\bo} \ar[r,"\dom"']
+         & \dcat{D}
+   \end{tikzcd}
+\end{equation*}
+while the category $(\dcat{D}_T^{\bo})_1$ is defined by the pullback
+\begin{equation*}
+   \begin{tikzcd}
+      (\dcat{D}_T^{\bo})_1 \ar[r] \ar[dr,phantom,"\lrcorner" very near start] \ar[d]
+         & \dcat{D}_1^{\bo} \ar[d,two heads] \\
+      (\dcat{D}_T^{\bo})_0\times(\dcat{D}_T^{\bo})_0 \ar[r]
+         & \dcat{D}_0^{\bo}\times\dcat{D}_0^{\bo}.
+   \end{tikzcd}
+\end{equation*}
+We will write $\psi_T\colon\dcat{D}_T^{\bo}\to\dcat{D}^{\bo}$ for the inclusion.
+
+Thus we have the following proposition:
+
+\begin{proposition}\label{prop:object-free_Mod_bo}
+   Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
+   $U\colon\dcat{D}_0\leftrightarrows\cat{C}:\!F$, and let $T=UF$ be the induced monad.  There is a
+   commuting diagram of equipments, in which the vertical functors are equivalences:
+   \begin{equation*}
+      \begin{tikzcd}[column sep=large]
+         \dMod(\dcat{D}_T) \ar[r,"\dMod(\varphi_T)"] \ar[d,"\equiv"']
+            & \dMod(\dcat{D}) \ar[d,"\equiv"] \\
+         \dcat{D}_T^{\bo} \ar[r,"\psi_T"'] & \dcat{D}^{\bo}
+      \end{tikzcd}
+   \end{equation*}
+\end{proposition}
+
+\begin{remark}
+   The objects of $\dcat{D}_T^{\bo}$ are bijective-on-objects morphisms of the form
+   $F(c)\twoheadrightarrow D$ where $c$ is an object in $\cat{C}$ and $D$ is an object in
+   $\dcat{D}$. Intuitively, we can think of the objects of $\dcat{D}_T^{\bo}$ (or equivalently
+   $\dMod(\dcat{D}_T)$ as objects in $\dcat{D}$ which are ``free-on-objects''.
+   
+   For instance, every category is free-on-objects, because every category admits a
+   bijective-on-objects functor from a discrete category. On the other hand, a monoidal category is
+   free-on-objects if the set of objects form a free monoid under the tensor product.
+\end{remark}
+
+\begin{theorem}\label{thm:Verts}
+   Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
+   $F\colon\cat{C}\leftrightarrows\dcat{D}_0:\!U$, and let $T=UF$ be the induced monad. Suppose
+   moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{C})$, and that the components of the counit of
+   the adjunction are left pseudo-orthogonal to $\ff$ in $\VVer(\dcat{D})$.
+
+   The composition
    \begin{equation*}
       \begin{tikzcd}
+         \dMod(\dcat{D}_T)\ar[r,"\dMod(\varphi_T)"] &[1.5em] \dMod(\dcat{D}) \ar[r,"\Col{\textrm{--}}"] & \dcat{D}
+      \end{tikzcd}
+   \end{equation*}
+   is a fully-faithful local equivalence, and the induced 2-functor
+   $\rho\colon\MMon(\dcat{D}_T)\to\VVer(\dcat{D})$ is 2-essentially surjective, hence a 2-equivalence.
+\end{theorem}
+\begin{proof}
+   By Proposition~\ref{prop:object-free_Mod_bo}, it suffices to consider the composition
+   \begin{equation*}
+      \begin{tikzcd}
+         \dcat{D}^{\bo}_T \ar[r,"\psi_T"] & \dcat{D}^{\bo} \ar[r,"\cod"] & \dcat{D}
+      \end{tikzcd}
+   \end{equation*}
+   Both $\psi_T$ and $\cod$ are local equivalences, hence the composition is also.
+
+   To see that $\cod\psi_T$ is fully-faithful, consider a pair of objects $p\colon
+   Fc\twoheadrightarrow D$ and $p'\colon Fc'\twoheadrightarrow D'$ in $\dcat{D}_T^{\bo}$, and a
+   vertical morphism $f\colon D\to D'$ in $\dcat{D}$. In the square
+   \begin{equation*}
+      \begin{tikzcd}
+         \dcat{D}_0(Fc,Fc') \ar[r,"\textrm{--}\circ p'"] \ar[d,"\iso"']
+            & \dcat{D}_0(Fc,D') \ar[d,"\iso"] \\
+         \cat{C}(c,UFc') \ar[r,"\textrm{--}\circ Up'"']
+            & \cat{C}(c,UD')
+      \end{tikzcd}
+   \end{equation*}
+   which commutes by naturality of the adjunction bijection, the bottom function is a bijection
+   because of the assumption that $U(p')$ is an isomorphism for any $p'\in\bo$. Hence the top
+   function is a bijection, which shows that there exists a unique lift of $f$ to a morphism in
+   $\dcat{D}_T^{\bo}$:
+   \begin{equation*}
+      \begin{tikzcd}
+         Fc \ar[r,"\hat{f}"] \ar[d,two heads,"p"']
+            & Fc' \ar[d,two heads,"p'"] \\
+         D \ar[r,"f"'] & D'
+      \end{tikzcd}
+   \end{equation*}
+
+   Finally, to see that the restriction to vertical 2-categories is essentially surjective, let
+   $D\in\dcat{D}$ be an object, and consider the $(\bo,\ff)$ factorization of the counit
+   \begin{equation*}
+      \begin{tikzcd}
+         FUD \ar[dr,"\epsilon_D"] \ar[d,two heads,"p"'] & \\
+         D' \ar[r,hook,"f"'] & D.
+      \end{tikzcd}
+   \end{equation*}
+   By assumption, the components of the counit are left pseudo-orthogonal to $\ff$, and $p$ is left
+   orthognal to $\ff$, hence also left pseudo-orthogonal. By the cancellation property of a left
+   orthogonality class, $f$ must also by left pseudo-orthogonal to $\ff$. But $f$ is $\ff$ as well,
+   hence is an equivalence in $\VVer(\dcat{D})$. Thus $D$ is equivalent to $\cod(\psi_T(p))=D'$.
+\end{proof}
+
+\begin{definition}\label{def:FrMonProf_FrCompProf}
+   We define the equipments $\dFrMonProf\coloneqq\dMonProf_{\TM}$ and $\dFrCompProf\coloneqq\dCompProf_{\TC}$. In
+   particular, there is a pullback
+   \begin{equation*}
+      \begin{tikzcd}
+         \dFrMonProf_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+            & \dMonProf_1 \ar[d,two heads] \\
+         \FrMonCat\times\FrMonCat \ar[r]
+            & \MonCat\times\MonCat
+      \end{tikzcd}
+   \end{equation*}
+   and similarly for $\dFrCompProf$.
+\end{definition}
+
+\begin{remark}
+   \mbox{}
+   \todo[inline]{Can think of $\MMon(\dFrMonProf)$ as ``object free'' monoidal categories.}
+\end{remark}
+
+\begin{lemma}\label{lem:FrCompProf_Psh_Mon}
+   There is an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=-1.5em]
+         \CPsh(\dFrCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \Mon(\dFrCompProf) \ar[dl,two heads] \\
+            & \FrCompCat &
+      \end{tikzcd}
+   \end{equation*}
+\end{lemma}
+\begin{proof}
+   The equipment functor $\dFrCompProf\to\dCompProf$ is (by definition) a local equivalence
+   (Definition~\ref{def:local_equivalence}), so the lemma follows from~Proposition~\ref{Prop:mon
+   prof equivalence}, and Lemmas~\ref{lem:Mon_pullback} and~\ref{lem:Psh_pullback}.
+\end{proof}
+
+\begin{corollary}
+   There are equivalences of 2-categories
+   \begin{align*}
+      \MMon(\dFrMonProf)&\equiv\MMonCat \\
+      \MMon(\dFrCompProf)&\equiv\CCompCat.
+   \end{align*}
+\end{corollary}
+
+By defining an equipment ``halfway between'' $\dFrMonProf$ and $\dFrCompProf$, with vertical
+morphisms from the former and horizontal morphisms from the latter, we can get a similar
+construction of $\TTrCat$.
+
+\begin{definition}\label{def:FrMonCompProf}
+   Let $\FMC\colon\FrMonCat\to\FrCompCat$ be as in (\ref{eqn:FMC}). The equipment $\dFrMonCompProf$ has vertical category $\dFrMonCompProf_0\coloneqq \FrMonCat$,
+   while $\dFrMonCompProf_1$ is defined by the pullback
+   \begin{equation*}
+      \begin{tikzcd}[column sep=large]
          \dFrMonCompProf_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
             & \dFrCompProf_1 \ar[d,two heads] \\
-         \FrMonCat\times\FrMonCat \ar[r]
+         \FrMonCat\times\FrMonCat \ar[r,"\FMC\times\FMC"']
             & \FrCompCat \times \FrCompCat
       \end{tikzcd}
    \end{equation*}
 \end{definition}
 
-\begin{proposition}
-   There is an isomorphism of categories
+\todo{Explain this category.}
+
+\begin{proposition}\label{prop:TrCat_2equiv}
+   There is an equivalence of 2-categories
    \begin{equation*}
-      \CobKlsAlg\iso\dFrMonCompProf(1,\textrm{--}).
+      \MMon(\dFrMonCompProf)\equiv\TTrCat
+   \end{equation*}
+   which restricts to a fully-faithful functor between the 1-categories
+   \begin{equation*}
+      \Mon(\dFrMonCompProf)\to\TrCat.
    \end{equation*}
 \end{proposition}
+
+\begin{lemma}\label{lem:FrMonCompProf_Psh_Mon}
+   There is an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=-1.5em]
+         \CPsh(\dFrMonCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \Mon(\dFrMonCompProf) \ar[dl,two heads] \\
+            & \FrMonCat &
+      \end{tikzcd}
+   \end{equation*}
+\end{lemma}
+\begin{proof}
+   The equipment functor $\dFrMonCompProf\to\dFrCompProf$ is (by definition) a local equivalence
+   (Definition~\ref{def:local_equivalence}), so the lemma follows from
+   Lemmas~\ref{lem:FrCompProf_Psh_Mon}, \ref{lem:Mon_pullback}, and~\ref{lem:Psh_pullback}.
+\end{proof}
 
 \begin{proposition}\label{prop:TrCat_ObjectFree}
-
-$\TTrCat\equiv\TTrFrObCat$
-
+   $\TTrCat\equiv\TTrFrObCat$
 \end{proposition}
 
-\chapter{Main results}
+\section{Deducing the main results}\label{sec:deducing}
 
-\section{Restatement of main theorems}
-
-To prove the main theorems stated in the introduction, we would first like to restate those theorems
-using the language of equipments.
-
-\begin{named}{Theorem A'}
-   There is a fully-faithful functor of 1-categories
+\begin{named}{Theorem A}
+  There is a fully-faithful functor of 1-categories
    \begin{equation*}
-      \dFrMonCompProf(1,\textrm{--})\to\TrCat
+      \CobKlsAlg \to \TrCat
    \end{equation*}
-   such that the composition with the 1-skeleton inclusion $\TrCat\to\TTrCat$ is 2-essentially
-   surjective.
+   such that the induced 2-functor $\CobKlsAlg\to\TTrCat$ is 2-essentially surjective.
 \end{named}
 
-\section{Proof of theorem A}\label{sec:proof_of_A}
+\begin{proof}
+
+By Proposition~\ref{prop:TrCat_2equiv}, we know that in the commutative diagram below, the top map is fully faithful and the bottom map is a 2-equivalence:
+\begin{equation*}
+	\begin{tikzcd}
+		\Mon(\dFrMonCompProf)\ar[r,"\ff"]\ar[d]&\TrCat\ar[d]\\
+		\MMon(\dFrMonCompProf)\ar[r,"\equiv"']&\TTrCat
+	\end{tikzcd}
+\end{equation*}
+The left-hand map is surjective on objects, so the result follows from the chain of equivalences
+\begin{align*}
+\CobKlsAlg\equiv\int^{C\in\FrMonCat}\Lax(\FMC(C),\Set)
+&\equiv\CPsh(\dFrMonCompProf)\\
+&\equiv\Mon(\dFrMonCompProf)
+\end{align*}
+given by (\ref{dia:TMvsFrMonCat}), Proposition~\ref{prop:free_compact_is_Cob}, Definitions~\ref{def:copresheaves},~\ref{def:FrMonProf_FrCompProf},~and~\ref{def:FrMonCompProf}, and Lemma~\ref{lem:FrMonCompProf_Psh_Mon}.
+\end{proof}
+
+\begin{named}{Theorem B}\label{thm:TheoremB}
+   There is an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=0em]
+         \int^{\cat{C}\in\CompCat}\Lax(\cat{C},\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \CompCat^{\bo} \ar[dl,two heads,"\dom"] \\
+            & \CompCat &
+      \end{tikzcd}
+   \end{equation*}
+\end{named}
+
+\begin{proof}
+By Definitions~\ref{def:CompProf}~and~\ref{def:copresheaves}, there is an equivalence
+$$ \int^{\cat{C}\in\CompCat}\Lax(\cat{C},\Set)\equiv\CPsh(\dCompProf).$$ 
+The equipment $\dCompProf$ is exact by Proposition~\ref{prop:CompProf_exact}. By Proposition~\ref{Prop:mon_prof_equivalence} and Corollary~\ref{cor:Mon_vs_bo}, we have the following equivalences of fibrations over $\CompCat=\dCompProf_0$, completing the proof:
+$$\CPsh(\dCompProf)\equiv\Mon(\dCompProf)\equiv\CompCat^{\bo}.$$ 
+\end{proof}
+
+\begin{named}{Corollary B}\label{cor:CorollaryB}
+   There is an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=0em]
+         \int^{\cat{C}\in\TrCat}\Lax(\Int(\cat{C}),\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \TrCat^{\bo} \ar[dl,two heads,"\dom"] \\
+            & \TrCat &
+      \end{tikzcd}
+   \end{equation*}
+\end{named}
+
+\begin{proof}
+By Definition~\ref{***}, the left-hand side is equivalent to $\CPsh(\dTrProf)$. \todo{Finish proof.}
+\end{proof}
+
+
 
 
 \begin{thebibliography}{XXX}
@@ -1322,6 +1771,9 @@ using the language of equipments.
 
  \bibitem{HackneyRobertson}
  P.~Hackney, M.~Robertson, On the category of props, Preprint: arXiv: 1207.2773v2 (2012).
+ 
+ \bibitem{HK}
+M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of traced monoidal categories and tortile monoidal categories, Mathematical Proceedings of the Cambridge Philosophical Society 148 no. 1 (2010).
 
  \bibitem{JoyalStreetVerity}
  A.~Joyal, R.~Street, and D.~Verity, Traced monoidal categories, Mathematical Proceedings of the Cambridge Philosophical Society 119, no. 3 (1996), pp.~447--468.
