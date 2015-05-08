@@ -95,28 +95,27 @@
 \newcommand{\dProf}{\ndcat{P}{rof}} % double cat Prof(unctors)
 \newcommand{\MonCat}{\ncat{MonCat}}
 \newcommand{\MMonCat}{\nncat{M}{onCat}} % 2-cat MonCat
+\newcommand{\MMonCatLax}{\MMonCat_{\mathrm{lax}}}
 %\newcommand{\SSymMonCat}{\nncat{S}{ymMonCat}} % 2-cat SymMonCat
 \newcommand{\SSymMonCat}{\MMonCat}
 \newcommand{\MonProf}{\nncat{M}{onProf}} % bicat MProf (monoidal Prof)
 \newcommand{\dMonProf}{\ndcat{M}{onProf}} % double cat MProf (monoidal Prof)
 \newcommand{\MProf}{\nncat{M}{onProf}} % just to get old version to compile -- can delete
 \newcommand{\dMProf}{\ndcat{M}{Prof}} % just to get old version to compile -- can delete
-\newcommand{\FrMonCat}{\ncat{FrMonCat}}
-\newcommand{\FFrMonCat}{\nncat{F}{rMonCat}}
-\newcommand{\FrMonProf}{\nncat{F}{rMonProf}}
-\newcommand{\dFrMonProf}{\ndcat{F}{rMonProf}}
-%\newcommand{\EndoProf}{\ncat{EndoProf}}
-\newcommand{\MMonCatLax}{\MMonCat_{\mathrm{lax}}}
+\newcommand{\FrMonCat}{\ncat{FMonCat}}
+\newcommand{\FFrMonCat}{\nncat{F}{MonCat}}
+\newcommand{\FrMonProf}{\nncat{F}{MonProf}}
+\newcommand{\dFrMonProf}{\ndcat{F}{MonProf}}
 \newcommand{\dTrProf}{\ndcat{T}{rProf}}
 \newcommand{\CompCat}{\ncat{CompCat}} % 1-cat CompCat
 \newcommand{\CCompCat}{\nncat{C}{ompCat}} % 2-cat CompCat
 \newcommand{\CompProf}{\nncat{C}{ompProf}} % bicat CompProf
 \newcommand{\dCompProf}{\ndcat{C}{ompProf}} % bicat CompProf
-\newcommand{\FrCompCat}{\ncat{FrCompCat}}
-\newcommand{\FFrCompCat}{\nncat{F}{rCompCat}}
-\newcommand{\FrCompProf}{\nncat{F}{rCompProf}}
-\newcommand{\dFrCompProf}{\ndcat{F}{rCompProf}}
-\newcommand{\dFrMonCompProf}{\ndcat{F}{rMonCompProf}}
+\newcommand{\FrCompCat}{\ncat{FCompCat}}
+\newcommand{\FFrCompCat}{\nncat{F}{CompCat}}
+\newcommand{\FrCompProf}{\nncat{F}{CompProf}}
+\newcommand{\dFrCompProf}{\ndcat{F}{CompProf}}
+\newcommand{\dFrMonCompProf}{\ndcat{F}{MCompProf}}
 \newcommand{\TrCat}{\ncat{TrCat}} % 1-cat TrCat
 \newcommand{\TTrCat}{\nncat{T}{rCat}} % 2-cat TrCat
 \newcommand{\TTrFrObCat}{\nncat{T}{rFrObCat}}
@@ -147,7 +146,7 @@
 \newcommand{\Cob}{\ncat{Cob}}
 \newcommand{\LCob}[1]{\Cob_{/#1}}
 \newcommand{\CobSetAlg}{\int^{\Set}(\LCob{\bullet})\alg}
-\newcommand{\CobKlsAlg}{\int^{\cat{O}\in\Set_{\TM}}(\Cob/\cat{O})\alg}
+\newcommand{\CobKlsAlg}{\int^{\cat{O}\in\Set_{\TM}}(\LCob{\cat{O}})\alg}
 \newcommand{\op}[1]{{#1}^{\text{op}}}
 \newcommand{\vop}[1]{{#1}^{\text{vop}}}
 \newcommand{\hop}[1]{{#1}^{\text{hop}}}
