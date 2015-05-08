@@ -138,7 +138,7 @@ is an equivalence of categories
 \begin{equation}\label{eq:single_fiber}
    \LCob{\cat{O}}\alg\simeq\TrCat_{\cat{O}}.
 \end{equation}
-Some intuition for this statement will be given in Section~\ref{subsec:cobalg_and_trCat}, and it will be generalized in \ref{thm:Theorem_A} and proven as such in Section~\ref{sec:proof_of_A}.
+Some intuition for this statement will be given in Section~\ref{subsec:cobalg_and_trCat}, and it will be generalized in \ref{thm:TheoremA} and proven as such in Section~\ref{sec:proof_of_A}.
 \subsection{The main results}\label{subsec:main_results}
 
 The equivalence (\ref{eq:single_fiber}) has two drawbacks: the object set of the traced category is fixed, and it is assumed to be free. Much of the work in this paper is to relax these two conditions. For the latter, we prove that the 2-category of traced categories is equivalent to that of \emph{object-free} traced categories (see Proposition~\ref{prop:TrCat_ObjectFree}). For the former, we first explain what kind of variance is appropriate.
@@ -149,7 +149,7 @@ A strong functor $F\colon \cat{C}\to \cat{C'}$ between object-free traced catego
 \end{equation}
 By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect the equivalences (\ref{eq:single_fiber}) for varying $\cat{O}$ into a single functor, and we have the following main result, whose proof can be found in Section~\ref{sec:proof_of_A}.
 
-\begin{named}{Theorem A}\label{thm:Theorem_A}
+\begin{named}{Theorem A}\label{thm:TheoremA}
    There is a fully-faithful functor of 1-categories
    \begin{equation*}
       \CobKlsAlg \to \TrCat
@@ -159,7 +159,7 @@ By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect 
 
 \section{Generalization: Lax algebras on compact categories}
 
-It is most convenient to prove~\ref{thm:Theorem_A} by proving a more general result, which
+It is most convenient to prove~\ref{thm:TheoremA} by proving a more general result, which
 gives an equivalence between the category of lax functors out of any compact category $\cat{C}$ and the category of
 strong, bijective-on-objects functors out of $\cat{C}$,
 \begin{equation}\label{eqn:lax_compcat_bo}
@@ -192,7 +192,7 @@ compact category $\Int(\cat{C})$ of which it is a subcategory; we call $\Int(\ca
 
 It turns out that if our compact category $\cat{C}$ is the compact closure of some traced category
 $\cat{D}$, then~\ref{thm:TheoremB} lifts to a result about $\cat{D}$. We record this result
-as~\ref{cor:CorollaryB}, from which~\ref{thm:Theorem_A} follows. These are proved in
+as~\ref{cor:CorollaryB}, from which~\ref{thm:TheoremA} follows. These are proved in
 Section~\ref{sec:generalization}.
 
 \begin{named}{Corollary B}\label{cor:CorollaryB}
@@ -455,7 +455,7 @@ The paper is organized as follows. In Section~\ref{sec:traced categories} we giv
 the connection between traced categories, their string diagrams, and algebras on the operad
 of cobordisms. In Section~\ref{sec:generalization} we prove~\ref{thm:TheoremB}
 and~\ref{cor:CorollaryB}, which compare lax set-valued functors to strong bijective-on-objects
-functors, respectively for compact and traced categories. Our main result,~\ref{thm:Theorem_A},
+functors, respectively for compact and traced categories. Our main result,~\ref{thm:TheoremA},
 which says that traced categories are $\Cob$-algebras, follows easily.
 
 \section*{Acknowledgments}
@@ -1476,8 +1476,30 @@ construction of $\TTrCat$.
 \todo[inline]{With the organization that is forming, these are all easy corollaries of earlier
 results. Maybe we don't need this ``main results'' section?}
 
-To prove the main theorems stated in the introduction, we would first like to restate those theorems
+To prove the main theorems \ref{thm:TheoremA}, \ref{thm:TheoremB}, and \ref{cor:CorollaryB} stated in the introduction, we would first like to restate those theorems
 using the language of equipments.
+
+\begin{named}{Theorem A}
+  There is a fully-faithful functor of 1-categories
+   \begin{equation*}
+      \CobKlsAlg \to \TrCat
+   \end{equation*}
+   such that the induced 2-functor $\CobKlsAlg\to\TTrCat$ is 2-essentially surjective.
+\end{named}
+
+\begin{proof}
+
+By Proposition~\ref{prop:TrCat_2equiv}, we know that in the commutative diagram below, the top map is fully faithful and the bottom map is a 2-equivalence:
+\begin{equation*}
+	\begin{tikzcd}
+		\Mon(\dFrMonCompProf)\ar[r,"\ff"]\ar[d]&\TrCat\ar[d]\\
+		\MMon(\dFrMonCompProf)\ar[r,"\simeq"']&\TTrCat
+	\end{tikzcd}
+\end{equation*}
+The left-hand map is surjective on objects, so it suffices to check that there is an equivalence of categories 
+$$\CobKlsAlg\simeq\Mon(\dFrMonCompProf).$$
+
+\end{proof}
 
 \begin{named}{Theorem A'}
    There is a fully-faithful functor of 1-categories
