@@ -1268,14 +1268,28 @@ The equipment $\dMonProf$ is exact.
 
 \begin{lemma}
    Let $T$ be a traced category, $C$ a compact category, and $F\colon T\to\UCT C$ a traced functor
-   such that the extension $\tilde{F}\colon\Int(T)\twoheadrightarrow C$ is bijective on objects. Then
-   in the factorization
+   such that the extension $\tilde{F}\colon\Int(T)\twoheadrightarrow C$ is bijective on objects. If
+   we form the factorization in $\MonCat$
    \begin{equation*}
-      \begin{tikzcd}
-         T \ar[r,hook,"\eta_T"] \ar[d,two heads,"G"']
-         & \Int(T) \ar[d,two heads,"\tilde{F}"]
+      \begin{tikzcd}[column sep=large]
+         \UTM T \ar[r,hook,"\UTM\eta_T"] \ar[d,two heads]
+            & \UCM\Int(T) \ar[d,two heads,"\UCM\tilde{F}"] \\
+         M \ar[r,hook] & \UCM C
       \end{tikzcd}
    \end{equation*}
+   then:
+   \begin{compactitem}
+      \item there is a unique trace structure on $M$---defining a traced category $T'$ with $\UTM
+         T'=M$---such that the factorization lifts to $\TrCat$:
+         \begin{equation*}
+            \begin{tikzcd}[column sep=large]
+               T \ar[r,hook,"\eta_T"] \ar[d,two heads,"G"']
+                  & \UCT\Int(T) \ar[d,two heads,"\UCT\tilde{F}"] \\
+               T' \ar[r,hook,"H"'] & \UCT C
+            \end{tikzcd}
+         \end{equation*}
+      \item there is an isomorphism $\alpha\colon C\iso\Int(T')$ such that $\alpha H=\eta_{T'}$.
+   \end{compactitem}
 \end{lemma}
 
 \begin{proposition}\label{prop:TrProf_exact}
