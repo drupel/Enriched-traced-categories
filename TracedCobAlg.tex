@@ -1192,20 +1192,21 @@ of copresheaves $\HHor(\dcat{D})(C,1)$. We can give a direct construction of the
 $\dcat{D}_0$ whose fiber over an object $C$ is the category of copresheaves on $C$:
 
 \begin{definition}\label{def:copresheaves}
-   Let $\dcat{D}$ be an equipment with a terminal object 1. We define the category $\CPsh(\dcat{D})$,
-   bifibered over $\dcat{D}_0$, and similarly $\Psh(\dcat{D})$ by the pullbacks
+   Let $\dcat{D}$ be an equipment such that $\dcat{D}_0$ has a terminal object $1$. We define the
+   category $\CPsh(\dcat{D})$, bifibered over $\dcat{D}_0$, and similarly $\Psh(\dcat{D})$ by the
+   pullbacks
    \begin{equation}
      \begin{tikzcd}
          \CPsh(\dcat{D}) \ar[r] \ar[d,two heads] \arrow[dr,phantom,"\lrcorner",very near start]
             & \dcat{D}_1 \ar[d,two heads] \\
-         \dcat{D}_0\times 1 \ar[r,"{(\id,1)}"']
+         \dcat{D}_0\times 1 \ar[r,"\id\times 1"']
             & \dcat{D}_0\times\dcat{D}_0
       \end{tikzcd}
       \qquad
       \begin{tikzcd}
          \Psh(\dcat{D}) \ar[r] \ar[d,two heads] \arrow[dr,phantom,"\lrcorner",very near start]
             & \dcat{D}_1 \ar[d,two heads] \\
-         1\times\dcat{D}_0 \ar[r,"{(1,\id)}"']
+         1\times\dcat{D}_0 \ar[r,"1\times\id"']
             & \dcat{D}_0\times\dcat{D}_0
       \end{tikzcd}
    \end{equation}
@@ -1220,18 +1221,42 @@ In other words, an object of $\CPsh(\dcat{D})$ is a pair $(C,F)$, where $C\in\Ob
 \end{equation*}
 
 \begin{lemma}\label{lem:Psh_pullback}
-   Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor, and suppose $F$ is a local equivalence
-   (Definition~\ref{def:local_equivalence}). Then the induced square
-   \begin{equation*}
+   Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor. Suppose that $\dcat{X}_0$ and
+   $\dcat{Y}_0$ have terminal objects, and that $F$ preserves them. Then there is an induced
+   morphism of fibrations
+   \begin{equation*}\label{eq:CPsh_square}
       \begin{tikzcd}
-         \CPsh(\dcat{X}) \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+         \CPsh(\dcat{X}) \ar[r,"\tilde{F}"] \ar[d,two heads] % \ar[dr,phantom,"\lrcorner" very near start]
             & \CPsh(\dcat{Y}) \ar[d,two heads] \\
-         \dcat{X}_0 \ar[r]
-            & \dcat{Y}_0
+         \dcat{X}_0 \ar[r,"F_0"']
+            & \dcat{Y}_0.
       \end{tikzcd}
    \end{equation*}
-   is a pullback of categories, and similarly for $\Psh$.
+   Moreover, if $F$ is a local equivalence (Definition~\ref{def:local_equivalence}),
+   then~\eqref{eq:CPsh_square} is a pullback.  Similarly for $\Psh$.
 \end{lemma}
+\begin{proof}
+   Consider the cube
+   \begin{equation*}
+      \begin{tikzcd}[row sep={40,between origins}, column sep={55,between origins}]
+         \CPsh(\dcat{X}) \ar[rr,"\tilde{F}"] \ar[dr] \ar[dd,two heads]
+         &[-10] & \CPsh(\dcat{Y}) \ar[dd,two heads] \ar[dr] &[-10] \\[-5]
+         & \dcat{X}_1 \ar[rr,crossing over,"F_1" near start]
+            && \dcat{Y}_1 \ar[dd,two heads] \\
+         \dcat{X}_0\times 1 \ar[rr,"F_0\times 1" pos=.75]
+               \ar[dr,"\id\times 1"' {pos=.25,inner sep=2pt}]
+            && \dcat{Y}_0\times 1 \ar[dr,"\id\times 1"' {pos=.25,inner sep=2pt}] & \\[-5]
+         & \dcat{X}_0\times\dcat{X}_0 \ar[rr,"F_0\times F_0"']
+               \ar[from=uu,crossing over,two heads]
+            && \dcat{Y}_0\times\dcat{Y}_0.
+      \end{tikzcd}
+   \end{equation*}
+   The bottom face of the cube commutes because $F_0$ preserves terminal objects. The right face of
+   the cube is a pullback, hence there is a unique $\tilde{F}$ making the cube commute.
+
+   If $F$ is a local equivalence, then the front face is a pullback, in addition to the left and
+   right faces. It follows that the back face is a pullback.
+\end{proof}
 
 \chapter{Equipments of monoidal categories and profunctors}
 
@@ -1464,7 +1489,7 @@ $U\colon\dcat{D}_0\to\cat{C}$ with a left adjoint $F\colon\cat{C}\to\dcat{D}_0$.
 induced monad on $\cat{C}$.
 
 Let $\dcat{D}_T\subseteq\dcat{D}$ be the full sub-double category spanned by the objects in the image
-of $F$ (the ``discrete'' objects). We will write $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ for the
+of $F$ (the ``free'' objects). We will write $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ for the
 inclusion. Concretely, $(\dcat{D}_T)_0=\cat{C}_{T}$ is the Kleisli category of $T$, and
 $(\dcat{D}_T)_1$ is defined by the pullback
 \begin{equation*}
