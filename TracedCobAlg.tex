@@ -449,14 +449,9 @@ $$\varphi_1\colon\inp{X}\sqcup\outp{Y}\to\outp{X}\sqcup\inp{Y},$$
 which is both injective and surjective, we can obtain the desired indexing operad $\Cob'$ by requiring surjectivity but not injectivity in $\varphi$.
 
 
-\section{Plan of the paper} \todo{This plan needs work!}
+\section{Plan of the paper} 
 
-The paper is organized as follows. In Section~\ref{sec:traced categories} we give more details on
-the connection between traced categories, their string diagrams, and algebras on the operad
-of cobordisms. In Section~\ref{sec:deducing} we prove~\ref{thm:TheoremB}
-and~\ref{cor:CorollaryB}, which compare lax set-valued functors to strong bijective-on-objects
-functors, respectively for compact and traced categories. Our main result,~\ref{thm:TheoremA},
-which says that traced categories are $\Cob$-algebras, follows easily.
+Write Plan.
 
 \section*{Acknowledgments}
 
@@ -886,19 +881,22 @@ $\cat{O}$ into the free group on $\cat{O}$. In this way, $\UCM$ induces a functo
 
 \subsection{$\LCob{\cat{O}}$ is the free compact category on $\cat{O}$}
 
-To connect the geometry (string diagrams) with the algebra (free compact categories), we recall the following theorem of Freyd and Yetter.
+To connect the geometry (string diagrams) with the algebra (free compact categories), we recall the following Theorem  \cite[Theorem 3.6]{FreydYetter} of Freyd and Yetter.
 
 \begin{theorem}\label{thm:free_compact_is_Cob}
-   The free compact category $\FC(\cat{O})$ on a set $\cat{O}$ is equivalent to $\LCob{\cat{O}}$.
+For any set $\cat{O}$, the free braided pivotal category on $\cat{O}$ is the category of $\cat{O}$-colored oriented tangles (up to regular isotopy).
 \end{theorem}
+
+\begin{corollary}\label{cor:free_compact_is_Cob}
+The free compact category $\FC(\cat{O})$ on a set $\cat{O}$ is equivalent to $\LCob{\cat{O}}$.
+\end{corollary}
 \begin{proof}
-   In \cite[Theorem 3.6]{FreydYetter}, Freyd and Yetter prove something more general: for any set $\cat{O}$, the free braided pivotal category on $\cat{O}$ is the category of $\cat{O}$-colored oriented tangles (up to regular isotopy). The result follows by symmetrizing both sides, i.e., by adding that $\sigma_{B,A}\circ\sigma_{A,B}=\id_A$ for all $A,B$.
+  This result follows by symmetrizing both sides of Theorem~\ref{thm:free_compact_is_Cob}, i.e., by adding that $\sigma_{B,A}\circ\sigma_{A,B}=\id_A$ for all $A,B$.
+   \todo{Check this.}
+\end{proof}
 
 %   Joachim Kock proves that 2-cob is the free compact category on a frobenius algebra object, and
 %   the proof can be adapted.
-   \todo{Fix this.}
-\end{proof}
-
 
 
 \chapter{Background on equipments}\label{sec:background_equipments}
@@ -973,8 +971,13 @@ $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 \todo[author=David,inline]{Make sure to say that $\dProf_0=\Cat$, etc. I think this could be confusing for non-experts.}
 \todo[author=David,inline]{Discuss (here or elsewhere) that essential surjectivity is left pseudo-orthogonal to $\ff$ in $\Prof$.}
 
+\begin{definition}\label{def:equipment}
+An equipment is a double category $\dcat{D}$ in which the functor $\dcat{D}_1\tto\dcat{D}_0\times\dcat{D}_0$ is a fibration.
+\end{definition}
+
+\todo[inline]{In \ref{def:local_equivalence}, do we want this to be strict pullback (local iso) or pseudo pullback (local equiv)? Similar decisions about pullbacks must be dealt with throughout the paper.}
 \begin{definition}\label{def:local_equivalence}
-   An equipment functor $F\colon\dcat{X}\to\dcat{Y}$ is a \emph{local equivalence} if the square
+   An equipment functor $F\colon\dcat{X}\to\dcat{Y}$ is a \emph{local equivalence} if the following square is a pseudo-pullback of categories:
    \begin{equation*}
       \begin{tikzcd}
          \dcat{X}_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
@@ -983,7 +986,6 @@ $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
             & \dcat{Y}_0\times\dcat{Y}_0
       \end{tikzcd}
    \end{equation*}
-   is a pullback of categories.
 \end{definition}
 
 \section{The monoids and bimodules construction}
@@ -1070,7 +1072,7 @@ following equations whenever they make sense:
    \end{equation*}
 \end{definition}
 
-Recall from~\cite{Schultz:2015}:
+We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz2015}.
 
 \begin{definition}
    An equipment $\dcat{D}$ is \emph{exact} if
@@ -1085,11 +1087,25 @@ Recall from~\cite{Schultz:2015}:
    \end{compactitem}
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{thm:orthogonal}
    If an equipment $\dcat{D}$ is exact (and hence regular), then the vertical 2-category
    $\VVer(\dcat{D})$ admits a 2-orthogonal factorization system $(\bo,\ff)$. In particular, there is
    an orthogonal factorization system $(\bo,\ff)$ on the vertical 1-category $\dcat{D}_0$.
 \end{theorem}
+
+\begin{remark}
+For an exact equipment $\dcat{D}$, we will indicate that a vertical morphism is in the left ($\bo$) class using a two-headed arrow $c\tto d$, and we will indicate the right ($\ff$) class using a hook arrow, $c\inj d$. Thus, the second part of Theorem~\ref{thm:orthogonal} says that for every solid-arrow diagram:
+$$
+\begin{tikzcd}
+a\ar[d,two heads]\ar[r]&b\ar[d,hook]\\
+c\ar[r]\ar[ur,dashed]&d
+\end{tikzcd}
+$$
+there exists a dashed arrow as shown.
+
+We sometimes also use the two-headed arrow to indicate fibrations of categories (e.g., as in Definition~\ref{def:local_equivalence}). These two uses of the symbol $\tto$ can be distinguished as follows. If the arrow occurs between objects in an equipment, then it indicates a $\bo$ map; if it occurs as a structural part of a given equipment\todo{Patrick: can this be better phrased?}, e.g., as in Definition~\ref{def:equipment}, then it indicates a fibration. 
+
+\end{remark}
 
 If $\dcat{D}$ is an exact equipment, then using the factorization system we can define an equipment
 $\dcat{D}^{\bo}$. The vertical category of $\dcat{D}^{\bo}$ is the category $\dcat{D}_0^{\bo}$,
@@ -1098,12 +1114,13 @@ in the class $\bo$. The horizontal morphisms and 2-cells are determined by the c
 $\bo$ arrows, i.e.~the category $\dcat{D}_1^{\bo}$ is given by the pullback
 \begin{equation*}
 \begin{tikzcd}[column sep=large]
-   \dcat{D}_1^{\bo} \ar[r] \ar[d] \ar[dr,phantom,"\lrcorner" very near start]
-      & \dcat{D}_1 \ar[d] \\
+   \dcat{D}_1^{\bo} \ar[r] \ar[d, two heads] \ar[dr,phantom,"\lrcorner" very near start]
+      & \dcat{D}_1 \ar[d, two heads] \\
    \dcat{D}_0^{\bo}\times\dcat{D}_0^{\bo} \ar[r,"\cod\times\cod"']
       & \dcat{D}_0\times\dcat{D}_0
 \end{tikzcd}
 \end{equation*}
+In other words, the inclusion $\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence.
 
 \begin{theorem}\label{thm:Mod vs bo}
    Let $\dcat{D}$ be an exact equipment. There is an equivalence of equipments
@@ -1124,6 +1141,7 @@ $\bo$ arrows, i.e.~the category $\dcat{D}_1^{\bo}$ is given by the pullback
 \end{corollary}
 
 \section{Other stuff}
+\todo{Change name of ``Other Stuff" section, once things settle.}
 
 \subsection{Internal presheaves}\label{subsec:internal_presheaves}
 
@@ -1733,7 +1751,7 @@ The left-hand map is surjective on objects, so the result follows from the chain
 &\equiv\CPsh(\dFrMonCompProf)\\
 &\equiv\Mon(\dFrMonCompProf)
 \end{align*}
-given by (\ref{dia:TMvsFrMonCat}), Theorem~\ref{thm:free_compact_is_Cob}, Definitions~\ref{def:copresheaves},~\ref{def:FrMonProf_FrCompProf},~and~\ref{def:FrMonCompProf}, and Lemma~\ref{lem:FrMonCompProf_Psh_Mon}.
+given by (\ref{dia:TMvsFrMonCat}), Corollary~\ref{cor:free_compact_is_Cob}, Definitions~\ref{def:copresheaves},~\ref{def:FrMonProf_FrCompProf},~and~\ref{def:FrMonCompProf}, and Lemma~\ref{lem:FrMonCompProf_Psh_Mon}.
 \end{proof}
 
 \begin{named}{Theorem B}\label{thm:TheoremB}
@@ -1810,6 +1828,9 @@ M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of 
  \bibitem{RupelSpivak}
  D.~Rupel and D.~I.~Spivak, The operad of temporal wiring diagrams: Formalizing a graphical language for discrete-time processes, Preprint: arXiv:1307.6894 (2013).
 
+ \bibitem{Schultz2015}
+ P.~Schultz, Regular and exact (virtual) double categories, Preprint: 1505.00712 (2015)
+ 
  \bibitem{Spivak}
  D.~I.~Spivak, The operad of wiring diagrams: Formalizing a graphical language for databases, recursion, and plug-and-play circuits, Preprint: arXiv:1305.0297 (2013).
 
