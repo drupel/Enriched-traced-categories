@@ -1323,6 +1323,22 @@ The equipment $\dCompProf$ is defined as follows.
 The equipment $\dMonProf$ is exact.
 \end{proposition}
 
+\begin{lemma}\label{lem:Int_preserves_bo}
+   If a traced functor $F\colon\cat{T}\to\cat{T}'$ is bijective-on-objects, then so is $\Int(F)$.
+\end{lemma}
+
+\begin{lemma}
+   Let $T$ be a traced category, $C$ a compact category, and $F\colon T\to\UCT C$ a traced functor
+   such that the extension $\tilde{F}\colon\Int(T)\twoheadrightarrow C$ is bijective on objects. Then
+   in the factorization
+   \begin{equation*}
+      \begin{tikzcd}
+         T \ar[r,hook,"\eta_T"] \ar[d,two heads,"G"']
+         & \Int(T) \ar[d,two heads,"\tilde{F}"]
+      \end{tikzcd}
+   \end{equation*}
+\end{lemma}
+
 \begin{proposition}\label{prop:TrProf_exact}
 The equipment $\dTrProf$ is exact.
 \end{proposition}
