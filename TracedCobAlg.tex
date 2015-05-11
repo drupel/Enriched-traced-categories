@@ -143,7 +143,7 @@ Some intuition for this statement will be given in Section~\ref{subsec:cobalg_an
 
 The equivalence (\ref{eq:single_fiber}) has two drawbacks: the object set of the traced category is fixed, and it is assumed to be free. Much of the work in this paper is to relax these two conditions. For the latter, we prove that the 2-category of traced categories is equivalent to that of \emph{object-free} traced categories (see Proposition~\ref{prop:TrCat_ObjectFree}). For the former, we first explain what kind of variance is appropriate.
 
-A strong functor $F\colon \cat{C}\to \cat{C'}$ between object-free traced categories sends each object in $\cat{C}$ to the tensor product of finitely many objects in $\cat{C'}$; that is, it induces a function $\Ob F\colon\Ob\cat{C}\to\TM(\Ob \cat{C'})$, where $\TM\colon\Set\to\Set$ is the free monoid monad. Let $\Set_{\TM}$ denote the Kleisli category of this monad, so $\Ob F$ is identified with a morphism in $\Set_{\TM}$. By Lemma~\ref{lemma:monad_morphism}, there is a functor $(\LCob{\bullet})\colon\Set_{\TM}\to\CompCat$, \todo{Patrick: check this paragraph; is $(\LCob{\bullet})$ clear enough notation?}and we can compose it with $\Lax(-,\Set)$ to obtain a functor which we denote
+A strong functor $F\colon \cat{C}\to \cat{C'}$ between object-free traced categories sends each object in $\cat{C}$ to the tensor product of finitely many objects in $\cat{C'}$; that is, it induces a function $\Ob F\colon\Ob\cat{C}\to\TM(\Ob \cat{C'})$, where $\TM\colon\Set\to\Set$ is the free monoid monad. Let $\Set_{\TM}$ denote the Kleisli category of this monad, so $\Ob F$ is identified with a morphism in $\Set_{\TM}$. There is a functor $(\LCob{\bullet})\colon\Set_{\TM}\to\CompCat$ (see~\eqref{dia:TMvsFrMonCat}~and~\eqref{eqn:FMC}), \todo{Patrick: check this paragraph; is $(\LCob{\bullet})$ clear enough notation?}and we can compose it with $\Lax(-,\Set)$ to obtain a functor which we denote
 \begin{equation}\label{eqn:cob/bullet}
 (\LCob{\bullet})\alg\colon\op{\Set_{\TM}}\too\Cat.
 \end{equation}
@@ -812,7 +812,7 @@ The following facts hold for any traced category $\cat{C}$:
 
 \section{Free traced and compact categories, and geometry}\label{sec:free and geometry}
 
-There are free/forgetful adjunctions\todo{Do we need $\FT$ and $\UT$? Reduce clutter by removing it throughout this section.}
+There are free/forgetful adjunctions
 \begin{align*}
    \FM\colon\Set &\leftrightarrows\MonCat:\!\UM \\
    \FT\colon\Set &\leftrightarrows\TrCat:\!\UT \\
@@ -884,9 +884,13 @@ $\cat{O}$ into the free group on $\cat{O}$. In this way, $\UCM$ induces a functo
 %   See Abramsky.
 %\end{proof}
 
-\begin{proposition}\label{prop:free_compact_is_Cob}
+\subsection{$\LCob{\cat{O}}$ is the free compact category on $\cat{O}$}
+
+To connect the geometry (string diagrams) with the algebra (free compact categories), we recall the following theorem of Freyd and Yetter.
+
+\begin{theorem}\label{thm:free_compact_is_Cob}
    The free compact category $\FC(\cat{O})$ on a set $\cat{O}$ is equivalent to $\LCob{\cat{O}}$.
-\end{proposition}
+\end{theorem}
 \begin{proof}
    In \cite[Theorem 3.6]{FreydYetter}, Freyd and Yetter prove something more general: for any set $\cat{O}$, the free braided pivotal category on $\cat{O}$ is the category of $\cat{O}$-colored oriented tangles (up to regular isotopy). The result follows by symmetrizing both sides, i.e., by adding that $\sigma_{B,A}\circ\sigma_{A,B}=\id_A$ for all $A,B$.
 
@@ -1729,7 +1733,7 @@ The left-hand map is surjective on objects, so the result follows from the chain
 &\equiv\CPsh(\dFrMonCompProf)\\
 &\equiv\Mon(\dFrMonCompProf)
 \end{align*}
-given by (\ref{dia:TMvsFrMonCat}), Proposition~\ref{prop:free_compact_is_Cob}, Definitions~\ref{def:copresheaves},~\ref{def:FrMonProf_FrCompProf},~and~\ref{def:FrMonCompProf}, and Lemma~\ref{lem:FrMonCompProf_Psh_Mon}.
+given by (\ref{dia:TMvsFrMonCat}), Theorem~\ref{thm:free_compact_is_Cob}, Definitions~\ref{def:copresheaves},~\ref{def:FrMonProf_FrCompProf},~and~\ref{def:FrMonCompProf}, and Lemma~\ref{lem:FrMonCompProf_Psh_Mon}.
 \end{proof}
 
 \begin{named}{Theorem B}\label{thm:TheoremB}
