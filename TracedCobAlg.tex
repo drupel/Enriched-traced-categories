@@ -569,8 +569,8 @@ monoidal transformations, and let $\MonCat$ denote the underlying 1-category. Le
 $\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal transformations
 from $\cat{C}$ to $\cat{D}$. 
 
-\begin{warning}
-For the rest of this artcile, whenever we discuss monoidal categories, we will mean symmetric monoidal categories. For example, see the definition of $\MMonCat$ above.
+\begin{warning}\todo{Is this true?}
+For the rest of this article, whenever we discuss monoidal categories, we will mean symmetric monoidal categories. For example, see the definition of $\MMonCat$ above.
 \end{warning}
 
 \section{Traced categories}\label{sec:intuition_for_traced}
@@ -885,15 +885,13 @@ $\cat{O}$ into the free group on $\cat{O}$. In this way, $\UCM$ induces a functo
 %\end{proof}
 
 \begin{proposition}\label{prop:free_compact_is_Cob}
-   The free compact closed category $\FC(\cat{O})$ on a set $\cat{O}$ is equivalent to $\LCob{\cat{O}}$
+   The free compact category $\FC(\cat{O})$ on a set $\cat{O}$ is equivalent to $\LCob{\cat{O}}$.
 \end{proposition}
 \begin{proof}
-   Freyd, Yetter ``Braided compact closed categories with applications to low dimensional topology''
-   proves something more general: the category of 1-dim tangles is the free braided compact
-   category.
+   In \cite[Theorem 3.6]{FreydYetter}, Freyd and Yetter prove something more general: for any set $\cat{O}$, the free braided pivotal category on $\cat{O}$ is the category of $\cat{O}$-colored oriented tangles (up to regular isotopy). The result follows by symmetrizing both sides, i.e., by adding that $\sigma_{B,A}\circ\sigma_{A,B}=\id_A$ for all $A,B$.
 
-   Joachim Kock proves that 2-cob is the free compact category on a frobenius algebra object, and
-   the proof can be adapted.
+%   Joachim Kock proves that 2-cob is the free compact category on a frobenius algebra object, and
+%   the proof can be adapted.
    \todo{Fix this.}
 \end{proof}
 
@@ -1163,14 +1161,14 @@ In other words, an object of $\CPsh(\dcat{D})$ is a pair $(C,F)$, where $C\in\Ob
    Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor. Suppose that $\dcat{X}_0$ and
    $\dcat{Y}_0$ have terminal objects, and that $F$ preserves them. Then there is an induced
    morphism of fibrations
-   \begin{equation*}\label{eq:CPsh_square}
+   \begin{equation}\label{eq:CPsh_square}
       \begin{tikzcd}
          \CPsh(\dcat{X}) \ar[r,"\tilde{F}"] \ar[d,two heads] % \ar[dr,phantom,"\lrcorner" very near start]
             & \CPsh(\dcat{Y}) \ar[d,two heads] \\
          \dcat{X}_0 \ar[r,"F_0"']
             & \dcat{Y}_0.
       \end{tikzcd}
-   \end{equation*}
+   \end{equation}
    Moreover, if $F$ is a local equivalence (Definition~\ref{def:local_equivalence}),
    then~\eqref{eq:CPsh_square} is a pullback.  Similarly for $\Psh$.
 \end{lemma}
@@ -1191,10 +1189,9 @@ In other words, an object of $\CPsh(\dcat{D})$ is a pair $(C,F)$, where $C\in\Ob
       \end{tikzcd}
    \end{equation*}
    The bottom face of the cube commutes because $F_0$ preserves terminal objects. The right face of
-   the cube is a pullback, hence there is a unique $\tilde{F}$ making the cube commute.
+   the cube is a pullback (as is the left, by definition), hence there is a unique $\tilde{F}$ making the cube commute.
 
-   If $F$ is a local equivalence, then the front face is a pullback, in addition to the left and
-   right faces. It follows that the back face is a pullback.
+   If $F$ is a local equivalence, then the front face is a pullback, so the back face is a pullback as well.
 \end{proof}
 
 \chapter{Equipments of monoidal categories and profunctors}
@@ -1319,16 +1316,17 @@ The equipment $\dCompProf$ is exact.
 
 \section{Special properties of CompProf}
 \todo[inline]{CompProf closed under collapse in MonProf}
+\todo[inline]{This section needs a notation update. \eqref{eqn:primary_goal} and (\eqref{eqn:functors_1C_CC} are about $\dCompProf$, but nothing else seems to be.}
 
 The primary goal of this section is to establish the equivalences of 1-categories
-\begin{equation}\label{eqn:primary goal}
+\begin{equation}\label{eqn:primary_goal}
    \begin{tikzcd}
       \dCompProf(1,-) \equiv \Pt(\dCompProf) \equiv \Mon(\dCompProf).
    \end{tikzcd}
 \end{equation}
 
 Consider the functors
-\begin{equation}\label{eqn:functors 1C CC}
+\begin{equation}\label{eqn:functors_1C_CC}
 \begin{tikzcd}
    \dCompProf(1,-) \ar[r,shift left,"F"]
    & \dMProf \ar[l,shift left,"U"]
@@ -1415,7 +1413,7 @@ morphisms which preserve the units.
 \end{proof}
 
 \begin{proposition}\label{Prop:canonical unit}
-   The functor $F\colon\MProf(1,\cat{C})\to\MProf(\cat{C},\cat{C})$, from (\ref{eqn:functors 1C CC}), factors through $\MProf{(\cat{C},\cat{C})}_*$, and hence also through $\Mon(\MProf(\cat{C},\cat{C}))$.
+   The functor $F\colon\MProf(1,\cat{C})\to\MProf(\cat{C},\cat{C})$, from (\ref{eqn:functors_1C_CC}), factors through $\MProf{(\cat{C},\cat{C})}_*$, and hence also through $\Mon(\MProf(\cat{C},\cat{C}))$.
 \end{proposition}
 \begin{proof}
    Given any $f\colon c\to d$ in $\cat{C}$, we must define an element $i(f)\in FM(c,d)=M(c^*\otimes d)$.
@@ -1438,7 +1436,7 @@ morphisms which preserve the units.
 \end{proof}
 
 \begin{proposition}\label{Prop:mon_prof_equivalence}
-   The functors $F$ and $U$, from (\ref{eqn:functors 1C CC}), induce an equivalence of fibrations
+   The functors $F$ and $U$, from (\ref{eqn:functors_1C_CC}), induce an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1.5em]
          \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
@@ -1764,7 +1762,7 @@ $$\CPsh(\dCompProf)\equiv\Mon(\dCompProf)\equiv\CompCat^{\bo}.$$
 \end{named}
 
 \begin{proof}
-By Definition~\ref{***}, the left-hand side is equivalent to $\CPsh(\dTrProf)$. \todo{Finish proof.}
+By Definition~\ref{def:TrProf}, the left-hand side is equivalent to $\CPsh(\dTrProf)$. \todo{Finish proof.}
 \end{proof}
 
 
@@ -1782,6 +1780,10 @@ By Definition~\ref{***}, the left-hand side is equivalent to $\CPsh(\dTrProf)$. 
 
  \bibitem{BorceuxV2}
  F.~Borceux, Handbook of Categorical Algebra: Volume 2, Categories and Structures, Cambridge University Press (1994).
+ 
+ \bibitem{FreydYetter}
+ P.~Freyd, D.N.~Yetter, Braided compact closed categories with applications to low-dimensional topology,
+Advances in Mathematics 77 (1989), no. 2, 156Ð182. 
 
  \bibitem{HackneyRobertson}
  P.~Hackney, M.~Robertson, On the category of props, Preprint: arXiv: 1207.2773v2 (2012).
