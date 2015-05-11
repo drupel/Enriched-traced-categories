@@ -157,67 +157,6 @@ By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect 
    such that the induced 2-functor $\CobKlsAlg\to\TTrCat$ is 2-essentially surjective.
 \end{named}
 
-\todo[author=David]{Start here}
-To give a sense of the essential surjectivity in~\ref{thm:Theorem_A} we will briefly specify here how to construct a
-$(\Cob/\Ob\cat{C})$-algebra from a traced category $\cat{C}$. The proof of \ref{thm:Theorem_A} can be found in Section~\ref{sec:proof_of_A}. 
-
-First, given a relative set
-$\iota\colon Z\to\Ob\cat{C}$, we will abuse notation slightly and use the same symbol $Z$ to denote
-the tensor $\bigotimes_{z\in Z}\iota(z)$.  Then for an oriented 0-manifold $X=X^-\sqcup X^+$ over $\Ob\cat{C}$, we
-set $P(X)=\Hom_{\cat{C}}(X^-,X^+)$.  Given a cobordism $\Phi\colon X\to Y$, there exist
-$A,B,C,D,E\in\Ob\cat{C}$ such that $\inp{X}\cong C\sqcup A$, $\outp{X}\cong C\sqcup B$,
-$\inp{Y}\cong A\sqcup D$, $\outp{Y}\cong B\sqcup D$, and $E$ is the set of floating loops in $\Phi$;
-thus $\Phi$ is essentially equivalent to the cobordism (right side (\ref{eq:cob and trace pic})).
-With this notation, for $f\in P(X)$ we define
-\begin{equation}\label{eq:cob algebra formula}
-   P(\Phi)(f)=\Tr_{A,B}^C\big[f\big]\otimes D\otimes\Tr^E_{I,I}(E).
-\end{equation}
-This can be visualized via the following string diagram.
-\begin{equation}\label{eq:cob and trace pic}
-   \begin{tikzpicture}[wiring diagram, baseline=(current bounding box.center)]
-      \node[bb port sep=1.5, bb={2}{2}, bb name=$f$] (domain) {};
-      \node[bb={2}{2}, fit={(domain) ($(domain.north)+(0,3)$) ($(domain.south)-(0,1)$)}, bb name=$P(\Phi)(f)$] (codomain) {};
-      \draw[ar] (codomain_in1') to (domain_in2);
-      \draw[ar] (domain_out2) to (codomain_out1');
-      \draw[ar] let \p1=(domain.north east), \p2=(domain.north west), \n1={\y1+\bby}, \n2=\bbportlen in
-          (domain_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (domain_in1);  %Trace on C
-      \draw[ar] let \p1=(domain.south west), \p2=(domain.south east), \n1={\y1-\bby}, \n2=\bbportlen in
-          (codomain_in2') to[in=180] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=0] (codomain_out2'); %Identity on D
-      \draw[ar] let \p1=(domain.north east) in
-          (\x1+.7*\bbx,\y1+\bby) to[in=0] (\x1+.7*\bbx,\y1+2*\bby) -- (\x1+.6*\bbx,\y1+2*\bby) to[out=180] (\x1+.6*\bbx,\y1+\bby) -- (\x1+.7*\bbx,\y1+\bby);%Loop
-      \draw[label] let \p1=(domain.north east) in
-          node[below left=of codomain_in1]     {$A$}
-          node[below left=of codomain_in2]     {$D$}
-          node[below right=of codomain_out1]    {$B$}
-          node[below right=of codomain_out2]    {$D$}
-          node[above left=.6 and 0 of codomain_out1']  {$E$}
-          node[below left=of domain_in1]     {$C$}
-          node[below left=of domain_in2]     {$A$}
-          node[below right=of domain_out2]    {$B$}
-          node[below right=of domain_out1]   {$C$};
-   \end{tikzpicture}
-   \qquad\qquad
-   \begin{tikzpicture}[x=1cm,y=1ex,node distance=1 and 1,semithick,every label quotes/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},every to/.style={out=0,in=180},baseline=(current bounding box.center)]
-      \node ["$A$" left] (X1a) {$-$};
-      \node [above=0.25 of X1a] {$X$};
-      \node [below=0 of X1a, "$C$" left] (X1b) {$-$};
-      \node [below=0 of X1b, "$C$" left] (X2a) {$+$};
-      \node [below=0 of X2a, "$B$" left] (X2b) {$+$};
-      \node [right=2 of X1a, "$A$" right] (Y1a) {$-$};
-      \node [above=0.25 of Y1a] {$Y$};
-      \node [below=0 of Y1a, "$D$" right] (Y1b) {$-$};
-      \node [below=0 of Y1b, "$D$" right] (Y2a) {$+$};
-      \node [below=0 of Y2a, "$B$" right] (Y2b) {$+$};
-      \node [right=1.45 of X2a, "$E$" left] {};
-      \draw (X1a) to (Y1a);
-      \draw (X1b) to[in=0] (X2a);
-      \draw (X2b) to (Y2b);
-      \draw (Y1b) to[in=180,out=180] (Y2a);
-      \draw ($(X1b)+(1.25,-2.75)$) to[in=0] ($(X1b)+(1.25,-0.25)$);
-      \draw ($(X1b)+(1.25,-0.25)$) to[in=180,out=180] ($(X1b)+(1.25,-2.75)$);
-   \end{tikzpicture}
-\end{equation}
-
 \section{Generalization: Lax algebras on compact categories}
 
 It is most convenient to prove~\ref{thm:TheoremA} by proving a more general result, which
