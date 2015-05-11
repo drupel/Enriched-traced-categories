@@ -1502,7 +1502,7 @@ $(\dcat{D}_T)_1$ is defined by the pullback
 \end{equation*}
 
 The equipment functor $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ is a fully-faithful local equivalence,
-hence the induced $\dMod(\varphi)\colon\dMod(\dcat{D}_T)\to\dMod(\dcat{D})$ is as well. If
+hence the induced $\dMod(\varphi_T)\colon\dMod(\dcat{D}_T)\to\dMod(\dcat{D})$ is as well. If
 $\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ to identify
 $\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the
 image. We call this equipment $\dcat{D}_T^{\bo}$, and we can give an explicit construction as
@@ -1673,7 +1673,21 @@ construction of $\TTrCat$.
    \end{equation*}
 \end{definition}
 
-\todo{Explain this category.}
+\begin{remark}
+   As the equipment $\dFrMonCompProf$ plays a central role in our main theorem, it will be helpful to
+   break down this definition. We can think of $\dFrMonCompProf$ as having sets as objects, with
+   vertical morphisms $\cat{O}\to\cat{O}'$ being functors $\FM\cat{O}\to\FM\cat{O}'$ between the
+   free monoidal categories, and with proarrows $\cat{O}\tickar\cat{O}'$ being profunctors
+   $\FC\cat{O}\tickar\FC\cat{O}'$ between the free compact categories.
+
+   Alternatively, but equivalently, we can think of $\dFrMonCompProf$ as having the objects and
+   proarrows of $\dFrCompProf$. In this view, the vertical morphisms are also morphisms of
+   $\dFrCompProf$, but with the restriction that the functors $F\colon\FC\cat{O}\to\FC\cat{O}'$ are
+   ``positive''. By this, we mean that for any element $x\in\cat{O}$, $Fx$ is a tensor of elements
+   of $\cat{O}'$ (and not their duals). This is equivalent to the condition that $F$ is induced by a
+   functor $\FM\cat{O}\to\FM\cat{O}'$. Hence, $\dFrMonCompProf$ is usefully thought of as the double
+   category of free compact categories and positive functors.
+\end{remark}
 
 \begin{proposition}\label{prop:TrCat_2equiv}
    There is an equivalence of 2-categories
