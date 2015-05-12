@@ -1056,7 +1056,13 @@ following equations whenever they make sense:
 
 \section{Exactness and the $(\bo,\ff)$ factorization}\label{sec:exactness_and_boff}
 
-\begin{definition}
+\begin{definition}\label{def:embedding}
+An embedding is...
+
+\end{definition}
+
+
+\begin{definition}\todo{rephrase in terms of embeddings}
    Let $C\tickar C$ be a monoid in an equipment $\dcat{D}$. The \emph{collapse} of $M$ is an object
    $\Col{M}$ of $\dcat{D}$ together with a vertical morphism $i_M\colon C\to\Col{M}$ and a 2-cell
    \begin{equation*}
@@ -1355,25 +1361,26 @@ The equipment $\dCompProf$ is exact.
    completing the proof.
 \end{proof}
 
+Recall from \ref{def:embedding} the definition of embedding.
+
 \begin{proposition}\label{prop:TrProf_exact}
    The equipment $\dTrProf$ is exact.
 \end{proposition}
 \begin{proof}
    We begin by showing that every monoid in $\dTrProf$ has a collapse. Let $M\colon T\tickar T$ be a
    monoid in $\dTrProf$, or in other words let $M\colon\Int(T)\tickar\Int(T)$ be a monoid in
-   $\dCompProf$. Let $(i_M,\vec{\imath}_M)\colon (\Int(T),M)\to\Col{M}_C$ be the collapse embedding
-   of $M$ in $\dCompProf$.
+   $\dCompProf$. Define $\Col{M}_{\mathsf{C}}$ and $(i_M,\vec{\imath}_M)\colon (\Int(T),M)\to\Col{M}_{\mathsf{C}}$ to be the collapse embedding of $M$ in $\dCompProf$.
    
-   We will show that the 1-cell component $i'_M\colon T\to\Col{M}_T$ of the collapse embedding of
+   We will show that the object $\Col{M}_{\mathsf{T}}$ and the 1-cell component $i'_M\colon T\to\Col{M}_{\mathsf{T}}$ of the collapse embedding of
    $M$ in $\dTrProf$ can be constructed by the factorization
    \begin{equation}\label{eq:Emb_Tr}
       \begin{tikzcd}[column sep=large]
          T \ar[r,hook,"\eta_T"] \ar[d,two heads,"i'_M"']
             & \UCT\Int(T) \ar[d,two heads,"\UCT i_M"] \\
-         \Col{M}_T \ar[r,hook] & \UCT\Col{M}_C.
+         \Col{M}_{\mathsf{T}} \ar[r,hook] & \UCT\Col{M}_{\mathsf{C}}.
       \end{tikzcd}
    \end{equation}
-   Note that by Lemma~\ref{lem:Tr_bo_Int}, $\Col{M}_C\iso\Int(\Col{M}_T)$.
+   Note that by Lemma~\ref{lem:Tr_bo_Int}, there is an isomorphism $\Col{M}_{\mathsf{C}}\iso\Int(\Col{M}_{\mathsf{T}})$.
 
    An embedding $M\to T'$ in $\dTrProf$ is an embedding in $\dCompProf$ of the form
    $(\Int(f),\phi)\colon(\Int(T),M)\to\Int(T')$. Thus we can construct the set of embeddings
@@ -1387,57 +1394,57 @@ The equipment $\dCompProf$ is exact.
    \end{equation*}
    where the vertical functions send an embedding to its underlying 1-cell. Note also that this
    pullback is functorial/natural in $T'$. Now consider the following commutative diagram:
-   \begin{equation*}
-      \begin{tikzcd}
-         \TrCat(\Col{M}_T,T')
-               \ar[r,"\eta_{T'}\circ\textrm{--}"]
-               \ar[d,"\textrm{--}\circ i'_M"']
-               \ar[dr,phantom,"\lrcorner" very near start]
-            &
-               \TrCat(\Col{M}_T,\UCT\Int(T'))
-               \ar[d,"\textrm{--}\circ i'_M"']
-               \ar[r,"\iso"]
-            &[-.6em] 
-               \CompCat(\Col{M}_C,\Int(T'))
-               \ar[dd,"\iso"]
-               \ar[ddl,bend left=9,"\textrm{--}\circ i_M" description]
-            \\
-         \TrCat(T,T')
-               \ar[r,"\eta_{T'}\circ\textrm{--}"]
-               \ar[dr,bend right=9,looseness=1.1,"\Int"' sloped]
-            & \TrCat(T,\UCT\Int(T'))
-               \ar[d,"\iso"'] 
-             \\
-         & \CompCat(\Int(T),\Int(T'))& \Emb_C(M,\Int(T')) \ar[l]
-      \end{tikzcd}
-   \end{equation*}
 %   \begin{equation*}
-%      \begin{tikzcd}[row sep={0,between origins},column sep={0,between origins}]
-%         \TrCat(\Col{M}_T,T')
+%      \begin{tikzcd}
+%         \TrCat(\Col{M}_{\mathsf{T}},T')
 %               \ar[r,"\eta_{T'}\circ\textrm{--}"]
-%               \ar[dd,"\textrm{--}\circ i'_M"']
-%               \ar[ddr,phantom,"\lrcorner" very near start]
-%            &[2em,between borders]
-%               \TrCat(\Col{M}_T,\UCT\Int(T'))
-%               \ar[dd,"\textrm{--}\circ i'_M"']
-%               \ar[dr,phantom,"\iso" sloped]
-%            &[6.6em]
-%            &[6.6em] \\[2.3em]
-%         && \CompCat(\Col{M}_C,\Int(T'))
-%               \ar[ddr,phantom,"\iso" sloped]
-%               \ar[dddr,bend right=15,"\textrm{--}\circ i_M" description] & \\[1.7em]
+%               \ar[d,"\textrm{--}\circ i'_M"']
+%               \ar[dr,phantom,"\lrcorner" very near start]
+%            &
+%               \TrCat(\Col{M}_{\mathsf{T}},\UCT\Int(T'))
+%               \ar[d,"\textrm{--}\circ i'_M"']
+%               \ar[r,"\iso"]
+%            &[-.6em] 
+%               \CompCat(\Col{M}_{\mathsf{C}},\Int(T'))
+%               \ar[dd,"\iso"]
+%               \ar[ddl,bend left=9,"\textrm{--}\circ i_M" description]
+%            \\
 %         \TrCat(T,T')
 %               \ar[r,"\eta_{T'}\circ\textrm{--}"]
-%               \ar[ddrrr,bend right=9,looseness=1.1,"\Int"' sloped]
+%               \ar[dr,bend right=9,looseness=1.1,"\Int"' sloped]
 %            & \TrCat(T,\UCT\Int(T'))
-%               \ar[ddrr,"\iso"' sloped] && \\[.6em]
-%            &&& \Emb_C(M,\Int(T')) \ar[d] \\[4em]
-%         &&& \CompCat(\Int(T),\Int(T'))
+%               \ar[d,"\iso"'] 
+%             \\
+%         & \CompCat(\Int(T),\Int(T'))& \Emb_C(M,\Int(T')) \ar[l]
 %      \end{tikzcd}
 %   \end{equation*}
+   \begin{equation*}
+      \begin{tikzcd}[row sep={0,between origins},column sep={0,between origins}]
+         \TrCat(\Col{M}_T,T')
+               \ar[r,"\eta_{T'}\circ\textrm{--}"]
+               \ar[dd,"\textrm{--}\circ i'_M"']
+               \ar[ddr,phantom,"\lrcorner" very near start]
+            &[2em,between borders]
+               \TrCat(\Col{M}_T,\UCT\Int(T'))
+               \ar[dd,"\textrm{--}\circ i'_M"']
+               \ar[dr,phantom,"\iso" sloped]
+            &[6.6em]
+            &[6.6em] \\[2.3em]
+         && \CompCat(\Col{M}_C,\Int(T'))
+               \ar[ddr,phantom,"\iso" sloped]
+               \ar[dddr,bend right=15,"\textrm{--}\circ i_M" description] & \\[1.7em]
+         \TrCat(T,T')
+               \ar[r,"\eta_{T'}\circ\textrm{--}"]
+               \ar[ddrrr,bend right=9,looseness=1.1,"\Int"' sloped]
+            & \TrCat(T,\UCT\Int(T'))
+               \ar[ddrr,"\iso"' sloped] && \\[.6em]
+            &&& \Emb_C(M,\Int(T')) \ar[d] \\[4em]
+         &&& \CompCat(\Int(T),\Int(T'))
+      \end{tikzcd}
+   \end{equation*}
    The top left square is a pullback, by the orthogonality of $i'_M\in\bo$ and $\eta_{T'}\in\ff$.
    Comparing with~\eqref{eq:Emb_Tr}, we get a natural bijection
-   $\Emb_{\mathrm{Tr}}(M,T')\iso\TrCat(\Col{M}_T,T')$, showing that $\Col{M}_T$ is the collapse of
+   $\Emb_{\mathrm{Tr}}(M,T')\iso\TrCat(\Col{M}_{\mathsf{T}},T')$, showing that $\Col{M}_{\mathsf{T}}$ is the collapse of
    $M$ in $\dTrProf$. Moreover, by examining this equivalence, we can see that the collapse $M\to
    T'$ in $\dTrProf$ is given by the collapse $(\Int(i'_M),\vec{\imath}_M)\colon M\to\Int(T')$ in
    $\dCompProf$, and hence is cartesian.
