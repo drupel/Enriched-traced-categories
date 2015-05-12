@@ -170,7 +170,7 @@ As in Section~\ref{subsec:main_results}, the difficulty is allowing this equival
 
 The definition of compact closed symmetric
 monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact_and_int}, or in~\cite{MacLane}. Let $\CompCat$ denote the category of compact categories and strong
-monoidal functors between them. We show in Lemma~\ref{lemma:factorization_system} that there is a
+monoidal functors between them. We will see (\ref{thm:orthogonal} and \ref{prop:CompProf_exact}) that there is a
 factorization system on $\CompCat$, in which the left class consists of bijective-on-objects
 functors and the right class consists of fully faithful functors. Let $\CompCat^{\bo}$ be the full
 subcategory of the arrow category $\CompCat^{\to}$ spanned by the bijective-on-objects functors.
@@ -1138,7 +1138,7 @@ Recall the notion of orthogonal factorization systems for categories and strict 
 Definition~\ref{def:orthogonal}. We recall also from~\cite{Schultz2015} the following theorem:
 
 \begin{theorem}\label{thm:orthogonal}
-   If an equipment $\dcat{D}$ is exact (and hence regular), then the vertical 2-category
+   If an equipment $\dcat{D}$ is exact (and hence regular)\todo{Why is this "and hence regular" thing here?}, then the vertical 2-category
    $\VVer(\dcat{D})$ admits a 2-orthogonal factorization system $(\bo,\ff)$. In particular, there is
    an orthogonal factorization system $(\bo,\ff)$ on the vertical 1-category $\dcat{D}_0$.
 \end{theorem}
@@ -1464,14 +1464,14 @@ Recall from \ref{def:embedding} the definition of embedding.
                \ar[ddrr,phantom,"\lrcorner" very near start]
             &\hspace{.3cm}&
                \TrCat(\Col{M}_{\MTCfont{T}},\UCT\Int(T'))
-               \ar[dr, end anchor = {[xshift=-.1cm]north west},"\iso"]
+               \ar[dr, end anchor = {[xshift=-.2cm]north west},"\iso"]
                \ar[dd,"\textrm{--}\circ i'_M"']
                \ar[rr,"\iso"]
             &&\Emb_{\MTCfont{C}}(M,\Int(T')) \ar[dd]
             \\[-.5ex]
             &&&\parbox{.25cm}{~\hspace{-2cm}$\CompCat(\Col{M}_{\MTCfont{C}},\Int(T'))$}
-            \ar[ur,start anchor={[xshift=.1cm]north east},"\iso"]
-            \ar[dr,start anchor={[xshift=.1cm]south east},"\textrm{--}\circ i_M" description]
+            \ar[ur,start anchor={[xshift=.2cm]north east},"\iso"]
+            \ar[dr,start anchor={[xshift=.2cm]south east},"\textrm{--}\circ i_M" description]
             \\[1.5ex]
          \TrCat(T,T')
                \ar[rr,"\eta_{T'}\circ\textrm{--}"]
@@ -1517,7 +1517,7 @@ Recall from \ref{def:embedding} the definition of embedding.
 
 \section{Special properties of CompProf}
 \todo[inline]{CompProf closed under collapse in MonProf}
-\todo[inline]{This section needs a notation update. \eqref{eqn:primary_goal} and (\eqref{eqn:functors_1C_CC} are about $\dCompProf$, but nothing else seems to be.}
+\todo[inline]{This section needs a notation update. \eqref{eqn:primary_goal} and \eqref{eqn:functors_1C_CC} are about $\dCompProf$, but nothing else seems to be.}
 
 The primary goal of this section is to establish the equivalences of 1-categories
 \begin{equation}\label{eqn:primary_goal}
@@ -1657,13 +1657,6 @@ morphisms which preserve the units.
    $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from Lemma~\ref{Lem:comp prof
    bijection}.
 \end{proof}
-
-\todo{the following lemma needs to go somewhere.}
-\begin{lemma}\label{lemma:factorization_system}
-
-There is an orthogonal factorization system on $\CompCat$.
-
-\end{lemma}
 
 \section{Monoids on free objects}
 
