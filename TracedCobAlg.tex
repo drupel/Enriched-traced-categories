@@ -1388,29 +1388,53 @@ The equipment $\dCompProf$ is exact.
    where the vertical functions send an embedding to its underlying 1-cell. Note also that this
    pullback is functorial/natural in $T'$. Now consider the following commutative diagram:
    \begin{equation*}
-      \begin{tikzcd}[row sep={0,between origins},column sep={0,between origins}]
+      \begin{tikzcd}
          \TrCat(\Col{M}_T,T')
                \ar[r,"\eta_{T'}\circ\textrm{--}"]
-               \ar[dd,"\textrm{--}\circ i'_M"']
-               \ar[ddr,phantom,"\lrcorner" very near start]
-            &[2em,between borders]
+               \ar[d,"\textrm{--}\circ i'_M"']
+               \ar[dr,phantom,"\lrcorner" very near start]
+            &
                \TrCat(\Col{M}_T,\UCT\Int(T'))
-               \ar[dd,"\textrm{--}\circ i'_M"']
-               \ar[dr,phantom,"\iso" sloped]
-            &[6.6em]
-            &[6.6em] \\[2.3em]
-         && \CompCat(\Col{M}_C,\Int(T'))
-               \ar[ddr,phantom,"\iso" sloped]
-               \ar[dddr,bend right=15,"\textrm{--}\circ i_M" description] & \\[1.7em]
+               \ar[d,"\textrm{--}\circ i'_M"']
+               \ar[r,"\iso"]
+            &[-.6em] 
+               \CompCat(\Col{M}_C,\Int(T'))
+               \ar[dd,"\iso"]
+               \ar[ddl,bend left=9,"\textrm{--}\circ i_M" description]
+            \\
          \TrCat(T,T')
                \ar[r,"\eta_{T'}\circ\textrm{--}"]
-               \ar[ddrrr,bend right=9,looseness=1.1,"\Int"' sloped]
+               \ar[dr,bend right=9,looseness=1.1,"\Int"' sloped]
             & \TrCat(T,\UCT\Int(T'))
-               \ar[ddrr,"\iso"' sloped] && \\[.6em]
-            &&& \Emb_C(M,\Int(T')) \ar[d] \\[4em]
-         &&& \CompCat(\Int(T),\Int(T'))
+               \ar[d,"\iso"'] 
+             \\
+         & \CompCat(\Int(T),\Int(T'))& \Emb_C(M,\Int(T')) \ar[l]
       \end{tikzcd}
    \end{equation*}
+%   \begin{equation*}
+%      \begin{tikzcd}[row sep={0,between origins},column sep={0,between origins}]
+%         \TrCat(\Col{M}_T,T')
+%               \ar[r,"\eta_{T'}\circ\textrm{--}"]
+%               \ar[dd,"\textrm{--}\circ i'_M"']
+%               \ar[ddr,phantom,"\lrcorner" very near start]
+%            &[2em,between borders]
+%               \TrCat(\Col{M}_T,\UCT\Int(T'))
+%               \ar[dd,"\textrm{--}\circ i'_M"']
+%               \ar[dr,phantom,"\iso" sloped]
+%            &[6.6em]
+%            &[6.6em] \\[2.3em]
+%         && \CompCat(\Col{M}_C,\Int(T'))
+%               \ar[ddr,phantom,"\iso" sloped]
+%               \ar[dddr,bend right=15,"\textrm{--}\circ i_M" description] & \\[1.7em]
+%         \TrCat(T,T')
+%               \ar[r,"\eta_{T'}\circ\textrm{--}"]
+%               \ar[ddrrr,bend right=9,looseness=1.1,"\Int"' sloped]
+%            & \TrCat(T,\UCT\Int(T'))
+%               \ar[ddrr,"\iso"' sloped] && \\[.6em]
+%            &&& \Emb_C(M,\Int(T')) \ar[d] \\[4em]
+%         &&& \CompCat(\Int(T),\Int(T'))
+%      \end{tikzcd}
+%   \end{equation*}
    The top left square is a pullback, by the orthogonality of $i'_M\in\bo$ and $\eta_{T'}\in\ff$.
    Comparing with~\eqref{eq:Emb_Tr}, we get a natural bijection
    $\Emb_{\mathrm{Tr}}(M,T')\iso\TrCat(\Col{M}_T,T')$, showing that $\Col{M}_T$ is the collapse of
