@@ -1119,7 +1119,23 @@ We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz
    \end{compactitem}
 \end{definition}
 
-Recall the notion of orthogonal factorization systems for categories and strict 2-categories from Definition~\ref{def:orthogonal}.
+\begin{proposition}
+   If $\dcat{D}$ is an exact equipment, then collapse induces an equipment functor
+   $\Col{\textrm{--}}\colon\dMod(\dcat{D})\to\dcat{D}$. The functor $\Col{\textrm{--}}$ is a local
+   equivalence.
+\end{proposition}
+\begin{proof}
+   It is easy to use the universal property of collapse to construct, from any monoid homomorphism
+   $(f,\vec{f})\colon(a,M)\to(b,N)$, a vertical morphism $\Col{f}\colon\Col{M}\to\Col{N}$ in
+   $\dcat{D}$, defining a functor $\Mon(\dcat{D})\to\dcat{D}_0$.
+
+   The functor $\Col{\textrm{--}}$ is defined on proarrows and 2-cells using the inverse of the
+   equivalence from Definition~\ref{def:exact_equipment}. Clearly this makes $\Col{\textrm{--}}$ a
+   local equivalence.
+\end{proof}
+
+Recall the notion of orthogonal factorization systems for categories and strict 2-categories from
+Definition~\ref{def:orthogonal}. We recall also from~\cite{Schultz2015} the following theorem:
 
 \begin{theorem}\label{thm:orthogonal}
    If an equipment $\dcat{D}$ is exact (and hence regular), then the vertical 2-category
@@ -1150,23 +1166,62 @@ $\bo$ arrows, i.e.~the category $\dcat{D}_1^{\bo}$ is given by the pullback
 \end{equation*}
 In other words, the inclusion $\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence.
 
+\begin{lemma}\label{cor:Mon_vs_bo}
+   Let $\dcat{D}$ be an exact equipment. There is an equivalence of fibrations on the left, such
+   that the triangle on the right also commutes:
+   \begin{equation*}
+      \begin{tikzcd}[column sep=0em]
+         \Mon(\dcat{D}) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \dcat{D}_0^{\bo} \ar[dl,two heads,"\dom" pos=.3] \\
+         & \dcat{D}_0 &
+      \end{tikzcd}
+      \qquad
+      \begin{tikzcd}[column sep=0em]
+         \Mon(\dcat{D}) \ar[rr,"\equiv"] \ar[dr,"\Col{\textrm{--}}"' pos=.3]
+            && \dcat{D}_0^{\bo} \ar[dl,two heads,"\cod" pos=.3] \\
+         & \dcat{D}_0 &
+      \end{tikzcd}
+   \end{equation*}
+\end{lemma}
+\begin{proof}
+   The equivalence simply sends any monoid $(a,M)$ to the collapse morphism $i_M\colon
+   a\twoheadrightarrow\Col{M}$, which is in $\bo$. For any monoid homomorphism $(f,\vec{f})$, there
+   exists a unique $\tilde{f}$ such that
+   \begin{equation*}
+      \begin{tikzcd}
+         a \ar[r,tick,"M" domA] \ar[d,"f"']
+            & a \ar[d,"f"] \\
+         b \ar[r,tick,"N"{codA,domB}] \ar[d,two heads,"i_N"']
+            & b \ar[d,two heads,"i_N"] \\
+         \Col{N} \ar[r,tick,"\Col{N}"' codB]
+            & \Col{N}
+         \twocellA{\vec{f}}
+         \twocellB{\vec{\imath}_N}
+      \end{tikzcd}
+      \quad = \quad
+      \begin{tikzcd}
+         a \ar[r,tick,"M" domA] \ar[d,two heads,"i_M"']
+            & a \ar[d,two heads,"i_M"] \\
+         \Col{M} \ar[r,tick,"\Col{M}"{codA,domB}] \ar[d,"\tilde{f}"']
+            & \Col{M} \ar[d,"\tilde{f}"] \\
+         \Col{N} \ar[r,tick,"\Col{N}"' codB]
+            & \Col{N}
+         \twocellA{\vec{\imath}_M}
+         \twocellB{\tilde{f}}
+      \end{tikzcd}
+   \end{equation*}
+   thus the pair $(f,\tilde{f})$ defines a morphism $i_M\to i_N$ in $\dcat{D}_0^{\bo}$.
+
+   It is clear that the two triangles commute. The left triangle is a morphism of fibrations because
+   if $\vec{f}$ is cartesian, then $\tilde{f}$ is in $\ff$ (see \cite[Lemma 4.14]{Schultz2015}).
+\end{proof}
+
 \begin{theorem}\label{thm:Mod vs bo}
    Let $\dcat{D}$ be an exact equipment. There is an equivalence of equipments
    \[
       \dMod(\dcat{D}) \iso \dcat{D}^{\bo}.
    \]
 \end{theorem}
-\todo{need proofs}
-\begin{corollary}\label{cor:Mon_vs_bo}
-   Let $\dcat{D}$ be an exact equipment. There is an equivalence of fibrations
-   \begin{equation*}
-      \begin{tikzcd}[column sep=0em]
-         \Mon(\dcat{D}) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \dcat{D}_0^{\bo} \ar[dl,two heads,"\dom"] \\
-         & \dcat{D}_0 &
-      \end{tikzcd}
-   \end{equation*}
-\end{corollary}
 
 \section{Other stuff}
 \todo{Change name of ``Other Stuff" section, once things settle.}
@@ -1747,7 +1802,7 @@ Thus we have the following proposition:
             & \MonCat\times\MonCat
       \end{tikzcd}
    \end{equation*}
-   and similarly for $\dFrCompProf$.
+   and similarly for $\dFrTrProf$ and $\dFrCompProf$.
 \end{definition}
 
 \begin{remark}
@@ -1775,53 +1830,54 @@ Thus we have the following proposition:
    There are equivalences of 2-categories
    \begin{align*}
       \MMon(\dFrMonProf)&\equiv\MMonCat \\
+      \MMon(\dFrTrProf)&\equiv\TTrCat \\
       \MMon(\dFrCompProf)&\equiv\CCompCat.
    \end{align*}
 \end{corollary}
 
-By defining an equipment ``halfway between'' $\dFrMonProf$ and $\dFrCompProf$, with vertical
-morphisms from the former and horizontal morphisms from the latter, we can get a similar
-construction of $\TTrCat$.
-
-\begin{definition}\label{def:FrMonCompProf}
-   Let $\FMC\colon\FrMonCat\to\FrCompCat$ be as in (\ref{eqn:FMC}). The equipment $\dFrMonCompProf$ has vertical category $\dFrMonCompProf_0\coloneqq \FrMonCat$,
-   while $\dFrMonCompProf_1$ is defined by the pullback
-   \begin{equation*}
-      \begin{tikzcd}[column sep=large]
-         \dFrMonCompProf_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
-            & \dFrCompProf_1 \ar[d,two heads] \\
-         \FrMonCat\times\FrMonCat \ar[r,"\FMC\times\FMC"']
-            & \FrCompCat \times \FrCompCat
-      \end{tikzcd}
-   \end{equation*}
-\end{definition}
-
-\begin{remark}
-   As the equipment $\dFrMonCompProf$ plays a central role in our main theorem, it will be helpful to
-   break down this definition. We can think of $\dFrMonCompProf$ as having sets as objects, with
-   vertical morphisms $\cat{O}\to\cat{O}'$ being functors $\FM\cat{O}\to\FM\cat{O}'$ between the
-   free monoidal categories, and with proarrows $\cat{O}\tickar\cat{O}'$ being profunctors
-   $\FC\cat{O}\tickar\FC\cat{O}'$ between the free compact categories.
-
-   Alternatively, but equivalently, we can think of $\dFrMonCompProf$ as having the objects and
-   proarrows of $\dFrCompProf$. In this view, the vertical morphisms are also morphisms of
-   $\dFrCompProf$, but with the restriction that the functors $F\colon\FC\cat{O}\to\FC\cat{O}'$ are
-   ``positive''. By this, we mean that for any element $x\in\cat{O}$, $Fx$ is a tensor of elements
-   of $\cat{O}'$ (and not their duals). This is equivalent to the condition that $F$ is induced by a
-   functor $\FM\cat{O}\to\FM\cat{O}'$. Hence, $\dFrMonCompProf$ is usefully thought of as the double
-   category of free compact categories and positive functors.
-\end{remark}
-
-\begin{proposition}\label{prop:TrCat_2equiv}
-   There is an equivalence of 2-categories
-   \begin{equation*}
-      \MMon(\dFrMonCompProf)\equiv\TTrCat
-   \end{equation*}
-   which restricts to a fully-faithful functor between the 1-categories
-   \begin{equation*}
-      \Mon(\dFrMonCompProf)\to\TrCat.
-   \end{equation*}
-\end{proposition}
+%By defining an equipment ``halfway between'' $\dFrMonProf$ and $\dFrCompProf$, with vertical
+%morphisms from the former and horizontal morphisms from the latter, we can get a similar
+%construction of $\TTrCat$.
+%
+%\begin{definition}\label{def:FrMonCompProf}
+%   Let $\FMC\colon\FrMonCat\to\FrCompCat$ be as in (\ref{eqn:FMC}). The equipment $\dFrMonCompProf$ has vertical category $\dFrMonCompProf_0\coloneqq \FrMonCat$,
+%   while $\dFrMonCompProf_1$ is defined by the pullback
+%   \begin{equation*}
+%      \begin{tikzcd}[column sep=large]
+%         \dFrMonCompProf_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+%            & \dFrCompProf_1 \ar[d,two heads] \\
+%         \FrMonCat\times\FrMonCat \ar[r,"\FMC\times\FMC"']
+%            & \FrCompCat \times \FrCompCat
+%      \end{tikzcd}
+%   \end{equation*}
+%\end{definition}
+%
+%\begin{remark}
+%   As the equipment $\dFrMonCompProf$ plays a central role in our main theorem, it will be helpful to
+%   break down this definition. We can think of $\dFrMonCompProf$ as having sets as objects, with
+%   vertical morphisms $\cat{O}\to\cat{O}'$ being functors $\FM\cat{O}\to\FM\cat{O}'$ between the
+%   free monoidal categories, and with proarrows $\cat{O}\tickar\cat{O}'$ being profunctors
+%   $\FC\cat{O}\tickar\FC\cat{O}'$ between the free compact categories.
+%
+%   Alternatively, but equivalently, we can think of $\dFrMonCompProf$ as having the objects and
+%   proarrows of $\dFrCompProf$. In this view, the vertical morphisms are also morphisms of
+%   $\dFrCompProf$, but with the restriction that the functors $F\colon\FC\cat{O}\to\FC\cat{O}'$ are
+%   ``positive''. By this, we mean that for any element $x\in\cat{O}$, $Fx$ is a tensor of elements
+%   of $\cat{O}'$ (and not their duals). This is equivalent to the condition that $F$ is induced by a
+%   functor $\FM\cat{O}\to\FM\cat{O}'$. Hence, $\dFrMonCompProf$ is usefully thought of as the double
+%   category of free compact categories and positive functors.
+%\end{remark}
+%
+%\begin{proposition}\label{prop:TrCat_2equiv}
+%   There is an equivalence of 2-categories
+%   \begin{equation*}
+%      \MMon(\dFrMonCompProf)\equiv\TTrCat
+%   \end{equation*}
+%   which restricts to a fully-faithful functor between the 1-categories
+%   \begin{equation*}
+%      \Mon(\dFrMonCompProf)\to\TrCat.
+%   \end{equation*}
+%\end{proposition}
 
 \begin{lemma}\label{lem:FrMonCompProf_Psh_Mon}
    There is an equivalence of fibrations
@@ -1925,7 +1981,7 @@ F.~Borceux, Handbook of Categorical Algebra: Volume 1, Basic Category Theory, Ca
  
  \bibitem{FreydYetter}
  P.~Freyd, D.N.~Yetter, Braided compact closed categories with applications to low-dimensional topology,
-Advances in Mathematics 77 (1989), no. 2, 156Ð182. 
+Advances in Mathematics 77 (1989), no. 2, 156?182. 
 
  \bibitem{HackneyRobertson}
  P.~Hackney, M.~Robertson, On the category of props, Preprint: arXiv: 1207.2773v2 (2012).
