@@ -1074,7 +1074,7 @@ following equations whenever they make sense:
 
 We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz2015}.
 
-\begin{definition}
+\begin{definition}\label{def:exact_equipment}
    An equipment $\dcat{D}$ is \emph{exact} if
    \begin{compactitem}
       \item every monoid $M\colon c\tickar c$ has a collapse as above, with $\vec{\imath}_M$
@@ -1281,18 +1281,21 @@ The equipment $\dCompProf$ is defined as follows.
 The equipment $\dMonProf$ is exact.
 \end{proposition}
 
+\begin{proposition}\label{prop:CompProf_exact}
+The equipment $\dCompProf$ is exact.
+\end{proposition}
+
 \begin{lemma}\label{lem:Int_preserves_bo}
    If a traced functor $F\colon\cat{T}\to\cat{T}'$ is bijective-on-objects, then so is $\Int(F)$.
 \end{lemma}
 
-\begin{lemma}
-   Let $T$ be a traced category, $C$ a compact category, and $F\colon T\to\UCT C$ a traced functor
-   such that the extension $\tilde{F}\colon\Int(T)\twoheadrightarrow C$ is bijective on objects. If
-   we form the factorization in $\MonCat$
+\begin{lemma}\label{lem:Tr_bo_Int}
+   Let $T$ be a traced category, $C$ a compact category, and $F\colon\Int(T)\twoheadrightarrow C$ a
+   bijective on objects traced functor. If we form the factorization in $\MonCat$
    \begin{equation*}
       \begin{tikzcd}[column sep=large]
          \UTM T \ar[r,hook,"\UTM\eta_T"] \ar[d,two heads]
-            & \UCM\Int(T) \ar[d,two heads,"\UCM\tilde{F}"] \\
+            & \UCM\Int(T) \ar[d,two heads,"\UCM F"] \\
          M \ar[r,hook] & \UCM C
       \end{tikzcd}
    \end{equation*}
@@ -1303,11 +1306,12 @@ The equipment $\dMonProf$ is exact.
          \begin{equation*}
             \begin{tikzcd}[column sep=large]
                T \ar[r,hook,"\eta_T"] \ar[d,two heads,"G"']
-                  & \UCT\Int(T) \ar[d,two heads,"\UCT\tilde{F}"] \\
+                  & \UCT\Int(T) \ar[d,two heads,"\UCT F"] \\
                T' \ar[r,hook,"H"'] & \UCT C
             \end{tikzcd}
          \end{equation*}
-      \item there is an isomorphism $\alpha\colon C\iso\Int(T')$ such that $\alpha H=\eta_{T'}$.
+      \item there is an isomorphism $\alpha\colon C\iso\Int(T')$ such that $\UCT\alpha\circ
+         \eta_{T'}=H$ and $\alpha\circ\Int(G)=F$.
    \end{compactitem}
 \end{lemma}
 \begin{proof}
@@ -1316,25 +1320,85 @@ The equipment $\dMonProf$ is exact.
    \begin{equation*}
       \begin{tikzcd}[column sep=large]
          T \ar[r,hook,"\eta_T"] \ar[d,two heads,"G"']
-            & \UCT\Int(T) \ar[d,two heads,"\UCT\tilde{F}"']
-               \ar[ddr,bend left=25,"\UCT\Int(G)"] &[between origins] \\
-         T' \ar[r,hook,"H"] \ar[drr,hook,bend right=15,"\eta_{T'}"']
-            & \UCT C \ar[dr,"\alpha" inner sep=1pt] & \\[-10]
-         && \Int(T')
+            & \UCT\Int(T) \ar[d,two heads,"\UCT\Int(G)"']
+               \ar[ddr,bend left=25,"\UCT F"] &[between origins] \\
+         T' \ar[r,hook,"\eta_{T'}"] \ar[drr,hook,bend right=15,"H"']
+            & \UCT\Int(T') \ar[dr,"\UCT\alpha"' {inner sep=0pt,pos=.25}] & \\[-10]
+         && \UCT C
       \end{tikzcd}
    \end{equation*}
-   By Lemma~\ref{lem:Int_preserves_bo}, we know that $\UCT\Int(G)$ is $\bo$, and therefore $\alpha$
-   is also. But by the third part of Lemma~\ref{lemma:fully_faithful_and_trace}, $\alpha$ is $\ff$.
-   Hence $\alpha$ is an isomorphism, completing the proof.
+   where $\alpha\colon\Int(T')\to C$ is the adjunct of $H$. By Lemma~\ref{lem:Int_preserves_bo}, we
+   know that $\UCT\Int(G)$ is $\bo$, and therefore $\alpha$ is also. But by the third part of
+   Lemma~\ref{lemma:fully_faithful_and_trace}, $\alpha$ is $\ff$. Hence $\alpha$ is an isomorphism,
+   completing the proof.
 \end{proof}
 
 \begin{proposition}\label{prop:TrProf_exact}
-The equipment $\dTrProf$ is exact.
+   The equipment $\dTrProf$ is exact.
 \end{proposition}
+\begin{proof}
+   We begin by showing that every monoid in $\dTrProf$ has a collapse. Let $M\colon T\tickar T$ be a
+   monoid in $\dTrProf$, or in other words let $M\colon\Int(T)\tickar\Int(T)$ be a monoid in
+   $\dCompProf$. Let $(i_M,\vec{\imath}_M)\colon (\Int(T),M)\to\Col{M}_C$ be the collapse embedding
+   of $M$ in $\dCompProf$.
+   
+   We will show that the 1-cell component $i'_M\colon T\to\Col{M}_T$ of the collapse embedding of
+   $M$ in $\dTrProf$ can be constructed by the factorization
+   \begin{equation}\label{eq:Emb_Tr}
+      \begin{tikzcd}[column sep=large]
+         T \ar[r,hook,"\eta_T"] \ar[d,two heads,"i'_M"']
+            & \UCT\Int(T) \ar[d,two heads,"\UCT i_M"] \\
+         \Col{M}_T \ar[r,hook] & \UCT\Col{M}_C.
+      \end{tikzcd}
+   \end{equation}
+   Note that by Lemma~\ref{lem:Tr_bo_Int}, $\Col{M}_C\iso\Int(\Col{M}_T)$.
 
-\begin{proposition}\label{prop:CompProf_exact}
-The equipment $\dCompProf$ is exact.
-\end{proposition}
+   An embedding $M\to T'$ in $\dTrProf$ is an embedding in $\dCompProf$ of the form
+   $(\Int(f),\phi)\colon(\Int(T),M)\to\Int(T')$. Thus we can construct the set of embeddings
+   $\Emb_{\mathrm{Tr}}(M,T')$ as the pullback
+   \begin{equation*}
+      \begin{tikzcd}
+         \Emb_{\mathrm{Tr}}(M,T') \ar[r] \ar[d] \ar[dr,phantom,"\lrcorner" very near start]
+            & \Emb_C(M,\Int(T')) \ar[d] \\
+         \TrCat(T,T') \ar[r,"\Int"'] & \CompCat(\Int(T),\Int(T'))
+      \end{tikzcd}
+   \end{equation*}
+   where the vertical functions send an embedding to its underlying 1-cell. Note also that this
+   pullback is functorial/natural in $T'$. Now consider the following commutative diagram:
+   \begin{equation*}
+      \begin{tikzcd}[row sep={0,between origins},column sep={0,between origins}]
+         \TrCat(\Col{M}_T,T')
+               \ar[r,"\eta_{T'}\circ\textrm{--}"]
+               \ar[dd,"\textrm{--}\circ i'_M"']
+               \ar[ddr,phantom,"\lrcorner" very near start]
+            &[2em,between borders]
+               \TrCat(\Col{M}_T,\UCT\Int(T'))
+               \ar[dd,"\textrm{--}\circ i'_M"']
+               \ar[dr,phantom,"\iso" sloped]
+            &[6.6em]
+            &[6.6em] \\[2.3em]
+         && \CompCat(\Col{M}_C,\Int(T'))
+               \ar[ddr,phantom,"\iso" sloped]
+               \ar[dddr,bend right=15,"\textrm{--}\circ i_M" description] & \\[1.7em]
+         \TrCat(T,T')
+               \ar[r,"\eta_{T'}\circ\textrm{--}"]
+               \ar[ddrrr,bend right=9,looseness=1.1,"\Int"' sloped]
+            & \TrCat(T,\UCT\Int(T'))
+               \ar[ddrr,"\iso"' sloped] && \\[.6em]
+            &&& \Emb_C(M,\Int(T')) \ar[d] \\[4em]
+         &&& \CompCat(\Int(T),\Int(T'))
+      \end{tikzcd}
+   \end{equation*}
+   The top left square is a pullback, by the orthogonality of $i'_M\in\bo$ and $\eta_{T'}\in\ff$.
+   Comparing with~\eqref{eq:Emb_Tr}, we get a natural bijection
+   $\Emb_{\mathrm{Tr}}(M,T')\iso\TrCat(\Col{M}_T,T')$, showing that $\Col{M}_T$ is the collapse of
+   $M$ in $\dTrProf$. Moreover, by examining this equivalence, we can see that the collapse $M\to
+   T'$ in $\dTrProf$ is given by the collapse $(\Int(i'_M),\vec{\imath}_M)\colon M\to\Int(T')$ in
+   $\dCompProf$, and hence is cartesian.
+
+   The second part of Definition~\ref{def:exact_equipment} is immediate from exactness of
+   $\dCompProf$.
+\end{proof}
 
 \section{Special properties of CompProf}
 \todo[inline]{CompProf closed under collapse in MonProf}
