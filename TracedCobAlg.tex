@@ -1216,7 +1216,7 @@ In other words, the inclusion $\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence
    if $\vec{f}$ is cartesian, then $\tilde{f}$ is in $\ff$ (see \cite[Lemma 4.14]{Schultz2015}).
 \end{proof}
 
-\begin{theorem}\label{thm:Mod vs bo}
+\begin{theorem}\label{thm:Mod_vs_bo}
    Let $\dcat{D}$ be an exact equipment. There is an equivalence of equipments
    \[
       \dMod(\dcat{D}) \iso \dcat{D}^{\bo}.
@@ -1307,6 +1307,13 @@ In other words, an object of $\CPsh(\dcat{D})$ is a pair $(C,F)$, where $C\in\Ob
 \end{proof}
 
 \chapter{Equipments of monoidal categories and profunctors}
+
+In this section we setup the necessary equipment to prove our main results, \ref{thm:TheoremA}, \ref{thm:TheoremB}, and \ref{cor:CorollaryB}. The high-level view of the argument runs as follows. 
+
+The free compact category on $\cat{O}$ is $\LCob{\cat{O}}$ by Corollary~\ref{thm:free_compact_is_Cob}. For any compact category $\cat{C}$, there is an equivalence of categories (Proposition~\ref{prop:unit_implies_monoid}) between the lax functors $\cat{C}\to\Set$ and the monoids on $\cat{C}$ in the equipment $\CompProf$ (Definition~\ref{def:CompProf}). Because $\CompProf$ is an exact equipment (Proposition~\ref{prop:CompProf_exact}), the monoids on $\cat{C}$ can be identified with the bijective-on-objects functors out of $\cat{C}$ by Theorem~\ref{thm:Mod_vs_bo}; this establishes $\Lax(\cat{C},\Set)\iso\cat{C}/\CompCat^{\bo}.$ Similar results hold for traced categories. 
+
+The remaining difficulty is allowing the object set $\cat{O}$ to vary. What makes this work is the fact that there is an orthogonal factorization system on $\CompCat$ that behaves nicely with the adjunction to $\Set$. Theorem~\ref{thm:Verts} provides a 2-equivalence between any such nicely-behaved exact equipment and its free-on-objects version. It follows that the lax, set-valued functors out of a varying category $\cat{C}$ are equivalent to the $\bo$ maps out of $\cat{C}$ (Proposition~\ref{Prop:mon_prof_equivalence}). 
+
 
 \section{Monoidal profunctors}
 
@@ -1549,7 +1556,7 @@ morphisms which preserve the units.
    morphisms.
 \end{remark}
 
-\begin{proposition}\label{Prop:unit implies monoid}
+\begin{proposition}\label{prop:unit_implies_monoid}
    Let $N\in\MProf{(\cat{C},\cat{C})}_*$ be a monoidal profunctor equipped with a unit $\eta\colon\Hom_{\cat{C}}\to N$.
    Then $N$ has a canonical multiplication $\mu\colon N\otimes N\to N$ making $N$ a monoid in $\MProf(\cat{C},\cat{C})$.
    This construction defines an equivalence of categories
@@ -1660,7 +1667,7 @@ morphisms which preserve the units.
 
 \section{Monoids on free objects}
 
-If we want to modify theorem~\ref{thm:Mod vs bo} to get an equivalence with $\dcat{D}$ rather than
+If we want to modify theorem~\ref{thm:Mod_vs_bo} to get an equivalence with $\dcat{D}$ rather than
 $\dcat{D}^{\bo}$, we need to restrict to objects of $\dcat{D}$ which are ``free''. To provide a
 notion of freeness, suppose we have a category $\cat{C}$ and an ``underlying'' functor
 $U\colon\dcat{D}_0\to\cat{C}$ with a left adjoint $F\colon\cat{C}\to\dcat{D}_0$. Let $T=UF$ be the
