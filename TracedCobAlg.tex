@@ -1726,6 +1726,25 @@ Thus we have the following proposition:
    \end{equation*}
 \end{proposition}
 
+\begin{definition}\label{def:FrMonProf_FrCompProf}
+   We define the equipments
+   \begin{align*}
+      \dFrMonProf&\coloneqq\dMonProf_{\TM} \\
+%      \dFrTrProf&\coloneqq\dTrProf_{\TT} \\
+      \dFrCompProf&\coloneqq\dCompProf_{\TC}
+   \end{align*}
+   In particular, there is a pullback
+   \begin{equation*}
+      \begin{tikzcd}
+         \dFrMonProf_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+            & \dMonProf_1 \ar[d,two heads] \\
+         \FrMonCat\times\FrMonCat \ar[r]
+            & \MonCat\times\MonCat
+      \end{tikzcd}
+   \end{equation*}
+   and similarly for $\dFrTrProf$ and $\dFrCompProf$.
+\end{definition}
+
 \begin{remark}
    The objects of $\dcat{D}_T^{\bo}$ are bijective-on-objects morphisms of the form
    $F(c)\twoheadrightarrow D$ where $c$ is an object in $\cat{C}$ and $D$ is an object in
@@ -1822,6 +1841,15 @@ Thus we have the following proposition:
    \todo[inline]{Can think of $\MMon(\dFrMonProf)$ as ``object free'' monoidal categories.}
 \end{remark}
 
+\begin{corollary}
+   There are equivalences of 2-categories
+   \begin{align*}
+      \MMon(\dFrMonProf)&\equiv\MMonCat \\
+      \MMon(\dFrTrProf)&\equiv\TTrCat \\
+      \MMon(\dFrCompProf)&\equiv\CCompCat.
+   \end{align*}
+\end{corollary}
+
 \begin{lemma}\label{lem:FrCompProf_Psh_Mon}
    There is an equivalence of fibrations
    \begin{equation*}
@@ -1837,15 +1865,6 @@ Thus we have the following proposition:
    (Definition~\ref{def:local_equivalence}), so the lemma follows from~Proposition~\ref{Prop:mon
    prof equivalence}, and Lemmas~\ref{lem:Mon_pullback} and~\ref{lem:Psh_pullback}.
 \end{proof}
-
-\begin{corollary}
-   There are equivalences of 2-categories
-   \begin{align*}
-      \MMon(\dFrMonProf)&\equiv\MMonCat \\
-      \MMon(\dFrTrProf)&\equiv\TTrCat \\
-      \MMon(\dFrCompProf)&\equiv\CCompCat.
-   \end{align*}
-\end{corollary}
 
 %By defining an equipment ``halfway between'' $\dFrMonProf$ and $\dFrCompProf$, with vertical
 %morphisms from the former and horizontal morphisms from the latter, we can get a similar
