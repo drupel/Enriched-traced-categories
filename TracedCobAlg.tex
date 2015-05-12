@@ -1166,13 +1166,13 @@ $\bo$ arrows, i.e.~the category $\dcat{D}_1^{\bo}$ is given by the pullback
 \end{equation*}
 In other words, the inclusion $\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence.
 
-\begin{lemma}\label{cor:Mon_vs_bo}
-   Let $\dcat{D}$ be an exact equipment. There is an equivalence of fibrations on the left, such
+\begin{lemma}\label{lem:Mon_vs_bo}
+   Let $\dcat{d}$ be an exact equipment. There is an equivalence of fibrations on the left, such
    that the triangle on the right also commutes:
    \begin{equation*}
       \begin{tikzcd}[column sep=0em]
-         \Mon(\dcat{D}) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \dcat{D}_0^{\bo} \ar[dl,two heads,"\dom" pos=.3] \\
+         \Mon(\dcat{d}) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \dcat{d}_0^{\bo} \ar[dl,two heads,"\dom" pos=.3] \\
          & \dcat{D}_0 &
       \end{tikzcd}
       \qquad
@@ -1222,16 +1222,23 @@ In other words, the inclusion $\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence
       \dMod(\dcat{D}) \iso \dcat{D}^{\bo}.
    \]
 \end{theorem}
+\begin{proof}
+   Because the equipment functors $\dcat{D}^{\bo}\to\dcat{D}$ and
+   $\Col{\textrm{--}}\colon\dMod(\dcat{D})\to\dcat{D}$ are both local equivalences, the equivalence
+   of Lemma~\ref{lem:Mon_vs_bo} extends to an equivalence of equipments.
+\end{proof}
 
 \section{Other stuff}
 \todo{Change name of ``Other Stuff" section, once things settle.}
 
 \subsection{Internal presheaves}\label{subsec:internal_presheaves}
 
-Presheaves on a category $\cat{C}$ can be identified with profunctors $1\tickar\cat{C}$ in $\dProf$, and similarly for copresheaves, which are more relevant to us. Motivated by this, we will think of proarrows $C\tickar 1$ in any equipment $\dcat{D}$ with a
-terminal object 1 as ``internal copresheaves'' on the object $C$. For each object, there is a category
-of copresheaves $\HHor(\dcat{D})(C,1)$. We can give a direct construction of the bifibration over
-$\dcat{D}_0$ whose fiber over an object $C$ is the category of copresheaves on $C$:
+Presheaves on a category $\cat{C}$ can be identified with profunctors $1\tickar\cat{C}$ in $\dProf$,
+and similarly for copresheaves, which are more relevant to us. Motivated by this, we will think of
+proarrows $C\tickar 1$ in any equipment $\dcat{D}$ with a terminal object 1 as ``internal
+copresheaves'' on the object $C$. For each object, there is a category of copresheaves
+$\HHor(\dcat{D})(C,1)$. We can give a direct construction of the bifibration over $\dcat{D}_0$ whose
+fiber over an object $C$ is the category of copresheaves on $C$:
 
 \begin{definition}\label{def:copresheaves}
    Let $\dcat{D}$ be an equipment such that $\dcat{D}_0$ has a terminal object $1$. We define the
