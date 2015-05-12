@@ -156,6 +156,7 @@ By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect 
    \end{equation*}
    such that the induced 2-functor $\CobKlsAlg\to\TTrCat$ is 2-essentially surjective.
 \end{named}
+\todo[inline]{Add something about props here.}
 
 \section{Generalization: Lax algebras on compact categories}
 
@@ -708,24 +709,24 @@ the axioms of \emph{dinaturality} and \emph{superposition}:
 
 The definition of traced categories and traced functors can be found in~\cite{JoyalStreetVerity}. However, those authors define the 2-morphisms between traced functors to be monoidal transformations, whereas this choice does not behave appropriately with their $\Int$ construction (for example $\Int$ would not be 2-functorial). A correction was made in \cite{HK}, where it was shown that the appropriate 2-morphisms between traced functors are natural \emph{isomorphisms}. We denote by $\TTrCat$ the corrected 2-category of traced categories (where 2-cells are invertible), and we denote its underlying 1-category by $\TrCat$.
 
-\subsection{The categories $\Prop$ and $\TrProp$ of props and traced props}\label{sec:defining props}
-\todo{Do we want to use this section anywhere?}
-
-One can think of a prop as a symmetric monoidal category whose objects are free on a fixed set of \emph{labels}
-(also known as its set of colors). Functors between props need to descend to a function between
-label sets. We define a traced prop to be a traced category whose underlying symmetric monoidal
-category has the structure of a prop. Thus we have defined the 1-categories $\Prop$ and $\TrProp$;
-we summarize our definitions by the pullback diagram of categories
-\[
-\begin{tikzcd}
-   \TrProp\ar[r]\ar[d]\arrow[dr, phantom, "\lrcorner", very near start]&\TrCat\ar[d]\\
-   \Prop\ar[r]\ar[d,"\tn{Labels}"']\arrow[dr, phantom, "\lrcorner", very near start]&\MonCat\ar[d,"\Ob"]\\
-   \Set\ar[r,"\TM"']&\Set
-\end{tikzcd}
-\]
-where $\TM\colon\Set\to\Set$ is the free monoid monad. This definition of $\Prop$
-agrees with that in~\cite{HackneyRobertson}.\todo{Check this.}
-
+%\subsection{The categories $\Prop$ and $\TrProp$ of props and traced props}\label{sec:defining props}
+%\todo{Do we want to use this section anywhere?}
+%
+%One can think of a prop as a symmetric monoidal category whose objects are free on a fixed set of \emph{labels}
+%(also known as its set of colors). Functors between props need to descend to a function between
+%label sets. We define a traced prop to be a traced category whose underlying symmetric monoidal
+%category has the structure of a prop. Thus we have defined the 1-categories $\Prop$ and $\TrProp$;
+%we summarize our definitions by the pullback diagram of categories
+%\[
+%\begin{tikzcd}
+%   \TrProp\ar[r]\ar[d]\arrow[dr, phantom, "\lrcorner", very near start]&\TrCat\ar[d]\\
+%   \Prop\ar[r]\ar[d,"\tn{Labels}"']\arrow[dr, phantom, "\lrcorner", very near start]&\MonCat\ar[d,"\Ob"]\\
+%   \Set\ar[r,"\TM"']&\Set
+%\end{tikzcd}
+%\]
+%where $\TM\colon\Set\to\Set$ is the free monoid monad. This definition of $\Prop$
+%agrees with that in~\cite{HackneyRobertson}.\todo{Check this.}
+%
 
 \section{Compact categories and the Int construction}\label{sec:compact_and_int}
 
@@ -898,6 +899,31 @@ The free compact category $\FC(\cat{O})$ on a set $\cat{O}$ is equivalent to $\L
 %   Joachim Kock proves that 2-cob is the free compact category on a frobenius algebra object, and
 %   the proof can be adapted.
 
+\section{Orthogonal factorization systems}
+
+We use orthogonal factorization systems throughout this paper, mainly to deal with the issue of object-variance, mentioned in Section~\ref{subsec:main_results}. Background on orthogonal factorization systems can be found in \cite[Chapter 5.5]{BorceuxV1}. Here we describe the $\cat{V}$-enriched notion, for two cases, the usual 1-categorical case, where $\cat{V}=\Set$, and the strict 2-categorical case, where $\cat{V}=\Cat$.
+
+\begin{definition}\label{def:orthogonal}
+Let $\cat{V}$ be either $\Set$ or $\Cat$, and suppose that $\cat{C}$ is a $\cat{V}$-enriched category. A \emph{orthogonal factorization system in $\cat{C}$} consists of two distinguished classes of morphisms, $(\cat{L},\cat{R})$ with the following properties:
+\begin{itemize}
+\item each morphism $f\in\cat{C}$ factors as $f=e\circ m$, where $m\in\cat{L}$ and $e\in\cat{R}$;
+\item if $m\colon a\to b$ in $\cat{L}$ and $e\colon c\to d$ in $\cat{R}$, then the left-hand square below is a pullback in $\cat{V}$:
+$$
+\begin{tikzcd}
+\cat{C}(b,c)\ar[r]\ar[d]\ar[rd,phantom,"\lrcorner" very near start]&\cat{C}(a,c)\ar[d,"e\circ -"]\\
+\cat{C}(b,d)\ar[r,"-\circ m"']&\cat{C}(a,d)
+\end{tikzcd}
+\hspace{.9in}
+\begin{tikzcd}
+a\ar[r,"\forall"]\ar[d,two heads,"m"']&c\ar[d,hook, "e"]\\
+b\ar[r,"\forall"']\ar[ur,dashed,"\exists!"]&d
+\end{tikzcd}
+$$
+In particular, for all solid arrow squares, as in the right-hand diagram, there exists a unique diagonal filler. 
+\end{itemize}
+As shown, we often indcate morphisms in $\cat{L}$ using a two-headed arrow, and morphisms in $\cat{R}$ using a hooked arrow.
+\end{definition}
+\todo{Move later remark here.}
 
 \chapter{Background on equipments}\label{sec:background_equipments}
 
@@ -1087,23 +1113,19 @@ We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz
    \end{compactitem}
 \end{definition}
 
+Recall the notion of orthogonal factorization systems for categories and strict 2-categories from Definition~\ref{def:orthogonal}.
+
 \begin{theorem}\label{thm:orthogonal}
    If an equipment $\dcat{D}$ is exact (and hence regular), then the vertical 2-category
    $\VVer(\dcat{D})$ admits a 2-orthogonal factorization system $(\bo,\ff)$. In particular, there is
    an orthogonal factorization system $(\bo,\ff)$ on the vertical 1-category $\dcat{D}_0$.
 \end{theorem}
 
-\begin{remark}
-For an exact equipment $\dcat{D}$, we will indicate that a vertical morphism is in the left ($\bo$) class using a two-headed arrow $c\tto d$, and we will indicate the right ($\ff$) class using a hook arrow, $c\inj d$. Thus, the second part of Theorem~\ref{thm:orthogonal} says that for every solid-arrow diagram:
-$$
-\begin{tikzcd}
-a\ar[d,two heads]\ar[r]&b\ar[d,hook]\\
-c\ar[r]\ar[ur,dashed]&d
-\end{tikzcd}
-$$
-there exists a dashed arrow as shown.
+The notation $\bo$ and $\ff$ comes from the case where $\dcat{D}=\Prof$, for which they correspond to the functors that are bijective on objects and fully faithful, respectively. \todo{Note the same in $\MonProf$, $\CompProf$, etc., once examples are in place.}
 
-We sometimes also use the two-headed arrow to indicate fibrations of categories (e.g., as in Definition~\ref{def:local_equivalence}). These two uses of the symbol $\tto$ can be distinguished as follows. If the arrow occurs between objects in an equipment, then it indicates a $\bo$ map; if it occurs as a structural part of a given equipment\todo{Patrick: can this be better phrased?}, e.g., as in Definition~\ref{def:equipment}, then it indicates a fibration. 
+\begin{remark}
+
+As in Definition~\ref{def:orthogonal}, we will use the hooked arrow $\inj$ to indicate $\ff$ morphisms and the two-headed arrow $\tto$ to indicate $\bo$ morphisms. However, we sometimes use the latter symbol to indicate fibrations of categories (e.g., as we did in Definition~\ref{def:local_equivalence}). These two uses of the symbol $\tto$ can be distinguished as follows. If the arrow occurs between objects in an equipment, then it indicates a $\bo$ map; if it occurs as a structural part of a given equipment\todo{Patrick: can this be better phrased?}, e.g., as in Definition~\ref{def:equipment}, then it indicates a fibration. 
 
 \end{remark}
 
@@ -1863,6 +1885,9 @@ By Definition~\ref{def:TrProf}, the left-hand side is equivalent to $\CPsh(\dTrP
 
  \bibitem{AdamekHerrlichStrecker}
  J.~Adamek, H.~Herrlich, and G.E.~Strecker, Abstract and Concrete Categories: The joy of cats, Dover Publications (2009).
+ 
+ \bibitem{BorceuxV1}
+F.~Borceux, Handbook of Categorical Algebra: Volume 1, Basic Category Theory, Cambridge University Press (1994).
 
  \bibitem{BorceuxV2}
  F.~Borceux, Handbook of Categorical Algebra: Volume 2, Categories and Structures, Cambridge University Press (1994).
