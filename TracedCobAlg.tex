@@ -1167,12 +1167,12 @@ $\bo$ arrows, i.e.~the category $\dcat{D}_1^{\bo}$ is given by the pullback
 In other words, the inclusion $\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence.
 
 \begin{lemma}\label{lem:Mon_vs_bo}
-   Let $\dcat{d}$ be an exact equipment. There is an equivalence of fibrations on the left, such
+   Let $\dcat{D}$ be an exact equipment. There is an equivalence of fibrations on the left, such
    that the triangle on the right also commutes:
    \begin{equation*}
       \begin{tikzcd}[column sep=0em]
-         \Mon(\dcat{d}) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \dcat{d}_0^{\bo} \ar[dl,two heads,"\dom" pos=.3] \\
+         \Mon(\dcat{D}) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \dcat{D}_0^{\bo} \ar[dl,two heads,"\dom" pos=.3] \\
          & \dcat{D}_0 &
       \end{tikzcd}
       \qquad
@@ -1697,7 +1697,7 @@ follows: the vertical category is defined by the pullback
       (\dcat{D}_T^{\bo})_0 \ar[r] \ar[dr,phantom,"\lrcorner" very near start] \ar[d]
          & \cat{C} \ar[d,"F"] \\
       \dcat{D}_0^{\bo} \ar[r,"\dom"']
-         & \dcat{D}
+         & \dcat{D}_0
    \end{tikzcd}
 \end{equation*}
 while the category $(\dcat{D}_T^{\bo})_1$ is defined by the pullback
@@ -1799,8 +1799,13 @@ Thus we have the following proposition:
 \end{proof}
 
 \begin{definition}\label{def:FrMonProf_FrCompProf}
-   We define the equipments $\dFrMonProf\coloneqq\dMonProf_{\TM}$ and $\dFrCompProf\coloneqq\dCompProf_{\TC}$. In
-   particular, there is a pullback
+   We define the equipments
+   \begin{align*}
+      \dFrMonProf&\coloneqq\dMonProf_{\TM} \\
+%      \dFrTrProf&\coloneqq\dTrProf_{\TT} \\
+      \dFrCompProf&\coloneqq\dCompProf_{\TC}
+   \end{align*}
+   In particular, there is a pullback
    \begin{equation*}
       \begin{tikzcd}
          \dFrMonProf_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
