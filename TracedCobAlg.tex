@@ -914,19 +914,19 @@ $\cat{O}$ into the free group on $\cat{O}$. In this way, $\UCM$ induces a functo
 
 \subsection{$\LCob{\cat{O}}$ is the free compact category on $\cat{O}$}
 
-To connect the geometry (string diagrams) with the algebra (free compact categories), we recall the following Theorem  \cite[Theorem 3.6]{FreydYetter} of Freyd and Yetter.
+To connect the geometry (string diagrams) with the algebra (free compact categories), we recall the following folklore theorem. 
 
-\begin{theorem}\label{thm:free_compact_is_Cob}
-For any set $\cat{O}$, the free braided pivotal category on $\cat{O}$ is the category of $\cat{O}$-colored oriented tangles (up to regular isotopy).
+\begin{theorem}
+The free compact category on one generator is equivalent to $\Cob$, the category of oriented 1-dimensional cobordisms.
 \end{theorem}
 
+See \cite[Theorem 3.6]{FreydYetter} for a proof of the non-symmetric version, \cite{Kock} and \cite{BaezDolan} for the 2-dimensional version with brief comments on the 1-dimensional version. See also \cite{KellyLaplaza} and \cite{Abramsky2} for combinatorial descriptions of $\Cob$ as the free compact category functor.  Because the free functor is a left adjoint, we have the following corollary.
+
 \begin{corollary}\label{cor:free_compact_is_Cob}
-The free compact category $\FC(\cat{O})$ on a set $\cat{O}$ is equivalent to $\LCob{\cat{O}}$.
+
+For any set $\cat{O}$, the free compact category on $\cat{O}$ is equivalent to $\LCob{O}$, the category of oriented $\cat{O}$-labeled 1-cobordisms. 
+
 \end{corollary}
-\begin{proof}
-  This result follows by symmetrizing both sides of Theorem~\ref{thm:free_compact_is_Cob}, i.e., by adding that $\sigma_{B,A}\circ\sigma_{A,B}=\id_A$ for all $A,B$.
-   \todo{Check this.}
-\end{proof}
 
 %   Joachim Kock proves that 2-cob is the free compact category on a frobenius algebra object, and
 %   the proof can be adapted.
@@ -1060,45 +1060,45 @@ A double category is a 2-category-like structure involving horizontal and vertic
          by writing $c$ for the unit proarrow $U(c)\colon c\tickar c$, and similarly for vertical
          arrows.
       \item A functor $\odot\colon\dcat{D}_1\times_{\dcat{D}_0}\dcat{D}_1\to\dcat{D}_1$, called
-         \emph{horizontal composition}, that is strictly unital in the sense that both of the
-         following composites are identity on $\dcat{D}_1$:
-         \begin{equation*}
-            \begin{tikzcd}
-               \dcat{D}_1 \ar[r,shift left,"U\times_{\dcat{D}_0}\dcat{D}_1"]
-                     \ar[r,shift right,"\dcat{D}_1\times_{\dcat{D}_0}U"']
-                  &[1.5em] \dcat{D}_1 \times_{\dcat{D}_0} \dcat{D}_1
-                     \ar[r,"\odot"]
-                  &[-1em] \dcat{D}_1
-            \end{tikzcd}
-         \end{equation*}
-         Horizontal composition is required only to be weakly associative, meaning that there is a
-         natural isomorphism between the two evident functors
-         $\dcat{D}_1\times_{\dcat{D}_0}\dcat{D}_1\times_{\dcat{D}_0}\dcat{D}_1\too\dcat{D}_1$.
+         \emph{horizontal composition}, that is weakly associative and unital in the sense that there are coherent unitor and associator isomorphisms. See \cite{Shulman} for details.
    \end{compactitem}
-   An \emph{equipment functor} $\dcat{D}\to\dcat{E}$ consists of functors $\dcat{D}_0\to\dcat{E}_0$
-   and $\dcat{D}_1\to\dcat{E}_1$ commuting with the frames $L,R$, the unit $U$, and the composition
-   $\otimes$. 
+   An \emph{double functor} $\dcat{D}\to\dcat{E}$ consists of functors $\dcat{D}_0\to\dcat{E}_0$
+   and $\dcat{D}_1\to\dcat{E}_1$ commuting with the frames $L,R$, and preserving the unit $U$ and horizontal composition $\odot$ up to coherent isomorphism.
 \end{definition}
-\todo[author=Patrick,inline]{Give examples: $\dProf$, $\dMonProf$, $\dSpan$}
+\todo[author=Patrick,inline]{Give examples: $\dProf$, $\dMonProf$}
 \todo[author=David,inline]{Make sure to say that $\dProf_0=\Cat$, etc. I think this could be confusing for non-experts.}
 \todo[author=David,inline]{Discuss (here or elsewhere) that essential surjectivity is left pseudo-orthogonal to $\ff$ in $\Prof$.}
 
 
 \begin{definition}\label{def:equipment}
-An equipment is a double category $\dcat{D}$ in which the functor $\dcat{D}_1\tto\dcat{D}_0\times\dcat{D}_0$ is a fibration.
+An \emph{equipment} is a double category $\dcat{D}$ in which the functor 
+$$(L\times R)\colon\dcat{D}_1\tto\dcat{D}_0\times\dcat{D}_0$$ 
+is a fibration. If $f\colon c\to c'$ and $g\colon d\to d'$ are vertical morphisms and $A'\colon c'\tickar d'$ is a proarrow, a cartesian morphism $A\to A'$ in $\dcat{D}_1$ over $(f,g)$ is a 2-cell
+$$
+\begin{tikzcd}
+	c \ar[r,tick, "A" domA] \ar[d,"f"']
+	& d\ar[d,"{g}"]
+	\\
+	c' \ar[r,tick,"{A'}"' codA]
+	& d'
+	\twocellA{\tn{cart}}
+\end{tikzcd}
+$$
+which we call a \emph{cartesian 2-cell}.
 \end{definition}
 
 \todo[inline]{In \ref{def:local_equivalence}, do we want this to be strict pullback (local iso) or pseudo pullback (local equiv)? Similar decisions about pullbacks must be dealt with throughout the paper.}
 \begin{definition}\label{def:local_equivalence}
    An equipment functor $F\colon\dcat{X}\to\dcat{Y}$ is a \emph{local equivalence} if the following square is a pseudo-pullback of categories:
-   \begin{equation*}
+   \begin{equation}\label{eqn:local_equiv}
       \begin{tikzcd}
          \dcat{X}_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
             & \dcat{Y}_1 \ar[d,two heads] \\
          \dcat{X}_0\times\dcat{X}_0 \ar[r]
             & \dcat{Y}_0\times\dcat{Y}_0
       \end{tikzcd}
-   \end{equation*}
+   \end{equation}
+If $\dcat{Y}$ is a double category and $F_0\colon\dcat{X}_0\to\dcat{Y}_0$ is any functor, the pullback \eqref{eqn:local_equiv} defines a double category $\dcat{X}$. If $\dcat{Y}$ is an equipment, $\dcat{X}$ will be too; we call it the \emph{equipment, induced by the functor $F_0$, that is locally equivalent to $\dcat{Y}$}.
 \end{definition}
 
 \section{The monoids and bimodules construction}
@@ -1327,9 +1327,7 @@ Recall the notion of orthogonal factorization systems for categories and strict 
 Definition~\ref{def:orthogonal}. We recall also from~\cite{Schultz2015} the following theorem:
 
 \begin{theorem}\label{thm:orthogonal}
-   If an equipment $\dcat{D}$ is exact (and hence regular)
-   \todo{Why is this "and hence regular" thing here?}
-   \todo[author=Patrick]{Because regular $\Rightarrow$ factorization system},
+   If an equipment $\dcat{D}$ is regular (and in particular, exact)
    then the vertical 2-category $\VVer(\dcat{D})$ admits a 2-orthogonal factorization system
    $(\bo,\ff)$. In particular, there is an orthogonal factorization system $(\bo,\ff)$ on the
    vertical 1-category $\dcat{D}_0$.
@@ -1414,10 +1412,7 @@ In other words, the inclusion $\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence
    of Lemma~\ref{lem:Mon_vs_bo} extends to an equivalence of equipments.
 \end{proof}
 
-\section{Other stuff}
-\todo{Change name of ``Other Stuff" section, once things settle.}
-
-\subsection{Internal presheaves}\label{subsec:internal_presheaves}
+\section{Internal presheaves}\label{sec:internal_presheaves}
 
 Presheaves on a category $\cat{C}$ can be identified with profunctors $1\tickar\cat{C}$ in $\dProf$,
 and similarly for copresheaves, which are more relevant to us. Motivated by this, we will think of
@@ -1496,7 +1491,7 @@ In other words, an object of $\CPsh(\dcat{D})$ is a pair $(C,F)$, where $C\in\Ob
 
 In this section we setup the necessary equipment to prove our main results, \ref{thm:TheoremA}, \ref{thm:TheoremB}, and \ref{cor:CorollaryB}. The high-level view of the argument runs as follows. \todo{Go through the following once things are more settled.}
 
-The free compact category on $\cat{O}$ is $\LCob{\cat{O}}$ by Corollary~\ref{thm:free_compact_is_Cob}. For any compact category $\cat{C}$, there is an equivalence of categories (Proposition~\ref{prop:unit_implies_monoid}) between the lax functors $\cat{C}\to\Set$ and the monoids on $\cat{C}$ in the equipment $\CompProf$ (Definition~\ref{def:CompProf}). Because $\CompProf$ is an exact equipment (Proposition~\ref{prop:CompProf_exact}), the monoids on $\cat{C}$ can be identified with the bijective-on-objects functors out of $\cat{C}$ by Theorem~\ref{thm:Mod_vs_bo}; this establishes $\Lax(\cat{C},\Set)\iso\cat{C}/\CompCat^{\bo}.$ Similar results hold for traced categories. 
+The free compact category on $\cat{O}$ is $\LCob{\cat{O}}$ by Corollary~\ref{cor:free_compact_is_Cob}. For any compact category $\cat{C}$, there is an equivalence of categories (Proposition~\ref{prop:unit_implies_monoid}) between the lax functors $\cat{C}\to\Set$ and the monoids on $\cat{C}$ in the equipment $\CompProf$ (Definition~\ref{def:CompProf}). Because $\CompProf$ is an exact equipment (Proposition~\ref{prop:CompProf_exact}), the monoids on $\cat{C}$ can be identified with the bijective-on-objects functors out of $\cat{C}$ by Theorem~\ref{thm:Mod_vs_bo}; this establishes $\Lax(\cat{C},\Set)\iso\cat{C}/\CompCat^{\bo}.$ Similar results hold for traced categories. 
 
 The remaining difficulty is allowing the object set $\cat{O}$ to vary. What makes this work is the fact that there is an orthogonal factorization system on $\CompCat$ that behaves nicely with the adjunction to $\Set$. Theorem~\ref{thm:Verts} provides a 2-equivalence between any such nicely-behaved exact equipment and its free-on-objects version. It follows that the lax, set-valued functors out of a varying category $\cat{C}$ are equivalent to the $\bo$ maps out of $\cat{C}$ (Proposition~\ref{Prop:mon_prof_equivalence}). 
 
@@ -1516,14 +1511,14 @@ context to make clear whether we are in $\cat{C}$ or $\cat{D}$.
 A \emph{monoidal profunctor} $M$ from $\cat{C}$ to $\cat{D}$ is an ordinary profunctor such that the
 functor $M\colon \op{\cat{C}}\times\cat{D}\to\Set$ is equipped with a lax-monoidal structure, with
 the cartesian monoidal structure on $\Set$. In the bimodule notation, this means that there is an
-associative operation assigning to any elements $m_1\in M(c_1,c'_1)$ and $m_2\in M(c_2,c'_2)$ an
-element $m_1\boxtimes m_2\in M(c_1\otimes c_2,c'_1\otimes c'_2)$ such that
+associative operation assigning to any elements $m_1\in M(c_1,d_1)$ and $m_2\in M(c_2,d_2)$ an
+element $m_1\boxtimes m_2\in M(c_1\otimes c_2,d_1\otimes d_2)$ such that
 \[
    (f_1\cdot m_1\cdot g_1)\boxtimes(f_2\cdot m_2\cdot g_2) = (f_1\otimes f_2)\cdot(m_1\boxtimes m_2)\cdot(g_1\otimes g_2),
 \]
 as well as a distinguished element $I_M\in M(I,I)$ such that $\lambda_d\cdot(I_M\boxtimes
 m)\cdot\lambda^{-1}_c = m = \rho_d\cdot(m\boxtimes I_M)\cdot\rho^{-1}_c$ for any $m\in M(c,d)$. If
-moreover $m_2\boxtimes m_1 = \sigma_{c'_1,c'_2}\cdot(m_1\boxtimes m_2)\cdot\sigma_{c_1,c_2}^{-1}$,
+moreover $m_2\boxtimes m_1 = \sigma_{d_1,d_2}\cdot(m_1\boxtimes m_2)\cdot\sigma_{c_1,c_2}^{-1}$ then
 we say $M$ is \emph{symmetric monoidal}.
 
 A monoidal profunctor morphism $\phi\colon M\to N$ is simply a monoidal transformation. Spelling
@@ -1532,29 +1527,37 @@ $\phi(m_1\boxtimes m_2)=\phi(m_1)\boxtimes\phi(m_2)$ and $\phi(I_M)=I_N$. We wil
 category of monoidal profunctors from $\cat{C}$ to $\cat{D}$ and monoidal profunctor morphisms as
 $\MonProf(\cat{C},\cat{D})$.
 
-A unit for a monoidal profunctor $M\in\MonProf(\cat{C},\cat{C})$ is a unit $i\colon\Hom_{\cat{C}}\to
-M$ in $\Prof(\cat{C},\cat{C})$ such that, additionally, $i(\id_{I_{\cat{C}}})=I_M$ and $i(f\otimes
-g)=i(f)\boxtimes i(g)$ for any morphisms $f$ and $g$ in $\cat{C}$. Similarly, a multiplication on
-$M$ is as above, with the additional conditions
-\begin{gather*}
-   I_M\bullet I_M=I_M \\
-   (m_1\boxtimes m'_1)\bullet(m_2\boxtimes m'_2) = (m_1\bullet m_2)\boxtimes(m'_1\bullet m'_2)
-\end{gather*}
-for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e')$.
+Suppose that $F\colon\cat{C}\to\cat{C}'$ and $G\colon\cat{D}\to\cat{D}'$ are morphisms in $\MonCat$. They induce a functor $\MonProf(\cat{C}',\cat{D}')\to\MonProf(\cat{C},\cat{D})$ as follows. Given an object $M'\in\MonProf(\cat{C}',\cat{D}')$, define $M(c,d)=M'(F(c),G(d))$ for any objects or morphisms $c\in\cat{C},d\in\cat{D}$; the resulting profunctor is monoidal because $F$ and $G$ are strong. This construction is clearly functorial in $M'$. 
+
+\todo{Need to say that the composite of monoidal profunctors is monoidal.}
+
+
+%A unit for a monoidal profunctor $M\in\MonProf(\cat{C},\cat{C})$ is a unit $i\colon\Hom_{\cat{C}}\to
+%M$ in $\Prof(\cat{C},\cat{C})$ such that, additionally, $i(\id_{I_{\cat{C}}})=I_M$ and $i(f\otimes
+%g)=i(f)\boxtimes i(g)$ for any morphisms $f$ and $g$ in $\cat{C}$. Similarly, a multiplication on
+%$M$ is as above, with the additional conditions
+%\begin{gather*}
+%   I_M\bullet I_M=I_M \\
+%   (m_1\boxtimes m'_1)\bullet(m_2\boxtimes m'_2) = (m_1\bullet m_2)\boxtimes(m'_1\bullet m'_2)
+%\end{gather*}
+%for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e')$.
+
 
 \section{Definitions of equipments}
 \todo[inline]{Need definitions}
 
 \begin{definition}\label{def:MonProf}
-The equipment $\dMonProf$ is defined as follows.
+The equipment $\dMonProf$ is defined as follows. Its vertical category is that of monoidal categories and strong functors, $\dMonProf_0=\MonCat$. An object in $\dMonProf_1$ consists of a pair $\cat{C},\cat{D}$ of symmetric monoidal categories and a monoidal profunctor between them. A morphism in $\dMonProf_1$ is a monoidal profunctor morphism \todo{continue}
+\end{definition}
+
+Now that $\dMonProf$ has been defined, we construct $\dCompProf$ and $\dTrProf$ using Definition~\ref{def:local_equivalence}.
+
+\begin{definition}\label{def:CompProf}
+Define $\dCompProf$ to be the equipment, induced by the functor $\UCM\colon\CompCat\to\MonCat$, that is locally equivalent to $\dMonProf$.
 \end{definition}
 
 \begin{definition}\label{def:TrProf}
-The equipment $\dTrProf$ is defined as follows.
-\end{definition}
-
-\begin{definition}\label{def:CompProf}
-The equipment $\dCompProf$ is defined as follows.
+Define $\dTrProf$ to be the equipment, induced by the functor $\Int\colon\TrCat\to\CompCat$, that is locally equivalent to $\dCompProf$. 
 \end{definition}
 
 \section{Exactness}
@@ -2221,6 +2224,9 @@ M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of 
 
  \bibitem{JoyalStreetVerity}
  A.~Joyal, R.~Street, and D.~Verity, Traced monoidal categories, Mathematical Proceedings of the Cambridge Philosophical Society 119, no. 3 (1996), pp.~447--468.
+ 
+ \bibitem{KellyLaplaza}
+ G.M.~Kelly, M.L.~Laplaza, Coherence for compact closed categories, Journal of Pure and Applied Algebra 19 (1980), pp.~193--213.
 
  \bibitem{MacLane}
  S.~MacLane, Categories for the Working Mathematician, Springer Science \& Business Media (1978).
