@@ -141,7 +141,7 @@ is an equivalence of categories
 Some intuition for this statement will be given in Section~\ref{subsec:cobalg_and_trCat}, and it will be generalized in \ref{thm:TheoremA} and proven as such in Section~\ref{sec:deducing}.
 \subsection{The main results}\label{subsec:main_results}
 
-The equivalence (\ref{eq:single_fiber}) has two drawbacks: the object set of the traced category is fixed, and it is assumed to be free. Much of the work in this paper is to relax these two conditions. For the latter, we prove that the 2-category of traced categories is equivalent to that of \emph{object-free} traced categories (see Proposition~\ref{prop:TrCat_ObjectFree}). For the former, we first explain what kind of variance is appropriate.
+The equivalence (\ref{eq:single_fiber}) has two drawbacks: the object set of the traced category is fixed, and it is assumed to be free. Much of the work in this paper is to relax these two conditions. For the latter, we prove that the 2-category of traced categories is equivalent to that of \emph{object-free} traced categories (see Corollary~\ref{cor:TrCat_ObjectFree}). For the former, we first explain what kind of variance is appropriate.
 
 A strong functor $F\colon \cat{C}\to \cat{C'}$ between object-free traced categories sends each object in $\cat{C}$ to the tensor product of finitely many objects in $\cat{C'}$; that is, it induces a function $\Ob F\colon\Ob\cat{C}\to\TM(\Ob \cat{C'})$, where $\TM\colon\Set\to\Set$ is the free monoid monad. Let $\Set_{\TM}$ denote the Kleisli category of this monad, so $\Ob F$ is identified with a morphism in $\Set_{\TM}$. There is a functor $(\LCob{\bullet})\colon\Set_{\TM}\to\CompCat$ (see~\eqref{dia:TMvsFrMonCat}~and~\eqref{eqn:FMC}), \todo{Patrick: check this paragraph; is $(\LCob{\bullet})$ clear enough notation?}and we can compose it with $\Lax(-,\Set)$ to obtain a functor which we denote
 \begin{equation}\label{eqn:cob/bullet}
@@ -922,7 +922,7 @@ b\ar[r,"\forall"']\ar[ur,dashed,"\exists!"]&d
 $$
 In particular, for all solid arrow squares, as in the right-hand diagram, there exists a unique diagonal filler. 
 \end{itemize}
-As shown, we often indcate morphisms in $\cat{L}$ using a two-headed arrow, and morphisms in $\cat{R}$ using a hooked arrow.
+As shown, we often indicate morphisms in $\cat{L}$ using a two-headed arrow, and morphisms in $\cat{R}$ using a hooked arrow.
 \end{definition}
 
 \begin{remark}
@@ -933,6 +933,7 @@ As in Definition~\ref{def:orthogonal}, we will use the hooked arrow $\inj$ to in
 
 \chapter{Background on equipments}\label{sec:background_equipments}
 
+\section{Motivating example: manipulating profunctors}
 Let $\cat{C}$ and $\cat{D}$ be categories.
 Recall that a profunctor $M$ from $\cat{C}$ to $\cat{D}$, written
 \[
@@ -1002,6 +1003,8 @@ $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 \todo[author=Patrick,inline]{Give examples: $\dProf$, $\dMonProf$, $\dSpan$}
 \todo[author=David,inline]{Make sure to say that $\dProf_0=\Cat$, etc. I think this could be confusing for non-experts.}
 \todo[author=David,inline]{Discuss (here or elsewhere) that essential surjectivity is left pseudo-orthogonal to $\ff$ in $\Prof$.}
+
+A double category is a 2-category-like structure involving horizontal and vertical arrows, as well as 2-cells. An equipment (sometimes called a \emph{framed bicategory}) is a double category satisfying a certain fibrancy condition. In this section, we will spell this out and give a few examples. An excellent reference is Shulman's paper \cite{Shulman}.
 
 \begin{definition}\label{def:equipment}
 An equipment is a double category $\dcat{D}$ in which the functor $\dcat{D}_1\tto\dcat{D}_0\times\dcat{D}_0$ is a fibration.
@@ -1932,7 +1935,7 @@ Thus we have the following proposition:
    \todo[inline]{Can think of $\MMon(\dFrMonProf)$ as ``object free'' monoidal categories.}
 \end{remark}
 
-\begin{corollary}
+\begin{corollary}\label{cor:TrCat_ObjectFree}
    There are equivalences of 2-categories
    \begin{align*}
       \MMon(\dFrMonProf)&\equiv\MMonCat \\
@@ -2016,10 +2019,6 @@ Thus we have the following proposition:
    (Definition~\ref{def:local_equivalence}), so the lemma follows from
    Lemmas~\ref{lem:FrCompProf_Psh_Mon}, \ref{lem:Mon_pullback}, and~\ref{lem:Psh_pullback}.
 \end{proof}
-
-\begin{proposition}\label{prop:TrCat_ObjectFree}
-   $\TTrCat\equiv\TTrFrObCat$
-\end{proposition}
 
 \section{Deducing the main results}\label{sec:deducing}
 
@@ -2128,6 +2127,9 @@ M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of 
 
  \bibitem{Schultz2015}
  P.~Schultz, Regular and exact (virtual) double categories, Preprint: 1505.00712 (2015)
+ 
+ \bibitem{Shulman}
+ M.~Shulman, Framed bicategories and monoidal fibrations, Theory and Applications of Categories 20 (2008), No. 18, 650--738.
  
  \bibitem{Spivak}
  D.~I.~Spivak, The operad of wiring diagrams: Formalizing a graphical language for databases, recursion, and plug-and-play circuits, Preprint: arXiv:1305.0297 (2013).
