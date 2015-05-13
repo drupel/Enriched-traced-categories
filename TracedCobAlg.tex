@@ -1009,19 +1009,26 @@ A double category is a 2-category-like structure involving horizontal and vertic
          $\dcat{D}$. For any two objects $c,d\in\dcat{D}_0$, we will write
          $\dcat{D}(c,d)=\dcat{D}_0(c,d)$ for the set of vertical arrows from $c$ to $d$.
       \item A category $\dcat{D}_1$, equipped with two functors $L,R\colon\dcat{D}_1\to\dcat{D}_0$, called the \emph{left frame} and \emph{right frame} functors. Given an object $A\in\Ob\dcat{D}_1$ with $c=L(A)$ and $c'=R(A)$, we say that $A$ is a \emph{proarrow from $c$ to $c'$} and write $A\colon c\tickar c'$. A morphism $\phi\colon A\to B$ in $\dcat{D}_1$ is called a 2-cell, and is drawn as follows, where $f=L(\phi)$ and $f'=R(\phi)$:
-         \begin{equation}
+         \begin{equation*}
             \begin{tikzcd}
-               c \ar[r,tick,"A"] \ar[d,"f"' domA]
-               & c'\ar[d,"{f'}" codA]
+               c \ar[r,tick,"A" domA] \ar[d,"f"']
+               & c'\ar[d,"{f'}"]
                  \\
-               d \ar[r,tick,"B"']
+               d \ar[r,tick,"B"' codA]
                  & d'
                \twocellA{\phi}
             \end{tikzcd}
-         \end{equation}
-         Add unit...\todo{start here}
-       \item Horizontal composition..
+         \end{equation*}
+         There is also a \emph{unit} functor $U\colon\dcat{D}_0\to\dcat{D}_1$, which is a retract of both $L$ and $R$, i.e., $L\circ U=\id_{\dcat{D}_0}=R\circ U.$
+       \item A functor $\odot\colon\dcat{D}_1\times_{\dcat{D}_0}\dcat{D}_1\to\dcat{D}_1$, called \emph{horizontal composition}, that is strictly unital in the sense that both of the following composites are identity on $\dcat{D}_1$:
+$$
+\begin{tikzcd}
+	\dcat{D}_1\ar[r,shift left,"U\times_{\dcat{D}_0}\dcat{D}_1"]\ar[r,shift right,"\dcat{D}_1\times_{\dcat{D}_0}U"']&[1.5em]\dcat{D}_1\times_{\dcat{D}_0}\dcat{D}_1\ar[r,"\odot"]&[-1em]\dcat{D}_1
+\end{tikzcd}
+$$       
+Horizontal composition is required only to be weakly associative, meaning that there is a natural isomorphism between the two evident functors $\dcat{D}_1\times_{\dcat{D}_0}\dcat{D}_1\times_{\dcat{D}_0}\dcat{D}_1\too\dcat{D}_1$.
         \end{compactitem}
+An \emph{equipment functor} $\dcat{D}\to\dcat{E}$ consists of functors $\dcat{D}_0\to\dcat{E}_0$ and $\dcat{D}_1\to\dcat{E}_1$ commuting with the frames $L,R$, the unit $U$, and the composition $\otimes$. 
 \end{definition}
 \todo[author=Patrick,inline]{Give examples: $\dProf$, $\dMonProf$, $\dSpan$}
 \todo[author=David,inline]{Make sure to say that $\dProf_0=\Cat$, etc. I think this could be confusing for non-experts.}
