@@ -1127,20 +1127,20 @@ An equipment is a double category $\dcat{D}$ in which the functor $\dcat{D}_1\tt
    \end{compactitem}
 \end{definition}
 
-\begin{example}
+\begin{example}\label{ex:monoid_in_Prof}
    Consider a monoid $M\colon C\tickar C$ in $\dProf$. The unit is a profunctor morphism
    $i\colon\Hom_{C}\to M$. So for any $f\colon c\to d$ in $C$ there is an element
    $i(f)\in M(c,d)$, such that $f\cdot i(g)\cdot h = i(f\circ g\circ h)$ whenever this makes sense.
    The multiplication $M\otimes M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and
    $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative, and satisfies the
    following equations whenever they make sense:
-   \begin{gather}\label{eq:Prof_monoid}
+   \begin{gather*}
       (f\cdot m_2)\bullet(m_1\cdot h) = f\cdot(m_2\bullet m_1)\cdot h
       \\ (m_3\cdot g)\bullet m_1 = m_3\bullet(g\cdot m_1)
       \\ m\bullet i(f) = m\cdot f
             \quad\text{and}\quad
          i(g)\bullet m = g\cdot m
-   \end{gather}
+   \end{gather*}
 \end{example}
 
 \begin{lemma}
@@ -1185,7 +1185,7 @@ An equipment is a double category $\dcat{D}$ in which the functor $\dcat{D}_1\tt
    This defines a functor $\Emb\colon\op{\Mon(\dcat{D})}\times\dcat{D}_0\to\Set$.
 \end{definition}
 
-\begin{definition}\todo{rephrase in terms of embeddings}
+\begin{definition}
    Let $M\colon c\tickar c$ be a monoid in an equipment $\dcat{D}$. The \emph{collapse} of $M$ is a
    universal embedding of $M$. That is, the collapse of $M$ is an object $\Col{M}$ together with an
    embedding
@@ -1241,6 +1241,24 @@ We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz
    \end{compactitem}
 \end{definition}
 
+\begin{proposition}\label{prop:Prof_is_exact}
+   The equipment $\dProf$ is exact.
+\end{proposition}
+\begin{proof}
+   Let $M\colon C\tickar C$ be a monoid in $\dProf$, as in Example~\ref{ex:monoid_in_Prof}.
+   It is straightforward to use $M$ to construct a category $\Col{M}$ with the same
+   objects as $C$, and with hom sets defined by, for any pair of objects $c,d\in\Ob(C)$,
+   $\Col{M}(c,d)\coloneqq M(c,d)$. For any object $c$, the identity is provided by $i(\id_C)$, while
+   the multiplication $\bullet$ of $M$ provides the composition of $\Col{M}$.
+
+   The unit of $M$ can also be used to construct an identity-on-objects functor $i_M\colon
+   C\to\Col{M}$, and the 2-cell $\vec{\imath}_M$ is trivial, sending any element of $M$ to itself as
+   a morphism of $\Col{M}$. It is easy to see that $\vec{\imath}_M$ is cartesian, and that
+   $(i_M,\vec{\imath}_M)$ is a collapse. It is also simple to verify the second part of
+   Definition~\ref{def:exact_equipment}: a $(M,N)$-bimodule is precisely the data of a profunctor
+   $\Col{M}\tickar\Col{N}$.
+\end{proof}
+
 \begin{proposition}
    If $\dcat{D}$ is an exact equipment, then collapse induces an equipment functor
    $\Col{\textrm{--}}\colon\dMod(\dcat{D})\to\dcat{D}$. The functor $\Col{\textrm{--}}$ is a local
@@ -1260,9 +1278,12 @@ Recall the notion of orthogonal factorization systems for categories and strict 
 Definition~\ref{def:orthogonal}. We recall also from~\cite{Schultz2015} the following theorem:
 
 \begin{theorem}\label{thm:orthogonal}
-   If an equipment $\dcat{D}$ is exact (and hence regular)\todo{Why is this "and hence regular" thing here?}, then the vertical 2-category
-   $\VVer(\dcat{D})$ admits a 2-orthogonal factorization system $(\bo,\ff)$. In particular, there is
-   an orthogonal factorization system $(\bo,\ff)$ on the vertical 1-category $\dcat{D}_0$.
+   If an equipment $\dcat{D}$ is exact (and hence regular)
+   \todo{Why is this "and hence regular" thing here?}
+   \todo[author=Patrick]{Because regular $\Rightarrow$ factorization system},
+   then the vertical 2-category $\VVer(\dcat{D})$ admits a 2-orthogonal factorization system
+   $(\bo,\ff)$. In particular, there is an orthogonal factorization system $(\bo,\ff)$ on the
+   vertical 1-category $\dcat{D}_0$.
 \end{theorem}
 
 The notation $\bo$ and $\ff$ comes from the case where $\dcat{D}=\Prof$, for which they correspond to the functors that are bijective on objects and fully faithful, respectively. \todo{Note the same in $\MonProf$, $\CompProf$, etc., once examples are in place.}
