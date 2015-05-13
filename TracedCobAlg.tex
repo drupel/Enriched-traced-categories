@@ -1666,6 +1666,22 @@ morphisms which preserve the units.
    bijection}.
 \end{proof}
 
+\begin{corollary}\label{cor:Tr_mon_prof_equivalence}
+   There is an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=-.5em]
+         \CPsh(\dTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \Mon(\dTrProf) \ar[dl,two heads] \\
+            & \TrCat &
+      \end{tikzcd}
+   \end{equation*}
+\end{corollary}
+\begin{proof}
+   Using the fact that $\Int\colon\dTrProf\to\dCompProf$ is a local equivalence, and preserves the
+   terminal object, together with Lemmas~\ref{lem:Psh_pullback} and~\ref{lem:Mon_pullback}, we can obtain the
+   equivalence by pulling back Proposition~\ref{Prop:mon_prof_equivalence} along $\Int$.
+\end{proof}
+
 \section{Monoids on free objects}
 
 If we want to modify theorem~\ref{thm:Mod_vs_bo} to get an equivalence with $\dcat{D}$ rather than
