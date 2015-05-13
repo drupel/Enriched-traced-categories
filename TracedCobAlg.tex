@@ -1199,10 +1199,10 @@ An equipment is a double category $\dcat{D}$ in which the functor $\dcat{D}_1\tt
    This defines a functor $\Emb\colon\op{\Mon(\dcat{D})}\times\dcat{D}_0\to\Set$.
 \end{definition}
 
-
 \begin{definition}\todo{rephrase in terms of embeddings}
-   Let $M\colon c\tickar c$ be a monoid in an equipment $\dcat{D}$. The \emph{collapse} of $M$ is an object
-   $\Col{M}$ of $\dcat{D}$ together with a vertical morphism $i_M\colon c\to\Col{M}$ and a 2-cell
+   Let $M\colon c\tickar c$ be a monoid in an equipment $\dcat{D}$. The \emph{collapse} of $M$ is a
+   universal embedding of $M$. That is, the collapse of $M$ is an object $\Col{M}$ together with an
+   embedding
    \begin{equation*}
       \begin{tikzcd}
          c \ar[r,tick,"M" domA] \ar[d,"i_M"']
@@ -1213,10 +1213,7 @@ An equipment is a double category $\dcat{D}$ in which the functor $\dcat{D}_1\tt
          \twocellA{\vec{\imath}_M}
       \end{tikzcd}
    \end{equation*}
-   such that $(i_M,\vec{\imath}_M)$ is a morphism of monoids from $M$ to $\Col{M}$ (the trivial
-   monoid on $\Col{M}$), and satisfies the universal property that for any other object
-   $X$ and morphism of monoids $(f,\vec{f})$ as below, there exists a unique vertical morphism
-   $\tilde{f}\colon\Col{M}\to X$ such that
+   such that any other embedding of $M$ factors uniquely through $\vec{\imath}_M$:
    \begin{equation*}
       \begin{tikzcd}
          C \ar[r,tick,"M" domA] \ar[d,"f"']
@@ -1240,6 +1237,7 @@ An equipment is a double category $\dcat{D}$ in which the functor $\dcat{D}_1\tt
          \twocellB[pos=.6]{\id_{\tilde{f}}}
       \end{tikzcd}
    \end{equation*}
+   In other words, $\Col{M}$ represents the functor $\Emb(M,\textrm{--})\colon\dcat{D}_0\to\Set$.
 \end{definition}
 
 We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz2015}.
