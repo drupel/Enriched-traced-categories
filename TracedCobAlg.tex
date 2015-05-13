@@ -168,7 +168,7 @@ $(\LCob{\bullet})\colon\Set_{\TM}\to\CompCat$ (see~\eqref{dia:TMvsFrMonCat} and~
 \todo{Patrick: check this paragraph; is $(\LCob{\bullet})$ clear enough notation?}%
 and we can compose it with $\Lax(-,\Set)$ to obtain a functor which we denote
 \begin{equation}\label{eqn:cob/bullet}
-   (\LCob{\bullet})\alg\colon\op{\Set_{\TM}}\too\Cat.
+   (\LCob{\bullet})\alg\colon\Set_{\TM}^{\mathrm{op}}\too\Cat.
 \end{equation}
 By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect the equivalences
 (\ref{eq:single_fiber}) for varying $\cat{O}$ into a single functor, and we have the following main
@@ -182,12 +182,18 @@ result, whose proof can be found in Section~\ref{sec:deducing}.
    such that the induced 2-functor $\CobKlsAlg\to\TTrCat$ is 2-essentially surjective.
 \end{named}
 \todo[inline]{Add something about props here.}
+\todo[inline]{And maybe a comment about the weird form of Theorem A, to the effect that we shouldn't
+expect algebras of operads to be able to encode 2-cells.}
 
 \section{Generalization: Lax algebras on compact categories}
 
-It is most convenient to prove~\ref{thm:TheoremA} by proving a more general result, which
-gives an equivalence between the category of lax functors out of any compact category $\cat{C}$ and the category of
-strong, bijective-on-objects functors out of $\cat{C}$,
+\todo[inline,author=Patrick]{
+   I don't think it's right anymore to say that we're proving Theorem A by means of Theorem B.
+   Rather both are falling out of more general results.
+}
+It is most convenient to prove~\ref{thm:TheoremA} by proving a more general result, which gives an
+equivalence between the category of lax functors out of any compact category $\cat{C}$ and the
+category of strong, bijective-on-objects functors out of $\cat{C}$,
 \begin{equation}\label{eqn:lax_compcat_bo}
 \Lax(\cat{C},\Set)\iso\cat{C}/\CompCat^{\bo}.
 \end{equation}
