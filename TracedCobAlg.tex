@@ -129,7 +129,7 @@ The relationship between these interpretations of string diagrams is most easily
 the set $\cat{O}$ of labels is fixed. Let $\TTrCat$ denote the 2-category of traced categories,
 strong traced functors, and monoidal natural isomorphisms \cite{HK}, and let $\TrCat$ denote its underlying 1-category.%
 \footnote{
-We use a similar notational convention throughout this paper. We denote named 1-categories, monoidal categories, and operads with bold roman letters, e.g., $\ncat{Cob}$, and unnamed 1-categories with script, e.g., $\cat{C}$. For named 2-categories or bicategories we do almost the same, but change the font of the first letter to calligraphic, such as $\nncat{T}{rCat}$; for unnamed 2-categories we use (unbold) calligraphic, e.g., $\ccat{D}$. Finally, for equipments (special double categories, see Section~\ref{sec:background_equipments}) we make the first letter blackboard bold, whether named (e.g., $\ndcat{P}{rof}$) or unnamed (e.g., $\dcat{D}$).
+We use a similar notational convention throughout this paper. We denote named 1-categories, monoidal categories, and operads with bold roman letters, e.g., $\ncat{Cob}$, and unnamed 1-categories with script, e.g., $\cat{C}$. For named 2-categories or bicategories we do almost the same, but change the font of the first letter to calligraphic, such as $\nncat{T}{rCat}$; for unnamed 2-categories we use (unbold) calligraphic, e.g., $\ccat{D}$. Finally, for equipments (special double categories, see Section~\ref{sec:background_equipments}) we make the first letter blackboard bold, whether named (e.g., $\ndcat{P}{rof}$) or unnamed (e.g., $\dcat{D}$). The objects in a category, 2-category, or double category will be denoted with the usual math font (e.g., $T\in\Ob\TrCat$).
 }
 Finally, let $\TrCat_{\cat{O}}$ denote the subcategory in which the object set is fixed to be free on the set $\cat{O}$---which we
 call its label set---together with label-preserving maps. For any monoidal category
@@ -207,6 +207,7 @@ Section~\ref{sec:deducing}.
    \end{equation*}
 \end{named}
 
+We can give a better high-level story once we have reviewed equipments; see the introduction to Section~\ref{sec:equipments_monoidal_profunctors}. For the remainder of the introduction, we will attempt to build intuition.
 
 \section{Wiring Diagrams, cobordisms, and traced categories}
 
@@ -457,7 +458,7 @@ Write Plan.
 \section*{Acknowledgments}
 
 Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect the operad-algebra
-picture in \cite{RupelSpivak} to string diagrams in traced categories.
+picture in \cite{RupelSpivak} to string diagrams in traced categories. We also thank Mike Shulman for many useful conversations.
 
 \chapter{Categorical preliminaries}\label{sec:traced categories}
 
@@ -923,7 +924,12 @@ In particular, for all solid arrow squares, as in the right-hand diagram, there 
 \end{itemize}
 As shown, we often indcate morphisms in $\cat{L}$ using a two-headed arrow, and morphisms in $\cat{R}$ using a hooked arrow.
 \end{definition}
-\todo{Move later remark here.}
+
+\begin{remark}
+
+As in Definition~\ref{def:orthogonal}, we will use the hooked arrow $\inj$ to indicate $\ff$ morphisms and the two-headed arrow $\tto$ to indicate $\bo$ morphisms. However, we sometimes use the latter symbol to indicate fibrations of categories (e.g., as we did in \ref{thm:TheoremB}). These two uses of the symbol $\tto$ can be distinguished as follows. If the arrow occurs between objects in an equipment, then it indicates a $\bo$ map; if it occurs as a structural part of a given equipment\todo{Patrick: can this be better phrased?}, e.g., as in Definition~\ref{def:equipment}, then it indicates a fibration. 
+
+\end{remark}
 
 \chapter{Background on equipments}\label{sec:background_equipments}
 
@@ -1145,12 +1151,6 @@ Definition~\ref{def:orthogonal}. We recall also from~\cite{Schultz2015} the foll
 
 The notation $\bo$ and $\ff$ comes from the case where $\dcat{D}=\Prof$, for which they correspond to the functors that are bijective on objects and fully faithful, respectively. \todo{Note the same in $\MonProf$, $\CompProf$, etc., once examples are in place.}
 
-\begin{remark}
-
-As in Definition~\ref{def:orthogonal}, we will use the hooked arrow $\inj$ to indicate $\ff$ morphisms and the two-headed arrow $\tto$ to indicate $\bo$ morphisms. However, we sometimes use the latter symbol to indicate fibrations of categories (e.g., as we did in Definition~\ref{def:local_equivalence}). These two uses of the symbol $\tto$ can be distinguished as follows. If the arrow occurs between objects in an equipment, then it indicates a $\bo$ map; if it occurs as a structural part of a given equipment\todo{Patrick: can this be better phrased?}, e.g., as in Definition~\ref{def:equipment}, then it indicates a fibration. 
-
-\end{remark}
-
 If $\dcat{D}$ is an exact equipment, then using the factorization system we can define an equipment
 $\dcat{D}^{\bo}$. The vertical category of $\dcat{D}^{\bo}$ is the category $\dcat{D}_0^{\bo}$,
 defined to be the full subcategory of the category of arrows of $\dcat{D}_0$ spanned by the arrows
@@ -1306,9 +1306,9 @@ In other words, an object of $\CPsh(\dcat{D})$ is a pair $(C,F)$, where $C\in\Ob
    If $F$ is a local equivalence, then the front face is a pullback, so the back face is a pullback as well.
 \end{proof}
 
-\chapter{Equipments of monoidal categories and profunctors}
+\chapter{Equipments of monoidal categories and profunctors}\label{sec:equipments_monoidal_profunctors}
 
-In this section we setup the necessary equipment to prove our main results, \ref{thm:TheoremA}, \ref{thm:TheoremB}, and \ref{cor:CorollaryB}. The high-level view of the argument runs as follows. 
+In this section we setup the necessary equipment to prove our main results, \ref{thm:TheoremA}, \ref{thm:TheoremB}, and \ref{cor:CorollaryB}. The high-level view of the argument runs as follows. \todo{Go through the following once things are more settled.}
 
 The free compact category on $\cat{O}$ is $\LCob{\cat{O}}$ by Corollary~\ref{thm:free_compact_is_Cob}. For any compact category $\cat{C}$, there is an equivalence of categories (Proposition~\ref{prop:unit_implies_monoid}) between the lax functors $\cat{C}\to\Set$ and the monoids on $\cat{C}$ in the equipment $\CompProf$ (Definition~\ref{def:CompProf}). Because $\CompProf$ is an exact equipment (Proposition~\ref{prop:CompProf_exact}), the monoids on $\cat{C}$ can be identified with the bijective-on-objects functors out of $\cat{C}$ by Theorem~\ref{thm:Mod_vs_bo}; this establishes $\Lax(\cat{C},\Set)\iso\cat{C}/\CompCat^{\bo}.$ Similar results hold for traced categories. 
 
@@ -1383,7 +1383,7 @@ The equipment $\dCompProf$ is exact.
 \end{proposition}
 
 \begin{lemma}\label{lem:Int_preserves_bo}
-   If a traced functor $F\colon\cat{T}\to\cat{T}'$ is bijective-on-objects, then so is $\Int(F)$.
+   If a traced functor $F\colon T\to T'$ is bijective-on-objects, then so is $\Int(F)$.
 \end{lemma}
 
 \begin{lemma}\label{lem:Tr_bo_Int}
@@ -1391,7 +1391,7 @@ The equipment $\dCompProf$ is exact.
    bijective on objects traced functor. If we form the factorization in $\MonCat$
    \begin{equation*}
       \begin{tikzcd}[column sep=large]
-         \UTM T \ar[r,hook,"\UTM\eta_T"] \ar[d,two heads]
+         \UTM T \ar[r,hook,"\UTM\eta_{T}"] \ar[d,two heads]
             & \UCM\Int(T) \ar[d,two heads,"\UCM F"] \\
          M \ar[r,hook] & \UCM C
       \end{tikzcd}
@@ -1402,7 +1402,7 @@ The equipment $\dCompProf$ is exact.
          T'=M$---such that the factorization lifts to $\TrCat$:
          \begin{equation*}
             \begin{tikzcd}[column sep=large]
-               T \ar[r,hook,"\eta_T"] \ar[d,two heads,"G"']
+               T \ar[r,hook,"\eta_{T}"] \ar[d,two heads,"G"']
                   & \UCT\Int(T) \ar[d,two heads,"\UCT F"] \\
                T' \ar[r,hook,"H"'] & \UCT C
             \end{tikzcd}
@@ -1416,7 +1416,7 @@ The equipment $\dCompProf$ is exact.
    Lemma~\ref{lemma:fully_faithful_and_trace}. For the second part, consider the diagram
    \begin{equation*}
       \begin{tikzcd}[column sep=large]
-         T \ar[r,hook,"\eta_T"] \ar[d,two heads,"G"']
+         T \ar[r,hook,"\eta_{T}"] \ar[d,two heads,"G"']
             & \UCT\Int(T) \ar[d,two heads,"\UCT\Int(G)"']
                \ar[ddr,bend left=25,"\UCT F"] &[between origins] \\
          T' \ar[r,hook,"\eta_{T'}"] \ar[drr,hook,bend right=15,"H"']
@@ -1525,6 +1525,7 @@ Recall from \ref{def:embedding} the definition of embedding.
 \section{Special properties of CompProf}
 \todo[inline]{CompProf closed under collapse in MonProf}
 \todo[inline]{This section needs a notation update. \eqref{eqn:primary_goal} and \eqref{eqn:functors_1C_CC} are about $\dCompProf$, but nothing else seems to be.}
+\todo[inline]{Replace $\cat{C}$ with $C$ and replace $A,B$ with $a,b$, etc.}
 
 The primary goal of this section is to establish the equivalences of 1-categories
 \begin{equation}\label{eqn:primary_goal}
@@ -1768,7 +1769,7 @@ Thus we have the following proposition:
          \dMod(\dcat{D}_T)\ar[r,"\dMod(\varphi_T)"] &[1.5em] \dMod(\dcat{D}) \ar[r,"\Col{\textrm{--}}"] & \dcat{D}
       \end{tikzcd}
    \end{equation*}
-   is a fully-faithful local equivalence, and the induced 2-functor
+   is a \todo{clarify this}fully-faithful local equivalence, and the induced 2-functor
    $\rho\colon\MMon(\dcat{D}_T)\to\VVer(\dcat{D})$ is 2-essentially surjective, hence a 2-equivalence.
 \end{theorem}
 \begin{proof}
