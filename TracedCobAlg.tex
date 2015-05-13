@@ -999,6 +999,49 @@ the tensor product. Precisely, if $M$ is as above, there are canonical isomorphi
 $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 
 \section{Equipments}
+
+\begin{definition}
+   A \emph{virtual double category} $\dcat{D}$ consists of the following data:
+   \begin{compactitem}
+      \item A category $\dcat{D}_0$, which we refer to as the \emph{vertical category} of
+         $\dcat{D}$. For any two objects $c,d\in\dcat{D}_0$, we will write
+         $\dcat{D}(c,d)=\dcat{D}_0(c,d)$ for the set of vertical arrows from $c$ to $d$.
+      \item For any two objects $c,d\in\dcat{D}_0$, a set of horizontal arrows, which we refer to as
+         proarrows and draw with a slash: $c\tickar d$.
+      \item 2-cells, which have the shape
+         \begin{equation}
+            \begin{tikzcd}
+               c_0 \ar[r,tick,"A_1"] \ar[d,"f"' domA]
+                  & c_1 \ar[r,tick,"A_2"]
+                  & c_2 \ar[r,tick,"A_3"]
+                  & \cdots \ar[r,tick,"A_n"]
+                  & c_n \ar[d,"g" codA] \\
+               d_0 \ar[rrrr,tick,"B"']
+                  &&&& d_1
+               \twocellA{\phi}
+            \end{tikzcd}
+         \end{equation}
+         for any $n\geq 0$. We will call $f$ and $g$ the \emph{left frame} and \emph{right frame} of
+         $\phi$, and call the string $A_1,\dots,A_n$ the (multi-)source and $B$ the target of
+         $\phi$. We will write ${}_f\dcat{D}_g(A_1,\dots,A_n;B)$ for the set of all cells of
+         shape~\eqref{eq:virtual_2-cell} in $\dcat{D}$, and we write $\dcat{D}(A_1,\dots,A_n;B)$ for
+         the set of cells with $f$ and $g$ identities.
+      \item For each proarrow $A\colon c\tickar d$ there is an identity 2-cell
+         \begin{equation*}
+            \begin{tikzcd}
+               c \ar[r,tick,"A" domA] \ar[d,equal]
+                  & d \ar[d,equal] \\
+               c \ar[r,tick,"A"' codA]
+                  & d
+               \twocellA{1_A}
+            \end{tikzcd}
+         \end{equation*}
+      \item Composition of 2-cells is like composition in a multicategory. So given the 2-cell
+         $\phi$ in~\eqref{eq:virtual_2-cell} and $n$ other 2-cells with horizontal targets
+         $A_1,\dots,A_n$, there is a composite 2-cell with the evident shape. This composition
+         operation satisfies unit and associativity axioms like in a multicategory.
+   \end{compactitem}
+\end{definition}
 \todo[author=Patrick,inline]{Introduce equipments}
 \todo[author=Patrick,inline]{Give examples: $\dProf$, $\dMonProf$, $\dSpan$}
 \todo[author=David,inline]{Make sure to say that $\dProf_0=\Cat$, etc. I think this could be confusing for non-experts.}
