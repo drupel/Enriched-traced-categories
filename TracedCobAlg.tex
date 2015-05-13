@@ -1140,18 +1140,30 @@ An equipment is a double category $\dcat{D}$ in which the functor $\dcat{D}_1\tt
 \section{Exactness and the $(\bo,\ff)$ factorization}\label{sec:exactness_and_boff}
 
 \begin{definition}\label{def:embedding}
-An embedding is...
-
+   Let $M\colon c\tickar c$ be a monoid in an equipment $\dcat{D}$. An \emph{embedding} of $M$ into
+   an object $x$ is a monoid homomorphism $(f,\vec{f})$ from $M$ to the trivial monoid on $x$:
+   \begin{equation*}
+      \begin{tikzcd}
+         c \ar[r,tick,"M" domA] \ar[d,"f"']
+            & c \ar[d,"f"] \\
+         x \ar[r,tick,"x"' codA]
+            & x
+         \twocellA{\vec{f}}
+      \end{tikzcd}
+   \end{equation*}
+   We will sometimes write an embedding as $(f,\vec{f}\,)\colon(c,M)\to x$, or even just $f\colon M\to
+   x$ when clear from context. We will write $\Emb(M,x)$ for the set of embeddings from $M$ to $x$.
+   This defines a functor $\Emb\colon\op{\Mon(\dcat{D})}\times\dcat{D}_0\to\Set$.
 \end{definition}
 
 
 \begin{definition}\todo{rephrase in terms of embeddings}
-   Let $C\tickar C$ be a monoid in an equipment $\dcat{D}$. The \emph{collapse} of $M$ is an object
-   $\Col{M}$ of $\dcat{D}$ together with a vertical morphism $i_M\colon C\to\Col{M}$ and a 2-cell
+   Let $M\colon c\tickar c$ be a monoid in an equipment $\dcat{D}$. The \emph{collapse} of $M$ is an object
+   $\Col{M}$ of $\dcat{D}$ together with a vertical morphism $i_M\colon c\to\Col{M}$ and a 2-cell
    \begin{equation*}
       \begin{tikzcd}
-         C \ar[r,tick,"M" domA] \ar[d,"i_M"']
-         & C \ar[d,"i_M"]
+         c \ar[r,tick,"M" domA] \ar[d,"i_M"']
+         & c \ar[d,"i_M"]
          \\
          \Col{M} \ar[r,tick,"\Col{M}"' codA]
          & \Col{M}
