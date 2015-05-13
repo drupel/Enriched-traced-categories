@@ -1000,32 +1000,25 @@ $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 
 \section{Equipments}
 
+A double category is a 2-category-like structure involving horizontal and vertical arrows, as well as 2-cells. An equipment (sometimes called a \emph{framed bicategory}) is a double category satisfying a certain fibrancy condition. In this section, we will spell this out and give a few examples. An excellent reference is Shulman's paper \cite{Shulman}.
+
 \begin{definition}
-   A \emph{virtual double category} $\dcat{D}$ consists of the following data:
+   A \emph{double category} $\dcat{D}$ consists of the following data:
    \begin{compactitem}
       \item A category $\dcat{D}_0$, which we refer to as the \emph{vertical category} of
          $\dcat{D}$. For any two objects $c,d\in\dcat{D}_0$, we will write
          $\dcat{D}(c,d)=\dcat{D}_0(c,d)$ for the set of vertical arrows from $c$ to $d$.
-      \item For any two objects $c,d\in\dcat{D}_0$, a set of horizontal arrows, which we refer to as
-         proarrows and draw with a slash: $c\tickar d$.
-      \item 2-cells, which have the shape
+      \item A category $\dcat{D}_1$, equipped with two functors $L,R\colon\dcat{D}_1\to\dcat{D}_0$, called the \emph{left frame} and \emph{right frame} functors. Given an object $A\in\Ob\dcat{D}_1$ with $c=L(A)$ and $c'=R(A)$, we say that $A$ is a \emph{proarrow from $c$ to $c'$} and write $A\colon c\tickar c'$. A morphism $\phi\colon A\to B$ in $\dcat{D}_1$ is called a 2-cell, and is drawn as follows, where $f=L(\phi)$ and $f'=R(\phi)$:
          \begin{equation}
             \begin{tikzcd}
-               c_0 \ar[r,tick,"A_1"] \ar[d,"f"' domA]
-                  & c_1 \ar[r,tick,"A_2"]
-                  & c_2 \ar[r,tick,"A_3"]
-                  & \cdots \ar[r,tick,"A_n"]
-                  & c_n \ar[d,"g" codA] \\
-               d_0 \ar[rrrr,tick,"B"']
-                  &&&& d_1
+               c \ar[r,tick,"A"] \ar[d,"f"' domA]
+               & c'\ar[d,"{f'}" codA]
+                 \\
+               d \ar[r,tick,"B"']
+                 & d'
                \twocellA{\phi}
             \end{tikzcd}
          \end{equation}
-         for any $n\geq 0$. We will call $f$ and $g$ the \emph{left frame} and \emph{right frame} of
-         $\phi$, and call the string $A_1,\dots,A_n$ the (multi-)source and $B$ the target of
-         $\phi$. We will write ${}_f\dcat{D}_g(A_1,\dots,A_n;B)$ for the set of all cells of
-         shape~\eqref{eq:virtual_2-cell} in $\dcat{D}$, and we write $\dcat{D}(A_1,\dots,A_n;B)$ for
-         the set of cells with $f$ and $g$ identities.
       \item For each proarrow $A\colon c\tickar d$ there is an identity 2-cell
          \begin{equation*}
             \begin{tikzcd}
@@ -1042,12 +1035,10 @@ $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
          operation satisfies unit and associativity axioms like in a multicategory.
    \end{compactitem}
 \end{definition}
-\todo[author=Patrick,inline]{Introduce equipments}
 \todo[author=Patrick,inline]{Give examples: $\dProf$, $\dMonProf$, $\dSpan$}
 \todo[author=David,inline]{Make sure to say that $\dProf_0=\Cat$, etc. I think this could be confusing for non-experts.}
 \todo[author=David,inline]{Discuss (here or elsewhere) that essential surjectivity is left pseudo-orthogonal to $\ff$ in $\Prof$.}
 
-A double category is a 2-category-like structure involving horizontal and vertical arrows, as well as 2-cells. An equipment (sometimes called a \emph{framed bicategory}) is a double category satisfying a certain fibrancy condition. In this section, we will spell this out and give a few examples. An excellent reference is Shulman's paper \cite{Shulman}.
 
 \begin{definition}\label{def:equipment}
 An equipment is a double category $\dcat{D}$ in which the functor $\dcat{D}_1\tto\dcat{D}_0\times\dcat{D}_0$ is a fibration.
