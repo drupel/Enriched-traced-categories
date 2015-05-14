@@ -19,7 +19,7 @@
 \usepackage[bookmarks=true,colorlinks=true, linkcolor=MidnightBlue, citecolor=cyan]{hyperref}
 
 \usetikzlibrary{decorations.markings,arrows.meta,calc,fit,quotes,cd}
-\hypersetup{final}
+%\hypersetup{final} %%CAUSING PROBLEMS WITH \usepackage[varg,bigdelims,varbb]{newpxmath}
 
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\dom}{dom}
@@ -112,6 +112,7 @@
 \newcommand{\CompCat}{\ncat{CompCat}} % 1-cat CompCat
 \newcommand{\CCompCat}{\nncat{C}{ompCat}} % 2-cat CompCat
 \newcommand{\CompProf}{\nncat{C}{ompProf}} % bicat CompProf
+\newcommand{\TrProf}{\nncat{T}{rProf}} % bicat CompProf
 \newcommand{\dCompProf}{\ndcat{C}{ompProf}} % bicat CompProf
 \newcommand{\FrCompCat}{\ncat{FCompCat}}
 \newcommand{\FFrCompCat}{\nncat{F}{CompCat}}
@@ -121,8 +122,6 @@
 \newcommand{\TrCat}{\ncat{TrCat}} % 1-cat TrCat
 \newcommand{\TTrCat}{\nncat{T}{rCat}} % 2-cat TrCat
 \newcommand{\TTrFrObCat}{\nncat{T}{rFrObCat}}
-\newcommand{\TrProp}{\ncat{TrProp}}
-\newcommand{\Prop}{\ncat{Prop}}
 % \def\2Cat{\tn{$2$-$\ncat{Cat}$}}
 
 
