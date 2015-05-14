@@ -1384,7 +1384,7 @@ Definition~\ref{def:orthogonal}. We recall also from~\cite{Schultz2015} the foll
    vertical 1-category $\dcat{D}_0$.
 \end{theorem}
 
-The notation $\bo$ and $\ff$ comes from the case where $\dcat{D}=\Prof$, for which they correspond to the functors that are bijective on objects and fully faithful, respectively. \todo{Note the same in $\MonProf$, $\CompProf$, etc., once examples are in place.}
+The notation $\bo$ and $\ff$ comes from the case where $\dcat{D}=\dProf$, for which they correspond to the functors that are bijective on objects and fully faithful, respectively. See also Proposition~\ref{prop:boff_well_named}.
 
 If $\dcat{D}$ is an exact equipment, then using the factorization system we can define an equipment
 $\dcat{D}^{\bo}$. The vertical category of $\dcat{D}^{\bo}$ is the category $\dcat{D}_0^{\bo}$,
@@ -1621,7 +1621,6 @@ Define $\dTrProf$ to be the equipment, induced by the functor $\Int\colon\TrCat\
 \end{definition}
 
 \section{Our equipments are exact}%\section{$\dMonProf, \dTrProf$, and $\dCompProf$ are exact equipments}
-\todo[inline]{Need proofs..}
 
 \begin{proposition}\label{prop:MonProf_exact}
 The equipment $\dMonProf$ is exact.
@@ -1773,6 +1772,11 @@ Recall the definition of embedding from \ref{def:embedding}.
 
    The second condition of Definition~\ref{def:exact_equipment} follows immediately from Proposition~\ref{prop:CompProf_exact} and the fact that the inclusion $\dTrProf\to\dCompProf$ is a local equivalence.
 \end{proof}
+
+\begin{proposition}\label{prop:boff_well_named}
+\todo{Does this require proof?}
+The $\bo,\ff$ factorization system on the 2-category $\MMonCat$ (resp. on $\TTrCat$ and $\CCompCat$), given by Theorem~\ref{thm:orthogonal}, is well-named, in the sense that a morphism is $\bo$ iff it is bijective-on-objects and $\ff$ iff it is fully faithful.
+\end{proposition}
 
 \section{Special properties of CompProf}
 \todo[inline]{CompProf closed under collapse in MonProf}
