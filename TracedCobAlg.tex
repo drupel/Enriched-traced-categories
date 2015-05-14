@@ -1145,7 +1145,9 @@ If $\dcat{Y}$ is a double category and $F_0\colon\dcat{X}_0\to\dcat{Y}_0$ is any
 
 \begin{example}\label{ex:horizontal_bicategory}
 
-The horizontal bicategory $\HHor(\dcat{D})$ associated to an equipment $\dcat{D}$ can be identified with the locally equivalent equipment induced by the inclusion $\Ob\dcat{D}_0\to\dcat{D}_0$ of the discrete category of objects.
+The horizontal bicategory $\HHor(\dcat{D})$ associated to an equipment $\dcat{D}$ can be identified with the locally equivalent equipment induced by the inclusion $\Ob\dcat{D}_0\to\dcat{D}_0$ of the discrete category of objects. 
+
+It follows that if $\dcat{D}\to\dcat{E}$ is a local equivalence of equipments, then $\HHor(\dcat{D})\to\HHor(\dcat{E})$ is a local equivalence of bicategories. Note, however, that the converse does not hold in general.
 
 \end{example}
 
@@ -1356,7 +1358,7 @@ We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz
    $\Col{M}\tickar\Col{N}$.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{prop:collapse_local_equivalence}
    If $\dcat{D}$ is an exact equipment, then collapse induces an equipment functor
    $\Col{\textrm{--}}\colon\dMod(\dcat{D})\to\dcat{D}$. The functor $\Col{\textrm{--}}$ is a local
    equivalence.
@@ -1625,12 +1627,18 @@ The equipment $\dMonProf$ is exact.
 \end{proposition}
 
 \begin{proof}
-We follow the proof of Proposition~\ref{prop:Prof_is_exact}. Suppose that a monoidal profunctor $M\colon C\tickar C$ has a monoid structure $\bullet\colon M\otimes M\to M$ and $i\colon\Hom_C\to M$. 
+Suppose that $M\colon C\tickar C$ is a monoid in $\dMonProf$. Following the proof of Proposition~\ref{prop:Prof_is_exact}, we obtain a category $\Col{M}$, an identity-on-objects morphism $i_M\colon C\to\Col{M}$, and a cartesian 2-cell, $\vec{\imath}_M$, so that $(i_M,\vec{\imath}_M)$ is an embedding. The category $\Col{M}$ has an canonical monoidal structure, which on objects is just that of $C$, and on morphisms is induced from the fact that $M$ is a monoidal profunctor. It is also easy to verify the second part of Definition~\ref{def:exact_equipment}: a $(M,N)$-bimodule is precisely the data of a profunctor $\Col{M}\tickar\Col{N}$.
 \end{proof}
 
 \begin{proposition}\label{prop:CompProf_exact}
 The equipment $\dCompProf$ is exact.
 \end{proposition}
+
+\begin{proof}
+
+We can consider a monoid $M\colon C\tickar C$ in $\dCompProf$ as a monoid in $\dMonProf$, which has a collapse embedding $$(i_M,\vec{\imath}_M)\colon M\to \Col{M}$ by Proposition~\ref{prop:MonProf_exact}. The collapse $\Col{M}$ is a monoidal category, and by Theorem~\ref{thm:Mod_vs_bo}, there is a strong $\bo$ functor $C\to\Col{M}$. But any monoidal category whose objects are bijective with a compact category is itself compact, so $\Col{M}$ is in fact a collapse in $\dCompProf$. 
+
+\end{proof}
 
 \begin{lemma}\label{lem:Int_preserves_bo}
    If a traced functor $F\colon T\to T'$ is bijective-on-objects, then so is $\Int(F)$.
