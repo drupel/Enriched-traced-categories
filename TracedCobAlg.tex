@@ -941,7 +941,7 @@ Let $\cat{V}$ be either $\Set$ or $\Cat$, and suppose that $\cat{C}$ is a $\cat{
 \begin{itemize}
 \item each morphism $f\in\cat{C}$ factors as $f=e\circ m$, where $m\in\cat{L}$ and $e\in\cat{R}$;
 \item if $m\colon a\to b$ in $\cat{L}$ and $e\colon c\to d$ in $\cat{R}$, then the left-hand square below is a pullback in $\cat{V}$:
-$$
+\begin{equation}\label{eqn:OrthFactSys}
 \begin{tikzcd}
 \cat{C}(b,c)\ar[r]\ar[d]\ar[rd,phantom,"\lrcorner" very near start]&\cat{C}(a,c)\ar[d,"e\circ -"]\\
 \cat{C}(b,d)\ar[r,"-\circ m"']&\cat{C}(a,d)
@@ -951,11 +951,17 @@ $$
 a\ar[r,"\forall"]\ar[d,two heads,"m"']&c\ar[d,hook, "e"]\\
 b\ar[r,"\forall"']\ar[ur,dashed,"\exists!"]&d
 \end{tikzcd}
-$$
+\end{equation}
 In particular, for all solid arrow squares, as in the right-hand diagram, there exists a unique diagonal filler. 
 \end{itemize}
 As shown, we often indicate morphisms in $\cat{L}$ using a two-headed arrow, and morphisms in $\cat{R}$ using a hooked arrow.
 \end{definition}
+
+If $\ccat{C}$ is a 2-category and $\cat{L}, \cat{R}$ are distinguished classes of morphisms, we say that $\cat{L}$ is \emph{left pseudo-orthogonal} to $\cat{R}$ if the pullback square (left of \eqref{eqn:OrthFactSys}) is only required to be a pseudo-pullback. This means that for any pseudo-commuting square (right of \eqref{eqn:OrthFactSys}), there exists an essentially unique pseudo-commuting lift.
+
+\begin{example}\label{ex:ess_surj_pseudo_ff}
+In $\CCat$, the class of essentially surjective functors is left pseudo-orthogonal to the class of fully faithful functors.
+\end{example}
 
 \begin{remark}
 
@@ -1039,10 +1045,10 @@ A double category is a 2-category-like structure involving horizontal and vertic
    \begin{compactitem}
       \item A category $\dcat{D}_0$, which we refer to as the \emph{vertical category} of
          $\dcat{D}$. For any two objects $c,d\in\dcat{D}_0$, we will write
-         $\dcat{D}(c,d)=\dcat{D}_0(c,d)$ for the set of vertical arrows from $c$ to $d$.
+         $\dcat{D}(c,d)=\dcat{D}_0(c,d)$ for the set of vertical arrows from $c$ to $d$. We refer to objects of $\dcat{D}_0$ as objects of $\dcat{D}$.
       \item A category $\dcat{D}_1$, equipped with two functors $L,R\colon\dcat{D}_1\to\dcat{D}_0$,
          called the \emph{left frame} and \emph{right frame} functors. Given an object
-         $A\in\Ob\dcat{D}_1$ with $c=L(A)$ and $c'=R(A)$, we say that $A$ is a \emph{proarrow from
+         $A\in\Ob\dcat{D}_1$ with $c=L(A)$ and $c'=R(A)$, we say that $A$ is a \emph{proarrow} (or \emph{horizontal arrow}) \emph{from
          $c$ to $c'$} and write $A\colon c\tickar c'$. A morphism $\phi\colon A\to B$ in
          $\dcat{D}_1$ is called a 2-cell, and is drawn as follows, where $f=L(\phi)$ and
          $f'=R(\phi)$:
@@ -1063,13 +1069,11 @@ A double category is a 2-category-like structure involving horizontal and vertic
       \item A functor $\odot\colon\dcat{D}_1\times_{\dcat{D}_0}\dcat{D}_1\to\dcat{D}_1$, called
          \emph{horizontal composition}, that is weakly associative and unital in the sense that there are coherent unitor and associator isomorphisms. See \cite{Shulman} for details.
    \end{compactitem}
+Given a double category $\dcat{D}$, there is a \emph{vertical 2-category}, denoted $\VVer(\dcat{D})$, whose underlying 1-category is $\dcat{D}_0$, and whose 2-morphisms are given by $\VVer(\dcat{D})(f,g)\coloneqq\dcat{D}_1(Uf,Ug)$. There is also a \emph{horizontal bicategory}, denoted $\HHor(\dcat{D})$, obtained from $\dcat{D}$ by requiring $F=\id_A, G=\id_B$; see Example~\ref{ex:horizontal_bicategory}.
+   
    An \emph{double functor} $\dcat{D}\to\dcat{E}$ consists of functors $\dcat{D}_0\to\dcat{E}_0$
    and $\dcat{D}_1\to\dcat{E}_1$ commuting with the frames $L,R$, and preserving the unit $U$ and horizontal composition $\odot$ up to coherent isomorphism.
 \end{definition}
-\todo[author=Patrick,inline]{Give examples: $\dProf$, $\dMonProf$}
-\todo[author=David,inline]{Make sure to say that $\dProf_0=\Cat$, etc. I think this could be confusing for non-experts.}
-\todo[author=David,inline]{Discuss (here or elsewhere) that essential surjectivity is left pseudo-orthogonal to $\ff$ in $\Prof$.}
-
 
 \begin{definition}\label{def:equipment}
 An \emph{equipment} is a double category $\dcat{D}$ in which the functor 
@@ -1088,6 +1092,42 @@ $$
 which we call a \emph{cartesian 2-cell}.
 \end{definition}
 
+\begin{example}
+
+An equipment $\dcat{D}$ is often named according to its horizontal arrows. In Section~\ref{sec:background_equipments} we discussed profunctors, which are the horizontal arrows in an equipment $\dProf$, which we will now discuss. Variations on $\dProf$, such as $\dMonProf, \dTrProf,$ and $\dCompProf$ (defined in Section~\ref{sec:monoidal_profunctors}) will play a major role in this paper.
+
+The vertical category of $\dProf$ is the 1-category $\dProf_0=\Cat$ of small 1-categories and functors. Given objects $C,D\in\Ob\dProf_0$, a horizontal arrow between them is a profunctor $C\tickar D$, as described in Section~\ref{sec:background_equipments}. A 2-cell $\phi$ in $\dProf$, as to the left, denotes a natural transformation, as to the right, in \eqref{eqn:Prof2cells}:
+\begin{equation}\label{eqn:Prof2cells}
+	\begin{tikzcd}
+		A \ar[r,tick,"X" domA] \ar[d,"F"']
+		& B\ar[d,"{G}"]
+		\\
+		C \ar[r,tick,"Y"' codA]
+		& D
+		\twocellA{\phi}
+	\end{tikzcd}
+\hspace{.6in}
+	\begin{tikzcd}[column sep=.8em, row sep=5ex]
+		\op{A}\times B\ar[dr,"X"']\ar[rr,"\op{F}\times G"]&\ar[d,phantom,"\overset{\phi}{\Rightarrow}" near start]&\op{C}\times D\ar[dl,"Y"]\\
+		&\Set
+	\end{tikzcd}
+\end{equation}
+The horizontal composite $X\odot Y$ of profunctors $X\colon A\tickar B$ and $Y\colon B\tickar C$ is obtained by a coend formula, equivalent to the following coequalizer for any $a\in\op{A}, c\in C$:
+$$
+	\begin{tikzcd}
+		\displaystyle\coprod_{f\colon b_1\to b_2}X(a,b_1)\times Y(b_2,c)
+		\ar[r,shift left,"b=b_1"]\ar[r,shift right,"b=b_2"']
+		& 
+		\displaystyle\coprod_{b}X(a,b)\times Y(b,c)
+		\ar[r]
+		&[-1em]
+		(X\odot Y)(a,c)
+	\end{tikzcd}
+$$
+One can show that the result is a double category, and it is an equipment because for any $F, G,Y$ as in \eqref{eqn:Prof2cells}, there is a cartesian 2-cell whose domain is the profunctor $X=Y\circ(\op{F}\times G)$ obtained by composition.
+
+\end{example}
+
 \todo[inline]{In \ref{def:local_equivalence}, do we want this to be strict pullback (local iso) or pseudo pullback (local equiv)? Similar decisions about pullbacks must be dealt with throughout the paper.}
 \begin{definition}\label{def:local_equivalence}
    An equipment functor $F\colon\dcat{X}\to\dcat{Y}$ is a \emph{local equivalence} if the following square is a pseudo-pullback of categories:
@@ -1101,6 +1141,12 @@ which we call a \emph{cartesian 2-cell}.
    \end{equation}
 If $\dcat{Y}$ is a double category and $F_0\colon\dcat{X}_0\to\dcat{Y}_0$ is any functor, the pullback \eqref{eqn:local_equiv} defines a double category $\dcat{X}$. If $\dcat{Y}$ is an equipment, $\dcat{X}$ will be too; we call it the \emph{equipment, induced by the functor $F_0$, that is locally equivalent to $\dcat{Y}$}.
 \end{definition}
+
+\begin{example}\label{ex:horizontal_bicategory}
+
+The horizontal bicategory $\HHor(\dcat{D})$ associated to an equipment $\dcat{D}$ can be identified with the locally equivalent equipment induced by the inclusion $\Ob\dcat{D}_0\to\dcat{D}_0$ of the discrete category of objects.
+
+\end{example}
 
 \section{The monoids and bimodules construction}
 
@@ -1497,7 +1543,7 @@ The free compact category on $\cat{O}$ is $\LCob{\cat{O}}$ by Corollary~\ref{cor
 The remaining difficulty is allowing the object set $\cat{O}$ to vary. What makes this work is the fact that there is an orthogonal factorization system on $\CompCat$ that behaves nicely with the adjunction to $\Set$. Theorem~\ref{thm:Verts} provides a 2-equivalence between any such nicely-behaved exact equipment and its free-on-objects version. It follows that the lax, set-valued functors out of a varying category $\cat{C}$ are equivalent to the $\bo$ maps out of $\cat{C}$ (Proposition~\ref{Prop:mon_prof_equivalence}). 
 
 
-\section{Monoidal profunctors}
+\section{Monoidal profunctors}\label{sec:monoidal_profunctors}
 
 Suppose $\cat{C}$ and $\cat{D}$ are symmetric monoidal categories. We will write
 \begin{gather*}
@@ -2051,11 +2097,6 @@ Thus we have the following proposition:
    and similarly for $\dFrTrProf$ and $\dFrCompProf$.
 \end{definition}
 
-\begin{remark}
-   \mbox{}
-   \todo[inline]{Can think of $\MMon(\dFrMonProf)$ as ``object free'' monoidal categories.}
-\end{remark}
-
 \begin{corollary}\label{cor:TrCat_ObjectFree}
    There are equivalences of 2-categories
    \begin{align*}
@@ -2236,6 +2277,9 @@ M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of 
  
  \bibitem{KellyLaplaza}
  G.M.~Kelly, M.L.~Laplaza, Coherence for compact closed categories, Journal of Pure and Applied Algebra 19 (1980), pp.~193--213.
+ 
+ \bibitem{Kock}
+ J.~Kock, Frobenius algebras and 2D topological quantum field theories, London Mathematical Society Student Texts, 59. Cambridge University Press, Cambridge, 2004. 
 
  \bibitem{MacLane}
  S.~MacLane, Categories for the Working Mathematician, Springer Science \& Business Media (1978).
