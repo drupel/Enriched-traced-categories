@@ -828,15 +828,16 @@ with unit object $\tilde I\coloneqq(I,I)$ and duality ${(\inp{X},\outp{X})}^\vee
 
 \begin{lemma}\label{lemma:fully_faithful_and_trace}
 The following facts hold for any traced category $\cat{C}$:
-\begin{compactitem}
+\begin{compactenum}[\quad i.]
    \item The unit $\cat{C}\to\Int(\cat{C})$ is fully faithful.
    \item If $\cat{D}$ is a category and $F\colon\cat{D}\to\cat{C}$ a fully faithful symmetric
       monoidal functor, then $\cat{D}$ has a unique trace for which $F$ is a traced functor.
    \item If $\cat{C}$ is compact then the unit $\cat{C}\To{\equiv}\Int(\cat{C})$ is an equivalence.
-\end{compactitem}
+   \item Suppose that $\cat{C'}$ is a traced category and that $F\colon \cat{C}\to \cat{C}'$ is a traced functor. If $F$ is bijective-on-objects (resp. fully faithful), then so is $\Int(F)$.
+\end{compactenum}
 \end{lemma}
 \begin{proof}
-   These are all shown in~\cite{JoyalStreetVerity}.
+   These are all shown in, or trivially derived from,~\cite{JoyalStreetVerity}.
 \end{proof}
 
 \section{Free traced and compact categories, and geometry}\label{sec:free and geometry}
@@ -1636,13 +1637,9 @@ The equipment $\dCompProf$ is exact.
 
 \begin{proof}
 
-We can consider a monoid $M\colon C\tickar C$ in $\dCompProf$ as a monoid in $\dMonProf$, which has a collapse embedding $$(i_M,\vec{\imath}_M)\colon M\to \Col{M}$ by Proposition~\ref{prop:MonProf_exact}. The collapse $\Col{M}$ is a monoidal category, and by Theorem~\ref{thm:Mod_vs_bo}, there is a strong $\bo$ functor $C\to\Col{M}$. But any monoidal category whose objects are bijective with a compact category is itself compact, so $\Col{M}$ is in fact a collapse in $\dCompProf$. 
+We can consider a monoid $M\colon C\tickar C$ in $\dCompProf$ as a monoid in $\dMonProf$, which has a collapse embedding $(i_M,\vec{\imath}_M)\colon M\to \Col{M}$ by Proposition~\ref{prop:MonProf_exact}. The collapse $\Col{M}$ is a monoidal category, and by Theorem~\ref{thm:Mod_vs_bo}, there is a strong $\bo$ functor $C\to\Col{M}$. But any monoidal category whose objects are bijective with a compact category is itself compact, so $\Col{M}$ is in fact a collapse in $\dCompProf$. 
 
 \end{proof}
-
-\begin{lemma}\label{lem:Int_preserves_bo}
-   If a traced functor $F\colon T\to T'$ is bijective-on-objects, then so is $\Int(F)$.
-\end{lemma}
 
 \begin{lemma}\label{lem:Tr_bo_Int}
    Let $T$ be a traced category, $C$ a compact category, and $F\colon\Int(T)\twoheadrightarrow C$ a
@@ -1665,13 +1662,12 @@ We can consider a monoid $M\colon C\tickar C$ in $\dCompProf$ as a monoid in $\d
                T' \ar[r,hook,"H"'] & \UCT C
             \end{tikzcd}
          \end{equation*}
-      \item there is an isomorphism $\alpha\colon C\iso\Int(T')$ such that $\UCT\alpha\circ
+      \item there is an isomorphism $\alpha\colon\Int(T')\iso C$, such that $\UCT\alpha\circ
          \eta_{T'}=H$ and $\alpha\circ\Int(G)=F$.
    \end{compactitem}
 \end{lemma}
 \begin{proof}
-   The trace structure on $M$ follows easily from the second part of
-   Lemma~\ref{lemma:fully_faithful_and_trace}. For the second part, consider the diagram
+   The trace structure on $M$ follows easily from Lemma~\ref{lemma:fully_faithful_and_trace} (ii). For the second part, consider the diagram
    \begin{equation*}
       \begin{tikzcd}[column sep=large]
          T \ar[r,hook,"\eta_{T}"] \ar[d,two heads,"G"']
@@ -1682,13 +1678,11 @@ We can consider a monoid $M\colon C\tickar C$ in $\dCompProf$ as a monoid in $\d
          && \UCT C
       \end{tikzcd}
    \end{equation*}
-   where $\alpha\colon\Int(T')\to C$ is the adjunct of $H$. By Lemma~\ref{lem:Int_preserves_bo}, we
-   know that $\UCT\Int(G)$ is $\bo$, and therefore $\alpha$ is also. But by the third part of
-   Lemma~\ref{lemma:fully_faithful_and_trace}, $\alpha$ is $\ff$. Hence $\alpha$ is an isomorphism,
-   completing the proof.
+   where $\alpha\colon\Int(T')\to C$ is the adjunct of $H$. By Lemma~\ref{lemma:fully_faithful_and_trace} (iii, iv), $\alpha$ is $\ff$. Since $G$ is $\bo$, we
+   know that $\UCT\Int(G)$ is $\bo$ by Lemma~\ref{lemma:fully_faithful_and_trace} (iv), and therefore $\alpha$ is as well. Hence $\alpha$ is an isomorphism, completing the proof.
 \end{proof}
 
-Recall from \ref{def:embedding} the definition of embedding.
+Recall the definition of embedding from \ref{def:embedding}.
 
 \begin{proposition}\label{prop:TrProf_exact}
    The equipment $\dTrProf$ is exact.
