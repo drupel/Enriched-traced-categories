@@ -1178,7 +1178,7 @@ It follows that if $\dcat{D}\to\dcat{E}$ is a local equivalence of equipments, t
               \twocellA{m_M}
             \end{tikzcd}
          \end{equation*}
-         satisfying the evident unit and associativity axioms.
+         satisfying the evident unit and associativity axioms. 
       \item The vertical arrows are \emph{monoid homomorphisms}: pairs $(f,\vec{f}\,)$ of a vertical arrow
          $f\colon c\to d$ in $\dcat{D}$ and a cell
          \begin{equation*}
@@ -1225,6 +1225,7 @@ It follows that if $\dcat{D}\to\dcat{E}$ is a local equivalence of equipments, t
          \end{equation*}
          which are compatible with the left and right actions of the bimodules.
    \end{compactitem}
+   There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$ sending a monoid $M\colon c\tickar c$ to its underlying object $c$.\todo{What do you think of this notation? The idea comes from $\ndcat{S}{pan}$} 
 \end{definition}
 
 \begin{example}\label{ex:monoid_in_Prof}
@@ -1256,8 +1257,8 @@ It follows that if $\dcat{D}\to\dcat{E}$ is a local equivalence of equipments, t
    (Definition~\ref{def:local_equivalence}). Then the induced square
    \begin{equation*}
       \begin{tikzcd}
-         \Mon(\dcat{X}) \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
-            & \Mon(\dcat{Y}) \ar[d,two heads] \\
+         \Mon(\dcat{X}) \ar[r] \ar[d,two heads,"\MOb"'] \ar[dr,phantom,"\lrcorner" very near start]
+            & \Mon(\dcat{Y}) \ar[d,two heads,"\MOb"] \\
          \dcat{X}_0 \ar[r]
             & \dcat{Y}_0
       \end{tikzcd}
@@ -1364,6 +1365,7 @@ We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz
    $\Col{\textrm{--}}\colon\dMod(\dcat{D})\to\dcat{D}$. The functor $\Col{\textrm{--}}$ is a local
    equivalence.
 \end{proposition}
+\todo[inline]{Is it true that $\dcat{D}$ is exact iff the inclusion $\dcat{D}\to\dMod(\dcat{D})$ has a left adjoint which is a local equivalence? If so, strengthen Prop~\ref{prop:collapse_local_equivalence}.}
 \begin{proof}
    It is easy to use the universal property of collapse to construct, from any monoid homomorphism
    $(f,\vec{f})\colon(a,M)\to(b,N)$, a vertical morphism $\Col{f}\colon\Col{M}\to\Col{N}$ in
@@ -1406,21 +1408,21 @@ In other words, the inclusion $\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence
    that the triangle on the right also commutes:
    \begin{equation*}
       \begin{tikzcd}[column sep=0em]
-         \Mon(\dcat{D}) \ar[rr,"\equiv"] \ar[dr,two heads]
+         \Mon(\dcat{D}) \ar[rr,"\equiv"] \ar[dr,two heads,"\MOb"' pos=.3]
             && \dcat{D}_0^{\bo} \ar[dl,two heads,"\dom" pos=.3] \\
          & \dcat{D}_0 &
       \end{tikzcd}
       \qquad
       \begin{tikzcd}[column sep=0em]
          \Mon(\dcat{D}) \ar[rr,"\equiv"] \ar[dr,"\Col{\textrm{--}}"' pos=.3]
-            && \dcat{D}_0^{\bo} \ar[dl,two heads,"\cod" pos=.3] \\
+            && \dcat{D}_0^{\bo} \ar[dl,"\cod" pos=.3] \\
          & \dcat{D}_0 &
       \end{tikzcd}
    \end{equation*}
 \end{lemma}
 \begin{proof}
    The equivalence simply sends any monoid $(a,M)$ to the collapse morphism $i_M\colon
-   a\twoheadrightarrow\Col{M}$, which is in $\bo$. For any monoid homomorphism $(f,\vec{f})$, there
+   a\twoheadrightarrow\Col{M}$, which is in $\bo$\todo{It isn't shown anywhere that $i_M$ is in $\bo$. Strengthen Theorem \ref{thm:orthogonal}?}. For any monoid homomorphism $(f,\vec{f})$, there
    exists a unique $\tilde{f}$ such that
    \begin{equation*}
       \begin{tikzcd}
@@ -1453,9 +1455,15 @@ In other words, the inclusion $\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence
 
 \begin{theorem}\label{thm:Mod_vs_bo}
    Let $\dcat{D}$ be an exact equipment. There is an equivalence of equipments
+%   \[
+%      \dMod(\dcat{D}) \iso \dcat{D}^{\bo}.
+%   \]
    \[
-      \dMod(\dcat{D}) \iso \dcat{D}^{\bo}.
-   \]
+      \begin{tikzcd}[row sep=2.5ex, column sep=0em]
+      \dMod(\dcat{D}) \ar[rr,"\iso"]\ar[rd,"\Col{-}"' pos=.3] && \dcat{D}^{\bo}\ar[ld,"\cod" pos=.3]\\
+      &\dcat{D}
+      \end{tikzcd}
+   \]\todo{Do we differentiate between $\equiv$ and $\iso$?}
 \end{theorem}
 \begin{proof}
    Because the equipment functors $\dcat{D}^{\bo}\to\dcat{D}$ and
@@ -1613,7 +1621,7 @@ The equipment $\dMonProf$ is defined as follows. Its vertical category is that o
 Now that $\dMonProf$ has been defined, we construct $\dCompProf$ and $\dTrProf$ using Definition~\ref{def:local_equivalence}.
 
 \begin{definition}\label{def:CompProf}
-Define $\dCompProf$ to be the equipment, induced by the functor $\UCM\colon\CompCat\to\MonCat$, that is locally equivalent to $\dMonProf$.
+Define $\dCompProf$ to be the equipment, induced by the functor $\UCM\colon\CompCat\to\MonCat$, that is locally equivalent to $\dMonProf$.\todo{It might be worth having notation for local equivs. Is $\dcat{C}=F_0^\ast\dcat{D}$ too weird?}
 \end{definition}
 
 \begin{definition}\label{def:TrProf}
@@ -1636,7 +1644,7 @@ The equipment $\dCompProf$ is exact.
 
 \begin{proof}
 
-We can consider a monoid $M\colon C\tickar C$ in $\dCompProf$ as a monoid in $\dMonProf$, which has a collapse embedding $(i_M,\vec{\imath}_M)\colon M\to \Col{M}$ by Proposition~\ref{prop:MonProf_exact}. The collapse $\Col{M}$ is a monoidal category, and by Theorem~\ref{thm:Mod_vs_bo}, there is a strong $\bo$ functor $C\to\Col{M}$. But any monoidal category whose objects are bijective with a compact category is itself compact, so $\Col{M}$ is in fact a collapse in $\dCompProf$. 
+We can consider a monoid $M\colon C\tickar C$ in $\dCompProf$ as a monoid in $\dMonProf$, which has a collapse embedding $(i_M,\vec{\imath}_M)\colon M\to \Col{M}$ by Proposition~\ref{prop:MonProf_exact}. The collapse $\Col{M}$ is a monoidal category, and by Theorem~\ref{thm:Mod_vs_bo}, there is a strong $\bo$ functor $C\to\Col{M}$. But any monoidal category whose objects are in bijection with a compact category is itself compact, so $\Col{M}$ is in fact a collapse in $\dCompProf$. 
 
 \end{proof}
 
@@ -1668,13 +1676,13 @@ We can consider a monoid $M\colon C\tickar C$ in $\dCompProf$ as a monoid in $\d
 \begin{proof}
    The trace structure on $M$ follows easily from Lemma~\ref{lemma:fully_faithful_and_trace} (ii). For the second part, consider the diagram
    \begin{equation*}
-      \begin{tikzcd}[column sep=large]
+      \begin{tikzcd}[column sep=4em, row sep=5ex]
          T \ar[r,hook,"\eta_{T}"] \ar[d,two heads,"G"']
             & \UCT\Int(T) \ar[d,two heads,"\UCT\Int(G)"']
                \ar[ddr,bend left=25,"\UCT F"] &[between origins] \\
          T' \ar[r,hook,"\eta_{T'}"] \ar[drr,hook,bend right=15,"H"']
             & \UCT\Int(T') \ar[dr,"\UCT\alpha"' {inner sep=0pt,pos=.25}] & \\[-10]
-         && \UCT C
+         &&\UCT C
       \end{tikzcd}
    \end{equation*}
    where $\alpha\colon\Int(T')\to C$ is the adjunct of $H$. By Lemma~\ref{lemma:fully_faithful_and_trace} (iii, iv), $\alpha$ is $\ff$. Since $G$ is $\bo$, we
@@ -1775,7 +1783,7 @@ Recall the definition of embedding from \ref{def:embedding}.
 
 \begin{proposition}\label{prop:boff_well_named}
 \todo{Does this require proof?}
-The $\bo,\ff$ factorization system on the 2-category $\MMonCat$ (resp. on $\TTrCat$ and $\CCompCat$), given by Theorem~\ref{thm:orthogonal}, is well-named, in the sense that a morphism is $\bo$ iff it is bijective-on-objects and $\ff$ iff it is fully faithful.
+Let $\ccat{C}$ be $\MMonCat, \TTrCat$, or $\CCompCat$, each of which is regular, and let $U\colon\ccat{C}\to\Cat$ be the forgetful functor. A morphism $f$ in $\ccat{C}$ is $\bo$ (resp. $\ff$) in the sense of Theorem~\ref{thm:orthogonal} if and only if $U(f)$ is bijective-on-objects (resp. fully faithful).
 \end{proposition}
 
 \section{Special properties of CompProf}
@@ -2279,7 +2287,7 @@ F.~Borceux, Handbook of Categorical Algebra: Volume 1, Basic Category Theory, Ca
 Advances in Mathematics 77 (1989), no. 2, 156?182. 
 
  \bibitem{HackneyRobertson}
- P.~Hackney, M.~Robertson, On the category of props, Preprint: arXiv: 1207.2773v2 (2012).
+ P.~Hackney, M.~Robertson, On the category of props, Preprint: \url{http://arxiv.org/abs/1207.2773v2} (2012).
  
  \bibitem{HK}
 M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of traced monoidal categories and tortile monoidal categories, Mathematical Proceedings of the Cambridge Philosophical Society 148 no. 1 (2010).
@@ -2303,19 +2311,19 @@ M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of 
  K.~Ponto and M.~Shulman, Traces in symmetric monoidal categories, Expositiones Mathematicae 32, no. 3 (2014), pp.~248--273.
 
  \bibitem{RupelSpivak}
- D.~Rupel and D.~I.~Spivak, The operad of temporal wiring diagrams: Formalizing a graphical language for discrete-time processes, Preprint: arXiv:1307.6894 (2013).
+ D.~Rupel and D.~I.~Spivak, The operad of temporal wiring diagrams: Formalizing a graphical language for discrete-time processes, Preprint: \url{http://arxiv.org/abs/1307.6894} (2013).
 
  \bibitem{Schultz2015}
- P.~Schultz, Regular and exact (virtual) double categories, Preprint: 1505.00712 (2015)
+ P.~Schultz, Regular and exact (virtual) double categories, Preprint: \url{http://arxiv.org/abs/1505.00712} (2015)
  
  \bibitem{Shulman}
  M.~Shulman, Framed bicategories and monoidal fibrations, Theory and Applications of Categories 20 (2008), No. 18, 650--738.
  
  \bibitem{Spivak}
- D.~I.~Spivak, The operad of wiring diagrams: Formalizing a graphical language for databases, recursion, and plug-and-play circuits, Preprint: arXiv:1305.0297 (2013).
+ D.~I.~Spivak, The operad of wiring diagrams: Formalizing a graphical language for databases, recursion, and plug-and-play circuits, Preprint: \url{http://arxiv.org/abs/1305.0297} (2013).
 
  \bibitem{VagnerSpivakLerman}
- D.~Vagner, D.~I.~Spivak, and E.~Lerman, Algebras of open dynamical systems on the operad of wiring diagrams, Preprint: arXiv:1408.1598 (2014).
+ D.~Vagner, D.~I.~Spivak, and E.~Lerman, Algebras of open dynamical systems on the operad of wiring diagrams, Preprint: \url{http://arxiv.org/abs/1408.1598} (2014).
 
 \end{thebibliography}
 
