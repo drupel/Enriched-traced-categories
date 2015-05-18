@@ -175,7 +175,7 @@ By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect 
 result, whose proof can be found in Section~\ref{sec:deducing}.
 
 \begin{named}{Theorem A}\label{thm:TheoremA}
-   There is a fully-faithful functor of 1-categories
+   There is a fully faithful functor of 1-categories
    \begin{equation*}
       \CobKlsAlg \to \TrCat
    \end{equation*}
@@ -1158,6 +1158,23 @@ It follows that if $\dcat{D}\to\dcat{E}$ is a local equivalence of equipments, t
 
 \end{example}
 
+\begin{definition}\todo{Do we need this? Consider deleting this and Lemma~\ref{lemma:delete_me?}.}
+
+Let $F\colon\dcat{D}\to\dcat{E}$ be an equipment functor. We say that $F$ is \emph{fully faithful} if both $F_0$ and $F_1$ are, i.e., if both the following squares are pullbacks in $\Set$:
+$$
+	\begin{tikzcd}[column sep=2em]
+		\Mor\dcat{D}_0\ar[r,"\Mor F_0"]\ar[d]\ar[dr,phantom,"\lrcorner" very near start]&\Mor\dcat{E}_0\ar[d]\\
+		\Ob\dcat{D}_0\times\Ob\dcat{D}_0\ar[r,"\Ob F_0"']&\Ob\dcat{E}_0\times\Ob\dcat{E}_0
+	\end{tikzcd}
+\qquad
+	\begin{tikzcd}[column sep=2em]
+		\Mor\dcat{D}_1\ar[r,"\Mor F_1"]\ar[d]\ar[dr,phantom,"\lrcorner" very near start]&\Mor\dcat{E}_1\ar[d]\\
+		\Ob\dcat{D}_1\times\Ob\dcat{D}_1\ar[r,"\Ob F_1"']&\Ob\dcat{E}_1\times\Ob\dcat{E}_1
+	\end{tikzcd}
+$$
+
+\end{definition}
+
 \section{The monoids and bimodules construction}
 
 \begin{definition}\label{def:monoids_and_modules}
@@ -1255,10 +1272,10 @@ A monoid in $\dSpan$ consists of a set $C$ and a span $C\from S\to C$, together 
 
 \end{example}
 
-\begin{lemma}\todo{Definition of fully faithful equipment functor?}
+\begin{lemma}\label{lemma:delete_me?}
    Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor. Then
    \begin{compactitem}
-      \item if $F$ is fully-faithful, then so is $\dMod(F)$,
+      \item if $F$ is fully faithful, then so is $\dMod(F)$,
       \item if $F$ is a local equivalence, then so is $\dMod(F)$.
    \end{compactitem}
 \end{lemma}
@@ -1979,6 +1996,8 @@ morphisms which preserve the units.
    equivalence by pulling back Proposition~\ref{Prop:mon_prof_equivalence} along $\Int$.
 \end{proof}
 
+\todo[inline]{Add something about Malcev categories and $\dCompProf$.}
+
 \section{Monoids on free objects}
 
 If we want to modify theorem~\ref{thm:Mod_vs_bo} to get an equivalence with $\dcat{D}$ rather than
@@ -2000,7 +2019,7 @@ $(\dcat{D}_T)_1$ is defined by the pullback
    \end{tikzcd}
 \end{equation*}
 
-The equipment functor $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ is a fully-faithful local equivalence,
+The equipment functor $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ is a fully faithful local equivalence,
 hence the induced $\dMod(\varphi_T)\colon\dMod(\dcat{D}_T)\to\dMod(\dcat{D})$ is as well. If
 $\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ to identify
 $\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the
@@ -2082,7 +2101,7 @@ Thus we have the following proposition:
          \dMod(\dcat{D}_T)\ar[r,"\dMod(\varphi_T)"] &[1.5em] \dMod(\dcat{D}) \ar[r,"\Col{\textrm{--}}"] & \dcat{D}
       \end{tikzcd}
    \end{equation*}
-   is a \todo{clarify this}fully-faithful local equivalence, and the induced 2-functor
+   is a \todo{clarify this}fully faithful local equivalence, and the induced 2-functor
    $\rho\colon\MMon(\dcat{D}_T)\to\VVer(\dcat{D})$ is 2-essentially surjective, hence a 2-equivalence.
 \end{theorem}
 \begin{proof}
@@ -2094,7 +2113,7 @@ Thus we have the following proposition:
    \end{equation*}
    Both $\psi_T$ and $\cod$ are local equivalences, hence the composition is also.
 
-   To see that $\cod\psi_T$ is fully-faithful, consider a pair of objects $p\colon
+   To see that $\cod\psi_T$ is fully faithful, consider a pair of objects $p\colon
    Fc\twoheadrightarrow D$ and $p'\colon Fc'\twoheadrightarrow D'$ in $\dcat{D}_T^{\bo}$, and a
    vertical morphism $f\colon D\to D'$ in $\dcat{D}$. In the square
    \begin{equation*}
@@ -2213,7 +2232,7 @@ Thus we have the following proposition:
 %   \begin{equation*}
 %      \MMon(\dFrMonCompProf)\equiv\TTrCat
 %   \end{equation*}
-%   which restricts to a fully-faithful functor between the 1-categories
+%   which restricts to a fully faithful functor between the 1-categories
 %   \begin{equation*}
 %      \Mon(\dFrMonCompProf)\to\TrCat.
 %   \end{equation*}
@@ -2238,7 +2257,7 @@ Thus we have the following proposition:
 \section{Deducing the main results}\label{sec:deducing}
 
 \begin{named}{Theorem A}
-  There is a fully-faithful functor of 1-categories
+  There is a fully faithful functor of 1-categories
    \begin{equation*}
       \CobKlsAlg \to \TrCat
    \end{equation*}
@@ -2308,6 +2327,9 @@ By Definition~\ref{def:TrProf}, the left-hand side is equivalent to $\CPsh(\dTrP
 
  \bibitem{AdamekHerrlichStrecker}
  J.~Adamek, H.~Herrlich, and G.E.~Strecker, Abstract and Concrete Categories: The joy of cats, Dover Publications (2009).
+ 
+ \bibitem{BaezDolan}
+ J.C.~Baez, J.~Dolan, Higher-dimensional Algebra and Topological Quantum Field Theory, Journal of Mathematical Physics 36 (1995), no. 11, 6073Ð6105.
  
  \bibitem{BorceuxV1}
 F.~Borceux, Handbook of Categorical Algebra: Volume 1, Basic Category Theory, Cambridge University Press (1994).
