@@ -1039,7 +1039,7 @@ $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 
 \section{Equipments}
 
-A double category is a 2-category-like structure involving horizontal and vertical arrows, as well as 2-cells. An equipment (sometimes called a \emph{framed bicategory}) is a double category satisfying a certain fibrancy condition. In this section, we will spell this out and give a few examples. An excellent reference is Shulman's paper \cite{Shulman}.
+A double category is a 2-category-like structure involving horizontal and vertical arrows, as well as 2-cells. An equipment (sometimes called a \emph{proarrow equipment} or \emph{framed bicategory}) is a double category satisfying a certain fibrancy condition. In this section, we will spell this out and give a few examples. An excellent reference is Shulman's paper \cite{Shulman}.
 
 \begin{definition}
    A \emph{double category} $\dcat{D}$ consists of the following data:
@@ -1070,7 +1070,7 @@ A double category is a 2-category-like structure involving horizontal and vertic
       \item A functor $\odot\colon\dcat{D}_1\times_{\dcat{D}_0}\dcat{D}_1\to\dcat{D}_1$, called
          \emph{horizontal composition}, that is weakly associative and unital in the sense that there are coherent unitor and associator isomorphisms. See \cite{Shulman} for details.
    \end{compactitem}
-Given a double category $\dcat{D}$, there is a \emph{vertical 2-category}, denoted $\VVer(\dcat{D})$, whose underlying 1-category is $\dcat{D}_0$, and whose 2-morphisms are given by $\VVer(\dcat{D})(f,g)\coloneqq\dcat{D}_1(Uf,Ug)$. There is also a \emph{horizontal bicategory}, denoted $\HHor(\dcat{D})$, obtained from $\dcat{D}$ by requiring $F=\id_A, G=\id_B$; see Example~\ref{ex:horizontal_bicategory}.
+Given a double category $\dcat{D}$ there is a strict 2-category called the \emph{vertical 2-category}, denoted $\VVer(\dcat{D})$, whose underlying 1-category is $\dcat{D}_0$, and whose 2-morphisms are given by $\VVer(\dcat{D})(f,g)\coloneqq\dcat{D}_1(Uf,Ug)$. There is also a \emph{horizontal bicategory}, denoted $\HHor(\dcat{D})$, obtained from $\dcat{D}$ by requiring $F=\id_A, G=\id_B$; see Example~\ref{ex:horizontal_bicategory}.
    
    An \emph{double functor} $\dcat{D}\to\dcat{E}$ consists of functors $\dcat{D}_0\to\dcat{E}_0$
    and $\dcat{D}_1\to\dcat{E}_1$ commuting with the frames $L,R$, and preserving the unit $U$ and horizontal composition $\odot$ up to coherent isomorphism.
@@ -1090,7 +1090,7 @@ $$
 	\twocellA{\tn{cart}}
 \end{tikzcd}
 $$
-which we call a \emph{cartesian 2-cell}.
+which we call a \emph{cartesian 2-cell}. We refer to $A$ as the \emph{restriction of $A'$ along $(f,g)$}.
 \end{definition}
 
 \begin{example}
@@ -1128,6 +1128,12 @@ The horizontal composite $X\odot Y$ of profunctors $X\colon A\tickar B$ and $Y\c
 One can show that the result is a double category, and it is an equipment because for any $F, G,Y$ as in \eqref{eqn:Prof2cells}, there is a cartesian 2-cell whose domain is the profunctor $X=Y\circ(\op{F}\times G)$ obtained by composition.
 
 Note that the coequalizer \eqref{eqn:coendComp} is in fact a reflexive coequalizer, using $f=\id_b$.
+\end{example}
+
+\begin{example}
+
+There is an equipment $\dSpan$ of spans in $\Set$. Its vertical category is $\dSpan_0\coloneqq\Set$. A horizontal 1-cell between sets $A$ and $B$ is a span $A\from S\to B$, their composition is defined by a pullback of spans, and a 2-cell in $\dSpan$ is a commutative diagram in $\Set$ of the obvious shape. The cartesian 2-cells in this equipment are obtained by taking a limit in $\Set$.
+
 \end{example}
 
 \todo[inline]{In \ref{def:local_equivalence}, do we want this to be strict pullback (local iso) or pseudo pullback (local equiv)? Similar decisions about pullbacks must be dealt with throughout the paper.}
@@ -1243,7 +1249,13 @@ It follows that if $\dcat{D}\to\dcat{E}$ is a local equivalence of equipments, t
    \end{gather*}
 \end{example}
 
-\begin{lemma}
+\begin{example}
+
+A monoid in $\dSpan$ consists of a set $C$ and a span $C\from S\to C$, together with a function $e\colon C\to S$ and a function $m\colon S\times_C S\to S$, satisfying certain properties. This is precisely the data required to define a small category, whose object set is $C$ and morphism set is $S$, with identities given by $e$ and composition given by $m$. Similarly, one can identify monoid homomorphisms in $\dSpan$ with functors between categories and bimodules in $\dSpan$ with profunctors between categories. In other words, we have $\dMod(\dSpan)\iso\dProf$.
+
+\end{example}
+
+\begin{lemma}\todo{Definition of fully faithful equipment functor?}
    Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor. Then
    \begin{compactitem}
       \item if $F$ is fully-faithful, then so is $\dMod(F)$,
@@ -1251,7 +1263,7 @@ It follows that if $\dcat{D}\to\dcat{E}$ is a local equivalence of equipments, t
    \end{compactitem}
 \end{lemma}
 
-There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$ \todo{What do you think of this notation? The idea comes from $\ndcat{S}{pan}$.}sending a monoid $M\colon c\tickar c$ to its underlying object $c$. There is also an equipment functor $U\colon\dcat{D}\to\dMod(\dcat{D})$, sending $d$ to the unit $d\tickar d$, which is a local equivalence.
+There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$ \todo{What do you think of this $\Ob$ notation? The idea comes from $\ndcat{S}{pan}$.}sending a monoid $M\colon c\tickar c$ to its underlying object $c$. There is also an equipment functor $U\colon\dcat{D}\to\dMod(\dcat{D})$, sending $d$ to the unit $d\tickar d$, which is a local equivalence.
 
 \begin{lemma}\label{lem:Mon_pullback}
    Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor, and suppose $F$ is a local equivalence
@@ -1359,8 +1371,13 @@ We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz
    $(i_M,\vec{\imath}_M)$ is a collapse. It is also simple to verify the second part of
    Definition~\ref{def:exact_equipment}: a $(M,N)$-bimodule is precisely the data of a profunctor
    $\Col{M}\tickar\Col{N}$.
-\end{proof}
+\end{proof}\todo{Is $\dMod(\dcat{D})$ exact for any $\dcat{D}$? If so, shall we just say that instead of Prop~\ref{prop:Prof_is_exact}?}
 
+\begin{example}
+
+The equipment $\dSpan$ is not exact. The collapse of a monoid $C\from S\to C$ in $\dSpan$ must be its pushout $\Col{S}\iso C\sqcup_SC$, but the associated embedding is not cartesian. The second condition of exactness also fails.
+
+\end{example}
 
 \begin{proposition}\label{prop:collapse_local_equivalence}
    Let $\dcat{D}$ be an equipment, and let $U\colon\dcat{D}\to\dMod(\dcat{D})$ be the unit inclusion. Then $\dcat{D}$ is exact if and only if $U$ has a left adjoint $\Col{-}\colon\dMod(\dcat{D})\to\dcat{D}$ that is a local equivalence.
