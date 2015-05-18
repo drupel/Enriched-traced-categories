@@ -1046,13 +1046,14 @@ A double category is a 2-category-like structure involving horizontal and vertic
    \begin{compactitem}
       \item A category $\dcat{D}_0$, which we refer to as the \emph{vertical category} of
          $\dcat{D}$. For any two objects $c,d\in\dcat{D}_0$, we will write
-         $\dcat{D}(c,d)=\dcat{D}_0(c,d)$ for the set of vertical arrows from $c$ to $d$. We refer to objects of $\dcat{D}_0$ as objects of $\dcat{D}$.
+         $\dcat{D}(c,d)=\dcat{D}_0(c,d)$ for the set of vertical arrows from $c$ to $d$. We refer to
+         objects of $\dcat{D}_0$ as objects of $\dcat{D}$.
       \item A category $\dcat{D}_1$, equipped with two functors $L,R\colon\dcat{D}_1\to\dcat{D}_0$,
          called the \emph{left frame} and \emph{right frame} functors. Given an object
-         $A\in\Ob\dcat{D}_1$ with $c=L(A)$ and $c'=R(A)$, we say that $A$ is a \emph{proarrow} (or \emph{horizontal arrow}) \emph{from
-         $c$ to $c'$} and write $A\colon c\tickar c'$. A morphism $\phi\colon A\to B$ in
-         $\dcat{D}_1$ is called a 2-cell, and is drawn as follows, where $f=L(\phi)$ and
-         $f'=R(\phi)$:
+         $A\in\Ob\dcat{D}_1$ with $c=L(A)$ and $c'=R(A)$, we say that $A$ is a \emph{proarrow} (or
+            \emph{horizontal arrow}) \emph{from $c$ to $c'$} and write $A\colon c\tickar c'$. A
+            morphism $\phi\colon A\to B$ in $\dcat{D}_1$ is called a 2-cell, and is drawn as
+            follows, where $f=L(\phi)$ and $f'=R(\phi)$:
          \begin{equation*}
             \begin{tikzcd}
                c \ar[r,tick,"A" domA] \ar[d,"f"']
@@ -1063,41 +1064,57 @@ A double category is a 2-category-like structure involving horizontal and vertic
                \twocellA{\phi}
             \end{tikzcd}
          \end{equation*}
-         There is also a \emph{unit} functor $U\colon\dcat{D}_0\to\dcat{D}_1$, which is a retract of
-         both $L$ and $R$, i.e., $L\circ U=\id_{\dcat{D}_0}=R\circ U$. We will often abuse notation
-         by writing $c$ for the unit proarrow $U(c)\colon c\tickar c$, and similarly for vertical
-         arrows.
+      \item A \emph{unit} functor $U\colon\dcat{D}_0\to\dcat{D}_1$, which is a
+         retraction of both $L$ and $R$, i.e., $L\circ U=\id_{\dcat{D}_0}=R\circ U$. We will often
+         abuse notation by writing $c$ for the unit proarrow $U(c)\colon c\tickar c$, and similarly
+         for vertical arrows.
       \item A functor $\odot\colon\dcat{D}_1\times_{\dcat{D}_0}\dcat{D}_1\to\dcat{D}_1$, called
-         \emph{horizontal composition}, that is weakly associative and unital in the sense that there are coherent unitor and associator isomorphisms. See \cite{Shulman} for details.
+         \emph{horizontal composition}, that is weakly associative and unital in the sense that
+         there are coherent unitor and associator isomorphisms. See \cite{Shulman} for details.
    \end{compactitem}
-Given a double category $\dcat{D}$ there is a strict 2-category called the \emph{vertical 2-category}, denoted $\VVer(\dcat{D})$, whose underlying 1-category is $\dcat{D}_0$, and whose 2-morphisms are given by $\VVer(\dcat{D})(f,g)\coloneqq\dcat{D}_1(Uf,Ug)$. There is also a \emph{horizontal bicategory}, denoted $\HHor(\dcat{D})$, obtained from $\dcat{D}$ by requiring $F=\id_A, G=\id_B$; see Example~\ref{ex:horizontal_bicategory}.
+   Given a double category $\dcat{D}$ there is a strict 2-category called the \emph{vertical
+   2-category}, denoted $\VVer(\dcat{D})$, whose underlying 1-category is $\dcat{D}_0$, and whose
+   2-morphisms are given by $\VVer(\dcat{D})(f,g)\coloneqq\dcat{D}_1(Uf,Ug)$. There is also a
+   \emph{horizontal bicategory}, denoted $\HHor(\dcat{D})$, obtained from $\dcat{D}$ by requiring
+   $F=\id_A, G=\id_B$; see Example~\ref{ex:horizontal_bicategory}.
    
-   An \emph{double functor} $\dcat{D}\to\dcat{E}$ consists of functors $\dcat{D}_0\to\dcat{E}_0$
-   and $\dcat{D}_1\to\dcat{E}_1$ commuting with the frames $L,R$, and preserving the unit $U$ and horizontal composition $\odot$ up to coherent isomorphism.
+   A \emph{double functor} $\dcat{D}\to\dcat{E}$ consists of functors $\dcat{D}_0\to\dcat{E}_0$ and
+   $\dcat{D}_1\to\dcat{E}_1$ commuting with the frames $L,R$, and preserving the unit $U$ and
+   horizontal composition $\odot$ up to coherent isomorphism.
+   \todo{Define lax double functor?}
 \end{definition}
 
 \begin{definition}\label{def:equipment}
 An \emph{equipment} is a double category $\dcat{D}$ in which the functor 
-$$(L\times R)\colon\dcat{D}_1\tto\dcat{D}_0\times\dcat{D}_0$$ 
-is a fibration. If $f\colon c\to c'$ and $g\colon d\to d'$ are vertical morphisms and $A'\colon c'\tickar d'$ is a proarrow, a cartesian morphism $A\to A'$ in $\dcat{D}_1$ over $(f,g)$ is a 2-cell
+$$(L,R)\colon\dcat{D}_1\tto\dcat{D}_0\times\dcat{D}_0$$ 
+is a fibration. If $f\colon c\to c'$ and $g\colon d\to d'$ are vertical morphisms and $B\colon
+c'\tickar d'$ is a proarrow, a cartesian morphism $A\to B$ in $\dcat{D}_1$ over $(f,g)$ is a 2-cell
 $$
 \begin{tikzcd}
 	c \ar[r,tick, "A" domA] \ar[d,"f"']
 	& d\ar[d,"{g}"]
 	\\
-	c' \ar[r,tick,"{A'}"' codA]
+	c' \ar[r,tick,"B"' codA]
 	& d'
 	\twocellA{\tn{cart}}
 \end{tikzcd}
 $$
-which we call a \emph{cartesian 2-cell}. We refer to $A$ as the \emph{restriction of $A'$ along $(f,g)$}.
+which we call a \emph{cartesian 2-cell}. We refer to $A$ as the \emph{restriction of $B$ along
+$(f,g)$}, written $B(g,f)$.
 \end{definition}
 
 \begin{example}
 
-An equipment $\dcat{D}$ is often named according to its horizontal arrows. In Section~\ref{sec:background_equipments} we discussed profunctors, which are the horizontal arrows in an equipment $\dProf$, which we will now discuss. Variations on $\dProf$, such as $\dMonProf, \dTrProf,$ and $\dCompProf$ (defined in Section~\ref{sec:monoidal_profunctors}) will play a major role in this paper.
+An equipment $\dcat{D}$ is often named according to its horizontal arrows. In
+Section~\ref{sec:background_equipments} we discussed profunctors, which are the horizontal arrows in
+an equipment $\dProf$, which we will now discuss. Variations on $\dProf$, such as $\dMonProf,
+\dTrProf,$ and $\dCompProf$ (defined in Section~\ref{sec:monoidal_profunctors}) will play a major
+role in this paper.
 
-The vertical category of $\dProf$ is the 1-category $\dProf_0=\Cat$ of small 1-categories and functors. Given objects $C,D\in\Ob\dProf_0$, a horizontal arrow between them is a profunctor $C\tickar D$, as described in Section~\ref{sec:background_equipments}. A 2-cell $\phi$ in $\dProf$, as to the left, denotes a natural transformation, as to the right, in \eqref{eqn:Prof2cells}:
+The vertical category of $\dProf$ is the 1-category $\dProf_0=\Cat$ of small 1-categories and
+functors. Given objects $C,D\in\dProf_0$, a horizontal arrow between them is a profunctor
+$C\tickar D$, as described in Section~\ref{sec:background_equipments}. A 2-cell $\phi$ in $\dProf$,
+as to the left, denotes a natural transformation, as to the right, in \eqref{eqn:Prof2cells}:
 \begin{equation}\label{eqn:Prof2cells}
 	\begin{tikzcd}
 		A \ar[r,tick,"X" domA] \ar[d,"F"']
@@ -1436,6 +1453,8 @@ Definition~\ref{def:orthogonal}. We recall also from~\cite[Theorem~4.17]{Schultz
    vertical 1-category $\dcat{D}_0$.
 \end{theorem}
 
+\todo{recall definition of $\bo$ and $\ff$}
+
 The notation $\bo$ and $\ff$ comes from the case where $\dcat{D}=\dProf$, for which they correspond to the functors that are bijective on objects and fully faithful, respectively. See also Proposition~\ref{prop:boff_well_named}.
 
 If $\dcat{D}$ is an exact equipment, then using the factorization system we can define an equipment
@@ -1598,11 +1617,25 @@ In other words, an object of $\CPsh(\dcat{D})$ is a pair $(C,F)$, where $C\in\Ob
 
 \chapter{Equipments of monoidal categories and profunctors}\label{sec:equipments_monoidal_profunctors}
 
-In this section we setup the necessary equipment to prove our main results, \ref{thm:TheoremA}, \ref{thm:TheoremB}, and \ref{cor:CorollaryB}. The high-level view of the argument runs as follows. \todo{Go through the following once things are more settled.}
+In this section we setup the necessary equipment to prove our main results, \ref{thm:TheoremA},
+\ref{thm:TheoremB}, and \ref{cor:CorollaryB}. The high-level view of the argument runs as follows.
+\todo{Go through the following once things are more settled.}
 
-The free compact category on $\cat{O}$ is $\LCob{\cat{O}}$ by Corollary~\ref{cor:free_compact_is_Cob}. For any compact category $\cat{C}$, there is an equivalence of categories (Proposition~\ref{prop:unit_implies_monoid}) between the lax functors $\cat{C}\to\Set$ and the monoids on $\cat{C}$ in the equipment $\CompProf$ (Definition~\ref{def:CompProf}). Because $\CompProf$ is an exact equipment (Proposition~\ref{prop:CompProf_exact}), the monoids on $\cat{C}$ can be identified with the bijective-on-objects functors out of $\cat{C}$ by Theorem~\ref{thm:Mod_vs_bo}; this establishes $\Lax(\cat{C},\Set)\iso\cat{C}/\CompCat^{\bo}.$ Similar results hold for traced categories. 
+The free compact category on a set $\cat{O}$ is $\LCob{\cat{O}}$ by
+Corollary~\ref{cor:free_compact_is_Cob}. For any compact category $\cat{C}$, there is an equivalence
+of categories (Proposition~\ref{prop:unit_implies_monoid}) between the lax functors $\cat{C}\to\Set$
+and the monoids on $\cat{C}$ in the equipment $\CompProf$ (Definition~\ref{def:CompProf}). Because
+$\CompProf$ is an exact equipment (Proposition~\ref{prop:CompProf_exact}), the monoids on $\cat{C}$
+can be identified with the bijective-on-objects functors out of $\cat{C}$ by
+Theorem~\ref{thm:Mod_vs_bo}; this establishes $\Lax(\cat{C},\Set)\iso\cat{C}/\CompCat^{\bo}.$
+Similar results hold for traced categories. 
 
-The remaining difficulty is allowing the object set $\cat{O}$ to vary. What makes this work is the fact that there is an orthogonal factorization system on $\CompCat$ that behaves nicely with the adjunction to $\Set$. Theorem~\ref{thm:Verts} provides a 2-equivalence between any such nicely-behaved exact equipment and its free-on-objects version. It follows that the lax, set-valued functors out of a varying category $\cat{C}$ are equivalent to the $\bo$ maps out of $\cat{C}$ (Proposition~\ref{Prop:mon_prof_equivalence}). 
+The remaining difficulty is allowing the object set $\cat{O}$ to vary. What makes this work is the
+fact that there is an orthogonal factorization system on $\CompCat$ that behaves nicely with the
+adjunction to $\Set$. Theorem~\ref{thm:Verts} provides a 2-equivalence between any such
+nicely-behaved exact equipment and its free-on-objects version. It follows that the lax, set-valued
+functors out of a varying category $\cat{C}$ are equivalent to the $\bo$ maps out of $\cat{C}$
+(Proposition~\ref{Prop:mon_prof_equivalence}). 
 
 
 \section{Monoidal profunctors}\label{sec:monoidal_profunctors}
@@ -1681,21 +1714,32 @@ Define $\dTrProf$ to be the equipment, induced by the functor $\Int\colon\TrCat\
 \section{Our equipments are exact}%\section{$\dMonProf, \dTrProf$, and $\dCompProf$ are exact equipments}
 
 \begin{proposition}\label{prop:MonProf_exact}
-The equipment $\dMonProf$ is exact.
+   The equipment $\dMonProf$ is exact.
 \end{proposition}
 
 \begin{proof}
-Suppose that $M\colon C\tickar C$ is a monoid in $\dMonProf$. Following the proof of Proposition~\ref{prop:Prof_is_exact}, we obtain a category $\Col{M}$, an identity-on-objects morphism $i_M\colon C\to\Col{M}$, and a cartesian 2-cell, $\vec{\imath}_M$, so that $(i_M,\vec{\imath}_M)$ is an embedding. The category $\Col{M}$ has an canonical monoidal structure, which on objects is just that of $C$, and on morphisms is induced from the fact that $M$ is a monoidal profunctor. It is also easy to verify the second part of Definition~\ref{def:exact_equipment}: a $(M,N)$-bimodule is precisely the data of a profunctor $\Col{M}\tickar\Col{N}$.
+   Suppose that $M\colon C\tickar C$ is a monoid in $\dMonProf$. Following the proof of
+   Proposition~\ref{prop:Prof_is_exact}, we obtain a category $\Col{M}$, an identity-on-objects
+   morphism $i_M\colon C\to\Col{M}$, and a cartesian 2-cell, $\vec{\imath}_M$, so that
+   $(i_M,\vec{\imath}_M)$ is an embedding. The category $\Col{M}$ has an canonical monoidal structure,
+   which on objects is just that of $C$, and on morphisms is induced from the fact that $M$ is a
+   monoidal profunctor. It is also easy to verify the second part of
+   Definition~\ref{def:exact_equipment}: a $(M,N)$-bimodule is precisely the data of a profunctor
+   $\Col{M}\tickar\Col{N}$.
 \end{proof}
 
 \begin{proposition}\label{prop:CompProf_exact}
-The equipment $\dCompProf$ is exact.
+   The equipment $\dCompProf$ is exact.
 \end{proposition}
 
 \begin{proof}
-
-We can consider a monoid $M\colon C\tickar C$ in $\dCompProf$ as a monoid in $\dMonProf$, which has a collapse embedding $(i_M,\vec{\imath}_M)\colon M\to \Col{M}$ by Proposition~\ref{prop:MonProf_exact}. The collapse $\Col{M}$ is a monoidal category, and by Theorem~\ref{thm:Mod_vs_bo}, there is a strong $\bo$ functor $C\to\Col{M}$. But any monoidal category whose objects are in bijection with a compact category is itself compact, so $\Col{M}$ is in fact a collapse in $\dCompProf$. 
-
+   We can consider a monoid $M\colon C\tickar C$ in $\dCompProf$ as a monoid in $\dMonProf$, which
+   has a collapse embedding $(i_M,\vec{\imath}_M)\colon M\to \Col{M}$ by
+   Proposition~\ref{prop:MonProf_exact}. The collapse $\Col{M}$ is a monoidal category, and by
+   Theorem~\ref{thm:Mod_vs_bo}, there is a strong $\bo$ functor $C\to\Col{M}$. But any strong
+   monoidal functor preserves duals, so every object of $\Col{M}$ has a dual, hence $\Col{M}$ is
+   compact. Because $\dCompProf$ is a full sub-equipment of $\dMonProf$, it follows that $\Col{M}$
+   is a collapse in $\dCompProf$.
 \end{proof}
 
 \begin{lemma}\label{lem:Tr_bo_Int}
@@ -2329,7 +2373,7 @@ By Definition~\ref{def:TrProf}, the left-hand side is equivalent to $\CPsh(\dTrP
  J.~Adamek, H.~Herrlich, and G.E.~Strecker, Abstract and Concrete Categories: The joy of cats, Dover Publications (2009).
  
  \bibitem{BaezDolan}
- J.C.~Baez, J.~Dolan, Higher-dimensional Algebra and Topological Quantum Field Theory, Journal of Mathematical Physics 36 (1995), no. 11, 6073Ð6105.
+ J.C.~Baez, J.~Dolan, Higher-dimensional Algebra and Topological Quantum Field Theory, Journal of Mathematical Physics 36 (1995), no. 11, 6073?6105.
  
  \bibitem{BorceuxV1}
 F.~Borceux, Handbook of Categorical Algebra: Volume 1, Basic Category Theory, Cambridge University Press (1994).
