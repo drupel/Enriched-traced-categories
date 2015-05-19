@@ -1078,29 +1078,35 @@ A double category is a 2-category-like structure involving horizontal and vertic
    \emph{horizontal bicategory}, denoted $\HHor(\dcat{D})$, obtained from $\dcat{D}$ by requiring
    $F=\id_A, G=\id_B$; see Example~\ref{ex:horizontal_bicategory}.
    
-   A \emph{double functor} $\dcat{D}\to\dcat{E}$ consists of functors $\dcat{D}_0\to\dcat{E}_0$ and
+   A \emph{strong double functor} $\dcat{D}\to\dcat{E}$ consists of functors $\dcat{D}_0\to\dcat{E}_0$ and
    $\dcat{D}_1\to\dcat{E}_1$ commuting with the frames $L,R$, and preserving the unit $U$ and
-   horizontal composition $\odot$ up to coherent isomorphism.
-   \todo{Define lax double functor?}
+   horizontal composition $\odot$ up to coherent isomorphism. There is also a notion of \emph{lax
+   double functor} which only preserves units and composition up to non-invertible 2-cell. While
+   important to the theory of double categories and equipments in general, in this paper we will
+   only be concerned with strong double functors.
 \end{definition}
 
 \begin{definition}\label{def:equipment}
-An \emph{equipment} is a double category $\dcat{D}$ in which the functor 
-$$(L,R)\colon\dcat{D}_1\tto\dcat{D}_0\times\dcat{D}_0$$ 
-is a fibration. If $f\colon c\to c'$ and $g\colon d\to d'$ are vertical morphisms and $B\colon
-c'\tickar d'$ is a proarrow, a cartesian morphism $A\to B$ in $\dcat{D}_1$ over $(f,g)$ is a 2-cell
-$$
-\begin{tikzcd}
-	c \ar[r,tick, "A" domA] \ar[d,"f"']
-	& d\ar[d,"{g}"]
-	\\
-	c' \ar[r,tick,"B"' codA]
-	& d'
-	\twocellA{\tn{cart}}
-\end{tikzcd}
-$$
-which we call a \emph{cartesian 2-cell}. We refer to $A$ as the \emph{restriction of $B$ along
-$(f,g)$}, written $B(g,f)$.
+   An \emph{equipment} is a double category $\dcat{D}$ in which the functor
+   \begin{equation*}
+      (L,R)\colon\dcat{D}_1\tto\dcat{D}_0\times\dcat{D}_0
+   \end{equation*}
+   is a fibration. If $f\colon c\to c'$ and $g\colon d\to d'$ are vertical morphisms and $B\colon
+   c'\tickar d'$ is a proarrow, a cartesian morphism $A\to B$ in $\dcat{D}_1$ over $(f,g)$ is a
+   2-cell
+   \begin{equation*}
+      \begin{tikzcd}
+         c \ar[r,tick, "A" domA] \ar[d,"f"']
+            & d\ar[d,"{g}"] \\
+         c' \ar[r,tick,"B"' codA]
+            & d'
+         \twocellA{\tn{cart}}
+      \end{tikzcd}
+   \end{equation*}
+   which we call a \emph{cartesian 2-cell}. We refer to $A$ as the \emph{restriction of $B$ along
+   $(f,g)$}, written $B(g,f)$.
+
+   By an \emph{equipment functor}, we simply mean a strong double functor between equipments.
 \end{definition}
 
 \begin{example}
