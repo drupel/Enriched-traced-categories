@@ -1073,7 +1073,7 @@ A double category is a 2-category-like structure involving horizontal and vertic
 Given a double category $\dcat{D}$ there is a strict 2-category called the \emph{vertical 2-category}, denoted $\VVer(\dcat{D})$, whose underlying 1-category is $\dcat{D}_0$, and whose 2-morphisms are given by $\VVer(\dcat{D})(f,g)\coloneqq\dcat{D}_1(Uf,Ug)$. There is also a \emph{horizontal bicategory}, denoted $\HHor(\dcat{D})$, obtained from $\dcat{D}$ by requiring $F=\id_A, G=\id_B$; see Example~\ref{ex:horizontal_bicategory}.
    
    An \emph{double functor} $\dcat{D}\to\dcat{E}$ consists of functors $\dcat{D}_0\to\dcat{E}_0$
-   and $\dcat{D}_1\to\dcat{E}_1$ commuting with the frames $L,R$, and preserving the unit $U$ and horizontal composition $\odot$ up to coherent isomorphism.
+   and $\dcat{D}_1\to\dcat{E}_1$ commuting with the frames $L,R$, and preserving the unit $U$ and horizontal composition $\odot$ up to coherent isomorphism.\todo{Deal with lax/ colax/ strong.}
 \end{definition}
 
 \begin{definition}\label{def:equipment}
@@ -1272,7 +1272,7 @@ A monoid in $\dSpan$ consists of a set $C$ and a span $C\from S\to C$, together 
 
 \end{example}
 
-\begin{lemma}\label{lemma:delete_me?}
+\begin{lemma}\label{lemma:delete_me?}\todo{delete me?}
    Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor. Then
    \begin{compactitem}
       \item if $F$ is fully faithful, then so is $\dMod(F)$,
@@ -1397,25 +1397,11 @@ The equipment $\dSpan$ is not exact. The collapse of a monoid $C\from S\to C$ in
 \end{example}
 
 \begin{proposition}\label{prop:collapse_local_equivalence}
-   Let $\dcat{D}$ be an equipment, and let $U\colon\dcat{D}\to\dMod(\dcat{D})$ be the unit inclusion. Then $\dcat{D}$ is exact if and only if $U$ has a left adjoint $\Col{-}\colon\dMod(\dcat{D})\to\dcat{D}$ that is a local equivalence.
-\end{proposition}
-\begin{proof}
-   If $\dcat{D}$ is exact, it is easy to use the universal property of collapse to construct, from any monoid homomorphism
-   $(f,\vec{f})\colon(a,M)\to(b,N)$, a vertical morphism $\Col{f}\colon\Col{M}\to\Col{N}$ in
-   $\dcat{D}$, defining a functor $\Col{-}\colon\Mon(\dcat{D})\to\dcat{D}_0$. This functor is defined on proarrows and 2-cells using the inverse of the
-   equivalence from Definition~\ref{def:exact_equipment}. Clearly this makes $\Col{\textrm{--}}$ a
-   local equivalence, which is left adjoint to $U$.
-
-   Now suppose that $U$ has a left adjoint $F$ that is a local equivalence. In order for $\dcat{D}$ to be exact, the only thing to check is that the collapse map is cartesian. \todo{??}
-
-\end{proof}
-
-\begin{proposition}\label{prop:collapse_local_equivalence}
    If $\dcat{D}$ is an exact equipment, then collapse induces an equipment functor
    $\Col{\textrm{--}}\colon\dMod(\dcat{D})\to\dcat{D}$. The functor $\Col{\textrm{--}}$ is a local
    equivalence.
 \end{proposition}
-\todo[inline]{Is it true that $\dcat{D}$ is exact iff the inclusion $\dcat{D}\to\dMod(\dcat{D})$ has a left adjoint which is a local equivalence? If so, strengthen Prop~\ref{prop:collapse_local_equivalence}.}
+
 \begin{proof}
    It is easy to use the universal property of collapse to construct, from any monoid homomorphism
    $(f,\vec{f})\colon(a,M)\to(b,N)$, a vertical morphism $\Col{f}\colon\Col{M}\to\Col{N}$ in
@@ -1510,10 +1496,10 @@ In other words, the inclusion $\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence
 %   \]
    \[
       \begin{tikzcd}[row sep=2.5ex, column sep=0em]
-      \dMod(\dcat{D}) \ar[rr,"\iso"]\ar[rd,"\Col{-}"' pos=.3] && \dcat{D}^{\bo}\ar[ld,"\cod" pos=.3]\\
+      \dMod(\dcat{D}) \ar[rr,"\equiv"]\ar[rd,"\Col{-}"' pos=.3] && \dcat{D}^{\bo}\ar[ld,"\cod" pos=.3]\\
       &\dcat{D}
       \end{tikzcd}
-   \]\todo{Do we differentiate between $\equiv$ and $\iso$?}
+   \]
 \end{theorem}
 \begin{proof}
    Because the equipment functors $\dcat{D}^{\bo}\to\dcat{D}$ and
