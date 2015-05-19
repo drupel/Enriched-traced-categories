@@ -1609,7 +1609,7 @@ If $\dcat{D}=\dProf$ then an object of $\CPsh(\dcat{D})$ is a pair $(C,H)$, wher
       \end{tikzcd}
    \end{equation}
    Moreover, if $F$ is a local equivalence (Definition~\ref{def:local_equivalence}),
-   then~\eqref{eq:CPsh_square} is a pullback.  Similarly for $\Psh$.
+   then~\eqref{eq:CPsh_square} is a pseudo-pullback.  Similarly for $\Psh$.
 \end{lemma}
 \begin{proof}
    Consider the cube
@@ -1628,9 +1628,12 @@ If $\dcat{D}=\dProf$ then an object of $\CPsh(\dcat{D})$ is a pair $(C,H)$, wher
       \end{tikzcd}
    \end{equation*}
    The bottom face of the cube commutes because $F_0$ preserves terminal objects. The right face of
-   the cube is a pullback (as is the left, by definition), hence there is a unique $\tilde{F}$ making the cube commute.
+   the cube is a pullback (as is the left, by definition), hence there is a unique $\tilde{F}$
+   making the cube commute.
 
-   If $F$ is a local equivalence, then the front face is a pullback, so the back face is a pullback as well.
+   If $F$ is a local equivalence, then the front face is a pseudo-pullback. The left and right faces
+   are pullbacks, hence pseudo-pullbacks (see Remark~\ref{rem:strict_vs_pseudo_pullback}), so the
+   back face is a pseudo-pullback as well.
 \end{proof}
 
 \chapter{Equipments of monoidal categories and profunctors}\label{sec:equipments_monoidal_profunctors}
