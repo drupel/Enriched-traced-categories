@@ -1110,58 +1110,64 @@ A double category is a 2-category-like structure involving horizontal and vertic
 \end{definition}
 
 \begin{example}
+   An equipment $\dcat{D}$ is often named according to its horizontal arrows. In
+   Section~\ref{sec:background_equipments} we discussed profunctors, which are the horizontal arrows
+   in an equipment $\dProf$, which we will now discuss. Variations on $\dProf$, such as $\dMonProf,
+   \dTrProf,$ and $\dCompProf$ (defined in Section~\ref{sec:monoidal_profunctors}) will play a major
+   role in this paper.
 
-An equipment $\dcat{D}$ is often named according to its horizontal arrows. In
-Section~\ref{sec:background_equipments} we discussed profunctors, which are the horizontal arrows in
-an equipment $\dProf$, which we will now discuss. Variations on $\dProf$, such as $\dMonProf,
-\dTrProf,$ and $\dCompProf$ (defined in Section~\ref{sec:monoidal_profunctors}) will play a major
-role in this paper.
+   The vertical category of $\dProf$ is the 1-category $\dProf_0=\Cat$ of small 1-categories and
+   functors. Given objects $C,D\in\dProf_0$, a horizontal arrow between them is a profunctor
+   $C\tickar D$, as described in Section~\ref{sec:background_equipments}. A 2-cell $\phi$ in
+   $\dProf$, as to the left, denotes a natural transformation, as to the right, in
+   \eqref{eqn:Prof2cells}:
+   \begin{equation}\label{eqn:Prof2cells}
+      \begin{tikzcd}
+         A \ar[r,tick,"X" domA] \ar[d,"F"']
+            & B\ar[d,"{G}"] \\
+         C \ar[r,tick,"Y"' codA]
+            & D
+         \twocellA{\phi}
+      \end{tikzcd}
+      \hspace{.6in}
+      \begin{tikzcd}[column sep=.8em, row sep=5ex]
+         \op{A}\times B \ar[dr,"X"'] \ar[rr,"\op{F}\times G"]
+            & \ar[d,phantom,"\overset{\phi}{\Rightarrow}" near start]
+            & \op{C}\times D\ar[dl,"Y"] \\
+         & \Set
+      \end{tikzcd}
+   \end{equation}
+   The horizontal composite $X\odot Y$ of profunctors $X\colon A\tickar B$ and $Y\colon B\tickar C$
+   is obtained by a coend formula, equivalent to the following coequalizer for any $a\in\op{A}, c\in
+   C$:
+   \begin{equation}\label{eqn:coendComp}
+      \begin{tikzcd}
+         \displaystyle\coprod_{b_1,b_2}X(a,b_1)\times\ B(b_1,b_2)\times Y(b_2,c)
+               \ar[r,shift left,"b=b_1"]\ar[r,shift right,"b=b_2"']
+            & \displaystyle\coprod_{b}X(a,b)\times Y(b,c) \ar[r]
+            &[-1em] (X\odot Y)(a,c)
+      \end{tikzcd}
+   \end{equation}
+   One can show that the result is a double category, and it is an equipment because for any $F,
+   G,Y$ as in \eqref{eqn:Prof2cells}, there is a cartesian 2-cell whose domain is the profunctor
+   $X=Y\circ(\op{F}\times G)$ obtained by composition.
 
-The vertical category of $\dProf$ is the 1-category $\dProf_0=\Cat$ of small 1-categories and
-functors. Given objects $C,D\in\dProf_0$, a horizontal arrow between them is a profunctor
-$C\tickar D$, as described in Section~\ref{sec:background_equipments}. A 2-cell $\phi$ in $\dProf$,
-as to the left, denotes a natural transformation, as to the right, in \eqref{eqn:Prof2cells}:
-\begin{equation}\label{eqn:Prof2cells}
-	\begin{tikzcd}
-		A \ar[r,tick,"X" domA] \ar[d,"F"']
-		& B\ar[d,"{G}"]
-		\\
-		C \ar[r,tick,"Y"' codA]
-		& D
-		\twocellA{\phi}
-	\end{tikzcd}
-\hspace{.6in}
-	\begin{tikzcd}[column sep=.8em, row sep=5ex]
-		\op{A}\times B\ar[dr,"X"']\ar[rr,"\op{F}\times G"]&\ar[d,phantom,"\overset{\phi}{\Rightarrow}" near start]&\op{C}\times D\ar[dl,"Y"]\\
-		&\Set
-	\end{tikzcd}
-\end{equation}
-The horizontal composite $X\odot Y$ of profunctors $X\colon A\tickar B$ and $Y\colon B\tickar C$ is obtained by a coend formula, equivalent to the following coequalizer for any $a\in\op{A}, c\in C$:
-\begin{equation}\label{eqn:coendComp}
-	\begin{tikzcd}
-		\displaystyle\coprod_{b_1,b_2}X(a,b_1)\times\ B(b_1,b_2)\times Y(b_2,c)
-		\ar[r,shift left,"b=b_1"]\ar[r,shift right,"b=b_2"']
-		& 
-		\displaystyle\coprod_{b}X(a,b)\times Y(b,c)
-		\ar[r]
-		&[-1em]
-		(X\odot Y)(a,c)
-	\end{tikzcd}
-\end{equation}
-One can show that the result is a double category, and it is an equipment because for any $F, G,Y$ as in \eqref{eqn:Prof2cells}, there is a cartesian 2-cell whose domain is the profunctor $X=Y\circ(\op{F}\times G)$ obtained by composition.
-
-Note that the coequalizer \eqref{eqn:coendComp} is in fact a reflexive coequalizer, using $f=\id_b$.
+   Note that the coequalizer \eqref{eqn:coendComp} is in fact a reflexive coequalizer, using
+   $f=\id_b$.
 \end{example}
 
 \begin{example}
-
-There is an equipment $\dSpan$ of spans in $\Set$. Its vertical category is $\dSpan_0\coloneqq\Set$. A horizontal 1-cell between sets $A$ and $B$ is a span $A\from S\to B$, their composition is defined by a pullback of spans, and a 2-cell in $\dSpan$ is a commutative diagram in $\Set$ of the obvious shape. The cartesian 2-cells in this equipment are obtained by taking a limit in $\Set$.
-
+   There is an equipment $\dSpan$ of spans in $\Set$. Its vertical category is
+   $\dSpan_0\coloneqq\Set$. A horizontal 1-cell between sets $A$ and $B$ is a span $A\from S\to B$,
+   their composition is defined by a pullback of spans, and a 2-cell in $\dSpan$ is a commutative
+   diagram in $\Set$ of the obvious shape. The cartesian 2-cells in this equipment are obtained by
+   taking a limit in $\Set$.
 \end{example}
 
 \todo[inline]{Throughout the paper, indicate that strict pullbacks along iso-fibs are also pseudo pullbacks.}
 \begin{definition}\label{def:local_equivalence}
-   An equipment functor $F\colon\dcat{X}\to\dcat{Y}$ is a \emph{local equivalence} if the following square is a pseudo-pullback of categories:
+   An equipment functor $F\colon\dcat{X}\to\dcat{Y}$ is a \emph{local equivalence} if the following
+   square is a pseudo-pullback of categories:
    \begin{equation}\label{eqn:local_equiv}
       \begin{tikzcd}
          \dcat{X}_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
@@ -1170,15 +1176,31 @@ There is an equipment $\dSpan$ of spans in $\Set$. Its vertical category is $\dS
             & \dcat{Y}_0\times\dcat{Y}_0
       \end{tikzcd}
    \end{equation}
-If $\dcat{Y}$ is a double category and $F_0\colon\dcat{X}_0\to\dcat{Y}_0$ is any functor, the pullback \eqref{eqn:local_equiv} defines a double category $\dcat{X}$. If $\dcat{Y}$ is an equipment, $\dcat{X}$ will be too; we call it the \emph{equipment, induced by the functor $F_0$, that is locally equivalent to $\dcat{Y}$}.
+\end{definition}
+
+\begin{remark}\label{rem:strict_vs_pseudo_pullback}
+   It is a standard fact that a strict pullback of categories of an isofibration along an arbitrary
+   functor is also a pseudo-pullback. As any Grothendieck fibration (or opfibration) is in
+   particular an isofibration, if the square \eqref{eqn:local_equiv} is a strict pullback, then it
+   is also a pseudo-pullback.
+\end{remark}
+
+\begin{definition}
+   Let $\dcat{Y}$ be a double category and $F_0\colon\dcat{X}_0\to\dcat{Y}_0$ be a functor. A strict
+   pullback of the form \eqref{eqn:local_equiv} defines a double category $\dcat{X}$, written
+   $F_0^*(\dcat{Y})$. If $\dcat{Y}$ is an equipment, $F_0^*(\dcat{Y})$ will be too, because fibrations are
+   stable under pullback. By Remark~\ref{rem:strict_vs_pseudo_pullback}, the obvious equipment
+   functor $F_0^*(\dcat{Y})\to\dcat{Y}$ is a local equivalence.
 \end{definition}
 
 \begin{example}\label{ex:horizontal_bicategory}
+   The horizontal bicategory $\HHor(\dcat{D})$ associated to an equipment $\dcat{D}$ can be
+   identified with the locally equivalent equipment induced by the inclusion
+   $\Ob\dcat{D}_0\to\dcat{D}_0$ of the discrete category of objects. 
 
-The horizontal bicategory $\HHor(\dcat{D})$ associated to an equipment $\dcat{D}$ can be identified with the locally equivalent equipment induced by the inclusion $\Ob\dcat{D}_0\to\dcat{D}_0$ of the discrete category of objects. 
-
-It follows that if $\dcat{D}\to\dcat{E}$ is a local equivalence of equipments, then $\HHor(\dcat{D})\to\HHor(\dcat{E})$ is a local equivalence of bicategories. Note, however, that the converse does not hold in general.
-
+   It follows that if $\dcat{D}\to\dcat{E}$ is a local equivalence of equipments, then
+   $\HHor(\dcat{D})\to\HHor(\dcat{E})$ is a local equivalence of bicategories. Note, however, that
+   the converse does not hold in general.
 \end{example}
 
 \begin{definition}\todo{Do we need this? Consider deleting this and Lemma~\ref{lemma:delete_me?}.}
@@ -1316,9 +1338,8 @@ There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dc
             & \dcat{Y}_0
       \end{tikzcd}
    \end{equation*}
-   is a pullback of categories.
+   is a pseudo-pullback of categories.
 \end{lemma}
-
 
 \section{Exactness and the $(\bo,\ff)$ factorization}\label{sec:exactness_and_boff}
 
