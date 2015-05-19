@@ -1338,6 +1338,20 @@ A monoid in $\dSpan$ consists of a set $C$ and a span $C\from S\to C$, together 
 
 There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$ \todo{What do you think of this $\Ob$ notation? The idea comes from $\ndcat{S}{pan}$.}sending a monoid $M\colon c\tickar c$ to its underlying object $c$. There is also an equipment functor $U\colon\dcat{D}\to\dMod(\dcat{D})$, sending $d$ to the unit $d\tickar d$, which is a local equivalence.
 
+\begin{lemma}
+   Let $\dcat{D}$ be an equipment, $f\colon c\to d$ a vertical morphism, and $M\colon d\tickar d$ a
+   monoid. There is a unique monoid structure on the restriction $M(f,f)$ such that the cartesian
+   2-cell is a monoid homomorphism. In other words, $\MOb_0\colon\Mon(\dcat{D})\to\dcat{D}_0$ is a
+   fibration, and there is a morphism of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=tiny]
+         \Mon(\dcat{D}) \ar[dr,two heads,"\MOb_0"'] \ar[rr]
+            && \dcat{D}_1 \ar[dl,two heads] \\
+         & \dcat{D}_0 &
+      \end{tikzcd}
+   \end{equation*}
+\end{lemma}
+
 \begin{lemma}\label{lem:Mon_pullback}
    Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor, and suppose $F$ is a local equivalence
    (Definition~\ref{def:local_equivalence}). Then the induced square
@@ -1939,7 +1953,7 @@ Let $\ccat{C}$ be $\MMonCat, \TTrCat$, or $\CCompCat$, each of which is regular,
 The primary goal of this section is to establish the equivalences of 1-categories
 \begin{equation}\label{eqn:primary_goal}
    \begin{tikzcd}
-      \dCompProf(1,-) \equiv \Pt(\dCompProf) \equiv \Mon(\dCompProf).
+      \CPsh(\dCompProf) \equiv \Pt(\dCompProf) \equiv \Mon(\dCompProf).
    \end{tikzcd}
 \end{equation}
 
