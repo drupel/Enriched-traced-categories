@@ -1185,7 +1185,7 @@ A double category is a 2-category-like structure involving horizontal and vertic
    is also a pseudo-pullback.
 \end{remark}
 
-\begin{definition}
+\begin{definition}\label{def:induced_locally_equivalent_equipment}
    Let $\dcat{Y}$ be a double category and $F_0\colon\dcat{X}_0\to\dcat{Y}_0$ be a functor. A strict
    pullback of the form \eqref{eqn:local_equiv} defines a double category $\dcat{X}$, written
    $F_0^*(\dcat{Y})$. If $\dcat{Y}$ is an equipment, $F_0^*(\dcat{Y})$ will be too, because fibrations are
@@ -1435,9 +1435,9 @@ We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz
 \end{proof}\todo{Is $\dMod(\dcat{D})$ exact for any $\dcat{D}$? If so, shall we just say that instead of Prop~\ref{prop:Prof_is_exact}?}
 
 \begin{example}
-
-The equipment $\dSpan$ is not exact. The collapse of a monoid $C\from S\to C$ in $\dSpan$ must be its pushout $\Col{S}\iso C\sqcup_SC$, but the associated embedding is not cartesian. The second condition of exactness also fails.
-
+   The equipment $\dSpan$ is not exact. The collapse of a monoid $C\from S\to C$ in $\dSpan$ must be
+   its pushout $\Col{S}\iso C\sqcup_SC$, but the associated embedding is not cartesian. The second
+   condition of exactness also fails.
 \end{example}
 
 \begin{proposition}\label{prop:collapse_local_equivalence}
@@ -1468,22 +1468,25 @@ Definition~\ref{def:orthogonal}. We recall also from~\cite[Theorem~4.17]{Schultz
 
 \todo{recall definition of $\bo$ and $\ff$}
 
-The notation $\bo$ and $\ff$ comes from the case where $\dcat{D}=\dProf$, for which they correspond to the functors that are bijective on objects and fully faithful, respectively. See also Proposition~\ref{prop:boff_well_named}.
+The notation $\bo$ and $\ff$ comes from the case where $\dcat{D}=\dProf$, for which they correspond
+to the functors that are bijective on objects and fully faithful, respectively. See also
+Proposition~\ref{prop:boff_well_named}.
 
-If $\dcat{D}$ is an exact equipment, then using the factorization system we can define an equipment
-$\dcat{D}^{\bo}$. The vertical category of $\dcat{D}^{\bo}$ is the category $\dcat{D}_0^{\bo}$,
-defined to be the full subcategory of the category of arrows of $\dcat{D}_0$ spanned by the arrows
-in the class $\bo$. The horizontal morphisms and 2-cells are determined by the codomain of the
-$\bo$ arrows, i.e.~the category $\dcat{D}_1^{\bo}$ is given by the pullback
-\begin{equation*}
-\begin{tikzcd}[column sep=large]
-   \dcat{D}_1^{\bo} \ar[r] \ar[d, two heads] \ar[dr,phantom,"\lrcorner" very near start]
-      & \dcat{D}_1 \ar[d, two heads] \\
-   \dcat{D}_0^{\bo}\times\dcat{D}_0^{\bo} \ar[r,"\cod\times\cod"']
-      & \dcat{D}_0\times\dcat{D}_0
-\end{tikzcd}
-\end{equation*}
-In other words, the inclusion $\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence.
+\begin{definition}
+   Let $\dcat{D}$ be an exact equipment. We define the equipment $\dcat{D}^{\bo}$ as follows: the
+   vertical category $\dcat{D}_0^{\bo}$ is the full subcategory of the category of arrows of
+   $\dcat{D}_0$ spanned by the arrows in the class $\bo$. The rest of the structure is defined by
+   setting $\dcat{D}^{\bo}\coloneqq\cod^*\dcat{D}$ (see
+   Definition~\ref{def:induced_locally_equivalent_equipment}), i.e.\ there is a strict pullback
+   \begin{equation*}
+      \begin{tikzcd}[column sep=large]
+         \dcat{D}_1^{\bo} \ar[r] \ar[d, two heads] \ar[dr,phantom,"\lrcorner" very near start]
+            & \dcat{D}_1 \ar[d, two heads] \\
+         \dcat{D}_0^{\bo}\times\dcat{D}_0^{\bo} \ar[r,"\cod\times\cod"']
+            & \dcat{D}_0\times\dcat{D}_0
+      \end{tikzcd}
+   \end{equation*}
+\end{definition}
 
 \begin{lemma}\label{lem:Mon_vs_bo}
    Let $\dcat{D}$ be an exact equipment. There is an equivalence of fibrations on the left, such
