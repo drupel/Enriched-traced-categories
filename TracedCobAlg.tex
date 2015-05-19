@@ -1960,26 +1960,13 @@ Let $\ccat{C}$ be $\MMonCat, \TTrCat$, or $\CCompCat$, each of which is regular,
 \todo[inline]{This section needs a notation update. \eqref{eqn:primary_goal} and \eqref{eqn:functors_1C_CC} are about $\dCompProf$, but nothing else seems to be.}
 \todo[inline]{Replace $\cat{C}$ with $C$ and replace $A,B$ with $a,b$, etc.}
 
-The primary goal of this section is to establish the equivalences of 1-categories
+The primary goal of this section is to establish the equivalence of the three fibrations
 \begin{equation}\label{eqn:primary_goal}
    \begin{tikzcd}
       \CPsh(\dCompProf) \equiv \Pt(\dCompProf) \equiv \Mon(\dCompProf).
    \end{tikzcd}
 \end{equation}
-
-Consider the functors
-\begin{equation}\label{eqn:functors_1C_CC}
-\begin{tikzcd}
-   \dCompProf(1,-) \ar[r,shift left,"F"]
-   & \dMProf \ar[l,shift left,"U"]
-\end{tikzcd}
-\end{equation}
-where $FM\colon\op{\cat{C}}\times\cat{C}\to\Set$ is defined by $FM(A,B)=M(A^*\otimes B)$, and in the
-other direction, $N\colon\op{\cat{C}}\times\cat{C}\to\Set$ is given by $UN(A)=N(I,A)$.
-
-Let $\MProf{(\cat{C},\cat{C})}_{\ast}$ denote the category of pointed monoidal endo-profunctors,
-i.e.~profunctors $M$ equipped with a unit $i\colon\Hom_{\cat{C}}\to M$, with monoidal profunctor
-morphisms which preserve the units.
+over $\CompCat$.
 
 \begin{remark}
    The proof of Proposition~\ref{prop:unit_implies_monoid} is very difficult to follow in the equational form presented. We
@@ -1991,12 +1978,7 @@ morphisms which preserve the units.
 \end{remark}
 
 \begin{proposition}\label{prop:unit_implies_monoid}
-   Let $N\in\MProf{(\cat{C},\cat{C})}_*$ be a monoidal profunctor equipped with a unit $\eta\colon\Hom_{\cat{C}}\to N$.
-   Then $N$ has a canonical multiplication $\mu\colon N\otimes N\to N$ making $N$ a monoid in $\MProf(\cat{C},\cat{C})$.
-   This construction defines an equivalence of categories
-      \[\MProf{(\cat{C},\cat{C})}_*\To{\equiv}\Mon(\MProf(\cat{C},\cat{C}))\]
-   which is natural in $\cat{C}$.
-   \todo[author=Patrick]{Make an equivalence of equipments}
+   The forgetful functor $\Mon(\dCompProf)\to\Pt(\dCompProf)$ is an equivalence of fibrations.
 \end{proposition}
 \begin{proof}
    We can define a multiplication on $N$ by the following formula: given any $n_1\in N(c,d)$ and $n_2\in N(d,e)$,
@@ -2054,16 +2036,39 @@ morphisms which preserve the units.
    \end{align*}
 \end{proof}
 
+Consider for the moment the fibration $\End(\dCompProf)$, defined by the pullback
+\begin{equation*}
+   \begin{tikzcd}[column sep=0em]
+      \End(\dCompProf) \ar[d,two heads] \ar[r] \ar[dr,phantom,"\lrcorner" very near start]
+         & \dCompProf_1 \ar[d,two heads] \\
+      \CompCat \ar[r,"\Delta"']
+         & \CompCat\times\CompCat.
+   \end{tikzcd}
+\end{equation*}
+We can define the functors
+\begin{equation}\label{eqn:functors_1C_CC}
+   \begin{tikzcd}[column sep=-1.5em]
+      \CPsh(\dCompProf) \ar[rr,shift left,"F"] \ar[dr,two heads]
+      && \End(\dCompProf) \ar[ll,shift left,"U"] \ar[dl,two heads] \\
+      & \CompCat &
+   \end{tikzcd}
+\end{equation}
+where $FM\colon\op{\cat{C}}\times\cat{C}\to\Set$ is defined by $FM(A,B)=M(A^*\otimes B)$, and in the
+other direction, $N\colon\op{\cat{C}}\times\cat{C}\to\Set$ is given by $UN(A)=N(I,A)$.
+
 \begin{proposition}\label{Prop:canonical unit}
-   The functor $F\colon\MProf(1,\cat{C})\to\MProf(\cat{C},\cat{C})$, from (\ref{eqn:functors_1C_CC}), factors through $\MProf{(\cat{C},\cat{C})}_*$, and hence also through $\Mon(\MProf(\cat{C},\cat{C}))$.
+   The functor $F\colon\CPsh(\dCompProf)\to\End(\dCompProf)$, from (\ref{eqn:functors_1C_CC}),
+   factors through $\Pt(\dCompProf)$, and hence also through $\Mon(\dCompProf)$.
 \end{proposition}
 \begin{proof}
-   Given any $f\colon c\to d$ in $\cat{C}$, we must define an element $i(f)\in FM(c,d)=M(c^*\otimes d)$.
-   Since $M$ is a monoidal profunctor, there is a given unit element $I_M\in M(I)$, with which we can define $i(f)=((\id_{c^*}\otimes f)\circ\eta_c)\cdot I_M$.
+   Given any $f\colon c\to d$ in $\cat{C}$, we must define an element $i(f)\in FM(c,d)=M(c^*\otimes
+   d)$. Since $M$ is a monoidal profunctor, there is a given unit element $I_M\in M(I)$, with which
+   we can define $i(f)=((\id_{c^*}\otimes f)\circ\eta_c)\cdot I_M$.
 \end{proof}
 
 \begin{lemma}\label{Lem:comp prof bijection}
-   Given any $N\in\MProf{(\cat{C},\cat{C})}_*$, there is a canonical bijection $N(a,b)\iso N(I,a^*\otimes b)$ for any objects $a,b\in\cat{C}$.
+   Given any $N\in\Pt(\dCompProf)$, there is a canonical bijection $N(a,b)\iso N(I,a^*\otimes b)$ for
+   any objects $a,b\in\cat{C}$.
 \end{lemma}
 \begin{proof}
    Given $n\in N(a,b)$, we can construct an element
