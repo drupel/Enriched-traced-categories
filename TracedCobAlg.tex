@@ -1752,8 +1752,15 @@ Definition~\ref{def:induced_locally_equivalent_equipment}.
 \end{definition}
 
 \begin{proposition}
-   $\VVer(\dTrProf)\equiv\TTrCat$.
+   $\VVer(\dTrProf)\iso\TTrCat$.
 \end{proposition}
+\begin{proof}
+   Clearly these two 2-categories have the same underlying 1-category, so it suffices to show that
+   there is a bijection $\VVer(\dTrProf)(F,G)\iso\TTrCat(F,G)$ for any traced functors $F,G\colon
+   T\to T'$, which preserves units and composition. By the definition of $\dTrProf$, we have
+   $\VVer(\dTrProf)=\CCompCat(\Int(F),\Int(G))$. The result then follows from the fact that $\Int$
+   is a local equiavlence of 2-categories (a.k.a.\ a fully faithful 2-functor).
+\end{proof}
 
 \section{Our equipments are exact}%\section{$\dMonProf, \dTrProf$, and $\dCompProf$ are exact equipments}
 
