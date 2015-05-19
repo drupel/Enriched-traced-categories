@@ -2310,11 +2310,11 @@ Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Sect
 By Proposition~\ref{prop:TrCat_2equiv}, we know that in the commutative diagram below, the top map is fully faithful and the bottom map is a 2-equivalence:
 \begin{equation*}
 	\begin{tikzcd}
-		\Mon(\dTrProf)\ar[r,"\ff"]\ar[d]&\TrCat\ar[d]\\
+		\Mon(\dTrProf)\ar[r,"\ff"]\ar[d,"\bo"']&\TrCat\ar[d]\\
 		\MMon(\dTrProf)\ar[r,"\equiv"']&\TTrCat
 	\end{tikzcd}
 \end{equation*}
-The left-hand map is surjective on objects, so the result follows from the chain of equivalences
+and of course the left map is bijective on objects. Hence, the result follows from the chain of equivalences
 \begin{align*}
 \CobKlsAlg\equiv\int^{C\in\FrMonCat}\Lax(\FMC(C),\Set)
 &\equiv\CPsh(\dTrProf)\\
