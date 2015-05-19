@@ -498,7 +498,7 @@ about monoidal, traced, and compact categories, lax and strong functors, and the
 are given in Sections~\ref{sec:prelim_monoidal}~through~\ref{sec:compact_and_int}. The fact that
 the free compact category on a set has an algebraic description in terms of bijections between
 signed sets, and the fact that it has a geometric description in terms of 1-dimensional oriented
-cobordisms is recalled in Section~\ref{sec:free and geometry}. 
+cobordisms is recalled in Section~\ref{sec:free_and_geometry}. 
 
 \section{Monoidal categories}\label{sec:prelim_monoidal}
 
@@ -840,7 +840,7 @@ The following facts hold for any traced category $\cat{C}$:
    These are all shown in, or trivially derived from,~\cite{JoyalStreetVerity}.
 \end{proof}
 
-\section{Free traced and compact categories, and geometry}\label{sec:free and geometry}
+\section{Free traced and compact categories, and geometry}\label{sec:free_and_geometry}
 
 There are free/forgetful adjunctions
 \begin{align*}
@@ -848,7 +848,7 @@ There are free/forgetful adjunctions
    \FT\colon\Set &\leftrightarrows\TrCat:\!\UT \\
    \FC\colon\Set &\leftrightarrows\CompCat:\!\UC
 \end{align*}
-We will write $\TM$ and $\TC$ for the respective monads induced on $\Set$. Note that $\TM$ is
+We will write $\TM, \TT$, and $\TC$ for the respective monads induced on $\Set$. Note that $\TM$ is
 isomorphic to the free-monoid monad, while $\TC$ is isomorphic to the free-group monad.%
 \footnote{Note that $U_M$ is not the free-\emph{commutative}-monoid monad, even though the objects of $\MonCat$ are \emph{symmetric} monoidal categories, because the symmetries are encoded in natural isomorphisms, not equalities.
 }
@@ -2097,11 +2097,13 @@ Thus we have the following proposition:
    \end{equation*}
 \end{proposition}
 
+Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Section~\ref{sec:free_and_geometry}. 
+
 \begin{definition}\label{def:FrMonProf_FrCompProf}
    We define the equipments
    \begin{align*}
       \dFrMonProf&\coloneqq\dMonProf_{\TM} \\
-%      \dFrTrProf&\coloneqq\dTrProf_{\TT} \\
+      \dFrTrProf&\coloneqq\dTrProf_{\TT} \\
       \dFrCompProf&\coloneqq\dCompProf_{\TC}
    \end{align*}
    In particular, there is a pullback
@@ -2197,7 +2199,7 @@ Thus we have the following proposition:
    \end{align*}
 \end{corollary}
 
-\begin{lemma}\label{lem:FrCompProf_Psh_Mon}
+\begin{corollary}\label{cor:FrCompProf_Psh_Mon}
    There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1.5em]
@@ -2206,11 +2208,10 @@ Thus we have the following proposition:
             & \FrCompCat &
       \end{tikzcd}
    \end{equation*}
-\end{lemma}
+\end{corollary}
 \begin{proof}
    The equipment functor $\dFrCompProf\to\dCompProf$ is (by definition) a local equivalence
-   (Definition~\ref{def:local_equivalence}), so the lemma follows from~Proposition~\ref{Prop:mon
-   prof equivalence}, and Lemmas~\ref{lem:Mon_pullback} and~\ref{lem:Psh_pullback}.
+   (Definition~\ref{def:local_equivalence}), so the result follows from~Proposition~\ref{Prop:mon_prof_equivalence}, and Lemmas~\ref{lem:Mon_pullback} and~\ref{lem:Psh_pullback}.
 \end{proof}
 
 %By defining an equipment ``halfway between'' $\dFrMonProf$ and $\dFrCompProf$, with vertical
@@ -2218,11 +2219,11 @@ Thus we have the following proposition:
 %construction of $\TTrCat$.
 %
 %\begin{definition}\label{def:FrMonCompProf}
-%   Let $\FMC\colon\FrMonCat\to\FrCompCat$ be as in (\ref{eqn:FMC}). The equipment $\dFrMonCompProf$ has vertical category $\dFrMonCompProf_0\coloneqq \FrMonCat$,
-%   while $\dFrMonCompProf_1$ is defined by the pullback
+%   Let $\FMC\colon\FrMonCat\to\FrCompCat$ be as in (\ref{eqn:FMC}). The equipment $\dTrProf$ has vertical category $\dTrProf_0\coloneqq \FrMonCat$,
+%   while $\dTrProf_1$ is defined by the pullback
 %   \begin{equation*}
 %      \begin{tikzcd}[column sep=large]
-%         \dFrMonCompProf_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+%         \dTrProf_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
 %            & \dFrCompProf_1 \ar[d,two heads] \\
 %         \FrMonCat\times\FrMonCat \ar[r,"\FMC\times\FMC"']
 %            & \FrCompCat \times \FrCompCat
@@ -2231,46 +2232,46 @@ Thus we have the following proposition:
 %\end{definition}
 %
 %\begin{remark}
-%   As the equipment $\dFrMonCompProf$ plays a central role in our main theorem, it will be helpful to
-%   break down this definition. We can think of $\dFrMonCompProf$ as having sets as objects, with
+%   As the equipment $\dTrProf$ plays a central role in our main theorem, it will be helpful to
+%   break down this definition. We can think of $\dTrProf$ as having sets as objects, with
 %   vertical morphisms $\cat{O}\to\cat{O}'$ being functors $\FM\cat{O}\to\FM\cat{O}'$ between the
 %   free monoidal categories, and with proarrows $\cat{O}\tickar\cat{O}'$ being profunctors
 %   $\FC\cat{O}\tickar\FC\cat{O}'$ between the free compact categories.
 %
-%   Alternatively, but equivalently, we can think of $\dFrMonCompProf$ as having the objects and
+%   Alternatively, but equivalently, we can think of $\dTrProf$ as having the objects and
 %   proarrows of $\dFrCompProf$. In this view, the vertical morphisms are also morphisms of
 %   $\dFrCompProf$, but with the restriction that the functors $F\colon\FC\cat{O}\to\FC\cat{O}'$ are
 %   ``positive''. By this, we mean that for any element $x\in\cat{O}$, $Fx$ is a tensor of elements
 %   of $\cat{O}'$ (and not their duals). This is equivalent to the condition that $F$ is induced by a
-%   functor $\FM\cat{O}\to\FM\cat{O}'$. Hence, $\dFrMonCompProf$ is usefully thought of as the double
+%   functor $\FM\cat{O}\to\FM\cat{O}'$. Hence, $\dTrProf$ is usefully thought of as the double
 %   category of free compact categories and positive functors.
 %\end{remark}
 %
 %\begin{proposition}\label{prop:TrCat_2equiv}
 %   There is an equivalence of 2-categories
 %   \begin{equation*}
-%      \MMon(\dFrMonCompProf)\equiv\TTrCat
+%      \MMon(\dTrProf)\equiv\TTrCat
 %   \end{equation*}
 %   which restricts to a fully faithful functor between the 1-categories
 %   \begin{equation*}
-%      \Mon(\dFrMonCompProf)\to\TrCat.
+%      \Mon(\dTrProf)\to\TrCat.
 %   \end{equation*}
 %\end{proposition}
 
-\begin{lemma}\label{lem:FrMonCompProf_Psh_Mon}
+\begin{corollary}\label{cor:FrMonCompProf_Psh_Mon}
    There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1.5em]
-         \CPsh(\dFrMonCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \Mon(\dFrMonCompProf) \ar[dl,two heads] \\
+         \CPsh(\dTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \Mon(\dTrProf) \ar[dl,two heads] \\
             & \FrMonCat &
       \end{tikzcd}
    \end{equation*}
-\end{lemma}
+\end{corollary}
 \begin{proof}
-   The equipment functor $\dFrMonCompProf\to\dFrCompProf$ is (by definition) a local equivalence
-   (Definition~\ref{def:local_equivalence}), so the lemma follows from
-   Lemmas~\ref{lem:FrCompProf_Psh_Mon}, \ref{lem:Mon_pullback}, and~\ref{lem:Psh_pullback}.
+   The equipment functor $\dTrProf\to\dFrCompProf$ is (by definition) a local equivalence
+   (Definition~\ref{def:local_equivalence}), so the result follows from
+   Corollary~\ref{cor:FrCompProf_Psh_Mon} and Lemmas~\ref{lem:Mon_pullback}~ and~\ref{lem:Psh_pullback}.
 \end{proof}
 
 \section{Deducing the main results}\label{sec:deducing}
@@ -2288,17 +2289,17 @@ Thus we have the following proposition:
 By Proposition~\ref{prop:TrCat_2equiv}, we know that in the commutative diagram below, the top map is fully faithful and the bottom map is a 2-equivalence:
 \begin{equation*}
 	\begin{tikzcd}
-		\Mon(\dFrMonCompProf)\ar[r,"\ff"]\ar[d]&\TrCat\ar[d]\\
-		\MMon(\dFrMonCompProf)\ar[r,"\equiv"']&\TTrCat
+		\Mon(\dTrProf)\ar[r,"\ff"]\ar[d]&\TrCat\ar[d]\\
+		\MMon(\dTrProf)\ar[r,"\equiv"']&\TTrCat
 	\end{tikzcd}
 \end{equation*}
 The left-hand map is surjective on objects, so the result follows from the chain of equivalences
 \begin{align*}
 \CobKlsAlg\equiv\int^{C\in\FrMonCat}\Lax(\FMC(C),\Set)
-&\equiv\CPsh(\dFrMonCompProf)\\
-&\equiv\Mon(\dFrMonCompProf)
+&\equiv\CPsh(\dTrProf)\\
+&\equiv\Mon(\dTrProf)
 \end{align*}
-given by (\ref{dia:TMvsFrMonCat}), Corollary~\ref{cor:free_compact_is_Cob}, Definitions~\ref{def:copresheaves},~\ref{def:FrMonProf_FrCompProf},~and~\ref{def:FrMonCompProf}, and Lemma~\ref{lem:FrMonCompProf_Psh_Mon}.
+given by (\ref{dia:TMvsFrMonCat}), Corollary~\ref{cor:free_compact_is_Cob}, Definitions~\ref{def:copresheaves},~\ref{def:FrMonProf_FrCompProf},~and~\ref{def:FrMonCompProf}, and Corollary~\ref{cor:FrMonCompProf_Psh_Mon}.
 \end{proof}
 
 \begin{named}{Theorem B}\label{thm:TheoremB}
