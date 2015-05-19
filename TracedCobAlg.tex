@@ -43,6 +43,7 @@
 Global todo's:
 \begin{enumerate}
    \item Add appropriate {\em symmetric\/} monoidal throughout.
+   \item Consider the title, ``Traced categories, compact categories, and lax functors".
    \item Uncomment the $\backslash${listoftodos} command in latex below.
 \end{enumerate}
 %\listoftodos
@@ -150,96 +151,106 @@ functors $\cat{M}\to\Set$. Then there is an equivalence of categories
 Some intuition for this statement will be given in Section~\ref{subsec:cobalg_and_trCat}, and it
 will be generalized in \ref{thm:TheoremA} and proven as such in Section~\ref{sec:deducing}.
 
-\subsection{The main results}\label{subsec:main_results}
+\section{Lax functors out of compact categories}\label{subsec:main_results}
 
-The equivalence (\ref{eq:single_fiber}) has two drawbacks: the object set of the traced category is
-fixed, and it is assumed to be free. Much of the work in this paper is to relax these two
-conditions. For the latter, we prove that the 2-category of traced categories is equivalent to that
-of \emph{object-free} traced categories (see Corollary~\ref{cor:TrCat_ObjectFree}). For the former,
-we first explain what kind of variance is appropriate.
+While the motivation for this paper was to understand the relationship between 1-cobordisms and traced categories, our work has led us to conclude that a more central issue is to understand lax functors out of compact categories. These fit into a larger picture, known as \emph{equipments} or \emph{framed bicategories}, which we review in Section~\ref{sec:background_equipments}. 
 
-Let $\cat{C}$ and $\cat{C}'$ be object-free traced categories, such that $\Ob(\cat{C})$ is the free
-monoid on a set $\cat{O}$ and $\cat{C}'$ is the free monoid on a set $\cat{O}'$. A strong functor
-$F\colon \cat{C}\to \cat{C'}$ sends each object in $\cat{O}$ to the tensor product of finitely many
-objects in $\cat{O'}$; that is, it induces a function $\Ob F\colon\cat{O}\to\TM(\cat{O'})$, where
-$\TM\colon\Set\to\Set$ is the free monoid monad. Let $\Set_{\TM}$ denote the Kleisli category of
-this monad, so $\Ob F$ is identified with a morphism in $\Set_{\TM}$. There is a functor
-$(\LCob{\bullet})\colon\Set_{\TM}\to\CompCat$ (see~\eqref{dia:TMvsFrMonCat} and~\eqref{eqn:FMC}),
-\todo{Patrick: check this paragraph; is $(\LCob{\bullet})$ clear enough notation?}%
-and we can compose it with $\Lax(-,\Set)$ to obtain a functor which we denote
-\begin{equation}\label{eqn:cob/bullet}
-   (\LCob{\bullet})\alg\colon\Set_{\TM}^{\mathrm{op}}\too\Cat.
-\end{equation}
-By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect the equivalences
-(\ref{eq:single_fiber}) for varying $\cat{O}$ into a single functor, and we have the following main
-result, whose proof can be found in Section~\ref{sec:deducing}.
+The category $\Lax(\cat{C},\Set)$ of lax set-valued functors out of a compact category $\cat{C}$ have interesting behaviors. For example, when $\cat{C}$ is free on a set $\cat{O}$ of objects, lax functors can be identified with object-free traced categories, as in \eqref{eq:single_fiber}, or with object-free compact categories:
+\begin{equation*}
+ \LCob{\cat{O}}\alg\equiv\CompCat_{\cat{O}}.
+\end{equation*}
 
-\begin{named}{Theorem A}\label{thm:TheoremA}
-   There is a fully faithful functor of 1-categories
-   \begin{equation*}
-      \CobKlsAlg \to \TrCat
-   \end{equation*}
-   such that the induced 2-functor $\CobKlsAlg\to\TTrCat$ is 2-essentially surjective.
-\end{named}
-\todo[inline]{Add something about props here.}
-\todo[inline]{And maybe a comment about the weird form of Theorem A, to the effect that we shouldn't
-expect algebras of operads to be able to encode 2-cells.}
 
-\section{Generalization: Lax algebras on compact categories}
-
-\todo[inline,author=Patrick]{
-   I don't think it's right anymore to say that we're proving Theorem A by means of Theorem B.
-   Rather both are falling out of more general results.
-}
-It is most convenient to prove~\ref{thm:TheoremA} by proving a more general result, which gives an
-equivalence between the category of lax functors out of any compact category $\cat{C}$ and the
-category of strong, bijective-on-objects functors out of $\cat{C}$,
-\begin{equation}\label{eqn:lax_compcat_bo}
-\Lax(\cat{C},\Set)\iso\cat{C}/\CompCat^{\bo}.
-\end{equation}
-As in Section~\ref{subsec:main_results}, the difficulty is allowing this equivalence to vary appropriately with $\cat{C}$.
-
-The definition of compact closed symmetric
-monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact_and_int}, or in~\cite{MacLane}. Let $\CompCat$ denote the category of compact categories and strong
-monoidal functors between them. We will see (\ref{thm:orthogonal} and \ref{prop:CompProf_exact}) that there is a
-factorization system on $\CompCat$, in which the left class consists of bijective-on-objects
-functors and the right class consists of fully faithful functors. Let $\CompCat^{\bo}$ be the full
-subcategory of the arrow category $\CompCat^{\to}$ spanned by the bijective-on-objects functors.
-
-\begin{named}{Theorem B}\label{thm:TheoremB}
-   There is an equivalence of fibrations
-   \begin{equation*}
-      \begin{tikzcd}[column sep=0em]
-         \int^{\cat{C}\in\CompCat}\Lax(\cat{C},\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \CompCat^{\bo} \ar[dl,two heads,"\dom"] \\
-            & \CompCat &
-      \end{tikzcd}
-   \end{equation*}
-\end{named}
-
-Recall from~\cite{JoyalStreetVerity} that traced categories are full subcategories of compact
-categories.  The Int construction, applied to a traced category $\cat{C}$, returns the smallest
-compact category $\Int(\cat{C})$ of which it is a monoidal subcategory; we call $\Int(\cat{C})$ the
-\emph{compact closure} of $\cat{C}$. We will recall these notions in Sections~\ref{sec:intuition_for_traced}~and~\ref{sec:compact_and_int}.
-
-It turns out that if our compact category $\cat{C}$ is the compact closure of some traced category
-$\cat{D}$, then~\ref{thm:TheoremB} lifts to a result about $\cat{D}$. We record this result
-as~\ref{cor:CorollaryB}, from which~\ref{thm:TheoremA} follows. These are proved in
-Section~\ref{sec:deducing}.
-
-\begin{named}{Corollary B}\label{cor:CorollaryB}
-   There is an equivalence of fibrations
-   \begin{equation*}
-      \begin{tikzcd}[column sep=0em]
-         \int^{\cat{C}\in\TrCat}\Lax(\Int(\cat{C}),\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \TrCat^{\bo} \ar[dl,two heads,"\dom"] \\
-            & \TrCat &
-      \end{tikzcd}
-   \end{equation*}
-\end{named}
-
-We can give a better high-level story once we have reviewed equipments; see the introduction to Section~\ref{sec:equipments_monoidal_profunctors}. For the remainder of the introduction, we will attempt to build intuition.
-
+%\subsection{The main results}\label{subsec:main_results}
+%
+%The equivalence (\ref{eq:single_fiber}) has two drawbacks: the object set of the traced category is
+%fixed, and it is assumed to be free. Much of the work in this paper is to relax these two
+%conditions. For the latter, we prove that the 2-category of traced categories is equivalent to that
+%of \emph{object-free} traced categories (see Corollary~\ref{cor:TrCat_ObjectFree}). For the former,
+%we first explain what kind of variance is appropriate.
+%
+%Let $\cat{C}$ and $\cat{C}'$ be object-free traced categories, such that $\Ob(\cat{C})$ is the free
+%monoid on a set $\cat{O}$ and $\cat{C}'$ is the free monoid on a set $\cat{O}'$. A strong functor
+%$F\colon \cat{C}\to \cat{C'}$ sends each object in $\cat{O}$ to the tensor product of finitely many
+%objects in $\cat{O'}$; that is, it induces a function $\Ob F\colon\cat{O}\to\TM(\cat{O'})$, where
+%$\TM\colon\Set\to\Set$ is the free monoid monad. Let $\Set_{\TM}$ denote the Kleisli category of
+%this monad, so $\Ob F$ is identified with a morphism in $\Set_{\TM}$. There is a functor
+%$(\LCob{\bullet})\colon\Set_{\TM}\to\CompCat$ (see~\eqref{dia:TMvsFrMonCat} and~\eqref{eqn:FMC}),
+%\todo{Patrick: check this paragraph; is $(\LCob{\bullet})$ clear enough notation?}%
+%and we can compose it with $\Lax(-,\Set)$ to obtain a functor which we denote
+%\begin{equation}\label{eqn:cob/bullet}
+%   (\LCob{\bullet})\alg\colon\Set_{\TM}^{\mathrm{op}}\too\Cat.
+%\end{equation}
+%By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect the equivalences
+%(\ref{eq:single_fiber}) for varying $\cat{O}$ into a single functor, and we have the following main
+%result, whose proof can be found in Section~\ref{sec:deducing}.
+%
+%\begin{named}{Theorem A}\label{thm:TheoremA}
+%   There is a fully faithful functor of 1-categories
+%   \begin{equation*}
+%      \CobKlsAlg \to \TrCat
+%   \end{equation*}
+%   such that the induced 2-functor $\CobKlsAlg\to\TTrCat$ is 2-essentially surjective.
+%\end{named}
+%\todo[inline]{Add something about props here.}
+%\todo[inline]{And maybe a comment about the weird form of Theorem A, to the effect that we shouldn't
+%expect algebras of operads to be able to encode 2-cells.}
+%
+%\section{Generalization: Lax algebras on compact categories}
+%
+%\todo[inline,author=Patrick]{
+%   I don't think it's right anymore to say that we're proving Theorem A by means of Theorem B.
+%   Rather both are falling out of more general results.
+%}
+%It is most convenient to prove~\ref{thm:TheoremA} by proving a more general result, which gives an
+%equivalence between the category of lax functors out of any compact category $\cat{C}$ and the
+%category of strong, bijective-on-objects functors out of $\cat{C}$,
+%\begin{equation}\label{eqn:lax_compcat_bo}
+%\Lax(\cat{C},\Set)\iso\cat{C}/\CompCat^{\bo}.
+%\end{equation}
+%As in Section~\ref{subsec:main_results}, the difficulty is allowing this equivalence to vary appropriately with $\cat{C}$.
+%
+%The definition of compact closed symmetric
+%monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact_and_int}, or in~\cite{MacLane}. Let $\CompCat$ denote the category of compact categories and strong
+%monoidal functors between them. We will see (\ref{thm:orthogonal} and \ref{prop:CompProf_exact}) that there is a
+%factorization system on $\CompCat$, in which the left class consists of bijective-on-objects
+%functors and the right class consists of fully faithful functors. Let $\CompCat^{\bo}$ be the full
+%subcategory of the arrow category $\CompCat^{\to}$ spanned by the bijective-on-objects functors.
+%
+%\begin{named}{Theorem B}\label{thm:TheoremB}
+%   There is an equivalence of fibrations
+%   \begin{equation*}
+%      \begin{tikzcd}[column sep=0em]
+%         \int^{\cat{C}\in\CompCat}\Lax(\cat{C},\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
+%            && \CompCat^{\bo} \ar[dl,two heads,"\dom"] \\
+%            & \CompCat &
+%      \end{tikzcd}
+%   \end{equation*}
+%\end{named}
+%
+%Recall from~\cite{JoyalStreetVerity} that traced categories are full subcategories of compact
+%categories.  The Int construction, applied to a traced category $\cat{C}$, returns the smallest
+%compact category $\Int(\cat{C})$ of which it is a monoidal subcategory; we call $\Int(\cat{C})$ the
+%\emph{compact closure} of $\cat{C}$. We will recall these notions in Sections~\ref{sec:intuition_for_traced}~and~\ref{sec:compact_and_int}.
+%
+%It turns out that if our compact category $\cat{C}$ is the compact closure of some traced category
+%$\cat{D}$, then~\ref{thm:TheoremB} lifts to a result about $\cat{D}$. We record this result
+%as~\ref{cor:CorollaryB}, from which~\ref{thm:TheoremA} follows. These are proved in
+%Section~\ref{sec:deducing}.
+%
+%\begin{named}{Corollary B}\label{cor:CorollaryB}
+%   There is an equivalence of fibrations
+%   \begin{equation*}
+%      \begin{tikzcd}[column sep=0em]
+%         \int^{\cat{C}\in\TrCat}\Lax(\Int(\cat{C}),\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
+%            && \TrCat^{\bo} \ar[dl,two heads,"\dom"] \\
+%            & \TrCat &
+%      \end{tikzcd}
+%   \end{equation*}
+%\end{named}
+%
+%We can give a better high-level story once we have reviewed equipments; see the introduction to Section~\ref{sec:equipments_monoidal_profunctors}. For the remainder of the introduction, we will attempt to build intuition.
+%
 \section{Wiring Diagrams, cobordisms, and traced categories}
 
 In this section, we give a bit more intuition about the connection between wiring diagrams and cobordisms, and the equivalence between the category of traced categories
@@ -2305,14 +2316,14 @@ Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Sect
    There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1.5em]
-         \CPsh(\dTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \Mon(\dTrProf) \ar[dl,two heads] \\
+         \CPsh(\dFrTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \Mon(\dFrTrProf) \ar[dl,two heads] \\
             & \FrMonCat &
       \end{tikzcd}
    \end{equation*}
 \end{corollary}
 \begin{proof}
-   The equipment functor $\dTrProf\to\dFrCompProf$ is (by definition) a local equivalence
+   The equipment functor $\dFrTrProf\to\dFrCompProf$ is (by definition) a local equivalence
    (Definition~\ref{def:local_equivalence}), so the result follows from
    Corollary~\ref{cor:FrCompProf_Psh_Mon} and Lemmas~\ref{lem:Mon_pullback}~ and~\ref{lem:Psh_pullback}.
 \end{proof}
@@ -2332,15 +2343,15 @@ Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Sect
 By Proposition~\ref{prop:TrCat_2equiv}, we know that in the commutative diagram below, the top map is fully faithful and the bottom map is a 2-equivalence:
 \begin{equation*}
 	\begin{tikzcd}
-		\Mon(\dTrProf)\ar[r,"\ff"]\ar[d,"\bo"']&\TrCat\ar[d]\\
-		\MMon(\dTrProf)\ar[r,"\equiv"']&\TTrCat
+		\Mon(\dFrTrProf)\ar[r,"\ff"]\ar[d,"\bo"']&\TrCat\ar[d]\\
+		\MMon(\dFrTrProf)\ar[r,"\equiv"']&\TTrCat
 	\end{tikzcd}
 \end{equation*}
 and of course the left map is bijective on objects. Hence, the result follows from the chain of equivalences
 \begin{align*}
 \CobKlsAlg\equiv\int^{C\in\FrMonCat}\Lax(\FMC(C),\Set)
-&\equiv\CPsh(\dTrProf)\\
-&\equiv\Mon(\dTrProf)
+&\equiv\CPsh(\dFrTrProf)\\
+&\equiv\Mon(\dFrTrProf)
 \end{align*}
 given by (\ref{dia:TMvsFrMonCat}), Corollary~\ref{cor:free_compact_is_Cob}, Definitions~\ref{def:copresheaves},~\ref{def:FrMonProf_FrCompProf},~and~\ref{def:FrMonCompProf}, and Corollary~\ref{cor:FrMonCompProf_Psh_Mon}.
 \end{proof}
