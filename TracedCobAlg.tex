@@ -100,7 +100,7 @@ oriented 1-cobordisms; see Section~\ref{sec:wds_and_cob}.
 
 There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{C}$ than in a cobordism.
 Namely, each input and output of a box must be labeled by an object of $\cat{C}$ and the wires connecting boxes must respect the labels (e.g., in (\ref{dia:string_diagram}) object 2d must equal object 1b). We will thus consider the operad $\LCob{\cat{O}}$ of oriented 1-dimensional cobordisms over a fixed set of
-labels $\cat{O}$.
+labels $\cat{O}$.\todo{Change $\cat{O}$ to something else throughout? Perhaps $\mathsf{L}$ or $\mathfrak{L}$ for label?}
 
 In the table below, we record these two interpretations of a string diagram. Note the ``degree
 shift'' between the second and third columns.
@@ -1133,7 +1133,7 @@ as to the left, denotes a natural transformation, as to the right, in \eqref{eqn
 The horizontal composite $X\odot Y$ of profunctors $X\colon A\tickar B$ and $Y\colon B\tickar C$ is obtained by a coend formula, equivalent to the following coequalizer for any $a\in\op{A}, c\in C$:
 \begin{equation}\label{eqn:coendComp}
 	\begin{tikzcd}
-		\displaystyle\coprod_{f\colon b_1\to b_2}X(a,b_1)\times Y(b_2,c)
+		\displaystyle\coprod_{b_1,b_2}X(a,b_1)\times\ B(b_1,b_2)\times Y(b_2,c)
 		\ar[r,shift left,"b=b_1"]\ar[r,shift right,"b=b_2"']
 		& 
 		\displaystyle\coprod_{b}X(a,b)\times Y(b,c)
@@ -1153,7 +1153,7 @@ There is an equipment $\dSpan$ of spans in $\Set$. Its vertical category is $\dS
 
 \end{example}
 
-\todo[inline]{In \ref{def:local_equivalence}, do we want this to be strict pullback (local iso) or pseudo pullback (local equiv)? Similar decisions about pullbacks must be dealt with throughout the paper.}
+\todo[inline]{Throughout the paper, indicate that strict pullbacks along iso-fibs are also pseudo pullbacks.}
 \begin{definition}\label{def:local_equivalence}
    An equipment functor $F\colon\dcat{X}\to\dcat{Y}$ is a \emph{local equivalence} if the following square is a pseudo-pullback of categories:
    \begin{equation}\label{eqn:local_equiv}
@@ -1526,7 +1526,7 @@ In other words, the inclusion $\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence
    of Lemma~\ref{lem:Mon_vs_bo} extends to an equivalence of equipments.
 \end{proof}
 
-\section{Internal presheaves}\label{sec:internal_presheaves}
+\section{Internal presheaves and copresheaves}\label{sec:internal_presheaves}
 
 Presheaves on a category $\cat{C}$ can be identified with profunctors $1\tickar\cat{C}$ in $\dProf$,
 and similarly for copresheaves, which are more relevant to us. Motivated by this, we will think of
@@ -1556,13 +1556,15 @@ fiber over an object $C$ is the category of copresheaves on $C$:
    \end{equation}
 \end{definition}
 
-In other words, an object of $\CPsh(\dcat{D})$ is a pair $(C,F)$, where $C\in\Ob\dcat{D}$ is an object and $F\colon C\to\Set$ is a functor. A morphism $(C,F)\to(C',F')$ is a lax triangle
+\begin{example}
+If $\dcat{D}=\dProf$ then an object of $\CPsh(\dcat{D})$ is a pair $(C,H)$, where $C$ is a category and $H\colon C\to\Set$ is a functor. A morphism $(C,H)\to(C',H')$ is a pair $(F,F^\sharp)$ of a functor and a natural transformation, as in the lax triangle
 \begin{equation*}
 	\begin{tikzcd}[column sep=.6cm]
-		C\ar[rr]\ar[rd,"F"']&\ar[d,phantom,"\Rightarrow"]&C'\ar[dl,"F'"]\\
+		C\ar[rr,"F"]\ar[rd,"H"']&\ar[d,phantom,"\overset{F^\sharp}{\Rightarrow}" near start]&C'\ar[dl,"H'"]\\
 		&\Set
 	\end{tikzcd}
 \end{equation*}
+\end{example}
 
 \begin{lemma}\label{lem:Psh_pullback}
    Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor. Suppose that $\dcat{X}_0$ and
