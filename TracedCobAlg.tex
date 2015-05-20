@@ -1216,22 +1216,22 @@ A double category is a 2-category-like structure involving horizontal and vertic
    the converse does not hold in general.
 \end{example}
 
-\begin{definition}\todo{Do we need this? Consider deleting this and Lemma~\ref{lemma:delete_me?}.}
+% \begin{definition}\todo{Do we need this? Consider deleting this and Lemma~\ref{lemma:delete_me?}.}
 
-Let $F\colon\dcat{D}\to\dcat{E}$ be an equipment functor. We say that $F$ is \emph{fully faithful} if both $F_0$ and $F_1$ are, i.e., if both the following squares are pullbacks in $\Set$:
-$$
-	\begin{tikzcd}[column sep=2em]
-		\Mor\dcat{D}_0\ar[r,"\Mor F_0"]\ar[d]\ar[dr,phantom,"\lrcorner" very near start]&\Mor\dcat{E}_0\ar[d]\\
-		\Ob\dcat{D}_0\times\Ob\dcat{D}_0\ar[r,"\Ob F_0"']&\Ob\dcat{E}_0\times\Ob\dcat{E}_0
-	\end{tikzcd}
-\qquad
-	\begin{tikzcd}[column sep=2em]
-		\Mor\dcat{D}_1\ar[r,"\Mor F_1"]\ar[d]\ar[dr,phantom,"\lrcorner" very near start]&\Mor\dcat{E}_1\ar[d]\\
-		\Ob\dcat{D}_1\times\Ob\dcat{D}_1\ar[r,"\Ob F_1"']&\Ob\dcat{E}_1\times\Ob\dcat{E}_1
-	\end{tikzcd}
-$$
+% Let $F\colon\dcat{D}\to\dcat{E}$ be an equipment functor. We say that $F$ is \emph{fully faithful} if both $F_0$ and $F_1$ are, i.e., if both the following squares are pullbacks in $\Set$:
+% $$
+% 	\begin{tikzcd}[column sep=2em]
+% 		\Mor\dcat{D}_0\ar[r,"\Mor F_0"]\ar[d]\ar[dr,phantom,"\lrcorner" very near start]&\Mor\dcat{E}_0\ar[d]\\
+% 		\Ob\dcat{D}_0\times\Ob\dcat{D}_0\ar[r,"\Ob F_0"']&\Ob\dcat{E}_0\times\Ob\dcat{E}_0
+% 	\end{tikzcd}
+% \qquad
+% 	\begin{tikzcd}[column sep=2em]
+% 		\Mor\dcat{D}_1\ar[r,"\Mor F_1"]\ar[d]\ar[dr,phantom,"\lrcorner" very near start]&\Mor\dcat{E}_1\ar[d]\\
+% 		\Ob\dcat{D}_1\times\Ob\dcat{D}_1\ar[r,"\Ob F_1"']&\Ob\dcat{E}_1\times\Ob\dcat{E}_1
+% 	\end{tikzcd}
+% $$
 
-\end{definition}
+% \end{definition}
 
 \section{The monoids and bimodules construction}
 
@@ -1330,12 +1330,12 @@ Let $\dSpan$ be the equipment defined in Example~\ref{ex:dspan}. A monoid in $\d
 
 \end{example}
 
-\begin{lemma}\label{lemma:delete_me?}\todo{delete me?}
-   Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor. Then
-   \begin{compactitem}
-      \item if $F$ is fully faithful, then so is $\dMod(F)$,
-      \item if $F$ is a local equivalence, then so is $\dMod(F)$.
-   \end{compactitem}
+% \begin{lemma}\label{lemma:delete_me?}\todo{delete me?}
+%    Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor. Then
+%    \begin{compactitem}
+%       \item if $F$ is fully faithful, then so is $\dMod(F)$,
+%       \item if $F$ is a local equivalence, then so is $\dMod(F)$.
+%    \end{compactitem}
 \end{lemma}
 
 There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$ \todo{What do you think of this $\Ob$ notation? The idea comes from $\ndcat{S}{pan}$.}sending a monoid $M\colon c\tickar c$ to its underlying object $c$. There is also an equipment functor $U\colon\dcat{D}\to\dMod(\dcat{D})$, sending $d$ to the unit $d\tickar d$, which is a local equivalence.
