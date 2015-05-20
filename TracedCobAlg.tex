@@ -1170,7 +1170,7 @@ A double category is a 2-category-like structure involving horizontal and vertic
    $f=\id_b$.
 \end{example}
 
-\begin{example}
+\begin{example}\label{ex:dspan}
    There is an equipment $\dSpan$ of spans in $\Set$. Its vertical category is
    $\dSpan_0\coloneqq\Set$. A horizontal 1-cell between sets $A$ and $B$ is a span $A\from S\to B$,
    their composition is defined by a pullback of spans, and a 2-cell in $\dSpan$ is a commutative
@@ -1324,9 +1324,9 @@ $$
    \end{gather*}
 \end{example}
 
-\begin{example}
+\begin{example}\label{ex:mod_span_prof}
 
-A monoid in $\dSpan$ consists of a set $C$ and a span $C\from S\to C$, together with a function $e\colon C\to S$ and a function $m\colon S\times_C S\to S$, satisfying certain properties. This is precisely the data required to define a small category, whose object set is $C$ and morphism set is $S$, with identities given by $e$ and composition given by $m$. Similarly, one can identify monoid homomorphisms in $\dSpan$ with functors between categories and bimodules in $\dSpan$ with profunctors between categories. In other words, we have $\dMod(\dSpan)\iso\dProf$.
+Let $\dSpan$ be the equipment defined in Example~\ref{ex:dspan}. A monoid in $\dSpan$ consists of a set $C$ and a span $C\from S\to C$, together with a function $e\colon C\to S$ and a function $m\colon S\times_C S\to S$, satisfying certain properties. This is precisely the data required to define a small category, whose object set is $C$ and morphism set is $S$, with identities given by $e$ and composition given by $m$. Similarly, one can identify monoid homomorphisms in $\dSpan$ with functors between categories and bimodules in $\dSpan$ with profunctors between categories. In other words, we have $\dMod(\dSpan)\iso\dProf$.
 
 \end{example}
 
@@ -1453,6 +1453,8 @@ We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz
    \end{compactitem}
 \end{definition}
 
+It is proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its equipment $\dMod(\dcat{D})$ of monoids and modules is exact. Thus Proposition~\ref{prop:Prof_is_exact} follows from \ref{ex:mod_span_prof}, but we prove the result directly because it serves as a model for later exactness proofs.
+
 \begin{proposition}\label{prop:Prof_is_exact}
    The equipment $\dProf$ is exact.
 \end{proposition}
@@ -1469,10 +1471,10 @@ We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz
    $(i_M,\vec{\imath}_M)$ is a collapse. It is also simple to verify the second part of
    Definition~\ref{def:exact_equipment}: a $(M,N)$-bimodule is precisely the data of a profunctor
    $\Col{M}\tickar\Col{N}$.
-\end{proof}\todo{Is $\dMod(\dcat{D})$ exact for any $\dcat{D}$? If so, shall we just say that instead of Prop~\ref{prop:Prof_is_exact}?}
+\end{proof}
 
-\begin{example}
-   The equipment $\dSpan$ is not exact. The collapse of a monoid $C\from S\to C$ in $\dSpan$ must be
+\begin{example}\label{ex:span_not_exact}
+   The equipment $\dSpan$ from Example~\ref{ex:dspan} is not exact. The collapse of a monoid $C\from S\to C$ in $\dSpan$ must be
    its pushout $\Col{S}\iso C\sqcup_SC$, but the associated embedding is not cartesian. The second
    condition of exactness also fails.
 \end{example}
@@ -2268,7 +2270,7 @@ Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Sect
          \dMod(\dcat{D}_T)\ar[r,"\dMod(\varphi_T)"] &[1.5em] \dMod(\dcat{D}) \ar[r,"\Col{\textrm{--}}"] & \dcat{D}
       \end{tikzcd}
    \end{equation*}
-   is a \todo{clarify this}fully faithful local equivalence, and the induced 2-functor
+   is a local equivalence whose vertical part is fully faithful. The induced 2-functor
    $\rho\colon\MMon(\dcat{D}_T)\to\VVer(\dcat{D})$ is 2-essentially surjective, hence a 2-equivalence.
 \end{theorem}
 \begin{proof}
