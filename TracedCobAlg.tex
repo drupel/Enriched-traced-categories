@@ -1492,7 +1492,23 @@ We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz
 \end{proof}
 
 Recall the notion of orthogonal factorization systems for categories and strict 2-categories from
-Definition~\ref{def:orthogonal}. We recall also from~\cite[Theorem~4.17]{Schultz2015} the following theorem:
+Definition~\ref{def:orthogonal}. These notions have analogues in any equipment.
+
+\begin{definition}
+   Let $\dcat{D}$ be an equipment, and let $f\colon C\to D$ be a vertical morphism. Consider the restriction square and unit square below:
+   \[
+     \begin{tikzcd}
+      	C \ar[r,tick,"C" domA] \ar[d,"f"']
+         & C \ar[d,"f"]
+         \\
+         D \ar[r,tick,"D"']
+         & D
+         \twocellA{\vec{f}}
+     \end{tikzcd}
+   \]
+\end{definition}
+
+We recall also from~\cite[Theorem~4.17]{Schultz2015} the following theorem:
 
 \begin{theorem}\label{thm:orthogonal}
    If an equipment $\dcat{D}$ is regular (in particular, if $\dcat{D}$ is exact)
@@ -1542,7 +1558,7 @@ Proposition~\ref{prop:boff_well_named}.
 \end{lemma}
 \begin{proof}
    The equivalence simply sends any monoid $(a,M)$ to the collapse morphism $i_M\colon
-   a\twoheadrightarrow\Col{M}$, which is in $\bo$\todo{It isn't shown anywhere that $i_M$ is in $\bo$. Strengthen Theorem \ref{thm:orthogonal}?}. For any monoid homomorphism $(f,\vec{f})$, there
+   a\twoheadrightarrow\Col{M}$, which is in $\bo$. For any monoid homomorphism $(f,\vec{f})$, there
    exists a unique $\tilde{f}$ such that
    \begin{equation*}
       \begin{tikzcd}
@@ -1964,7 +1980,7 @@ The primary goal of this section is to establish the equivalence of the three fi
    \end{tikzcd}
 \end{equation}
 over $\CompCat$.
-\finish{}
+
 
 \begin{remark}
    The proof of Proposition~\ref{prop:unit_implies_monoid} is very difficult to follow in the equational form presented. We
