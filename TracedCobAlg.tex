@@ -2340,7 +2340,36 @@ Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Sect
    \end{align*}
 \end{corollary}
 
-\begin{corollary}\label{cor:FrCompProf_Psh_Mon}
+\begin{remark}
+   Because the monads $\TM$ and $\TT$ are in fact isomorphic, we have
+   \begin{equation*}
+      \Set_{\TT} \iso \Set_{\TM} \iso \FrMonCat.
+   \end{equation*}
+   By combining the definitions of $\dFrTrProf$ and $\dTrProf$, it is easy to see that the square
+   \begin{equation*}
+      \begin{tikzcd}
+         \dFrTrProf_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+            & \dCompProf_1 \ar[d,two heads] \\
+         \FrMonCat\times\FrMonCat \ar[r]
+            & \CompCat\times\CompCat
+      \end{tikzcd}
+   \end{equation*}
+   is a pullback, where the bottom functor is given in each variable by the composition
+   \begin{equation*}
+      \begin{tikzcd}
+         \FrMonCat \ar[r,"\alpha"] & \FrCompCat \ar[r] & \CompCat
+      \end{tikzcd}
+   \end{equation*}
+   using the functor $\alpha$ defined in Section~\ref{sec:free_and_geometry}. In this way, the
+   equipment $\dFrTrProf$ can be defined formally, purely in terms of $\dCompProf$, $\dMonProf$, and
+   the $\FM\dashv\UM$ adjunction. Thus Corollary~\ref{cor:TrCat_ObjectFree} can be seen as providing
+   an alternative \emph{definition} of the 2-category $\TTrCat$.
+\end{remark}
+
+We end this section by recording two simple lemmas which will be needed in the proofs of our main
+results.
+
+\begin{lemma}\label{lem:FrCompProf_Psh_Mon}
    There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1.5em]
@@ -2349,7 +2378,7 @@ Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Sect
             & \FrCompCat &
       \end{tikzcd}
    \end{equation*}
-\end{corollary}
+\end{lemma}
 \begin{proof}
    The equipment functor $\dFrCompProf\to\dCompProf$ is (by definition) a local equivalence
    (Definition~\ref{def:local_equivalence}), so the result follows from~Proposition~\ref{Prop:mon_prof_equivalence}, and Lemmas~\ref{lem:Mon_pullback} and~\ref{lem:Psh_pullback}.
@@ -2399,7 +2428,7 @@ Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Sect
 %   \end{equation*}
 %\end{proposition}
 
-\begin{corollary}\label{cor:FrMonCompProf_Psh_Mon}
+\begin{lemma}\label{lem:FrMonCompProf_Psh_Mon}
    There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1.5em]
@@ -2408,11 +2437,11 @@ Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Sect
             & \FrMonCat &
       \end{tikzcd}
    \end{equation*}
-\end{corollary}
+\end{lemma}
 \begin{proof}
    The equipment functor $\dFrTrProf\to\dFrCompProf$ is (by definition) a local equivalence
    (Definition~\ref{def:local_equivalence}), so the result follows from
-   Corollary~\ref{cor:FrCompProf_Psh_Mon} and Lemmas~\ref{lem:Mon_pullback}~ and~\ref{lem:Psh_pullback}.
+   Corollary~\ref{cor:FrCompProf_Psh_Mon} and Lemmas~\ref{lem:Mon_pullback} and \ref{lem:Psh_pullback}.
 \end{proof}
 
 \section{Deducing the main results}\label{sec:deducing}
@@ -2440,7 +2469,9 @@ and of course the left map is bijective on objects. Hence, the result follows fr
 &\equiv\CPsh(\dFrTrProf)\\
 &\equiv\Mon(\dFrTrProf)
 \end{align*}
-given by (\ref{dia:TMvsFrMonCat}), Corollary~\ref{cor:free_compact_is_Cob}, Definitions~\ref{def:copresheaves},~\ref{def:FrMonProf_FrCompProf},~and~\ref{def:FrMonCompProf}, and Corollary~\ref{cor:FrMonCompProf_Psh_Mon}.
+given by (\ref{dia:TMvsFrMonCat}), Corollary~\ref{cor:free_compact_is_Cob},
+Definitions~\ref{def:copresheaves}, \ref{def:FrMonProf_FrCompProf}, and \ref{def:FrMonCompProf}, and
+Lemma~\ref{lem:FrMonCompProf_Psh_Mon}.
 \end{proof}
 
 \begin{named}{Theorem B}\label{thm:TheoremB}
