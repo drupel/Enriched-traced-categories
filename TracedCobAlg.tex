@@ -1353,12 +1353,12 @@ There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dc
 \end{lemma}
 
 \begin{definition}
-   Let $\dcat{D}$ be an equipment. There is a fibration $\Pt(\dcat{D})\twoheadrightarrow\dcat{D}_0$,
+   Let $\dcat{D}$ be an equipment. There is a fibration $\Ptd(\dcat{D})\twoheadrightarrow\dcat{D}_0$,
    whose objects are proarrows $A\colon d\tickar d$ in $\dcat{D}$ equipped with a unit (but not a
    multiplication), and whose morphisms are 2-cells (as in a monoid homomorphism) which preserve the
    units.
 
-   The fibration morphism $\Mon(\dcat{D})\to\dcat{D}_1$ factors through $\Pt(\dcat{D})$ in the
+   The fibration morphism $\Mon(\dcat{D})\to\dcat{D}_1$ factors through $\Ptd(\dcat{D})$ in the
    evident way.
 \end{definition}
 
@@ -1956,28 +1956,27 @@ Let $\ccat{C}$ be $\MMonCat, \TTrCat$, or $\CCompCat$, each of which is regular,
 \end{proposition}
 
 \section{Special properties of CompProf}
-\todo[inline]{CompProf closed under collapse in MonProf}
-\todo[inline]{Replace $\cat{C}$ with $C$ and replace $A,B$ with $a,b$, etc.}
 
 The primary goal of this section is to establish the equivalence of the three fibrations
 \begin{equation}\label{eqn:primary_goal}
    \begin{tikzcd}
-      \CPsh(\dCompProf) \equiv \Pt(\dCompProf) \equiv \Mon(\dCompProf).
+      \CPsh(\dCompProf) \equiv \Ptd(\dCompProf) \equiv \Mon(\dCompProf).
    \end{tikzcd}
 \end{equation}
 over $\CompCat$.
+\finish{}
 
 \begin{remark}
    The proof of Proposition~\ref{prop:unit_implies_monoid} is very difficult to follow in the equational form presented. We
    highly recommend that the interested reader convert these equations into string diagrams. If
-   $N\colon\cat{C}\tickar\cat{C}$ is a profunctor, the trick is to draw elements $n\in N(c_1,c_2)$
+   $N\colon C\tickar C$ is a profunctor, the trick is to draw elements $n\in N(c_1,c_2)$
    as if they were arrows $c_1\to c_2$, which can be composed on either side with actual morphisms
-   of $\cat{C}$. The operation $\boxtimes$ of a monoidal profunctor then looks like the tensor of
+   of $ C$. The operation $\boxtimes$ of a monoidal profunctor then looks like the tensor of
    morphisms.
 \end{remark}
 
 \begin{proposition}\label{prop:unit_implies_monoid}
-   The forgetful functor $\Mon(\dCompProf)\to\Pt(\dCompProf)$ is an equivalence of fibrations.
+   The forgetful functor $\Mon(\dCompProf)\to\Ptd(\dCompProf)$ is an equivalence of fibrations over $\CompCat$.
 \end{proposition}
 \begin{proof}
    We can define a multiplication on $N$ by the following formula: given any $n_1\in N(c,d)$ and $n_2\in N(d,e)$,
@@ -2024,7 +2023,7 @@ over $\CompCat$.
       &\qquad \boxtimes\Bigl[\bigl(\lambda_{e'}\circ(\epsilon_{d'}\otimes\id_{e'})\bigr)\cdot\bigl(n'_1\boxtimes i(\id_{d'^*})\boxtimes n'_2\bigr)\cdot\bigl((\id_{c'}\otimes\eta_{d'})\circ\rho_{c'}^{-1}\bigr)\Bigr]
    \end{align*}
 
-   Now suppose that $M\in\MProf(\cat{C},\cat{C})$ is another monoidal profunctor with unit, and that $\phi\colon M\to N$ is a monoidal profunctor morphism which preserves units.
+   Now suppose that $M\in\MProf(C, C)$ is another monoidal profunctor with unit, and that $\phi\colon M\to N$ is a monoidal profunctor morphism which preserves units.
    Then it is simple to check that $\phi$ also preserves the canonical multiplications:
    \begin{align*}
       \phi(n_2\bullet n_1) &= \phi\Bigl[\bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(n_1\boxtimes i_M(\id_{d^*})\boxtimes n_2)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr)\Bigr] \\
@@ -2052,22 +2051,22 @@ We can define the functors
       & \CompCat &
    \end{tikzcd}
 \end{equation}
-where $FM\colon\op{\cat{C}}\times\cat{C}\to\Set$ is defined by $FM(A,B)=M(A^*\otimes B)$, and in the
-other direction, $N\colon\op{\cat{C}}\times\cat{C}\to\Set$ is given by $UN(A)=N(I,A)$.
+where $FM\colon\op{C}\times C\to\Set$ is defined by $FM(A,B)=M(a^*\otimes b)$, and in the
+other direction, $N\colon\op{C}\times C\to\Set$ is given by $UN(a)=N(I,a)$.
 
 \begin{proposition}\label{Prop:canonical unit}
    The functor $F\colon\CPsh(\dCompProf)\to\End(\dCompProf)$, from (\ref{eqn:functors_1C_CC}),
-   factors through $\Pt(\dCompProf)$, and hence also through $\Mon(\dCompProf)$.
+   factors through $\Ptd(\dCompProf)$, and hence also through $\Mon(\dCompProf)$.
 \end{proposition}
 \begin{proof}
-   Given any $f\colon c\to d$ in $\cat{C}$, we must define an element $i(f)\in FM(c,d)=M(c^*\otimes
+   Given any $f\colon c\to d$ in $ C$, we must define an element $i(f)\in FM(c,d)=M(c^*\otimes
    d)$. Since $M$ is a monoidal profunctor, there is a given unit element $I_M\in M(I)$, with which
    we can define $i(f)=((\id_{c^*}\otimes f)\circ\eta_c)\cdot I_M$.
 \end{proof}
 
 \begin{lemma}\label{Lem:comp prof bijection}
-   Given any $N\in\Pt(\dCompProf)$, there is a canonical bijection $N(a,b)\iso N(I,a^*\otimes b)$ for
-   any objects $a,b\in\cat{C}$.
+   Given any $N\in\Ptd(\dCompProf)$, there is a canonical bijection $N(a,b)\iso N(I,a^*\otimes b)$ for
+   any objects $a,b\in C$.
 \end{lemma}
 \begin{proof}
    Given $n\in N(a,b)$, we can construct an element
@@ -2094,11 +2093,11 @@ other direction, $N\colon\op{\cat{C}}\times\cat{C}\to\Set$ is given by $UN(A)=N(
 \end{proposition}
 \begin{proof}
    By Propositions~\ref{Prop:canonical unit}~and~\ref{Prop:canonical unit}, the functor
-   $F\colon\MProf(1,\cat{C}) \to \MProf(\cat{C},\cat{C})$ naturally factors through
-   $\Mon(\MProf(\cat{C},\cat{C}))\equiv\MProf{(\cat{C},\cat{C})}_*$.
+   $F\colon\MProf(1, C) \to \MProf(C, C)$ naturally factors through
+   $\Mon(\MProf(C, C))\equiv\MProf{(C, C)}_*$.
 
-   If $M\in\MProf(1,\cat{C})$ then $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any
-   $a\in\cat{C}$. On the other hand, given $N\in\Mon(\MProf(\cat{C},\cat{C}))$,
+   If $M\in\MProf(1, C)$ then $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any
+   $a\in C$. On the other hand, given $N\in\Mon(\MProf(C, C))$,
    $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from Lemma~\ref{Lem:comp prof
    bijection}.
 \end{proof}
