@@ -180,16 +180,17 @@ and we can compose it with $\Lax(-,\Set)$ to obtain a functor which we denote
   (\LCob{\bullet})\alg\colon\Set_{\TT}^{\mathrm{op}}\too\Cat.
 \end{equation}
 By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect the equivalences
-(\ref{eq:single_fiber}) for varying $\LabSet$ into a single functor, which is close to being an equivalence (see \ref{thm:TheoremA}). The proof of the following result can be found in Section~\ref{sec:deducing}.
+(\ref{eq:single_fiber}) for varying $\LabSet$ into a single functor, which is close to being an equivalence (see \ref{thm:TheoremA}). The same result holds when $\TT$ is replaced by $\TC$, the free compact category monad. The proof of the following result can be found in Section~\ref{sec:deducing}.
 
 \begin{named}{Theorem}\label{thm:TheoremA}
   There is a fully faithful functor of 1-categories
   \begin{equation*}
      \int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrCat
   \end{equation*}
-  such that the induced 2-functor $\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg\to\TTrCat$ is 2-essentially surjective. The above statements also hold if $\TT$ is replaced by $\TC$ and $\TrCat,\TTrCat$ are replaced by $\CompCat,\CCompCat$.
-\end{named}
+  such that the induced 2-functor $\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg\to\TTrCat$ is 2-essentially surjective. 
 
+  The above statements also hold when $\TT$ is replaced by $\TC$ and when $\TrCat$ and $\TTrCat$ are replaced by $\CompCat$ and $\CCompCat$.
+\end{named}
 
 \todo[inline]{Add something about props here.}
 \todo[inline]{And maybe a comment about the weird form of Theorem A, to the effect that we shouldn't
