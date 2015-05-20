@@ -1494,23 +1494,31 @@ We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz
 \end{proof}
 
 Recall the notion of orthogonal factorization systems for categories and strict 2-categories from
-Definition~\ref{def:orthogonal}. These notions have analogues in any equipment.
+Definition~\ref{def:orthogonal}. These notions have analogues in any equipment. Definition~\ref{def:boff} and Theorem~\ref{thm:orthogonal} are taken from~\cite[Definitions~4.3~and~4.5, Theorem~4.17]{Schultz2015}:
 
-\begin{definition}
+\begin{definition}\label{def:boff}
    Let $\dcat{D}$ be an equipment, and let $f\colon C\to D$ be a vertical morphism. Consider the restriction square and unit square below:
    \[
-     \begin{tikzcd}
-      	C \ar[r,tick,"C" domA] \ar[d,"f"']
+      \begin{tikzcd}
+         C \ar[r,tick,"{D(f,f)}" domA] \ar[d,"f"']
          & C \ar[d,"f"]
          \\
-         D \ar[r,tick,"D"']
+         D \ar[r,tick,"D"' codA]
          & D
-         \twocellA{\vec{f}}
+         \twocellalt{A}{\tn{cart}}
+     \end{tikzcd}
+  \qquad\qquad
+     \begin{tikzcd}
+         C \ar[r,tick,"C" domA] \ar[d,"f"']
+         & C \ar[d,"f"]
+         \\
+         D \ar[r,tick,"D"' codA]
+         & D
+         \twocellA{\vec{\id_f}}
      \end{tikzcd}
    \]
+   We say that $f$ is $\bo$ if the restriction square is a collapse (where $D(f,f)$ has the induced monoid structure), and we say that $f$ is $\ff$ if the unit square is cartesian.
 \end{definition}
-
-We recall also from~\cite[Theorem~4.17]{Schultz2015} the following theorem:
 
 \begin{theorem}\label{thm:orthogonal}
    If an equipment $\dcat{D}$ is regular (in particular, if $\dcat{D}$ is exact)
@@ -1518,8 +1526,6 @@ We recall also from~\cite[Theorem~4.17]{Schultz2015} the following theorem:
    $(\bo,\ff)$. In particular, there is an orthogonal factorization system $(\bo,\ff)$ on the
    vertical 1-category $\dcat{D}_0$.
 \end{theorem}
-
-\todo{recall definition of $\bo$ and $\ff$}
 
 The notation $\bo$ and $\ff$ comes from the case where $\dcat{D}=\dProf$, for which they correspond
 to the functors that are bijective on objects and fully faithful, respectively. See also
