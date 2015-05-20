@@ -845,7 +845,9 @@ The following facts hold for any traced category $\cat{C}$:
    \item If $\cat{D}$ is a category and $F\colon\cat{D}\to\cat{C}$ a fully faithful symmetric
       monoidal functor, then $\cat{D}$ has a unique trace for which $F$ is a traced functor.
    \item If $\cat{C}$ is compact then the unit $\cat{C}\To{\equiv}\Int(\cat{C})$ is an equivalence.
-   \item Suppose that $\cat{C'}$ is a traced category and that $F\colon \cat{C}\to \cat{C}'$ is a traced functor. If $F$ is bijective-on-objects (resp. fully faithful), then so is $\Int(F)$.
+   \item Suppose that $\cat{C'}$ is a traced category and that $F\colon \cat{C}\to \cat{C}'$ is a
+      traced functor. Then $F$ is bijective-on-objects (resp. fully faithful) if and only if
+      $\Int(F)$ is.
 \end{compactenum}
 \end{lemma}
 \begin{proof}
@@ -1967,9 +1969,23 @@ Recall the definition of embedding from \ref{def:embedding}.
 \end{proof}
 
 \begin{proposition}\label{prop:boff_well_named}
-\todo{Does this require proof?}
-Let $\ccat{C}$ be $\MMonCat, \TTrCat$, or $\CCompCat$, each of which is regular, and let $U\colon\ccat{C}\to\Cat$ be the forgetful functor. A morphism $f$ in $\ccat{C}$ is $\bo$ (resp. $\ff$) in the sense of Theorem~\ref{thm:orthogonal} if and only if $U(f)$ is bijective-on-objects (resp. fully faithful).
+   Let $\dcat{D}$ be $\dMonProf$, $\dTrProf$, or $\dCompProf$, each of which is exact. A vertical morphism
+   $F$ in $\dcat{D}$ is in $\bo$ (resp. $\ff$) in the sense of Theorem~\ref{thm:orthogonal} if and only
+   $F$ is bijective-on-objects (resp. fully faithful) in the usual sense.
 \end{proposition}
+\begin{proof}
+   For $\dMonProf$, this is clear by inspection, and as $\dCompProf$ is a full sub-equipment of
+   $\dMonProf$ which is closed under collapse, it is clear here as well.
+
+   Now we consider $\dTrProf$. By the construction of collapses in
+   Proposition~\ref{prop:TrProf_exact}, a vertical morphism $F\colon T\to T'$ is in $\bo$ if and
+   only if $\Int(F)$ is in $\bo$, and the underlying monoidal functor $\UTM(F)$ is in $\bo$.
+   By Lemma~\ref{lemma:fully_faithful_and_trace}, $F$ is bijective-on-objects if and only if
+   $\Int(F)$ is, and the same is clearly true of $\UTM$.
+
+   Finally, by the definition of $\dTrProf$, a vertical morphism $F$ is in $\ff$ if and only if
+   $\Int(F)$ is, so the result again follows from Lemma~\ref{lemma:fully_faithful_and_trace}.
+\end{proof}
 
 \section{Special properties of CompProf}
 
@@ -1983,12 +1999,12 @@ over $\CompCat$.
 
 
 \begin{remark}
-   The proof of Proposition~\ref{prop:unit_implies_monoid} is very difficult to follow in the equational form presented. We
-   highly recommend that the interested reader convert these equations into string diagrams. If
-   $N\colon C\tickar C$ is a profunctor, the trick is to draw elements $n\in N(c_1,c_2)$
-   as if they were arrows $c_1\to c_2$, which can be composed on either side with actual morphisms
-   of $ C$. The operation $\boxtimes$ of a monoidal profunctor then looks like the tensor of
-   morphisms.
+   The proof of Proposition~\ref{prop:unit_implies_monoid} is very difficult to follow in the
+   equational form presented. We highly recommend that the interested reader convert these equations
+   into string diagrams. If $N\colon C\tickar C$ is a profunctor, the trick is to draw elements
+   $n\in N(c_1,c_2)$ as if they were arrows $c_1\to c_2$, which can be composed on either side with
+   actual morphisms of $ C$. The operation $\boxtimes$ of a monoidal profunctor then looks like the
+   tensor of morphisms.
 \end{remark}
 
 \begin{proposition}\label{prop:unit_implies_monoid}
