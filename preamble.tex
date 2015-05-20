@@ -5,7 +5,7 @@
 \usepackage{fixltx2e}
 \usepackage[T1]{fontenc}
 \usepackage{newpxtext}
-\usepackage[varg,bigdelims,varbb]{newpxmath}%[varbb] causes problems with hypersetup{final}
+\usepackage[varg,bigdelims]{newpxmath}
 \linespread{1.05}
 \usepackage[cal=euler,scr=rsfso]{mathalfa}
 \usepackage{bm}
@@ -19,7 +19,7 @@
 \usepackage[bookmarks=true,colorlinks=true, linkcolor=MidnightBlue, citecolor=cyan]{hyperref}
 
 \usetikzlibrary{decorations.markings,arrows.meta,calc,fit,quotes,cd}
-\hypersetup{final} 
+\hypersetup{final}
 
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\dom}{dom}
@@ -70,7 +70,7 @@
 \newcommand{\ncat}[1]{\mathbf{#1}} %named category
 \newcommand{\ccat}[1]{\mathcal{#1}} % 2-category variable
 %\newcommand{\dcat}[1]{\pmb{\mathbb{#1}}} %double category variable
-\newcommand{\dcat}[1]{\mathbb{#1}} %double category variable
+\newcommand{\dcat}[1]{\vmathbb{#1}} %double category variable
 \newcommand{\fun}[1]{#1}               %functor variable
 \newcommand{\nfun}[1]{\mathbf{#1}}  %named functor
 \newcommand{\nncat}[2]{\bm{\ccat{#1}}\ncat{#2}} %named 2-category
