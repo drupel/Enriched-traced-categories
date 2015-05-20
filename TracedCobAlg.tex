@@ -198,34 +198,26 @@ expect algebras of operads to be able to encode 2-cells.}
 
 % \section{Generalization: Lax algebras on compact categories}
 
-\todo[inline,author=Patrick]{
-  I don't think it's right anymore to say that we're proving Theorem A by means of Theorem B.
-  Rather both are falling out of more general results.
-}
-It is most convenient to prove~\ref{thm:TheoremA} by proving a more general result.
+The definition of compact closed symmetric monoidal category, hereafter \emph{compact category}, can
+be found in Section~\ref{sec:compact_and_int}, or in~\cite{MacLane}. Let $\CompCat$ denote the
+category of compact categories and strong monoidal functors between them. We will see
+(\ref{thm:orthogonal} and \ref{prop:CompProf_exact}) that there is a factorization system on
+$\CompCat$, in which the left class consists of bijective-on-objects functors and the right class
+consists of fully faithful functors. Let $\CompCat^{\bo}$ be the full subcategory of the arrow
+category $\CompCat^{\to}$ spanned by the bijective-on-objects functors.
 
-\begin{corollary}
-   There are equivalences of 2-categories
-   \begin{align*}
-      \MMon(\dFrMonProf)&\equiv\MMonCat \\
-      \MMon(\dFrTrProf)&\equiv\TTrCat \\
-      \MMon(\dFrCompProf)&\equiv\CCompCat.
-   \end{align*}
-\end{corollary}
-
-...equivalence between the category of lax functors out of any compact category $\cat{C}$ and the
-category of strong, bijective-on-objects functors out of $\cat{C}$,
+We will also prove a generalization of Theorem~\ref{thm:TheoremA}, where instead of considering lax
+functors out of categories of the form $\LCob{\LabSet}$---i.e.\ free compact categories---we
+consider lax functors out of arbitrary compact categories. For a fixed compact category $\cat{C}$,
+we have the equivalence of categories
 \begin{equation}\label{eqn:lax_compcat_bo}
-\Lax(\cat{C},\Set)\iso\cat{C}/\CompCat^{\bo}.
+   \Lax(\cat{C},\Set)\iso\cat{C}/\CompCat^{\bo}.
 \end{equation}
-As in Section~\ref{subsec:main_results}, the difficulty is allowing this equivalence to vary appropriately with $\cat{C}$.
+where $\cat{C}/\CompCat^{\bo}$ is the category of strong, bijective-on-objects functors from
+$\cat{C}$ to another compact category, with the evident commutative triangles as morphisms.
 
-The definition of compact closed symmetric
-monoidal category, hereafter \emph{compact category}, can be found in Section~\ref{sec:compact_and_int}, or in~\cite{MacLane}. Let $\CompCat$ denote the category of compact categories and strong
-monoidal functors between them. We will see (\ref{thm:orthogonal} and \ref{prop:CompProf_exact}) that there is a
-factorization system on $\CompCat$, in which the left class consists of bijective-on-objects
-functors and the right class consists of fully faithful functors. Let $\CompCat^{\bo}$ be the full
-subcategory of the arrow category $\CompCat^{\to}$ spanned by the bijective-on-objects functors.
+One advantage of this generalization is that it is more straightforward to handle changing the
+category $\cat{C}$. Namely, we will prove the following theorem:
 
 \begin{named}{Theorem B}\label{thm:TheoremB}
   There is an equivalence of fibrations
