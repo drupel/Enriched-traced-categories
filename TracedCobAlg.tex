@@ -610,7 +610,7 @@ $\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoida
 from $\cat{C}$ to $\cat{D}$. 
 
 
-\begin{warning}\todo{Is this true?}
+\begin{warning}\label{warn:symmetric}
 For the rest of this article, whenever we discuss monoidal categories, we will mean symmetric monoidal categories. For example, see the definition of $\MMonCat$ above.
 \end{warning}
 
@@ -1338,16 +1338,16 @@ Let $\dSpan$ be the equipment defined in Example~\ref{ex:dspan}. A monoid in $\d
 %    \end{compactitem}
 % \end{lemma}
 
-There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$ \todo{What do you think of this $\Ob$ notation? The idea comes from $\ndcat{S}{pan}$.}sending a monoid $M\colon c\tickar c$ to its underlying object $c$. There is also an equipment functor $U\colon\dcat{D}\to\dMod(\dcat{D})$, sending $d$ to the unit $d\tickar d$, which is a local equivalence.
+There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$ sending a monoid $M\colon c\tickar c$ to its underlying object $c=|M|$. We denote its vertical part, $\Mod(\dcat{D})\to\dcat{D}_0$ the same way. There is also an equipment functor $U\colon\dcat{D}\to\dMod(\dcat{D})$, sending $d$ to the unit $d\tickar d$, which is a local equivalence.
 
 \begin{lemma}
    Let $\dcat{D}$ be an equipment, $f\colon c\to d$ a vertical morphism, and $M\colon d\tickar d$ a
    monoid. There is a unique monoid structure on the restriction $M(f,f)$ such that the cartesian
-   2-cell is a monoid homomorphism. In other words, $\MOb_0\colon\Mon(\dcat{D})\to\dcat{D}_0$ is a
+   2-cell is a monoid homomorphism. In other words, $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ is a
    fibration, and there is a morphism of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=tiny]
-         \Mon(\dcat{D}) \ar[dr,two heads,"\MOb_0"'] \ar[rr]
+         \Mon(\dcat{D}) \ar[dr,two heads,"\MOb"'] \ar[rr]
             && \dcat{D}_1 \ar[dl,two heads] \\
          & \dcat{D}_0 &
       \end{tikzcd}
@@ -1722,7 +1722,7 @@ functors out of a varying category $\cat{C}$ are equivalent to the $\bo$ maps ou
 
 \section{Monoidal profunctors}\label{sec:monoidal_profunctors}
 
-Suppose $\cat{C}$ and $\cat{D}$ are symmetric monoidal categories. We will write
+Suppose $\cat{C}$ and $\cat{D}$ are (symmetric) monoidal categories. We will write
 \begin{gather*}
    a_{c,d,e}\colon (c\otimes d)\otimes e \to c\otimes(d\otimes e), \\
       \lambda_c\colon I\otimes c\to c,
@@ -1743,7 +1743,9 @@ element $m_1\boxtimes m_2\in M(c_1\otimes c_2,d_1\otimes d_2)$ such that
 as well as a distinguished element $I_M\in M(I,I)$ such that $\lambda_d\cdot(I_M\boxtimes
 m)\cdot\lambda^{-1}_c = m = \rho_d\cdot(m\boxtimes I_M)\cdot\rho^{-1}_c$ for any $m\in M(c,d)$. If
 moreover $m_2\boxtimes m_1 = \sigma_{d_1,d_2}\cdot(m_1\boxtimes m_2)\cdot\sigma_{c_1,c_2}^{-1}$ then
-we say $M$ is \emph{symmetric monoidal}.
+one says $M$ is \emph{symmetric monoidal}.%
+\footnote{We will generally suppress the word \emph{symmetric} since all monoidal categories are by assumption; see Warning~\ref{warn:symmetric}.}
+
 
 A \emph{monoidal profunctor morphism} $\phi\colon M\to N$ is simply a monoidal transformation. Spelling
 this out in bimodule notation, $\phi$ is an ordinary morphism of profunctors such that
