@@ -2182,9 +2182,15 @@ that these are morphisms of fibrations, i.e.\ preserve cartesian morphisms.
 
 \section{Monoids on free objects}
 
-If we want to modify theorem~\ref{thm:Mod_vs_bo} to get an equivalence with $\dcat{D}$ rather than
-$\dcat{D}^{\bo}$, we need to restrict to objects of $\dcat{D}$ which are ``free''. To provide a
-notion of freeness, suppose we have a category $\cat{C}$ and an ``underlying'' functor
+Theorem~\ref{thm:Mod_vs_bo} is a key piece in the proof of \ref{thm:TheoremA}, but we will need a
+modification for the proofs of \ref{thm:TheoremB} and \ref{cor:CorollaryB}. The latter results are
+concerned with compact (respectively traced) categories which are ``object-free''.
+Theorem~\ref{thm:Verts} provides the modification of Theorem~\ref{thm:Mod_vs_bo} in a general form,
+which we then specialize to the cases of interest for the present paper in
+Corollary~\ref{cor:TrCat_ObjectFree}.
+
+We first need to capture this idea of object-free monoidal categories in a general, abstract
+form. Let $\dcat{D}$ be an equipment together with a category $\cat{C}$ and an ``underlying'' functor
 $U\colon\dcat{D}_0\to\cat{C}$ with a left adjoint $F\colon\cat{C}\to\dcat{D}_0$. Let $T=UF$ be the
 induced monad on $\cat{C}$.
 
@@ -2194,13 +2200,13 @@ of $F$ (the ``free'' objects). More concretely:
 \begin{definition}
    Let $\dcat{D}$, $U$, $F$, and $T$ be as above. $\dcat{D}_T$ is the equipment with vertical
    category $(\dcat{D}_T)_0$ the Kleisli category of $T$, and $\dcat{D}_T\coloneqq i^*\dcat{D}$,
-   where $i\colon\cat{C}_T\to\dcat{D}_0$ is the canonical functor induced by the $F\dashv U$
+   where $i\colon\cat{C}_T\to\dcat{D}_0$ is the canonical fully-faithful functor induced by the $F\dashv U$
    adjunction.
    
    We will write $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ for the induced local equivalence.
 \end{definition}
 
-The equipment functor $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ is a fully faithful local equivalence,
+The equipment functor $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ is a fully-faithful local equivalence,
 hence the induced $\dMod(\varphi_T)\colon\dMod(\dcat{D}_T)\to\dMod(\dcat{D})$ is as well. If
 $\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ to identify
 $\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the
@@ -2271,12 +2277,16 @@ Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Sect
    The objects of $\dcat{D}_T^{\bo}$ are bijective-on-objects morphisms of the form
    $F(c)\twoheadrightarrow D$ where $c$ is an object in $\cat{C}$ and $D$ is an object in
    $\dcat{D}$. Intuitively, we can think of the objects of $\dcat{D}_T^{\bo}$ (or equivalently
-   $\dMod(\dcat{D}_T)$ as objects in $\dcat{D}$ which are ``free-on-objects''.
+   $\dMod(\dcat{D}_T)$) as objects in $\dcat{D}$ which are \emph{object-free}.
    
    For instance, every category is free-on-objects, because every category admits a
    bijective-on-objects functor from a discrete category. On the other hand, a monoidal category is
    free-on-objects if the set of objects form a free monoid under the tensor product.
 \end{remark}
+
+The next theorem can be seen as saying that, for any exact equipment $\dcat{D}$ satisfying the
+conditions of the theorem, the vertical 2-category $\Ver(\dcat{D})$ is 2-equivalent to the
+sub-2-category spanned by the object-free objects.
 
 \begin{theorem}\label{thm:Verts}
    Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
