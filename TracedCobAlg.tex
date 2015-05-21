@@ -42,8 +42,8 @@
 \end{abstract}
 Global todo's:
 \begin{enumerate}
-   \item Consider the title, ``Traced categories, compact categories, and lax functors".
    \item Uncomment the $\backslash${listoftodos} command in latex below.
+   \item Add keywords: Traced categories, compact categories, lax functors, equipments, monoidal categories, operads, factorization systems.
 \end{enumerate}
 %\listoftodos
 
@@ -172,8 +172,9 @@ monoid on a set $\LabSet$ and $\cat{C}'$ is the free monoid on a set $\LabSet'$.
 $F\colon \cat{C}\to \cat{C'}$ sends each object in $\LabSet$ to the tensor product of finitely many
 objects in $\LabSet'$; that is, it induces a function $\Ob F\colon\LabSet\to\TT(\LabSet')$, where
 $\TT\colon\Set\to\Set$ is the free monoid monad. Let $\Set_{\TT}$ denote the Kleisli category of
-this monad, so $\Ob F$ is identified with a morphism in $\Set_{\TT}$. There is a functor
-$(\LCob{\bullet})\colon\Set_{\TT}\to\CompCat$ (see~\eqref{dia:TMvsFrMonCat} and~\eqref{eqn:FMC}),
+this monad, so $\Ob F$ is identified with a morphism in $\Set_{\TT}$. The compact category $\Cob/\LabSet$ is functorial in $\LabSet\in\Set$, and we will show later that this functor extends to functors
+$$(\LCob{\bullet})\colon\Set_{\TT}\to\CompCat\qquad\tn{and}\qquad(\LCob{\bullet})\colon\Set_{\TC}\to\CompCat$$ 
+(see~\eqref{dia:TMvsFrMonCat} and~\eqref{eqn:FMC}),
 \todo{Patrick: check this paragraph; is $(\LCob{\bullet})$ clear enough notation?}%
 and we can compose it with $\Lax(-,\Set)$ to obtain a functor which we denote
 \begin{equation}\label{eqn:cob/bullet}
@@ -182,7 +183,7 @@ and we can compose it with $\Lax(-,\Set)$ to obtain a functor which we denote
 By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect the equivalences
 (\ref{eq:single_fiber}) for varying $\LabSet$ into a single functor, which is close to being an equivalence (see \ref{thm:TheoremA}). The same result holds when $\TT$ is replaced by $\TC$, the free compact category monad. The proof of the following result can be found in Section~\ref{sec:deducing}.
 
-\begin{named}{Theorem}\label{thm:TheoremA}
+\begin{named}{Theorem A}\label{thm:TheoremA}
   There is a fully faithful functor of 1-categories
   \begin{equation*}
      \int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrCat
@@ -192,7 +193,6 @@ By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect 
   The above statements also hold when $\TT$ is replaced by $\TC$ and when $\TrCat$ and $\TTrCat$ are replaced by $\CompCat$ and $\CCompCat$.
 \end{named}
 
-\todo[inline]{Add something about props here.}
 \todo[inline]{And maybe a comment about the weird form of Theorem A, to the effect that we shouldn't
 expect algebras of operads to be able to encode 2-cells.}
 
@@ -230,7 +230,7 @@ category $\cat{C}$. Namely, we will prove the following theorem:
       \end{tikzcd}
    \end{equation*}
 \end{named}
-
+\todo[inline]{Combine Theorem B and Corollary B.}
 Recall from~\cite{JoyalStreetVerity} that traced categories are full subcategories of compact
 categories.  The Int construction, applied to a traced category $\cat{C}$, returns the smallest
 compact category $\Int(\cat{C})$ of which it is a monoidal subcategory; we call $\Int(\cat{C})$ the
@@ -259,7 +259,6 @@ We can give a better high-level story once we have reviewed equipments; see the 
 
 In this section, we give a bit more intuition about the connection between wiring diagrams and cobordisms, and the equivalence between the category of traced categories
 and the category of cobordism algebras.
-\todo[inline]{Combine this section with \ref{sec:traced_string_cob}?}
 
 \subsection{Wiring diagrams and $\Cob$}\label{sec:wds_and_cob}
 
@@ -500,7 +499,7 @@ which is both injective and surjective, we can obtain the desired indexing opera
 
 \section{Plan of the paper} 
 
-Write Plan.
+\todo[inline]{Write Plan.}
 
 \section*{Acknowledgments}
 
@@ -984,7 +983,7 @@ In $\CCat$, the class of essentially surjective functors is left pseudo-orthogon
 
 \begin{remark}
 
-As in Definition~\ref{def:orthogonal}, we will use the hooked arrow $\inj$ to indicate $\ff$ morphisms and the two-headed arrow $\tto$ to indicate $\bo$ morphisms. However, we sometimes use the latter symbol to indicate fibrations of categories (e.g., as we did in \ref{thm:TheoremB}). These two uses of the symbol $\tto$ can be distinguished as follows. If the arrow occurs between objects in an equipment, then it indicates a $\bo$ map; if it occurs as a structural part of a given equipment\todo{Patrick: can this be better phrased?}, e.g., as in Definition~\ref{def:equipment}, then it indicates a fibration. 
+As in Definition~\ref{def:orthogonal}, we will use the hooked arrow $\inj$ to indicate $\ff$ morphisms and the two-headed arrow $\tto$ to indicate $\bo$ morphisms. However, we sometimes use the latter symbol to indicate fibrations of categories (e.g., as we did in \ref{thm:TheoremB}). These two uses of the symbol $\tto$ can be distinguished as follows. If the arrow occurs between objects in an equipment, then it indicates a $\bo$ map; if it occurs as a structural part of a given equipment, e.g., as in Definition~\ref{def:equipment}, then it indicates a fibration. 
 
 \end{remark}
 
@@ -1904,9 +1903,6 @@ definition, and the remainder of this paper provides further support.
    therefore $\alpha$ is as well. Hence $\alpha$ is an isomorphism, completing the proof.
 \end{proof}
 
-Recall the definition of embedding from \ref{def:embedding}.
-\todo{Why is this here? This whole section is about exactness/collapse.}
-
 \begin{proposition}\label{prop:TrProf_exact}
    The equipment $\dTrProf$ is exact.
 \end{proposition}
@@ -2352,7 +2348,7 @@ sub-2-category spanned by the object-free objects.
 \end{proof}
 
 \begin{corollary}\label{cor:TrCat_ObjectFree}
-   There are equivalences of 2-categories
+   There are equivalences of 2-categories \todo{Rewrite this in parallel with Theorem~\ref{thm:Verts}.}
    \begin{align*}
       \MMon(\dFrMonProf)&\equiv\MMonCat \\
       \MMon(\dFrTrProf)&\equiv\TTrCat \\
@@ -2465,6 +2461,8 @@ results.
 \end{proof}
 
 \section{Deducing the main results}\label{sec:deducing}
+
+\todo[inline]{Deal with this section: sync with intro and prove.}
 
 \begin{named}{Theorem A}
   There is a fully faithful functor of 1-categories
