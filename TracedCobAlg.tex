@@ -220,14 +220,15 @@ One advantage of this generalization is that it is more straightforward to handl
 category $\cat{C}$. Namely, we will prove the following theorem:
 
 \begin{named}{Theorem B}\label{thm:TheoremB}
-  There is an equivalence of fibrations
-  \begin{equation*}
-     \begin{tikzcd}[column sep=0em]
-        \int^{\cat{C}\in\CompCat}\Lax(\cat{C},\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
-           && \CompCat^{\bo} \ar[dl,two heads,"\dom"] \\
-           & \CompCat &
-     \end{tikzcd}
-  \end{equation*}
+   There is an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=-1.8em]
+         \int\limits^{\mathclap{\cat{C}\in\CompCat}} \Lax(\cat{C},\Set)
+               \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \CompCat^{\bo} \ar[dl,two heads,"\dom"] \\
+         & \CompCat &
+      \end{tikzcd}
+   \end{equation*}
 \end{named}
 
 Recall from~\cite{JoyalStreetVerity} that traced categories are full subcategories of compact
@@ -241,14 +242,15 @@ as~\ref{cor:CorollaryB}, from which~\ref{thm:TheoremA} follows. These are proved
 Section~\ref{sec:deducing}.
 
 \begin{named}{Corollary B}\label{cor:CorollaryB}
-  There is an equivalence of fibrations
-  \begin{equation*}
-     \begin{tikzcd}[column sep=0em]
-        \int^{\cat{C}\in\TrCat}\Lax(\Int(\cat{C}),\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
-           && \TrCat^{\bo} \ar[dl,two heads,"\dom"] \\
-           & \TrCat &
-     \end{tikzcd}
-  \end{equation*}
+   There is an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=-1em]
+         \int\limits^{\mathclap{\cat{C}\in\TrCat}} \Lax(\Int(\cat{C}),\Set)
+               \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \TrCat^{\bo} \ar[dl,two heads,"\dom"] \\
+         & \TrCat &
+      \end{tikzcd}
+   \end{equation*}
 \end{named}
 
 We can give a better high-level story once we have reviewed equipments; see the introduction to Section~\ref{sec:equipments_monoidal_profunctors}. For the remainder of the introduction, we will attempt to build intuition.
