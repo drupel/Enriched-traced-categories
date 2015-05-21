@@ -2112,7 +2112,8 @@ We can define the functors
    \end{tikzcd}
 \end{equation}
 where $FM\colon\op{C}\times C\to\Set$ is defined by $FM(A,B)=M(a^*\otimes b)$, and in the
-other direction, $N\colon\op{C}\times C\to\Set$ is given by $UN(a)=N(I,a)$.
+other direction, $N\colon\op{C}\times C\to\Set$ is given by $UN(a)=N(I,a)$. It is simple to check
+that these are morphisms of fibrations, i.e.\ preserve cartesian morphisms.
 
 \begin{proposition}\label{Prop:canonical unit}
    The functor $F\colon\CPsh(\dCompProf)\to\End(\dCompProf)$, from (\ref{eqn:functors_1C_CC}),
@@ -2125,8 +2126,8 @@ other direction, $N\colon\op{C}\times C\to\Set$ is given by $UN(a)=N(I,a)$.
 \end{proof}
 
 \begin{lemma}\label{Lem:comp prof bijection}
-   Given any $N\in\Ptd(\dCompProf)$, there is a canonical bijection $N(a,b)\iso N(I,a^*\otimes b)$ for
-   any objects $a,b\in C$.
+   Given any $N\in\Ptd(\dCompProf)$, there is a canonical natural bijection $N(a,b)\iso
+   N(I,a^*\otimes b)$ for any objects $a,b\in C$.
 \end{lemma}
 \begin{proof}
    Given $n\in N(a,b)$, we can construct an element
@@ -2137,7 +2138,7 @@ other direction, $N\colon\op{C}\times C\to\Set$ is given by $UN(a)=N(I,a)$.
    \[
       \bigl(\lambda_b\circ(\epsilon_a\otimes\id_b)\bigr)\cdot(i(\id_a)\boxtimes n')\cdot\rho_a^{-1} \in N(a,b).
    \]
-   It is simple to check that this defines a bijection.
+   It is simple to check that this defines a natural bijection.
 \end{proof}
 
 \begin{proposition}\label{Prop:mon_prof_equivalence}
@@ -2149,17 +2150,16 @@ other direction, $N\colon\op{C}\times C\to\Set$ is given by $UN(a)=N(I,a)$.
             & \CompCat &
       \end{tikzcd}
    \end{equation*}
-   \todo[author=Patrick]{Fix proof.}
 \end{proposition}
 \begin{proof}
-   By Propositions~\ref{Prop:canonical unit}~and~\ref{Prop:canonical unit}, the functor
-   $F\colon\MProf(1, C) \to \MProf(C, C)$ naturally factors through
-   $\Mon(\MProf(C, C))\equiv\MProf{(C, C)}_*$.
+   By Proposition~\ref{Prop:canonical unit}, the functor
+   $F\colon\CPsh(\dCompProf)\to\End(\dCompProf)$ naturally factors through
+   $\Ptd(\dCompProf)\equiv\Mon(\dCompProf)$.
 
-   If $M\in\MProf(1, C)$ then $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any
-   $a\in C$. On the other hand, given $N\in\Mon(\MProf(C, C))$,
-   $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from Lemma~\ref{Lem:comp prof
-   bijection}.
+   If $M\in\CPsh(\dCompProf)$, i.e.\ $M$ is a lax functor $C\to\Set$ for some compact $C$, then
+   $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any $a\in C$. On the other hand, given
+   $N\in\Mon(\dCompProf)$, $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from
+   Lemma~\ref{Lem:comp prof bijection}.
 \end{proof}
 
 \begin{corollary}\label{cor:Tr_mon_prof_equivalence}
