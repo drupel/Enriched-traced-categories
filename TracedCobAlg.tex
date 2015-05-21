@@ -1262,7 +1262,7 @@ A double category is a 2-category-like structure involving horizontal and vertic
             \end{tikzcd}
          \end{equation*}
          satisfying the evident unit and associativity axioms. 
-      \item The vertical arrows are \emph{monoid homomorphisms}: pairs $(f,\vec{f}\,)$ of a vertical arrow
+      \item The vertical arrows are \emph{monoid homomorphisms}: pairs $(f,\vec{f}\mspace{2mu})$ of a vertical arrow
          $f\colon c\to d$ in $\dcat{D}$ and a cell
          \begin{equation*}
             \begin{tikzcd}
@@ -1389,7 +1389,7 @@ There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dc
 
 \begin{definition}\label{def:embedding}
    Let $M\colon c\tickar c$ be a monoid in an equipment $\dcat{D}$. An \emph{embedding} of $M$ into
-   an object $x$ is a monoid homomorphism $(f,\vec{f})$ from $M$ to the trivial monoid on $x$:
+   an object $x$ is a monoid homomorphism $(f,\vec{f}\mspace{2mu})$ from $M$ to the trivial monoid on $x$:
    \begin{equation*}
       \begin{tikzcd}
          c \ar[r,tick,"M" domA] \ar[d,"f"']
@@ -1399,7 +1399,7 @@ There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dc
          \twocellA{\vec{f}}
       \end{tikzcd}
    \end{equation*}
-   We will sometimes write an embedding as $(f,\vec{f}\,)\colon(c,M)\to x$, or even just $f\colon M\to
+   We will sometimes write an embedding as $(f,\vec{f}\mspace{2mu})\colon(c,M)\to x$, or even just $f\colon M\to
    x$ when clear from context. We will write $\Emb(M,x)$ for the set of embeddings from $M$ to $x$.
    This defines a functor $\Emb\colon\op{\Mon(\dcat{D})}\times\dcat{D}_0\to\Set$.
 \end{definition}
@@ -1494,7 +1494,7 @@ It is proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dca
 
 \begin{proof}
    It is easy to use the universal property of collapse to construct, from any monoid homomorphism
-   $(f,\vec{f})\colon(a,M)\to(b,N)$, a vertical morphism $\Col{f}\colon\Col{M}\to\Col{N}$ in
+   $(f,\vec{f}\mspace{2mu})\colon(a,M)\to(b,N)$, a vertical morphism $\Col{f}\colon\Col{M}\to\Col{N}$ in
    $\dcat{D}$, defining a functor $\Mon(\dcat{D})\to\dcat{D}_0$.
 
    The functor $\Col{\textrm{--}}$ is defined on proarrows and 2-cells using the inverse of the
@@ -1575,7 +1575,7 @@ Proposition~\ref{prop:boff_well_named}.
 \end{lemma}
 \begin{proof}
    The equivalence simply sends any monoid $(a,M)$ to the collapse morphism $i_M\colon
-   a\twoheadrightarrow\Col{M}$, which is in $\bo$. For any monoid homomorphism $(f,\vec{f})$, there
+   a\twoheadrightarrow\Col{M}$, which is in $\bo$. For any monoid homomorphism $(f,\vec{f}\mspace{2mu})$, there
    exists a unique $\tilde{f}$ such that
    \begin{equation*}
       \begin{tikzcd}
