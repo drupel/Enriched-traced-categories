@@ -43,10 +43,9 @@
 \end{abstract}
 Global todo's:
 \begin{enumerate}
-   \item Uncomment the $\backslash${listoftodos} command in latex below.
    \item Add keywords: Traced categories, compact categories, lax functors, equipments, monoidal categories, operads, factorization systems.
+   \item We have three notations for placeholders, $-$ and $\cdot$ and $\bullet$. What to do?
 \end{enumerate}
-%\listoftodos
 
 \setcounter{tocdepth}{1}
 \tableofcontents*
@@ -1735,7 +1734,7 @@ Similar results hold for traced categories.
 
 The remaining difficulty is allowing the object set $\LabSet$ to vary. What makes this work is the
 fact that there is an orthogonal factorization system on $\CompCat$ that behaves nicely with the
-adjunction to $\Set$. Theorem~\ref{thm:Verts} provides a 2-equivalence between any such
+adjunction to $\Set$. Theorem~\ref{thm:ffle_and_verts} provides a 2-equivalence between any such
 nicely-behaved exact equipment and its free-on-objects version. It follows that the lax, set-valued
 functors out of a varying category $\cat{C}$ are equivalent to the $\bo$ maps out of $\cat{C}$
 (Proposition~\ref{Prop:mon_prof_equivalence}). 
@@ -1824,8 +1823,8 @@ Definition~\ref{def:induced_locally_equivalent_equipment}.
 \end{definition}
 
 
-Note that we have the following:\vspace{-.2in}
-\begin{center}
+Note that we have the following:
+\centerThis{
    \parbox{1.8in}{
       \begin{align*}
          \MonCat&=\dMonProf_0\\
@@ -1841,7 +1840,7 @@ Note that we have the following:\vspace{-.2in}
          \CCompCat&=\VVer(\dCompProf)
       \end{align*}
    }
-\end{center}
+}
 
 It may seem strange at first to define a profunctor $T\tickar T'$ between traced categories to be a
 profunctor $\Int(T)\tickar\Int(T')$. The next proposition serves as a first sanity check on this
@@ -2212,7 +2211,7 @@ that these are morphisms of fibrations, i.e.\ preserve cartesian morphisms.
 Theorem~\ref{thm:Mod_vs_bo} is a key piece in the proof of \ref{thm:TheoremA}, but we will need a
 modification for the proofs of \ref{thm:TheoremB} and \ref{cor:CorollaryB}. The latter results are
 concerned with compact (respectively traced) categories which are ``object-free''.
-Theorem~\ref{thm:Verts} provides the modification of Theorem~\ref{thm:Mod_vs_bo} in a general form,
+Theorem~\ref{thm:ffle_and_verts} provides the modification of Theorem~\ref{thm:Mod_vs_bo} in a general form,
 which we then specialize to the cases of interest for the present paper in
 Corollary~\ref{cor:TrCat_ObjectFree}.
 
@@ -2290,8 +2289,8 @@ Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Sect
 
 \begin{definition}\label{def:freeMon_equips}
 
-We define the equipments:\\
-{\centering
+We define the equipments:
+\centerThis{
    \parbox{2.25in}{
       \begin{align*}
          \dFrMonProf&\coloneqq\dMonProf_{\TM}\\
@@ -2302,13 +2301,13 @@ We define the equipments:\\
    \qquad
    \parbox{2.8in}{
       \begin{align*}
-         \dFrObMonProf&\coloneqq\dMod(\dFrMonProf)\\
-         \dFrObTrProf&\coloneqq\dMod(\dFrTrProf)\\
-         \dFrObCompProf&\coloneqq\dMod(\dFrCompProf)
+         \dObFrMonProf&\coloneqq\dMod(\dFrMonProf)\\
+         \dObFrTrProf&\coloneqq\dMod(\dFrTrProf)\\
+         \dObFrCompProf&\coloneqq\dMod(\dFrCompProf)
       \end{align*}
    }
-}\\
-We refer to the equipments in the second column as \emph{object-free}.
+}
+We refer to a $\cat{C}\in\dObFrMonProf$ as an \emph{object-free monoidal category} and similarly for $\dObFrTrProf$ and $\dObFrCompProf$.
 \end{definition}
 
 \begin{remark}
@@ -2325,7 +2324,7 @@ We refer to the equipments in the second column as \emph{object-free}.
 The next theorem can be seen as saying that, for any exact equipment $\dcat{D}$ satisfying the
 conditions of the theorem (e.g., those of Definition~\ref{def:freeMon_equips}), the vertical 2-category $\Ver(\dcat{D})$ is 2-equivalent to the sub-2-category spanned by the object-free objects.
 
-\begin{theorem}\label{thm:Verts}
+\begin{theorem}\label{thm:ffle_and_verts}
    Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
    $F\colon\cat{C}\leftrightarrows\dcat{D}_0:\!U$, and let $T=UF$ be the induced monad. Suppose
    moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{C})$, and that the components of the counit of
@@ -2387,13 +2386,36 @@ conditions of the theorem (e.g., those of Definition~\ref{def:freeMon_equips}), 
 \end{proof}
 
 
+% \begin{corollary}\label{cor:TrCat_ObjectFree}
+%    There are equivalences of 2-categories \todo{Rewrite this in parallel with Theorem~\ref{thm:ffle_and_verts}.}
+%    \begin{align*}
+%       \VVer(\dObFrMonProf)&\equiv\MMonCat \\
+%       \VVer(\dObFrTrProf)&\equiv\TTrCat \\
+%       \VVer(\dObFrCompProf)&\equiv\CCompCat.
+%    \end{align*}
+% \end{corollary}
+The following corollary is a direct application of Theorem~\ref{thm:ffle_and_verts}.
+
 \begin{corollary}\label{cor:TrCat_ObjectFree}
-   There are equivalences of 2-categories \todo{Rewrite this in parallel with Theorem~\ref{thm:Verts}.}
-   \begin{align*}
-      \VVer(\dFrObMonProf)&\equiv\MMonCat \\
-      \VVer(\dFrObTrProf)&\equiv\TTrCat \\
-      \VVer(\dFrObCompProf)&\equiv\CCompCat.
-   \end{align*}
+There are equipment functors (left) and underlying 2-functors (right)
+\centerThis{
+   \parbox{2.2in}{
+      \begin{align*}
+         \dObFrMonProf&\to\dMonProf\\
+         \dObFrTrProf&\to\dTrProf\\
+         \dObFrCompProf&\to\dCompProf
+      \end{align*}
+   }
+   \hspace{.5in}
+   \parbox{2.6in}{
+      \begin{align*}
+         \VVer(\dObFrMonProf)&\to\MMonCat\\
+         \VVer(\dObFrTrProf)&\to\TTrCat\\
+         \VVer(\dObFrCompProf)&\to\CCompCat
+      \end{align*}
+   }
+} 
+which are fully faithful local equivalences of equipments and 2-equivalences of 2-categories, respectively.
 \end{corollary}
 
 \begin{remark}
@@ -2422,15 +2444,14 @@ conditions of the theorem (e.g., those of Definition~\ref{def:freeMon_equips}), 
    an alternative \emph{definition} of the 2-category $\TTrCat$.
 \end{remark}
 
-We conclude this section by recording two simple lemmas which will be needed in the proofs of our main
-results.
+We conclude this section by recording two simple lemmas which use definitions from this section but follow from earlier work. They will be needed in the proofs of our main results. 
 
 \begin{lemma}\label{lem:FrCompProf_Psh_Mon}
    There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1.5em]
          \CPsh(\dFrCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \dFrObCompProf_0 \ar[dl,two heads] \\
+            && \Mon(\dFrCompProf) \ar[dl,two heads] \\
             & \FrCompCat &
       \end{tikzcd}
    \end{equation*}
@@ -2489,7 +2510,7 @@ results.
    \begin{equation*}
       \begin{tikzcd}[column sep=-1.5em]
          \CPsh(\dFrTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \dFrObTrProf_0 \ar[dl,two heads] \\
+            && \Mon(\dFrTrProf) \ar[dl,two heads] \\
             & \FrMonCat &
       \end{tikzcd}
    \end{equation*}
@@ -2497,7 +2518,7 @@ results.
 \begin{proof}
    The equipment functor $\dFrTrProf\to\dFrCompProf$ is (by definition) a local equivalence
    (Definition~\ref{def:local_equivalence}), so the result follows from
-   Lemmas~\ref{lem:FrCompProf_Psh_Mon}~\ref{lemma:FFLE_Mod}~\ref{lem:Mon_pullback}, and \ref{lem:Psh_pullback}.
+   Lemmas~\ref{lem:FrCompProf_Psh_Mon}, \ref{lemma:FFLE_Mod}, \ref{lem:Mon_pullback}, and \ref{lem:Psh_pullback}.
 \end{proof}
 
 \section{Deducing the main results}\label{sec:deducing}
