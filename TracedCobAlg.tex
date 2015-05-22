@@ -2310,11 +2310,10 @@ Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Sect
 
 We define the equipments:
 \begin{align*}
-   \dFrMonProf  &\coloneqq \dMonProf_{\TM}  & \dObFrMonProf  &\coloneqq \dMod(\dFrMonProf) \\
-   \dFrTrProf   &\coloneqq \dTrProf_{\TT}   & \dObFrTrProf   &\coloneqq \dMod(\dFrTrProf)  \\
-   \dFrCompProf &\coloneqq \dCompProf_{\TC} & \dObFrCompProf &\coloneqq \dMod(\dFrCompProf)
+   \dFrMonProf  &\coloneqq \dMonProf_{\TM}   \\
+   \dFrTrProf   &\coloneqq \dTrProf_{\TT}     \\
+   \dFrCompProf &\coloneqq \dCompProf_{\TC} 
 \end{align*}
-We refer to a $\cat{C}\in\dObFrMonProf$ as an \emph{object-free monoidal category} and similarly for $\dObFrTrProf$ and $\dObFrCompProf$.
 \end{definition}
 
 \begin{remark}
@@ -2406,9 +2405,9 @@ The following corollary is a direct application of Theorem~\ref{thm:ffle_and_ver
 \begin{corollary}\label{cor:TrCat_ObjectFree}
 There are equipment functors (left) and underlying 2-functors (right)
 \begin{align*}
-   \dObFrMonProf  &\to \dMonProf  & \VVer(\dObFrMonProf)  &\to \MMonCat \\
-   \dObFrTrProf   &\to \dTrProf   & \VVer(\dObFrTrProf)   &\to \TTrCat  \\
-   \dObFrCompProf &\to \dCompProf & \VVer(\dObFrCompProf) &\to \CCompCat
+   \dMod(\dFrMonProf)  &\to \dMonProf  & \MMon(\dFrMonProf)  &\to \MMonCat \\
+   \dMod(\dFrTrProf)   &\to \dTrProf   & \MMon(\dFrTrProf)   &\to \TTrCat  \\
+   \dMod(\dFrCompProf) &\to \dCompProf & \MMon(\dFrCompProf) &\to \CCompCat
 \end{align*}
 which are fully faithful local equivalences of equipments and 2-equivalences of 2-categories, respectively.
 \end{corollary}
