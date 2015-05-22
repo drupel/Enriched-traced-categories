@@ -121,7 +121,7 @@ shift'' between the second and third columns.
 \end{tabular}
 \end{center}
 
-\subsection{The formal connection between Cob-algebras and Traced categories}
+\subsection{The formal connection between Cob-algebras and traced categories}
    \label{sec:statement_of_main_thm}
 
 The relationship between these interpretations of string diagrams is most easily made precise when
@@ -140,48 +140,92 @@ underlying 1-category.%
    (e.g., $T\in\Ob\TrCat$).
 }
 Finally, let $\TrCat_{\LabSet}$ denote the subcategory in which the object set is fixed to be free
-on the set $\LabSet$---which we call its label set---together with label-preserving maps. For any
-monoidal category $\cat{M}$, we denote by $\cat{M}\alg=\ncat{Lax}(M,\Set)$ the category of lax
+on the set $\LabSet$---which we call its label set---together with identity-on-objects functors. For
+any monoidal category $\cat{M}$, we denote by $\cat{M}\alg=\ncat{Lax}(M,\Set)$ the category of lax
 functors $\cat{M}\to\Set$. Then there is an equivalence of categories
-\begin{equation}\label{eq:single_fiber}
+\begin{equation}\label{eq:single_fiber_tr}
    \LCob{\LabSet}\alg\equiv\TrCat_{\LabSet}.
 \end{equation}
 Some intuition for this statement will be given in Section~\ref{subsec:cobalg_and_trCat}, and it
 will be generalized in \ref{thm:TheoremA} and proven as such in Section~\ref{sec:deducing}.
 
+\subsection{Compact categories vs.\ traced categories}
+
+All of our main results about traced categories in this paper have analogues about compact closed
+symmetric monoidal categories, hereafter \emph{compact categories}. The definition of compact
+category can be found in Section~\ref{sec:compact_and_int}, or in~\cite{MacLane}. Let $\CCompCat$
+denote the 2-category of compact categories, and let $\CompCat$ denote its underlying 1-category. As
+above, let $\CompCat_{\LabSet}$ denote the subcategory of compact categories whose object set is
+free on the set $\LabSet$ (so the objects are strings $o_1o_2o_3^*$ of labels $o_i\in\LabSet$ and
+their formal duals, and the tensor product is concatenation), together with identity-on-objects
+functors.
+
+There is an equivalence of categories
+\begin{equation}\label{eq:single_fiber_comp}
+   \LCob{\LabSet}\alg\equiv\CompCat_{\LabSet}.
+\end{equation}
+\todo[inline]{Say something comparing this to \eqref{eq:single_fiber_tr}?}
+
 % \section{Lax functors out of compact categories}\label{subsec:main_results}
 
 % While the motivation for this paper was to understand the relationship between 1-cobordisms and traced categories, our work has led us to conclude that a more central issue is to understand lax functors out of compact categories. These fit into a larger picture, known as \emph{equipments} or \emph{framed bicategories}, which we review in Section~\ref{sec:background_equipments}. 
 
-% The category $\Lax(\cat{C},\Set)$ of lax set-valued functors out of a compact category $\cat{C}$ has interesting behaviors. For example, when $\cat{C}$ is free on a set $\LabSet$ of objects, lax functors can be identified with object-free traced categories, as in \eqref{eq:single_fiber}, or with object-free compact categories:
+% The category $\Lax(\cat{C},\Set)$ of lax set-valued functors out of a compact category $\cat{C}$
+% has interesting behaviors. For example, when $\cat{C}$ is free on a set $\LabSet$ of objects, lax
+% functors can be identified with object-free traced categories, as in \eqref{eq:single_fiber_tr}, or with object-free compact categories:
 % \begin{equation*}
 %  \LCob{\LabSet}\alg\equiv\CompCat_{\LabSet}.
 % \end{equation*}
 % \todo[inline]{Finish writing this section.}
 
-\subsection{The main results}\label{subsec:main_results}
+\section{The main results}\label{subsec:main_results}
 
-The equivalence (\ref{eq:single_fiber}) has two drawbacks: the object set of the traced category is
-fixed, and it is assumed to be free. Much of the work in this paper is to relax these two
-conditions. For the latter, we prove that the 2-category of traced categories is equivalent to that
-of \emph{object-free} traced categories (see Corollary~\ref{cor:TrCat_ObjectFree}). For the former,
-we first explain what kind of variance is appropriate.
+The equivalence \eqref{eq:single_fiber_tr} (and likewise \eqref{eq:single_fiber_comp}) has two
+drawbacks: the object set of the traced category is fixed, and it is assumed to be free. Much of the
+work in this paper is to relax these two conditions. For the latter, we prove that the 2-category of
+traced categories is equivalent to that of \emph{object-free} traced categories (see
+Corollary~\ref{cor:TrCat_ObjectFree}). For the former, we first explain what kind of variance is
+appropriate.
+
+There are adjunctions
+\begin{equation*}
+   \Adjoint{\Set}{\TrCat}{\FT}{\UT}
+   \qquad
+   \Adjoint{\Set}{\CompCat}{\FC}{\UC}
+\end{equation*}
+which induce monads $\TT$ (respectively $\TC$) on $\Set$. The monad $\TT$ is in fact isomorphic to
+the free monoid monad, while $\TC$ is isomorphic to the free group monad.
 
 Let $\cat{C}$ and $\cat{C}'$ be object-free traced categories, such that $\Ob(\cat{C})$ is the free
-monoid on a set $\LabSet$ and $\cat{C}'$ is the free monoid on a set $\LabSet'$. A strong functor
-$F\colon \cat{C}\to \cat{C'}$ sends each object in $\LabSet$ to the tensor product of finitely many
-objects in $\LabSet'$; that is, it induces a function $\Ob F\colon\LabSet\to\TT(\LabSet')$, where
-$\TT\colon\Set\to\Set$ is the free monoid monad. Let $\Set_{\TT}$ denote the Kleisli category of
-this monad, so $\Ob F$ is identified with a morphism in $\Set_{\TT}$. The compact category $\Cob/\LabSet$ is functorial in $\LabSet\in\Set$, and we will show later that this functor extends to functors
-$$(\LCob{\bullet})\colon\Set_{\TT}\to\CompCat\qquad\tn{and}\qquad(\LCob{\bullet})\colon\Set_{\TC}\to\CompCat$$ 
-(see~\eqref{dia:TMvsFrMonCat} and~\eqref{eqn:FMC}),
-\todo{Patrick: check this paragraph; is $(\LCob{\bullet})$ clear enough notation?}%
-and we can compose it with $\Lax(-,\Set)$ to obtain a functor which we denote
+monoid on a set $\LabSet$ and $\cat{C}'$ is the free monoid on a set $\LabSet'$. A strong (traced)
+functor $F\colon \cat{C}\to \cat{C}'$ sends each object in $\LabSet$ to the tensor product of
+finitely many objects in $\LabSet'$; that is, it induces a function $\Ob
+F\colon\LabSet\to\TT(\LabSet')$. Let $\Set_{\TT}$ denote the Kleisli category of this monad, so $\Ob
+F$ is identified with a morphism in $\Set_{\TT}$.
+
+Likewise, if $\cat{C}$ and $\cat{C}'$ are object-free compact categories, then the object part $\Ob
+F$ of a strong functor $F\colon\cat{C}\to\cat{C}'$ can be identified with a morphism in the Kleisli
+category $\Set_{\TC}$.
+
+The compact category $\Cob/\LabSet$ is functorial in $\LabSet\in\Set$, and we will see later that
+this functor extends to functors
+\begin{equation*}
+   (\LCob{\bullet})\colon\Set_{\TT}\to\CompCat\qquad\tn{and}
+   \qquad
+   (\LCob{\bullet})\colon\Set_{\TC}\to\CompCat
+\end{equation*}
+(see~\eqref{dia:TMvsFrMonCat} and~\eqref{eqn:FMC}). We can compose these with $\Lax(-,\Set)$ to
+obtain functors which we denote
 \begin{equation}\label{eqn:cob/bullet}
-  (\LCob{\bullet})\alg\colon\Set_{\TT}^{\mathrm{op}}\too\Cat.
+   (\LCob{\bullet})\alg\colon\Set_{\TT}^{\mathrm{op}}\too\Cat,
+   \qquad
+   (\LCob{\bullet})\alg\colon\Set_{\TC}^{\mathrm{op}}\too\Cat.
 \end{equation}
-By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect the equivalences
-(\ref{eq:single_fiber}) for varying $\LabSet$ into a single functor, which is close to being an equivalence (see \ref{thm:TheoremA}). The same result holds when $\TT$ is replaced by $\TC$, the free compact category monad. The proof of the following result can be found in Section~\ref{sec:deducing}.
+By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we obtain fibrations whose
+fibers are equivalent, using \eqref{eq:single_fiber_tr} (respectively \eqref{eq:single_fiber_comp})
+to $\TrCat_{\LabSet}$ (respectively $\CompCat_{\LabSet}$) for some fixed label set $\LabSet$. Our
+first main result says that the total categories of these fibrations are \emph{almost} equivalent to
+the 2-category $\TTrCat$ (respectively $\CCompCat$):
 
 \begin{named}{Theorem A}\label{thm:TheoremA}
   There is a fully faithful functor of 1-categories
@@ -193,62 +237,61 @@ By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we collect 
   The above statements also hold when $\TT$ is replaced by $\TC$ and when $\TrCat$ and $\TTrCat$ are replaced by $\CompCat$ and $\CCompCat$.
 \end{named}
 
+The proof of this result can be found in Section~\ref{sec:deducing}.
+
 \todo[inline]{And maybe a comment about the weird form of Theorem A, to the effect that we shouldn't
 expect algebras of operads to be able to encode 2-cells.}
 
-% \section{Generalization: Lax algebras on compact categories}
+\subsection{Generalization: Lax algebras on compact categories}
 
-The definition of compact closed symmetric monoidal category, hereafter \emph{compact category}, can
-be found in Section~\ref{sec:compact_and_int}, or in~\cite{MacLane}. Let $\CompCat$ denote the
-category of compact categories and strong monoidal functors between them. We will see
-(\ref{thm:orthogonal} and \ref{prop:CompProf_exact}) that there is a factorization system on
-$\CompCat$, in which the left class consists of bijective-on-objects functors and the right class
-consists of fully faithful functors. Let $\CompCat^{\bo}$ be the full subcategory of the arrow
-category $\CompCat^{\to}$ spanned by the bijective-on-objects functors.
+In the course of proving \ref{thm:TheoremA}, we will also prove a more general result which drops
+the restriction to object-free traced and compact categories.
 
-We will also prove a generalization of Theorem~\ref{thm:TheoremA}, where instead of considering lax
-functors out of categories of the form $\LCob{\LabSet}$---i.e.\ free compact categories---we
-consider lax functors out of arbitrary compact categories. For a fixed compact category $\cat{C}$,
-we have the equivalence of categories
+We will see (\ref{thm:orthogonal} and \ref{prop:CompProf_exact}) that there is a factorization
+system on both $\TrCat$ and $\CompCat$, in which the left class consists of bijective-on-objects
+functors and the right class consists of fully faithful functors. Let $\CompCat^{\bo}$
+(resp.~$\TrCat^{\bo}$) be the full subcategory of the arrow category $\CompCat^{\to}$
+(resp.~$\TrCat^{\to}$) spanned by the bijective-on-objects functors.
+
+Using the factorization systems, we can see that the domain functors
+$\dom\colon\CompCat^{\bo}\twoheadrightarrow\CompCat$ and
+$\dom\colon\TrCat^{\bo}\twoheadrightarrow\TrCat$ are fibrations. For a fixed compact category
+$\cat{C}$, the fiber $\CompCat^{\bo}_{\cat{C}/}\coloneqq\dom^{-1}\cat{C}$ is the category of strong,
+bijective-on-objects functors from $\cat{C}$ to another compact category, with the evident
+commutative triangles as morphisms, and likewise for $\TrCat^{\bo}_{\cat{T}/}$.
+
+Recall from~\cite{JoyalStreetVerity} that traced categories can be thought of as full subcategories
+of compact categories.  The Int construction, applied to a traced category $\cat{C}$, returns the
+smallest compact category $\Int(\cat{C})$ of which it is a monoidal subcategory; we call
+$\Int(\cat{C})$ the \emph{compact closure} of $\cat{C}$. We will recall these notions in
+Sections~\ref{sec:intuition_for_traced} and~\ref{sec:compact_and_int}.
+
+Generalizing \eqref{eq:single_fiber_tr} and \eqref{eq:single_fiber_comp}, for a fixed traced
+category $\cat{T}$ and a fixed compact category $\cat{C}$, there are equivalences of categories
 \begin{equation}\label{eqn:lax_compcat_bo}
-   \Lax(\cat{C},\Set)\iso\cat{C}/\CompCat^{\bo}.
+   \Lax(\Int(\cat{T}),\Set)\equiv\TrCat^{\bo}_{\cat{T}/},
+   \qquad
+   \Lax(\cat{C},\Set)\equiv\CompCat^{\bo}_{\cat{C}/}.
 \end{equation}
-where $\cat{C}/\CompCat^{\bo}$ is the category of strong, bijective-on-objects functors from
-$\cat{C}$ to another compact category, with the evident commutative triangles as morphisms.
-
 One advantage of this generalization is that it is more straightforward to handle changing the
-category $\cat{C}$. Namely, we will prove the following theorem:
+categories $\cat{T}$ and $\cat{C}$. Namely, we will prove in Section~\ref{sec:deducing} the
+following theorem:
 
 \begin{named}{Theorem B}\label{thm:TheoremB}
-   There is an equivalence of fibrations
-   \begin{equation*}
-      \begin{tikzcd}[column sep=-1.8em]
-         \int\limits^{\mathclap{\cat{C}\in\CompCat}} \Lax(\cat{C},\Set)
-               \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \CompCat^{\bo} \ar[dl,two heads,"\dom"] \\
-         & \CompCat &
-      \end{tikzcd}
-   \end{equation*}
-\end{named}
-\todo[inline]{Combine Theorem B and Corollary B.}
-Recall from~\cite{JoyalStreetVerity} that traced categories are full subcategories of compact
-categories.  The Int construction, applied to a traced category $\cat{C}$, returns the smallest
-compact category $\Int(\cat{C})$ of which it is a monoidal subcategory; we call $\Int(\cat{C})$ the
-\emph{compact closure} of $\cat{C}$. We will recall these notions in Sections~\ref{sec:intuition_for_traced}~and~\ref{sec:compact_and_int}.
-
-It turns out that if our compact category $\cat{C}$ is the compact closure of some traced category
-$\cat{D}$, then~\ref{thm:TheoremB} lifts to a result about $\cat{D}$. We record this result
-as~\ref{cor:CorollaryB}, from which~\ref{thm:TheoremA} follows. These are proved in
-Section~\ref{sec:deducing}.
-
-\begin{named}{Corollary B}\label{cor:CorollaryB}
-   There is an equivalence of fibrations
+   There is are equivalences of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1em]
          \int\limits^{\mathclap{\cat{C}\in\TrCat}} \Lax(\Int(\cat{C}),\Set)
                \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \TrCat^{\bo} \ar[dl,two heads,"\dom"] \\
+            && \TrCat^{\bo} \ar[dl,two heads,"\dom" pos=.4] \\
          & \TrCat &
+      \end{tikzcd}
+      \qquad
+      \begin{tikzcd}[column sep=-1.8em]
+         \int\limits^{\mathclap{\cat{C}\in\CompCat}} \Lax(\cat{C},\Set)
+               \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \CompCat^{\bo} \ar[dl,two heads,"\dom" pos=.4] \\
+         & \CompCat &
       \end{tikzcd}
    \end{equation*}
 \end{named}
