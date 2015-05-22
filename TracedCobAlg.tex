@@ -194,7 +194,7 @@ There are adjunctions
    \Adjoint{\Set}{\CompCat}{\FC}{\UC}
 \end{equation*}
 which induce monads $\TT$ (respectively $\TC$) on $\Set$. The monad $\TT$ is in fact isomorphic to
-the free monoid monad, while $\TC$ is isomorphic to the free group monad.
+the free monoid monad, while $\TC$ is isomorphic to the free monoid-with-involution monad.
 
 Let $\cat{C}$ and $\cat{C}'$ be object-free traced categories, such that $\Ob(\cat{C})$ is the free
 monoid on a set $\LabSet$ and $\cat{C}'$ is the free monoid on a set $\LabSet'$. A strong (traced)
@@ -207,10 +207,10 @@ Likewise, if $\cat{C}$ and $\cat{C}'$ are object-free compact categories, then t
 F$ of a strong functor $F\colon\cat{C}\to\cat{C}'$ can be identified with a morphism in the Kleisli
 category $\Set_{\TC}$.
 
-The compact category $\Cob/\LabSet$ is functorial in $\LabSet\in\Set$, and we will see later that
+The compact category $\Cob/\LabSet$ is varies functorially in $\LabSet\in\Set$, and we will see later that
 this functor extends to functors
 \begin{equation*}
-   (\LCob{\bullet})\colon\Set_{\TT}\to\CompCat\qquad\tn{and}
+   (\LCob{\bullet})\colon\Set_{\TT}\to\TrCat\qquad\tn{and}
    \qquad
    (\LCob{\bullet})\colon\Set_{\TC}\to\CompCat
 \end{equation*}
@@ -222,8 +222,8 @@ obtain functors which we denote
    (\LCob{\bullet})\alg\colon\Set_{\TC}^{\mathrm{op}}\too\Cat.
 \end{equation}
 By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we obtain fibrations whose
-fibers are equivalent, using \eqref{eq:single_fiber_tr} (respectively \eqref{eq:single_fiber_comp})
-to $\TrCat_{\LabSet}$ (respectively $\CompCat_{\LabSet}$) for some fixed label set $\LabSet$. Our
+fibers are equivalent, using \eqref{eq:single_fiber_tr} (respectively using \eqref{eq:single_fiber_comp})
+to $\TrCat_{\LabSet}$ (respectively to $\CompCat_{\LabSet}$) for some fixed label set $\LabSet$. Our
 first main result says that the total categories of these fibrations are \emph{almost} equivalent to
 the 2-category $\TTrCat$ (respectively $\CCompCat$):
 
@@ -245,26 +245,25 @@ expect algebras of operads to be able to encode 2-cells.}
 \subsection{Generalization: Lax algebras on compact categories}
 
 In the course of proving \ref{thm:TheoremA}, we will also prove a more general result which drops
-the restriction to object-free traced and compact categories.
+the restriction to object-free traced (and compact) categories.
 
 We will see (\ref{thm:orthogonal} and \ref{prop:CompProf_exact}) that there is a factorization
 system on both $\TrCat$ and $\CompCat$, in which the left class consists of bijective-on-objects
-functors and the right class consists of fully faithful functors. Let $\CompCat^{\bo}$
-(resp.~$\TrCat^{\bo}$) be the full subcategory of the arrow category $\CompCat^{\to}$
-(resp.~$\TrCat^{\to}$) spanned by the bijective-on-objects functors.
+functors and the right class consists of fully faithful functors. Let $\TrCat^{\bo}$
+(resp.~$\CompCat^{\bo}$) be the full subcategory of the arrow category $\TrCat^{\to}$
+(resp.~$\CompCat^{\to}$) spanned by the bijective-on-objects functors.
 
-Using the factorization systems, we can see that the domain functors
-$\dom\colon\CompCat^{\bo}\twoheadrightarrow\CompCat$ and
-$\dom\colon\TrCat^{\bo}\twoheadrightarrow\TrCat$ are fibrations. For a fixed compact category
-$\cat{C}$, the fiber $\CompCat^{\bo}_{\cat{C}/}\coloneqq\dom^{-1}\cat{C}$ is the category of strong,
-bijective-on-objects functors from $\cat{C}$ to another compact category, with the evident
-commutative triangles as morphisms, and likewise for $\TrCat^{\bo}_{\cat{T}/}$.
+Using these factorization systems, we can see that the domain functors
+$$\dom\colon\TrCat^{\bo}\twoheadrightarrow\TrCat,\qquad\dom\colon\CompCat^{\bo}\twoheadrightarrow\CompCat$$
+are fibrations. For a fixed traced category
+$\cat{T}$, the fiber $\TrCat^{\bo}_{\cat{T}/}\coloneqq\dom^{-1}(\cat{T})$ is the category of strong,
+bijective-on-objects functors from $\cat{T}$ to another traced category, with the evident
+commutative triangles as morphisms, and likewise for $\CompCat^{\bo}_{\cat{C}/}$ with $\cat{C}$ a compact category.
 
 Recall from~\cite{JoyalStreetVerity} that traced categories can be thought of as full subcategories
 of compact categories.  The Int construction, applied to a traced category $\cat{C}$, returns the
-smallest compact category $\Int(\cat{C})$ of which it is a monoidal subcategory; we call
-$\Int(\cat{C})$ the \emph{compact closure} of $\cat{C}$. We will recall these notions in
-Sections~\ref{sec:intuition_for_traced} and~\ref{sec:compact_and_int}.
+smallest compact category $\Int(\cat{C})$ of which it is a monoidal subcategory. We will recall these
+notions in Sections~\ref{sec:intuition_for_traced} and~\ref{sec:compact_and_int}.
 
 Generalizing \eqref{eq:single_fiber_tr} and \eqref{eq:single_fiber_comp}, for a fixed traced
 category $\cat{T}$ and a fixed compact category $\cat{C}$, there are equivalences of categories
@@ -286,8 +285,8 @@ following theorem:
             && \TrCat^{\bo} \ar[dl,two heads,"\dom" pos=.4] \\
          & \TrCat &
       \end{tikzcd}
-      \qquad
-      \begin{tikzcd}[column sep=-1.8em]
+      \qquad\quad
+      \begin{tikzcd}[column sep=-1em]
          \int\limits^{\mathclap{\cat{C}\in\CompCat}} \Lax(\cat{C},\Set)
                \ar[rr,"\equiv"] \ar[dr,two heads]
             && \CompCat^{\bo} \ar[dl,two heads,"\dom" pos=.4] \\
@@ -296,7 +295,7 @@ following theorem:
    \end{equation*}
 \end{named}
 
-We can give a better high-level story once we have reviewed equipments; see the introduction to Section~\ref{sec:equipments_monoidal_profunctors}. For the remainder of the introduction, we will attempt to build intuition.
+We can give a better high-level story once we have reviewed \emph{equipments}; see the introduction to Section~\ref{sec:equipments_monoidal_profunctors}. For the remainder of the introduction, we will attempt to build intuition.
 
 \section{Wiring Diagrams, cobordisms, and traced categories}
 
@@ -873,17 +872,6 @@ It is shown in~\cite{JoyalStreetVerity} that $\Int(\cat{M})\coloneqq\widetilde{\
    (\inp{X},\outp{X})\odot(\inp{Y},\outp{Y})\coloneqq(\inp{X}\otimes \inp{Y},\outp{X}\otimes \outp{Y})
 \]
 with unit object $\tilde I\coloneqq(I,I)$ and duality ${(\inp{X},\outp{X})}^\vee\coloneqq(\outp{X},\inp{X})$.
-
-%The following is immediate from the definitions above and in Section~\ref{sec:scalars and elements}.
-
-%\todo{Do we use Lemma~\ref{lemma:elements in traced}? Does it give intuition?}
-%\begin{lemma}\label{lemma:elements in traced}\todo{This lemma has a sign-error. Either change definition of $\Hom_{\widetilde{\cat{M}}}$ or lemma statement.}
-%
-%Let $\cat{M}$ be a traced category and $\widetilde{\cat{M}}=Int(\cat{M})$ its compact closure. If $|\cdot|$ is the elements algebra on $\widetilde{\cat{M}}$, then for any object $(\inp{X},\outp{X})\in\Ob\widetilde{\cat{M}}$ there is a canonical bijection
-%\[|(\inp{X},\outp{X})|\iso\Hom_{\cat{M}}(\inp{X},\outp{X}).\]
-%
-%\end{lemma}
-%
 
 \begin{lemma}\label{lemma:fully_faithful_and_trace}
 The following facts hold for any traced category $\cat{C}$:
@@ -2080,7 +2068,7 @@ The primary goal of this section is to establish the equivalence of the three fi
       \CPsh(\dCompProf) \equiv \Ptd(\dCompProf) \equiv \Mon(\dCompProf).
    \end{tikzcd}
 \end{equation}
-over $\CompCat$.
+over $\CompCat$. See Propositions~\ref{prop:unit_implies_monoid} and \ref{Prop:mon_prof_equivalence}.
 
 
 \begin{remark}
@@ -2201,9 +2189,9 @@ that these are morphisms of fibrations, i.e.\ preserve cartesian morphisms.
 \begin{proposition}\label{Prop:mon_prof_equivalence}
    The functors $F$ and $U$, from (\ref{eqn:functors_1C_CC}), induce an equivalence of fibrations
    \begin{equation*}
-      \begin{tikzcd}[column sep=-1.5em]
+      \begin{tikzcd}[column sep=-.5em]
          \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \Mon(\dCompProf) \ar[dl,two heads] \\
+            && \Mon(\dCompProf) \ar[dl,two heads,"\MOb"] \\
             & \CompCat &
       \end{tikzcd}
    \end{equation*}
@@ -2224,7 +2212,7 @@ that these are morphisms of fibrations, i.e.\ preserve cartesian morphisms.
    \begin{equation*}
       \begin{tikzcd}[column sep=-.5em]
          \CPsh(\dTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \Mon(\dTrProf) \ar[dl,two heads] \\
+            && \Mon(\dTrProf) \ar[dl,two heads,"\MOb"] \\
             & \TrCat &
       \end{tikzcd}
    \end{equation*}
@@ -2458,7 +2446,7 @@ We conclude this section by recording two simple lemmas which use definitions fr
    \begin{equation*}
       \begin{tikzcd}[column sep=-1.5em]
          \CPsh(\dFrCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \Mon(\dFrCompProf) \ar[dl,two heads] \\
+            && \Mon(\dFrCompProf) \ar[dl,two heads,"\MOb"] \\
             & \FrCompCat &
       \end{tikzcd}
    \end{equation*}
@@ -2517,7 +2505,7 @@ We conclude this section by recording two simple lemmas which use definitions fr
    \begin{equation*}
       \begin{tikzcd}[column sep=-1.5em]
          \CPsh(\dFrTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \Mon(\dFrTrProf) \ar[dl,two heads] \\
+            && \Mon(\dFrTrProf) \ar[dl,two heads,"\MOb"] \\
             & \FrMonCat &
       \end{tikzcd}
    \end{equation*}
