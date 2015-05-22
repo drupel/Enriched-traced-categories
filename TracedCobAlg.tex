@@ -1820,12 +1820,28 @@ Definition~\ref{def:induced_locally_equivalent_equipment}.
 
 \begin{definition}\label{def:CompProf}
    Define $\dCompProf\coloneqq\UCM^*\dMonProf$, where $\UCM\colon\CompCat\to\MonCat$ is the
-   forgetful functor.
+   forgetful functor. Define $\dTrProf\coloneqq\Int^*(\dCompProf)$.
 \end{definition}
 
-\begin{definition}\label{def:TrProf}
-   Define $\dTrProf\coloneqq\Int^*\dCompProf$.
-\end{definition}
+
+Note that we have the following:\vspace{-.2in}
+\begin{center}
+   \parbox{1.8in}{
+      \begin{align*}
+         \MonCat&=\dMonProf_0\\
+         \TrCat&=\dTrProf_0\\
+         \CompCat&=\dCompProf_0
+      \end{align*}
+   }
+   \hspace{.6in}
+   \parbox{2.2in}{
+      \begin{align*}
+         \MMonCat&=\VVer(\dMonProf)\\
+         \TTrCat&=\VVer(\dTrProf)\\
+         \CCompCat&=\VVer(\dCompProf)
+      \end{align*}
+   }
+\end{center}
 
 It may seem strange at first to define a profunctor $T\tickar T'$ between traced categories to be a
 profunctor $\Int(T)\tickar\Int(T')$. The next proposition serves as a first sanity check on this
@@ -2272,6 +2288,29 @@ Thus we have the following proposition:
 
 Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Section~\ref{sec:free_and_geometry}. 
 
+\begin{definition}\label{def:freeMon_equips}
+
+We define the equipments:\\
+{\centering
+   \parbox{2.25in}{
+      \begin{align*}
+         \dFrMonProf&\coloneqq\dMonProf_{\TM}\\
+         \dFrTrProf&\coloneqq \dTrProf_{\TT}\\
+         \dFrCompProf&\coloneqq\dCompProf_{\TC}
+      \end{align*}
+   }
+   \qquad
+   \parbox{2.8in}{
+      \begin{align*}
+         \dFrObMonProf&\coloneqq\dMod(\dFrMonProf)\\
+         \dFrObTrProf&\coloneqq\dMod(\dFrTrProf)\\
+         \dFrObCompProf&\coloneqq\dMod(\dFrCompProf)
+      \end{align*}
+   }
+}\\
+We refer to the equipments in the second column as \emph{object-free}.
+\end{definition}
+
 \begin{remark}
    The objects of $\dcat{D}_F^{\bo}$ are bijective-on-objects morphisms of the form
    $F(c)\twoheadrightarrow D$ where $c$ is an object in $\cat{C}$ and $D$ is an object in
@@ -2283,19 +2322,8 @@ Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Sect
    free-on-objects if the monoid of objects is freely generated. This motivates the following definition.
 \end{remark}
 
-\begin{definition}
-
-We define the equipments
-   \begin{align*}
-      \dFrMonProf&\coloneqq\dMod(\dMonProf_{\TM})\\
-      \dFrTrProf&\coloneqq \dMod(\dTrProf_{\TT})\\
-      \dFrCompProf&\coloneqq\dMod(\dCompProf_{\TC})
-   \end{align*}
-\end{definition}
-
 The next theorem can be seen as saying that, for any exact equipment $\dcat{D}$ satisfying the
-conditions of the theorem, the vertical 2-category $\Ver(\dcat{D})$ is 2-equivalent to the
-sub-2-category spanned by the object-free objects.
+conditions of the theorem (e.g., those of Definition~\ref{def:freeMon_equips}), the vertical 2-category $\Ver(\dcat{D})$ is 2-equivalent to the sub-2-category spanned by the object-free objects.
 
 \begin{theorem}\label{thm:Verts}
    Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
@@ -2358,12 +2386,13 @@ sub-2-category spanned by the object-free objects.
    hence is an equivalence in $\VVer(\dcat{D})$. Thus $D$ is equivalent to $\cod(\psi_F(p))=D'$.
 \end{proof}
 
+
 \begin{corollary}\label{cor:TrCat_ObjectFree}
    There are equivalences of 2-categories \todo{Rewrite this in parallel with Theorem~\ref{thm:Verts}.}
    \begin{align*}
-      \VVer(\dFrMonProf)&\equiv\MMonCat \\
-      \VVer(\dFrTrProf)&\equiv\TTrCat \\
-      \VVer(\dFrCompProf)&\equiv\CCompCat.
+      \VVer(\dFrObMonProf)&\equiv\MMonCat \\
+      \VVer(\dFrObTrProf)&\equiv\TTrCat \\
+      \VVer(\dFrObCompProf)&\equiv\CCompCat.
    \end{align*}
 \end{corollary}
 
@@ -2372,10 +2401,10 @@ sub-2-category spanned by the object-free objects.
    \begin{equation*}
       \Set_{\TT} \iso \Set_{\TM} \iso \FrMonCat.
    \end{equation*}
-   By combining the definitions of $\dTrProf_{\TT}$ and $\dTrProf$, it is easy to see that the square
+   By combining the definitions of $\dFrTrProf$ and $\dTrProf$, it is easy to see that the square
    \begin{equation*}
       \begin{tikzcd}
-         (\dTrProf_{\TT})_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+         (\dFrTrProf)_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
             & \dCompProf_1 \ar[d,two heads] \\
          \FrMonCat\times\FrMonCat \ar[r]
             & \CompCat\times\CompCat
@@ -2388,7 +2417,7 @@ sub-2-category spanned by the object-free objects.
       \end{tikzcd}
    \end{equation*}
    using the functor $\alpha$ defined in Section~\ref{sec:free_and_geometry}. In this way, the
-   equipment $\dTrProf_{\TT}$ can be defined formally, purely in terms of $\dCompProf$, $\dMonProf$, and
+   equipment $\dFrTrProf$ can be defined formally, purely in terms of $\dCompProf$, $\dMonProf$, and
    the $\FM\dashv\UM$ adjunction. Thus Corollary~\ref{cor:TrCat_ObjectFree} can be seen as providing
    an alternative \emph{definition} of the 2-category $\TTrCat$.
 \end{remark}
@@ -2400,14 +2429,14 @@ results.
    There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1.5em]
-         \CPsh(\dCompProf_{\TC}) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \dFrCompProf_0 \ar[dl,two heads] \\
+         \CPsh(\dFrCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \dFrObCompProf_0 \ar[dl,two heads] \\
             & \FrCompCat &
       \end{tikzcd}
    \end{equation*}
 \end{lemma}
 \begin{proof}
-   The equipment functor $\dCompProf_{\TC}\to\dCompProf$ is (by definition) a local equivalence
+   The equipment functor $\dFrCompProf\to\dCompProf$ is (by definition) a local equivalence
    (Definition~\ref{def:local_equivalence}), so the result follows from~Proposition~\ref{Prop:mon_prof_equivalence}, and Lemmas~\ref{lem:Mon_pullback} and~\ref{lem:Psh_pullback}.
 \end{proof}
 
@@ -2459,16 +2488,16 @@ results.
    There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1.5em]
-         \CPsh(\dTrProf_{\TT}) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \dFrTrProf_0 \ar[dl,two heads] \\
+         \CPsh(\dFrTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \dFrObTrProf_0 \ar[dl,two heads] \\
             & \FrMonCat &
       \end{tikzcd}
    \end{equation*}
 \end{lemma}
 \begin{proof}
-   The equipment functor $\dTrProf_{\TT}\to\dCompProf_{\TC}$ is (by definition) a local equivalence
+   The equipment functor $\dFrTrProf\to\dFrCompProf$ is (by definition) a local equivalence
    (Definition~\ref{def:local_equivalence}), so the result follows from
-   Corollary~\ref{cor:FrCompProf_Psh_Mon} and Lemmas~\ref{lem:Mon_pullback} and \ref{lem:Psh_pullback}.
+   Lemmas~\ref{lem:FrCompProf_Psh_Mon}~\ref{lemma:FFLE_Mod}~\ref{lem:Mon_pullback}, and \ref{lem:Psh_pullback}.
 \end{proof}
 
 \section{Deducing the main results}\label{sec:deducing}
@@ -2495,7 +2524,7 @@ By Proposition~\ref{prop:TrCat_2equiv}, we know that in the commutative diagram 
 and of course the left map is bijective on objects. Hence, the result follows from the chain of equivalences
 \begin{align*}
 \int^{\LabSet\in\Set_{\TM}}(\LCob{\LabSet})\alg\equiv\int^{C\in\FrMonCat}\Lax(\FMC(C),\Set)
-&\equiv\CPsh(\dTrProf_{\TT})\\
+&\equiv\CPsh(\dFrTrProf)\\
 &\equiv\dFrTrProf_0
 \end{align*}
 given by (\ref{dia:TMvsFrMonCat}), Corollary~\ref{cor:free_compact_is_Cob},
@@ -2533,7 +2562,7 @@ $$\CPsh(\dCompProf)\equiv\Mon(\dCompProf)\equiv\CompCat^{\bo}.$$
 \end{named}
 
 \begin{proof}
-By Definition~\ref{def:TrProf}, the left-hand side is equivalent to $\CPsh(\dTrProf)$. \todo{Finish proof.}
+By Definition~\ref{def:CompProf}, the left-hand side is equivalent to $\CPsh(\dTrProf)$. \todo{Finish proof.}
 \end{proof}
 
 
