@@ -548,7 +548,7 @@ which is both injective and surjective, we can obtain the desired indexing opera
 
 Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect the operad-algebra
 picture in \cite{RupelSpivak} to string diagrams in traced categories. We also thank Mike Shulman
-and Justin Hilburn for many useful conversations.
+and Justin Hillburn for many useful conversations.
 
 \chapter{Categorical preliminaries}\label{sec:traced categories}
 
@@ -1866,26 +1866,6 @@ Definition~\ref{def:induced_locally_equivalent_equipment}.
    forgetful functor. Define $\dTrProf\coloneqq\Int^*(\dCompProf)$.
 \end{definition}
 
-
-Note that we have the following:
-\centerThis{
-   \parbox{1.4in}{
-      \begin{align*}
-         \MonCat&=\dMonProf_0\\
-         \TrCat&=\dTrProf_0\\
-         \CompCat&=\dCompProf_0
-      \end{align*}
-   }
-   \hspace{.5in}
-   \parbox{1.8in}{
-      \begin{align*}
-         \MMonCat&=\VVer(\dMonProf)\\
-         \TTrCat&=\VVer(\dTrProf)\\
-         \CCompCat&=\VVer(\dCompProf)
-      \end{align*}
-   }
-}
-
 It may seem strange at first to define a profunctor $T\tickar T'$ between traced categories to be a
 profunctor $\Int(T)\tickar\Int(T')$. The next proposition serves as a first sanity check on this
 definition, and the remainder of this paper provides further support.
@@ -1900,6 +1880,13 @@ definition, and the remainder of this paper provides further support.
    $\VVer(\dTrProf)=\CCompCat(\Int(F),\Int(G))$. The result then follows from the fact that $\Int$
    is a local equivalence of 2-categories (a.k.a.\ a fully faithful 2-functor).
 \end{proof}
+
+Thus we have the following:
+\begin{align*}
+   \MonCat  &= \dMonProf_0  & \MMonCat  &= \VVer(\dMonProf) \\
+   \TrCat   &= \dTrProf_0   & \TTrCat   &= \VVer(\dTrProf)  \\
+   \CompCat &= \dCompProf_0 & \CCompCat &= \VVer(\dCompProf)
+\end{align*}
 
 \section{$\dMonProf$, $\dTrProf$, and $\dCompProf$ are exact}
 
