@@ -1825,15 +1825,15 @@ Definition~\ref{def:induced_locally_equivalent_equipment}.
 
 Note that we have the following:
 \centerThis{
-   \parbox{1.8in}{
+   \parbox{1.4in}{
       \begin{align*}
          \MonCat&=\dMonProf_0\\
          \TrCat&=\dTrProf_0\\
          \CompCat&=\dCompProf_0
       \end{align*}
    }
-   \hspace{.6in}
-   \parbox{2.2in}{
+   \hspace{.5in}
+   \parbox{1.8in}{
       \begin{align*}
          \MMonCat&=\VVer(\dMonProf)\\
          \TTrCat&=\VVer(\dTrProf)\\
@@ -2109,7 +2109,7 @@ over $\CompCat$.
       &\qquad \boxtimes\Bigl[\bigl(\lambda_{e'}\circ(\epsilon_{d'}\otimes\id_{e'})\bigr)\cdot\bigl(n'_1\boxtimes i(\id_{d'^*})\boxtimes n'_2\bigr)\cdot\bigl((\id_{c'}\otimes\eta_{d'})\circ\rho_{c'}^{-1}\bigr)\Bigr]
    \end{align*}
 
-   Now suppose that $M\in\MProf(C, C)$ is another monoidal profunctor with unit, and that $\phi\colon M\to N$ is a monoidal profunctor morphism which preserves units.
+   Now suppose that $M\in\MonProf(C, C)$ is another monoidal profunctor with unit, and that $\phi\colon M\to N$ is a monoidal profunctor morphism which preserves units.
    Then it is simple to check that $\phi$ also preserves the canonical multiplications:
    \begin{align*}
       \phi(n_2\bullet n_1) &= \phi\Bigl[\bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(n_1\boxtimes i_M(\id_{d^*})\boxtimes n_2)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr)\Bigr] \\
@@ -2131,7 +2131,7 @@ Consider for the moment the fibration $\End(\dCompProf)$, defined by the pullbac
 \end{equation*}
 We can define the functors
 \begin{equation}\label{eqn:functors_1C_CC}
-   \begin{tikzcd}[column sep=-1.5em]
+   \begin{tikzcd}[column sep=-1em]
       \CPsh(\dCompProf) \ar[rr,shift left,"F"] \ar[dr,two heads]
       && \End(\dCompProf) \ar[ll,shift left,"U"] \ar[dl,two heads] \\
       & \CompCat &
@@ -2291,7 +2291,7 @@ Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Sect
 
 We define the equipments:
 \centerThis{
-   \parbox{2.25in}{
+   \parbox{1.8in}{
       \begin{align*}
          \dFrMonProf&\coloneqq\dMonProf_{\TM}\\
          \dFrTrProf&\coloneqq \dTrProf_{\TT}\\
@@ -2299,7 +2299,7 @@ We define the equipments:
       \end{align*}
    }
    \qquad
-   \parbox{2.8in}{
+   \parbox{2.5in}{
       \begin{align*}
          \dObFrMonProf&\coloneqq\dMod(\dFrMonProf)\\
          \dObFrTrProf&\coloneqq\dMod(\dFrTrProf)\\
@@ -2399,7 +2399,7 @@ The following corollary is a direct application of Theorem~\ref{thm:ffle_and_ver
 \begin{corollary}\label{cor:TrCat_ObjectFree}
 There are equipment functors (left) and underlying 2-functors (right)
 \centerThis{
-   \parbox{2.2in}{
+   \parbox{2in}{
       \begin{align*}
          \dObFrMonProf&\to\dMonProf\\
          \dObFrTrProf&\to\dTrProf\\
@@ -2407,7 +2407,7 @@ There are equipment functors (left) and underlying 2-functors (right)
       \end{align*}
    }
    \hspace{.5in}
-   \parbox{2.6in}{
+   \parbox{2.4in}{
       \begin{align*}
          \VVer(\dObFrMonProf)&\to\MMonCat\\
          \VVer(\dObFrTrProf)&\to\TTrCat\\
