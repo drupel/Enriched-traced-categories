@@ -1,5 +1,5 @@
 \RequirePackage[l2tabu,orthodox]{nag}
-\documentclass[12pt,oneside,article,draft]{memoir}
+\documentclass[12pt,oneside,article]{memoir}
 \input{preamble.tex}
 
 \settrims{0pt}{0pt} % page and stock same size
@@ -27,7 +27,7 @@
    \and Patrick Schultz${}^*$%\footnotemark[1]
    \and Dylan Rupel
 }
-
+\date{\vspace{-3ex}}
 
 \begin{document}
 \tightlists
@@ -40,11 +40,12 @@
    in the sense that there is an equivalence between $\Cob$-algebras and
    traced categories. We also prove a substantial generalization of this fact which characterizes
    lax functors out of compact or traced categories. \\
-   \textbf{Keywords:} Traced categories, compact categories, lax functors, equipments, monoidal categories, operads, factorization systems.
+
+   \noindent\textbf{Keywords:} Traced monoidal categories, compact closed categories, monoidal categories, lax functors, equipments, operads, factorization systems.
 \end{abstract}
 
-\setcounter{tocdepth}{1}
-\tableofcontents*
+% \setcounter{tocdepth}{1}
+% \tableofcontents*
 
 \chapter{Introduction}
 
@@ -1007,7 +1008,7 @@ As shown, we often indicate morphisms in $\cat{L}$ using a two-headed arrow, and
 If $\ccat{C}$ is a 2-category and $\cat{L}, \cat{R}$ are distinguished classes of morphisms, we say that $\cat{L}$ is \emph{left pseudo-orthogonal} to $\cat{R}$ if the pullback square (left of \eqref{eqn:OrthFactSys}) is only required to be a pseudo-pullback. This means that for any pseudo-commuting square (right of \eqref{eqn:OrthFactSys}), there exists an essentially unique pseudo-commuting lift.
 
 \begin{example}\label{ex:ess_surj_pseudo_ff}
-In $\CCat$, the class of essentially surjective functors is left pseudo-orthogonal to the class of fully faithful functors.
+In the 2-category $\CCat$, the class of essentially surjective functors is left pseudo-orthogonal to the class of fully faithful functors.
 \end{example}
 
 \begin{remark}
