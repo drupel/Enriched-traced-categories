@@ -227,7 +227,7 @@ to $\TrCat_{\LabSet}$ (respectively to $\CompCat_{\LabSet}$) for some fixed labe
 first main result says that the total categories of these fibrations are \emph{almost} equivalent to
 the 2-category $\TTrCat$ (respectively $\CCompCat$):
 
-\begin{named}{Theorem A}\label{thm:TheoremA}
+\begin{named}{Theorem A}\label{thm:TheoremA_statement}
   There is a fully faithful functor of 1-categories
   \begin{equation*}
      \int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrCat
@@ -276,7 +276,7 @@ One advantage of this generalization is that it is more straightforward to handl
 categories $\cat{T}$ and $\cat{C}$. Namely, we will prove in Section~\ref{sec:deducing} the
 following theorem:
 
-\begin{named}{Theorem B}\label{thm:TheoremB}
+\begin{named}{Theorem B}\label{thm:TheoremB_statement}
    There is are equivalences of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1em]
@@ -2518,70 +2518,42 @@ We conclude this section by recording two simple lemmas which use definitions fr
 
 \section{Deducing the main results}\label{sec:deducing}
 
-\todo[inline]{Deal with this section: sync with intro and prove.}
-
-\begin{named}{Theorem A}
+\begin{named}{Theorem A}\label{thm:TheoremA}
   There is a fully faithful functor of 1-categories
-   \begin{equation*}
-      \int^{\LabSet\in\Set_{\TM}}(\LCob{\LabSet})\alg \to \TrCat
-   \end{equation*}
-   such that the induced 2-functor $\int^{\LabSet\in\Set_{\TM}}(\LCob{\LabSet})\alg\to\TTrCat$ is 2-essentially surjective.
+  \begin{equation*}
+     \int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrCat
+  \end{equation*}
+  such that the induced 2-functor $\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg\to\TTrCat$ is 2-essentially surjective. 
+
+  The above statements also hold when $\TT$ is replaced by $\TC$ and when $\TrCat$ and $\TTrCat$ are replaced by $\CompCat$ and $\CCompCat$.
 \end{named}
 
 \begin{proof}
 
-By Proposition~\ref{prop:TrCat_2equiv}, we know that in the commutative diagram below, the top map is fully faithful and the bottom map is a 2-equivalence:
-\begin{equation*}
-	\begin{tikzcd}
-		\dFrTrProf_0\ar[r,"\ff"]\ar[d,"\bo"']&\TrCat\ar[d]\\
-		\VVer(\dFrTrProf)\ar[r,"\equiv"']&\TTrCat
-	\end{tikzcd}
-\end{equation*}
-and of course the left map is bijective on objects. Hence, the result follows from the chain of equivalences
-\begin{align*}
-\int^{\LabSet\in\Set_{\TM}}(\LCob{\LabSet})\alg\equiv\int^{C\in\FrMonCat}\Lax(\FMC(C),\Set)
-&\equiv\CPsh(\dFrTrProf)\\
-&\equiv\dFrTrProf_0
-\end{align*}
-given by (\ref{dia:TMvsFrMonCat}), Corollary~\ref{cor:free_compact_is_Cob},
-Definitions~\ref{def:copresheaves}, \ref{def:FrMonProf_FrCompProf}, and \ref{def:FrMonCompProf}, and
-Lemma~\ref{lem:FrMonCompProf_Psh_Mon}.
 \end{proof}
 
 \begin{named}{Theorem B}\label{thm:TheoremB}
-   There is an equivalence of fibrations
+   There is are equivalences of fibrations
    \begin{equation*}
-      \begin{tikzcd}[column sep=0em]
-         \int^{\cat{C}\in\CompCat}\Lax(\cat{C},\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \CompCat^{\bo} \ar[dl,two heads,"\dom"] \\
-            & \CompCat &
+      \begin{tikzcd}[column sep=-1em]
+         \int\limits^{\mathclap{\cat{C}\in\TrCat}} \Lax(\Int(\cat{C}),\Set)
+               \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \TrCat^{\bo} \ar[dl,two heads,"\dom" pos=.4] \\
+         & \TrCat &
+      \end{tikzcd}
+      \qquad\quad
+      \begin{tikzcd}[column sep=-1em]
+         \int\limits^{\mathclap{\cat{C}\in\CompCat}} \Lax(\cat{C},\Set)
+               \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \CompCat^{\bo} \ar[dl,two heads,"\dom" pos=.4] \\
+         & \CompCat &
       \end{tikzcd}
    \end{equation*}
 \end{named}
 
 \begin{proof}
-By Definitions~\ref{def:CompProf}~and~\ref{def:copresheaves}, there is an equivalence
-$$ \int^{\cat{C}\in\CompCat}\Lax(\cat{C},\Set)\equiv\CPsh(\dCompProf).$$ 
-The equipment $\dCompProf$ is exact by Proposition~\ref{prop:CompProf_exact}. By Proposition~\ref{Prop:mon_prof_equivalence} and Corollary~\ref{cor:Mon_vs_bo}, we have the following equivalences of fibrations over $\CompCat=\dCompProf_0$, completing the proof:
-$$\CPsh(\dCompProf)\equiv\Mon(\dCompProf)\equiv\CompCat^{\bo}.$$ 
+   
 \end{proof}
-
-\begin{named}{Corollary B}\label{cor:CorollaryB}
-   There is an equivalence of fibrations
-   \begin{equation*}
-      \begin{tikzcd}[column sep=0em]
-         \int^{\cat{C}\in\TrCat}\Lax(\Int(\cat{C}),\Set) \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \TrCat^{\bo} \ar[dl,two heads,"\dom"] \\
-            & \TrCat &
-      \end{tikzcd}
-   \end{equation*}
-\end{named}
-
-\begin{proof}
-By Definition~\ref{def:CompProf}, the left-hand side is equivalent to $\CPsh(\dTrProf)$. \todo{Finish proof.}
-\end{proof}
-
-
 
 
 \begin{thebibliography}{XXX}
