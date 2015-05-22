@@ -164,7 +164,7 @@ There is an equivalence of categories
 \begin{equation}\label{eq:single_fiber_comp}
    \LCob{\LabSet}\alg\equiv\CompCat_{\LabSet}.
 \end{equation}
-\todo[inline]{Say something comparing this to \eqref{eq:single_fiber_tr}?}
+Equations \eqref{eq:single_fiber_tr} and \eqref{eq:single_fiber_comp} and the relationship between them will be generalized in \ref{thm:TheoremA}; see also \eqref{eqn:2pullbacks_1fiber}.
 
 % \section{Lax functors out of compact categories}\label{subsec:main_results}
 
@@ -229,9 +229,9 @@ the 2-category $\TTrCat$ (respectively $\CCompCat$):
 
 \begin{named}{Theorem A}\label{thm:TheoremA_statement}
   There is a fully faithful functor of 1-categories
-  \begin{equation*}
+  \begin{equation}\label{eqn:tracedCobAlg}
      \int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrCat
-  \end{equation*}
+  \end{equation}
   such that the induced 2-functor $\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg\to\TTrCat$ is 2-essentially surjective. 
 
   The above statements also hold when $\TT$ is replaced by $\TC$ and when $\TrCat$ and $\TTrCat$ are replaced by $\CompCat$ and $\CCompCat$.
@@ -239,8 +239,9 @@ the 2-category $\TTrCat$ (respectively $\CCompCat$):
 
 The proof of this result can be found in Section~\ref{sec:deducing}.
 
-\todo[inline]{And maybe a comment about the weird form of Theorem A, to the effect that we shouldn't
-expect algebras of operads to be able to encode 2-cells.}
+\begin{remark}
+   It would be too much to ask \eqref{eqn:tracedCobAlg} to be an equivalence of 1-categories, because $\TrCat$ is throws away, rather than quotients by, natural isomorphisms in $\TTrCat$. On the other hand, we cannot expect $\LCob{\LabSet}$ to say anything about 2-cells, so the statement of \ref{thm:TheoremA} is the best we can expect.
+\end{remark}
 
 \subsection{Generalization: Lax algebras on compact categories}
 
@@ -295,7 +296,7 @@ following theorem:
    \end{equation*}
 \end{named}
 
-We can give a better high-level story once we have reviewed \emph{equipments}; see the introduction to Section~\ref{sec:equipments_monoidal_profunctors}. For the remainder of the introduction, we will attempt to build intuition.
+We can give a better high-level story once we have reviewed \emph{equipments}; see the introduction to Section~\ref{chap:equipments_monoidal_profunctors}. For the remainder of the introduction, we will attempt to build intuition.
 
 \section{Wiring Diagrams, cobordisms, and traced categories}
 
@@ -541,7 +542,7 @@ which is both injective and surjective, we can obtain the desired indexing opera
 
 \section{Plan of the paper} 
 
-\todo[inline]{Write Plan. Make sure to say equipments play a big part.}
+In Section~\ref{sec:traced categories} we review monoidal, traced, and compact categories, as well as the notion of orthogonal factorization systems. In Section~\ref{sec:background_equipments} we review equipments (also known as framed bicategories) from \cite{Shulman}, and exact equipments from \cite{Schultz2015}. In \ref{sec:internal_presheaves} we record the definition of copresheaves internal to an equipment, which we need to properly express our main theorems. We finally introduce the equipments of primary interest, $\dMonProf, \dTrProf$, and $\dCompProf$ in Section~\ref{chap:equipments_monoidal_profunctors}. We prove that they are exact in Section~\ref{sec:exactness_proofs} and, in Section~\ref{sec:special_CompProf}, prove the special properties about $\dCompProf$ which are at the core of our results. In Section~\ref{sec:monoids_on_free} we deal with object-freeness, which we need for \ref{thm:TheoremA}. We deduce our main results in Section~\ref{sec:deducing}.
 
 \section*{Acknowledgments}
 
@@ -1418,7 +1419,7 @@ There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dc
       \begin{tikzcd}
          \Mon(\dcat{X}) \ar[r] \ar[d,two heads,"\MOb"'] \ar[dr,phantom,"\lrcorner" very near start]
             & \Mon(\dcat{Y}) \ar[d,two heads,"\MOb"] \\
-         \dcat{X}_0 \ar[r]
+         \dcat{X}_0 \ar[r,"F_0"']
             & \dcat{Y}_0
       \end{tikzcd}
    \end{equation*}
@@ -1749,27 +1750,20 @@ If $\dcat{D}=\dProf$ then an object of $\CPsh(\dcat{D})$ is a pair $(C,H)$, wher
    back face is a pseudo-pullback as well.
 \end{proof}
 
-\chapter{Equipments of monoidal categories and profunctors}\label{sec:equipments_monoidal_profunctors}
+\chapter{Equipments of monoidal categories and profunctors}\label{chap:equipments_monoidal_profunctors}
 
 In this section we setup the necessary equipment to prove our main results, \ref{thm:TheoremA} and
 \ref{thm:TheoremB}. The high-level view of the argument runs as follows.
-\todo{Go through the following once things are more settled.}
 
 The free compact category on a set $\LabSet$ is $\LCob{\LabSet}$ by
 Corollary~\ref{cor:free_compact_is_Cob}. For any compact category $\cat{C}$, there is an equivalence
 of categories (Proposition~\ref{prop:unit_implies_monoid}) between the lax functors $\cat{C}\to\Set$
-and the monoids on $\cat{C}$ in the equipment $\CompProf$ (Definition~\ref{def:CompProf}). Because
-$\CompProf$ is an exact equipment (Proposition~\ref{prop:CompProf_exact}), the monoids on $\cat{C}$
+and the monoids on $\cat{C}$ in the equipment $\dCompProf$ (Definition~\ref{def:CompProf}). Because
+$\dCompProf$ is an exact equipment (Proposition~\ref{prop:CompProf_exact}), the monoids on $\cat{C}$
 can be identified with the bijective-on-objects functors out of $\cat{C}$ by
-Theorem~\ref{thm:Mod_vs_bo}; this establishes $\Lax(\cat{C},\Set)\iso\cat{C}/\CompCat^{\bo}.$
-Similar results hold for traced categories. 
+Theorem~\ref{thm:Mod_vs_bo}; this establishes the equivalence $\CPsh(\dCompProf)\equiv\dCompProf^{\bo}$. Similar results hold for traced categories; see Proposition~\ref{Prop:mon_prof_equivalence} and Corollary~\ref{cor:Tr_mon_prof_equivalence}. These results suffice to prove \ref{thm:TheoremB}.
 
-The remaining difficulty is allowing the object set $\LabSet$ to vary. What makes this work is the
-fact that there is an orthogonal factorization system on $\CompCat$ that behaves nicely with the
-adjunction to $\Set$. Theorem~\ref{thm:ffle_and_verts} provides a 2-equivalence between any such
-nicely-behaved exact equipment and its free-on-objects version. It follows that the lax, set-valued
-functors out of a varying category $\cat{C}$ are equivalent to the $\bo$ maps out of $\cat{C}$
-(Proposition~\ref{Prop:mon_prof_equivalence}). 
+The remaining difficulty is dealing with object-freeness, which we need for \ref{thm:TheoremA}. This is the purpose of Section~\ref{sec:monoids_on_free}. We deduce our main results in Section~\ref{sec:deducing}.
 
 
 \section{Monoidal profunctors}\label{sec:monoidal_profunctors}
@@ -1876,7 +1870,7 @@ Thus we have the following:
    \CompCat &= \dCompProf_0 & \CCompCat &= \VVer(\dCompProf)
 \end{align*}
 
-\section{$\dMonProf$, $\dTrProf$, and $\dCompProf$ are exact}
+\section{$\dMonProf$, $\dTrProf$, and $\dCompProf$ are exact}\label{sec:exactness_proofs}
 
 \begin{proposition}\label{prop:MonProf_exact}
    The equipment $\dMonProf$ is exact.
@@ -1973,7 +1967,8 @@ Thus we have the following:
    $\Col{M}_{\MTCfont{C}}\iso\Int\Col{M}_{\MTCfont{T}}$.
 
    An embedding $M\to T'$ in $\dTrProf$ is an embedding in $\dCompProf$ of the form
-   $(\Int(f),\phi)\colon(\Int(T),M)\to\Int(T')$. Thus we can construct the set of embeddings
+   $$(\Int(f),\phi)\colon(\Int(T),M)\to\Int(T').$$ 
+   Thus we can construct the set of embeddings
    $\Emb_{\mathrm{Tr}}(M,T')$ as the pullback
    \begin{equation}\label{eq:Emb_Tr}
       \begin{tikzcd}
@@ -2060,7 +2055,9 @@ Thus we have the following:
    $\Int(F)$ is, so the result again follows from Lemma~\ref{lemma:fully_faithful_and_trace}.
 \end{proof}
 
-\section{Special properties of $\dCompProf$}
+
+
+\section{Special properties of $\dCompProf$}\label{sec:special_CompProf}
 
 The primary goal of this section is to establish the equivalence of the three fibrations
 \begin{equation}\label{eqn:primary_goal}
@@ -2225,10 +2222,10 @@ that these are morphisms of fibrations, i.e.\ preserve cartesian morphisms.
 
 \todo[inline]{Add something about Malcev categories and $\dCompProf$.}
 
-\section{Monoids on free objects}
+\section{Monoids on free objects}\label{sec:monoids_on_free}
 
 Theorem~\ref{thm:Mod_vs_bo} is a key piece in the proof of \ref{thm:TheoremA}, but we will need a
-modification for the proofs of \ref{thm:TheoremB} and \ref{cor:CorollaryB}. The latter results are
+modification for the proof of \ref{thm:TheoremB}. The latter results are
 concerned with compact (respectively traced) categories which are ``object-free''.
 Theorem~\ref{thm:ffle_and_verts} provides the modification of Theorem~\ref{thm:Mod_vs_bo} in a general form,
 which we then specialize to the cases of interest for the present paper in
@@ -2499,13 +2496,14 @@ We conclude this section by recording two simple lemmas which use definitions fr
 %   \end{equation*}
 %\end{proposition}
 
+
 \begin{lemma}\label{lem:FrMonCompProf_Psh_Mon}
    There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1.5em]
          \CPsh(\dFrTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
             && \Mon(\dFrTrProf) \ar[dl,two heads,"\MOb"] \\
-            & \FrMonCat &
+            & \FrTrCat &
       \end{tikzcd}
    \end{equation*}
 \end{lemma}
@@ -2514,6 +2512,16 @@ We conclude this section by recording two simple lemmas which use definitions fr
    (Definition~\ref{def:local_equivalence}), so the result follows from
    Lemmas~\ref{lem:FrCompProf_Psh_Mon}, \ref{lemma:FFLE_Mod}, \ref{lem:Mon_pullback}, and \ref{lem:Psh_pullback}.
 \end{proof}
+
+For the reader's convenience, we connect the notation of \eqref{eq:single_fiber_tr} and \eqref{eq:single_fiber_comp} to the present section using the following pseudo-pullback squares; see Lemma~\ref{lem:Mon_pullback} and~\ref{lem:Mon_vs_bo}.
+\begin{equation}\label{eqn:2pullbacks_1fiber}
+   \begin{tikzcd}
+      \TrCat_{\LabSet}\equiv\CompCat_{\LabSet}\ar[r]\ar[d]\ar[rd,phantom,"\lrcorner" very near start]
+       &\Mon(\dFrTrProf)\ar[d,"\MOb"]\ar[r]\ar[rd,phantom,"\lrcorner" very near start]
+       &\Mon(\dFrCompProf)\ar[d,"\MOb"]\\
+      \{*\}\ar[r,"\TT(\LabSet)"']&\FrTrCat\ar[r,"\Int"']&\FrCompCat
+   \end{tikzcd}
+\end{equation}
 
 \section{Deducing the main results}\label{sec:deducing}
 
@@ -2534,7 +2542,7 @@ We conclude this section by recording two simple lemmas which use definitions fr
          \int\limits^{\mathclap{\LabSet\in\Set_{\TT}}}(\LCob{\LabSet})\alg
                \ar[rr,phantom,"\iso"] \ar[dr,two heads]
             && \CPsh(\dFrTrProf) \ar[dl,two heads] \\
-         & \FrMonCat &
+         & \FrTrCat &
       \end{tikzcd}
       \hspace{1.2em}
       \begin{tikzcd}[column sep=-2em]
