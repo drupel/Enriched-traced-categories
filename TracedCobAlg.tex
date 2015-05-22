@@ -2528,7 +2528,24 @@ We conclude this section by recording two simple lemmas which use definitions fr
 \end{named}
 
 \begin{proof}
-
+   First note that there are, essentially by definition, equivalences of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=-2em]
+         \int\limits^{\mathclap{\LabSet\in\Set_{\TT}}}(\LCob{\LabSet})\alg
+               \ar[rr,phantom,"\iso"] \ar[dr,two heads]
+            && \CPsh(\dFrTrProf) \ar[dl,two heads] \\
+         & \FrMonCat &
+      \end{tikzcd}
+      \hspace{1.2em}
+      \begin{tikzcd}[column sep=-2em]
+         \int\limits^{\mathclap{\LabSet\in\Set_{\TC}}}(\LCob{\LabSet})\alg
+               \ar[rr,phantom,"\iso"] \ar[dr,two heads]
+            && \CPsh(\dFrCompProf) \ar[dl,two heads] \\
+         & \FrCompCat &
+      \end{tikzcd}
+   \end{equation*}
+   The result then follows directly from Corollary~\ref{cor:TrCat_ObjectFree} and
+   Lemmas~\ref{lem:FrCompProf_Psh_Mon} and~\ref{lem:FrMonCompProf_Psh_Mon}.
 \end{proof}
 
 \begin{named}{Theorem B}\label{thm:TheoremB}
