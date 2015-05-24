@@ -35,10 +35,10 @@
 
 \maketitle
 \begin{abstract}
-   We give an alternate conception of string diagrams as 1-dimensional oriented cobordisms, the
-   operad of which we denote by $\Cob$. The axioms of traced categories are fully encoded by $\Cob$
-   in the sense that there is an equivalence between $\Cob$-algebras and
-   traced categories. We also prove a substantial generalization of this fact which characterizes
+   We give an alternate conception of string diagrams as labeled 1-dimensional oriented cobordisms, the
+   operad of which we denote by $\LCob{\LabSet}$, where $\LabSet$ is the set of string labels. The axioms of traced categories are fully encoded by $\LCob{\LabSet}$ 
+   in the sense that there is an equivalence between $\LCob{\LabSet}$-algebras, for varying $\LabSet$ and
+   traced categories with varying object set. The same holds for compact categories, the difference being in terms of variance in $\LabSet$. We also prove a substantial generalization of these fact which characterizes 
    lax functors out of compact or traced categories. \\
 
    \noindent\textbf{Keywords:} Traced monoidal categories, compact closed categories, monoidal categories, lax functors, equipments, operads, factorization systems.
@@ -144,7 +144,7 @@ functors $\cat{M}\to\Set$. Then there is an equivalence of categories
    \LCob{\LabSet}\alg\equiv\TrCat_{\LabSet}.
 \end{equation}
 Some intuition for this statement will be given in Section~\ref{subsec:cobalg_and_trCat}, and it
-will be generalized in \ref{thm:TheoremA} and proven as such in Section~\ref{sec:deducing}.
+will be generalized in \ref{thm:TheoremA_statement} and proven as such in Section~\ref{sec:deducing}.
 
 \subsection{Compact categories vs.\ traced categories}
 
@@ -161,7 +161,7 @@ There is an equivalence of categories
 \begin{equation}\label{eq:single_fiber_comp}
    \LCob{\LabSet}\alg\equiv\CompCat_{\LabSet}.
 \end{equation}
-Equations \eqref{eq:single_fiber_tr} and \eqref{eq:single_fiber_comp} and the relationship between them will be generalized in \ref{thm:TheoremA}; see also \eqref{eqn:2pullbacks_1fiber}.
+Equations \eqref{eq:single_fiber_tr} and \eqref{eq:single_fiber_comp} and the relationship between them will be generalized in \ref{thm:TheoremA_statement}; see also \eqref{eqn:2pullbacks_1fiber}.
 
 \section{The main results}\label{subsec:main_results}
 
@@ -222,12 +222,12 @@ the 2-category $\TTrCat$ and $\CCompCat$.
 The proof of this result can be found in Section~\ref{sec:deducing}.
 
 \begin{remark}
-   It would be too much to ask \eqref{eqn:tracedCobAlg} to be an equivalence of 1-categories, because $\TrCat$ throws away, rather than quotients by, natural isomorphisms in $\TTrCat$. On the other hand, we cannot expect algebras on $\LCob{\LabSet}$ to say anything about 2-cells, so the statement of \ref{thm:TheoremA} is the best we can expect.
+   It would be too much to ask \eqref{eqn:tracedCobAlg} to be an equivalence of 1-categories, because $\TrCat$ throws away, rather than quotients by, natural isomorphisms in $\TTrCat$. On the other hand, we cannot expect algebras on $\LCob{\LabSet}$ to say anything about 2-cells, so the statement of \ref{thm:TheoremA_statement} is the best we can expect.
 \end{remark}
 
 \subsection{Generalization: Lax algebras on compact categories}
 
-In the course of proving \ref{thm:TheoremA}, we will also prove a more general result which drops
+In the course of proving \ref{thm:TheoremA_statement}, we will also prove a more general result which drops
 the restriction to object-free traced (and compact) categories.
 
 We will see (\ref{thm:orthogonal} and \ref{prop:CompProf_exact}) that there is a factorization
@@ -524,7 +524,7 @@ which is both injective and surjective, we can obtain the desired indexing opera
 
 \section{Plan of the paper} 
 
-In Section~\ref{chap:traced_categories} we review monoidal, traced, and compact categories, as well as the notion of orthogonal factorization systems. In Section~\ref{chap:background_equipments} we review equipments (also known as framed bicategories) \cite{Wood} \cite{Shulman}, and exact equipments \cite{Schultz2015}. In Section~\ref{sec:internal_presheaves} we record the definition of copresheaves internal to an equipment, which we need to properly express our main theorems. We finally introduce the equipments of primary interest, $\dMonProf, \dTrProf$, and $\dCompProf$ in Section~\ref{chap:equipments_monoidal_profunctors}. We prove that they are exact in Section~\ref{sec:exactness_proofs} and, in Section~\ref{sec:special_CompProf}, prove the special properties about $\dCompProf$ which are at the core of our results. In Section~\ref{sec:monoids_on_free} we deal with object-freeness, which we need for \ref{thm:TheoremA}. We deduce our main results in Section~\ref{sec:deducing}.
+In Section~\ref{chap:traced_categories} we review monoidal, traced, and compact categories, as well as the notion of orthogonal factorization systems. In Section~\ref{chap:background_equipments} we review equipments (also known as framed bicategories) \cite{Wood} \cite{Shulman}, and exact equipments \cite{Schultz2015}. In Section~\ref{sec:internal_presheaves} we record the definition of copresheaves internal to an equipment, which we need to properly express our main theorems. We finally introduce the equipments of primary interest, $\dMonProf, \dTrProf$, and $\dCompProf$ in Section~\ref{chap:equipments_monoidal_profunctors}. We prove that they are exact in Section~\ref{sec:exactness_proofs} and, in Section~\ref{sec:special_CompProf}, prove the special properties about $\dCompProf$ which are at the core of our results. Indeed one might view the rest of the paper as a formal wrapper for the results in that section. In Section~\ref{sec:monoids_on_free} we deal with object-freeness, which we need for \ref{thm:TheoremA}. We deduce it as well as \ref{thm:TheoremB} in Section~\ref{sec:deducing}.
 
 \section*{Acknowledgments}
 
