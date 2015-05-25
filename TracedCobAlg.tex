@@ -2265,11 +2265,6 @@ form. Throughout this section we will consider an equipment $\dcat{D}$ together 
 \end{equation}
 Let $T=UF$ be the induced monad on $\cat{C}$, let $\cat{C}_T$ be the Kleisli category. The inclusion $k_T\colon\cat{C}_T\to\dcat{D}_0$ induces an equipment $\dcat{D}_T\coloneqq k_T^*\dcat{D}$ and a fully faithful local equivalence, which we denote
 $$\varphi_T\colon \dcat{D}_T\to\dcat{D}.$$
-It follows from Lemma~\ref{lemma:FFLE_Mod} that $\dMod(\varphi_T)\colon\dMod(\dcat{D}_T)\to\dMod(\dcat{D})$ is a fully faithful local equivalence as well. If
-$\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ from Theorem~\ref{thm:Mod_vs_bo} to identify
-$\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the
-image, as in the following definition.
-
 %\begin{definition}\label{def:FrMonProf_FrCompProf}
 %   We define the equipments
 %   \begin{align*}
@@ -2288,6 +2283,25 @@ image, as in the following definition.
 %   \end{equation*}
 %   and similarly for $\dFrTrProf$ and $\dFrCompProf$.
 %\end{definition}
+
+Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Section~\ref{sec:free_and_geometry}. 
+
+\begin{definition}\label{def:freeMon_equips}
+
+We define the equipments:
+\begin{align*}
+   \dFrMonProf  &\coloneqq \dMonProf_{\TM}   \\
+   \dFrTrProf   &\coloneqq \dTrProf_{\TT}     \\
+   \dFrCompProf &\coloneqq \dCompProf_{\TC} 
+\end{align*}
+\end{definition}
+
+These equipments have uninteresting vertical 1-categories---they are just the kleisli categories of their respective monads---but they are not impoverished by that fact. For example, we will see in Corollary~\ref{cor:TrCat_ObjectFree} that their vertical 2-categories are equivalent to $\MMonCat, \TTrCat,$ and $\CCompCat$, respectively.
+
+It follows from Lemma~\ref{lemma:FFLE_Mod} that $\dMod(\varphi_T)\colon\dMod(\dcat{D}_T)\to\dMod(\dcat{D})$ is a fully faithful local equivalence as well. If
+$\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ from Theorem~\ref{thm:Mod_vs_bo} to identify
+$\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the
+image, as in the following definition.
 
 \begin{definition}
    Suppose given an adjunction as in \eqref{eqn:adjunction_objectfree}. We define the equipment $\dcat{D}_F^{\bo}$ as
@@ -2313,6 +2327,17 @@ image, as in the following definition.
 We will write $\psi_F\colon\dcat{D}_F^{\bo}\to\dcat{D}^{\bo}$ for the induced local equivalence.
 \end{definition}
 
+\begin{remark}
+   The objects of $\dcat{D}_F^{\bo}$ are bijective-on-objects morphisms of the form
+   $F(c)\twoheadrightarrow D$ where $c$ is an object in $\cat{C}$ and $D$ is an object in
+   $\dcat{D}$. Intuitively, e.g., if $\cat{C}=\Set$ and $U\colon\dcat{D}\to\Set$ is the objects functor, we can think of the objects of $\dcat{D}_F^{\bo}$ (or equivalently
+   $\dMod(\dcat{D}_T)$) as objects in $\dcat{D}$ which are \emph{object-free}.
+   
+   For instance, every category is free-on-objects, because every category admits a
+   bijective-on-objects functor from a discrete category. On the other hand, a monoidal category is
+   free-on-objects if the monoid of objects is freely generated. This motivates the following definition.
+\end{remark}
+
 The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\ref{lemma:FFLE_Mod}:
 
 \begin{proposition}\label{prop:object-free_Mod_bo}
@@ -2327,29 +2352,6 @@ The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\re
       \end{tikzcd}
    \end{equation*}
 \end{proposition}
-
-\begin{remark}
-   The objects of $\dcat{D}_F^{\bo}$ are bijective-on-objects morphisms of the form
-   $F(c)\twoheadrightarrow D$ where $c$ is an object in $\cat{C}$ and $D$ is an object in
-   $\dcat{D}$. Intuitively, e.g., if $\cat{C}=\Set$ and $U\colon\dcat{D}\to\Set$ is the objects functor, we can think of the objects of $\dcat{D}_F^{\bo}$ (or equivalently
-   $\dMod(\dcat{D}_T)$) as objects in $\dcat{D}$ which are \emph{object-free}.
-   
-   For instance, every category is free-on-objects, because every category admits a
-   bijective-on-objects functor from a discrete category. On the other hand, a monoidal category is
-   free-on-objects if the monoid of objects is freely generated. This motivates the following definition.
-\end{remark}
-
-Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Section~\ref{sec:free_and_geometry}. 
-
-\begin{definition}\label{def:freeMon_equips}
-
-We define the equipments:
-\begin{align*}
-   \dFrMonProf  &\coloneqq \dMonProf_{\TM}   \\
-   \dFrTrProf   &\coloneqq \dTrProf_{\TT}     \\
-   \dFrCompProf &\coloneqq \dCompProf_{\TC} 
-\end{align*}
-\end{definition}
 
 
 The next theorem can be seen as saying that, for any exact equipment $\dcat{D}$ satisfying the
