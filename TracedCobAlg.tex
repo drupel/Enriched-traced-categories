@@ -2284,7 +2284,7 @@ $$\varphi_T\colon \dcat{D}_T\to\dcat{D}.$$
 %   and similarly for $\dFrTrProf$ and $\dFrCompProf$.
 %\end{definition}
 
-Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Section~\ref{sec:free_and_geometry}. 
+Note that, in general if $\dcat{D}$ is exact, we should \emph{not} expect $\dcat{D}_T$ to be exact. Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in Section~\ref{sec:free_and_geometry}. The following equipments are good examples to keep in mind when reading the results in this section.
 
 \begin{definition}\label{def:freeMon_equips}
 
@@ -2296,9 +2296,9 @@ We define the equipments:
 \end{align*}
 \end{definition}
 
-These equipments have uninteresting vertical 1-categories---they are just the kleisli categories of their respective monads---but they are not impoverished by that fact. For example, we will see in Corollary~\ref{cor:TrCat_ObjectFree} that their vertical 2-categories are equivalent to $\MMonCat, \TTrCat,$ and $\CCompCat$, respectively.
+These equipments have uninteresting vertical 1-categories---they are just the kleisli categories of their respective monads---but they are not impoverished by that fact. For example, we will see in Corollary~\ref{cor:TrCat_ObjectFree} that they contain enough structure to recover $\MMonCat, \TTrCat,$ and $\CCompCat$, respectively.
 
-It follows from Lemma~\ref{lemma:FFLE_Mod} that $\dMod(\varphi_T)\colon\dMod(\dcat{D}_T)\to\dMod(\dcat{D})$ is a fully faithful local equivalence as well. If
+With $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ as above, it follows from Lemma~\ref{lemma:FFLE_Mod} that $\dMod(\varphi_T)\colon\dMod(\dcat{D}_T)\to\dMod(\dcat{D})$ is a fully faithful local equivalence. If
 $\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ from Theorem~\ref{thm:Mod_vs_bo} to identify
 $\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the
 image, as in the following definition.
@@ -2335,7 +2335,7 @@ We will write $\psi_F\colon\dcat{D}_F^{\bo}\to\dcat{D}^{\bo}$ for the induced lo
    
    For instance, every category is free-on-objects, because every category admits a
    bijective-on-objects functor from a discrete category. On the other hand, a monoidal category is
-   free-on-objects if the monoid of objects is freely generated. This motivates the following definition.
+   free-on-objects if the monoid of objects is freely generated. 
 \end{remark}
 
 The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\ref{lemma:FFLE_Mod}:
