@@ -1428,9 +1428,9 @@ There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dc
 \end{lemma}
 \begin{proof}
    By Remark~\ref{rem:strict_vs_pseudo_pullback}, we may assume without loss of generality that the
-   pullback in Definition~\ref{def:local_equivalence} is strict. It is then straightforward to check
-   that the above square is again a strict pullback, and hence (by
-   Remark~\ref{rem:strict_vs_pseudo_pullback} again) is a pseudo-pullback.
+   pullback in Definition~\ref{def:local_equivalence} is strict. With this simplification, it is
+   then straightforward to check directly that the above square is again a strict pullback, and
+   hence (by Remark~\ref{rem:strict_vs_pseudo_pullback} again) is a pseudo-pullback.
 \end{proof}
 
 \section{Exactness and the $(\bo,\ff)$ factorization}\label{sec:exactness_and_boff}
@@ -2078,9 +2078,9 @@ We record the following:
 
    Now we consider $\dTrProf$. By the construction of collapses in
    Proposition~\ref{prop:TrProf_exact}, a vertical morphism $F\colon T\to T'$ is in $\bo$ if and
-   only if $\Int(F)$ is in $\bo$, and the underlying monoidal functor $\UTM(F)$ is in $\bo$.
-   By Lemma~\ref{lemma:fully_faithful_and_trace}, $F$ is bijective-on-objects if and only if
-   $\Int(F)$ is, and the same is clearly true of $\UTM$.
+   only if both $\Int(F)$ and the underlying monoidal functor $\UTM(F)$ are in $\bo$. By
+   Lemma~\ref{lemma:fully_faithful_and_trace}, $F$ is bijective-on-objects if and only if $\Int(F)$
+   is, and the same is clearly true of $\UTM$.
 
    Finally, by the definition of $\dTrProf$, a vertical morphism $F$ is in $\ff$ if and only if
    $\Int(F)$ is, so the result again follows from Lemma~\ref{lemma:fully_faithful_and_trace}.
