@@ -1281,7 +1281,7 @@ A double category is a 2-category-like structure involving horizontal and vertic
       \item The objects are \emph{monoids} in $\dcat{D}$: tuples $(c,M,e_M,m_M)$ consisting of an
          object $c$ of $\dcat{D}$, a proarrow $M\colon c\tickar c$, and unit and
          multiplication cells
-         \begin{equation}\label{eqn:monoid_in_equip}
+         \begin{equation*}
             \begin{tikzcd}
                c \ar[r,tick,"c" domA] \ar[d,equal]
                   & c \ar[d,equal] \\
@@ -1297,7 +1297,7 @@ A double category is a 2-category-like structure involving horizontal and vertic
                  && c
               \twocellA{m_M}
             \end{tikzcd}
-         \end{equation}
+         \end{equation*}
          satisfying the evident unit and associativity axioms. 
       \item The vertical arrows are \emph{monoid homomorphisms}: pairs $(f,\vec{f}\mspace{2mu})$ of a vertical arrow
          $f\colon c\to d$ in $\dcat{D}$ and a cell
@@ -1403,7 +1403,7 @@ There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dc
    \end{equation*}
 \end{lemma}
 
-\begin{definition}
+\begin{definition}\label{def:ptd}
    Let $\dcat{D}$ be an equipment. There is a fibration $\Ptd(\dcat{D})\twoheadrightarrow\dcat{D}_0$,
    whose objects are proarrows $A\colon d\tickar d$ in $\dcat{D}$ equipped with a unit (but not a
    multiplication), and whose morphisms are 2-cells (as in a monoid homomorphism) which preserve the
@@ -1747,7 +1747,7 @@ If $\dcat{D}=\dProf$ then an object of $\CPsh(\dcat{D})$ is a pair $(C,H)$, wher
    then~\eqref{eq:CPsh_square} is a pseudo-pullback.  Similarly for $\Psh$.
 \end{lemma}
 \begin{proof}
-   Consider the cube, where the front face is a pseudo-pullback by hypothesis:
+   Consider the cube
    \begin{equation*}
       \begin{tikzcd}[row sep={40,between origins}, column sep={55,between origins}]
          \CPsh(\dcat{X}) \ar[rr,"\tilde{F}"] \ar[dr] \ar[dd,two heads]
@@ -1764,7 +1764,10 @@ If $\dcat{D}=\dProf$ then an object of $\CPsh(\dcat{D})$ is a pair $(C,H)$, wher
    \end{equation*}
    The bottom face of the cube commutes because $F_0$ preserves terminal objects. The right face of
    the cube is a pullback (as is the left, by definition), hence there is a unique $\tilde{F}$
-   making the cube commute. These are all pseudo-pullbacks by Remark~\ref{rem:strict_vs_pseudo_pullback}, so the
+    making the cube commute.
+
+   If $F$ is a local equivalence, then the front face is a pseudo-pullback. The left and right faces
+   are pullbacks, hence pseudo-pullbacks (see Remark~\ref{rem:strict_vs_pseudo_pullback}), so the
    back face is a pseudo-pullback as well.
 \end{proof}
 
@@ -2065,7 +2068,7 @@ We record the following:
 \end{proof}
 
 \begin{proposition}\label{prop:boff_well_named}
-   Let $\dcat{D}$ be $\dProf,\dMonProf,\dTrProf$, or $\dCompProf$, each of which is exact. A vertical morphism
+   Let $\dcat{D}$ be $\dProf$, $\dMonProf$,$\dTrProf$, or $\dCompProf$, each of which is exact. A vertical morphism
    $F$ in $\dcat{D}$ is in $\bo$ (resp. $\ff$) in the sense of Theorem~\ref{thm:orthogonal} if and only
    $F$ is bijective-on-objects (resp. fully faithful) in the usual sense.
 \end{proposition}
@@ -2087,13 +2090,13 @@ We record the following:
 
 \section{Special properties of $\dCompProf$}\label{sec:special_CompProf}
 
-The primary goal of this section is to establish the equivalence of the three fibrations
+Recall the definition of $\Ptd$ from Definition~\ref{def:ptd}. The primary goal of this section is to establish the equivalence of the three fibrations
 \begin{equation}\label{eqn:primary_goal}
    \begin{tikzcd}
       \CPsh(\dCompProf) \equiv \Ptd(\dCompProf) \equiv \Mon(\dCompProf).
    \end{tikzcd}
 \end{equation}
-over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} and \ref{Prop:mon_prof_equivalence}. Note that by $\Ptd(\dCompProf)$, we mean \emph{pointed endo monoidal profunctors}, i.e., just the left half of \eqref{eqn:monoid_in_equip}. 
+over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} and \ref{Prop:mon_prof_equivalence}. 
 
 
 \begin{remark}
