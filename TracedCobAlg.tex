@@ -2104,7 +2104,7 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
    equational form presented. We highly recommend that the interested reader convert these equations
    into string diagrams. If $N\colon C\tickar C$ is a profunctor, the trick is to draw elements
    $n\in N(c_1,c_2)$ as if they were arrows $c_1\to c_2$, which can be composed on either side with
-   actual morphisms of $ C$. The operation $\boxtimes$ of a monoidal profunctor then looks like the
+   actual morphisms of $ C$. We will use the bimodule notation discussed in Section~\ref{sec:profunctors}. The operation $\boxtimes$ of a monoidal profunctor then looks like the
    tensor of morphisms.
 \end{remark}
 
@@ -2112,11 +2112,11 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
    The forgetful functor $\Mon(\dCompProf)\to\Ptd(\dCompProf)$ is an equivalence of fibrations over $\CompCat$.
 \end{proposition}
 \begin{proof}
-   We can define a multiplication on $N$ by the following formula: given any $n_1\in N(c,d)$ and $n_2\in N(d,e)$,
+   Let $N\colon C\tickar C$ be a profunctor and $i\colon UC\to N$ be the basepoint. We can define a multiplication on $N$ by the following formula: given any $n_1\in N(c,d)$ and $n_2\in N(d,e)$,
    \[
       n_2\bullet n_1 = \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(n_1\boxtimes i(\id_{d^*})\boxtimes n_2)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr).
    \]
-   We first check the equation $n\bullet i(f)=n\cdot f$ for any $n\in N(d,e)$ and $f\colon c\to d$:
+   We first check that it is unital, i.e, that $n\bullet i(f)=n\cdot f$ for any $n\in N(d,e)$ and $f\colon c\to d$:
    \begin{align*}
       n\bullet i(f) &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(i(f)\boxtimes i(\id_{d^*})\boxtimes n)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
       &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(i(f\otimes\id_{d^*})\boxtimes n)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
@@ -2129,7 +2129,7 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
       &= n\cdot f.
    \end{align*}
 
-   The equation $i(f)\bullet n=f\cdot n$ follows similarly, and the associativity of $\bullet$ is a straightforward verification.
+   The equation $i(f)\bullet n=f\cdot n$ follows similarly, and the associativity of $\bullet$ is a straightforward verification. 
 
    Finally we check the equation $(n_2\boxtimes n'_2)\bullet(n_1\boxtimes n'_1)=(n_2\bullet n_1)\boxtimes(n'_2\bullet n'_1)$ for any $n_1\in N(c,d)$, $n'_1\in N(c',d')$, $n_2\in N(d,e)$, and $n'_2\in N(d',e')$, after which the remaining equations follow directly.
 
