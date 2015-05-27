@@ -1281,7 +1281,7 @@ A double category is a 2-category-like structure involving horizontal and vertic
       \item The objects are \emph{monoids} in $\dcat{D}$: tuples $(c,M,e_M,m_M)$ consisting of an
          object $c$ of $\dcat{D}$, a proarrow $M\colon c\tickar c$, and unit and
          multiplication cells
-         \begin{equation*}
+         \begin{equation}\label{eqn:unit_and_mult}
             \begin{tikzcd}
                c \ar[r,tick,"c" domA] \ar[d,equal]
                   & c \ar[d,equal] \\
@@ -1297,7 +1297,7 @@ A double category is a 2-category-like structure involving horizontal and vertic
                  && c
               \twocellA{m_M}
             \end{tikzcd}
-         \end{equation*}
+         \end{equation}
          satisfying the evident unit and associativity axioms. 
       \item The vertical arrows are \emph{monoid homomorphisms}: pairs $(f,\vec{f}\mspace{2mu})$ of a vertical arrow
          $f\colon c\to d$ in $\dcat{D}$ and a cell
@@ -1405,8 +1405,8 @@ There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dc
 
 \begin{definition}\label{def:ptd}
    Let $\dcat{D}$ be an equipment. There is a fibration $\Ptd(\dcat{D})\twoheadrightarrow\dcat{D}_0$,
-   whose objects are proarrows $A\colon d\tickar d$ in $\dcat{D}$ equipped with a unit (but not a
-   multiplication), and whose morphisms are 2-cells (as in a monoid homomorphism) which preserve the
+   whose objects are proarrows $A\colon d\tickar d$ in $\dcat{D}$ equipped with a unit from \eqref{eqn:unit_and_mult}, but not a
+   multiplication, and whose morphisms are 2-cells (as in a monoid homomorphism) which preserve the
    units.
 
    The fibration morphism $\Mon(\dcat{D})\to\dcat{D}_1$ factors through $\Ptd(\dcat{D})$ in the
@@ -2101,18 +2101,18 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
 
 \begin{remark}
    The proof of Proposition~\ref{prop:unit_implies_monoid} is very difficult to follow in the
-   equational form presented. We will use the bimodule notation discussed in Section~\ref{sec:profunctors}, but we highly recommend that the interested reader convert the equations
+   equational form presented. We will use the bimodule notation discussed in Sections~\ref{sec:profunctors}~and~\ref{sec:monoidal_profunctors}, but we highly recommend that the interested reader convert the equations
    into string diagrams. If $N\colon C\tickar C$ is a profunctor, the trick is to draw elements
    $n\in N(c_1,c_2)$ as if they were special arrows $c_1\to c_2$. They can be composed on either side with
-   actual morphisms of $ C$ but not with other special arrows. The operation $\boxtimes$ of a monoidal profunctor then looks like the
-   tensor of morphisms. 
+   actual morphisms of $C$ but not with other special arrows. The operation $\boxtimes$ of a monoidal profunctor then looks like the
+   tensor of morphisms. We do not draw these pictures here, because they look too much like pictures in $\Cob$; indeed, that is what we are trying to prove.
 \end{remark}
 
 \begin{proposition}\label{prop:unit_implies_monoid}
    The forgetful functor $\Mon(\dCompProf)\to\Ptd(\dCompProf)$ is an equivalence of fibrations over $\CompCat$.
 \end{proposition}
 \begin{proof}
-   Let $N\colon C\tickar C$ be a profunctor and $i\colon UC\to N$ be the basepoint. We can define a multiplication on $N$ by the following formula: given any $n_1\in N(c,d)$ and $n_2\in N(d,e)$,
+   Let $N\colon C\tickar C$ be a profunctor and $i\colon\Hom_C\to N$ be the basepoint. We can define a multiplication on $N$ by the following formula: given any $n_1\in N(c,d)$ and $n_2\in N(d,e)$,
    \[
       n_2\bullet n_1 = \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(n_1\boxtimes i(\id_{d^*})\boxtimes n_2)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr).
    \]
@@ -2128,13 +2128,12 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
       &= \bigl(\lambda_e\cdot(I_N\boxtimes n)\cdot\lambda_d^{-1}\bigr)\cdot\bigl(\rho_d\circ(f\otimes\id_I)\circ\rho_c^{-1}\bigr) \\
       &= n\cdot f.
    \end{align*}
-
    The equation $i(f)\bullet n=f\cdot n$ follows similarly, and the associativity of $\bullet$ is a straightforward verification. 
 
    Finally we check the equation $(n_2\boxtimes n'_2)\bullet(n_1\boxtimes n'_1)=(n_2\bullet n_1)\boxtimes(n'_2\bullet n'_1)$ for any $n_1\in N(c,d)$, $n'_1\in N(c',d')$, $n_2\in N(d,e)$, and $n'_2\in N(d',e')$, after which the remaining equations follow directly.
-
+   
    % \allowdisplaybreaks called in preamble
-
+   
    \begin{align*}
       &(n_2\boxtimes n'_2)\bullet(n_1\boxtimes n'_1) \\
       &= \bigl(\lambda_{e\otimes e'}\circ(\epsilon_{d\otimes d'}\otimes\id_{e\otimes e'})\bigr) \\
@@ -2163,7 +2162,7 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
       &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot\phi(n_1\boxtimes i_M(\id_{d^*})\boxtimes n_2)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
       &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(\phi(n_1)\boxtimes \phi(i_M(\id_{d^*}))\boxtimes \phi(n_2))\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
       &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(\phi(n_1)\boxtimes i_N(\id_{d^*}))\boxtimes \phi(n_2))\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
-      &= \phi(n_2)\bullet\phi(n_1)
+      &= \phi(n_2)\bullet\phi(n_1)\qedhere
    \end{align*}
 \end{proof}
 
