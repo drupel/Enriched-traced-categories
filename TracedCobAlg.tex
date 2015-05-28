@@ -1272,11 +1272,13 @@ A double category is a 2-category-like structure involving horizontal and vertic
 
 % \end{definition}
 
-\section{The monoids and bimodules construction}
+\section{The monoids and bimodules construction}\label{sec:monoids_bimods}
 
 \begin{definition}\label{def:monoids_and_modules}
-   Let $\dcat{D}$ be an equipment. The equipment $\dMod(\dcat{D})$ of \emph{monoids and bimodules} is
-   defined as follows (see also \cite{Shulman}):
+   Let $\dcat{D}$ be an equipment with local coequalizers, i.e.\ such that each category
+   $\HHor(\dcat{D})(A,B)$ has coequalizers and $\odot$ preserves coequalizers in each variable. The
+   equipment $\dMod(\dcat{D})$ of \emph{monoids and bimodules} is defined as follows (see also
+   \cite{Shulman}):
    \begin{compactitem}
       \item The objects are \emph{monoids} in $\dcat{D}$: tuples $(c,M,e_M,m_M)$ consisting of an
          object $c$ of $\dcat{D}$, a proarrow $M\colon c\tickar c$, and unit and
@@ -1333,6 +1335,12 @@ A double category is a 2-category-like structure involving horizontal and vertic
             \end{tikzcd}
          \end{equation*}
          satisfying evident monoid action axioms.
+      \item The horizontal composition $B_1\otimes B_2$ of bimodules $B_1\colon M\tickar M'$ and
+         $B_2\colon M'\tickar M''$ is given by the coequalizer in $\HHor(\dcat{D})(M,M'')$
+         \begin{equation*}
+            B_1\odot M'\odot B_2 \rightrightarrows B_1\odot B_2 \to B_1\otimes B_2
+         \end{equation*}
+         together with the evident left $M$ and right $M''$ actions.
       \item The 2-cells are \emph{bimodule homomorphisms}: cells in $\dcat{D}$
          \begin{equation*}
             \begin{tikzcd}
@@ -1347,36 +1355,54 @@ A double category is a 2-category-like structure involving horizontal and vertic
    \end{compactitem}
 \end{definition}
 
-If $M$ and $N$ are monoids, we denote by $\Bimod{M}{N}$ the 1-category of bimodules and bimodule morphisms. 
+If $M$ and $N$ are monoids, we denote by $\Bimod{M}{N}$ the 1-category of bimodules and bimodule
+morphisms. 
 
 \begin{example}\label{ex:monoid_in_Prof}
    Consider a monoid $M\colon C\tickar C$ in $\dProf$. The unit is a profunctor morphism
-   $i\colon\Hom_{C}\to M$. So for any $f\colon c\to d$ in $C$ there is an element
-   $i(f)\in M(c,d)$, such that $f\cdot i(g)\cdot h = i(f\circ g\circ h)$ whenever this makes sense.
-   The multiplication $M\otimes M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and
+   $i\colon\Hom_{C}\to M$. So for any $f\colon c\to d$ in $C$ there is an element $i(f)\in M(c,d)$,
+   such that
+   \begin{equation}\label{eq:Prof_monoid_unit}
+      f\cdot i(g)\cdot h = i(f\circ g\circ h)
+   \end{equation}
+   whenever this makes sense.
+   
+   The multiplication $M\odot M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and
    $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative, and satisfies the
    following equations whenever they make sense:
-   \begin{gather*}
+   \begin{gather}
       (f\cdot m_2)\bullet(m_1\cdot h) = f\cdot(m_2\bullet m_1)\cdot h
+         \label{eq:Prof_monoid_A}
       \\ (m_3\cdot g)\bullet m_1 = m_3\bullet(g\cdot m_1)
+         \label{eq:Prof_monoid_B}
       \\ m\bullet i(f) = m\cdot f
             \quad\text{and}\quad
          i(g)\bullet m = g\cdot m
-   \end{gather*}
+         \label{eq:Prof_monoid_C}
+   \end{gather}
+   Specifically, equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B} simply say that
+   $\bullet$ is a well defined morphism $M\odot M\to M$, while \eqref{eq:Prof_monoid_C} says that
+   $\bullet$ is unital with respect to $i$.
+
+   In fact, it is easy to see that equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B}
+   follow from \eqref{eq:Prof_monoid_C} and the associativity of $\bullet$.
 \end{example}
 
 \begin{example}\label{ex:mod_span_prof}
-
-Let $\dSpan$ be the equipment defined in Example~\ref{ex:dspan}. A monoid in $\dSpan$ consists of a set $C$ and a span $C\from S\to C$, together with a function $e\colon C\to S$ and a function $m\colon S\times_C S\to S$, satisfying certain properties. This is precisely the data required to define a small category, whose object set is $C$ and morphism set is $S$, with identities given by $e$ and composition given by $m$. Similarly, one can identify monoid homomorphisms in $\dSpan$ with functors between categories and bimodules in $\dSpan$ with profunctors between categories. In other words, we have $\dMod(\dSpan)\iso\dProf$.
-
+   Let $\dSpan$ be the equipment defined in Example~\ref{ex:dspan}. A monoid in $\dSpan$ consists of
+   a set $C$ and a span $C\from S\to C$, together with a function $e\colon C\to S$ and a function
+   $m\colon S\times_C S\to S$, satisfying certain properties. This is precisely the data required to
+   define a small category, whose object set is $C$ and morphism set is $S$, with identities given
+   by $e$ and composition given by $m$. Similarly, one can identify monoid homomorphisms in $\dSpan$
+   with functors between categories and bimodules in $\dSpan$ with profunctors between categories.
+   In other words, we have $\dMod(\dSpan)\iso\dProf$.
 \end{example}
 
 Recall Definition~\ref{def:local_equivalence}, from which the following lemma is straightforward.
 
 \begin{lemma}\label{lemma:FFLE_Mod}
-
-Let $F\colon\dcat{D}\to\dcat{E}$ be an equipment functor. If $F$ is a local equivalence (resp. a fully faithful local equivalence) then so is $\dMod(F)\colon\dMod(\dcat{D})\to\dMod(\dcat{E}).$
-
+   Let $F\colon\dcat{D}\to\dcat{E}$ be an equipment functor. If $F$ is a local equivalence (resp. a
+   fully faithful local equivalence) then so is $\dMod(F)\colon\dMod(\dcat{D})\to\dMod(\dcat{E}).$
 \end{lemma}
 
 % \begin{lemma}\label{lemma:delete_me?}\todo{delete me?}
@@ -1387,7 +1413,11 @@ Let $F\colon\dcat{D}\to\dcat{E}$ be an equipment functor. If $F$ is a local equi
 %    \end{compactitem}
 % \end{lemma}
 
-There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$ sending a monoid $M\colon c\tickar c$ to its underlying object $c=|M|$. We denote its vertical part, $\Mon(\dcat{D})\to\dcat{D}_0$ the same way. There is also an equipment functor $U\colon\dcat{D}\to\dMod(\dcat{D})$, sending $d$ to the unit $d\tickar d$, which is a local equivalence.
+There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$ sending a
+monoid $M\colon c\tickar c$ to its underlying object $c=|M|$. We denote its vertical part,
+$\Mon(\dcat{D})\to\dcat{D}_0$ the same way. There is also an equipment functor
+$U\colon\dcat{D}\to\dMod(\dcat{D})$, sending $d$ to the unit $d\tickar d$, which is a local
+equivalence.
 
 \begin{lemma}
    Let $\dcat{D}$ be an equipment, $f\colon c\to d$ a vertical morphism, and $M\colon d\tickar d$ a
@@ -1800,10 +1830,10 @@ for the associator, left and right unitor, and symmetry isomorphisms, respective
 context to make clear whether we are in $\cat{C}$ or $\cat{D}$.
 
 A \emph{monoidal profunctor} $M$ from $\cat{C}$ to $\cat{D}$ is an ordinary profunctor such that the
-functor $M\colon \op{\cat{C}}\times\cat{D}\to\Set$ is equipped with a lax-monoidal structure, where $\Set$ is endowed with
-the cartesian monoidal structure. In the bimodule notation, this means that there is an
-associative operation assigning to any elements $m_1\in M(c_1,d_1)$ and $m_2\in M(c_2,d_2)$ an
-element $m_1\boxtimes m_2\in M(c_1\otimes c_2,d_1\otimes d_2)$ such that
+functor $M\colon \op{\cat{C}}\times\cat{D}\to\Set$ is equipped with a lax-monoidal structure, where
+$\Set$ is endowed with the cartesian monoidal structure. In the bimodule notation, this means that
+there is an associative operation assigning to any elements $m_1\in M(c_1,d_1)$ and $m_2\in
+M(c_2,d_2)$ an element $m_1\boxtimes m_2\in M(c_1\otimes c_2,d_1\otimes d_2)$ such that
 \[
    (f_1\cdot m_1\cdot g_1)\boxtimes(f_2\cdot m_2\cdot g_2) = (f_1\otimes f_2)\cdot(m_1\boxtimes m_2)\cdot(g_1\otimes g_2),
 \]
@@ -1811,8 +1841,8 @@ as well as a distinguished element $I_M\in M(I,I)$ such that $\lambda_d\cdot(I_M
 m)\cdot\lambda^{-1}_c = m = \rho_d\cdot(m\boxtimes I_M)\cdot\rho^{-1}_c$ for any $m\in M(c,d)$. If
 moreover $m_2\boxtimes m_1 = \sigma_{d_1,d_2}\cdot(m_1\boxtimes m_2)\cdot\sigma_{c_1,c_2}^{-1}$ then
 one says $M$ is \emph{symmetric monoidal}.%
-\footnote{We will generally suppress the word \emph{symmetric} since all monoidal categories are by assumption; see Warning~\ref{warn:symmetric}.}
-
+\footnote{We will generally suppress the word \emph{symmetric} since all monoidal categories are by
+assumption; see Warning~\ref{warn:symmetric}.}
 
 A \emph{monoidal profunctor morphism} $\phi\colon M\to N$ is simply a monoidal transformation. Spelling
 this out in bimodule notation, $\phi$ is an ordinary morphism of profunctors such that
@@ -1838,18 +1868,6 @@ except the functors $F$ and $G$ are assumed to be strong monoidal, and the natur
 
 To see that we have defined a double category, it remains to check that the horizontal composition of monoidal profunctors is monoidal. This follows from the fact that reflexive coequalizers, as in \eqref{eqn:coendComp}, commute with products in $\Set$.
 
-
-%A unit for a monoidal profunctor $M\in\MonProf(\cat{C},\cat{C})$ is a unit $i\colon\Hom_{\cat{C}}\to
-%M$ in $\Prof(\cat{C},\cat{C})$ such that, additionally, $i(\id_{I_{\cat{C}}})=I_M$ and $i(f\otimes
-%g)=i(f)\boxtimes i(g)$ for any morphisms $f$ and $g$ in $\cat{C}$. Similarly, a multiplication on
-%$M$ is as above, with the additional conditions
-%\begin{gather*}
-%   I_M\bullet I_M=I_M \\
-%   (m_1\boxtimes m'_1)\bullet(m_2\boxtimes m'_2) = (m_1\bullet m_2)\boxtimes(m'_1\bullet m'_2)
-%\end{gather*}
-%for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e')$.
-
-
 \begin{definition}\label{def:MonProf}
    The equipment $\dMonProf$ is defined as follows. Its vertical category is that of (symmetric) monoidal
    categories and strong functors: $\dMonProf_0=\MonCat$. An object in $\dMonProf_1$ consists of a
@@ -1862,6 +1880,22 @@ To see that we have defined a double category, it remains to check that the hori
    $Y\circ(\op{F}\times G)$ obtained by composition. In other words, $\phi$ on the left is cartesian
    precisely when $\phi$ on the right is an isomorphism.
 \end{definition}
+
+We will also want to work out what a monoid (in the sense of Section~\ref{sec:monoids_bimods}) in
+$\dMonProf$ looks like using the above bimodule notation. A unit for a monoidal profunctor
+$M\colon\cat{C}\tickar\cat{C}$ is a unit $i$ as in Example~\ref{ex:monoid_in_Prof} such that
+\begin{equation}\label{eq:MnProf_monoid_unit}
+   i(\id_{I_{\cat{C}}})=I_M \quad\text{and}\quad i(f\otimes g)=i(f)\boxtimes i(g)
+\end{equation}
+for any morphisms $f$ and $g$ in $\cat{C}$. Similarly, for a multiplication $\bullet$ on $M$ as in
+Example~\ref{ex:monoid_in_Prof}, we require additionally the equations
+\begin{gather}
+   I_M\bullet I_M=I_M \label{eq:MnProf_monoid_I} \\
+   (m_1\boxtimes m'_1)\bullet(m_2\boxtimes m'_2) = (m_1\bullet m_2)\boxtimes(m'_1\bullet m'_2)
+      \label{eq:MnProf_monoid_exchange}
+\end{gather}
+for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e')$. Note that
+\eqref{eq:MnProf_monoid_I} follows immediately from the identification $i(\id_{I_{\cat{C}}})=I_M$.
 
 Now that $\dMonProf$ has been defined, we construct $\dCompProf$ and $\dTrProf$ using
 Definition~\ref{def:induced_locally_equivalent_equipment} and the functors $\Int\colon\TrCat\to\CompCat$ and $\UCM\colon\CompCat\to\MonCat$ as in \eqref{eqn:tetrahedron}. 
@@ -2101,69 +2135,150 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
 
 \begin{remark}
    The proof of Proposition~\ref{prop:unit_implies_monoid} is very difficult to follow in the
-   equational form presented. We will use the bimodule notation discussed in Sections~\ref{sec:profunctors}~and~\ref{sec:monoidal_profunctors}, but we highly recommend that the interested reader convert the equations
-   into string diagrams. If $N\colon C\tickar C$ is a profunctor, the trick is to draw elements
-   $n\in N(c_1,c_2)$ as if they were special arrows $c_1\to c_2$. They can be composed on either side with
-   actual morphisms of $C$ but not with other special arrows. The operation $\boxtimes$ of a monoidal profunctor then looks like the
-   tensor of morphisms. We do not draw these pictures here, because they look too much like pictures in $\Cob$; indeed, that is what we are trying to prove.
+   equational form presented. We will use the bimodule notation discussed in
+   Sections~\ref{sec:profunctors}~and~\ref{sec:monoidal_profunctors}, but we highly recommend that
+   the interested reader convert the equations into string diagrams. If $N\colon C\tickar C$ is a
+   profunctor, the trick is to draw elements $n\in N(c_1,c_2)$ as if they were special arrows
+   $c_1\to c_2$. They can be composed on either side with actual morphisms of $C$ but not with other
+   special arrows. The operation $\boxtimes$ of a monoidal profunctor then looks like the tensor of
+   morphisms. We do not draw these pictures here, because they look too much like pictures in
+   $\Cob$; indeed, that is what we are trying to prove.
+   \todo[author=Patrick]{I'm not sure about the last sentence.}
 \end{remark}
 
 \begin{proposition}\label{prop:unit_implies_monoid}
    The forgetful functor $\Mon(\dCompProf)\to\Ptd(\dCompProf)$ is an equivalence of fibrations over $\CompCat$.
 \end{proposition}
 \begin{proof}
-   Let $N\colon C\tickar C$ be a profunctor and $i\colon\Hom_C\to N$ be the basepoint. We can define a multiplication on $N$ by the following formula: given any $n_1\in N(c,d)$ and $n_2\in N(d,e)$,
+   It is clear that this forgetful functor, which we refer to as $U$ in the proof, is a morphism of
+   fibrations, so we must show that $U$ is an equivalence of categories.
+
+   To define an inverse functor $U^{-1}$, consider an object of $\Ptd(\dCompProf)$, i.e.\ a
+   profunctor $N\colon C\tickar C$ with basepoint $i\colon\Hom_C\to N$. We can define a
+   multiplication on $N$ by the following formula: given any $n_1\in N(c,d)$ and $n_2\in N(d,e)$,
    \[
-      n_2\bullet n_1 = \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(n_1\boxtimes i(\id_{d^*})\boxtimes n_2)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr).
+      n_2\bullet n_1 \coloneqq \bigl(l_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(n_1\boxtimes
+      i(\id_{d^*})\boxtimes n_2)\cdot\bigl((\id_c\otimes \eta_d)\circ r_c^{-1}\bigr).
    \]
-   We first check that it is unital, i.e, that $n\bullet i(f)=n\cdot f$ for any $n\in N(d,e)$ and $f\colon c\to d$:
+
+   It is straightforward to check that this multiplication is associative. To show that we have $N$
+   together with $i$ and $\bullet$ define an object in $\Mon(\dCompProf)$, we must additionally show
+   that this multiplication satisfies the equations \eqref{eq:Prof_monoid_C} and
+   \eqref{eq:MnProf_monoid_exchange}. We will begin by showing that $n\bullet i(f)=n\cdot f$ for any
+   $n\in N(d,e)$ and $f\colon c\to d$:
    \begin{align*}
-      n\bullet i(f) &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(i(f)\boxtimes i(\id_{d^*})\boxtimes n)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
-      &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(i(f\otimes\id_{d^*})\boxtimes n)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
-      &= \lambda_e\cdot\bigl((\epsilon_d\cdot i(f\otimes \id_{d^*}))\boxtimes (\id_e\cdot n)\bigr)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
-      &= \lambda_e\cdot\bigl(i(\epsilon_d\circ (f\otimes \id_{d^*}))\boxtimes (n\cdot\id_d)\bigr)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
-      &= \lambda_e\cdot\bigl(i(\id_I)\boxtimes n\bigr)\cdot\bigl(((\epsilon_d\circ (f\otimes \id_{d^*}))\otimes\id_d)\circ(\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
-      &= \lambda_e\cdot\bigl(I_N\boxtimes n\bigr)\cdot\bigl((\epsilon_d\otimes\id_d)\circ(\id_d\otimes\eta_d)\circ(f\otimes\id_I)\circ\rho_c^{-1}\bigr) \\
-      &= \lambda_e\cdot\bigl(I_N\boxtimes n\bigr)\cdot\bigl(\lambda_d^{-1}\circ\rho_d\circ(f\otimes\id_I)\circ\rho_c^{-1}\bigr) \\
-      &= \bigl(\lambda_e\cdot(I_N\boxtimes n)\cdot\lambda_d^{-1}\bigr)\cdot\bigl(\rho_d\circ(f\otimes\id_I)\circ\rho_c^{-1}\bigr) \\
+      n\bullet i(f) 
+      &= \bigl(l_e\circ(\epsilon_d\otimes\id_e)\bigr)
+         \cdot (i(f)\boxtimes i(\id_{d^*})\boxtimes n)
+         \cdot \bigl((\id_c\otimes \eta_d)\circ r_c^{-1}\bigr) \\
+      &= \bigl(l_e\circ(\epsilon_d\otimes\id_e)\bigr)
+         \cdot (i(f\otimes\id_{d^*})\boxtimes n)
+         \cdot \bigl((\id_c\otimes \eta_d)\circ r_c^{-1}\bigr) \\
+      &= l_e \cdot \bigl((\epsilon_d\cdot i(f\otimes \id_{d^*}))\boxtimes (\id_e\cdot n)\bigr)
+         \cdot \bigl((\id_c\otimes \eta_d)\circ r_c^{-1}\bigr) \\
+      &= l_e \cdot \bigl(i(\epsilon_d\circ (f\otimes \id_{d^*}))\boxtimes (n\cdot\id_d)\bigr)
+         \cdot \bigl((\id_c\otimes \eta_d)\circ r_c^{-1}\bigr) \\
+      &= l_e \cdot \bigl(i(\id_I)\boxtimes n\bigr)
+         \cdot \bigl(((\epsilon_d\circ (f\otimes \id_{d^*}))\otimes\id_d)
+            \circ(\id_c\otimes \eta_d)\circ r_c^{-1}\bigr) \\
+      &= l_e \cdot \bigl(I_N\boxtimes n\bigr)
+         \cdot \bigl((\epsilon_d\otimes\id_d)\circ(\id_d\otimes\eta_d)
+            \circ(f\otimes\id_I)\circ r_c^{-1}\bigr) \\
+      &= l_e \cdot \bigl(I_N\boxtimes n\bigr)
+         \cdot \bigl(l_d^{-1}\circ r_d\circ(f\otimes\id_I)\circ r_c^{-1}\bigr) \\
+      &= \bigl(l_e\cdot(I_N\boxtimes n)\cdot l_d^{-1}\bigr)
+         \cdot \bigl(r_d\circ(f\otimes\id_I)\circ r_c^{-1}\bigr) \\
       &= n\cdot f.
    \end{align*}
-   The equation $i(f)\bullet n=f\cdot n$ follows similarly, and the associativity of $\bullet$ is a straightforward verification. 
+   The equation $i(f)\bullet n=f\cdot n$ follows similarly, so we have verified
+   \eqref{eq:Prof_monoid_C}. 
 
-   Finally we check the equation $(n_2\boxtimes n'_2)\bullet(n_1\boxtimes n'_1)=(n_2\bullet n_1)\boxtimes(n'_2\bullet n'_1)$ for any $n_1\in N(c,d)$, $n'_1\in N(c',d')$, $n_2\in N(d,e)$, and $n'_2\in N(d',e')$, after which the remaining equations follow directly.
-   
+   Finally, we must check \eqref{eq:MnProf_monoid_exchange}. Recall this says
+   \begin{equation*}
+      (n_2\boxtimes n'_2)\bullet(n_1\boxtimes n'_1)=(n_2\bullet n_1)\boxtimes(n'_2\bullet n'_1)
+   \end{equation*}
+   for any $n_1\in N(c,d)$, $n'_1\in N(c',d')$, $n_2\in N(d,e)$, and $n'_2\in N(d',e')$, which we
+   prove below:
    % \allowdisplaybreaks called in preamble
-   
    \begin{align*}
       &(n_2\boxtimes n'_2)\bullet(n_1\boxtimes n'_1) \\
-      &= \bigl(\lambda_{e\otimes e'}\circ(\epsilon_{d\otimes d'}\otimes\id_{e\otimes e'})\bigr) \\
-      &\qquad \cdot\left((n_1\boxtimes n'_1)\boxtimes i(\id_{d^*\otimes d'^{*}})\boxtimes(n_2\boxtimes n'_2)\right) \\
-      &\qquad \cdot\left((\id_{c\otimes c'}\otimes\eta_{d\otimes d'})\otimes\rho_{c\otimes c'}^{-1}\right)\\
-      &= \bigl((\lambda_e\otimes\lambda_{e'})\circ(\epsilon_d\otimes\id_{e\otimes I\otimes e'})\circ(\id_d\otimes\sigma_{I,d^*\otimes e}\otimes\id_{e'})\bigr) \\
-      %&= \bigl(\lambda_e\circ(\epsilon_e\otimes\lambda_e)\circ(\id_d\otimes\sigma_{I,d^*}\otimes\id_e)\bigr)\otimes\id_{e'} \\
-      &\qquad \cdot\Bigl[n_1\boxtimes\bigl(\epsilon_{d'}\cdot(n'_1\boxtimes i(\id_{d'^{*}}))\bigr)\boxtimes\bigl((i(\id_{d*})\boxtimes n_2)\cdot\eta_d\bigr)\boxtimes n'_2\Bigr] \\
-      &\qquad \cdot\bigl((\id_c\otimes\sigma_{I,c'\otimes d'^*}\otimes\id_{d'})\circ(\id_{c\otimes I\otimes c'}\otimes\eta_{d'})\circ(\rho_c^{-1}\otimes\rho_{c'}^{-1})\bigr) \\
-      %&\qquad \cdot\id_c\otimes\bigl((\id_{c'}\otimes\sigma_{I,d'^{*}}\otimes\id_{d'})\circ(\rho_{c'}^{-1}\otimes\eta_{d'})\circ\rho_{c'}^{-1}\bigr) \\
-      %&= \bigl(\lambda_e\circ(\epsilon_e\otimes\lambda_e)\circ(\id_d\otimes\sigma_{I,d^*}\otimes\id_e)\circ(\id_d\otimes\sigma_{d^*\otimes e,I})\bigr)\otimes\id_{e'} \\
-      &= \bigl((\lambda_e\otimes\lambda_{e'})\circ(\epsilon_d\otimes\id_{e\otimes I\otimes e'})\bigr) \\
-      &\qquad \cdot\Bigl[n_1\boxtimes\bigl((i(\id_{d*})\boxtimes n_2)\cdot\eta_d\bigr)\boxtimes\bigl(\epsilon_{d'}\cdot(n'_1\boxtimes i(\id_{d'^{*}}))\bigr)\boxtimes n'_2\Bigr] \\
-      &\qquad \cdot\bigl((\id_{c\otimes I\otimes c'}\otimes\eta_{d'})\circ(\rho_c^{-1}\otimes\rho_{c'}^{-1})\bigr) \\
-      &= \Bigl[\bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\otimes\bigl(\lambda_{e'}\circ(\epsilon_{d'}\otimes\id_{e'})\bigr)\Bigr] \\
-      &\qquad \cdot\Bigl[\bigl(n_1\boxtimes i(\id_{d^*})\boxtimes n_2\bigr)\boxtimes\bigl(n'_1\boxtimes i(\id_{d'^*})\boxtimes n'_2\bigr)\Bigr] \\
-      &\qquad \cdot\Bigl[\bigl((\id_c\otimes\eta_d)\circ\rho_c^{-1}\bigr)\otimes\bigl((\id_{c'}\otimes\eta_{d'})\circ\rho_{c'}^{-1}\bigr)\Bigr] \\
-      &= \Bigl[\bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot\bigl(n_1\boxtimes i(\id_{d^*})\boxtimes n_2\bigr)\cdot\bigl((\id_c\otimes\eta_d)\circ\rho_c^{-1}\bigr)\Bigr] \\
-      &\qquad \boxtimes\Bigl[\bigl(\lambda_{e'}\circ(\epsilon_{d'}\otimes\id_{e'})\bigr)\cdot\bigl(n'_1\boxtimes i(\id_{d'^*})\boxtimes n'_2\bigr)\cdot\bigl((\id_{c'}\otimes\eta_{d'})\circ\rho_{c'}^{-1}\bigr)\Bigr]
+      &= \bigl(l_{e\otimes e'}\circ(\epsilon_{d\otimes d'}\otimes\id_{e\otimes e'})\bigr) \\
+      &\qquad \cdot \left((n_1\boxtimes n'_1)\boxtimes i(\id_{d^*\otimes d'^{*}})
+            \boxtimes(n_2\boxtimes n'_2)\right) \\
+      &\qquad \cdot \left((\id_{c\otimes c'}\otimes\eta_{d\otimes d'})
+         \otimes r_{c\otimes c'}^{-1}\right)\\
+      &= \bigl((l_e\otimes l_{e'})\circ(\epsilon_d\otimes\id_{e\otimes I\otimes e'})
+            \circ(\id_d\otimes\sigma_{I,d^*\otimes e}\otimes\id_{e'})\bigr) \\
+      %&= \bigl(l_e\circ(\epsilon_e\otimes l_e)\circ(\id_d\otimes\sigma_{I,d^*}\otimes\id_e)\bigr)\otimes\id_{e'} \\
+      &\qquad \cdot \Bigl[n_1\boxtimes\bigl(\epsilon_{d'}\cdot(n'_1\boxtimes i(\id_{d'^{*}}))\bigr)
+            \boxtimes \bigl((i(\id_{d*})\boxtimes n_2)\cdot\eta_d\bigr)\boxtimes n'_2\Bigr] \\
+      &\qquad \cdot \bigl((\id_c\otimes\sigma_{I,c'\otimes d'^*}\otimes\id_{d'})
+            \circ (\id_{c\otimes I\otimes c'}\otimes\eta_{d'})
+            \circ (r_c^{-1}\otimes r_{c'}^{-1})\bigr) \\
+      %&\qquad \cdot\id_c\otimes\bigl((\id_{c'}\otimes\sigma_{I,d'^{*}}\otimes\id_{d'})\circ(
+      %r_{c'}^{-1}\otimes\eta_{d'})\circ r_{c'}^{-1}\bigr) \\
+      %&= \bigl(l_e\circ(\epsilon_e\otimes l_e)\circ(\id_d\otimes\sigma_{I,d^*}\otimes\id_e)\circ(\id_d\otimes\sigma_{d^*\otimes e,I})\bigr)\otimes\id_{e'} \\
+      &= \bigl((l_e\otimes l_{e'})\circ(\epsilon_d\otimes\id_{e\otimes I\otimes e'})\bigr) \\
+      &\qquad \cdot \Bigl[n_1\boxtimes\bigl((i(\id_{d*})\boxtimes n_2)\cdot\eta_d\bigr)
+            \boxtimes \bigl(\epsilon_{d'}\cdot(n'_1\boxtimes i(\id_{d'^{*}}))\bigr)
+            \boxtimes n'_2\Bigr] \\
+      &\qquad \cdot \bigl((\id_{c\otimes I\otimes c'}\otimes\eta_{d'})
+            \circ (r_c^{-1}\otimes r_{c'}^{-1})\bigr) \\
+      &= \Bigl[\bigl(l_e\circ(\epsilon_d\otimes\id_e)\bigr)
+            \otimes \bigl(l_{e'}\circ(\epsilon_{d'}\otimes\id_{e'})\bigr)\Bigr] \\
+      &\qquad \cdot \Bigl[\bigl(n_1\boxtimes i(\id_{d^*})\boxtimes n_2\bigr)
+            \boxtimes \bigl(n'_1\boxtimes i(\id_{d'^*})\boxtimes n'_2\bigr)\Bigr] \\
+      &\qquad \cdot\Bigl[\bigl((\id_c\otimes\eta_d)\circ r_c^{-1}\bigr)
+            \otimes \bigl((\id_{c'}\otimes\eta_{d'})\circ r_{c'}^{-1}\bigr)\Bigr] \\
+      &= \Bigl[\bigl(l_e\circ(\epsilon_d\otimes\id_e)\bigr)
+            \cdot \bigl(n_1\boxtimes i(\id_{d^*})\boxtimes n_2\bigr)
+            \cdot \bigl((\id_c\otimes\eta_d)\circ r_c^{-1}\bigr)\Bigr] \\
+      &\qquad \boxtimes \Bigl[\bigl(l_{e'}\circ(\epsilon_{d'}\otimes\id_{e'})\bigr)
+            \cdot \bigl(n'_1\boxtimes i(\id_{d'^*})\boxtimes n'_2\bigr)
+            \cdot \bigl((\id_{c'}\otimes\eta_{d'})\circ r_{c'}^{-1}\bigr)\Bigr]
+   \end{align*}
+   Thus we have shown that the multiplication $\bullet$ defines a monoid $U^{-1}(N)$.
+
+   To define $U^{-1}$ on morphisms, suppose that $M\in\MonProf(C, C)$ is another monoidal profunctor
+   with unit, and that $\phi\colon M\to N$ is a monoidal profunctor morphism which preserves units.
+   Then $\phi$ also preserves the canonical multiplications:
+   \begin{align*}
+      \phi(n_2\bullet n_1) &=
+      \phi\Bigl[\bigl(l_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(n_1\boxtimes
+      i_M(\id_{d^*})\boxtimes n_2)\cdot\bigl((\id_c\otimes \eta_d)\circ r_c^{-1}\bigr)\Bigr] \\
+      &= \bigl(l_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot\phi(n_1\boxtimes
+   i_M(\id_{d^*})\boxtimes n_2)\cdot\bigl((\id_c\otimes \eta_d)\circ r_c^{-1}\bigr) \\
+      &= \bigl(l_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(\phi(n_1)\boxtimes
+\phi(i_M(\id_{d^*}))\boxtimes \phi(n_2))\cdot\bigl((\id_c\otimes \eta_d)\circ r_c^{-1}\bigr) \\
+      &= \bigl(l_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(\phi(n_1)\boxtimes
+      i_N(\id_{d^*}))\boxtimes \phi(n_2))\cdot\bigl((\id_c\otimes \eta_d)\circ r_c^{-1}\bigr) \\
+      &= \phi(n_2)\bullet\phi(n_1)
    \end{align*}
 
-   Now suppose that $M\in\MonProf(C, C)$ is another monoidal profunctor with unit, and that $\phi\colon M\to N$ is a monoidal profunctor morphism which preserves units.
-   Then it is simple to check that $\phi$ also preserves the canonical multiplications:
+   Clearly $U\circ U^{-1}=\id_{\Ptd(\dCompProf)}$. For the other direction, consider a monoid
+   $M\colon C\tickar C$ with unit $i$ and multiplication $\star$. Then the multiplication $\bullet$
+   defined above in fact coincides with $\star$:
    \begin{align*}
-      \phi(n_2\bullet n_1) &= \phi\Bigl[\bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(n_1\boxtimes i_M(\id_{d^*})\boxtimes n_2)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr)\Bigr] \\
-      &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot\phi(n_1\boxtimes i_M(\id_{d^*})\boxtimes n_2)\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
-      &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(\phi(n_1)\boxtimes \phi(i_M(\id_{d^*}))\boxtimes \phi(n_2))\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
-      &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(\phi(n_1)\boxtimes i_N(\id_{d^*}))\boxtimes \phi(n_2))\cdot\bigl((\id_c\otimes \eta_d)\circ\rho_c^{-1}\bigr) \\
-      &= \phi(n_2)\bullet\phi(n_1)\qedhere
+      n_2\star n_1
+         &= n_2 \star \Bigl[\bigl(l_d\circ(\epsilon_d\otimes\id_d)
+               \circ(\id_d\otimes\eta_d)\circ r_d^{-1}\bigr) \cdot n_1 \Bigr] \\
+         &= \Bigl[n_2\cdot\bigl(l_d\circ(\epsilon_d\otimes\id_d)\bigr)\Bigr]
+               \star \Bigl[\bigl((\id_d\otimes\eta_d)\circ r_d^{-1}\bigr)\cdot n_1\Bigr] \\
+         &= \bigl[l_e\cdot(I_M\boxtimes n_2)\cdot(\epsilon_d\otimes\id_d)\bigr]
+               \star \bigl[(\id_d\otimes\eta_d)\cdot(n_1\boxtimes I_M)\cdot r_c^{-1}\bigr] \\
+         &= \Bigl[l_e\cdot\bigl(i(\epsilon_d)\boxtimes n_2\bigr)\Bigr]
+               \star \Bigl[\bigl(n_1\boxtimes i(\eta_d)\bigr)\cdot r_c^{-1}\Bigr] \\
+         &= \bigl(l_e\circ(\epsilon_d\otimes\id_e)\bigr)
+            \cdot \Bigr[\bigr(i(\id_d)\boxtimes i(\id_{d^*})\boxtimes n_2\bigl)
+                  \star \bigr(n_1\boxtimes i(\id_{d^*})\boxtimes i(\id_d)\bigr)\Bigr] \\
+         & \qquad \cdot \bigl((\id_c\otimes\eta_d)\circ r_c^{-1}\bigr) \\
+         &= \bigl(l_e\circ(\epsilon_d\otimes\id_e)\bigr)
+            \cdot \bigl(n_1\boxtimes i(\id_{d^*})\boxtimes n_2\bigr)
+            \cdot \bigl((\id_c\otimes \eta_d)\circ r_c^{-1}\bigr) \\
+         &= n_2\bullet n_1
    \end{align*}
+   Thus $U^{-1}\circ U=\id_{\Mon(\dCompProf)}$, and $U$ is an equivalence (in fact, isomorphism) of
+   categories.
 \end{proof}
 
 Consider for a moment the fibration $\End(\dCompProf)$, defined by the pullback
@@ -2189,12 +2304,13 @@ that these are morphisms of fibrations, i.e., that they preserve cartesian morph
 
 \begin{proposition}\label{Prop:canonical unit}
    The functor $F\colon\CPsh(\dCompProf)\to\End(\dCompProf)$, from (\ref{eqn:functors_1C_CC}),
-   factors through $\Ptd(\dCompProf)$, and hence also through $\Mon(\dCompProf)$.
+   factors through $\Ptd(\dCompProf)$.
 \end{proposition}
 \begin{proof}
-   Given any $f\colon c\to d$ in $ C$, we must define an element $i(f)\in FM(c,d)=M(c^*\otimes
-   d)$. Since $M$ is a monoidal profunctor, there is a given unit element $I_M\in M(I)$, with which
-   we can define $i(f)=((\id_{c^*}\otimes f)\circ\eta_c)\cdot I_M$.
+   Let $M\colon C\to\Set$ be an object in $\CPsh(\dCompProf)$. Given any $f\colon c\to d$ in $ C$,
+   we must define an element $i(f)\in FM(c,d)=M(c^*\otimes d)$. Since $M$ is a monoidal profunctor,
+   there is a given unit element $I_M\in M(I)$, with which we can define $i(f)=((\id_{c^*}\otimes
+   f)\circ\eta_c)\cdot I_M$. It is easy to check that this construction of a unit $i$ is functorial.
 \end{proof}
 
 \begin{lemma}\label{Lem:comp prof bijection}
@@ -2208,9 +2324,30 @@ that these are morphisms of fibrations, i.e., that they preserve cartesian morph
    \]
    Conversely, given $n'\in N(I,a^*\otimes b)$, we can construct an element
    \[
-      \bigl(\lambda_b\circ(\epsilon_a\otimes\id_b)\bigr)\cdot(i(\id_a)\boxtimes n')\cdot\rho_a^{-1} \in N(a,b).
+      \bigl(l_b\circ(\epsilon_a\otimes\id_b)\bigr)\cdot(i(\id_a)\boxtimes n')\cdot r_a^{-1} \in N(a,b).
    \]
    It is simple to check that this defines a natural bijection.
+\end{proof}
+
+\begin{proposition}\label{Prop:ptd_prof_equivalence}
+   The functors $F$ and $U$, from (\ref{eqn:functors_1C_CC}), form an equivalence of fibrations
+   \begin{equation*}
+      \begin{tikzcd}[column sep=-.5em]
+         \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \Ptd(\dCompProf) \ar[dl,two heads,"\MOb"] \\
+            & \CompCat &
+      \end{tikzcd}
+   \end{equation*}
+\end{proposition}
+\begin{proof}
+   By Proposition~\ref{Prop:canonical unit}, the functor
+   $F\colon\CPsh(\dCompProf)\to\End(\dCompProf)$ naturally factors through
+   $\Ptd(\dCompProf)$.
+
+   If $M\in\CPsh(\dCompProf)$, i.e., $M$ is a lax functor $C\to\Set$ for some compact $C$, then
+   $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any $a\in C$. On the other hand, given
+   $N\in\Mon(\dCompProf)$, $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from
+   Lemma~\ref{Lem:comp prof bijection}.
 \end{proof}
 
 \begin{proposition}\label{Prop:mon_prof_equivalence}
@@ -2223,16 +2360,6 @@ that these are morphisms of fibrations, i.e., that they preserve cartesian morph
       \end{tikzcd}
    \end{equation*}
 \end{proposition}
-\begin{proof}
-   By Proposition~\ref{Prop:canonical unit}, the functor
-   $F\colon\CPsh(\dCompProf)\to\End(\dCompProf)$ naturally factors through
-   $\Ptd(\dCompProf)\equiv\Mon(\dCompProf)$.
-
-   If $M\in\CPsh(\dCompProf)$, i.e., $M$ is a lax functor $C\to\Set$ for some compact $C$, then
-   $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any $a\in C$. On the other hand, given
-   $N\in\Mon(\dCompProf)$, $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from
-   Lemma~\ref{Lem:comp prof bijection}.
-\end{proof}
 
 \begin{corollary}\label{cor:Tr_mon_prof_equivalence}
    There is an equivalence of fibrations
