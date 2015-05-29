@@ -225,6 +225,18 @@ The proof of this result can be found in Section~\ref{sec:deducing}.
    It would be too much to ask \eqref{eqn:tracedCobAlg} to be an equivalence of 1-categories, because $\TrCat$ throws away, rather than quotients by, natural isomorphisms in $\TTrCat$. On the other hand, we cannot expect algebras on $\LCob{\LabSet}$ to say anything about 2-cells, so the statement of \ref{thm:TheoremA_statement} is the best we can expect.
 \end{remark}
 
+\begin{remark}
+   The most naive way of handling variation of the label set $\LabSet$ is to use plain functions
+   $\LabSet\to\LabSet'$. That is, instead of taking the Grothendieck construction of the functors
+   \eqref{eqn:cob/bullet}, we could use the most evident functor
+   $\Lax(\LCob{\bullet},\Set)\colon\Set\to\Cat$. This would lead to a version of
+   \ref{thm:TheoremA_statement} in which the right hand side is a 2-category of ``traced colored
+   PROPs''. We will not pursue this direction in this paper, however, the interested reader familiar
+   with PROPs should have no difficulty defining traced colored PROPs and proving the analogue of
+   \ref{thm:TheoremA_statement} as a corollary of our results. (For more on PROPs, see
+   e.g.~\cite{HackneyRobertson}.)
+\end{remark}
+
 \subsection{Generalization: Lax algebras on compact categories}
 
 In the course of proving \ref{thm:TheoremA_statement}, we will also prove a more general result which drops
@@ -530,7 +542,7 @@ In Section~\ref{chap:traced_categories} we review monoidal, traced, and compact 
 
 Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect the operad-algebra
 picture in \cite{RupelSpivak} to string diagrams in traced categories. We also thank Mike Shulman
-and Justin Hillburn for many useful conversations.
+and Justin Hilburn for many useful conversations.
 
 \chapter{Categorical preliminaries}\label{chap:traced_categories}
 
@@ -2124,14 +2136,33 @@ We record the following:
 
 \section{Special properties of $\dCompProf$}\label{sec:special_CompProf}
 
-Recall the definition of $\Ptd$ from Definition~\ref{def:ptd}. The primary goal of this section is to establish the equivalence of the three fibrations
+Recall the definition of $\Ptd$ from Definition~\ref{def:ptd}. The primary goal of this section is
+to establish the equivalence of the three fibrations
 \begin{equation}\label{eqn:primary_goal}
    \begin{tikzcd}
       \CPsh(\dCompProf) \equiv \Ptd(\dCompProf) \equiv \Mon(\dCompProf).
    \end{tikzcd}
 \end{equation}
-over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} and \ref{Prop:mon_prof_equivalence}. 
+over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} and
+\ref{Prop:mon_prof_equivalence}. 
 
+\begin{remark}
+   One can think of compact categories as a categorification of groups, where duals of objects act
+   like inverses of group elements. From this perspective, the results of this section can be seen
+   as categorifications of basic facts from group theory.
+   
+   We can think of profunctors between compact categories as playing the role of relations between
+   groups which are stable under multiplication, with pointed profunctors, respectively monoids,
+   acting like reflexive, respectively reflexive and transitive, relations. Then the equivalence
+   $\CPsh(\dCompProf)\equiv\Mon(\dCompProf)$ categorifies the standard fact that a subgroup
+   determines, and is determined by, the conjugacy congruence. The equivalence
+   $\Ptd(\dCompProf)\equiv\Mon(\dCompProf)$ would seem to be saying that every reflexive relation
+   (stable under multiplication) on a group is in fact transitive, which while true is less familiar
+   than the conjugacy relation. However, in the definition of a Mal'cev category (see
+   \cite{BorceuxBourn}), this property is singled out as characterizing categories in which some
+   amount of classical group theory can be developed. By analogy, we might think of this section as
+   proving that $\dCompProf$ is a ``Mal'cev equipment''.
+\end{remark}
 
 \begin{remark}
    The proof of Proposition~\ref{prop:unit_implies_monoid} is very difficult to follow in the
@@ -2759,6 +2790,10 @@ F.~Borceux, Handbook of Categorical Algebra: Volume 1, Basic Category Theory, Ca
 
  \bibitem{BorceuxV2}
  F.~Borceux, Handbook of Categorical Algebra: Volume 2, Categories and Structures, Cambridge University Press (1994).
+
+ \bibitem{BorceuxBourn}
+ F.~Borceux, D.~Bourn, Mal'cev, protomodular, homological and semi-abelian categories, Mathematics
+ and Its Applications 566, Kluwer (2004).
  
  \bibitem{FreydYetter}
  P.~Freyd, D.N.~Yetter, Braided compact closed categories with applications to low-dimensional topology,
