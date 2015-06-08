@@ -4,8 +4,8 @@
 
 \settrims{0pt}{0pt} % page and stock same size
 %\setlxvchars %calculate line length such that there are about 65 characters per line in \normalfont
-%\settypeblocksize{*}{33pc}{*} % {height}{width}{ratio}
-\settypeblocksize{*}{39pc}{*} % {height}{width}{ratio}
+\settypeblocksize{*}{33pc}{*} % {height}{width}{ratio}
+%\settypeblocksize{*}{39pc}{*} % {height}{width}{ratio}
 \setlrmargins{*}{*}{1} % {spine}{edge}{ratio}
 %\setulmargins{*}{*}{1} % {upper}{lower}{ratio}, hight of typeblock fixed
 \setulmarginsandblock{1in}{1in}{*} % height of typeblock computed
@@ -127,7 +127,7 @@ shift'' between the second and third columns.
 The relationship between these interpretations of string diagrams is most easily made precise when
 the set $\LabSet$ of labels is fixed. Let $\TTrCat$ denote the 2-category of traced categories,
 strong traced functors, and monoidal natural isomorphisms \cite{HK}, and let $\TrCat$ denote its
-underlying 1-category.\todo{Comment on underlying 1-category}%
+underlying 1-category.%
 \footnote{
    We use a similar notational convention throughout this paper. We denote named 1-categories,
    monoidal categories, and operads with bold roman letters, e.g., $\ncat{Cob}$, and unnamed
@@ -137,7 +137,7 @@ underlying 1-category.\todo{Comment on underlying 1-category}%
    (special double categories, see Section~\ref{chap:background_equipments}) we make the first letter
    blackboard bold, whether named (e.g., $\ndcat{P}{rof}$) or unnamed (e.g., $\dcat{D}$). The
    objects in a category, 2-category, or double category will be denoted with the usual math font
-   (e.g., $T\in\Ob\TrCat$).}
+   (e.g., $T\in\Ob\TrCat$). By the \emph{underlying 1-category} of a 2-category, we mean the one obtained by dropping (not quotienting by) the 2-cells.}
 Finally, let $\TrCat_{\LabSet}$ denote the subcategory in which the object set is fixed to be free
 on the set $\LabSet$, together with identity-on-objects functors. For
 any monoidal category $\cat{M}$, we denote by $\cat{M}\alg=\ncat{Lax}(M,\Set)$ the category of lax
@@ -153,7 +153,7 @@ will be generalized in \ref{thm:TheoremA_statement} and proven as such in Sectio
 For each of our main results about traced categories in this paper, we will also prove an analogous
 result about compact closed symmetric monoidal categories, hereafter \emph{compact categories}. The
 definition of compact category can be found in Section~\ref{sec:compact_and_int}, or
-in~\cite{MacLane}. Let $\CCompCat$ denote the 2-category of compact categories, and let $\CompCat$
+in~\cite{MacL--CTWM}. Let $\CCompCat$ denote the 2-category of compact categories, and let $\CompCat$
 denote its underlying 1-category. As above, let $\CompCat_{\LabSet}$ denote the subcategory of
 compact categories whose object set is free on the set $\LabSet$ (so the objects are strings
 $o_1o_2o_3^*$ of labels $o_i\in\LabSet$ and their formal duals, and the tensor product is
@@ -585,7 +585,7 @@ Section~\ref{sec:monoids_on_free} we deal with object-freeness, which we need fo
 
 Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect the operad-algebra
 picture in \cite{RupelSpivak} to string diagrams in traced categories. We also thank Mike Shulman
-and Justin Hilburn for many useful conversations. Thanks also to Tobias Fritz for helpful comments.
+and Justin Hilburn for many useful conversations. Thanks also to Tobias Fritz for helpful comments on a draft of this paper.
 
 \chapter{Categorical preliminaries}\label{chap:traced_categories}
 
@@ -605,7 +605,7 @@ $\otimes\colon\cat{C}\times\cat{C}\to\cat{C}$, an object $I\in\cat{C}$, and natu
    \lambda_X\colon I\otimes X\to X \\
    \rho_X\colon X\otimes I\to X
 \end{gather*}
-satisfying some equations.\todo{Reference?} The category $\cat{C}$ is \emph{symmetric monoidal} if
+satisfying some equations; see \cite{MacL--NAC}. The category $\cat{C}$ is \emph{symmetric monoidal} if
 there is in addition a natural isomorphism
 \begin{equation*}
    \sigma_{X,Y}\colon X\otimes Y\to Y\otimes X
@@ -625,7 +625,7 @@ and a natural transformation
    F(X) \otimes_D F(Y) \rar{\mu_{X,Y}} & F(X\otimes_C Y)
 \end{tikzcd}
 \]
-satisfying some equations. If $\cat{C}$ and $\cat{D}$ are symmetric monoidal, then $F$ is
+satisfying some equations (see, e.g., \cite{Leinster,BorceuxV2}). If $\cat{C}$ and $\cat{D}$ are symmetric monoidal, then $F$ is
 \emph{lax symmetric monoidal} if the $\mu$'s respect $\sigma$ in the appropriate way. If all $\mu$'s
 are isomorphisms, then $F$ is \emph{strong}.
 
@@ -811,25 +811,6 @@ traced functors are natural \emph{isomorphisms}. We denote by $\TTrCat$ the corr
 traced categories (where 2-cells are invertible), and we denote its underlying 1-category by
 $\TrCat$.
 
-%\subsection{The categories $\Prop$ and $\TrProp$ of props and traced props}\label{sec:defining props}
-%\todo{Do we want to use this section anywhere?}
-%
-%One can think of a prop as a symmetric monoidal category whose objects are free on a fixed set of \emph{labels}
-%(also known as its set of colors). Functors between props need to descend to a function between
-%label sets. We define a traced prop to be a traced category whose underlying symmetric monoidal
-%category has the structure of a prop. Thus we have defined the 1-categories $\Prop$ and $\TrProp$;
-%we summarize our definitions by the pullback diagram of categories
-%\[
-%\begin{tikzcd}
-%   \TrProp\ar[r]\ar[d]\arrow[dr, phantom, "\lrcorner", very near start]&\TrCat\ar[d]\\
-%   \Prop\ar[r]\ar[d,"\tn{Labels}"']\arrow[dr, phantom, "\lrcorner", very near start]&\MonCat\ar[d,"\Ob"]\\
-%   \Set\ar[r,"\TM"']&\Set
-%\end{tikzcd}
-%\]
-%where $\TM\colon\Set\to\Set$ is the free monoid monad. This definition of $\Prop$
-%agrees with that in~\cite{HackneyRobertson}.\todo{Check this.}
-%
-
 \section{Compact categories and the Int construction}\label{sec:compact_and_int}
 
 We will denote by $\CCompCat$ the full sub-2-category of $\MMonCat$ spanned by the compact symmetric
@@ -924,12 +905,6 @@ to the Kleisli categories of the monads:
 
 The forgetful functors between the categories of structured monoidal categories commute with the
 underlying set functors, i.e.~the following diagram commutes:
-%\begin{equation*}
-%	\begin{tikzcd}[column sep=large]
-%	\CompCat\ar[r,"\UCT"]\ar[rd,"\UC"']\ar[rr,bend left,"\UCM"]&\TrCat\ar[r,"\UTM"]\ar[d,"\UT"]&\MonCat\ar[dl,"\UM"]\\
-%	&\Set
-%	\end{tikzcd}
-%\end{equation*}
 
 \begin{equation}\label{eqn:tetrahedron}
    \begin{tikzcd}
@@ -943,14 +918,7 @@ Because the functor $\UCM\colon\CompCat\to\MonCat$ commutes with the right adjoi
 adjunctions to $\Set$, i.e., $\UM\UCM=\UC$, it induces a monad morphism $\alpha\colon\TC\to\TM$ (a natural transformation
 $\alpha\colon\TM\to\TC$ compatible with the units and multiplications), given by the composition of
 the natural transformations
-%\begin{equation*}
-%   \begin{tikzcd}[column sep=large,row sep=0ex]
-%      \TM=\UM\FM \ar[r,"\UM\FM\eta_C"]
-%         & \UM\FM\UC\FC = \UM\FM\UM\UCM\FC \\
-%      \UM\FM\UM\UCM\FC \ar[r,"\UM\epsilon_M\UCM\FC"']
-%         & \UM\UCM\FC = \UC\FC = \TC
-%   \end{tikzcd}
-%\end{equation*}
+
 \begin{equation*}
 	\begin{tikzcd}[column sep=2cm]
 		\TM\ar[r,equal]\ar[d,dashed,"\alpha"']&\UM\FM\ar[r,"\UM\FM\eta_C"]&\UM\FM\UC\FC\ar[d,equal]\\
@@ -964,17 +932,6 @@ induces a functor between the Kleisli categories in the other direction:
    \FMC\colon\FrMonCat\to\FrCompCat
 \end{equation}
 
-%\begin{proposition}\label{prop:free traced and compact}
-%   Let $\cat{C}$ be a category.
-%   The free traced category on $\cat{C}$ is...
-%   The free compact category on $\cat{C}$ is $\Int(...)$.\todo{Fill this in}
-%\end{proposition}
-%\begin{proof}
-%   Kelly, Laplaza ``Coherence for compact closed categories'' gives a combinatorial description of
-%   the free compact category on one object.
-%
-%   See Abramsky.
-%\end{proof}
 
 \subsection{$\LCob{\LabSet}$ is the free compact category on $\LabSet$}
 
@@ -1302,33 +1259,6 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
    functor $F_0^*(\dcat{Y})\to\dcat{Y}$ is a local equivalence.
 \end{definition}
 
-%\begin{example}\label{ex:horizontal_bicategory}
-%   The horizontal bicategory $\HHor(\dcat{D})$ associated to an equipment $\dcat{D}$ can be
-%   identified with the locally equivalent equipment induced by the inclusion
-%   $\Ob\dcat{D}_0\to\dcat{D}_0$ of the discrete category of objects.
-%
-%   It follows that if $\dcat{D}\to\dcat{E}$ is a local equivalence of equipments, then
-%   $\HHor(\dcat{D})\to\HHor(\dcat{E})$ is a local equivalence of bicategories. Note, however, that
-%   the converse does not hold in general.
-%\end{example}
-
-% \begin{definition}\todo{Do we need this? Consider deleting this and Lemma~\ref{lemma:delete_me?}.}
-
-% Let $F\colon\dcat{D}\to\dcat{E}$ be an equipment functor. We say that $F$ is \emph{fully faithful} if both $F_0$ and $F_1$ are, i.e., if both the following squares are pullbacks in $\Set$:
-% $$
-% 	\begin{tikzcd}[column sep=2em]
-% 		\Mor\dcat{D}_0\ar[r,"\Mor F_0"]\ar[d]\ar[dr,phantom,"\lrcorner" very near start]&\Mor\dcat{E}_0\ar[d]\\
-% 		\Ob\dcat{D}_0\times\Ob\dcat{D}_0\ar[r,"\Ob F_0"']&\Ob\dcat{E}_0\times\Ob\dcat{E}_0
-% 	\end{tikzcd}
-% \qquad
-% 	\begin{tikzcd}[column sep=2em]
-% 		\Mor\dcat{D}_1\ar[r,"\Mor F_1"]\ar[d]\ar[dr,phantom,"\lrcorner" very near start]&\Mor\dcat{E}_1\ar[d]\\
-% 		\Ob\dcat{D}_1\times\Ob\dcat{D}_1\ar[r,"\Ob F_1"']&\Ob\dcat{E}_1\times\Ob\dcat{E}_1
-% 	\end{tikzcd}
-% $$
-
-% \end{definition}
-
 \section{The monoids and bimodules construction}\label{sec:monoids_bimods}
 
 \begin{definition}\label{def:monoids_and_modules}
@@ -1461,14 +1391,6 @@ Recall Definition~\ref{def:local_equivalence}, from which the following lemma is
    Let $F\colon\dcat{D}\to\dcat{E}$ be an equipment functor. If $F$ is a local equivalence (resp.\ a
    fully faithful local equivalence) then so is $\dMod(F)\colon\dMod(\dcat{D})\to\dMod(\dcat{E}).$
 \end{lemma}
-
-% \begin{lemma}\label{lemma:delete_me?}\todo{delete me?}
-%    Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor. Then
-%    \begin{compactitem}
-%       \item if $F$ is fully faithful, then so is $\dMod(F)$,
-%       \item if $F$ is a local equivalence, then so is $\dMod(F)$.
-%    \end{compactitem}
-% \end{lemma}
 
 There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$ sending a
 monoid $M\colon c\tickar c$ to its underlying object $c=|M|$. We denote its vertical part,
@@ -2658,14 +2580,6 @@ objects.
 \end{proof}
 
 
-% \begin{corollary}\label{cor:TrCat_ObjectFree}
-%    There are equivalences of 2-categories \todo{Rewrite this in parallel with Theorem~\ref{thm:ffle_and_verts}.}
-%    \begin{align*}
-%       \VVer(\dObFrMonProf)&\equiv\MMonCat \\
-%       \VVer(\dObFrTrProf)&\equiv\TTrCat \\
-%       \VVer(\dObFrCompProf)&\equiv\CCompCat.
-%    \end{align*}
-% \end{corollary}
 The following corollary is a direct application of Theorem~\ref{thm:ffle_and_verts}.
 
 \begin{corollary}\label{cor:TrCat_ObjectFree}
@@ -2840,10 +2754,16 @@ M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of 
  G.M.~Kelly, M.L.~Laplaza, Coherence for compact closed categories, Journal of Pure and Applied Algebra 19 (1980), pp.~193--213.
 
  \bibitem{Kock}
- J.~Kock, Frobenius algebras and 2D topological quantum field theories, London Mathematical Society Student Texts, 59. Cambridge University Press, Cambridge, 2004.
+ J.~Kock, Frobenius algebras and 2D topological quantum field theories, London Mathematical Society Student Texts, 59. Cambridge University Press, Cambridge (2004).
 
- \bibitem{MacLane}
+ \bibitem{Leinster}
+ T.~Leinster, Higher Operads, higher categories, London Mathematical Society Lecture Note Series, 298, Cambridge University Press, Cambridge (2004).
+
+ \bibitem{MacL--CTWM}
  S.~MacLane, Categories for the Working Mathematician, Springer Science \& Business Media (1978).
+
+ \bibitem{MacL--NAC}
+S.~MacLane, Natural Associativity and Commutativity, Rice University Studies 49 no. 4 (1963).
 
  \bibitem{Miller}
  G.~Miller, The magical number seven, plus or minus two: Some limits on our capacity for processing information, Psychological review 63, no. 2 (1956), pp.~81.
