@@ -4,7 +4,7 @@
 
 \settrims{0pt}{0pt} % page and stock same size
 %\setlxvchars %calculate line length such that there are about 65 characters per line in \normalfont
-\settypeblocksize{*}{33pc}{*} % {height}{width}{ratio}
+\settypeblocksize{*}{34pc}{*} % {height}{width}{ratio}
 %\settypeblocksize{*}{39pc}{*} % {height}{width}{ratio}
 \setlrmargins{*}{*}{1} % {spine}{edge}{ratio}
 %\setulmargins{*}{*}{1} % {upper}{lower}{ratio}, hight of typeblock fixed
@@ -585,7 +585,7 @@ Section~\ref{sec:monoids_on_free} we deal with object-freeness, which we need fo
 
 Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect the operad-algebra
 picture in \cite{RupelSpivak} to string diagrams in traced categories. We also thank Mike Shulman
-and Justin Hilburn for many useful conversations. Thanks also to Tobias Fritz for helpful comments on a draft of this paper.
+and Justin Hilburn for many useful conversations. Thanks also to Tobias Fritz and Dmitry Vagner for helpful comments on a draft of this paper.
 
 \chapter{Categorical preliminaries}\label{chap:traced_categories}
 
@@ -1267,7 +1267,7 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
    equipment $\dMod(\dcat{D})$ of \emph{monoids and bimodules} is defined as follows (see also
    \cite{Shulman}):
    \begin{compactitem}
-      \item The objects are \emph{monoids} in $\dcat{D}$: tuples $(c,M,e_M,m_M)$ consisting of an
+      \item The objects are \emph{monoids} in $\dcat{D}$: tuples $(c,M,i_M,m_M)$ consisting of an
          object $c$ of $\dcat{D}$, a proarrow $M\colon c\tickar c$, and unit and
          multiplication cells
          \begin{equation}\label{eqn:unit_and_mult}
@@ -1275,7 +1275,7 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
                c \ar[r,tick,"c" domA] \ar[d,equal]
                   & c \ar[d,equal] \\
                c \ar[r,tick,"M"' codA] & c
-               \twocellA{e_M}
+               \twocellA{i_M}
             \end{tikzcd}
             \qquad
             \begin{tikzcd}
@@ -1589,7 +1589,7 @@ taken from~\cite[Definitions~4.3~and~4.5, Theorem~4.17]{Schultz2015}:
 
 \begin{definition}\label{def:boff}
    Let $\dcat{D}$ be an equipment, and let $f\colon C\to D$ be a vertical morphism. Consider the
-   restriction square and unit square below:
+   restriction square and unit square shown below:
    \[
       \begin{tikzcd}
          C \ar[r,tick,"{D(f,f)}" domA] \ar[d,"f"']
@@ -2479,7 +2479,7 @@ We will write $\psi_F\colon\dcat{D}_F^{\bo}\to\dcat{D}^{\bo}$ for the induced lo
 
 The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\ref{lemma:FFLE_Mod}:
 
-\begin{proposition}\label{prop:object-free_Mod_bo}
+\begin{proposition}\label{prop:objectfree_Mod_bo}
    Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
    $U\colon\dcat{D}_0\leftrightarrows\cat{C}:\!F$, and let $T=UF$ be the induced monad.  There is a
       commuting diagram of equipments, in which the vertical functors are equivalences and the
@@ -2494,7 +2494,7 @@ The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\re
 \end{proposition}
 
 \begin{example}
-   In the case of $\dFrMonProf\coloneqq\dMonProf_{\TM}$, the previous proposition provides an
+   In the case of $\dFrMonProf\coloneqq\dMonProf_{\TM}$, Proposition~\ref{prop:objectfree_Mod_bo} provides an
    equivalence $\dMod(\dFrMonProf)\equiv\dMonProf^{\bo}_{\FM}$. We can think of
    $\dMonProf^{\bo}_{\FM}$ as the equipment of object-free monoidal categories. Indeed, this just
    says that an object-free monoidal category can be identified with a set $\LabSet$, a monoidal
@@ -2534,7 +2534,7 @@ objects.
    2-equivalence.
 \end{theorem}
 \begin{proof}
-   By Proposition~\ref{prop:object-free_Mod_bo} and Theorem~\ref{thm:Mod_vs_bo}, it suffices to consider the composition
+   By Proposition~\ref{prop:objectfree_Mod_bo} and Theorem~\ref{thm:Mod_vs_bo}, it suffices to consider the composition
    \begin{equation*}
       \begin{tikzcd}
          \dcat{D}^{\bo}_F \ar[r,"\psi_F"] & \dcat{D}^{\bo} \ar[r,"\cod"] & \dcat{D}
