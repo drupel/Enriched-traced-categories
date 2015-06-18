@@ -4,7 +4,7 @@
 
 \settrims{0pt}{0pt} % page and stock same size
 %\setlxvchars %calculate line length such that there are about 65 characters per line in \normalfont
-\settypeblocksize{*}{34pc}{*} % {height}{width}{ratio}
+\settypeblocksize{*}{35pc}{*} % {height}{width}{ratio}
 %\settypeblocksize{*}{39pc}{*} % {height}{width}{ratio}
 \setlrmargins{*}{*}{1} % {spine}{edge}{ratio}
 %\setulmargins{*}{*}{1} % {upper}{lower}{ratio}, hight of typeblock fixed
@@ -15,8 +15,7 @@
 
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
-\pagestyle{companion}
-\linespread{1.15}
+\pagestyle{ruled}
 \renewcommand*{\chaptitlefont}{\bfseries\Large}
 \setsecheadstyle{\bfseries\large\raggedright}
 \setsubsecheadstyle{\bfseries\raggedright}
@@ -31,8 +30,7 @@
 \date{\vspace{-3ex}}
 
 \begin{document}
-\tightlists
-\firmlists
+\firmlists*
 
 \maketitle
 \begin{abstract}
@@ -869,7 +867,7 @@ with unit object $\tilde I\coloneqq(I,I)$ and duality ${(\inp{X},\outp{X})}^\vee
 
 \begin{lemma}\label{lemma:fully_faithful_and_trace}
 The following facts hold for any traced category $\cat{C}$:
-\begin{compactenum}[\quad i.]
+\begin{enumerate}[label={\upshape\roman*}.]
    \item The unit $\cat{C}\to\Int(\cat{C})$ is fully faithful.
    \item If $\cat{D}$ is a category and $F\colon\cat{D}\to\cat{C}$ a fully faithful symmetric
       monoidal functor, then $\cat{D}$ has a unique trace for which $F$ is a traced functor.
@@ -877,7 +875,7 @@ The following facts hold for any traced category $\cat{C}$:
    \item Suppose that $\cat{C'}$ is a traced category and that $F\colon \cat{C}\to \cat{C}'$ is a
       traced functor. Then $F$ is bijective-on-objects (resp. fully-faithful) if and only if
       $\Int(F)$ is.
-\end{compactenum}
+\end{enumerate}
 \end{lemma}
 \begin{proof}
    These are all shown in, or trivially derived from,~\cite{JoyalStreetVerity}.
@@ -1117,7 +1115,7 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
 
 \begin{definition}
    A \emph{double category} $\dcat{D}$ consists of the following data:
-   \begin{compactitem}
+   \begin{itemize}
       \item A category $\dcat{D}_0$, which we refer to as the \emph{vertical category} of
          $\dcat{D}$. For any two objects $c,d\in\dcat{D}_0$, we will write
          $\dcat{D}_0(c,d)$ for the set of vertical arrows from $c$ to $d$. We refer to
@@ -1145,7 +1143,7 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
       \item A functor $\odot\colon\dcat{D}_1\times_{\dcat{D}_0}\dcat{D}_1\to\dcat{D}_1$, called
          \emph{horizontal composition}, that is weakly associative and unital in the sense that
          there are coherent unitor and associator isomorphisms. See \cite{Shulman} for details.
-   \end{compactitem}
+   \end{itemize}
    Given a double category $\dcat{D}$ there is a strict 2-category called the \emph{vertical
    2-category}, denoted $\VVer(\dcat{D})$, whose underlying 1-category is $\dcat{D}_0$, and whose
    2-morphisms $f\Rightarrow f'$ are defined to be 2-cells \eqref{eqn:2cell} where $c'=c$, $d'=d$, and
@@ -1270,7 +1268,7 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
    $\HHor(\dcat{D})(A,B)$ has coequalizers and $\odot$ preserves coequalizers in each variable. The
    equipment $\dMod(\dcat{D})$ of \emph{monoids and bimodules} is defined as follows (see also
    \cite{Shulman}):
-   \begin{compactitem}
+   \begin{itemize}
       \item The objects are \emph{monoids} in $\dcat{D}$: tuples $(c,M,i_M,m_M)$ consisting of an
          object $c$ of $\dcat{D}$, a proarrow $M\colon c\tickar c$, and unit and
          multiplication cells
@@ -1343,7 +1341,7 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
             \end{tikzcd}
          \end{equation*}
          which are compatible with the left and right actions of the bimodules.
-   \end{compactitem}
+   \end{itemize}
 \end{definition}
 
 If $M$ and $N$ are monoids, we denote by $\Bimod{M}{N}$ the 1-category of bimodules and bimodule
@@ -1531,7 +1529,7 @@ We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz
 
 \begin{definition}\label{def:exact_equipment}
    An equipment $\dcat{D}$ is \emph{exact} if
-   \begin{compactitem}
+   \begin{itemize}
       \item every monoid $M\colon c\tickar c$ has a collapse as above, with $\vec{\imath}_M$
          cartesian, and
       \item for every pair of monoids $M,N$, the restriction functor
@@ -1539,7 +1537,7 @@ We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz
             \HHor(\dcat{D})(\Col{M},\Col{N})\To{\raisebox{-1ex}{$\equiv$}}\Bimod{M}{N}
          \end{equation}
          is an equivalence of categories.
-   \end{compactitem}
+   \end{itemize}
 \end{definition}
 
 It is proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its equipment
@@ -1966,7 +1964,7 @@ We record the following:
          M \ar[r,hook] & \UCM C
       \end{tikzcd}
    \end{equation*}
-   \begin{compactitem}
+   \begin{itemize}
       \item there is a unique trace structure on $M$---defining a traced category $T'$ with $\UTM
          T'=M$---such that the factorization lifts to $\TrCat$:
          \begin{equation*}
@@ -1978,7 +1976,7 @@ We record the following:
          \end{equation*}
       \item there is an isomorphism $\alpha\colon\Int(T')\iso C$, such that $\UCT\alpha\circ
          \eta_{T'}=H$ and $\alpha\circ\Int(G)=F$.
-   \end{compactitem}
+   \end{itemize}
 \end{lemma}
 \begin{proof}
    The trace structure on $M$ follows easily from Lemma~\ref{lemma:fully_faithful_and_trace} (ii).
@@ -2229,12 +2227,12 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
       &= (\epsilon_d\otimes\id_{e\otimes I\otimes e'})
          \cdot \Bigl[n_1\boxtimes\bigl((i(\id_{d*})\boxtimes n_2)\cdot\eta_d\bigr)
             \boxtimes \bigl(\epsilon_{d'}\cdot(n'_1\boxtimes i(\id_{d'^{*}}))\bigr)
-            \boxtimes n'_2\Bigr]
-         \cdot (\id_{c\otimes I\otimes c'}\otimes\eta_{d'}) \\
+            \boxtimes n'_2\Bigr] \\
+      &\qquad \cdot (\id_{c\otimes I\otimes c'}\otimes\eta_{d'}) \\
       &= (\epsilon_d\otimes\id_e\otimes\epsilon_{d'}\otimes\id_{e'})
          \cdot \Bigl[\bigl(n_1\boxtimes i(\id_{d^*})\boxtimes n_2\bigr)
-            \boxtimes \bigl(n'_1\boxtimes i(\id_{d'^*})\boxtimes n'_2\bigr)\Bigr]
-         \cdot(\id_c\otimes\eta_d\otimes\id_{c'}\otimes\eta_{d'}) \\
+            \boxtimes \bigl(n'_1\boxtimes i(\id_{d'^*})\boxtimes n'_2\bigr)\Bigr] \\
+      &\qquad \cdot(\id_c\otimes\eta_d\otimes\id_{c'}\otimes\eta_{d'}) \\
       &= \Bigl[(\epsilon_d\otimes\id_e)
             \cdot \bigl(n_1\boxtimes i(\id_{d^*})\boxtimes n_2\bigr)
             \cdot (\id_c\otimes\eta_d)\Bigr] \\
