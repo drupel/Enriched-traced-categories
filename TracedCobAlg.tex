@@ -98,8 +98,11 @@ larger box $Y$, can be interpreted as an oriented cobordism from $X_1\sqcup\cdot
 This is a morphism in the (colored) operad $\Cob$, underlying the symmetric monoidal category of
 oriented 1-cobordisms; see Section~\ref{subsec:wds_and_cob}.
 
-There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{C}$ than in a cobordism.
-Namely, each input and output of a box must be labeled by an object of $\cat{C}$ and the wires connecting boxes must respect the labels (e.g., in (\ref{dia:string_diagram}) object $2d$ must equal object $1b$). We will thus consider the operad $\LCob{\LabSet}$ of oriented 1-dimensional cobordisms over a fixed set $\LabSet$ of labels.
+There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{C}$
+than in a cobordism. Namely, each input and output of a box must be labeled by an object of
+$\cat{C}$ and the wires connecting boxes must respect the labels (e.g., in
+(\ref{dia:string_diagram}) object $2d$ must equal object $1b$). We will thus consider the operad
+$\LCob{\LabSet}$ of oriented 1-dimensional cobordisms over a fixed set $\LabSet$ of labels.
 
 In the table below, we record these two interpretations of a string diagram. Note the ``degree
 shift'' between the second and third columns.
@@ -126,8 +129,8 @@ shift'' between the second and third columns.
 
 The relationship between these interpretations of string diagrams is most easily made precise when
 the set $\LabSet$ of labels is fixed. Let $\TTrCat$ denote the 2-category of traced categories,
-strong traced functors, and monoidal natural isomorphisms \cite{HK}, and let $\TrCat$ denote its
-underlying 1-category.%
+traced strict monoidal functors, and monoidal natural isomorphisms \cite{HK}, and let $\TrCat$
+denote its underlying 1-category.\todo{Comment on underlying 1-category}%
 \footnote{
    We use a similar notational convention throughout this paper. We denote named 1-categories,
    monoidal categories, and operads with bold roman letters, e.g., $\ncat{Cob}$, and unnamed
@@ -184,9 +187,9 @@ which induce monads $\TT$ (respectively $\TC$) on $\Set$. The monad $\TT$ is in 
 the free monoid monad, while $\TC$ is isomorphic to the free monoid-with-involution monad.
 
 Let $\cat{C}$ and $\cat{C}'$ be object-free traced categories, such that $\Ob(\cat{C})$ is the free
-monoid on a set $\LabSet$ and $\Ob(\cat{C}')$ is the free monoid on a set $\LabSet'$. A strong
-(traced) functor $F\colon \cat{C}\to \cat{C}'$ sends each object in $\LabSet$ to the tensor product
-of finitely many objects in $\LabSet'$; that is, it induces a function $\Ob
+monoid on a set $\LabSet$ and $\Ob(\cat{C}')$ is the free monoid on a set $\LabSet'$. A strict
+(traced) monoidal functor $F\colon \cat{C}\to \cat{C}'$ induces a homomorphism
+$\Ob F\colon\Ob(\cat{C})\to\Ob(\cat{C}')$ between the free monoids, or equivalently a function $\Ob
 F\colon\LabSet\to\TT(\LabSet')$. Let $\Set_{\TT}$ denote the Kleisli category of this monad, so $\Ob
 F$ is identified with a morphism in $\Set_{\TT}$. Likewise, if $\cat{C}$ and $\cat{C}'$ are
 object-free compact categories, then the object part $\Ob F$ of a strong functor
@@ -263,10 +266,11 @@ $\TrCat^{\bo}$ (resp.~$\CompCat^{\bo}$) be the full subcategory of the arrow cat
 Using these factorization systems, we will see that the domain functors
 $$\dom\colon\TrCat^{\bo}\twoheadrightarrow\TrCat,\qquad\dom\colon\CompCat^{\bo}\twoheadrightarrow\CompCat$$
 are fibrations. For a fixed traced category $\cat{T}$, the fiber
-$\TrCat^{\bo}_{\cat{T}/}\coloneqq\dom^{-1}(\cat{T})$ is the category of strong, bijective-on-objects
-functors from $\cat{T}$ to another traced category, with the evident commutative triangles as
-morphisms, and likewise for $\CompCat^{\bo}_{\cat{C}/}$ with $\cat{C}$ a compact category. Note that
-$\TrCat_{\LabSet}\iso\TrCat^{\bo}_{(\FT\LabSet)/}$, and similarly for $\CompCat_{\LabSet}$.
+$\TrCat^{\bo}_{\cat{T}/}\coloneqq\dom^{-1}(\cat{T})$ is the category of strict monoidal,
+bijective-on-objects functors from $\cat{T}$ to another traced category, with the evident
+commutative triangles as morphisms, and likewise for $\CompCat^{\bo}_{\cat{C}/}$ with $\cat{C}$ a
+compact category. Note that $\TrCat_{\LabSet}\iso\TrCat^{\bo}_{(\FT\LabSet)/}$, and similarly for
+$\CompCat_{\LabSet}$.
 
 Recall from~\cite{JoyalStreetVerity} that traced categories can be thought of as full subcategories
 of compact categories.  The Int construction, applied to a traced category $\cat{C}$, returns the
@@ -598,19 +602,16 @@ recalled in Section~\ref{sec:free_and_geometry}.
 
 \section{Monoidal categories}\label{sec:prelim_monoidal}
 
-Recall that a \emph{monoidal category} $\cat{C}$ is a category equipped with a functor
-$\otimes\colon\cat{C}\times\cat{C}\to\cat{C}$, an object $I\in\cat{C}$, and natural isomorphisms
-\begin{gather*}
-   a_{X,Y,Z}\colon(X\otimes Y)\otimes Z\to X\otimes(Y\otimes Z) \\
-   \lambda_X\colon I\otimes X\to X \\
-   \rho_X\colon X\otimes I\to X
-\end{gather*}
-satisfying some equations; see \cite{MacL--CTWM}. The category $\cat{C}$ is \emph{symmetric monoidal} if
-there is in addition a natural isomorphism
+Recall that a \emph{strict monoidal category} $\cat{C}$ is a category equipped with a functor
+$\otimes\colon\cat{C}\times\cat{C}\to\cat{C}$ and an object $I\in\cat{C}$, satisfying the usual
+monoid axioms. In other words, a srict monoidal category is a monoid object in the category $\Cat$.
+The category $\cat{C}$ is \emph{symmetric strict monoidal} if there is in addition a natural isomorphism
 \begin{equation*}
    \sigma_{X,Y}\colon X\otimes Y\to Y\otimes X
 \end{equation*}
-satisfying additional equations.
+satisfying equations $\sigma_{X,Y\otimes Z}=(\id_X\otimes\sigma_{X,Z})\circ(\sigma_{X,Y}\otimes
+\id_Z)$ and
+$\sigma_{Y,X}\circ\sigma_{X,Y}=\id_{X\otimes Y}$.
 
 Let $\cat{C}$ and $\cat{D}$ be monoidal categories. Recall that a functor
 $F\colon\cat{C}\to\cat{D}$ is called \emph{lax monoidal} if it is equipped with a morphism
@@ -627,21 +628,23 @@ and a natural transformation
 \]
 satisfying some equations (see, e.g., \cite{Leinster,BorceuxV2}). If $\cat{C}$ and $\cat{D}$ are symmetric monoidal, then $F$ is
 \emph{lax symmetric monoidal} if the $\mu$'s respect $\sigma$ in the appropriate way. If all $\mu$'s
-are isomorphisms, then $F$ is \emph{strong}.
+are isomorphisms, then $F$ is \emph{strong}, while $F$ is \emph{strict} if the $\mu$'s are all
+identities.
 
-Let $\MMonCat$ denote the 2-category of symmetric monoidal categories, strong symmetric monoidal
-functors, and monoidal transformations, and let $\MonCat$ denote the underlying 1-category. Let
-$\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal transformations
-from $\cat{C}$ to $\cat{D}$.
+Let $\MMonCat$ denote the 2-category of symmetric strict monoidal categories, strict symmetric
+monoidal functors, and monoidal transformations, and let $\MonCat$ denote the underlying 1-category.
+Let $\Lax(\cat{C},\cat{D})$ denote the category of lax monoidal functors and monoidal
+transformations from $\cat{C}$ to $\cat{D}$.
 
 \begin{warning}\label{warn:symmetric}
-   For the rest of this article, whenever we discuss monoidal categories, we will mean non-strict
-   symmetric monoidal categories. For example, see the definition of $\MMonCat$ above.
+   For the rest of this article, whenever we discuss monoidal categories, we will mean symmetric
+   strict monoidal categories. For example, see the definition of $\MMonCat$ above.
 \end{warning}
 
 \section{Traced categories}\label{sec:intuition_for_traced}
 
-A \emph{trace structure} on a (symmetric) monoidal category $\cat{M}$ is a collection of functions
+A \emph{trace structure} on a (symmetric strict) monoidal category $\cat{M}$ is a collection of
+functions
 \begin{equation}\label{dia:trace function}
    \Tr^U_{X,Y}\colon\Hom_{\cat{M}}(U\otimes X,U\otimes Y)\to\Hom_{\cat{M}}(X,Y)
 \end{equation}
@@ -800,8 +803,8 @@ For completeness, the rest of the axioms (suppressing unitors and associators) a
       \end{equation*}
 \end{itemize}
 
-If $\cat{C}$ and $\cat{D}$ are traced categories, then a \emph{traced functor} is simply a strong
-symmetric monoidal functor which preserves the trace operation.
+If $\cat{C}$ and $\cat{D}$ are traced categories, then a \emph{(strict) traced functor} is simply a
+strict symmetric monoidal functor which preserves the trace operation.
 
 Traced categories were first defined in~\cite{JoyalStreetVerity}. However, those authors define the
 2-morphisms between traced functors to be monoidal transformations, whereas this choice does not
@@ -813,9 +816,10 @@ $\TrCat$.
 
 \section{Compact categories and the Int construction}\label{sec:compact_and_int}
 
-We will denote by $\CCompCat$ the full sub-2-category of $\MMonCat$ spanned by the compact symmetric
-monoidal categories (or just compact categories for short).  Recall that a compact category is a
-symmetric monoidal category $(\cat{C},\otimes,I)$ with the property that for every object
+We will denote by $\CCompCat$ the full sub-2-category of $\MMonCat$ spanned by the compact closed
+symmetric strict monoidal categories (or just compact categories for short).  Recall that a compact
+category is a symmetric monoidal category $(\cat{C},\otimes,I)$ with the property that for every
+object
 $X\in\cat{C}$ there exists an object $X^*$ and morphisms $\eta_X\colon I\to X^*\otimes X$ and
 $\epsilon_X\colon X\otimes X^*\to I$ such that the following diagrams commute:
 \begin{equation*}
@@ -1033,7 +1037,7 @@ pseudo-commuting lift.
 \chapter{Background on equipments}\label{chap:background_equipments}
 
 This section introduces equipments, which we use to properly situate traced and compact categories.
-This tool will eventually allow us to clarify the relationship between strong monoidal functors
+This tool will eventually allow us to clarify the relationship between strict monoidal functors
 between monoidal categories and lax monoidal functors to $\Set$. The former are analogous to
 functors between categories, whereas the latter are analogous to profunctors.
 
@@ -1818,17 +1822,8 @@ The remaining difficulty is dealing with object-freeness, which we need for \ref
 
 \section{Monoidal profunctors}\label{sec:monoidal_profunctors}
 
-Suppose $\cat{C}$ and $\cat{D}$ are (symmetric) monoidal categories. We will write
-\begin{gather*}
-   a_{c,d,e}\colon (c\otimes d)\otimes e \to c\otimes(d\otimes e), \\
-      \lambda_c\colon I\otimes c\to c,
-      \qquad \rho_c\colon c\otimes I \to c, \\
-      \sigma_{c,d}\colon c\otimes d\to d\otimes c
-\end{gather*}
-for the associator, left and right unitor, and symmetry isomorphisms, respectively, leaving it to
-context to make clear whether we are in $\cat{C}$ or $\cat{D}$.
-
-A \emph{monoidal profunctor} $M$ from $\cat{C}$ to $\cat{D}$ is an ordinary profunctor, defined in
+Suppose $\cat{C}$ and $\cat{D}$ are (symmetric strict) monoidal categories. A \emph{monoidal
+profunctor} $M$ from $\cat{C}$ to $\cat{D}$ is an ordinary profunctor, defined in
 Section~\ref{sec:profunctors}, such that the functor $M\colon \op{\cat{C}}\times\cat{D}\to\Set$ is
 equipped with a lax-monoidal structure, where $\Set$ is endowed with the cartesian monoidal
 structure. In the bimodule notation, this means that there is an associative operation assigning to
@@ -1837,12 +1832,13 @@ M(c_1\otimes c_2,d_1\otimes d_2)$ such that
 \[
    (f_1\cdot m_1\cdot g_1)\boxtimes(f_2\cdot m_2\cdot g_2) = (f_1\otimes f_2)\cdot(m_1\boxtimes m_2)\cdot(g_1\otimes g_2),
 \]
-as well as a distinguished element $I_M\in M(I,I)$ such that $\lambda_d\cdot(I_M\boxtimes
-m)\cdot\lambda^{-1}_c = m = \rho_d\cdot(m\boxtimes I_M)\cdot\rho^{-1}_c$ for any $m\in M(c,d)$. If
-moreover $m_2\boxtimes m_1 = \sigma_{d_1,d_2}\cdot(m_1\boxtimes m_2)\cdot\sigma_{c_1,c_2}^{-1}$ then
-one says $M$ is \emph{symmetric monoidal}.%
-\footnote{We will generally suppress the word \emph{symmetric} since all monoidal categories are by
-assumption; see Warning~\ref{warn:symmetric}.}
+as well as a distinguished element $I_M\in M(I,I)$ such that $I_M\boxtimes m = m = m\boxtimes I_M$
+for any $m\in M(c,d)$. If moreover $m_2\boxtimes m_1 = \sigma_{d_1,d_2}\cdot(m_1\boxtimes
+m_2)\cdot\sigma_{c_1,c_2}^{-1}$ then one says $M$ is \emph{symmetric monoidal}.%
+\footnote{
+   We will generally suppress the word \emph{symmetric} since all monoidal categories are by
+   assumption; see Warning~\ref{warn:symmetric}.
+}
 
 A \emph{monoidal profunctor morphism} $\phi\colon M\to N$ is simply a monoidal transformation.
 Spelling this out in bimodule notation, $\phi$ is an ordinary morphism of profunctors such that
@@ -1871,11 +1867,11 @@ To see that we have defined a double category, it remains to check that the hori
 the fact that reflexive coequalizers, as in \eqref{eqn:coendComp}, commute with products in $\Set$.
 
 \begin{definition}\label{def:MonProf}
-   The equipment $\dMonProf$ is defined as follows. Its vertical category is that of (symmetric) monoidal
-   categories and strong functors: $\dMonProf_0=\MonCat$. An object in $\dMonProf_1$ consists of a
-   pair $\cat{C},\cat{D}$ of monoidal categories and a monoidal profunctor
-   $M\colon\cat{C}\tickar\cat{D}$ between them. A morphism in $\dMonProf_1$ is a 2-cell as shown in
-   \eqref{eqn:cell_MonProf}.
+   The equipment $\dMonProf$ is defined as follows. Its vertical category is that of (symmetric
+   strict) monoidal categories and (strict symmetric) monoidal functors: $\dMonProf_0=\MonCat$. An
+   object in $\dMonProf_1$ consists of a pair $\cat{C},\cat{D}$ of monoidal categories and a
+   monoidal profunctor $M\colon\cat{C}\tickar\cat{D}$ between them. A morphism in $\dMonProf_1$ is a
+   2-cell as shown in \eqref{eqn:cell_MonProf}.
 
    This double category is an equipment because for any $F,G,Y$ as in
    (\ref{eqn:cell_MonProf}), there is a cartesian 2-cell whose domain is the profunctor
@@ -1935,7 +1931,6 @@ We record the following:
 \begin{proposition}\label{prop:MonProf_exact}
    The equipment $\dMonProf$ is exact.
 \end{proposition}
-
 \begin{proof}
    Suppose that $M\colon C\tickar C$ is a monoid in $\dMonProf$. Following the proof of
    Proposition~\ref{prop:Prof_is_exact}, we obtain a category $\Col{M}$, an identity-on-objects
@@ -1950,19 +1945,20 @@ We record the following:
 \begin{proposition}\label{prop:CompProf_exact}
    The equipment $\dCompProf$ is exact.
 \end{proposition}
-
 \begin{proof}
    We can consider a monoid $M\colon C\tickar C$ in $\dCompProf$ as a monoid in $\dMonProf$, which
    has a collapse embedding $i_M\colon M\to \Col{M}$ by Proposition~\ref{prop:MonProf_exact}. The
-   collapse $\Col{M}$ is a monoidal category, and by Theorem~\ref{thm:Mod_vs_bo}, $i_M$ is a strong
-   $\bo$ functor. But any strong monoidal functor preserves duals, so every object of $\Col{M}$ has
-   a dual, hence $\Col{M}$ is compact. Because the map $\UCM\colon\dCompProf\to\dMonProf$ is a fully
-   faithful local equivalence, it follows that $\Col{M}$ is a collapse in $\dCompProf$.
+   collapse $\Col{M}$ is a monoidal category, and by Theorem~\ref{thm:Mod_vs_bo}, $i_M$ is a (strict
+   symmetric monoidal) $\bo$ functor. But any monoidal functor preserves duals, so every object of
+   $\Col{M}$ has a dual, hence $\Col{M}$ is compact. Because the map
+   $\UCM\colon\dCompProf\to\dMonProf$ is a fully faithful local equivalence, it follows that
+   $\Col{M}$ is a collapse in $\dCompProf$.
 \end{proof}
 
 \begin{lemma}\label{lem:Tr_bo_Int}
    Let $T$ be a traced category, $C$ a compact category, and $F\colon\Int(T)\twoheadrightarrow C$ a
-   bijective-on-objects, strong functor. Considering the factorization in $\MonCat$:
+   bijective-on-objects strict symmetric monoidal functor. Considering the factorization in
+   $\MonCat$:
    \begin{equation*}
       \begin{tikzcd}[column sep=large]
          \UTM T \ar[r,hook,"\UTM\eta_{T}"] \ar[d,two heads]
@@ -2152,8 +2148,8 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
    $\CPsh(\dCompProf)\equiv\Mon(\dCompProf)$ categorifies the standard fact that a subgroup
    determines, and is determined by, the conjugacy congruence. The equivalence
    $\Ptd(\dCompProf)\equiv\Mon(\dCompProf)$ would seem to be saying that every reflexive relation
-   (stable under multiplication) on a group is in fact transitive, which while true is less familiar
-   than the conjugacy relation. However, in the definition of a Mal'cev category (see
+   (stable under multiplication) on a group is in fact transitive, which while true is perhaps less
+   familiar than the conjugacy relation. However, in the definition of a Mal'cev category (see
    \cite{BorceuxBourn}), this property is singled out as characterizing categories in which some
    amount of classical group theory can be developed. By analogy, we might think of this section as
    proving that $\dCompProf$ is a ``Mal'cev equipment''.
@@ -2181,8 +2177,8 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
    profunctor $N\colon C\tickar C$ with basepoint $i\colon\Hom_C\to N$. We can define a
    multiplication on $N$ by the following formula: given any $n_1\in N(c,d)$ and $n_2\in N(d,e)$,
    \[
-      n_2\bullet n_1 \coloneqq \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(n_1\boxtimes
-      i(\id_{d^*})\boxtimes n_2)\cdot\bigl((\id_c\otimes \eta_d)\circ \rho_c^{-1}\bigr).
+      n_2\bullet n_1 \coloneqq (\epsilon_d\otimes\id_e)\cdot(n_1\boxtimes
+      i(\id_{d^*})\boxtimes n_2)\cdot(\id_c\otimes \eta_d).
    \]
 
    It is straightforward to check that this multiplication is associative. To show that we have $N$
@@ -2192,26 +2188,21 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
    $n\in N(d,e)$ and $f\colon c\to d$:
    \begin{align*}
       n\bullet i(f)
-      &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)
-         \cdot (i(f)\boxtimes i(\id_{d^*})\boxtimes n)
-         \cdot \bigl((\id_c\otimes \eta_d)\circ \rho_c^{-1}\bigr) \\
-      &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)
-         \cdot (i(f\otimes\id_{d^*})\boxtimes n)
-         \cdot \bigl((\id_c\otimes \eta_d)\circ \rho_c^{-1}\bigr) \\
-      &= \lambda_e \cdot \bigl((\epsilon_d\cdot i(f\otimes \id_{d^*}))\boxtimes (\id_e\cdot n)\bigr)
-         \cdot \bigl((\id_c\otimes \eta_d)\circ \rho_c^{-1}\bigr) \\
-      &= \lambda_e \cdot \bigl(i(\epsilon_d\circ (f\otimes \id_{d^*}))\boxtimes (n\cdot\id_d)\bigr)
-         \cdot \bigl((\id_c\otimes \eta_d)\circ \rho_c^{-1}\bigr) \\
-      &= \lambda_e \cdot \bigl(i(\id_I)\boxtimes n\bigr)
-         \cdot \bigl(((\epsilon_d\circ (f\otimes \id_{d^*}))\otimes\id_d)
-            \circ(\id_c\otimes \eta_d)\circ \rho_c^{-1}\bigr) \\
-      &= \lambda_e \cdot \bigl(I_N\boxtimes n\bigr)
-         \cdot \bigl((\epsilon_d\otimes\id_d)\circ(\id_d\otimes\eta_d)
-            \circ(f\otimes\id_I)\circ \rho_c^{-1}\bigr) \\
-      &= \lambda_e \cdot \bigl(I_N\boxtimes n\bigr)
-         \cdot \bigl(\lambda_d^{-1}\circ \rho_d\circ(f\otimes\id_I)\circ \rho_c^{-1}\bigr) \\
-      &= \bigl(\lambda_e\cdot(I_N\boxtimes n)\cdot \lambda_d^{-1}\bigr)
-         \cdot \bigl(\rho_d\circ(f\otimes\id_I)\circ \rho_c^{-1}\bigr) \\
+      &= (\epsilon_d\otimes\id_e) \cdot \bigl(i(f)\boxtimes i(\id_{d^*})\boxtimes n\bigr)
+            \cdot (\id_c\otimes \eta_d) \\
+      &= (\epsilon_d\otimes\id_e) \cdot \bigl(i(f\otimes\id_{d^*})\boxtimes n\bigr)
+            \cdot (\id_c\otimes \eta_d) \\
+      &= \bigl((\epsilon_d\cdot i(f\otimes \id_{d^*}))\boxtimes (\id_{e}\cdot n)\bigr)
+            \cdot (\id_c\otimes \eta_d) \\
+      &= \bigl(i(\epsilon_d\circ (f\otimes \id_{d^*}))\boxtimes (n\cdot\id_d)\bigr)
+            \cdot (\id_c\otimes \eta_d) \\
+      &= \bigl(i(\id_I)\boxtimes n\bigr)
+            \cdot \bigl(((\epsilon_d\circ (f\otimes \id_{d^*}))\otimes\id_d)
+               \circ(\id_c\otimes \eta_d)\bigr) \\
+      &= \bigl(I_N\boxtimes n\bigr)
+            \cdot \bigl((\epsilon_d\otimes\id_d)\circ(\id_d\otimes\eta_d)
+               \circ(f\otimes\id_I)\bigr) \\
+      &= \bigl(I_N\boxtimes n\bigr) \cdot (f\otimes\id_I) \\
       &= n\cdot f.
    \end{align*}
    The equation $i(f)\bullet n=f\cdot n$ follows similarly, so we have verified
@@ -2223,43 +2214,33 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
    \end{equation*}
    for any $n_1\in N(c,d)$, $n'_1\in N(c',d')$, $n_2\in N(d,e)$, and $n'_2\in N(d',e')$, which we
    prove below:
-   % \allowdisplaybreaks called in preamble
    \begin{align*}
       &(n_2\boxtimes n'_2)\bullet(n_1\boxtimes n'_1) \\
-      &= \bigl(\lambda_{e\otimes e'}\circ(\epsilon_{d\otimes d'}\otimes\id_{e\otimes e'})\bigr) \\
-      &\qquad \cdot \left((n_1\boxtimes n'_1)\boxtimes i(\id_{d^*\otimes d'^{*}})
-            \boxtimes(n_2\boxtimes n'_2)\right) \\
-      &\qquad \cdot \left((\id_{c\otimes c'}\otimes\eta_{d\otimes d'})
-         \otimes \rho_{c\otimes c'}^{-1}\right)\\
-      &= \bigl((\lambda_e\otimes \lambda_{e'})\circ(\epsilon_d\otimes\id_{e\otimes I\otimes e'})
+      &= (\epsilon_{d\otimes d'}\otimes\id_{e\otimes e'})
+         \cdot \left((n_1\boxtimes n'_1)\boxtimes i(\id_{d^*\otimes d'^{*}})
+            \boxtimes(n_2\boxtimes n'_2)\right)
+         \cdot (\id_{c\otimes c'}\otimes\eta_{d\otimes d'}) \\
+      &= \bigl((\epsilon_d\otimes\id_{e\otimes I\otimes e'})
             \circ(\id_d\otimes\sigma_{I,d^*\otimes e}\otimes\id_{e'})\bigr) \\
-      %&= \bigl(l_e\circ(\epsilon_e\otimes l_e)\circ(\id_d\otimes\sigma_{I,d^*}\otimes\id_e)\bigr)\otimes\id_{e'} \\
       &\qquad \cdot \Bigl[n_1\boxtimes\bigl(\epsilon_{d'}\cdot(n'_1\boxtimes i(\id_{d'^{*}}))\bigr)
             \boxtimes \bigl((i(\id_{d*})\boxtimes n_2)\cdot\eta_d\bigr)\boxtimes n'_2\Bigr] \\
       &\qquad \cdot \bigl((\id_c\otimes\sigma_{I,c'\otimes d'^*}\otimes\id_{d'})
-            \circ (\id_{c\otimes I\otimes c'}\otimes\eta_{d'})
-            \circ (\rho_c^{-1}\otimes \rho_{c'}^{-1})\bigr) \\
-      %&\qquad \cdot\id_c\otimes\bigl((\id_{c'}\otimes\sigma_{I,d'^{*}}\otimes\id_{d'})\circ(
-      %r_{c'}^{-1}\otimes\eta_{d'})\circ r_{c'}^{-1}\bigr) \\
-      %&= \bigl(l_e\circ(\epsilon_e\otimes l_e)\circ(\id_d\otimes\sigma_{I,d^*}\otimes\id_e)\circ(\id_d\otimes\sigma_{d^*\otimes e,I})\bigr)\otimes\id_{e'} \\
-      &= \bigl((\lambda_e\otimes \lambda_{e'})\circ(\epsilon_d\otimes\id_{e\otimes I\otimes e'})\bigr) \\
-      &\qquad \cdot \Bigl[n_1\boxtimes\bigl((i(\id_{d*})\boxtimes n_2)\cdot\eta_d\bigr)
+            \circ (\id_{c\otimes I\otimes c'}\otimes\eta_{d'}) \bigr) \\
+      &= (\epsilon_d\otimes\id_{e\otimes I\otimes e'})
+         \cdot \Bigl[n_1\boxtimes\bigl((i(\id_{d*})\boxtimes n_2)\cdot\eta_d\bigr)
             \boxtimes \bigl(\epsilon_{d'}\cdot(n'_1\boxtimes i(\id_{d'^{*}}))\bigr)
-            \boxtimes n'_2\Bigr] \\
-      &\qquad \cdot \bigl((\id_{c\otimes I\otimes c'}\otimes\eta_{d'})
-            \circ (\rho_c^{-1}\otimes \rho_{c'}^{-1})\bigr) \\
-      &= \Bigl[\bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)
-            \otimes \bigl(\lambda_{e'}\circ(\epsilon_{d'}\otimes\id_{e'})\bigr)\Bigr] \\
-      &\qquad \cdot \Bigl[\bigl(n_1\boxtimes i(\id_{d^*})\boxtimes n_2\bigr)
-            \boxtimes \bigl(n'_1\boxtimes i(\id_{d'^*})\boxtimes n'_2\bigr)\Bigr] \\
-      &\qquad \cdot\Bigl[\bigl((\id_c\otimes\eta_d)\circ \rho_c^{-1}\bigr)
-            \otimes \bigl((\id_{c'}\otimes\eta_{d'})\circ \rho_{c'}^{-1}\bigr)\Bigr] \\
-      &= \Bigl[\bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)
+            \boxtimes n'_2\Bigr]
+         \cdot (\id_{c\otimes I\otimes c'}\otimes\eta_{d'}) \\
+      &= (\epsilon_d\otimes\id_e\otimes\epsilon_{d'}\otimes\id_{e'})
+         \cdot \Bigl[\bigl(n_1\boxtimes i(\id_{d^*})\boxtimes n_2\bigr)
+            \boxtimes \bigl(n'_1\boxtimes i(\id_{d'^*})\boxtimes n'_2\bigr)\Bigr]
+         \cdot(\id_c\otimes\eta_d\otimes\id_{c'}\otimes\eta_{d'}) \\
+      &= \Bigl[(\epsilon_d\otimes\id_e)
             \cdot \bigl(n_1\boxtimes i(\id_{d^*})\boxtimes n_2\bigr)
-            \cdot \bigl((\id_c\otimes\eta_d)\circ \rho_c^{-1}\bigr)\Bigr] \\
-      &\qquad \boxtimes \Bigl[\bigl(\lambda_{e'}\circ(\epsilon_{d'}\otimes\id_{e'})\bigr)
+            \cdot (\id_c\otimes\eta_d)\Bigr] \\
+      &\qquad \boxtimes \Bigl[(\epsilon_{d'}\otimes\id_{e'})
             \cdot \bigl(n'_1\boxtimes i(\id_{d'^*})\boxtimes n'_2\bigr)
-            \cdot \bigl((\id_{c'}\otimes\eta_{d'})\circ \rho_{c'}^{-1}\bigr)\Bigr]
+            \cdot (\id_{c'}\otimes\eta_{d'})\Bigr]
    \end{align*}
    Thus we have shown that the multiplication $\bullet$ defines a monoid $U^{-1}(N)$.
 
@@ -2268,14 +2249,16 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
    Then $\phi$ also preserves the canonical multiplications:
    \begin{align*}
       \phi(n_2\bullet n_1) &=
-      \phi\Bigl[\bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(n_1\boxtimes
-      i_M(\id_{d^*})\boxtimes n_2)\cdot\bigl((\id_c\otimes \eta_d)\circ \rho_c^{-1}\bigr)\Bigr] \\
-      &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot\phi(n_1\boxtimes
-   i_M(\id_{d^*})\boxtimes n_2)\cdot\bigl((\id_c\otimes \eta_d)\circ \rho_c^{-1}\bigr) \\
-      &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(\phi(n_1)\boxtimes
-\phi(i_M(\id_{d^*}))\boxtimes \phi(n_2))\cdot\bigl((\id_c\otimes \eta_d)\circ \rho_c^{-1}\bigr) \\
-      &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)\cdot(\phi(n_1)\boxtimes
-      i_N(\id_{d^*}))\boxtimes \phi(n_2))\cdot\bigl((\id_c\otimes \eta_d)\circ \rho_c^{-1}\bigr) \\
+      \phi\bigl[(\epsilon_d\otimes\id_e)\cdot(n_1\boxtimes i(\id_{d^*})\boxtimes n_2)
+         \cdot(\id_c\otimes \eta_d)\bigr] \\
+      &= (\epsilon_d\otimes\id_e)\cdot\phi\bigl(n_1\boxtimes i_M(\id_{d^*})\boxtimes n_2\bigr)
+         \cdot(\id_c\otimes \eta_d) \\
+      &= (\epsilon_d\otimes\id_e)
+         \cdot\bigl(\phi(n_1)\boxtimes \phi(i_M(\id_{d^*}))\boxtimes \phi(n_2)\bigr)
+         \cdot(\id_c\otimes \eta_d) \\
+      &= (\epsilon_d\otimes\id_e)
+         \cdot(\phi(n_1)\boxtimes i_N(\id_{d^*}))\boxtimes \phi(n_2))
+         \cdot(\id_c\otimes \eta_d) \\
       &= \phi(n_2)\bullet\phi(n_1)
    \end{align*}
 
@@ -2284,21 +2267,17 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
    defined above in fact coincides with $\star$:
    \begin{align*}
       n_2\star n_1
-         &= n_2 \star \Bigl[\bigl(\lambda_d\circ(\epsilon_d\otimes\id_d)
-               \circ(\id_d\otimes\eta_d)\circ \rho_d^{-1}\bigr) \cdot n_1 \Bigr] \\
-         &= \Bigl[n_2\cdot\bigl(\lambda_d\circ(\epsilon_d\otimes\id_d)\bigr)\Bigr]
-               \star \Bigl[\bigl((\id_d\otimes\eta_d)\circ \rho_d^{-1}\bigr)\cdot n_1\Bigr] \\
-         &= \bigl[\lambda_e\cdot(I_M\boxtimes n_2)\cdot(\epsilon_d\otimes\id_d)\bigr]
-               \star \bigl[(\id_d\otimes\eta_d)\cdot(n_1\boxtimes I_M)\cdot \rho_c^{-1}\bigr] \\
-         &= \Bigl[\lambda_e\cdot\bigl(i(\epsilon_d)\boxtimes n_2\bigr)\Bigr]
-               \star \Bigl[\bigl(n_1\boxtimes i(\eta_d)\bigr)\cdot \rho_c^{-1}\Bigr] \\
-         &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)
-            \cdot \Bigr[\bigr(i(\id_d)\boxtimes i(\id_{d^*})\boxtimes n_2\bigl)
-                  \star \bigr(n_1\boxtimes i(\id_{d^*})\boxtimes i(\id_d)\bigr)\Bigr] \\
-         & \qquad \cdot \bigl((\id_c\otimes\eta_d)\circ \rho_c^{-1}\bigr) \\
-         &= \bigl(\lambda_e\circ(\epsilon_d\otimes\id_e)\bigr)
-            \cdot \bigl(n_1\boxtimes i(\id_{d^*})\boxtimes n_2\bigr)
-            \cdot \bigl((\id_c\otimes \eta_d)\circ \rho_c^{-1}\bigr) \\
+         &= n_2 \star \Bigl[\bigl((\epsilon_d\otimes\id_d)
+               \circ(\id_d\otimes\eta_d)\bigr) \cdot n_1 \Bigr] \\
+         &= \bigl[n_2\cdot(\epsilon_d\otimes\id_d)\bigr]
+               \star \bigl[(\id_d\otimes\eta_d)\cdot n_1\bigr] \\
+         &= \bigl(i(\epsilon_d)\boxtimes n_2\bigr) \star \bigl(n_1\boxtimes i(\eta_d)\bigr) \\
+         &= (\epsilon_d\otimes\id_e)
+               \cdot \Bigl[\bigl(i(\id_d)\boxtimes i(\id_{d^*})\boxtimes n_2\bigr)
+               \star \bigl(n_1\boxtimes i(\id_{d^*})\boxtimes i(\id_d)\bigr)\Bigr] \\
+         & \qquad \cdot (\id_c\otimes\eta_d) \\
+         &= (\epsilon_d\otimes\id_e) \cdot \bigl(n_1\boxtimes i(\id_{d^*})\boxtimes n_2\bigr)
+            \cdot (\id_c\otimes \eta_d) \\
          &= n_2\bullet n_1
    \end{align*}
    Thus $U^{-1}\circ U=\id_{\Mon(\dCompProf)}$, and $U$ is an equivalence (in fact, isomorphism) of
@@ -2348,7 +2327,7 @@ that these are morphisms of fibrations, i.e., that they preserve cartesian morph
    \]
    Conversely, given $n'\in N(I,a^*\otimes b)$, we can construct an element
    \[
-      \bigl(\lambda_b\circ(\epsilon_a\otimes\id_b)\bigr)\cdot(i(\id_a)\boxtimes n')\cdot \rho_a^{-1} \in N(a,b).
+      (\epsilon_a\otimes\id_b)\cdot(i(\id_a)\boxtimes n') \in N(a,b).
    \]
    It is simple to check that this defines a natural bijection.
 \end{proof}
