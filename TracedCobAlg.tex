@@ -891,27 +891,37 @@ The following facts hold for any traced category $\cat{C}$:
 
 \section{Free traced and compact categories, and geometry}\label{sec:free_and_geometry}
 
-There are free/forgetful adjunctions of 1-categories
-\begin{align*}
-   \FM\colon\Set &\leftrightarrows\MonCat:\!\UM \\
-   \FT\colon\Set &\leftrightarrows\TrCat:\!\UT \\
-   \FC\colon\Set &\leftrightarrows\CompCat:\!\UC
-\end{align*}
-We will write $\TM, \TT$, and $\TC$ for the respective monads induced on $\Set$. Note that $\TM$ is
+There are free/forgetful (strict) 2-adjunctions of 2-categories, as to the left:
+\begin{align}
+\nonumber
+		\FM\colon\CCat &\leftrightarrows\MMonCat:\!\UM 
+			& \Set &\leftrightarrows\MonCat 
+\\\label{eqn:adjunctions}
+		\FT\colon\CCat &\leftrightarrows\TTrCat:\!\UT 
+			& \Set &\leftrightarrows\TrCat
+\\\nonumber   
+		\FC\colon\CCat &\leftrightarrows\CCompCat:\!\UC
+			& \Set&\leftrightarrows\CompCat
+\end{align}
+These have underlying 1-adjunctions, which \cite{Abramsky2} constructs in detail, and the fact that these extend to 2-adjunctions will be prove in \ref{**}\todo{reference here}. For the time being, we consider only their underlying 1-adjunctions, which we can compose with the discrete adjunction $\Set\leftrightarrows\Cat$ to obtain 1-adjunctions as to the right in \eqref{eqn:adjunctions}. We will write $\TM, \TT$, and $\TC$ for the respective monads induced on $\Set$. Note that $\TM$ is
 isomorphic to the free monoid monad, while $\TC$ is isomorphic to the free monoid-with-involution monad.%
 \footnote{
    Note that $T_M$ is not the free-\emph{commutative}-monoid monad, even though the objects of
    $\MonCat$ are \emph{symmetric} monoidal categories, because the symmetries are encoded in natural
    isomorphisms, not equalities.
 }
-We will denote by $\FrMonCat$ and $\FrCompCat$ the full subcategories of $\MonCat$ and $\CompCat$
+We will denote by $\FrMonCat$, $\FrTrCat$, and $\FrCompCat$ the full subcategories of $\MonCat$ and $\CompCat$
 respectively, spanned by objects which are free on a set. As always, these categories are isomorphic
 to the Kleisli categories of the monads:
-\begin{align}\label{dia:TMvsFrMonCat}
+\begin{align}
+\nonumber 
 \FrMonCat&\iso\Set_{\TM}
+\\\label{dia:TMvsFrMonCat}
+\FrTrCat&\iso\Set_{\TT}
 \\\nonumber
 \FrCompCat&\iso\Set_{\TC}.
 \end{align}
+Note that there is an isomorphism of categories $\FrMonCat\iso\FrTrCat$, because $\TM=\TT$.
 
 The forgetful functors between the categories of structured monoidal categories commute with the
 underlying set functors, i.e.~the following diagram commutes:
