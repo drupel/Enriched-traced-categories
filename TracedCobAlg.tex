@@ -1050,6 +1050,160 @@ pseudo-commuting lift.
    to the class of fully faithful functors.
 \end{example}
 
+\section{Background on 2-categories}\label{sec:background_2-categories}
+
+\begin{definition}
+   Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{fully-faithful} if the
+   functor $\ccat{C}(x,a)\to\ccat{C}(x,b)$ induced by composition with $f$ is fully-faithful for
+   every $x$.
+
+   That is, $f$ is fully-faithful if, for every diagram
+   \begin{equation}\label{eq:fully-faithful_1-cell}
+      \begin{tikzcd}
+         x \ar[r,bend left,"u"] \ar[r,bend right,"v"']
+               \ar[d,equal]
+            & a \ar[d,"f"] \\
+         x \ar[r,bend left,"u'" domA] \ar[r,bend right,"v'"' codA]
+            & b
+         \twocellA{\alpha'}
+      \end{tikzcd}
+   \end{equation}
+   such that $fu=u'$ and $fv=v'$, there is a unique $\alpha\colon u\Rightarrow v$ such that
+   $f\alpha=\alpha'$.
+\end{definition}
+
+\begin{definition}\label{def:bijective-on-objects}
+   Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{bijective-on-objects} if
+   it is left orthogonal to every fully-faithful morphism.
+\end{definition}
+
+Note that if every morphism $f$ of a 2-category $\ccat{C}$ can be factored into a
+bijective-on-objects morphism followed by a fully-faithful morphism, then this forms an orthogonal
+factorization system on $\ccat{C}$.
+
+\begin{definition}
+   Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is a \emph{surjective
+   equivalence} if it can be extended to an adjoint equivalence $g\dashv f$ in which the unit is the
+   identity. That is, there is a morphism $g\colon b\to a$ and 2-cell $\epsilon\colon gf\iso 1_a$
+   such that $1_b=fg$, $\epsilon g=1_g$, and $f\epsilon=1_f$.
+\end{definition}
+
+\begin{lemma}\label{lem:fully-faithful_surjective_equiv}
+   Let $f\colon a\to b$ and $g\colon b\to a$ be morphisms in a 2-category such that $fg=1$. Then $f$
+   (together with $g$) is a surjective equivalence if and only if $f$ is fully-faithful.
+\end{lemma}
+\begin{proof}
+   Suppose $g\dashv f$ is a surjective equivalence. Then for any $x$,
+   $f^*\colon\ccat{C}(x,a)\to\ccat{C}(x,b)$ is an equivalence of categories, hence fully-faithful.
+   Thus $f$ is fully-faithful.
+
+   Conversely suppose $f$ is fully-faithful. Then because $fgf=f=f 1_a$, there is a unique
+   $\epsilon\colon gf\Rightarrow 1_a$ such that $f\epsilon=1_f$. It is easy to check that $\epsilon$
+   is an isomorphism, and that $\epsilon g=1_g$.
+\end{proof}
+
+\begin{definition}
+   Let $a$ be an object in a 2-category $\ccat{C}$. An \emph{arrow object} of $a$ is an object
+   $\Ar{a}$ together with a diagram
+   \begin{equation}
+      \begin{tikzcd}
+         \Ar{a} \ar[r,bend left,"\dom" domA] \ar[r,bend right,"\cod"' codA]
+            & a
+         \twocellA{\kappa}
+      \end{tikzcd}
+   \end{equation}
+   which is universal among such diagrams: any diagram as on the left below factors uniquely as on
+   the right
+   \begin{equation}
+      \begin{tikzcd}
+         x \ar[r,bend left,"d" domA] \ar[r,bend right,"c"' codA]
+            & a
+         \twocellA{\alpha}
+      \end{tikzcd}
+      \quad = \quad
+      \begin{tikzcd}
+         x \ar[r,"\hat{\alpha}"]
+            & \Ar{a} \ar[r,bend left,"\dom" domA] \ar[r,bend right,"\cod"' codA]
+            & a
+         \twocellA{\kappa}
+      \end{tikzcd}
+   \end{equation}
+   Moreover, given another $d'\colon x\to a$, $c'\colon x\to a$, $\alpha'\colon d'\Rightarrow c'$
+   as on the left above, and 2-cells $\beta\colon d\Rightarrow d'$ and $\gamma\colon c\Rightarrow c'$
+   such that $\alpha'\circ\beta=\gamma\circ\alpha$, there is a unique
+   $(\beta,\gamma)\colon\hat{\alpha}\Rightarrow\hat{\alpha'}$ such that $\dom(\beta,\gamma)=\beta$
+   and $\cod(\beta,\gamma)=\gamma$.
+\end{definition}
+
+\begin{example}
+   $\CCat$ has arrow objects.
+\end{example}
+
+\begin{definition}
+   Let $f\colon a\to b$ be a morphism in a 2-category $\ccat{C}$. A \emph{mapping path object} of
+   $f$ is an object $\Path{f}$ together with a diagram
+   \begin{equation}
+      \begin{tikzcd}[column sep=small]
+         & |[alias=domA]| \Path{f} \ar[dl,"\pi_a"'] \ar[dr,"\pi_b"] & \\
+         a \ar[rr,"f"' codA] && b
+         \twocelliso[pos=.6]{A}{\rho}
+      \end{tikzcd}
+   \end{equation}
+   where $\rho$ is an isomorphism, which is universal among such diagrams: any diagram as on the
+   left below, in which $\alpha$ is an isomorphism, factors uniquely as on the right
+   \begin{equation}
+      \begin{tikzcd}[column sep=small]
+         & |[alias=domA]| x \ar[dl,"g"'] \ar[dr,"h"] & \\
+         a \ar[rr,"f"' codA] && b
+         \twocelliso[pos=.6]{A}{\alpha}
+      \end{tikzcd}
+      \quad = \quad
+      \begin{tikzcd}[column sep=small]
+         & x \ar[d,dashed,"\hat{\alpha}"] \ar[ddl,bend right,"g"'] \ar[ddr,bend left,"h"] & \\
+         & |[alias=domA]| \Path{f} \ar[dl,"\pi_a"' inner sep=1pt] \ar[dr,"\pi_b" inner sep=1pt] & \\
+         a \ar[rr,"f"' codA] && b
+         \twocelliso[pos=.6]{A}{\rho}
+      \end{tikzcd}
+   \end{equation}
+   Moreover, given another $g'\colon x\to a$, $h'\colon x\to b$, $\alpha'\colon fg'\iso h'$ as on
+   the left above, and isomorphisms $\beta\colon g\iso g'$ and $\gamma\colon h\iso h'$ such that
+   $\alpha'\circ f\beta=\gamma\circ\alpha$, there is a unique isomorphism
+   $(\beta,\gamma)\colon\hat{\alpha}\iso\hat{\alpha'}$ such that $\pi_a(\beta,\gamma)=\beta$ and
+   $\pi_b(\beta,\gamma)=\gamma$.
+\end{definition}
+
+\begin{example}
+   $\CCat$ has mapping path objects.
+\end{example}
+
+\begin{lemma}
+   For any morphism $f\colon a\to b$ with a mapping path object $\Path{f}$, the projection
+   $\pi_a\colon \Path{f}\to a$ is a surjective equivalence, hence fully-faithful.
+\end{lemma}
+\begin{proof}
+   By the universal property of $\Path{f}$ there is a unique morphism $s\colon a\to \Path{f}$ such that
+   \begin{equation}
+      \begin{tikzcd}[column sep=small]
+         & |[alias=domA]| a \ar[dl,equal] \ar[dr,"f"] & \\
+         a \ar[rr,"f"' codA] && b
+         \twocellA[pos=.6]{1_f}
+      \end{tikzcd}
+      \quad = \quad
+      \begin{tikzcd}[column sep=small]
+         & a \ar[d,dashed,"s"] \ar[ddl,bend right,equal] \ar[ddr,bend left,"f"] & \\
+         & |[alias=domA]| \Path{f} \ar[dl,"\pi_a"' inner sep=1pt] \ar[dr,"\pi_b" inner sep=1pt] & \\
+         a \ar[rr,"f"' codA] && b
+         \twocelliso[pos=.6]{A}{\rho}
+      \end{tikzcd}
+   \end{equation}
+   Using the 2-dimensional universality of $\Path{f}$, we can obtain that there is a unique
+   isomorphism $\epsilon\colon s\pi_a\iso 1_{\Path{f}}$ such that $\pi_a\epsilon=1_{\pi_a}$ and
+   $\pi_b\epsilon=\rho$. By universality once more, because $\rho\epsilon s=\rho$, we obtain
+   $\epsilon s=1_s$.
+
+   It follows from Lemma~\ref{lem:fully-faithful_surjective_equiv} that $\pi_a$ is fully-faithful.
+\end{proof}
+
 \chapter{Background on equipments}\label{chap:background_equipments}
 
 This section introduces equipments, which we use to properly situate traced and compact categories.
