@@ -1059,7 +1059,7 @@ pseudo-commuting lift.
 
    That is, $f$ is fully-faithful if, for every diagram
    \begin{equation}\label{eq:fully-faithful_1-cell}
-      \begin{tikzcd}
+      \begin{tikzcd}[row sep=large]
          x \ar[r,bend left,"u"] \ar[r,bend right,"v"']
                \ar[d,equal]
             & a \ar[d,"f"] \\
@@ -1107,7 +1107,7 @@ factorization system on $\ccat{C}$.
    $\Ar{a}$ together with a diagram
    \begin{equation}
       \begin{tikzcd}
-         \Ar{a} \ar[r,bend left,"\dom" domA] \ar[r,bend right,"\cod"' codA]
+         \Ar{a} \ar[r,bend left,"\dom" {domA,anchor = south}] \ar[r,bend right,"\cod"' {codA,anchor = north}]
             & a
          \twocellA{\kappa}
       \end{tikzcd}
@@ -1123,7 +1123,7 @@ factorization system on $\ccat{C}$.
       \quad = \quad
       \begin{tikzcd}
          x \ar[r,"\hat{\alpha}"]
-            & \Ar{a} \ar[r,bend left,"\dom" domA] \ar[r,bend right,"\cod"' codA]
+            & \Ar{a} \ar[r,bend left,"\dom" {domA,anchor = south}] \ar[r,bend right,"\cod"' {codA,anchor=north}]
             & a
          \twocellA{\kappa}
       \end{tikzcd}
