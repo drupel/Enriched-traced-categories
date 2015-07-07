@@ -1181,12 +1181,13 @@ factorization system on $\ccat{C}$.
    $\CCat$ has mapping path objects.
 \end{example}
 
-\begin{lemma}
+\begin{lemma}\label{lem:mapping_path_equiv}
    For any morphism $f\colon a\to b$ with a mapping path object $\Path{f}$, the projection
    $\pi_a\colon \Path{f}\to a$ is a surjective equivalence, hence fully-faithful.
 \end{lemma}
 \begin{proof}
-   By the universal property of $\Path{f}$ there is a unique morphism $s\colon a\to \Path{f}$ such that
+   By the universal property of $\Path{f}$ there is a unique morphism $s_f\colon a\to \Path{f}$ such
+   that
    \begin{equation}
       \begin{tikzcd}[column sep=small]
          & |[alias=domA]| a \ar[dl,equal] \ar[dr,"f"] & \\
@@ -1195,7 +1196,7 @@ factorization system on $\ccat{C}$.
       \end{tikzcd}
       \quad = \quad
       \begin{tikzcd}[column sep=small]
-         & a \ar[d,dashed,"s"] \ar[ddl,bend right,equal] \ar[ddr,bend left,"f"] & \\
+         & a \ar[d,dashed,"s_f"] \ar[ddl,bend right,equal] \ar[ddr,bend left,"f"] & \\
          & |[alias=domA]| \Path{f} \ar[dl,"\pi_a"' inner sep=1pt] \ar[dr,"\pi_b" inner sep=1pt] & \\
          a \ar[rr,"f"' codA] && b
          \twocelliso[pos=.6]{A}{\rho}
@@ -1225,9 +1226,10 @@ For the remainder of this section we will make the following assumptions:
 \begin{itemize}
    \item $\ccat{D}$ has a bijective-on-objects/fully-faithful factorization.
    \item $\ccat{D}$ has arrow objects.
-   \item There is a locally faithful functor $U\colon\ccat{D}\to\Cat$ which preserves fully-faithful
-   morphisms, and which has a left 2-adjoint $F\colon\Cat\to\scat{D}$.
-   \item $U$ creates mapping path objects and surjective equivalences.
+   \item There is a functor $U\colon\ccat{D}\to\Cat$ which preserves fully-faithful morphisms, and
+   which has a left 2-adjoint $F\colon\Cat\to\scat{D}$.
+   \item $U$ creates mapping path objects and surjective equivalences, and reflects identity
+   2-cells.
 \end{itemize}
 The remainder of this section will be dedicated to the proof of the following theorem:
 
@@ -1250,7 +1252,6 @@ surjective equivalences, it suffices to show that $Uq_A$ is a surjective equival
 is fully-faithful by construction, so $Uq_A$ is fully-faithful, hence by
 Lemma~\ref{lem:fully-faithful_surjective_equiv} it suffices to construct a section of $Uq_A$. We can
 easily check that $Ur_A\circ\eta_{UA}$ is such a section:
-
 \begin{equation*}
    \begin{tikzcd}
       UA \ar[r,"\eta_{UA}"] \ar[rrd,bend right=18,equal]
@@ -1259,6 +1260,89 @@ easily check that $Ur_A\circ\eta_{UA}$ is such a section:
       && UA
    \end{tikzcd}
 \end{equation*}
+Thus there is a unique surjective equivalence $p_A\dashv q_A$ in $\scat{D}$ such that
+$Up_A= Ur_A\circ\eta_{UA}$.
+
+We next must show that the morphism $p_A\colon A\pto QA$ has the following universal property: for
+any strong morphism $f\colon A\pto B$ there is a unique strict morphism $f'\colon QA\to B$ such that
+$f=f'\circ p_A$. From this, it follows that $Q$ extends to a 1-functor which is left adjoint to
+$\iota$. It then follows from Lemma~\ref{??} that $Q$ extends to a 2-functor which is left 2-adjoint
+to $\iota$, completing the proof of the theorem.
+
+First, given an $f\colon A\pto B$, define a strict morphism $\tilde{f}\colon FUA\to\Path{f}$ as the
+adjoint of the section $s_{Uf}\colon UA\to U(\Path{f})=\Path{UA}$ defined as in
+Lemma~\ref{lem:mapping_path_equiv}. It follows by adjointness that the following diagram commutes:
+\begin{equation*}
+   \begin{tikzcd}
+      & FUA \ar[dl,"\epsilon_A"'] \ar[d,"\tilde{f}"] \ar[r,"FUf"]
+         & FUB \ar[d,"\epsilon_B"] \\
+      A & \Path{f} \ar[l,hook',"\pi_A"] \ar[r,"\pi_B"']
+         & B
+   \end{tikzcd}
+\end{equation*}
+Then in the diagram
+\begin{equation*}
+   \begin{tikzcd}
+      FUA \ar[r,"\tilde{f}"] \ar[d,two heads,"r_A"']
+         & \Path{f} \ar[d,hook,"\pi_A"] \ar[r,"\pi_B"]
+         & B \\
+      QA \ar[r,"q_A"'] \ar[ur,dashed,"\hat{f}" inner sep=0pt] & A
+   \end{tikzcd}
+\end{equation*}
+there is a unique morphism $\hat{f}$ making the square commute by orthogonality, and we define
+$f'\coloneqq \pi_B\circ\hat{f}$.
+
+We next must check that our definition of $f'$ satisfies $f=f'\circ p_A$. We can construct an
+isomorphism 2-cell $f\iso f'\circ p_A$:
+\begin{equation*}
+   \begin{tikzcd}[column sep=tiny]
+      & QA \ar[dr,hook,"q_A" inner sep=1pt] \ar[rr,"\hat{f}"]
+         && |[alias=domA]| \Path{f} \ar[dl,hook,"\pi_A"' inner sep=1pt]
+            \ar[dr,"\pi_B" inner sep=1pt] & \\
+      A \ar[ur,squiggly,"q_A" inner sep=1pt] \ar[rr,equal]
+         && A \ar[rr,squiggly,"f"' codA]
+         && B
+      \twocelliso[pos=.65]{A}{\rho_f}
+   \end{tikzcd}
+\end{equation*}
+We can check directly that the underlying 2-cell of $\rho_f\hat{f}q_A$ is the identity on $Uf$,
+\begin{align*}
+   U(\rho_f\hat{f}q_A) &= \rho_{Uf}U(\hat{f})U(r_A)\eta_{UA} \\
+      &= \rho_{Uf}U(\tilde{f})\eta_{UA} \\
+      &= \rho_{Uf}s_{Uf} \\
+      &= 1_{Uf}
+\end{align*}
+and since $U$ reflects identity 2-cells, it follows that $\rho_f\hat{f}q_A$ is the identity on
+$f=f'\circ p_A$.
+
+Finally, we need to verify that if $f''\colon QA\to B$ is any other strict morphism such that
+$f=f''\circ p_A$, then $f''=f'$. We begin by factoring $f''=\pi_B\circ\hat{f}''$:
+\begin{equation}\label{eq:f-hat_fact}
+   \begin{tikzcd}[column sep=0em]
+      & |[alias=domA]| QA \ar[dl,"q_A"'] \ar[dr,equal] & \\
+      A \ar[rr,squiggly,"p_A"' codA] \ar[d,equal]
+         && QA \ar[d,"f''"] \\
+      A \ar[rr,squiggly,"f"'] && B
+      \twocelliso[pos=.6]{A}{}
+   \end{tikzcd}
+   \quad = \quad
+   \begin{tikzcd}[column sep=.7em]
+      & QA \ar[d,dashed,"\hat{f}''"] \ar[ddl,bend right,"q_A"'] \ar[ddr,bend left,"f''"] & \\
+      & |[alias=domA]| \Path{f} \ar[dl,"\pi_A"' inner sep=1pt] \ar[dr,"\pi_B" inner sep=1pt] & \\
+      A \ar[rr,"f"' codA] && B
+      \twocelliso[pos=.6]{A}{\rho}
+   \end{tikzcd}
+\end{equation}
+It will then suffice to show that the diagram
+\begin{equation*}
+   \begin{tikzcd}
+      FUA \ar[r,"\tilde{f}"] \ar[d,two heads,"r_A"']
+         & \Path{f} \ar[d,hook,"\pi_A"] \\
+      QA \ar[r,"q_A"'] \ar[ur,"\hat{f}''" inner sep=0pt] & A
+   \end{tikzcd}
+\end{equation*}
+commutes, as then $\hat{f}''=\hat{f}$ by orthogonality, and $f''=\pi_B\hat{f}''=\pi_B\hat{f}=f'$.
+The lower triangle $\pi_A\circ\hat{f}''=q_A$ follows directly from \eqref{eq:f-hat_fact}.
 
 \chapter{Background on equipments}\label{chap:background_equipments}
 
