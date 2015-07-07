@@ -894,12 +894,12 @@ The following facts hold for any traced category $\cat{C}$:
 There are free/forgetful (strict) 2-adjunctions of 2-categories, as to the left:
 \begin{align}
 \nonumber
-		\FM\colon\CCat &\leftrightarrows\MMonCat:\!\UM 
-			& \Set &\leftrightarrows\MonCat 
+		\FM\colon\CCat &\leftrightarrows\MMonCat:\!\UM
+			& \Set &\leftrightarrows\MonCat
 \\\label{eqn:adjunctions}
-		\FT\colon\CCat &\leftrightarrows\TTrCat:\!\UT 
+		\FT\colon\CCat &\leftrightarrows\TTrCat:\!\UT
 			& \Set &\leftrightarrows\TrCat
-\\\nonumber   
+\\\nonumber
 		\FC\colon\CCat &\leftrightarrows\CCompCat:\!\UC
 			& \Set&\leftrightarrows\CompCat
 \end{align}
@@ -914,7 +914,7 @@ We will denote by $\FrMonCat$, $\FrTrCat$, and $\FrCompCat$ the full subcategori
 respectively, spanned by objects which are free on a set. As always, these categories are isomorphic
 to the Kleisli categories of the monads:
 \begin{align}
-\nonumber 
+\nonumber
 \FrMonCat&\iso\Set_{\TM}
 \\\label{dia:TMvsFrMonCat}
 \FrTrCat&\iso\Set_{\TT}
@@ -1208,6 +1208,57 @@ factorization system on $\ccat{C}$.
 
    It follows from Lemma~\ref{lem:fully-faithful_surjective_equiv} that $\pi_a$ is fully-faithful.
 \end{proof}
+
+\subsection{Strict vs. strong morphisms}
+
+Between monoidal categories, there are several notions of functor: strict, strong, lax, and colax.
+While we are most interested in the 2-category $\MMonCatStrong$ of monoidal categories and strong
+functors in this paper, and similarly $\TTrCatStrong$ and $\CCompCatStrong$, the strict functors
+are theoretically important. In this section, we will present a formal framework which abstracts our
+examples of interest, and which provides tools for working with both strict and strong morphisms.
+
+Let $\scat{D}$ and $\pcat{D}$ be 2-categories, and let $\iota\colon\scat{D}\to\pcat{D}$ be a
+2-functor which is identity-on-objects, faithful, and locally fully-faithful. We will think of
+$\iota$ as the inclusion of the strict morphisms into the strong morphisms.
+
+For the remainder of this section we will make the following assumptions:
+\begin{itemize}
+   \item $\ccat{D}$ has a bijective-on-objects/fully-faithful factorization.
+   \item $\ccat{D}$ has arrow objects.
+   \item There is a locally faithful functor $U\colon\ccat{D}\to\Cat$ which preserves fully-faithful
+   morphisms, and which has a left 2-adjoint $F\colon\Cat\to\scat{D}$.
+   \item $U$ creates mapping path objects and surjective equivalences.
+\end{itemize}
+The remainder of this section will be dedicated to the proof of the following theorem:
+
+\begin{theorem}
+   Under the above assumptions, $\iota$ has a left 2-adjoint $Q\colon\pcat{D}\to\scat{D}$. The
+   counit $q_A\colon QA\to A$ of this adjunction is given by factoring the counit of the $F\dashv U$
+   adjunction:
+   \begin{equation}
+      \begin{tikzcd}
+         FUA \ar[r,two heads,"r_A"] \ar[dr,"\epsilon_A"']
+            & QA \ar[d,hook,"q_A"] \\
+         & A
+      \end{tikzcd}
+   \end{equation}
+\end{theorem}
+
+We will begin by showing that $q_A$ is a surjective equivalence for any $A$, whose inverse
+$p_A\colon A\pto QA$ will become the unit of the $Q\dashv\iota$ adjunction. Because $U$ creates
+surjective equivalences, it suffices to show that $Uq_A$ is a surjective equivalence. But $q_A$
+is fully-faithful by construction, so $Uq_A$ is fully-faithful, hence by
+Lemma~\ref{lem:fully-faithful_surjective_equiv} it suffices to construct a section of $Uq_A$. We can
+easily check that $Ur_A\circ\eta_{UA}$ is such a section:
+
+\begin{equation*}
+   \begin{tikzcd}
+      UA \ar[r,"\eta_{UA}"] \ar[rrd,bend right=18,equal]
+         & UFUA \ar[r,"Ur_A"] \ar[dr,"U\epsilon_A"' inner sep=0pt]
+         & UQA \ar[d,hook,"Uq_A"] \\
+      && UA
+   \end{tikzcd}
+\end{equation*}
 
 \chapter{Background on equipments}\label{chap:background_equipments}
 
@@ -2890,9 +2941,9 @@ F.~Borceux, Handbook of Categorical Algebra: Volume 1, Basic Category Theory, Ca
  \bibitem{BorceuxBourn}
  F.~Borceux, D.~Bourn, Mal'cev, protomodular, homological and semi-abelian categories, Mathematics
  and Its Applications 566, Kluwer (2004).
- 
+
 \bibitem{Bourke}
- J.~Bourke, Two-dimensional monadicity (English summary), Advances in Mathematics 252 (2014), pp. 708 -- 747. 
+ J.~Bourke, Two-dimensional monadicity (English summary), Advances in Mathematics 252 (2014), pp. 708 -- 747.
 
  \bibitem{FreydYetter}
  P.~Freyd, D.N.~Yetter, Braided compact closed categories with applications to low-dimensional topology,
@@ -2912,10 +2963,10 @@ M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of 
 
  \bibitem{Kock}
  J.~Kock, Frobenius algebras and 2D topological quantum field theories, London Mathematical Society Student Texts, 59. Cambridge University Press, Cambridge (2004).
- 
- \bibitem{LackCompanion} 
- S.~Lack, A 2-categories companion (English summary), Towards higher categories, 105--191, IMA Vol. Math. Appl., 152  (2010), Springer, New York. 
- 
+
+ \bibitem{LackCompanion}
+ S.~Lack, A 2-categories companion (English summary), Towards higher categories, 105--191, IMA Vol. Math. Appl., 152  (2010), Springer, New York.
+
  \bibitem{LackHomotopy}
  S.~Lack, Homotopy-theoretic aspects of 2-monads (English summary), JJournal of Homotopy and Related Structures 2 (2007), no. 2, 229 -- 260.
 

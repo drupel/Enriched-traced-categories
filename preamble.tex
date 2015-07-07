@@ -65,12 +65,15 @@
 \newcommand{\prodb}{\mathbin{\Pi}}
 \newcommand{\iso}{\cong}
 \renewcommand{\equiv}{\simeq}
+\newcommand{\pto}{\rightsquigarrow}
 
 \newcommand{\cat}[1]{\mathscr{#1}} %category variable
 \newcommand{\ncat}[1]{\mathbf{#1}} %named category
 \newcommand{\ccat}[1]{\mathcal{#1}} % 2-category variable
 %\newcommand{\dcat}[1]{\pmb{\mathbb{#1}}} %double category variable
 \newcommand{\dcat}[1]{\vmathbb{#1}} %double category variable
+\newcommand{\scat}[1]{\ccat{#1}_s} % 2-category of strict morphisms
+\newcommand{\pcat}[1]{\tilde{\ccat{#1}}} % 2-category of pseudo-morphisms
 \newcommand{\fun}[1]{#1}               %functor variable
 \newcommand{\nfun}[1]{\mathbf{#1}}  %named functor
 \newcommand{\nncat}[2]{\bm{\ccat{#1}}\ncat{#2}} %named 2-category
@@ -102,6 +105,7 @@
 \newcommand{\dProf}{\ndcat{P}{rof}} % double cat Prof(unctors)
 \newcommand{\MonCat}{\ncat{MnCat}}
 \newcommand{\MMonCat}{\nncat{M}{nCat}} % 2-cat MonCat
+\newcommand{\MMonCatStrong}{\widetilde{\nncat{M}{nCat}}}
 \newcommand{\MMonCatLax}{\MMonCat_{\mathrm{lax}}}
 %\newcommand{\SSymMonCat}{\nncat{S}{ymMonCat}} % 2-cat SymMonCat
 % \newcommand{\SSymMonCat}{\MMonCat}
@@ -117,6 +121,7 @@
 \newcommand{\dFrTrProf}{\ndcat{F}{TrProf}}
 \newcommand{\CompCat}{\ncat{CpCat}} % 1-cat CpCat
 \newcommand{\CCompCat}{\nncat{C}{pCat}} % 2-cat CpCat
+\newcommand{\CCompCatStrong}{\widetilde{\nncat{C}{pCat}}}
 \newcommand{\CompProf}{\nncat{C}{pProf}} % bicat CpProf
 \newcommand{\TTrProf}{\nncat{T}{rProf}} % bicat TrProf
 \newcommand{\dCompProf}{\ndcat{C}{pProf}} % bicat CpProf
@@ -127,6 +132,7 @@
 \newcommand{\dFrMonCompProf}{\ndcat{F}{MCpProf}}
 \newcommand{\TrCat}{\ncat{TrCat}} % 1-cat TrCat
 \newcommand{\TTrCat}{\nncat{T}{rCat}} % 2-cat TrCat
+\newcommand{\TTrCatStrong}{\widetilde{\nncat{T}{rCat}}}
 \newcommand{\TTrFrObCat}{\nncat{T}{rFrObCat}}
 % \newcommand{\dObFrMonProf}{\ndcat{O}{bFrMnProf}}
 % \newcommand{\dObFrTrProf}{\ndcat{O}{bFrTrProf}}
