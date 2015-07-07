@@ -1114,7 +1114,7 @@ factorization system on $\ccat{C}$.
    \end{equation}
    which is universal among such diagrams: any diagram as on the left below factors uniquely as on
    the right
-   \begin{equation}
+   \begin{equation}\label{eqn:up_for_arrows}
       \begin{tikzcd}
          x \ar[r,bend left,"d" domA] \ar[r,bend right,"c"' codA]
             & a
@@ -1128,7 +1128,7 @@ factorization system on $\ccat{C}$.
          \twocellA{\kappa}
       \end{tikzcd}
    \end{equation}
-   Moreover, given another $d'\colon x\to a$, $c'\colon x\to a$, $\alpha'\colon d'\Rightarrow c'$
+   Moreover, given a commutative square in $\ccat{C}(x,a)$, i.e., another $d'\colon x\to a$, $c'\colon x\to a$, $\alpha'\colon d'\Rightarrow c'$
    as on the left above, and 2-cells $\beta\colon d\Rightarrow d'$ and $\gamma\colon c\Rightarrow c'$
    such that $\alpha'\circ\beta=\gamma\circ\alpha$, there is a unique
    $(\beta,\gamma)\colon\hat{\alpha}\Rightarrow\hat{\alpha'}$ such that $\dom(\beta,\gamma)=\beta$
@@ -1136,7 +1136,12 @@ factorization system on $\ccat{C}$.
 \end{definition}
 
 \begin{example}
-   $\CCat$ has arrow objects.
+   The 2-categories $\CCat$, $\MMonCat$, $\TTrCat$, and $\CCompCat$ have arrow objects. Clearly for an object $\cat{C}\in\CCat$, the usual arrow category $\cat{C}^2$ of arrows and commutative squares, has the necessary universal property. If $\cat{M}$ is a monoidal category then $\cat{M}^2$ has a natural monoidal product
+   $$
+   	\cat{M}^2\times\cat{M}^2\iso(\cat{M}\times\cat{M})^2\To{\otimes^2}\cat{M}^2
+   $$
+ and because $\cat{M}^2$ is an arrow object in $\CCat$, it is easy to check, using the universal property \eqref{eqn:up_for_arrows}, that $\cat{M}^2$ is an arrow object in $\MMonCat$.
+\todo{finish}
 \end{example}
 
 \begin{definition}
