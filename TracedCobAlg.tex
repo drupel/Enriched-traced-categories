@@ -1136,11 +1136,15 @@ factorization system on $\ccat{C}$.
 \end{definition}
 
 \begin{example}
-   The 2-categories $\CCat$, $\MMonCat$, $\TTrCat$, and $\CCompCat$ have arrow objects. Clearly for an object $\cat{C}\in\CCat$, the usual arrow category $\cat{C}^2$ of arrows and commutative squares, has the necessary universal property. If $\cat{M}$ is a monoidal category then $\cat{M}^2$ has a natural monoidal product
+   The 2-categories $\CCat$, $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$ have arrow objects. Clearly for an object $\cat{A}\in\CCat$, the usual arrow category $\cat{A}^2$ of arrows and commutative squares, has the necessary universal property. 
+   
+   If $(\cat{M},I,\otimes)$ is a monoidal category then $\cat{M}^2$ has a natural monoidal product
    $$
-   	\cat{M}^2\times\cat{M}^2\iso(\cat{M}\times\cat{M})^2\To{\otimes^2}\cat{M}^2
+   	\cat{M}^2\times\cat{M}^2\iso(\cat{M}\times\cat{M})^2\To{\otimes^2}\cat{M}^2,
    $$
- and because $\cat{M}^2$ is an arrow object in $\CCat$, it is easy to check, using the universal property \eqref{eqn:up_for_arrows}, that $\cat{M}^2$ is an arrow object in $\MMonCat$.
+ and monoidal unit given by the identity map $\id_I$ on the unit of $\cat{M}$. The maps $\dom,\cod\colon\cat{M}^2\to\cat{M}$ are strict monoidal functors, and the transformation $\kappa\colon\dom\to\cod$ is monoidal as well. Because $\cat{M}^2$ is an arrow object in $\CCat$, it is easy to check, using the universal properties, that $\cat{M}^2$ is an arrow object in $\MMonCatStrong$.
+ 
+We will see that $\CCompCatStrong$ has arrow objects, but they are not preserved by the 2-functor $\CCompCatStrong\to\MMonCatStrong$. For a compact category $\cat{C}$, the arrow category $\cat{C}^2$ has as objects the \emph{isomorphisms} $a\To{\iso} b$ in $\cat{C}$, and as morphisms the commuting squares. This is compact: the dual of $a\To{f} b$ is $a^\ast\To{(f^{-1})^\ast}b^\ast$. 
 \todo{finish}
 \end{example}
 
