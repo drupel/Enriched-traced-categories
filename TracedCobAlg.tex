@@ -1170,6 +1170,31 @@ $$
 as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand diagram in \eqref{eqn:arrow_traced} follows from this equation and the axioms of traced categories (Section~\ref{sec:intuition_for_traced}).
 \end{example}
 
+\begin{lemma}
+   Let $R\colon\ccat{C}\to\ccat{D}$ be a 2-functor, and suppose that $\ccat{C}$ has arrow objects.
+   Then $R$ has a left 2-adjoint if and only if $R$ has a left 1-adjoint and preserves arrow
+   objects.
+\end{lemma}
+\begin{proof}
+   First suppose $R$ has a left 1-adjoint $L$ and preserves arrow objects. We want to show that
+   given morphisms $f,g\colon D\to RC$ in $\ccat{D}$ and a 2-cell $\alpha\colon f\Rightarrow g$,
+   there is a unique $\alpha'$ in $\ccat{C}$ such that $R(\alpha')\eta_D=\alpha$. From the
+   1-adjunction, we know there are unique $f',g'\colon LD\to C$ such that $Rf'\circ\eta_D=f$ and
+   $Rg'\circ\eta_D=g$. Using the arrow object $R(C^2)=(RC)^2$, there is a unique morphism
+   $\hat{\alpha}\colon D\to RC^2$ such that $\kappa_{RC}\hat{\alpha}=\alpha$. Using the 1-adjunction
+   again, there is a unique $\hat{\alpha}'\colon RLD\to C^2$ such that
+   $R\hat{\alpha}'\circ\eta_D=\hat{\alpha}$. Finally, we let
+   $\alpha'\coloneqq\kappa_C\hat{\alpha}'$, and check
+   \begin{equation*}
+      R(\alpha')\eta_D = R(\kappa_C)R(\hat{\alpha}')\eta_D
+         = \kappa_{RC}\hat{\alpha} = \alpha.
+   \end{equation*}
+   It is clear that this $\alpha'$ is the unique such 2-cell.
+
+   Conversely, it is easy to check that if $R$ has a left 2-adjoint, then $R$ preserves arrow
+   objects (right adjoints preserve limits).
+\end{proof}
+
 \begin{definition}
    Let $f\colon a\to b$ be a morphism in a 2-category $\ccat{C}$. A \emph{mapping path object} of
    $f$ is an object $\Path{f}$ together with a diagram
@@ -1266,6 +1291,7 @@ We make the following assumptions:
    \item $\ccat{C}$ has arrow objects and mapping path objects.
    \item $\scat{D}$ has a bijective-on-objects/fully-faithful factorization.
    \item $(\scat{D},\pcat{D})$ has arrow objects and mapping path objects.
+   \todo{Explain somewhere}
    \item The functor $U\iota\colon\scat{D}\to\ccat{C}$ has a left 2-adjoint $F$ (equivalently,
    $U\iota$ has a left 1-adjoint and preserves arrow objects).
    \item The functor $U\iota$ preserves fully-faithful morphisms.
