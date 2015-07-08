@@ -1205,7 +1205,15 @@ as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand di
 \end{definition}
 
 \begin{example}
-   $\CCat$ has mapping path objects.
+   The 2-categories $\CCat$, $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$ have mapping path objects. For a morphism $F\colon\cat{A}\to\cat{B}$ in $\CCat$, the mapping path category $P(F)$ is a cousin to the comma category $(F\downarrow\id_B)$: the objects are triples 
+   $$
+   \Ob P(F)\coloneqq\{(A,B,i)\|A\in\Ob\cat{A}, B\in\Ob\cat{B}, i\colon F(A)\To{\iso}B\text{ is an isomorphism}\}
+   $$
+ and a morphism $(A,B,i)\to (A',B',i')$ in $P(F)$ consists of a pair of morphisms $A\to A'$ in $\cat{A}$ and $B\to B'$ in $\cat{B}$ such that the evident diagram commutes. 
+ 
+ The mapping path object of a strong functor $F\colon\cat{M}\to\cat{M'}$between monoidal categories exists and is preserved by the forgetful functor $\MMonCatStrong\to\CCat$. Indeed, the mapping path object $P(F)$ of the functor between underlying categories has a canonical monoidal structure, and it...
+ 
+   \todo{finish}
 \end{example}
 
 \begin{lemma}\label{lem:mapping_path_equiv}
