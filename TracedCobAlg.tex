@@ -1281,14 +1281,31 @@ functors in this paper, and similarly $\TTrCatStrong$ and $\CCompCatStrong$, the
 are theoretically important. In this section, we will present a formal framework which abstracts our
 examples of interest, and which provides tools for working with both strict and strong morphisms.
 
+In the case of monoidal categories, there is an inclusion $\MMonCat\to\MMonCatStrong$ as well as a
+forgetful functor $\MMonCatStrong\to\CCat$. The cases of traced and compact monoidal categories are
+similar, except there we can factor the forgetful functor through the 2-category $\CCatIso$ of
+categories, functors, and natural \emph{isomorphisms}. In these examples, we will want to be able to
+represent strong functors in terms of strict ones, by means of a left adjoint to the inclusion of
+strict into strong. Below, we will enumerate properties which are sufficient to prove the existence
+of this left adjoint, and which are satisfied by all of our motivating examples.
+
 Let $\scat{D}$ and $\pcat{D}$ be 2-categories, and let $\iota\colon\scat{D}\to\pcat{D}$ be a
 2-functor which is identity-on-objects, faithful, and locally fully-faithful. We will think of
 $\iota$ as the inclusion of the strict morphisms into the strong morphisms. Let $\ccat{C}$ be
 another 2-category, with a 2-functor $U\colon\pcat{D}\to\ccat{C}$.
 
+\begin{remark}
+   All of the properties below not involving bijective-on-objects or fully-faithful morphisms hold
+   whenever $\scat{D}$ is the 2-category of strict algebras and strict morphisms for a 2-monad on
+   $\ccat{C}$, and $\pcat{D}$ is the 2-category of strict algebras and pseudo-morphisms. While our
+   main examples can be seen to be algebras for some 2-monad, we have found it easier to isolate
+   just those properties we needed to prove Theorem~\ref{thm:strong_classifier}.
+
+   This section was strongly inspired by \cite{Bourke} and \cite{LackHomotopy}.
+\end{remark}
+
 We make the following assumptions:
 \begin{itemize}
-   \item $\ccat{C}$ has arrow objects and mapping path objects.
    \item $\scat{D}$ has a bijective-on-objects/fully-faithful factorization.
    \item $(\scat{D},\pcat{D})$ has arrow objects and mapping path objects.
    \todo{Explain somewhere}
@@ -1302,7 +1319,7 @@ We make the following assumptions:
 \end{itemize}
 The remainder of this section will be dedicated to the proof of the following theorem:
 
-\begin{theorem}
+\begin{theorem}\label{thm:strong_classifier}
    Under the above assumptions, $\iota$ has a left 2-adjoint $Q\colon\pcat{D}\to\scat{D}$. The
    counit $q_A\colon QA\to A$ of this adjunction is given by factoring the counit of the
    $F\dashv U\iota$ adjunction:
