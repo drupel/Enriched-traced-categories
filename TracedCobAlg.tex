@@ -1314,43 +1314,23 @@ forgetful functor $\MMonCatStrong\to\CCat$. The cases of traced and compact mono
 similar, except there we can factor the forgetful functor through the 2-category (or, if one prefers, the (2,1)-category) $\CCatIso$ of
 categories, functors, and natural \emph{isomorphisms}. In these examples, we will want to be able to
 represent strong functors in terms of strict ones, by means of a left adjoint to the inclusion of
-strict into strong. Below, we will enumerate properties which are sufficient to prove the existence
-of this left adjoint, and which are satisfied by all of our motivating examples.\todo{David: flesh this out.}
-
-Let $\scat{D}$ and $\pcat{D}$ be 2-categories, and let $\iota\colon\scat{D}\to\pcat{D}$ be a
-2-functor which is identity-on-objects, faithful, and locally fully-faithful. We will think of
-$\iota$ as the inclusion of the strict morphisms into the strong morphisms. Let $\ccat{C}$ be
-another 2-category, with a 2-functor $U\colon\pcat{D}\to\ccat{C}$.
+strict into strong. In Definition~\ref{def:strictifiable} we will enumerate properties which are sufficient to prove the existence
+of this left adjoint, and which are satisfied by all of our motivating examples; see Example~\ref{ex:strictifiable}.
 
 \begin{definition}\label{def:preserve_jdetect_strictness}
 
- Suppose that $i\colon\ccat{C}\to\ccat{D}$ is a 2-functor that is identity-on-objects, faithful, and locally fully-faithful. We say that the triple $(\ccat{C},\ccat{D},i)$ \emph{has mapping path objects} if $\ccat{D}$ has mapping path objects as in Definition~\ref{def:mapping_path_objects} such that
+ Let $\ccat{X}$ and $\ccat{Y}$ be 2-categories and let $i\colon\ccat{X}\to\ccat{Y}$ be a 2-functor that is identity-on-objects, faithful, and locally fully-faithful. We say that the triple $(\ccat{X},\ccat{Y},i)$ \emph{has mapping path objects} if $\ccat{Y}$ has mapping path objects as in Definition~\ref{def:mapping_path_objects} such that
  \begin{itemize}
- \item for any $f\colon a\to b$ in $\cat{D}$, the structure morphisms $a\From{\pi_a}P(f)\To{\pi_b}b$ are in $\ccat{C}$, and 
- \item for a diagram in $\cat{D}$ of the following form
- $$
-      \begin{tikzcd}[column sep=small]
-         & |[alias=domA]| x \ar[dl,"g"'] \ar[dr,"h"] & \\
-         a \ar[rr,"f"' codA] && b
-         \twocelliso[pos=.6]{A}{\alpha}
-      \end{tikzcd}
-  $$
-  we have that $g,h$ are in $\ccat{C}$ if and only if the induced map $\hat{\alpha}\colon x\to P(f)$ is in $\ccat{C}$.
+ \item for any $f\colon a\to b$ in $\cat{Y}$, the structure morphisms $a\From{\pi_a}P(f)\To{\pi_b}b$ are in $\ccat{X}$, and 
+ \item the pair $(\pi_a,\pi_b)$ \emph{preserve and jointly detect morphisms in $\ccat{X}$} in the following sense: for any morphism $\ell\colon x\to P(f)$ in $\ccat{Y}$, we have that $\ell$ is in $\ccat{X}$ if and only if the compositions $\pi_a\circ\ell$ and $\pi_b\circ\ell$ are in $\ccat{X}$.
 \end{itemize}
-We say that the triple $(\ccat{C},\ccat{D},i)$ \emph{has arrow objects} if the analogous conditions hold
+We say that the triple $(\ccat{C},\ccat{D},i)$ \emph{has arrow objects} if the analogous conditions hold.
 \end{definition}
 
-\begin{remark}
-   All of the properties below not involving bijective-on-objects or fully-faithful morphisms hold
-   whenever $\scat{D}$ is the 2-category of strict algebras and strict morphisms for a 2-monad on
-   $\ccat{C}$, and $\pcat{D}$ is the 2-category of strict algebras and pseudo-morphisms. While our
-   main examples can be seen to be algebras for some 2-monad, we have found it easier to isolate
-   just those properties we needed to prove Theorem~\ref{thm:strong_classifier}.
+For the following definition, one may keep in mind the case $\scat{D}=\MMonCat$, $\pcat{D}=\MMonCatStrong$, and $\ccat{C}=\CCat$. See Example~\ref{ex:strictifiable} below.
 
-   This section was strongly inspired by \cite{Bourke} and \cite{LackHomotopy}.
-\end{remark}
 
-\begin{definition}
+\begin{definition}\label{def:strictifiable}
 Let $\scat{D}$, $\pcat{D}$, and $\ccat{C}$ be 2-categories, and let $U\colon\pcat{D}\to\ccat{C}$ and $\iota\colon\scat{D}\to\pcat{D}$ be 2-functors. We say that the collection $(\scat{D},\pcat{D},\ccat{C},U,\iota)$ is \emph{strictifiable} \todo{change?}if it satisfies the following properties:
 \begin{itemize}
    \item The 2-category $\scat{D}$ has a bijective-on-objects/fully-faithful factorization.
@@ -1366,6 +1346,29 @@ Let $\scat{D}$, $\pcat{D}$, and $\ccat{C}$ be 2-categories, and let $U\colon\pca
 \end{itemize}
 
 \end{definition}
+
+\begin{remark}
+   Other than those involving bijective-on-objects or fully-faithful morphisms, all of the properties enumerated in Definition~\ref{def:strictifiable} hold
+   whenever $\scat{D}$ is the 2-category of strict algebras and strict morphisms for a 2-monad on
+   $\ccat{C}$, and $\pcat{D}$ is the 2-category of strict algebras and pseudo-morphisms. While our
+   main examples can be seen to be algebras for some 2-monad, we have found it easier to isolate
+   just those properties we needed to prove Theorem~\ref{thm:strong_classifier}.
+
+   This section was strongly inspired by \cite{Bourke} and \cite{LackHomotopy}.
+\end{remark}
+
+\begin{example}\label{ex:strictifiable}
+
+Suppose we are in one of the following cases:
+\begin{enumerate}
+\item that $\scat{D}=\MMonCat$, that $\pcat{D}=\MMonCatStrong$, that $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion, that $\ccat{C}=\CCat$, and that $U\colon\pcat{D}\to\ccat{C}$ is the forgetful functor; 
+\item that $\scat{D}=\TTrCat$, that $\pcat{D}=\TTrCatStrong$, that $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion, that $\ccat{C}=\CCat_{\cong}$ is the (2,1)-category of categories, functors, natural isomorphisms, and that $U\colon\pcat{D}\to\ccat{C}$ is the forgetful functor; or
+\item that $\scat{D}=\CCompCat$, that $\pcat{D}=\CCompCatStrong$, that $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion, that $\ccat{C}=\CCat_{\cong}$ is the (2,1)-category of categories, functors, natural isomorphisms, and that $U\colon\pcat{D}\to\ccat{C}$ is the forgetful functor; or
+\end{enumerate}
+We will see that the collection $(\scat{D},\pcat{D},\ccat{C},\iota,U)$ is strictifiable.
+
+\end{example}
+
 The remainder of this section will be dedicated to the proof of the following theorem:
 
 \begin{theorem}\label{thm:strong_classifier}
