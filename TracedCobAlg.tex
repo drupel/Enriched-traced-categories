@@ -1080,7 +1080,7 @@ pseudo-commuting lift.
 \begin{definition}\label{def:bijective-on-objects}
    Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{bijective-on-objects} if
    it is left orthogonal to every fully-faithful morphism.
-   
+
    If every morphism $f$ of $\ccat{C}$ can be factored into a
 bijective-on-objects morphism followed by a fully-faithful morphism, then this forms an orthogonal
 factorization system on $\ccat{C}$, and in this case we say that $\ccat{C}$ \emph{has a bijective-on-objects / fully faithful factorization system}.
@@ -1140,7 +1140,7 @@ factorization system on $\ccat{C}$, and in this case we say that $\ccat{C}$ \emp
    such that $\alpha'\circ\beta=\gamma\circ\alpha$, there is a unique
    $(\beta,\gamma)\colon\hat{\alpha}\Rightarrow\hat{\alpha'}$ such that $\dom(\beta,\gamma)=\beta$
    and $\cod(\beta,\gamma)=\gamma$.
-   
+
    We say that $\ccat{C}$ \emph{has arrow objects} if an arrow object $c^2$ exists for each object $c\in\cat{C}$.
 \end{definition}
 
@@ -1238,7 +1238,7 @@ as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand di
    $\alpha'\circ f\beta=\gamma\circ\alpha$, there is a unique isomorphism
    $(\beta,\gamma)\colon\hat{\alpha}\iso\hat{\alpha'}$ such that $\pi_a(\beta,\gamma)=\beta$ and
    $\pi_b(\beta,\gamma)=\gamma$.
-   
+
       We say that $\ccat{C}$ \emph{has mapping path objects} if a mapping path object $c^2$ exists for each morphism $f\colon a\to b$ in $\cat{C}$.
 \end{definition}
 
@@ -1267,9 +1267,9 @@ as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand di
  \end{example}
 
  \begin{remark}
- 
+
  The arrow objects and mapping path objects for the 2-categories $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$ were discussed in Examples~\ref{ex:arrow_objects}~and~\ref{ex:mapping_paths}. Each has a notion of cone, in fact a certain weighted limit cone in $\CCat$, though we will not discuss that notion here. We mentioned in passing that the structure morphisms for that cone were strict monoidal functors and that they ``preserve and jointly detect" strictness in the sense of Definition~\ref{def:preserve_jdetect_strictness} below. In particular, the 2-categories $\MMonCat$, $\TTrCat$, and $\CCompCat$ also have arrow objects and mapping path objects, and the inclusions of strict-into-strong  (e.g., $\MMonCat\to\MMonCatStrong$) preserve them.
-   
+
  \end{remark}
 
 \begin{lemma}\label{lem:mapping_path_equiv}
@@ -1326,7 +1326,7 @@ another 2-category, with a 2-functor $U\colon\pcat{D}\to\ccat{C}$.
 
  Suppose that $i\colon\ccat{C}\to\ccat{D}$ is a 2-functor that is identity-on-objects, faithful, and locally fully-faithful. We say that the triple $(\ccat{C},\ccat{D},i)$ \emph{has mapping path objects} if $\ccat{D}$ has mapping path objects as in Definition~\ref{def:mapping_path_objects} such that
  \begin{itemize}
- \item for any $f\colon a\to b$ in $\cat{D}$, the structure morphisms $a\From{\pi_a}P(f)\To{\pi_b}b$ are in $\ccat{C}$, and 
+ \item for any $f\colon a\to b$ in $\cat{D}$, the structure morphisms $a\From{\pi_a}P(f)\To{\pi_b}b$ are in $\ccat{C}$, and
  \item for a diagram in $\cat{D}$ of the following form
  $$
       \begin{tikzcd}[column sep=small]
@@ -1354,14 +1354,16 @@ We say that the triple $(\ccat{C},\ccat{D},i)$ \emph{has arrow objects} if the a
 Let $\scat{D}$, $\pcat{D}$, and $\ccat{C}$ be 2-categories, and let $U\colon\pcat{D}\to\ccat{C}$ and $\iota\colon\scat{D}\to\pcat{D}$ be 2-functors. We say that the collection $(\scat{D},\pcat{D},\ccat{C},U,\iota)$ is \emph{strictifiable} \todo{change?}if it satisfies the following properties:
 \begin{itemize}
    \item The 2-category $\scat{D}$ has a bijective-on-objects/fully-faithful factorization.
-   \item The functor $\iota$ is identity-on-objects, faithful, and locally fully-faithful. 
-   \item The triple $(\scat{D},\pcat{D},\iota)$ has both arrow objects and mapping path objects (Definition~\ref{def:preserve_jdetect_strictness}).
+   \item The functor $\iota$ is identity-on-objects, faithful, and locally fully-faithful.
+   \item The triple $(\scat{D},\pcat{D},\iota)$ has both arrow objects and mapping path objects
+   (Definition~\ref{def:preserve_jdetect_strictness}).
    \item The functor $U\iota\colon\scat{D}\to\ccat{C}$ has a left 2-adjoint $F$ (equivalently,
    $U\iota$ has a left 1-adjoint and preserves arrow objects; see Lemma~\ref{lem:2-adjunction}).
-   \item The functor $U\iota$ preserves fully-faithful morphisms.
+   \item The functor $U\iota$ preserves fully-faithful morphisms (equivalently, $F$ preserves
+   bijective-on-objects morphisms), and $U\iota$ also preserves bijective-on-objects morphisms.
    \item The functor $U$ preserves mapping path objects and reflects identity 2-cells.
-   \item The pair ($U\iota,U)$ creates surjective equivalences: given any morphism $f\colon A\to B$ in
-   $\scat{D}$ and surjective equivalence $g\dashv U\iota f$ in $\ccat{C}$, there is a unique
+   \item The pair ($U\iota,U)$ creates surjective equivalences: given any morphism $f\colon A\to B$
+   in $\scat{D}$ and surjective equivalence $g\dashv U\iota f$ in $\ccat{C}$, there is a unique
    surjective equivalence $\tilde{g}\dashv\iota f$ in $\pcat{D}$ such that $U\tilde{g}=g$.
 \end{itemize}
 
