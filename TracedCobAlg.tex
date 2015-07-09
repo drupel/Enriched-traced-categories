@@ -1046,7 +1046,7 @@ the strict 2-categorical case, where $\cat{V}=\Cat$.
 
 \section{Background on 2-categories}\label{sec:background_2-categories}
 \todo[inline]{Move factorization system stuff to Section~\ref{sec:factorization_systems}?}
-\begin{definition}
+\begin{definition}\label{def:fully-faithful}
    Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{fully-faithful} if the
    functor $\ccat{C}(x,a)\to\ccat{C}(x,b)$ induced by composition with $f$ is fully-faithful for
    every $x$.
@@ -2100,9 +2100,19 @@ taken from~\cite[Definitions~4.3~and~4.5, Theorem~4.17]{Schultz2015}:
    on the vertical 1-category $\dcat{D}_0$.
 \end{theorem}
 
-The notation $\bo$ and $\ff$ comes from the case where $\dcat{D}=\dProf$, for which they correspond
-to the functors that are bijective on objects and fully faithful, respectively. See also
-Proposition~\ref{prop:boff_well_named}.
+\begin{lemma}\label{lem:(bo,ff)_really_is}
+   Let $\dcat{D}$ be an exact equipment. If a vertical morphism $f$ in $\dcat{D}$ is $\bo$
+   (respectively $\ff$), then $f$ is a bijective-on-objects (respectively fully-faithful) morphism
+   in $\VVer(\dcat{D})$ in the sense of
+   Definitions~\ref{def:fully-faithful}, \ref{def:bijective-on-objects}.
+\end{lemma}
+\begin{proof}
+   It is easy to see that the condition in Definition~\ref{def:fully-faithful} of $f$ being
+   fully-faithful in $\VVer(\dcat{D})$ is a special case of the condition of the unit 2-cell on $f$
+   being cartesian in $\dcat{D}$. If $f$ is $\bo$, then Theorem~\ref{thm:orthogonal} in particular
+   implies that $f$ is left orthogonal to every $\ff$ morphism, hence $f$ is bijective-on-objects
+   by Definition~\ref{def:bijective-on-objects}.
+\end{proof}
 
 \begin{remark}
    As in Definition~\ref{def:orthogonal}, we will use the hooked arrow $\inj$ to indicate $\ff$
