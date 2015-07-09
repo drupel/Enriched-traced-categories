@@ -1178,7 +1178,7 @@ $$
 as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand diagram in \eqref{eqn:arrow_traced} follows from this equation and the axioms of traced categories (Section~\ref{sec:intuition_for_traced}).
 \end{example}
 
-\begin{lemma}
+\begin{lemma}\label{lem:2-adjunction}
    Let $R\colon\ccat{C}\to\ccat{D}$ be a 2-functor, and suppose that $\ccat{C}$ has arrow objects.
    Then $R$ has a left 2-adjoint if and only if $R$ has a left 1-adjoint and preserves arrow
    objects.
@@ -1295,7 +1295,7 @@ as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand di
    It follows from Lemma~\ref{lem:fully-faithful_surjective_equiv} that $\pi_a$ is fully-faithful.
 \end{proof}
 
-\subsection{Strict vs. strong morphisms}
+\subsection{Strict vs. strong morphisms}\label{sec:strict_vs_strong}
 
 Between monoidal categories, there are several notions of functor: strict, strong, lax, and colax.
 While we are most interested in the 2-category $\MMonCatStrong$ of monoidal categories and strong
@@ -1374,8 +1374,8 @@ $Up_A= Ur_A\circ\eta_{UA}$.
 We next must show that the morphism $p_A\colon A\pto QA$ has the following universal property: for
 any strong morphism $f\colon A\pto B$ there is a unique strict morphism $f'\colon QA\to B$ such that
 $f=f'\circ p_A$. From this, it follows that $Q$ extends to a 1-functor which is left adjoint to
-$\iota$. It then follows from Lemma~\ref{??} that $Q$ extends to a 2-functor which is left 2-adjoint
-to $\iota$, completing the proof of the theorem.
+$\iota$. It then follows from Lemma~\ref{lem:2-adjunction} that $Q$ extends to a 2-functor which is
+left 2-adjoint to $\iota$, completing the proof of the theorem.
 
 First, given an $f\colon A\pto B$, define a strict morphism $\tilde{f}\colon FUA\to\Path{f}$ as the
 adjoint of the section $s_{Uf}\colon UA\to U(\Path{f})=\Path{Uf}$ defined as in
@@ -2947,28 +2947,20 @@ The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\re
    \end{equation}
 \end{example}
 
-The next theorem can be seen as saying that, for any exact equipment $\dcat{D}$ satisfying the
-conditions of the theorem (e.g., those of Definition~\ref{def:freeMon_equips}), the vertical
-2-category $\VVer(\dcat{D})$ is 2-equivalent to the sub-2-category spanned by the object-free
-objects.
-
-\begin{theorem}\label{thm:ffle_and_verts}
+\begin{lemma}\label{lem:free-on-obs_inclusion}
    Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
    $F\colon\cat{C}\leftrightarrows\dcat{D}_0:\!U$, and let $T=UF$ be the induced monad. Suppose
-   moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{C})$. Then the following composite is a fully faithful local equivalence:
+   moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{C})$. Then the following composite is a fully
+   faithful local equivalence:
    \begin{equation*}
       \begin{tikzcd}
          \dMod(\dcat{D}_T)\ar[r,"\dMod(\varphi_T)"] &[1.5em] \dMod(\dcat{D}) \ar[r,"\Col{\textrm{--}}"] & \dcat{D}.
       \end{tikzcd}
    \end{equation*}
-
-   Suppose further that the components of the counit of the adjunction are left pseudo-orthogonal to
-   $\ff$ in $\VVer(\dcat{D})$. Then the induced 2-functor
-   $\rho\colon\MMon(\dcat{D}_T)\to\VVer(\dcat{D})$ is 2-essentially surjective, hence a
-   2-equivalence.
-\end{theorem}
+\end{lemma}
 \begin{proof}
-   By Proposition~\ref{prop:objectfree_Mod_bo} and Theorem~\ref{thm:Mod_vs_bo}, it suffices to consider the composition
+   By Proposition~\ref{prop:objectfree_Mod_bo} and Theorem~\ref{thm:Mod_vs_bo}, it suffices to
+   consider the composition
    \begin{equation*}
       \begin{tikzcd}
          \dcat{D}^{\bo}_F \ar[r,"\psi_F"] & \dcat{D}^{\bo} \ar[r,"\cod"] & \dcat{D}
@@ -2998,9 +2990,73 @@ objects.
          D \ar[r,"f"'] & D'
       \end{tikzcd}
    \end{equation*}
+\end{proof}
 
-   Finally, to see that the restriction to vertical 2-categories is essentially surjective, let
-   $D\in\dcat{D}$ be an object, and consider the $(\bo,\ff)$ factorization of the counit
+The next theorem can be seen as saying that, for any exact equipment $\dcat{D}$ satisfying the
+conditions of the theorem (e.g., those of Definition~\ref{def:freeMon_equips}), the vertical
+2-category $\VVer(\dcat{D})$ is 2-equivalent to the sub-2-category spanned by the object-free
+objects.
+
+\begin{theorem}\label{thm:ffle_and_verts}
+   Let $\dcat{D}$ be an exact equipment, $\pcat{D}$ and $\ccat{C}$ be 2-categories, and suppose we
+   have a 2-functor $\iota\colon\VVer(\dcat{D})\to\pcat{D}$ and a 2-adjunction
+   $F\colon\ccat{C}\leftrightarrows\VVer(\dcat{D}):\!U$ all satisfying the assumptions of
+   Section~\ref{sec:strict_vs_strong}.
+
+   Suppose further that there is a 1-category $\cat{S}$ and 1-adjunction
+   $\Disc\colon\cat{S}\leftrightarrows\ccat{C}_0:\!\Ob$ to the underlying 1-category $\ccat{C}_0$ of
+   $\ccat{C}$, such that $\Ob(U(\bo))\subseteq\mathrm{iso}(\cat{S})$. Let
+   $T=\Ob\circ U\circ F\circ\Disc$ be the induced monad on $\cat{S}$.
+
+   Then the composition
+   \begin{equation*}
+      \begin{tikzcd}
+         \MMon(\dcat{D}_T)\ar[r,"\MMon(\varphi_T)"]
+            &[1.5em] \MMon(\dcat{D}) \ar[r,"\VVer(\Col{\textrm{--}})"]
+            & \VVer(\dcat{D}) \ar[r,"\iota"]
+            & \pcat{D}
+      \end{tikzcd}
+   \end{equation*}
+   is an equivalence of 2-categories.
+\end{theorem}
+\begin{proof}
+   Let $G$ be the composition $G\coloneqq\VVer(\Col{\textrm{--}})\circ\MMon(\phi_T)$. We need to
+   show that $\iota\circ G$ is a local equivalence (induces equivalences of hom categories) and
+   essentially surjective.
+
+   By Lemma~\ref{lem:free-on-obs_inclusion}, $G$ is 2-fully-faithful (induces isomorphisms of hom
+   categories). Hence, to show that $\iota\circ G$ is a local equivalence, it suffices to show that
+   $\iota$ induces equivalences of categories $\VVer(\dcat{D})(A,B)\iso\pcat{D}(\iota A,\iota B)$
+   for any $A$ and $B$ in the image of $G$. In fact, this will hold whenever $A$ is in the image of
+   $G$. We say that $A$ is \emph{flexible} in this case: every strong morphism out of $A$ is
+   isomorphic to a strict morphism.
+
+   If $A\in\dcat{D}$ is in the image of $G$, then there exists an object $s\in\cat{S}$ and a $\bo$
+   morphism $f\colon F(\Disc(s))\twoheadrightarrow A$ in $\VVer(\dcat{D})$. By the $F\dashv U$
+   adjunction, there is a unique morphism $\tilde{f}\colon\Disc(s)\to UA$ such that
+   $f=\epsilon_A\circ Ff$. Factoring $\epsilon_A=q_A\circ r_A$ as in
+   Theorem~\ref{thm:strong_classifier}, we obtain a unique lift $p'_A$ in the square
+   \begin{equation*}
+      \begin{tikzcd}[column sep=1.7em]
+         F(\Disc(s)) \ar[d,two heads,"f"'] \ar[r,"\tilde{f}"]
+            & FUA \ar[r,two heads,"r_A"]
+            & QA \ar[d,hook,"q_A"] \\
+         A \ar[urr,dashed,"p'_A"] \ar[rr,equal] && A
+      \end{tikzcd}
+   \end{equation*}
+   By Lemma~\ref{lem:fully-faithful_surjective_equiv}, it follows that $q_A$ is an equivalence in
+   $\VVer(\dcat{D})$. Hence composition with $q_A$ induces the left equivalence in
+   \begin{equation*}
+      \begin{tikzcd}
+         \VVer(\dcat{D})(A,B) \ar[r,"\equiv"]
+            & \VVer(\dcat{D})(Q\iota A,B) \ar[r,"\iso"]
+            & \pcat{D}(\iota A,\iota B)
+      \end{tikzcd}
+   \end{equation*}
+   and it is easy to check that the composition is precisely $\iota$ on hom categories.
+
+   Finally, to see that $\iota\cicr G$ is essentially surjective, let $D\in\dcat{D}$ be an object,
+   and consider the $(\bo,\ff)$ factorization of the counit
    \begin{equation*}
       \begin{tikzcd}
          FUD \ar[dr,"\epsilon_D"] \ar[d,two heads,"p"'] & \\
