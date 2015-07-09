@@ -2915,9 +2915,10 @@ that these are morphisms of fibrations, i.e., that they preserve cartesian morph
 
 Theorem~\ref{thm:Mod_vs_bo} is a key piece in the proof of \ref{thm:TheoremB}, but we will need a
 modification for the proof of \ref{thm:TheoremA}. The latter results are concerned with compact
-(respectively traced) categories which are ``object-free''. Theorem~\ref{thm:ffle_and_verts}
-provides the modification of Theorem~\ref{thm:Mod_vs_bo} in a general form, which we then specialize
-to the cases of interest for the present paper in Corollary~\ref{cor:TrCat_ObjectFree}.
+(respectively traced) categories which are ``object-free''.
+Theorem~\ref{thm:object-free_strong_equivalence} provides the modification of
+Theorem~\ref{thm:Mod_vs_bo} in a general form, which we then specialize to the cases of interest for
+the present paper in Corollary~\ref{cor:TrCat_ObjectFree}.
 
 We first need to capture this idea of object-free monoidal categories in a general, abstract form.
 Throughout this section we will consider an equipment $\dcat{D}$ together with a category $\cat{C}$
@@ -3020,9 +3021,9 @@ The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\re
 \end{example}
 
 \begin{lemma}\label{lem:free-on-obs_inclusion}
-   Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
-   $F\colon\cat{C}\leftrightarrows\dcat{D}_0:\!U$, and let $T=UF$ be the induced monad. Suppose
-   moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{C})$. Then the following composite is a fully
+   Let $\dcat{D}$ be an exact equipment and $\cat{S}$ a category, together with an adjunction
+   $F\colon\cat{S}\leftrightarrows\dcat{D}_0:\!U$, and let $T=UF$ be the induced monad. Suppose
+   moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{S})$. Then the following composite is a fully
    faithful local equivalence:
    \begin{equation*}
       \begin{tikzcd}
@@ -3041,14 +3042,14 @@ The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\re
    By definition, both $\psi_F$ and $\cod$ are local equivalences, hence the composition is also.
 
    To see that $(\cod\psi_F)_0$ is fully faithful, consider a pair of objects $p\colon
-   Fc\twoheadrightarrow D$ and $p'\colon Fc'\twoheadrightarrow D'$ in $(\dcat{D}_F^{\bo})_0$, and a
+   Fs\twoheadrightarrow D$ and $p'\colon Fs'\twoheadrightarrow D'$ in $(\dcat{D}_F^{\bo})_0$, and a
    vertical morphism $f\colon D\to D'$ in $\dcat{D}_0$. In the square
    \begin{equation*}
       \begin{tikzcd}
-         \dcat{D}_0(Fc,Fc') \ar[r,"p'\circ\textrm{--}"] \ar[d,"\iso"']
-            & \dcat{D}_0(Fc,D') \ar[d,"\iso"] \\
-         \cat{C}(c,UFc') \ar[r,"Up'\circ\textrm{--}"']
-            & \cat{C}(c,UD')
+         \dcat{D}_0(Fs,Fs') \ar[r,"p'\circ\textrm{--}"] \ar[d,"\iso"']
+            & \dcat{D}_0(Fs,D') \ar[d,"\iso"] \\
+         \cat{S}(s,UFs') \ar[r,"Up'\circ\textrm{--}"']
+            & \cat{S}(s,UD')
       \end{tikzcd}
    \end{equation*}
    which commutes by naturality of the adjunction bijection, the bottom function is a bijection
@@ -3057,8 +3058,8 @@ The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\re
    $(\dcat{D}_F^{\bo})_0$:
    \begin{equation*}
       \begin{tikzcd}
-         Fc \ar[r,"\hat{f}"] \ar[d,two heads,"p"']
-            & Fc' \ar[d,two heads,"p'"] \\
+         Fs \ar[r,"\hat{f}"] \ar[d,two heads,"p"']
+            & Fs' \ar[d,two heads,"p'"] \\
          D \ar[r,"f"'] & D'
       \end{tikzcd}
    \end{equation*}
@@ -3069,7 +3070,7 @@ conditions of the theorem (e.g., those of Definition~\ref{def:freeMon_equips}), 
 2-category $\VVer(\dcat{D})$ is 2-equivalent to the sub-2-category spanned by the object-free
 objects.
 
-\begin{theorem}\label{thm:ffle_and_verts}
+\begin{theorem}\label{thm:object-free_strong_equivalence}
    Let $\dcat{D}$ be an exact equipment, $\pcat{D}$ and $\ccat{C}$ be 2-categories, and suppose we
    have a 2-functor $\iota\colon\VVer(\dcat{D})\to\pcat{D}$ and a 2-adjunction
    $F\colon\ccat{C}\leftrightarrows\VVer(\dcat{D}):\!U$ all satisfying the assumptions of
@@ -3154,17 +3155,25 @@ objects.
 \end{proof}
 
 
-The following corollary is a direct application of Theorem~\ref{thm:ffle_and_verts}.
+The following corollary is a direct application of Theorem~\ref{thm:object-free_strong_equivalence}.
 
 \begin{corollary}\label{cor:TrCat_ObjectFree}
-There are equipment functors (left) and underlying 2-functors (right)
-\begin{align*}
-   \dMod(\dFrMonProf)  &\to \dMonProf  & \MMon(\dFrMonProf)  &\to \MMonCat \\
-   \dMod(\dFrTrProf)   &\to \dTrProf   & \MMon(\dFrTrProf)   &\to \TTrCat  \\
-   \dMod(\dFrCompProf) &\to \dCompProf & \MMon(\dFrCompProf) &\to \CCompCat
-\end{align*}
-which are fully faithful local equivalences of equipments and 2-equivalences of 2-categories, respectively.
+   There are equipment functors (left) and underlying 2-functors (right)
+   \begin{align*}
+      \dMod(\dFrMonProf)  &\to \dMonProf  & \MMon(\dFrMonProf)  &\to \MMonCatStrong \\
+      \dMod(\dFrTrProf)   &\to \dTrProf   & \MMon(\dFrTrProf)   &\to \TTrCatStrong  \\
+      \dMod(\dFrCompProf) &\to \dCompProf & \MMon(\dFrCompProf) &\to \CCompCatStrong
+   \end{align*}
+   which are fully faithful local equivalences of equipments and 2-equivalences of 2-categories,
+   respectively.
 \end{corollary}
+\begin{proof}
+   This follows directly from Lemma~\ref{lem:free-on-obs_inclusion} and
+   Theorem~\ref{thm:object-free_strong_equivalence}, taking $\ccat{C}$ to be $\CCat$ for the first
+   row and $\CCatIso$ for the second two, and taking $\cat{S}=\Set$ for all three. The conditions
+   involving $\cat{S}$ are obvious, and the rest of the assumptions are checked in
+   Example~\ref{ex:strictifiable}.
+\end{proof}
 
 \begin{remark}
    Because the monads $\TM$ and $\TT$ are in fact isomorphic, we have
