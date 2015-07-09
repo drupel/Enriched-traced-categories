@@ -898,19 +898,19 @@ The following facts hold for any traced category $\cat{C}$:
 
 \section{Free traced and compact categories, and geometry}\label{sec:free_and_geometry}
 
-There are free/forgetful (strict) 2-adjunctions of 2-categories, as to the left:
+Let $\CCat_\iso$ denote the 2-category (or if one prefers, (2,1)-category) of categories, functors, and natural isomorphisms. There are free/forgetful (strict) 2-adjunctions of 2-categories, as to the left:
 \begin{align}
 \nonumber
-		\FM\colon\CCat &\leftrightarrows\MMonCat:\!\UM
+		\FM&\colon\CCat_{\;\;} \leftrightarrows\MMonCat:\!\UM
 			& \Set &\leftrightarrows\MonCat
 \\\label{eqn:adjunctions}
-		\FT\colon\CCat &\leftrightarrows\TTrCat:\!\UT
+		\FT&\colon\CCat_\iso\leftrightarrows\TTrCat:\!\UT
 			& \Set &\leftrightarrows\TrCat
 \\\nonumber
-		\FC\colon\CCat &\leftrightarrows\CCompCat:\!\UC
+		\FC&\colon\CCat_\iso\leftrightarrows\CCompCat:\!\UC
 			& \Set&\leftrightarrows\CompCat
 \end{align}
-These have underlying 1-adjunctions, which \cite{Abramsky2} constructs in detail, and the fact that these extend to 2-adjunctions will be proved in \ref{**}\todo{reference here}. For the time being, we consider only their underlying 1-adjunctions, which we can compose with the discrete adjunction $\Set\leftrightarrows\Cat$ to obtain 1-adjunctions as to the right in \eqref{eqn:adjunctions}. We will write $\TM, \TT$, and $\TC$ for the respective monads induced on $\Set$. Note that $\TM$ is
+These have underlying 1-adjunctions (e.g., $\Cat\leftrightarrows\TrCat$), which \cite{Abramsky2} constructs in detail, and the fact that these extend to 2-adjunctions will be proved in Corollary~\ref{cor:2_adjunctions_MonTrComp}. For the time being, we consider only their underlying 1-adjunctions, which we can compose with the discrete adjunction $\Set\leftrightarrows\Cat$ to obtain 1-adjunctions as to the right in \eqref{eqn:adjunctions}. We will write $\TM, \TT$, and $\TC$ for the respective monads induced on $\Set$. Note that $\TM$ is
 isomorphic to the free monoid monad, while $\TC$ is isomorphic to the free monoid-with-involution monad.%
 \footnote{
    Note that $T_M$ is not the free-\emph{commutative}-monoid monad, even though the objects of
@@ -1135,9 +1135,6 @@ factorization system on $\ccat{C}$, and in this case we say that $\ccat{C}$ \emp
    We say that $\ccat{C}$ \emph{has arrow objects} if an arrow object $c^2$ exists for each object $c\in\cat{C}$.
 \end{definition}
 
-
-Let $\CCat_\iso$ denote the 2-category (or if one prefers, (2,1)-category) of categories, functors, and natural isomorphisms.
-
 \begin{example}\label{ex:arrow_objects}
    The 2-categories $\CCat$, $\CCat_\iso$, $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$ have arrow objects. Clearly for an object $\cat{A}\in\CCat$, the usual arrow category $\cat{A}^2$ of arrows and commutative squares, has the necessary universal property. Similarly, the arrow category of $\cat{A}$ in $\CCat_\iso$ is the category whose objects are isomorphisms in $\cat{A}$, and whose morphisms are commutative squares (in which the other morphisms need not be isos).
 
@@ -1157,7 +1154,7 @@ The universal properties of the arrow object $\cat{M}^2$ in $\CCat$ guarantee th
 
 The 2-category $\CCompCatStrong$ has arrow objects, which are preserved by the functor $\CCompCatStrong\to\CCat_{\iso}$. Recall from Section~\ref{sec:compact_and_int} that every natural transformation between compact categories is an isomorphism. Thus for a compact category $\cat{C}$, the arrow category $\cat{C}^2$ has as objects the isomorphisms $a\To{\iso} b$ in $\cat{C}$, and as morphisms the commuting squares. This is compact: the dual of $a\To{f} b$ is $a^\ast\To{(f^{-1})^\ast}b^\ast$.
 
-The 2-morphisms between traced categories are also defined to be isomorphisms (see Remark~\ref{rem:traced_2morphisms}). For a traced category $\cat{T}\in\TTrCatStrong$, the arrow object $\cat{T}^2$ has the isomorphisms in $\cat{T}$ as objects and commuting squares as morphisms. To see the traced structure, suppose given objects $a\colon A\To{\iso} A'$, $b\colon B\To{\iso} B'$, and $u\colon U\To{\iso} U'$, as well as a morphism $(f,g)\colon a\otimes u\to b\otimes u$ as in the diagram to the left
+The 2-morphisms between traced categories are also defined to be isomorphisms (see Remark~\ref{rem:traced_2morphisms}). For a traced category $\cat{T}\in\TTrCatStrong$, the arrow object $\cat{T}^2$ has the isomorphisms in $\cat{T}$ as objects and commuting squares as morphisms; i.e., it too is preserved by the 2-functor $\TTrCatStrong\to\Cat_\iso$. To see the traced structure of $\cat{T}^2$, suppose given objects $a\colon A\To{\iso} A'$, $b\colon B\To{\iso} B'$, and $u\colon U\To{\iso} U'$, as well as a morphism $(f,g)\colon a\otimes u\to b\otimes u$ as in the diagram to the left
 \begin{equation}\label{eqn:arrow_traced}
 \begin{tikzcd}
 	A\otimes U\ar[d,"a\otimes u"']\ar[r,"f"]&B\otimes U\ar[d,"b\otimes u"]\\
@@ -1178,7 +1175,7 @@ as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand di
 
 \begin{lemma}\label{lem:2-adjunction}
    Let $R\colon\ccat{C}\to\ccat{D}$ be a 2-functor, and suppose that $\ccat{C}$ has arrow objects.
-   Then $R$ has a left 2-adjoint if and only if $R$ has a left 1-adjoint and preserves arrow
+   Then $R$ has a left 2-adjoint if and only if $R$ has a left 1-adjoint and $R$ preserves arrow
    objects.
 \end{lemma}
 \begin{proof}
@@ -1201,6 +1198,7 @@ as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand di
    objects (right adjoints preserve limits).
 \end{proof}
 
+ 
 \begin{definition}\label{def:mapping_path_objects}
    Let $f\colon a\to b$ be a morphism in a 2-category $\ccat{C}$. A \emph{mapping path object} of
    $f$ is an object $\Path{f}$ together with a diagram
@@ -1260,27 +1258,36 @@ as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand di
  If $\cat{A}$ and $\cat{B}$ are traced categories and $F$ is a traced functor, one obtains a canonical trace structure on the monoidal category $P(F)$ in a manner similar to that shown in Example~\ref{ex:arrow_objects}. If $\cat{A}$ and $\cat{B}$ are compact categories, then the mapping path monoidal category $P(F)$ is naturally compact: the dual of $(A,B,i)$ is $(A^*,B^*, (i^{-1})^*)$.
  \end{example}
  
+ \begin{remark}\label{rem:pres_joint_detect}
+
+ The arrow objects and mapping path objects for the 2-categories $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$ were discussed in Examples~\ref{ex:arrow_objects}~and~\ref{ex:mapping_paths}. Each has a notion of cone, in fact a certain weighted limit cone in $\CCat$, though we will not discuss that notion here. We mentioned in passing that the structure morphisms for that cone were strict monoidal functors and that they ``preserve and jointly detect" strictness in the sense of Definition~\ref{def:preserve_jdetect_strictness} below. In particular, the 2-categories $\MMonCat$, $\TTrCat$, and $\CCompCat$ also have arrow objects and mapping path objects, and the inclusions of strict-into-strong (e.g., $\MMonCat\to\MMonCatStrong$) preserve them. Looking back at Examples~\ref{ex:arrow_objects}~and~\ref{ex:mapping_paths}, we see that the forgetful functors
+ \begin{gather*}
+ \UM\colon\MMonCat\to\CCat\qquad\UT\colon\TTrCat\to\CCat_\iso\qquad\UC\colon\CCompCat\to\Cat_\iso
+ \end{gather*}
+ preserve arrow objects and mapping path objects.
+
+ \end{remark}
+ 
+ The following result was promised above;  see \eqref{eqn:adjunctions}.
+ 
  \begin{corollary}\label{cor:2_adjunctions_MonTrComp}
- The 1-adjunctions from \eqref{eqn:adjunctions},
+ There are 2-adjunctions
  \begin{gather*}
 		\FM\colon\CCat\leftrightarrows\MMonCat:\!\UM
 \qquad
-		\FT\colon\CCat\leftrightarrows\TTrCat:\!\UT
+		\FT\colon\CCat_\iso\leftrightarrows\TTrCat:\!\UT
 \qquad
-		\FC\colon\CCat\leftrightarrows\CCompCat:\!\UC
+		\FC\colon\CCat_\iso\leftrightarrows\CCompCat:\!\UC
 \end{gather*}
-extend to 2-adjunctions.
+that extend the 1-adjunctions constructed in \cite{Abramsky2}.
  \end{corollary}
  
 \begin{proof}
-By Lemma~\ref{lem:2-adjunction} it suffices to show\todo{fill in}
+Let $R$ be either $\UM$, $\UT$, or $\UC$. Its underlying 1-functor has a left adjoint, constructed in \cite{Abramsky2}. We showed in Remark~\ref{rem:pres_joint_detect} that $\MMonCat$, $\TTrCat$, and $\CCompCat$ have arrow objects, which are preserved by $R$. The result follows by Lemma~\ref{lem:2-adjunction}.
+
 \end{proof}
 
- \begin{remark}\label{rem:pres_joint_detect}
 
- The arrow objects and mapping path objects for the 2-categories $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$ were discussed in Examples~\ref{ex:arrow_objects}~and~\ref{ex:mapping_paths}. Each has a notion of cone, in fact a certain weighted limit cone in $\CCat$, though we will not discuss that notion here. We mentioned in passing that the structure morphisms for that cone were strict monoidal functors and that they ``preserve and jointly detect" strictness in the sense of Definition~\ref{def:preserve_jdetect_strictness} below. In particular, the 2-categories $\MMonCat$, $\TTrCat$, and $\CCompCat$ also have arrow objects and mapping path objects, and the inclusions of strict-into-strong (e.g., $\MMonCat\to\MMonCatStrong$) preserve them.
-
- \end{remark}
  
 \begin{lemma}\label{lem:mapping_path_equiv}
    For any morphism $f\colon a\to b$ with a mapping path object $\Path{f}$, the projection
@@ -1332,7 +1339,7 @@ of this left adjoint, and which are satisfied by all of our motivating examples;
  Let $\ccat{X}$ and $\ccat{Y}$ be 2-categories and let $i\colon\ccat{X}\to\ccat{Y}$ be a 2-functor that is identity-on-objects, faithful, and locally fully-faithful. We say that the triple $(\ccat{X},\ccat{Y},i)$ \emph{has mapping path objects} if $\ccat{Y}$ has mapping path objects as in Definition~\ref{def:mapping_path_objects} such that
  \begin{itemize}
  \item for any $f\colon a\to b$ in $\cat{Y}$, the structure morphisms $a\From{\pi_a}P(f)\To{\pi_b}b$ are in $\ccat{X}$, and
- \item the pair $(\pi_a,\pi_b)$ \emph{preserve and jointly detect morphisms in $\ccat{X}$} in the following sense: for any morphism $\ell\colon x\to P(f)$ in $\ccat{Y}$, we have that $\ell$ is in $\ccat{X}$ if and only if the compositions $\pi_a\circ\ell$ and $\pi_b\circ\ell$ are in $\ccat{X}$.
+ \item the pair $(\pi_a,\pi_b)$ \emph{preserves and jointly detects morphisms in $\ccat{X}$} in the following sense: for any morphism $\ell\colon x\to P(f)$ in $\ccat{Y}$, we have that $\ell$ is in $\ccat{X}$ if and only if the compositions $\pi_a\circ\ell$ and $\pi_b\circ\ell$ are in $\ccat{X}$.
 \end{itemize}
 We say that the triple $(\ccat{C},\ccat{D},i)$ \emph{has arrow objects} if the analogous conditions hold.
 \end{definition}
@@ -1351,13 +1358,16 @@ Let $\scat{D}$, $\pcat{D}$, and $\ccat{C}$ be 2-categories, and let $U\colon\pca
    The triple $(\scat{D},\pcat{D},\iota)$ has both arrow objects and mapping path objects
    (Definition~\ref{def:preserve_jdetect_strictness}).
  \item\label{item:left2adj}
-   The functor $U\iota\colon\scat{D}\to\ccat{C}$ has a left 2-adjoint $F$ (equivalently,
-   $U\iota$ has a left 1-adjoint and preserves arrow objects; see Lemma~\ref{lem:2-adjunction}).
+   The functor $U\iota\colon\scat{D}\to\ccat{C}$ has a left 2-adjoint $F$.
+%    (equivalently,
+%   $U\iota$ has a left 1-adjoint and preserves arrow objects; see Lemma~\ref{lem:2-adjunction}).
  \item\label{item:pres_ff}
    The functor $U\iota$ preserves fully-faithful morphisms (equivalently, $F$ preserves
    bijective-on-objects morphisms), and $U\iota$ also preserves bijective-on-objects morphisms.
  \item\label{item:pres_MPO}
-   The functor $U$ preserves mapping path objects and reflects identity 2-cells.
+   The functor $U$ preserves mapping path objects.
+ \item\label{item:reflids}
+   The functor $U$ reflects identity 2-cells.
  \item\label{item:createSEs}
    The pair ($U\iota,U)$ creates surjective equivalences: given any morphism $f\colon A\to B$
    in $\scat{D}$ and surjective equivalence $g\dashv U\iota f$ in $\ccat{C}$, there is a unique
@@ -1367,7 +1377,7 @@ Let $\scat{D}$, $\pcat{D}$, and $\ccat{C}$ be 2-categories, and let $U\colon\pca
 \end{definition}
 
 \begin{remark}
-   Other than those involving bijective-on-objects or fully-faithful morphisms, all of the properties enumerated in Definition~\ref{def:strictifiable} hold
+   Other than those involving bijective-on-objects or fully-faithful morphisms, all of the properties enumerated in Definition~\ref{def:strictifiable} (namely, Properties \todo{fill in}) hold
    whenever $\scat{D}$ is the 2-category of strict algebras and strict morphisms for a 2-monad on
    $\ccat{C}$, and $\pcat{D}$ is the 2-category of strict algebras and pseudo-morphisms. While our
    main examples can be seen to be algebras for some 2-monad, we have found it easier to isolate
@@ -1379,13 +1389,15 @@ Let $\scat{D}$, $\pcat{D}$, and $\ccat{C}$ be 2-categories, and let $U\colon\pca
 \begin{example}\label{ex:strictifiable}
 
 Suppose that the collection $(\scat{D},\pcat{D},\ccat{C},\iota,U)$ is defined as in one of the following cases:
-\begin{enumerate}
+\begin{itemize}
 \item $\scat{D}=\MMonCat, \quad \pcat{D}=\MMonCatStrong, \quad \ccat{C}=\CCat$,
  where $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion and $U\colon\pcat{D}\to\ccat{C}$ is the forgetful functor; 
 \item $\scat{D}=\TTrCat, \quad \pcat{D}=\TTrCatStrong, \quad \ccat{C}=\CCat_\iso$ where $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion and $U\colon\pcat{D}\to\ccat{C}$ is the forgetful functor (recall that $\CCat_\iso$ is the 2-category of categories, functors, and natural isomorphisms); or
 \item $\scat{D}=\CCompCat, \quad \pcat{D}=\CCompCatStrong, \quad \ccat{C}=\CCat_\iso$ where $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion and $U\colon\pcat{D}\to\ccat{C}$ is the forgetful functor.
-\end{enumerate}
-We will see that in each case the collection is strictifiable. Property \ref{item:boff} is proved as \ref{lem:(boff)_really_is}. Property \ref{item:ioofflff} is obvious for $\MMonCat$ and $\CCompCat$, and by definition (see Remark~\ref{rem:traced_2morphisms}) for $\TrCat$.  Property \ref{item:arrowMPO} is shown in Remark~\ref{rem:pres_joint_detect}. Property~\ref{item:left2adj} .. Property~\ref{item:pres_ff}.. Property~\ref{item:pres_MPO}.. Property~\ref{item:createSEs}..
+\end{itemize}
+We will see that in each case the collection is strictifiable. 
+
+Property \ref{item:boff} is proved as \ref{lem:(bo,ff)_really_is}. Property \ref{item:ioofflff} is obvious for $\MMonCat$ and $\CCompCat$, and by definition (see Remark~\ref{rem:traced_2morphisms}) for $\TrCat$.  Property \ref{item:arrowMPO} is shown in Remark~\ref{rem:pres_joint_detect}. Property~\ref{item:left2adj} is shown in Corollary~\ref{cor:2_adjunctions_MonTrComp}. Property~\ref{item:pres_ff} is shown in Proposition~\ref{prop:boff_well_named}. Property~\ref{item:pres_MPO} is shown in Remark~\ref{rem:pres_joint_detect}. Property~\ref{item:reflids} .. Property~\ref{item:createSEs}..\todo{fill in}
 
 \end{example}
 
