@@ -1046,20 +1046,9 @@ the strict 2-categorical case, where $\cat{V}=\Cat$.
    $\cat{R}$ using a hooked arrow.
 \end{definition}
 
-If $\ccat{C}$ is a 2-category and $\cat{L}, \cat{R}$ are distinguished classes of morphisms, we say
-that $\cat{L}$ is \emph{left pseudo-orthogonal} to $\cat{R}$ if the pullback square (left of
-\eqref{eqn:OrthFactSys}) is only required to be a pseudo-pullback. This means that for any
-pseudo-commuting square (right of \eqref{eqn:OrthFactSys}), there exists an essentially unique
-pseudo-commuting lift.
-
-\begin{example}\label{ex:ess_surj_pseudo_ff}
-   In the 2-category $\CCat$, the class of essentially surjective functors is left pseudo-orthogonal
-   to the class of fully faithful functors.
-\end{example}
-
 \section{Background on 2-categories}\label{sec:background_2-categories}
 \todo[inline]{Move factorization system stuff to Section~\ref{sec:factorization_systems}?}
-\begin{definition}
+\begin{definition}\label{def:fully-faithful}
    Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{fully-faithful} if the
    functor $\ccat{C}(x,a)\to\ccat{C}(x,b)$ induced by composition with $f$ is fully-faithful for
    every $x$.
@@ -1342,7 +1331,7 @@ of this left adjoint, and which are satisfied by all of our motivating examples;
 
  Let $\ccat{X}$ and $\ccat{Y}$ be 2-categories and let $i\colon\ccat{X}\to\ccat{Y}$ be a 2-functor that is identity-on-objects, faithful, and locally fully-faithful. We say that the triple $(\ccat{X},\ccat{Y},i)$ \emph{has mapping path objects} if $\ccat{Y}$ has mapping path objects as in Definition~\ref{def:mapping_path_objects} such that
  \begin{itemize}
- \item for any $f\colon a\to b$ in $\cat{Y}$, the structure morphisms $a\From{\pi_a}P(f)\To{\pi_b}b$ are in $\ccat{X}$, and 
+ \item for any $f\colon a\to b$ in $\cat{Y}$, the structure morphisms $a\From{\pi_a}P(f)\To{\pi_b}b$ are in $\ccat{X}$, and
  \item the pair $(\pi_a,\pi_b)$ \emph{preserve and jointly detect morphisms in $\ccat{X}$} in the following sense: for any morphism $\ell\colon x\to P(f)$ in $\ccat{Y}$, we have that $\ell$ is in $\ccat{X}$ if and only if the compositions $\pi_a\circ\ell$ and $\pi_b\circ\ell$ are in $\ccat{X}$.
 \end{itemize}
 We say that the triple $(\ccat{C},\ccat{D},i)$ \emph{has arrow objects} if the analogous conditions hold.
@@ -2140,9 +2129,19 @@ taken from~\cite[Definitions~4.3~and~4.5, Theorem~4.17]{Schultz2015}:
    on the vertical 1-category $\dcat{D}_0$.
 \end{theorem}
 
-The notation $\bo$ and $\ff$ comes from the case where $\dcat{D}=\dProf$, for which they correspond
-to the functors that are bijective on objects and fully faithful, respectively. See also
-Proposition~\ref{prop:boff_well_named}.
+\begin{lemma}\label{lem:(bo,ff)_really_is}
+   Let $\dcat{D}$ be an exact equipment. If a vertical morphism $f$ in $\dcat{D}$ is $\bo$
+   (respectively $\ff$), then $f$ is a bijective-on-objects (respectively fully-faithful) morphism
+   in $\VVer(\dcat{D})$ in the sense of
+   Definitions~\ref{def:fully-faithful}, \ref{def:bijective-on-objects}.
+\end{lemma}
+\begin{proof}
+   It is easy to see that the condition in Definition~\ref{def:fully-faithful} of $f$ being
+   fully-faithful in $\VVer(\dcat{D})$ is a special case of the condition of the unit 2-cell on $f$
+   being cartesian in $\dcat{D}$. If $f$ is $\bo$, then Theorem~\ref{thm:orthogonal} in particular
+   implies that $f$ is left orthogonal to every $\ff$ morphism, hence $f$ is bijective-on-objects
+   by Definition~\ref{def:bijective-on-objects}.
+\end{proof}
 
 \begin{remark}
    As in Definition~\ref{def:orthogonal}, we will use the hooked arrow $\inj$ to indicate $\ff$
@@ -3066,16 +3065,17 @@ objects.
 
    Suppose further that there is a 1-category $\cat{S}$ and 1-adjunction
    $\Disc\colon\cat{S}\leftrightarrows\ccat{C}_0:\!\Ob$ to the underlying 1-category $\ccat{C}_0$ of
-   $\ccat{C}$, such that $\Ob(U(\bo))\subseteq\mathrm{iso}(\cat{S})$. Let
-   $T=\Ob\circ U\circ F\circ\Disc$ be the induced monad on $\cat{S}$.
+   $\ccat{C}$, with $\Disc$ fully-faithful and such that a morphism $f$ in $\ccat{C}$ is $\bo$ if
+   and only if $\Ob f$ is an isomorphism. Let $T=\Ob\circ U\circ F\circ\Disc$ be the induced monad
+   on $\cat{S}$.
 
    Then the composition
    \begin{equation*}
       \begin{tikzcd}
          \MMon(\dcat{D}_T)\ar[r,"\MMon(\varphi_T)"]
-            &[1.5em] \MMon(\dcat{D}) \ar[r,"\VVer(\Col{\textrm{--}})"]
-            & \VVer(\dcat{D}) \ar[r,"\iota"]
-            & \pcat{D}
+            &[1.4em] \MMon(\dcat{D}) \ar[r,"\VVer(\Col{\textrm{--}})"]
+            &[1.2em] \VVer(\dcat{D}) \ar[r,"\iota"]
+            &[-0.5em] \pcat{D}
       \end{tikzcd}
    \end{equation*}
    is an equivalence of 2-categories.
@@ -3116,18 +3116,29 @@ objects.
    \end{equation*}
    and it is easy to check that the composition is precisely $\iota$ on hom categories.
 
-   Finally, to see that $\iota\circ G$ is essentially surjective, let $D\in\dcat{D}$ be an object,
-   and consider the $(\bo,\ff)$ factorization of the counit
+   Finally, to see that $\iota\circ G$ is essentially surjective, consider an object $D\in\pcat{D}$.
+   We know from Section~\ref{sec:strict_vs_strong} that in the factorization
    \begin{equation*}
       \begin{tikzcd}
-         FUD \ar[dr,"\epsilon_D"] \ar[d,two heads,"p"'] & \\
-         D' \ar[r,hook,"f"'] & D.
+         FUA \ar[dr,"\epsilon_A"] \ar[d,two heads,"r_A"'] & \\
+         QA \ar[r,hook,"q_A"'] & A.
       \end{tikzcd}
    \end{equation*}
-   By assumption, the components of the counit are left pseudo-orthogonal to $\ff$, and $p$ is left
-   orthogonal to $\ff$, hence also left pseudo-orthogonal. By the cancellation property of a left
-   orthogonality class, $f$ must also be left pseudo-orthogonal to $\ff$. But $f$ is $\ff$ as well,
-   hence it is an equivalence in $\VVer(\dcat{D})$. Thus $D$ is equivalent to $\cod(\psi_F(p))=D'$.
+   $\iota q_A$ is an equivalence in $\pcat{D}$. If we can show that $QA$ admits a $\bo$ morphism
+   $F(\Disc(s))\twoheadrightarrow QA$ in $\VVer(\dcat{D})$ for some $s\in\cat{S}$, then $QA$ will
+   be in the image of $G$, hence $\iota\circ G$ will be essentially surjective.
+
+   Consider the counit $\epsilon_{UA}\colon\Disc(\Ob(UA))\to UA$. Because $\Disc$ is fully-faithful,
+   it follows that $\Ob(\epsilon_{UA})$ is an isomorphism, hence $\epsilon_{UA}\in\bo$, and
+   therefore $F(\epsilon_{UA})\in\bo$ as well. Thus we can take the composition
+   \begin{equation*}
+      \begin{tikzcd}
+         F(\Disc(\Ob(UA))) \ar[r,two heads,"F(\epsilon_{UA})"]
+            &[1em] FUA \ar[r,two heads,"r_A"]
+            & QA
+      \end{tikzcd}
+   \end{equation*}
+   showing that $QA$ is in the image of $G$.
 \end{proof}
 
 
