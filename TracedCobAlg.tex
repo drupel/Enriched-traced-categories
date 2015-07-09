@@ -3037,16 +3037,17 @@ objects.
 
    Suppose further that there is a 1-category $\cat{S}$ and 1-adjunction
    $\Disc\colon\cat{S}\leftrightarrows\ccat{C}_0:\!\Ob$ to the underlying 1-category $\ccat{C}_0$ of
-   $\ccat{C}$, such that $\Ob(U(\bo))\subseteq\mathrm{iso}(\cat{S})$. Let
-   $T=\Ob\circ U\circ F\circ\Disc$ be the induced monad on $\cat{S}$.
+   $\ccat{C}$, with $\Disc$ fully-faithful and such that a morphism $f$ in $\ccat{C}$ is $\bo$ if
+   and only if $\Ob f$ is an isomorphism. Let $T=\Ob\circ U\circ F\circ\Disc$ be the induced monad
+   on $\cat{S}$.
 
    Then the composition
    \begin{equation*}
       \begin{tikzcd}
          \MMon(\dcat{D}_T)\ar[r,"\MMon(\varphi_T)"]
-            &[1.5em] \MMon(\dcat{D}) \ar[r,"\VVer(\Col{\textrm{--}})"]
-            & \VVer(\dcat{D}) \ar[r,"\iota"]
-            & \pcat{D}
+            &[1.4em] \MMon(\dcat{D}) \ar[r,"\VVer(\Col{\textrm{--}})"]
+            &[1.2em] \VVer(\dcat{D}) \ar[r,"\iota"]
+            &[-0.5em] \pcat{D}
       \end{tikzcd}
    \end{equation*}
    is an equivalence of 2-categories.
@@ -3087,18 +3088,29 @@ objects.
    \end{equation*}
    and it is easy to check that the composition is precisely $\iota$ on hom categories.
 
-   Finally, to see that $\iota\circ G$ is essentially surjective, let $D\in\dcat{D}$ be an object,
-   and consider the $(\bo,\ff)$ factorization of the counit
+   Finally, to see that $\iota\circ G$ is essentially surjective, consider an object $D\in\pcat{D}$.
+   We know from Section~\ref{sec:strict_vs_strong} that in the factorization
    \begin{equation*}
       \begin{tikzcd}
-         FUD \ar[dr,"\epsilon_D"] \ar[d,two heads,"p"'] & \\
-         D' \ar[r,hook,"f"'] & D.
+         FUA \ar[dr,"\epsilon_A"] \ar[d,two heads,"r_A"'] & \\
+         QA \ar[r,hook,"q_A"'] & A.
       \end{tikzcd}
    \end{equation*}
-   By assumption, the components of the counit are left pseudo-orthogonal to $\ff$, and $p$ is left
-   orthogonal to $\ff$, hence also left pseudo-orthogonal. By the cancellation property of a left
-   orthogonality class, $f$ must also be left pseudo-orthogonal to $\ff$. But $f$ is $\ff$ as well,
-   hence it is an equivalence in $\VVer(\dcat{D})$. Thus $D$ is equivalent to $\cod(\psi_F(p))=D'$.
+   $\iota q_A$ is an equivalence in $\pcat{D}$. If we can show that $QA$ admits a $\bo$ morphism
+   $F(\Disc(s))\twoheadrightarrow QA$ in $\VVer(\dcat{D})$ for some $s\in\cat{S}$, then $QA$ will
+   be in the image of $G$, hence $\iota\circ G$ will be essentially surjective.
+
+   Consider the counit $\epsilon_{UA}\colon\Disc(\Ob(UA))\to UA$. Because $\Disc$ is fully-faithful,
+   it follows that $\Ob(\epsilon_{UA})$ is an isomorphism, hence $\epsilon_{UA}\in\bo$, and
+   therefore $F(\epsilon_{UA})\in\bo$ as well. Thus we can take the composition
+   \begin{equation*}
+      \begin{tikzcd}
+         F(\Disc(\Ob(UA))) \ar[r,two heads,"F(\epsilon_{UA})"]
+            &[1em] FUA \ar[r,two heads,"r_A"]
+            & QA
+      \end{tikzcd}
+   \end{equation*}
+   showing that $QA$ is in the image of $G$.
 \end{proof}
 
 
