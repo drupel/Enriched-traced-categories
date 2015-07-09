@@ -1154,7 +1154,7 @@ factorization system on $\ccat{C}$.
             & \cat{M}
          \twocellA{\alpha}
  \end{tikzcd}
- $$      
+ $$
 The universal properties of the arrow object $\cat{M}^2$ in $\CCat$ guarantee that the induced functor $\hat{\alpha}\colon\cat{X}\to\cat{M}^2$ is strong monoidal. Note that if $d,c$ are strict monoidal functors then $\hat{\alpha}$ will be as well.
 
 The 2-category $\CCompCatStrong$ has arrow objects, but they are not preserved by the 2-functor $\CCompCatStrong\to\MMonCatStrong$. Recall from Section~\ref{sec:compact_and_int} that every natural transformation between compact categories is an isomorphism. Thus for a compact category $\cat{C}$, the arrow category $\cat{C}^2$ has as objects the isomorphisms $a\To{\iso} b$ in $\cat{C}$, and as morphisms the commuting squares. This is compact: the dual of $a\To{f} b$ is $a^\ast\To{(f^{-1})^\ast}b^\ast$.
@@ -1259,13 +1259,13 @@ as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand di
 
  If $\cat{A}$ and $\cat{B}$ are traced categories and $F$ is a traced functor, one obtains a canonical trace structure on the monoidal category $P(F)$ in a manner similar to that shown in Example~\ref{ex:arrow_objects}. If $\cat{A}$ and $\cat{B}$ are compact categories, then the mapping path monoidal category $P(F)$ is naturally compact: the dual of $(A,B,i)$ is $(A^*,B^*, (i^{-1})^*)$.
  \end{example}
- 
+
  \begin{remark}
- 
+
  The arrow objects and mapping path objects for the 2-categories $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$ were discussed in Examples~\ref{ex:arrow_objects}~and~\ref{ex:mapping_paths}. Each has a notion of cone, in fact a certain weighted limit cone in $\CCat$, though we will not discuss that notion here. We mentioned in passing that the structure morphisms for that cone were strict monoidal functors and that they ``preserve and jointly detect" strictness. In particular, the 2-categories $\MMonCat$, $\TTrCat$, and $\CCompCat$ also have arrow objects and mapping path objects, and the inclusions of strict-into-strong  (e.g., $\MMonCat\to\MMonCatStrong$) preserve them.
-   
+
  \end{remark}
- 
+
 \begin{lemma}\label{lem:mapping_path_equiv}
    For any morphism $f\colon a\to b$ with a mapping path object $\Path{f}$, the projection
    $\pi_a\colon \Path{f}\to a$ is a surjective equivalence, hence fully-faithful.
@@ -3055,7 +3055,7 @@ objects.
    \end{equation*}
    and it is easy to check that the composition is precisely $\iota$ on hom categories.
 
-   Finally, to see that $\iota\cicr G$ is essentially surjective, let $D\in\dcat{D}$ be an object,
+   Finally, to see that $\iota\circ G$ is essentially surjective, let $D\in\dcat{D}$ be an object,
    and consider the $(\bo,\ff)$ factorization of the counit
    \begin{equation*}
       \begin{tikzcd}
