@@ -1006,7 +1006,7 @@ maps, $\outp{X}+\inp{Y}\to C$. Composition is achieved by quotienting the middle
 right-hand diagram of \eqref{eqn:describing_cob}, while the monoidal structure is provided by
 disjoint unions of sets.
 
-\section{Orthogonal factorization systems}
+\section{Orthogonal factorization systems}\label{sec:factorization_systems}
 
 We use orthogonal factorization systems throughout this paper, mainly to deal with the issue of
 object-variance, mentioned in Section~\ref{subsec:main_results}. Background on orthogonal
@@ -1056,7 +1056,7 @@ pseudo-commuting lift.
 \end{example}
 
 \section{Background on 2-categories}\label{sec:background_2-categories}
-
+\todo[inline]{Move factorization system stuff to Section~\ref{sec:factorization_systems}?}
 \begin{definition}
    Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{fully-faithful} if the
    functor $\ccat{C}(x,a)\to\ccat{C}(x,b)$ induced by composition with $f$ is fully-faithful for
@@ -1073,18 +1073,18 @@ pseudo-commuting lift.
          \twocellA{\alpha'}
       \end{tikzcd}
    \end{equation}
-   such that $fu=u'$ and $fv=v'$, there is a unique $\alpha\colon u\Rightarrow v$ such that
+   such that $fu=u'$ and $fv=v'$, there exists a unique $\alpha\colon u\Rightarrow v$ such that
    $f\alpha=\alpha'$.
 \end{definition}
 
 \begin{definition}\label{def:bijective-on-objects}
    Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{bijective-on-objects} if
    it is left orthogonal to every fully-faithful morphism.
-\end{definition}
-
-Note that if every morphism $f$ of a 2-category $\ccat{C}$ can be factored into a
+   
+   If every morphism $f$ of $\ccat{C}$ can be factored into a
 bijective-on-objects morphism followed by a fully-faithful morphism, then this forms an orthogonal
-factorization system on $\ccat{C}$.
+factorization system on $\ccat{C}$, and in this case we say that $\ccat{C}$ \emph{has a bijective-on-objects / fully faithful factorization system}.
+\end{definition}
 
 \begin{definition}
    Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is a \emph{surjective
@@ -1094,7 +1094,7 @@ factorization system on $\ccat{C}$.
 \end{definition}
 
 \begin{lemma}\label{lem:fully-faithful_surjective_equiv}
-   Let $f\colon a\to b$ and $g\colon b\to a$ be morphisms in a 2-category such that $fg=1$. Then $f$
+   Let $f\colon a\to b$ and $g\colon b\to a$ be morphisms in a 2-category such that $fg=1_b$. Then $f$
    (together with $g$) is a surjective equivalence if and only if $f$ is fully-faithful.
 \end{lemma}
 \begin{proof}
@@ -1107,7 +1107,9 @@ factorization system on $\ccat{C}$.
    is an isomorphism, and that $\epsilon g=1_g$.
 \end{proof}
 
-\begin{definition}
+\subsection{Arrow objects and mapping path objects}
+
+\begin{definition}\label{def:arrow_object}
    Let $a$ be an object in a 2-category $\ccat{C}$. An \emph{arrow object} of $a$ is an object
    $\Ar{a}$ together with a diagram
    \begin{equation}
@@ -1138,6 +1140,8 @@ factorization system on $\ccat{C}$.
    such that $\alpha'\circ\beta=\gamma\circ\alpha$, there is a unique
    $(\beta,\gamma)\colon\hat{\alpha}\Rightarrow\hat{\alpha'}$ such that $\dom(\beta,\gamma)=\beta$
    and $\cod(\beta,\gamma)=\gamma$.
+   
+   We say that $\ccat{C}$ \emph{has arrow objects} if an arrow object $c^2$ exists for each object $c\in\cat{C}$.
 \end{definition}
 
 \begin{example}\label{ex:arrow_objects}
@@ -1178,7 +1182,7 @@ $$
 as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand diagram in \eqref{eqn:arrow_traced} follows from this equation and the axioms of traced categories (Section~\ref{sec:intuition_for_traced}).
 \end{example}
 
-\begin{lemma}
+\begin{lemma}\label{lemma:2adj_1adj_arrowobs}
    Let $R\colon\ccat{C}\to\ccat{D}$ be a 2-functor, and suppose that $\ccat{C}$ has arrow objects.
    Then $R$ has a left 2-adjoint if and only if $R$ has a left 1-adjoint and preserves arrow
    objects.
@@ -1203,7 +1207,7 @@ as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand di
    objects (right adjoints preserve limits).
 \end{proof}
 
-\begin{definition}
+\begin{definition}\label{def:mapping_path_objects}
    Let $f\colon a\to b$ be a morphism in a 2-category $\ccat{C}$. A \emph{mapping path object} of
    $f$ is an object $\Path{f}$ together with a diagram
    \begin{equation}
@@ -1234,6 +1238,8 @@ as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand di
    $\alpha'\circ f\beta=\gamma\circ\alpha$, there is a unique isomorphism
    $(\beta,\gamma)\colon\hat{\alpha}\iso\hat{\alpha'}$ such that $\pi_a(\beta,\gamma)=\beta$ and
    $\pi_b(\beta,\gamma)=\gamma$.
+   
+      We say that $\ccat{C}$ \emph{has mapping path objects} if a mapping path object $c^2$ exists for each morphism $f\colon a\to b$ in $\cat{C}$.
 \end{definition}
 
 \begin{example}\label{ex:mapping_paths}
@@ -1262,7 +1268,7 @@ as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand di
  
  \begin{remark}
  
- The arrow objects and mapping path objects for the 2-categories $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$ were discussed in Examples~\ref{ex:arrow_objects}~and~\ref{ex:mapping_paths}. Each has a notion of cone, in fact a certain weighted limit cone in $\CCat$, though we will not discuss that notion here. We mentioned in passing that the structure morphisms for that cone were strict monoidal functors and that they ``preserve and jointly detect" strictness. In particular, the 2-categories $\MMonCat$, $\TTrCat$, and $\CCompCat$ also have arrow objects and mapping path objects, and the inclusions of strict-into-strong  (e.g., $\MMonCat\to\MMonCatStrong$) preserve them.
+ The arrow objects and mapping path objects for the 2-categories $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$ were discussed in Examples~\ref{ex:arrow_objects}~and~\ref{ex:mapping_paths}. Each has a notion of cone, in fact a certain weighted limit cone in $\CCat$, though we will not discuss that notion here. We mentioned in passing that the structure morphisms for that cone were strict monoidal functors and that they ``preserve and jointly detect" strictness in the sense of Definition~\ref{def:preserve_jdetect_strictness} below. In particular, the 2-categories $\MMonCat$, $\TTrCat$, and $\CCompCat$ also have arrow objects and mapping path objects, and the inclusions of strict-into-strong  (e.g., $\MMonCat\to\MMonCatStrong$) preserve them.
    
  \end{remark}
  
@@ -1305,16 +1311,34 @@ examples of interest, and which provides tools for working with both strict and 
 
 In the case of monoidal categories, there is an inclusion $\MMonCat\to\MMonCatStrong$ as well as a
 forgetful functor $\MMonCatStrong\to\CCat$. The cases of traced and compact monoidal categories are
-similar, except there we can factor the forgetful functor through the 2-category $\CCatIso$ of
+similar, except there we can factor the forgetful functor through the 2-category (or, if one prefers, the (2,1)-category) $\CCatIso$ of
 categories, functors, and natural \emph{isomorphisms}. In these examples, we will want to be able to
 represent strong functors in terms of strict ones, by means of a left adjoint to the inclusion of
 strict into strong. Below, we will enumerate properties which are sufficient to prove the existence
-of this left adjoint, and which are satisfied by all of our motivating examples.
+of this left adjoint, and which are satisfied by all of our motivating examples.\todo{David: flesh this out.}
 
 Let $\scat{D}$ and $\pcat{D}$ be 2-categories, and let $\iota\colon\scat{D}\to\pcat{D}$ be a
 2-functor which is identity-on-objects, faithful, and locally fully-faithful. We will think of
 $\iota$ as the inclusion of the strict morphisms into the strong morphisms. Let $\ccat{C}$ be
 another 2-category, with a 2-functor $U\colon\pcat{D}\to\ccat{C}$.
+
+\begin{definition}\label{def:preserve_jdetect_strictness}
+
+ Suppose that $i\colon\ccat{C}\to\ccat{D}$ is a 2-functor that is identity-on-objects, faithful, and locally fully-faithful. We say that the triple $(\ccat{C},\ccat{D},i)$ \emph{has mapping path objects} if $\ccat{D}$ has mapping path objects as in Definition~\ref{def:mapping_path_objects} such that
+ \begin{itemize}
+ \item for any $f\colon a\to b$ in $\cat{D}$, the structure morphisms $a\From{\pi_a}P(f)\To{\pi_b}b$ are in $\ccat{C}$, and 
+ \item for a diagram in $\cat{D}$ of the following form
+ $$
+      \begin{tikzcd}[column sep=small]
+         & |[alias=domA]| x \ar[dl,"g"'] \ar[dr,"h"] & \\
+         a \ar[rr,"f"' codA] && b
+         \twocelliso[pos=.6]{A}{\alpha}
+      \end{tikzcd}
+  $$
+  we have that $g,h$ are in $\ccat{C}$ if and only if the induced map $\hat{\alpha}\colon x\to P(f)$ is in $\ccat{C}$.
+\end{itemize}
+We say that the triple $(\ccat{C},\ccat{D},i)$ \emph{has arrow objects} if the analogous conditions hold
+\end{definition}
 
 \begin{remark}
    All of the properties below not involving bijective-on-objects or fully-faithful morphisms hold
@@ -1326,23 +1350,26 @@ another 2-category, with a 2-functor $U\colon\pcat{D}\to\ccat{C}$.
    This section was strongly inspired by \cite{Bourke} and \cite{LackHomotopy}.
 \end{remark}
 
-We make the following assumptions:
+\begin{definition}
+Let $\scat{D}$, $\pcat{D}$, and $\ccat{C}$ be 2-categories, and let $U\colon\pcat{D}\to\ccat{C}$ and $\iota\colon\scat{D}\to\pcat{D}$ be 2-functors. We say that the collection $(\scat{D},\pcat{D},\ccat{C},U,\iota)$ is \emph{strictifiable} \todo{change?}if it satisfies the following properties:
 \begin{itemize}
-   \item $\scat{D}$ has a bijective-on-objects/fully-faithful factorization.
-   \item $(\scat{D},\pcat{D})$ has arrow objects and mapping path objects.
-   \todo{Explain somewhere}
+   \item The 2-category $\scat{D}$ has a bijective-on-objects/fully-faithful factorization.
+   \item The functor $\iota$ is identity-on-objects, faithful, and locally fully-faithful. 
+   \item The triple $(\scat{D},\pcat{D},\iota)$ has both arrow objects and mapping path objects (Definition~\ref{def:preserve_jdetect_strictness}).
    \item The functor $U\iota\colon\scat{D}\to\ccat{C}$ has a left 2-adjoint $F$ (equivalently,
-   $U\iota$ has a left 1-adjoint and preserves arrow objects).
+   $U\iota$ has a left 1-adjoint and preserves arrow objects; see Lemma~\ref{lemma:2adj_1adj_arrowobs}).
    \item The functor $U\iota$ preserves fully-faithful morphisms.
-   \item $U$ preserves mapping path objects and reflects identity 2-cells.
-   \item ($U\iota,U)$ creates surjective equivalences: given any morphism $f\colon A\to B$ in
+   \item The functor $U$ preserves mapping path objects and reflects identity 2-cells.
+   \item The pair ($U\iota,U)$ creates surjective equivalences: given any morphism $f\colon A\to B$ in
    $\scat{D}$ and surjective equivalence $g\dashv U\iota f$ in $\ccat{C}$, there is a unique
    surjective equivalence $\tilde{g}\dashv\iota f$ in $\pcat{D}$ such that $U\tilde{g}=g$.
 \end{itemize}
+
+\end{definition}
 The remainder of this section will be dedicated to the proof of the following theorem:
 
 \begin{theorem}\label{thm:strong_classifier}
-   Under the above assumptions, $\iota$ has a left 2-adjoint $Q\colon\pcat{D}\to\scat{D}$. The
+   Suppose that $(\scat{D},\pcat{D},\ccat{C},U,\iota)$ is strictifiable. Then the functor $\iota$ has a left 2-adjoint $Q\colon\pcat{D}\to\scat{D}$. The
    counit $q_A\colon QA\to A$ of this adjunction is given by factoring the counit of the
    $F\dashv U\iota$ adjunction:
    \begin{equation}
@@ -1619,7 +1646,7 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
 \begin{definition}\label{def:equipment}
    An \emph{equipment} is a double category $\dcat{D}$ in which the functor
    \begin{equation*}
-      (L,R)\colon\dcat{D}_1\tto\dcat{D}_0\times\dcat{D}_0
+      (L,R)\colon\dcat{D}_1\onto\dcat{D}_0\times\dcat{D}_0
    \end{equation*}
    is a fibration. If $f\colon c\to c'$ and $g\colon d\to d'$ are vertical morphisms and $B\colon
    c'\tickar d'$ is a proarrow, a cartesian morphism $A\to B$ in $\dcat{D}_1$ over $(f,g)$ is a
@@ -2085,9 +2112,9 @@ Proposition~\ref{prop:boff_well_named}.
 
 \begin{remark}
    As in Definition~\ref{def:orthogonal}, we will use the hooked arrow $\inj$ to indicate $\ff$
-   morphisms and the two-headed arrow $\tto$ to indicate $\bo$ morphisms. However, we sometimes use
+   morphisms and the two-headed arrow $\onto$ to indicate $\bo$ morphisms. However, we sometimes use
    the latter symbol to indicate fibrations of categories (e.g., as we did in \ref{thm:TheoremB}).
-   These two uses of the symbol $\tto$ can be distinguished as follows. If the arrow occurs between
+   These two uses of the symbol $\onto$ can be distinguished as follows. If the arrow occurs between
    objects in an equipment, then it indicates a $\bo$ map; if it occurs as a structural part of a
    given equipment, e.g., as in Definition~\ref{def:equipment}, then it indicates a fibration.
 \end{remark}
