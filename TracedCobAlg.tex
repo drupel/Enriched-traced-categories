@@ -1044,17 +1044,6 @@ the strict 2-categorical case, where $\cat{V}=\Cat$.
    $\cat{R}$ using a hooked arrow.
 \end{definition}
 
-If $\ccat{C}$ is a 2-category and $\cat{L}, \cat{R}$ are distinguished classes of morphisms, we say
-that $\cat{L}$ is \emph{left pseudo-orthogonal} to $\cat{R}$ if the pullback square (left of
-\eqref{eqn:OrthFactSys}) is only required to be a pseudo-pullback. This means that for any
-pseudo-commuting square (right of \eqref{eqn:OrthFactSys}), there exists an essentially unique
-pseudo-commuting lift.
-
-\begin{example}\label{ex:ess_surj_pseudo_ff}
-   In the 2-category $\CCat$, the class of essentially surjective functors is left pseudo-orthogonal
-   to the class of fully faithful functors.
-\end{example}
-
 \section{Background on 2-categories}\label{sec:background_2-categories}
 \todo[inline]{Move factorization system stuff to Section~\ref{sec:factorization_systems}?}
 \begin{definition}
@@ -1321,7 +1310,7 @@ of this left adjoint, and which are satisfied by all of our motivating examples;
 
  Let $\ccat{X}$ and $\ccat{Y}$ be 2-categories and let $i\colon\ccat{X}\to\ccat{Y}$ be a 2-functor that is identity-on-objects, faithful, and locally fully-faithful. We say that the triple $(\ccat{X},\ccat{Y},i)$ \emph{has mapping path objects} if $\ccat{Y}$ has mapping path objects as in Definition~\ref{def:mapping_path_objects} such that
  \begin{itemize}
- \item for any $f\colon a\to b$ in $\cat{Y}$, the structure morphisms $a\From{\pi_a}P(f)\To{\pi_b}b$ are in $\ccat{X}$, and 
+ \item for any $f\colon a\to b$ in $\cat{Y}$, the structure morphisms $a\From{\pi_a}P(f)\To{\pi_b}b$ are in $\ccat{X}$, and
  \item the pair $(\pi_a,\pi_b)$ \emph{preserve and jointly detect morphisms in $\ccat{X}$} in the following sense: for any morphism $\ell\colon x\to P(f)$ in $\ccat{Y}$, we have that $\ell$ is in $\ccat{X}$ if and only if the compositions $\pi_a\circ\ell$ and $\pi_b\circ\ell$ are in $\ccat{X}$.
 \end{itemize}
 We say that the triple $(\ccat{C},\ccat{D},i)$ \emph{has arrow objects} if the analogous conditions hold.
@@ -1363,7 +1352,7 @@ Let $\scat{D}$, $\pcat{D}$, and $\ccat{C}$ be 2-categories, and let $U\colon\pca
 
 Suppose we are in one of the following cases:
 \begin{enumerate}
-\item that $\scat{D}=\MMonCat$, that $\pcat{D}=\MMonCatStrong$, that $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion, that $\ccat{C}=\CCat$, and that $U\colon\pcat{D}\to\ccat{C}$ is the forgetful functor; 
+\item that $\scat{D}=\MMonCat$, that $\pcat{D}=\MMonCatStrong$, that $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion, that $\ccat{C}=\CCat$, and that $U\colon\pcat{D}\to\ccat{C}$ is the forgetful functor;
 \item that $\scat{D}=\TTrCat$, that $\pcat{D}=\TTrCatStrong$, that $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion, that $\ccat{C}=\CCat_{\cong}$ is the (2,1)-category of categories, functors, natural isomorphisms, and that $U\colon\pcat{D}\to\ccat{C}$ is the forgetful functor; or
 \item that $\scat{D}=\CCompCat$, that $\pcat{D}=\CCompCatStrong$, that $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion, that $\ccat{C}=\CCat_{\cong}$ is the (2,1)-category of categories, functors, natural isomorphisms, and that $U\colon\pcat{D}\to\ccat{C}$ is the forgetful functor; or
 \end{enumerate}
