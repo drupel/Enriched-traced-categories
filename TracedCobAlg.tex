@@ -237,10 +237,17 @@ denote the full 2-subcategories spanned by the traced and compact categories (re
   
 \end{named}
 
-\todo{add something about corollary~\ref{cor:object_frees}.}
-
 The proof of this result can be found in Section~\ref{sec:deducing}.
 
+\begin{corollary*}[\ref{cor:object_frees}]
+   The canonical inclusions
+   \begin{align*}
+      \MMonFrObCat &\to \MMonCatStrong \\
+      \TTrFrObCat &\to \TTrCatStrong \\
+      \CCompFrObCat &\to \CCompCatStrong
+   \end{align*}
+   are biequivalences of 2-categories.
+\end{corollary*}
 %\begin{remark}
 %   It would be too much to ask \eqref{eqn:tracedCobAlg} to be an equivalence of 1-categories,
 %   because $\TrCat$ throws away, rather than quotients by, natural isomorphisms in $\TTrCat$. On the
@@ -3279,13 +3286,8 @@ which follow entirely from earlier work. They will be used to prove of our main 
    $$
    \CPsh(\dFrTrProf)\simeq\Mon(\dFrTrProf)\quad\text{and}\quad\CPsh(\dFrCompProf)\simeq\Mon(\dFrCompProf).
    $$ 
-   By Corollary~\ref{cor:TrCat_ObjectFree} and Corollary~\ref{cor:object_frees}, we have equivalences of 2-categories
-   $$
-   \MMon(\dFrTrProf)\simeq\TTrFrObCat\quad\text{and}\quad\MMon(\dFrCompProf)\simeq\CCompFrObCat.
-   $$
-The result follows because $\TrFrObCat$ and $\CompFrObCat$ are the underlying 1-categories.
 
-\todo{ok?}
+\todo{finish}
 \end{proof}
 
 \begin{named}{Theorem B}\label{thm:TheoremB}
