@@ -237,7 +237,7 @@ denote the full 2-subcategories spanned by the traced and compact categories (re
   
 \end{named}
 
-The proof of this result can be found in Section~\ref{sec:deducing}.
+The proof of this result can be found in Section~\ref{sec:deducing}. In order to see how the free-on- objects traced (resp. compact) categories relate to general traced categories, we prove the following result, which is well-known but difficult to find in the literature:
 
 \begin{corollary*}[\ref{cor:object_frees}]
    The canonical inclusions
@@ -925,22 +925,11 @@ Let $\CCat_\iso$ denote the 2-category (or if one prefers, (2,1)-category) of ca
 These have underlying 1-adjunctions (e.g., $\Cat\leftrightarrows\TrCat$), which \cite{Abramsky2} constructs in detail, and the fact that these extend to 2-adjunctions will be proved in Corollary~\ref{cor:2_adjunctions_MonTrComp}. For the time being, we consider only their underlying 1-adjunctions, which we can compose with the discrete adjunction $\Set\leftrightarrows\Cat$ to obtain 1-adjunctions as to the right in \eqref{eqn:adjunctions}. We will write $\TM, \TT$, and $\TC$ for the respective monads induced on $\Set$. Note that $\TM$ is
 isomorphic to the free monoid monad, while $\TC$ is isomorphic to the free monoid-with-involution monad.%
 \footnote{
-   Note that $T_M$ is not the free-\emph{commutative}-monoid monad, even though the objects of
+   Note that $\TM$ is not the free-\emph{commutative}-monoid monad, even though the objects of
    $\MonCat$ are \emph{symmetric} monoidal categories, because the symmetries are encoded in natural
    isomorphisms, not equalities.
 }
-We will denote by $\FrMonCat$, $\FrTrCat$, and $\FrCompCat$ the full subcategories of $\MonCat$ and $\CompCat$
-respectively, spanned by objects which are free on a set. As always, these categories are isomorphic
-to the Kleisli categories of the monads:
-\begin{align}
-\nonumber
-\FrMonCat&\iso\Set_{\TM}
-\\\label{dia:TMvsFrMonCat}
-\FrTrCat&\iso\Set_{\TT}
-\\\nonumber
-\FrCompCat&\iso\Set_{\TC}.
-\end{align}
-Note that there is an isomorphism of categories $\FrMonCat\iso\FrTrCat$, because $\TM=\TT$.
+The Kleisli categories $\Set_{\TM}$, $\Set_{\TT}$, and $\Set_{\TC}$ are equivalent to the full subcategories of $\MonCat$, $\TrCat$, and $\CompCat$ (respectively) spanned by objects which are free on a set. Note that there is an isomorphism of categories $\Set_{\TM}\iso\Set_{\TT}$, because $\TM=\TT$.
 
 The forgetful functors between the categories of structured monoidal categories commute with the
 underlying set functors, i.e.~the following diagram commutes:
@@ -968,7 +957,7 @@ The component $\alpha_{\LabSet}$ of this transformation is simply the evident in
 monoid on a set $\LabSet$ into the free monoid-with-involution on $\LabSet$. In this way, $\UCM$
 induces a functor between the Kleisli categories in the other direction:
 \begin{equation}\label{eqn:FMC}
-   \FMC\colon\FrMonCat\to\FrCompCat
+   \FMC\colon\Set_{\TM}\to\Set_{\TC}
 \end{equation}
 
 
@@ -1573,16 +1562,18 @@ Property~\ref{item:createSEs} holds for the case $\scat{D}=\CCompCat$ because it
    \end{align*}
 \end{proof}
 
-Our next goal is to show, continuing the assumptions of the previous theorem, that $\pcat{D}$ is
+\subsection{Monoidal, traced, and compact categories that are free-on-objects}
+
+Our next goal is to show, continuing the assumptions of the Theorem~\ref{thm:strong_classifier}, that $\pcat{D}$ is
 2-equivalent to the full subcategory of $\scat{D}$ spanned by those objects which are
 ``free-on-objects''. To make this precise, we will further assume we have a 1-category $\cat{S}$,
 together with a fully-faithful functor $\Disc\colon\cat{S}\to\ccat{C}_0$ into the underlying
-category of $\ccat{C}$ with right adjoint $\Ob$, such that a morphism $f$ in $\ccat{C}$ is $\bo$ if
+category of $\ccat{C}$ with right adjoint $\Ob$, such that a morphism $f$ in $\ccat{C}_0$ is $\bo$ if
 and only if $\Ob f$ is an isomorphism. We will write $\ccatFrOb{D}$ for the full sub-2-category of
 $\scat{D}$ spanned by those objects $A$ for which there exists an object $s\in\cat{S}$ and a $\bo$
 morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
 
-\begin{theorem}\label{thm:object-free_strong_equivalence}
+\begin{theorem}\label{thm:free_on_objects_strong_equivalence}
    The composition
    \begin{equation*}
       \begin{tikzcd}[column sep=small]
@@ -1591,7 +1582,7 @@ morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
             & \pcat{D}
       \end{tikzcd}
    \end{equation*}
-   is an equivalence of 2-categories.
+   is a biequivalence of 2-categories.
 \end{theorem}
 \begin{proof}
    We first need to show that $\iota$ induces equivalences of categories
@@ -1648,6 +1639,16 @@ morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
    showing that $QA$ is free-on-objects.
 \end{proof}
 
+\begin{definition}\label{def:free_on_objects}
+
+Say that a monoidal (resp. traced or compact) category is \emph{free-on-objects} if there is a set $\cat{O}$ and a bijective-on-objects functor $\FM(\cat{O})\onto\cat{C}$, (resp. $\FT(\cat{O})\onto\cat{C}$ or $\FC(\cat{O})\onto\cat{C}$), where $\FM$, $\FT$, and $\FC$ are the free functors defined in \eqref{eqn:adjunctions}. Denote by
+$$
+\MMonFrObCat\ss\MMonCat\qquad \TTrFrObCat\ss\TTrCat\qquad\CCompFrObCat\ss\CCompCat
+$$
+the full 2-subcategories spanned by those monoidal (resp. traced or compact) categories $\cat{C}$ that are free-on-objects.
+
+\end{definition}
+
 \begin{corollary}\label{cor:object_frees}
    The canonical inclusions
    \begin{align*}
@@ -1658,6 +1659,11 @@ morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
    are biequivalences of 2-categories.
 \end{corollary}
 
+\begin{proof}
+
+Let $\cat{S}=\Set$, and let $\Disc\colon\cat{S}\leftrightarrows\Cat:\Ob$ be the discrete adjunction. Note that a morphism $f$ in $\CCat$ is $\bo$ if and only if $\Ob(f)$ is an isomorphism. The result follows by Example~\ref{ex:strictifiable} and Theorem~\ref{thm:free_on_objects_strong_equivalence}.
+
+\end{proof}
 
 \chapter{Background on equipments}\label{chap:background_equipments}
 
@@ -3024,7 +3030,7 @@ that these are morphisms of fibrations, i.e., that they preserve cartesian morph
 Theorem~\ref{thm:Mod_vs_bo} is a key piece in the proof of \ref{thm:TheoremB}, but we will need a
 modification for the proof of \ref{thm:TheoremA}. The latter results are concerned with compact
 (respectively traced) categories which are ``free-on-objects''.
-Theorem~\ref{thm:free-on-objects_strong_equivalence} provides the modification of
+Theorem~\ref{thm:free_on_objects_strong_equivalence} provides the modification of
 Theorem~\ref{thm:Mod_vs_bo} in a general form, which we then specialize to the cases of interest for
 the present paper in Corollary~\ref{cor:TrCat_ObjectFree}.
 
@@ -3187,7 +3193,7 @@ The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\re
 \end{corollary}
 \begin{proof}
    This follows directly from Lemma~\ref{lem:free-on-obs_inclusion} and
-   Theorem~\ref{thm:free-on-objects_strong_equivalence}, taking $\ccat{C}$ to be $\CCat$ for the first
+   Theorem~\ref{thm:free_on_objects_strong_equivalence}, taking $\ccat{C}$ to be $\CCat$ for the first
    row and $\CCatIso$ for the second two, and taking $\cat{S}=\Set$ for all three. The conditions
    involving $\cat{S}$ are obvious, and the rest of the assumptions are checked in
    Example~\ref{ex:strictifiable}.
