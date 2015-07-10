@@ -149,7 +149,7 @@ denote the underlying 1-category of $\TTrCat$.%
    objects in a category, 2-category, or double category will be denoted with the usual math font
    (e.g., $T\in\Ob\TrCat$). By the \emph{underlying 1-category} of a 2-category, we mean the one obtained by dropping (not quotienting by) the 2-cells.}
 Finally, let $\TrCat_{\LabSet}$ denote the subcategory in which the object set is fixed to be free
-on the set $\LabSet$, together with identity-on-objects functors. Let $\TTrFrObCat$ denote the full subcategory of $\TTrCat$ spanned by the traced categories that are object-free, and let $\TrFrObCat$ denote its underlying 1-category.
+on the set $\LabSet$, together with identity-on-objects functors. 
 
 For any monoidal category $\cat{M}$, we denote by $\cat{M}\alg=\ncat{Lax}(M,\Set)$ the category of lax
 functors $\cat{M}\to\Set$. Then there is an equivalence of categories
@@ -168,7 +168,7 @@ in~\cite{MacL--CTWM}. Let $\CCompCat$ (resp. $\CCompCatStrong$) denote the 2-cat
 denote the underlying 1-category of $\CCompCat$. As above, let $\CompCat_{\LabSet}$ denote the subcategory of
 compact categories whose object set is free on the set $\LabSet$ (so the objects are strings
 $o_1o_2o_3^*$ of labels $o_i\in\LabSet$ and their formal duals, and the tensor product is
-concatenation), together with identity-on-objects functors. Let $\CCompFrObCat$ denote the full subcategory of $\CCompCat$ spanned by the traced categories that are object-free, and let $\CompFrObCat$ denote its underlying 1-category. 
+concatenation), together with identity-on-objects functors. Let $\CCompFrObCat$ denote the full subcategory of $\CCompCat$ spanned by the traced categories that are free-on-objects, and let $\CompFrObCat$ denote its underlying 1-category. 
 
 There is an equivalence of categories
 \begin{equation}\label{eq:single_fiber_comp}
@@ -180,9 +180,9 @@ Equations \eqref{eq:single_fiber_tr} and \eqref{eq:single_fiber_comp} and the re
 
 The equivalence \eqref{eq:single_fiber_tr} (and likewise \eqref{eq:single_fiber_comp}) has two
 drawbacks: the object set of the traced category is fixed, and it is assumed to be a free monoid; we
-refer to this later condition using the term \emph{object-free}. Much of the work in this paper is
+refer to this later condition using the term \emph{free-on-objects}. Much of the work in this paper is
 to relax these two conditions. For the latter, we prove that the 2-category of traced categories and strong functors is
-equivalent to that of object-free traced categories and strict functors (see Corollary~\ref{cor:TrCat_ObjectFree}). For
+equivalent to that of free-on-objects traced categories and strict functors. For
 the former, we first explain what kind of variance is appropriate.
 
 There are adjunctions
@@ -194,13 +194,13 @@ There are adjunctions
 which induce monads $\TT$ (respectively $\TC$) on $\Set$. The monad $\TT$ is in fact isomorphic to
 the free monoid monad, while $\TC$ is isomorphic to the free monoid-with-involution monad.
 
-Let $\cat{C}$ and $\cat{C}'$ be object-free traced categories, such that $\Ob(\cat{C})$ is the free
+Let $\cat{C}$ and $\cat{C}'$ be free-on-objects traced categories, such that $\Ob(\cat{C})$ is the free
 monoid on a set $\LabSet$ and $\Ob(\cat{C}')$ is the free monoid on a set $\LabSet'$. A strict
 (traced) monoidal functor $F\colon \cat{C}\to \cat{C}'$ induces a homomorphism
 $\Ob F\colon\Ob(\cat{C})\to\Ob(\cat{C}')$ between the free monoids, or equivalently a function $\Ob
 F\colon\LabSet\to\TT(\LabSet')$. Let $\Set_{\TT}$ denote the Kleisli category of this monad, so $\Ob
 F$ is identified with a morphism in $\Set_{\TT}$. Likewise, if $\cat{C}$ and $\cat{C}'$ are
-object-free compact categories, then the object part $\Ob F$ of a strong functor
+free-on-objects compact categories, then the object part $\Ob F$ of a strong functor
 $F\colon\cat{C}\to\cat{C}'$ can be identified with a morphism in the Kleisli category $\Set_{\TC}$.
 
 The compact category $\LCob{\LabSet}$ varies functorially in $\LabSet\in\Set$, and we will see later
@@ -220,8 +220,11 @@ obtain functors which we denote
 By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we obtain fibrations for which
 the fiber over $\LabSet$ is equivalent, using \eqref{eq:single_fiber_tr} and
 \eqref{eq:single_fiber_comp}, to $\TrCat_{\LabSet}$ and $\CompCat_{\LabSet}$, respectively, for some
-fixed label set $\LabSet$. Our first main result says that the total categories of these fibrations
-are \emph{almost} equivalent to the 2-category $\TTrCat$ and $\CCompCat$.
+fixed label set $\LabSet$. 
+
+To state the next theorem, we give names to the categories described above. Let 
+$$\TTrFrObCat\ss\TTrCat \quad \text{and} \quad \CCompFrObCat\ss\CCompCat$$ 
+denote the full 2-subcategories spanned by the traced and compact categories (respectively) that are free-on-objects. Let $\TrFrObCat$ and $\CompFrObCat$ (respectively) denote their underlying 1-categories. 
 
 \begin{named}{Theorem A}\label{thm:TheoremA_statement}
   There are equivalences of 1-categories
@@ -237,16 +240,16 @@ are \emph{almost} equivalent to the 2-category $\TTrCat$ and $\CCompCat$.
 
 The proof of this result can be found in Section~\ref{sec:deducing}.
 
-\begin{remark}
-   It would be too much to ask \eqref{eqn:tracedCobAlg} to be an equivalence of 1-categories,
-   because $\TrCat$ throws away, rather than quotients by, natural isomorphisms in $\TTrCat$. On the
-   other hand, we cannot expect algebras on $\LCob{\LabSet}$ to say anything about 2-cells, so the
-   statement of \ref{thm:TheoremA_statement} is the best we can expect.
-
-   Another way of reading \ref{thm:TheoremA_statement} is that the Grothendieck construction (the
-   category on the left) is equivalent to the 1-category coskeleton of $\TTrCat$, that is, the
-   1-category obtained from $\TTrCat$ by identifying naturally isomorphic traced functors.
-\end{remark}
+%\begin{remark}
+%   It would be too much to ask \eqref{eqn:tracedCobAlg} to be an equivalence of 1-categories,
+%   because $\TrCat$ throws away, rather than quotients by, natural isomorphisms in $\TTrCat$. On the
+%   other hand, we cannot expect algebras on $\LCob{\LabSet}$ to say anything about 2-cells, so the
+%   statement of \ref{thm:TheoremA_statement} is the best we can expect.
+%
+%   Another way of reading \ref{thm:TheoremA_statement} is that the Grothendieck construction (the
+%   category on the left) is equivalent to the 1-category coskeleton of $\TTrCat$, that is, the
+%   1-category obtained from $\TTrCat$ by identifying naturally isomorphic traced functors.
+%\end{remark}
 
 \begin{remark}
    The most naive way of handling variation of the label set $\LabSet$ is to use plain functions
@@ -263,7 +266,7 @@ The proof of this result can be found in Section~\ref{sec:deducing}.
 \subsection{Generalization: Lax algebras on compact categories}
 
 In the course of proving \ref{thm:TheoremA_statement}, we will also prove a more general result
-which drops the restriction to object-free traced (and compact) categories.
+which drops the restriction to free-on-objects traced (and compact) categories.
 
 We will see (\ref{thm:orthogonal} and \ref{prop:CompProf_exact}) that there is a factorization
 system on $\TrCat$, and similarly on $\CompCat$, in which the left class consists of
@@ -590,7 +593,7 @@ Section~\ref{chap:equipments_monoidal_profunctors}. We prove that they are exact
 Section~\ref{sec:exactness_proofs} and, in Section~\ref{sec:special_CompProf}, prove the special
 properties about $\dCompProf$ which are at the core of our results. Indeed one might view the rest
 of the paper as a formal wrapper for the results in that section. In
-Section~\ref{sec:monoids_on_free} we deal with object-freeness, which we need for
+Section~\ref{sec:monoids_on_free} we deal with freeness-on-objects, which we need for
 \ref{thm:TheoremA}. We deduce it as well as \ref{thm:TheoremB} in Section~\ref{sec:deducing}.
 
 \section*{Acknowledgments}
@@ -2360,7 +2363,7 @@ $\dCompProf$ is an exact equipment (Proposition~\ref{prop:CompProf_exact}), the 
 can be identified with the bijective-on-objects functors out of $\cat{C}$ by
 Theorem~\ref{thm:Mod_vs_bo}; this establishes the equivalence $\CPsh(\dCompProf)\equiv\dCompProf^{\bo}$. Similar results hold for traced categories; see Proposition~\ref{Prop:mon_prof_equivalence} and Corollary~\ref{cor:Tr_mon_prof_equivalence}. These results suffice to prove \ref{thm:TheoremB}.
 
-The remaining difficulty is dealing with object-freeness, which we need for \ref{thm:TheoremA}. This is the purpose of Section~\ref{sec:monoids_on_free}. We deduce our main results in Section~\ref{sec:deducing}.
+The remaining difficulty is dealing with freeness-on-objects, which we need for \ref{thm:TheoremA}. This is the purpose of Section~\ref{sec:monoids_on_free}. We deduce our main results in Section~\ref{sec:deducing}.
 
 
 \section{Monoidal profunctors}\label{sec:monoidal_profunctors}
@@ -2931,12 +2934,12 @@ that these are morphisms of fibrations, i.e., that they preserve cartesian morph
 
 Theorem~\ref{thm:Mod_vs_bo} is a key piece in the proof of \ref{thm:TheoremB}, but we will need a
 modification for the proof of \ref{thm:TheoremA}. The latter results are concerned with compact
-(respectively traced) categories which are ``object-free''.
-Theorem~\ref{thm:object-free_strong_equivalence} provides the modification of
+(respectively traced) categories which are ``free-on-objects''.
+Theorem~\ref{thm:free-on-objects_strong_equivalence} provides the modification of
 Theorem~\ref{thm:Mod_vs_bo} in a general form, which we then specialize to the cases of interest for
 the present paper in Corollary~\ref{cor:TrCat_ObjectFree}.
 
-We first need to capture this idea of object-free monoidal categories in a general, abstract form.
+We first need to capture this idea of free-on-objects monoidal categories in a general, abstract form.
 Throughout this section we will consider an equipment $\dcat{D}$ together with a category $\cat{C}$
 and an adjunction
 \begin{equation}\label{eqn:adjunction_objectfree}
@@ -3019,8 +3022,8 @@ The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\re
 \begin{example}
    In the case of $\dFrMonProf\coloneqq\dMonProf_{\TM}$, Proposition~\ref{prop:objectfree_Mod_bo} provides an
    equivalence $\dMod(\dFrMonProf)\equiv\dMonProf^{\bo}_{\FM}$. We can think of
-   $\dMonProf^{\bo}_{\FM}$ as the equipment of object-free monoidal categories. Indeed, this just
-   says that an object-free monoidal category can be identified with a set $\LabSet$, a monoidal
+   $\dMonProf^{\bo}_{\FM}$ as the equipment of free-on-objects monoidal categories. Indeed, this just
+   says that a free-on-objects monoidal category can be identified with a set $\LabSet$, a monoidal
    category $\cat{C}$, and a bijective-on-objects strict monoidal functor $\FM(\LabSet)\to\cat{C}$.
 
    For the reader's convenience, we connect the notation of \eqref{eq:single_fiber_tr} and
@@ -3083,10 +3086,10 @@ The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\re
 
 The next theorem can be seen as saying that, for any exact equipment $\dcat{D}$ satisfying the
 conditions of the theorem (e.g., those of Definition~\ref{def:freeMon_equips}), the vertical
-2-category $\VVer(\dcat{D})$ is 2-equivalent to the sub-2-category spanned by the object-free
+2-category $\VVer(\dcat{D})$ is 2-equivalent to the sub-2-category spanned by the free-on-objects
 objects.\todo{Fix!}
 
-\begin{theorem}\label{thm:object-free_strong_equivalence}
+\begin{theorem}\label{thm:free-on-objects_strong_equivalence}
    Let $\dcat{D}$ be an exact equipment, $\pcat{D}$ and $\ccat{C}$ be 2-categories, and suppose we
    have a 2-functor $\iota\colon\VVer(\dcat{D})\to\pcat{D}$ and a 2-adjunction
    $F\colon\ccat{C}\leftrightarrows\VVer(\dcat{D}):\!U$, which together admit strong morphism classifiers (see Definition~\ref{def:strictifiable}).
@@ -3170,21 +3173,21 @@ objects.\todo{Fix!}
 \end{proof}
 
 
-The following corollary is a direct application of Theorem~\ref{thm:object-free_strong_equivalence}.
+The following corollary is a direct application of Theorem~\ref{thm:free-on-objects_strong_equivalence}.
 
 \begin{corollary}\label{cor:TrCat_ObjectFree}
    There are equipment functors (left) and underlying 2-functors (right)
    \begin{align*}
-      \dMod(\dFrMonProf)  &\to \dMonProf  & \MMon(\dFrMonProf)  &\to \MMonCatStrong \\
-      \dMod(\dFrTrProf)   &\to \dTrProf   & \MMon(\dFrTrProf)   &\to \TTrCatStrong  \\
-      \dMod(\dFrCompProf) &\to \dCompProf & \MMon(\dFrCompProf) &\to \CCompCatStrong
+      \dMod(\dFrMonProf)  &\to \dMonProf  & \MMon(\dFrMonProf)  &\To{\simeq} \MMonCatStrong \\
+      \dMod(\dFrTrProf)   &\to \dTrProf   & \MMon(\dFrTrProf)   &\To{\simeq} \TTrCatStrong  \\
+      \dMod(\dFrCompProf) &\to \dCompProf & \MMon(\dFrCompProf) &\To{\simeq} \CCompCatStrong
    \end{align*}
    which are fully faithful local equivalences of equipments and 2-equivalences of 2-categories,
    respectively.
 \end{corollary}
 \begin{proof}
    This follows directly from Lemma~\ref{lem:free-on-obs_inclusion} and
-   Theorem~\ref{thm:object-free_strong_equivalence}, taking $\ccat{C}$ to be $\CCat$ for the first
+   Theorem~\ref{thm:free-on-objects_strong_equivalence}, taking $\ccat{C}$ to be $\CCat$ for the first
    row and $\CCatIso$ for the second two, and taking $\cat{S}=\Set$ for all three. The conditions
    involving $\cat{S}$ are obvious, and the rest of the assumptions are checked in
    Example~\ref{ex:strictifiable}.
@@ -3252,15 +3255,14 @@ which follow entirely from earlier work. They will be used to prove of our main 
 
 \section{Deducing the main results}\label{sec:deducing}
 
-\begin{named}{Theorem A}\label{thm:TheoremA}
-  There is a fully faithful functor of 1-categories
-  \begin{equation*}
-     \int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrCat
-  \end{equation*}
-  such that the induced 2-functor $\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg\to\TTrCatStrong$ is
-  2-essentially surjective.
-
-  The above statements also hold when $\TT$ is replaced by $\TC$ and when $\TrCat$ and $\TTrCatStrong$ are replaced by $\CompCat$ and $\CCompCatStrong$.
+\begin{named}{Theorem A}\label{thm:TheoremA_statement}
+  There are equivalences of 1-categories
+  \begin{align*}
+     &\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrFrObCat
+     \\
+     &\int^{\LabSet\in\Set_{\TC}}(\LCob{\LabSet})\alg \to \CompFrObCat
+  \end{align*}
+  
 \end{named}
 
 \begin{proof}
@@ -3272,7 +3274,7 @@ which follow entirely from earlier work. They will be used to prove of our main 
             && \CPsh(\dFrTrProf) \ar[dl,two heads] \\
          & \FrTrCat &
       \end{tikzcd}
-      \hspace{1.2em}
+	\quad\text{and}\quad
       \begin{tikzcd}[column sep=-2em]
          \int\limits^{\mathclap{\LabSet\in\Set_{\TC}}}(\LCob{\LabSet})\alg
                \ar[rr,phantom,"\iso"] \ar[dr,two heads]
@@ -3280,8 +3282,17 @@ which follow entirely from earlier work. They will be used to prove of our main 
          & \FrCompCat &
       \end{tikzcd}
    \end{equation*}
-   The result then follows directly from Corollary~\ref{cor:TrCat_ObjectFree} and
-   Lemmas~\ref{lem:FrCompProf_Psh_Mon} and~\ref{lem:FrMonCompProf_Psh_Mon}.
+   By Lemmas~\ref{lem:FrCompProf_Psh_Mon} and~\ref{lem:FrMonCompProf_Psh_Mon} we have equivalences of 1-categories
+   $$
+   \CPsh(\dFrTrProf)\simeq\Mon(\dFrTrProf)\quad\text{and}\quad\CPsh(\dFrCompProf)\simeq\Mon(\dFrCompProf).
+   $$ 
+   By Corollary~\ref{cor:TrCat_ObjectFree} and Corollary~\ref{cor:object_frees} we have equivalences of 2-categories
+   $$
+   \MMon(\dFrTrProf)\simeq\TTrFrObCat\quad\text{and}\quad\MMon(\dFrCompProf)\simeq\CCompFrObCat.
+   $$
+The result follows because $\TrFrObCat$ and $\CompFrObCat$ are the underlying 1-categories.
+
+\todo{ok?}
 \end{proof}
 
 \begin{named}{Theorem B}\label{thm:TheoremB}
