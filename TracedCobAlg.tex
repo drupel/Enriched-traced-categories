@@ -1248,6 +1248,7 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
    their composition is defined by a pullback of spans, and a 2-cell in $\dSpan$ is a commutative
    diagram in $\Set$ of the obvious shape. The cartesian 2-cells in this equipment are obtained by
    taking a limit in $\Set$.
+
 \end{example}
 
 \begin{definition}\label{def:local_equivalence}
@@ -3210,6 +3211,9 @@ reading the results in this section.
 $\dFrMonProf$ is just the full sub-equipment of $\dMonProf$ spanned by the monoidal categories which
 are free on a set, and similarly for the other two. We will write
 $\FrMonCat\coloneqq\Ver(\dFrMonProf)$, etc.
+<<<<<<< HEAD
+>>>>>>> origin/new_version
+=======
 >>>>>>> origin/new_version
 
    We next must show that the morphism $p_A\colon A\pto QA$ has the following universal property: for
@@ -3255,6 +3259,7 @@ $\FrMonCat\coloneqq\Ver(\dFrMonProf)$, etc.
          \twocelliso[pos=.65]{A}{\rho_f}
       \end{tikzcd}
    \end{equation*}
+<<<<<<< HEAD
    We can check directly that the underlying 2-cell of $\rho_f\hat{f}q_A$ is the identity on $Uf$,
    \begin{align*}
       U(\rho_f\hat{f}q_A) &= \rho_{Uf}U(\hat{f})U(r_A)\eta_{UA} \\
@@ -3284,6 +3289,16 @@ $\FrMonCat\coloneqq\Ver(\dFrMonProf)$, etc.
       \end{tikzcd}
    \end{equation}
    It will then suffice to show that the diagram
+=======
+\end{proposition}
+
+
+\begin{lemma}\label{lem:free-on-obs_inclusion}
+   Let $\dcat{D}$ be an exact equipment and $\cat{S}$ a category, together with an adjunction
+   $F\colon\cat{S}\leftrightarrows\dcat{D}_0:\!U$, and let $T=UF$ be the induced monad. Suppose
+   moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{S})$. Then the following composite is a fully
+   faithful local equivalence:
+>>>>>>> origin/new_version
    \begin{equation*}
       \begin{tikzcd}
          FUA \ar[r,"\tilde{f}"] \ar[d,two heads,"r_A"']
