@@ -237,9 +237,9 @@ denote the full 2-subcategories spanned by the traced and compact categories (re
   
 \end{named}
 
-The proof of this result can be found in Section~\ref{sec:deducing}. In order to see how the free-on-objects traced (resp. compact) categories relate to general traced categories, we prove the following result as Corollary \ref{cor:object_frees}, which is well-known but difficult to find in the literature:
+\todo{add something about corollary~\ref{cor:object_frees}.}
 
-\todo{FILL IN}
+The proof of this result can be found in Section~\ref{sec:deducing}.
 
 %\begin{remark}
 %   It would be too much to ask \eqref{eqn:tracedCobAlg} to be an equivalence of 1-categories,
@@ -264,7 +264,7 @@ The proof of this result can be found in Section~\ref{sec:deducing}. In order to
    e.g.~\cite{HackneyRobertson}.)
 \end{remark}
 
-\subsection{Generalization: Lax algebras on compact categories}\todo{Is it a generalization?}
+\subsection{Generalization: Lax algebras on compact categories}
 
 In the course of proving \ref{thm:TheoremA_statement}, we will also prove a more general result
 which drops the restriction to free-on-objects traced (and compact) categories.
@@ -3102,11 +3102,12 @@ The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\re
 \end{proposition}
 
 \begin{example}
-   In the case of $\dFrMonProf\coloneqq\dMonProf_{\TM}$, Proposition~\ref{prop:objectfree_Mod_bo} provides an
-   equivalence $\dMod(\dFrMonProf)\equiv\dMonProf^{\bo}_{\FM}$. We can think of
-   $\dMonProf^{\bo}_{\FM}$ as the equipment of free-on-objects monoidal categories. Indeed, this just
-   says that a free-on-objects monoidal category can be identified with a set $\LabSet$, a monoidal
-   category $\cat{C}$, and a bijective-on-objects strict monoidal functor $\FM(\LabSet)\to\cat{C}$.
+   In the case of $\dFrMonProf\coloneqq\dMonProf_{\TM}$, Proposition~\ref{prop:objectfree_Mod_bo}
+   provides an equivalence $\dMod(\dFrMonProf)\equiv\dMonProf^{\bo}_{\FM}$. We can think of
+   $\dMonProf^{\bo}_{\FM}$ as the equipment of free-on-objects monoidal categories. Indeed, this
+   just says that a free-on-objects monoidal category can be identified with a set $\LabSet$, a
+   monoidal category $\cat{C}$, and a bijective-on-objects strict monoidal functor
+   $\FM(\LabSet)\to\cat{C}$.
    \todo{Prove equivalence with $\MMonFrObCat$, etc.?}
 
    For the reader's convenience, we connect the notation of \eqref{eq:single_fiber_tr} and
@@ -3247,7 +3248,7 @@ which follow entirely from earlier work. They will be used to prove of our main 
 
 \section{Deducing the main results}\label{sec:deducing}
 
-\begin{named}{Theorem A}\label{thm:TheoremA}
+\begin{named}{Theorem A}\label{thm:TheoremA_statement}
   There are equivalences of 1-categories
   \begin{align*}
      &\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrFrObCat
