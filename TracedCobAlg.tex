@@ -135,9 +135,9 @@ shift'' between the second and third columns.
    \label{subsec:statement_of_main_thm}
 
 The relationship between these interpretations of string diagrams is most easily made precise when
-the set $\LabSet$ of labels is fixed. Let $\TTrCat$ denote the 2-category of traced categories,
-traced strict monoidal functors, and monoidal natural isomorphisms \cite{HK}, and let $\TrCat$
-denote its underlying 1-category.\todo{Comment on underlying 1-category}%
+the set $\LabSet$ of labels is fixed. Let $\TTrCat$ (resp. $\TTrCatStrong$) denote the 2-category of traced categories,
+traced strict (resp. strong) monoidal functors, and monoidal natural isomorphisms \cite{HK}, and let $\TrCat$
+denote the underlying 1-category of $\TTrCat$.%
 \footnote{
    We use a similar notational convention throughout this paper. We denote named 1-categories,
    monoidal categories, and operads with bold roman letters, e.g., $\ncat{Cob}$, and unnamed
@@ -149,8 +149,9 @@ denote its underlying 1-category.\todo{Comment on underlying 1-category}%
    objects in a category, 2-category, or double category will be denoted with the usual math font
    (e.g., $T\in\Ob\TrCat$). By the \emph{underlying 1-category} of a 2-category, we mean the one obtained by dropping (not quotienting by) the 2-cells.}
 Finally, let $\TrCat_{\LabSet}$ denote the subcategory in which the object set is fixed to be free
-on the set $\LabSet$, together with identity-on-objects functors. For
-any monoidal category $\cat{M}$, we denote by $\cat{M}\alg=\ncat{Lax}(M,\Set)$ the category of lax
+on the set $\LabSet$, together with identity-on-objects functors. Let $\TTrFrObCat$ denote the full subcategory of $\TTrCat$ spanned by the traced categories that are object-free, and let $\TrFrObCat$ denote its underlying 1-category.
+
+For any monoidal category $\cat{M}$, we denote by $\cat{M}\alg=\ncat{Lax}(M,\Set)$ the category of lax
 functors $\cat{M}\to\Set$. Then there is an equivalence of categories
 \begin{equation}\label{eq:single_fiber_tr}
    \LCob{\LabSet}\alg\equiv\TrCat_{\LabSet}.
@@ -163,11 +164,11 @@ will be generalized in \ref{thm:TheoremA_statement} and proven as such in Sectio
 For each of our main results about traced categories in this paper, we will also prove an analogous
 result about compact closed symmetric monoidal categories, hereafter \emph{compact categories}. The
 definition of compact category can be found in Section~\ref{sec:compact_and_int}, or
-in~\cite{MacL--CTWM}. Let $\CCompCat$ denote the 2-category of compact categories, and let $\CompCat$
-denote its underlying 1-category. As above, let $\CompCat_{\LabSet}$ denote the subcategory of
+in~\cite{MacL--CTWM}. Let $\CCompCat$ (resp. $\CCompCatStrong$) denote the 2-category of compact categories and strict (resp. strong) functors, and let $\CompCat$
+denote the underlying 1-category of $\CCompCat$. As above, let $\CompCat_{\LabSet}$ denote the subcategory of
 compact categories whose object set is free on the set $\LabSet$ (so the objects are strings
 $o_1o_2o_3^*$ of labels $o_i\in\LabSet$ and their formal duals, and the tensor product is
-concatenation), together with identity-on-objects functors.
+concatenation), together with identity-on-objects functors. Let $\CCompFrObCat$ denote the full subcategory of $\CCompCat$ spanned by the traced categories that are object-free, and let $\CompFrObCat$ denote its underlying 1-category. 
 
 There is an equivalence of categories
 \begin{equation}\label{eq:single_fiber_comp}
@@ -180,8 +181,8 @@ Equations \eqref{eq:single_fiber_tr} and \eqref{eq:single_fiber_comp} and the re
 The equivalence \eqref{eq:single_fiber_tr} (and likewise \eqref{eq:single_fiber_comp}) has two
 drawbacks: the object set of the traced category is fixed, and it is assumed to be a free monoid; we
 refer to this later condition using the term \emph{object-free}. Much of the work in this paper is
-to relax these two conditions. For the latter, we prove that the 2-category of traced categories is
-equivalent to that of object-free traced categories (see Corollary~\ref{cor:TrCat_ObjectFree}). For
+to relax these two conditions. For the latter, we prove that the 2-category of traced categories and strong functors is
+equivalent to that of object-free traced categories and strict functors (see Corollary~\ref{cor:TrCat_ObjectFree}). For
 the former, we first explain what kind of variance is appropriate.
 
 There are adjunctions
@@ -223,16 +224,16 @@ fixed label set $\LabSet$. Our first main result says that the total categories 
 are \emph{almost} equivalent to the 2-category $\TTrCat$ and $\CCompCat$.
 
 \begin{named}{Theorem A}\label{thm:TheoremA_statement}
-  There is a fully faithful functor of 1-categories
-  \begin{equation}\label{eqn:tracedCobAlg}
-     \int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrCat
-  \end{equation}
-  such that the induced 2-functor $\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg\to\TTrCat$ is
-  2-essentially surjective.
-
-  The above statements also hold when $\TT, \TrCat$, and $\TTrCat$ are replaced by $\TC, \CompCat$,
-  and $\CCompCat$, respectively.
+  There are equivalences of 1-categories
+  \begin{align*}
+     &\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrFrObCat
+     \\
+     &\int^{\LabSet\in\Set_{\TC}}(\LCob{\LabSet})\alg \to \CompFrObCat
+  \end{align*}
+  
 \end{named}
+
+\todo{add something about corollary~\ref{cor:object_frees}.}
 
 The proof of this result can be found in Section~\ref{sec:deducing}.
 
@@ -1047,7 +1048,9 @@ the strict 2-categorical case, where $\cat{V}=\Cat$.
 \end{definition}
 
 \section{Background on 2-categories}\label{sec:background_2-categories}
-\todo[inline]{Move factorization system stuff to Section~\ref{sec:factorization_systems}?}
+
+This section is mostly independent from the rest of the paper. It is really only used to prove Corollary~\ref{cor:object_frees}.
+
 \begin{definition}\label{def:fully-faithful}
    Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{fully-faithful} if the
    functor $\ccat{C}(x,a)\to\ccat{C}(x,b)$ induced by composition with $f$ is fully-faithful for
@@ -1348,7 +1351,7 @@ For the following definition, one may keep in mind the case $\scat{D}=\MMonCat$,
 
 
 \begin{definition}\label{def:strictifiable}
-Let $\scat{D}$, $\pcat{D}$, and $\ccat{C}$ be 2-categories, and let $U\colon\pcat{D}\to\ccat{C}$ and $\iota\colon\scat{D}\to\pcat{D}$ be 2-functors. We say that the collection $(\scat{D},\pcat{D},\ccat{C},U,\iota)$ is \emph{strictifiable} \todo{change?}if it satisfies the following properties:
+Let $\scat{D}$, $\pcat{D}$, and $\ccat{C}$ be 2-categories, and let $U\colon\pcat{D}\to\ccat{C}$ and $\iota\colon\scat{D}\to\pcat{D}$ be 2-functors. We say that the collection $(\scat{D},\pcat{D},\ccat{C},U,\iota)$ \emph{admits strong morphism classifiers} if it satisfies the following properties:
 \begin{enumerate}
  \item\label{item:boff} 
    The 2-category $\scat{D}$ has a bijective-on-objects/fully-faithful factorization.
@@ -1377,7 +1380,7 @@ Let $\scat{D}$, $\pcat{D}$, and $\ccat{C}$ be 2-categories, and let $U\colon\pca
 \end{definition}
 
 \begin{remark}
-   Other than those involving bijective-on-objects or fully-faithful morphisms, all of the properties enumerated in Definition~\ref{def:strictifiable} (namely, Properties~\ref{item:ioofflff}, \ref{item:arrowMPO}, \ref{item:left2adj}, \ref{item:pres_MPO}, \ref{item:reflids}, and \ref{item:createSEs} \todo{correct?}) hold
+   Other than those involving bijective-on-objects or fully-faithful morphisms, all of the properties enumerated in Definition~\ref{def:strictifiable} (namely, Properties~\ref{item:ioofflff}, \ref{item:arrowMPO}, \ref{item:left2adj}, \ref{item:pres_MPO}, \ref{item:reflids}, and \ref{item:createSEs}) hold
    whenever $\scat{D}$ is the 2-category of strict algebras and strict morphisms for a 2-monad on
    $\ccat{C}$, and $\pcat{D}$ is the 2-category of strict algebras and pseudo-morphisms. While our
    main examples can be seen to be algebras for some 2-monad, we have found it easier to isolate
@@ -1395,7 +1398,7 @@ Suppose that the collection $(\scat{D},\pcat{D},\ccat{C},\iota,U)$ is defined as
 \item $\scat{D}=\TTrCat, \quad \pcat{D}=\TTrCatStrong, \quad \ccat{C}=\CCat_\iso$, where $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion and $U\colon\pcat{D}\to\ccat{C}$ is the forgetful functor (recall that $\CCat_\iso$ is the 2-category of categories, functors, and natural isomorphisms); or
 \item $\scat{D}=\CCompCat, \quad \pcat{D}=\CCompCatStrong, \quad \ccat{C}=\CCat_\iso$, where $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion and $U\colon\pcat{D}\to\ccat{C}$ is the forgetful functor.
 \end{itemize}
-We will see that in each case the collection is strictifiable. 
+We will see that in each case the collection admits strong morphism classifiers. 
 
 Property \ref{item:boff} is proved as \ref{lem:(bo,ff)_really_is}. Property \ref{item:ioofflff} is obvious for $\MMonCat$ and $\CCompCat$, and by definition (see Remark~\ref{rem:traced_2morphisms}) for $\TrCat$.  Property \ref{item:arrowMPO} is shown in Remark~\ref{rem:pres_joint_detect}. Property~\ref{item:left2adj} is shown in Corollary~\ref{cor:2_adjunctions_MonTrComp}. Property~\ref{item:pres_ff} is shown in Proposition~\ref{prop:boff_well_named}. Property~\ref{item:pres_MPO} is shown in Remark~\ref{rem:pres_joint_detect}. Property~\ref{item:reflids} is obvious: if $\alpha\colon F\to G$ is a 2-cell in $\scat{D_s}$ whose underlying natural transformation (in $\CCat$) is the identity then it is the identity. It remains to prove Property~\ref{item:createSEs}; we first treat the case $\scat{D}=\MMonCat$.
 
@@ -1403,7 +1406,7 @@ Suppose that $F\colon A\to B$ is a strict monoidal functor and that there is a s
 $$
 gx\otimes gy\To{\epsilon^{-1}}gf(gx\otimes gy)=g(fgx\otimes fgy)=g(x\otimes y).
 $$
-The requisite equations can be checked by direct computation, or see \cite{Kelly}.
+The requisite equations can be checked by direct computation, though they actually follow from a more general theory (doctrinal adjunctions); see \cite{Kelly}.
 
 Property~\ref{item:createSEs} holds for the case $\scat{D}=\CCompCat$ because it is a full subcategory of $\MMonCat$. For the case $\scat{D}=\TTrCat$, suppose given a strict traced functor $F\colon A\to B$, and let $G\colon B\to A$ be the associated monoidal functor constructed above. To see that it is traced, note that $B\To{G}A\To{F}B$ is the identity, so $G$ is fully faithful, and the result follows from Lemma~\ref{lemma:fully_faithful_and_trace}.
 
@@ -1412,7 +1415,7 @@ Property~\ref{item:createSEs} holds for the case $\scat{D}=\CCompCat$ because it
 The remainder of this section will be dedicated to the proof of the following theorem:
 
 \begin{theorem}\label{thm:strong_classifier}
-   Suppose that $(\scat{D},\pcat{D},\ccat{C},U,\iota)$ is strictifiable. Then the functor $\iota$ has a left 2-adjoint $Q\colon\pcat{D}\to\scat{D}$. The
+   Suppose that $(\scat{D},\pcat{D},\ccat{C},U,\iota)$ admits strong morphism classifiers. Then the functor $\iota$ has a left 2-adjoint $Q\colon\pcat{D}\to\scat{D}$. The
    counit $q_A\colon QA\to A$ of this adjunction is given by factoring the counit of the
    $F\dashv U\iota$ adjunction:
    \begin{equation}
@@ -1558,6 +1561,11 @@ $\rho_{Uf}s_{Uf}=\rho_{Uf}U(\hat{f}''r_A)\eta_{UA}$:
       \twocelliso[pos=.6]{A}{\rho_{Uf}}
    \end{tikzcd}
 \end{align*}
+
+\begin{corollary}\label{cor:object_frees}
+ $\CompFrObCat$ is equivalent to $\CCompCatStrong$, etc.\todo{fill in}
+\end{corollary}
+
 
 \chapter{Background on equipments}\label{chap:background_equipments}
 
@@ -3076,13 +3084,12 @@ The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\re
 The next theorem can be seen as saying that, for any exact equipment $\dcat{D}$ satisfying the
 conditions of the theorem (e.g., those of Definition~\ref{def:freeMon_equips}), the vertical
 2-category $\VVer(\dcat{D})$ is 2-equivalent to the sub-2-category spanned by the object-free
-objects.
+objects.\todo{Fix!}
 
 \begin{theorem}\label{thm:object-free_strong_equivalence}
    Let $\dcat{D}$ be an exact equipment, $\pcat{D}$ and $\ccat{C}$ be 2-categories, and suppose we
    have a 2-functor $\iota\colon\VVer(\dcat{D})\to\pcat{D}$ and a 2-adjunction
-   $F\colon\ccat{C}\leftrightarrows\VVer(\dcat{D}):\!U$ all satisfying the assumptions of
-   Section~\ref{sec:strict_vs_strong}.
+   $F\colon\ccat{C}\leftrightarrows\VVer(\dcat{D}):\!U$, which together admit strong morphism classifiers (see Definition~\ref{def:strictifiable}).
 
    Suppose further that there is a 1-category $\cat{S}$ and 1-adjunction
    $\Disc\colon\cat{S}\leftrightarrows\ccat{C}_0:\!\Ob$ to the underlying 1-category $\ccat{C}_0$ of
@@ -3250,10 +3257,10 @@ which follow entirely from earlier work. They will be used to prove of our main 
   \begin{equation*}
      \int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrCat
   \end{equation*}
-  such that the induced 2-functor $\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg\to\TTrCat$ is
+  such that the induced 2-functor $\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg\to\TTrCatStrong$ is
   2-essentially surjective.
 
-  The above statements also hold when $\TT$ is replaced by $\TC$ and when $\TrCat$ and $\TTrCat$ are replaced by $\CompCat$ and $\CCompCat$.
+  The above statements also hold when $\TT$ is replaced by $\TC$ and when $\TrCat$ and $\TTrCatStrong$ are replaced by $\CompCat$ and $\CCompCatStrong$.
 \end{named}
 
 \begin{proof}
