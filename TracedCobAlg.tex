@@ -1370,7 +1370,7 @@ Let $\scat{D}$, $\pcat{D}$, and $\ccat{C}$ be 2-categories, and let $U\colon\pca
 %   $U\iota$ has a left 1-adjoint and preserves arrow objects; see Lemma~\ref{lem:2-adjunction}).
  \item\label{item:pres_ff}
    The functor $U\iota$ preserves fully-faithful morphisms (equivalently, $F$ preserves
-   bijective-on-objects morphisms), and $U\iota$ also preserves bijective-on-objects morphisms.
+   bijective-on-objects morphisms).
  \item\label{item:pres_MPO}
    The functor $U$ preserves mapping path objects.
  \item\label{item:reflids}
@@ -1416,8 +1416,6 @@ Property~\ref{item:createSEs} holds for the case $\scat{D}=\CCompCat$ because it
 
 \end{example}
 
-The remainder of this section will be dedicated to the proof of the following theorem:
-
 \begin{theorem}\label{thm:strong_classifier}
    Suppose that $(\scat{D},\pcat{D},\ccat{C},U,\iota)$ admits strong morphism classifiers. Then the functor $\iota$ has a left 2-adjoint $Q\colon\pcat{D}\to\scat{D}$. The
    counit $q_A\colon QA\to A$ of this adjunction is given by factoring the counit of the
@@ -1430,144 +1428,227 @@ The remainder of this section will be dedicated to the proof of the following th
       \end{tikzcd}
    \end{equation}
 \end{theorem}
+\begin{proof}
+   We will begin by showing that $q_A$ is a surjective equivalence for any $A$, whose inverse
+   $p_A\colon A\pto QA$ will become the unit of the $Q\dashv\iota$ adjunction. Because $U$ creates
+   surjective equivalences, it suffices to show that $Uq_A$ is a surjective equivalence. But $q_A$
+   is fully-faithful by construction, so $Uq_A$ is fully-faithful, hence by
+   Lemma~\ref{lem:fully-faithful_surjective_equiv} it suffices to construct a section of $Uq_A$. We can
+   easily check that $Ur_A\circ\eta_{UA}$ is such a section:
+   \begin{equation*}
+      \begin{tikzcd}
+         UA \ar[r,"\eta_{UA}"] \ar[rrd,bend right=18,equal]
+            & UFUA \ar[r,"Ur_A"] \ar[dr,"U\epsilon_A"' inner sep=0pt]
+            & UQA \ar[d,hook,"Uq_A"] \\
+         && UA
+      \end{tikzcd}
+   \end{equation*}
+   Thus there is a unique surjective equivalence $p_A\dashv q_A$ in $\scat{D}$ such that
+   $Up_A= Ur_A\circ\eta_{UA}$.
 
-We will begin by showing that $q_A$ is a surjective equivalence for any $A$, whose inverse
-$p_A\colon A\pto QA$ will become the unit of the $Q\dashv\iota$ adjunction. Because $U$ creates
-surjective equivalences, it suffices to show that $Uq_A$ is a surjective equivalence. But $q_A$
-is fully-faithful by construction, so $Uq_A$ is fully-faithful, hence by
-Lemma~\ref{lem:fully-faithful_surjective_equiv} it suffices to construct a section of $Uq_A$. We can
-easily check that $Ur_A\circ\eta_{UA}$ is such a section:
-\begin{equation*}
-   \begin{tikzcd}
-      UA \ar[r,"\eta_{UA}"] \ar[rrd,bend right=18,equal]
-         & UFUA \ar[r,"Ur_A"] \ar[dr,"U\epsilon_A"' inner sep=0pt]
-         & UQA \ar[d,hook,"Uq_A"] \\
-      && UA
-   \end{tikzcd}
-\end{equation*}
-Thus there is a unique surjective equivalence $p_A\dashv q_A$ in $\scat{D}$ such that
-$Up_A= Ur_A\circ\eta_{UA}$.
+   We next must show that the morphism $p_A\colon A\pto QA$ has the following universal property: for
+   any strong morphism $f\colon A\pto B$ there is a unique strict morphism $f'\colon QA\to B$ such that
+   $f=f'\circ p_A$. From this, it follows that $Q$ extends to a 1-functor which is left adjoint to
+   $\iota$. It then follows from Lemma~\ref{lem:2-adjunction} that $Q$ extends to a 2-functor which is
+   left 2-adjoint to $\iota$, completing the proof of the theorem.
 
-We next must show that the morphism $p_A\colon A\pto QA$ has the following universal property: for
-any strong morphism $f\colon A\pto B$ there is a unique strict morphism $f'\colon QA\to B$ such that
-$f=f'\circ p_A$. From this, it follows that $Q$ extends to a 1-functor which is left adjoint to
-$\iota$. It then follows from Lemma~\ref{lem:2-adjunction} that $Q$ extends to a 2-functor which is
-left 2-adjoint to $\iota$, completing the proof of the theorem.
+   First, given an $f\colon A\pto B$, define a strict morphism $\tilde{f}\colon FUA\to\Path{f}$ as the
+   adjoint of the section $s_{Uf}\colon UA\to U(\Path{f})=\Path{Uf}$ defined as in
+   Lemma~\ref{lem:mapping_path_equiv}, i.e.\ $\tilde{f}\coloneqq\epsilon_{\Path{f}}\circ F(s_{Uf})$.
+   It follows by adjointness that the following diagram commutes:
+   \begin{equation*}
+      \begin{tikzcd}
+         & FUA \ar[dl,"\epsilon_A"'] \ar[d,"\tilde{f}"] \ar[r,"FUf"]
+            & FUB \ar[d,"\epsilon_B"] \\
+         A & \Path{f} \ar[l,hook',"\pi_A"] \ar[r,"\pi_B"']
+            & B
+      \end{tikzcd}
+   \end{equation*}
+   Then in the diagram
+   \begin{equation*}
+      \begin{tikzcd}
+         FUA \ar[r,"\tilde{f}"] \ar[d,two heads,"r_A"']
+            & \Path{f} \ar[d,hook,"\pi_A"] \ar[r,"\pi_B"]
+            & B \\
+         QA \ar[r,"q_A"'] \ar[ur,dashed,"\hat{f}" inner sep=0pt] & A
+      \end{tikzcd}
+   \end{equation*}
+   there is a unique morphism $\hat{f}$ making the square commute by orthogonality, and we define
+   $f'\coloneqq \pi_B\circ\hat{f}$.
 
-First, given an $f\colon A\pto B$, define a strict morphism $\tilde{f}\colon FUA\to\Path{f}$ as the
-adjoint of the section $s_{Uf}\colon UA\to U(\Path{f})=\Path{Uf}$ defined as in
-Lemma~\ref{lem:mapping_path_equiv}, i.e.\ $\tilde{f}\coloneqq\epsilon_{\Path{f}}\circ F(s_{Uf})$.
-It follows by adjointness that the following diagram commutes:
-\begin{equation*}
-   \begin{tikzcd}
-      & FUA \ar[dl,"\epsilon_A"'] \ar[d,"\tilde{f}"] \ar[r,"FUf"]
-         & FUB \ar[d,"\epsilon_B"] \\
-      A & \Path{f} \ar[l,hook',"\pi_A"] \ar[r,"\pi_B"']
-         & B
-   \end{tikzcd}
-\end{equation*}
-Then in the diagram
-\begin{equation*}
-   \begin{tikzcd}
-      FUA \ar[r,"\tilde{f}"] \ar[d,two heads,"r_A"']
-         & \Path{f} \ar[d,hook,"\pi_A"] \ar[r,"\pi_B"]
-         & B \\
-      QA \ar[r,"q_A"'] \ar[ur,dashed,"\hat{f}" inner sep=0pt] & A
-   \end{tikzcd}
-\end{equation*}
-there is a unique morphism $\hat{f}$ making the square commute by orthogonality, and we define
-$f'\coloneqq \pi_B\circ\hat{f}$.
+   We next must check that our definition of $f'$ satisfies $f=f'\circ p_A$. We can construct an
+   isomorphism 2-cell $f\iso f'\circ p_A$:
+   \begin{equation*}
+      \begin{tikzcd}[column sep=tiny]
+         & QA \ar[dr,hook,"q_A" inner sep=1pt] \ar[rr,"\hat{f}"]
+            && |[alias=domA]| \Path{f} \ar[dl,hook,"\pi_A"' inner sep=1pt]
+               \ar[dr,"\pi_B" inner sep=1pt] & \\
+         A \ar[ur,squiggly,"q_A" inner sep=1pt] \ar[rr,equal]
+            && A \ar[rr,squiggly,"f"' codA]
+            && B
+         \twocelliso[pos=.65]{A}{\rho_f}
+      \end{tikzcd}
+   \end{equation*}
+   We can check directly that the underlying 2-cell of $\rho_f\hat{f}q_A$ is the identity on $Uf$,
+   \begin{align*}
+      U(\rho_f\hat{f}q_A) &= \rho_{Uf}U(\hat{f})U(r_A)\eta_{UA} \\
+         &= \rho_{Uf}U(\tilde{f})\eta_{UA} \\
+         &= \rho_{Uf}s_{Uf} \\
+         &= 1_{Uf}
+   \end{align*}
+   and since $U$ reflects identity 2-cells, it follows that $\rho_f\hat{f}q_A$ is the identity on
+   $f=f'\circ p_A$.
 
-We next must check that our definition of $f'$ satisfies $f=f'\circ p_A$. We can construct an
-isomorphism 2-cell $f\iso f'\circ p_A$:
-\begin{equation*}
-   \begin{tikzcd}[column sep=tiny]
-      & QA \ar[dr,hook,"q_A" inner sep=1pt] \ar[rr,"\hat{f}"]
-         && |[alias=domA]| \Path{f} \ar[dl,hook,"\pi_A"' inner sep=1pt]
-            \ar[dr,"\pi_B" inner sep=1pt] & \\
-      A \ar[ur,squiggly,"q_A" inner sep=1pt] \ar[rr,equal]
-         && A \ar[rr,squiggly,"f"' codA]
-         && B
-      \twocelliso[pos=.65]{A}{\rho_f}
-   \end{tikzcd}
-\end{equation*}
-We can check directly that the underlying 2-cell of $\rho_f\hat{f}q_A$ is the identity on $Uf$,
-\begin{align*}
-   U(\rho_f\hat{f}q_A) &= \rho_{Uf}U(\hat{f})U(r_A)\eta_{UA} \\
-      &= \rho_{Uf}U(\tilde{f})\eta_{UA} \\
-      &= \rho_{Uf}s_{Uf} \\
-      &= 1_{Uf}
-\end{align*}
-and since $U$ reflects identity 2-cells, it follows that $\rho_f\hat{f}q_A$ is the identity on
-$f=f'\circ p_A$.
+   Finally, we need to verify that if $f''\colon QA\to B$ is any other strict morphism such that
+   $f=f''\circ p_A$, then $f''=f'$. We begin by factoring $f''=\pi_B\circ\hat{f}''$:
+   \begin{equation}\label{eq:f-hat_fact}
+      \begin{tikzcd}[column sep=0em]
+         & |[alias=domA]| QA \ar[dl,"q_A"'] \ar[dr,equal] & \\
+         A \ar[rr,squiggly,"p_A"' codA] \ar[d,equal]
+            && QA \ar[d,"f''"] \\
+         A \ar[rr,squiggly,"f"'] && B
+         \twocelliso[pos=.6]{A}{}
+      \end{tikzcd}
+      \quad = \quad
+      \begin{tikzcd}[column sep=.7em]
+         & QA \ar[d,dashed,"\hat{f}''"] \ar[ddl,bend right,"q_A"'] \ar[ddr,bend left,"f''"] & \\
+         & |[alias=domA]| \Path{f} \ar[dl,"\pi_A"' inner sep=1pt] \ar[dr,"\pi_B" inner sep=1pt] & \\
+         A \ar[rr,squiggly,"f"' codA] && B
+         \twocelliso[pos=.6]{A}{\rho}
+      \end{tikzcd}
+   \end{equation}
+   It will then suffice to show that the diagram
+   \begin{equation*}
+      \begin{tikzcd}
+         FUA \ar[r,"\tilde{f}"] \ar[d,two heads,"r_A"']
+            & \Path{f} \ar[d,hook,"\pi_A"] \\
+         QA \ar[r,"q_A"'] \ar[ur,"\hat{f}''" inner sep=0pt] & A
+      \end{tikzcd}
+   \end{equation*}
+   commutes, as then $\hat{f}''=\hat{f}$ by orthogonality, and $f''=\pi_B\hat{f}''=\pi_B\hat{f}=f'$.
+   The lower triangle $\pi_A\circ\hat{f}''=q_A$ follows directly from \eqref{eq:f-hat_fact}. To show
+   that the upper triangle $\tilde{f}=\hat{f}''\circ r_A$ commutes, it suffices to check equality of
+   the adjoints $s_{Uf}=U(\hat{f}''\circ r_A)\circ\eta_{UA}$. We will check this using the universal
+   property of the mapping path object $U\Path{f}=\Path{Uf}$ by showing that
+   $\rho_{Uf}s_{Uf}=\rho_{Uf}U(\hat{f}''r_A)\eta_{UA}$:
+   \begin{align*}
+      \begin{tikzcd}[ampersand replacement=\&,column sep=-0.5em]
+         UA \ar[rr,"\eta_{UA}"] \ar[dr,"Up_A"']
+         \&\& UFUA \ar[dl,"Ur_A"] \\
+         \& UQA \ar[d,"U\hat{f}''"] \& \\
+         \& |[alias=domA]| U\Path{f} \ar[dl,"\pi_{UA}"'] \ar[dr,"\pi_{UB}"] \& \\
+         UA \ar[rr,"Uf"' codA] \&\& UB
+         \twocelliso[pos=.6]{A}{\rho_{Uf}}
+      \end{tikzcd}
+      \quad &= \quad
+      \begin{tikzcd}[ampersand replacement=\&,column sep=-0.5em]
+         \& UA \ar[d,"Up_A"] \& \\
+         \& |[alias=domA]| UQA \ar[dl,"Uq_A"'] \ar[dr,equal] \& \\
+         UA \ar[rr,"Up_A"' codA] \ar[d,equal]
+            \&\& UQA \ar[d,"Uf''"] \\
+         UA \ar[rr,"Uf"'] \&\& UB
+         \twocelliso[pos=.6]{A}{}
+      \end{tikzcd}
+      \\ &= \quad
+      \begin{tikzcd}[ampersand replacement=\&]
+         UA \ar[r,"Uf"] \ar[d,equal] \& UB \ar[d,equal] \\
+         UA \ar[r,"Uf"'] \& UB
+      \end{tikzcd}
+      \quad = \quad
+      \begin{tikzcd}[ampersand replacement=\&,column sep=0.5em]
+         \& UA \ar[d,"s_{Uf}"] \ar[ddl,bend right,equal] \ar[ddr,bend left,"Uf"] \& \\
+         \& |[alias=domA]| U\Path{f} \ar[dl,"\pi_{UA}"' inner sep=1pt]
+            \ar[dr,"\pi_{UB}" inner sep=1pt] \& \\
+         UA \ar[rr,"Uf"' codA] \&\& UB
+         \twocelliso[pos=.6]{A}{\rho_{Uf}}
+         \qedhere
+      \end{tikzcd}
+   \end{align*}
+\end{proof}
 
-Finally, we need to verify that if $f''\colon QA\to B$ is any other strict morphism such that
-$f=f''\circ p_A$, then $f''=f'$. We begin by factoring $f''=\pi_B\circ\hat{f}''$:
-\begin{equation}\label{eq:f-hat_fact}
-   \begin{tikzcd}[column sep=0em]
-      & |[alias=domA]| QA \ar[dl,"q_A"'] \ar[dr,equal] & \\
-      A \ar[rr,squiggly,"p_A"' codA] \ar[d,equal]
-         && QA \ar[d,"f''"] \\
-      A \ar[rr,squiggly,"f"'] && B
-      \twocelliso[pos=.6]{A}{}
-   \end{tikzcd}
-   \quad = \quad
-   \begin{tikzcd}[column sep=.7em]
-      & QA \ar[d,dashed,"\hat{f}''"] \ar[ddl,bend right,"q_A"'] \ar[ddr,bend left,"f''"] & \\
-      & |[alias=domA]| \Path{f} \ar[dl,"\pi_A"' inner sep=1pt] \ar[dr,"\pi_B" inner sep=1pt] & \\
-      A \ar[rr,squiggly,"f"' codA] && B
-      \twocelliso[pos=.6]{A}{\rho}
-   \end{tikzcd}
-\end{equation}
-It will then suffice to show that the diagram
-\begin{equation*}
-   \begin{tikzcd}
-      FUA \ar[r,"\tilde{f}"] \ar[d,two heads,"r_A"']
-         & \Path{f} \ar[d,hook,"\pi_A"] \\
-      QA \ar[r,"q_A"'] \ar[ur,"\hat{f}''" inner sep=0pt] & A
-   \end{tikzcd}
-\end{equation*}
-commutes, as then $\hat{f}''=\hat{f}$ by orthogonality, and $f''=\pi_B\hat{f}''=\pi_B\hat{f}=f'$.
-The lower triangle $\pi_A\circ\hat{f}''=q_A$ follows directly from \eqref{eq:f-hat_fact}. To show
-that the upper triangle $\tilde{f}=\hat{f}''\circ r_A$ commutes, it suffices to check equality of
-the adjoints $s_{Uf}=U(\hat{f}''\circ r_A)\circ\eta_{UA}$. We will check this using the universal
-property of the mapping path object $U\Path{f}=\Path{Uf}$ by showing that
-$\rho_{Uf}s_{Uf}=\rho_{Uf}U(\hat{f}''r_A)\eta_{UA}$:
-\begin{align*}
-   \begin{tikzcd}[ampersand replacement=\&,column sep=-0.5em]
-      UA \ar[rr,"\eta_{UA}"] \ar[dr,"Up_A"']
-      \&\& UFUA \ar[dl,"Ur_A"] \\
-      \& UQA \ar[d,"U\hat{f}''"] \& \\
-      \& |[alias=domA]| U\Path{f} \ar[dl,"\pi_{UA}"'] \ar[dr,"\pi_{UB}"] \& \\
-      UA \ar[rr,"Uf"' codA] \&\& UB
-      \twocelliso[pos=.6]{A}{\rho_{Uf}}
-   \end{tikzcd}
-   \quad &= \quad
-   \begin{tikzcd}[ampersand replacement=\&,column sep=-0.5em]
-      \& UA \ar[d,"Up_A"] \& \\
-      \& |[alias=domA]| UQA \ar[dl,"Uq_A"'] \ar[dr,equal] \& \\
-      UA \ar[rr,"Up_A"' codA] \ar[d,equal]
-         \&\& UQA \ar[d,"Uf''"] \\
-      UA \ar[rr,"Uf"'] \&\& UB
-      \twocelliso[pos=.6]{A}{}
-   \end{tikzcd}
-   \\ &= \quad
-   \begin{tikzcd}[ampersand replacement=\&]
-      UA \ar[r,"Uf"] \ar[d,equal] \& UB \ar[d,equal] \\
-      UA \ar[r,"Uf"'] \& UB
-   \end{tikzcd}
-   \quad = \quad
-   \begin{tikzcd}[ampersand replacement=\&,column sep=0.5em]
-      \& UA \ar[d,"s_{Uf}"] \ar[ddl,bend right,equal] \ar[ddr,bend left,"Uf"] \& \\
-      \& |[alias=domA]| U\Path{f} \ar[dl,"\pi_{UA}"' inner sep=1pt]
-         \ar[dr,"\pi_{UB}" inner sep=1pt] \& \\
-      UA \ar[rr,"Uf"' codA] \&\& UB
-      \twocelliso[pos=.6]{A}{\rho_{Uf}}
-   \end{tikzcd}
-\end{align*}
+Our next goal is to show, continuing the assumptions of the previous theorem, that $\pcat{D}$ is
+2-equivalent to the full subcategory of $\scat{D}$ spanned by those objects which are
+``free-on-objects''. To make this precise, we will further assume we have a 1-category $\cat{S}$,
+together with a fully-faithful functor $\Disc\colon\cat{S}\to\ccat{C}_0$ into the underlying
+category of $\ccat{C}$ with right adjoint $\Ob$, such that a morphism $f$ in $\ccat{C}$ is $\bo$ if
+and only if $\Ob f$ is an isomorphism. We will write $\ccatFrOb{D}$ for the full sub-2-category of
+$\scat{D}$ spanned by those objects $A$ for which there exists an object $s\in\cat{S}$ and a $\bo$
+morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
+
+\begin{theorem}\label{thm:object-free_strong_equivalence}
+   The composition
+   \begin{equation*}
+      \begin{tikzcd}[column sep=small]
+         \ccatFrOb{D} \ar[r,hook]
+            & \scat{D} \ar[r,"\iota"]
+            & \pcat{D}
+      \end{tikzcd}
+   \end{equation*}
+   is an equivalence of 2-categories.
+\end{theorem}
+\begin{proof}
+   We first need to show that $\iota$ induces equivalences of categories
+   $\VVer(\dcat{D})(A,B)\iso\pcat{D}(\iota A,\iota B)$ for any $A$ and $B$ which are
+   free-on-objects. In fact, this will hold as long as $A$ is free-on-objects. We say that $A$ is
+   \emph{flexible} in this case: every strong morphism out of $A$ is isomorphic to a strict
+   morphism.
+
+   If $A\in\dcat{D}$ is free-on-objects, then there exists an object $s\in\cat{S}$ and a $\bo$
+   morphism $f\colon F(\Disc(s))\twoheadrightarrow A$ in $\scat{D}$. By the $F\dashv U$
+   adjunction, there is a unique morphism $\tilde{f}\colon\Disc(s)\to UA$ such that
+   $f=\epsilon_A\circ Ff$. Factoring $\epsilon_A=q_A\circ r_A$ as in
+   Theorem~\ref{thm:strong_classifier}, we obtain a unique lift $p'_A$ in the square
+   \begin{equation*}
+      \begin{tikzcd}[column sep=1.7em]
+         F(\Disc(s)) \ar[d,two heads,"f"'] \ar[r,"\tilde{f}"]
+            & FUA \ar[r,two heads,"r_A"]
+            & QA \ar[d,hook,"q_A"] \\
+         A \ar[urr,dashed,"p'_A"] \ar[rr,equal] && A
+      \end{tikzcd}
+   \end{equation*}
+   By Lemma~\ref{lem:fully-faithful_surjective_equiv}, it follows that $q_A$ is an equivalence in
+   $\VVer(\dcat{D})$. Hence composition with $q_A$ induces the left equivalence in
+   \begin{equation*}
+      \begin{tikzcd}
+         \VVer(\dcat{D})(A,B) \ar[r,"\equiv"]
+            & \VVer(\dcat{D})(Q\iota A,B) \ar[r,"\iso"]
+            & \pcat{D}(\iota A,\iota B)
+      \end{tikzcd}
+   \end{equation*}
+   and it is easy to check that the composition is precisely $\iota$ on hom categories.
+
+   Finally, essential surjectivity, consider an object $D\in\pcat{D}$. We know that in the
+   factorization
+   \begin{equation*}
+      \begin{tikzcd}
+         FUA \ar[dr,"\epsilon_A"] \ar[d,two heads,"r_A"'] & \\
+         QA \ar[r,hook,"q_A"'] & A.
+      \end{tikzcd}
+   \end{equation*}
+   $\iota q_A$ is an equivalence in $\pcat{D}$. We will be done if we can show that $QA$ is
+   free-on-objects.
+
+   Consider the counit $\epsilon_{UA}\colon\Disc(\Ob(UA))\to UA$. Because $\Disc$ is fully-faithful,
+   it follows that $\Ob(\epsilon_{UA})$ is an isomorphism, hence $\epsilon_{UA}\in\bo$, and
+   therefore $F(\epsilon_{UA})\in\bo$ as well. Thus we can take the composition
+   \begin{equation*}
+      \begin{tikzcd}
+         F(\Disc(\Ob(UA))) \ar[r,two heads,"F(\epsilon_{UA})"]
+            &[1em] FUA \ar[r,two heads,"r_A"]
+            & QA
+      \end{tikzcd}
+   \end{equation*}
+   showing that $QA$ is free-on-objects.
+\end{proof}
 
 \begin{corollary}\label{cor:object_frees}
- $\CompFrObCat$ is equivalent to $\CCompCatStrong$, etc.\todo{fill in}
+   The canonical inclusions
+   \begin{align*}
+      \MMonFrObCat &\to \MMonCatStrong \\
+      \TTrFrObCat &\to \TTrCatStrong \\
+      \CCompFrObCat &\to \CCompCatStrong
+   \end{align*}
+   are biequivalences of 2-categories.
 \end{corollary}
 
 
@@ -3026,6 +3107,7 @@ The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\re
    $\dMonProf^{\bo}_{\FM}$ as the equipment of free-on-objects monoidal categories. Indeed, this just
    says that a free-on-objects monoidal category can be identified with a set $\LabSet$, a monoidal
    category $\cat{C}$, and a bijective-on-objects strict monoidal functor $\FM(\LabSet)\to\cat{C}$.
+   \todo{Prove equivalence with $\MMonFrObCat$, etc.?}
 
    For the reader's convenience, we connect the notation of \eqref{eq:single_fiber_tr} and
    \eqref{eq:single_fiber_comp} to the present section using the following pseudo-pullback squares;
@@ -3085,97 +3167,6 @@ The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\re
    \end{equation*}
 \end{proof}
 
-The next theorem can be seen as saying that, for any exact equipment $\dcat{D}$ satisfying the
-conditions of the theorem (e.g., those of Definition~\ref{def:freeMon_equips}), the vertical
-2-category $\VVer(\dcat{D})$ is 2-equivalent to the sub-2-category spanned by the free-on-objects
-objects.\todo{Fix!}
-
-\begin{theorem}\label{thm:free-on-objects_strong_equivalence}
-   Let $\dcat{D}$ be an exact equipment, $\pcat{D}$ and $\ccat{C}$ be 2-categories, and suppose we
-   have a 2-functor $\iota\colon\VVer(\dcat{D})\to\pcat{D}$ and a 2-adjunction
-   $F\colon\ccat{C}\leftrightarrows\VVer(\dcat{D}):\!U$, which together admit strong morphism classifiers (see Definition~\ref{def:strictifiable}).
-
-   Suppose further that there is a 1-category $\cat{S}$ and 1-adjunction
-   $\Disc\colon\cat{S}\leftrightarrows\ccat{C}_0:\!\Ob$ to the underlying 1-category $\ccat{C}_0$ of
-   $\ccat{C}$, with $\Disc$ fully-faithful and such that a morphism $f$ in $\ccat{C}$ is $\bo$ if
-   and only if $\Ob f$ is an isomorphism. Let $T=\Ob\circ U\circ F\circ\Disc$ be the induced monad
-   on $\cat{S}$.
-
-   Then the composition
-   \begin{equation*}
-      \begin{tikzcd}
-         \MMon(\dcat{D}_T)\ar[r,"\MMon(\varphi_T)"]
-            &[1.4em] \MMon(\dcat{D}) \ar[r,"\VVer(\Col{\textrm{--}})"]
-            &[1.2em] \VVer(\dcat{D}) \ar[r,"\iota"]
-            &[-0.5em] \pcat{D}
-      \end{tikzcd}
-   \end{equation*}
-   is an equivalence of 2-categories.
-\end{theorem}
-\begin{proof}
-   Let $G$ be the composition $G\coloneqq\VVer(\Col{\textrm{--}})\circ\MMon(\phi_T)$. We need to
-   show that $\iota\circ G$ is a local equivalence (induces equivalences of hom categories) and
-   essentially surjective.
-
-   By Lemma~\ref{lem:free-on-obs_inclusion}, $G$ is 2-fully-faithful (induces isomorphisms of hom
-   categories). Hence, to show that $\iota\circ G$ is a local equivalence, it suffices to show that
-   $\iota$ induces equivalences of categories $\VVer(\dcat{D})(A,B)\iso\pcat{D}(\iota A,\iota B)$
-   for any $A$ and $B$ in the image of $G$. In fact, this will hold whenever $A$ is in the image of
-   $G$. We say that $A$ is \emph{flexible} in this case: every strong morphism out of $A$ is
-   isomorphic to a strict morphism.
-
-   If $A\in\dcat{D}$ is in the image of $G$, then there exists an object $s\in\cat{S}$ and a $\bo$
-   morphism $f\colon F(\Disc(s))\twoheadrightarrow A$ in $\VVer(\dcat{D})$. By the $F\dashv U$
-   adjunction, there is a unique morphism $\tilde{f}\colon\Disc(s)\to UA$ such that
-   $f=\epsilon_A\circ Ff$. Factoring $\epsilon_A=q_A\circ r_A$ as in
-   Theorem~\ref{thm:strong_classifier}, we obtain a unique lift $p'_A$ in the square
-   \begin{equation*}
-      \begin{tikzcd}[column sep=1.7em]
-         F(\Disc(s)) \ar[d,two heads,"f"'] \ar[r,"\tilde{f}"]
-            & FUA \ar[r,two heads,"r_A"]
-            & QA \ar[d,hook,"q_A"] \\
-         A \ar[urr,dashed,"p'_A"] \ar[rr,equal] && A
-      \end{tikzcd}
-   \end{equation*}
-   By Lemma~\ref{lem:fully-faithful_surjective_equiv}, it follows that $q_A$ is an equivalence in
-   $\VVer(\dcat{D})$. Hence composition with $q_A$ induces the left equivalence in
-   \begin{equation*}
-      \begin{tikzcd}
-         \VVer(\dcat{D})(A,B) \ar[r,"\equiv"]
-            & \VVer(\dcat{D})(Q\iota A,B) \ar[r,"\iso"]
-            & \pcat{D}(\iota A,\iota B)
-      \end{tikzcd}
-   \end{equation*}
-   and it is easy to check that the composition is precisely $\iota$ on hom categories.
-
-   Finally, to see that $\iota\circ G$ is essentially surjective, consider an object $D\in\pcat{D}$.
-   We know from Section~\ref{sec:strict_vs_strong} that in the factorization
-   \begin{equation*}
-      \begin{tikzcd}
-         FUA \ar[dr,"\epsilon_A"] \ar[d,two heads,"r_A"'] & \\
-         QA \ar[r,hook,"q_A"'] & A.
-      \end{tikzcd}
-   \end{equation*}
-   $\iota q_A$ is an equivalence in $\pcat{D}$. If we can show that $QA$ admits a $\bo$ morphism
-   $F(\Disc(s))\twoheadrightarrow QA$ in $\VVer(\dcat{D})$ for some $s\in\cat{S}$, then $QA$ will
-   be in the image of $G$, hence $\iota\circ G$ will be essentially surjective.
-
-   Consider the counit $\epsilon_{UA}\colon\Disc(\Ob(UA))\to UA$. Because $\Disc$ is fully-faithful,
-   it follows that $\Ob(\epsilon_{UA})$ is an isomorphism, hence $\epsilon_{UA}\in\bo$, and
-   therefore $F(\epsilon_{UA})\in\bo$ as well. Thus we can take the composition
-   \begin{equation*}
-      \begin{tikzcd}
-         F(\Disc(\Ob(UA))) \ar[r,two heads,"F(\epsilon_{UA})"]
-            &[1em] FUA \ar[r,two heads,"r_A"]
-            & QA
-      \end{tikzcd}
-   \end{equation*}
-   showing that $QA$ is in the image of $G$.
-\end{proof}
-
-
-The following corollary is a direct application of Theorem~\ref{thm:free-on-objects_strong_equivalence}.
-
 \begin{corollary}\label{cor:TrCat_ObjectFree}
    There are equipment functors (left) and underlying 2-functors (right)
    \begin{align*}
@@ -3184,7 +3175,7 @@ The following corollary is a direct application of Theorem~\ref{thm:free-on-obje
       \dMod(\dFrCompProf) &\to \dCompProf & \MMon(\dFrCompProf) &\To{\simeq} \CCompCatStrong
    \end{align*}
    which are fully faithful local equivalences of equipments and 2-equivalences of 2-categories,
-   respectively.
+   respectively.\todo{Should remove right column.}
 \end{corollary}
 \begin{proof}
    This follows directly from Lemma~\ref{lem:free-on-obs_inclusion} and
@@ -3367,7 +3358,7 @@ M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of 
  G.M.~Kelly, M.L.~Laplaza, Coherence for compact closed categories, Journal of Pure and Applied Algebra 19 (1980), pp.~193--213.
 
  \bibitem{Kelly}
- G.M.~Kelly, Doctrinal adjunction, Category Seminar (Proc. Sem., Sydney, 1972/1973), Lecture Notes in Math., Vol. 420, (1974) Springer, Berlin, pp. 257Ð280. 
+ G.M.~Kelly, Doctrinal adjunction, Category Seminar (Proc. Sem., Sydney, 1972/1973), Lecture Notes in Math., Vol. 420, (1974) Springer, Berlin, pp. 257ï¿½280. 
 
  \bibitem{Kock}
  J.~Kock, Frobenius algebras and 2D topological quantum field theories, London Mathematical Society Student Texts, 59. Cambridge University Press, Cambridge (2004).
