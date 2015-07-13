@@ -1389,9 +1389,7 @@ morphisms.
    \end{gather}
    Specifically, equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B} simply say that
    $\bullet$ is a well defined morphism $M\odot M\to M$, while \eqref{eq:Prof_monoid_C} says that
-   $\bullet$ is unital with respect to $i$.
-
-   In fact, it is easy to see that equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B}
+   $\bullet$ is unital with respect to $i$. In fact, it is easy to see that equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B}
    follow from \eqref{eq:Prof_monoid_C} and the associativity of $\bullet$.
 \end{example}
 
@@ -1644,14 +1642,14 @@ taken from~\cite[Definitions~4.3~and~4.5, Theorem~4.17]{Schultz2015}:
    Let $\dcat{D}$ be an exact equipment. If a vertical morphism $f$ in $\dcat{D}$ is $\bo$
    (respectively $\ff$), then $f$ is a bijective-on-objects (respectively fully-faithful) morphism
    in $\VVer(\dcat{D})$ in the sense of
-   Definitions~\ref{def:fully-faithful}, \ref{def:bijective-on-objects}.
+   Definitions~\ref{def:fully-faithful}, \ref{def:bijective_on_objects}.\todo{uses appendix}
 \end{lemma}
 \begin{proof}
    It is easy to see that the condition in Definition~\ref{def:fully-faithful} of $f$ being
    fully-faithful in $\VVer(\dcat{D})$ is a special case of the condition of the unit 2-cell on $f$
    being cartesian in $\dcat{D}$. If $f$ is $\bo$, then Theorem~\ref{thm:orthogonal} in particular
    implies that $f$ is left orthogonal to every $\ff$ morphism, hence $f$ is bijective-on-objects
-   by Definition~\ref{def:bijective-on-objects}.
+   by Definition~\ref{def:bijective_on_objects}.
 \end{proof}
 
 \begin{remark}
@@ -2457,7 +2455,7 @@ $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ from Theorem~\ref{thm:Mod_vs_bo} to identi
 $\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the
 image, as in the following definition.
 
-\begin{definition}
+\begin{definition}\label{def:DFbo}
    Suppose given an adjunction as in \eqref{eqn:adjunction_objectfree}. We define the equipment $\dcat{D}_F^{\bo}$ as
    follows: the vertical category is defined by the pullback
    \begin{equation*}
@@ -2481,7 +2479,7 @@ image, as in the following definition.
 We will write $\psi_F\colon\dcat{D}_F^{\bo}\to\dcat{D}^{\bo}$ for the induced local equivalence.
 \end{definition}
 
-The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\ref{lemma:FFLE_Mod}:
+For intuition, see Definition~\ref{def:free_on_objects}. The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\ref{lemma:FFLE_Mod}:
 
 \begin{proposition}\label{prop:objectfree_Mod_bo}
    Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
@@ -2543,20 +2541,30 @@ The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\re
    \end{equation*}
 \end{proof}
 
+\begin{definition}\label{def:free_on_objects}
+
+Say that a monoidal (resp. traced or compact) category is \emph{free-on-objects} if there is a set $\cat{O}$ and a bijective-on-objects functor $\FM(\cat{O})\onto\cat{C}$, (resp. $\FT(\cat{O})\onto\cat{C}$ or $\FC(\cat{O})\onto\cat{C}$), where $\FM$, $\FT$, and $\FC$ are the free functors defined in \eqref{eqn:adjunctions}. Denote by
+$$
+\MMonFrObCat\ss\MMonCat\qquad \TTrFrObCat\ss\TTrCat\qquad\CCompFrObCat\ss\CCompCat
+$$
+the full 2-subcategories spanned by those monoidal (resp. traced or compact) categories $\cat{C}$ that are free-on-objects.
+
+\end{definition}
+
+So for example, $\MMonFrObCat$ is the vertical 2-category of $\dMonProf_{\FM}^{\bo}$, as defined in Definition~\ref{def:DFbo}.
+
 \begin{corollary}\label{cor:TrCat_ObjectFree}
-   There are fully-faithful local equivalences of equipments
+   There are fully-faithful local equivalences of equipments, shown to the left
    \begin{align*}
-      \dMod(\dFrMonProf)  &\to \dMonProf \\
-      \dMod(\dFrTrProf)   &\to \dTrProf  \\
-      \dMod(\dFrCompProf) &\to \dCompProf
+      \dMod(\dFrMonProf)  &\to \dMonProf &\MMon(\dFrMonProf)&\iso\MMonFrObCat\\
+      \dMod(\dFrTrProf)   &\to \dTrProf  &\MMon(\dFrTrProf)&\iso\TTrFrObCat\\
+      \dMod(\dFrCompProf) &\to \dCompProf &\MMon(\dFrCompProf)&\iso\CCompFrObCat
    \end{align*}
-   by means of which we can identify $\MMonFrObCat=\MMon(\dFrMonProf)$, etc.
+   by which we obtain the isomorphisms of 2-categories shown to the right.
 \end{corollary}
 \begin{proof}
    The fully-faithful local equivalences follow immediately from
-   Lemma~\ref{lem:free-on-obs_inclusion}, letting $\cat{S}=\Set$. The identification with
-   $\MMonFrObCat$, etc., follows directly from Proposition~\ref{prop:objectfree_Mod_bo} and
-   Definition~\ref{def:free_on_objects}.
+   Lemma~\ref{lem:free-on-obs_inclusion}, letting $\cat{S}=\Set$. The isomorphisms follow directly from Proposition~\ref{prop:objectfree_Mod_bo} and Definition~\ref{def:free_on_objects}.
 \end{proof}
 
 For the reader's convenience, we connect the notation of \eqref{eq:single_fiber_tr} and
@@ -2664,8 +2672,11 @@ which follow entirely from earlier work. They will be used to prove of our main 
    $$
    \CPsh(\dFrTrProf)\simeq\Mon(\dFrTrProf)\quad\text{and}\quad\CPsh(\dFrCompProf)\simeq\Mon(\dFrCompProf).
    $$ 
+The result follows from Corollary~\ref{cor:TrCat_ObjectFree}, which provides isomorphisms of 2-categories:
+$$
+\MMon(\dFrTrProf)\iso\TTrFrObCat\quad\text{and}\quad\MMon(\dFrCompProf)\iso\CCompFrObCat
+$$
 
-\todo{finish}
 \end{proof}
 
 \begin{named}{Theorem B}\label{thm:TheoremB}
@@ -2710,7 +2721,7 @@ free-on-objects and strict functors vs. arbitrary objects and strong functors.  
    every $x$.
 
    That is, $f$ is fully-faithful if, for every diagram
-   \begin{equation}\label{eq:fully-faithful_1-cell}
+   \begin{equation*}
       \begin{tikzcd}[row sep=large]
          x \ar[r,bend left,"u"] \ar[r,bend right,"v"']
                \ar[d,equal]
@@ -2719,12 +2730,12 @@ free-on-objects and strict functors vs. arbitrary objects and strong functors.  
             & b
          \twocellA{\alpha'}
       \end{tikzcd}
-   \end{equation}
+   \end{equation*}
    such that $fu=u'$ and $fv=v'$, there exists a unique $\alpha\colon u\Rightarrow v$ such that
    $f\alpha=\alpha'$.
 \end{definition}
 
-\begin{definition}\label{def:bijective-on-objects}
+\begin{definition}\label{def:bijective_on_objects}
    Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{bijective-on-objects} if
    it is left orthogonal to every fully-faithful morphism.
 
@@ -2740,7 +2751,7 @@ factorization system on $\ccat{C}$, and in this case we say that $\ccat{C}$ \emp
    such that $fg=1_b$, $\epsilon g=1_g$, and $f\epsilon=1_f$.
 \end{definition}
 
-\begin{lemma}\label{lem:fully-faithful_surjective_equiv}
+\begin{lemma}\label{lem:fully_faithful_surjective_equiv}
    Let $f\colon a\to b$ and $g\colon b\to a$ be morphisms in a 2-category such that $fg=1_b$. Then $f$
    (together with $g$) is a surjective equivalence if and only if $f$ is fully-faithful.
 \end{lemma}
@@ -2759,16 +2770,16 @@ factorization system on $\ccat{C}$, and in this case we say that $\ccat{C}$ \emp
 \begin{definition}\label{def:arrow_object}
    Let $a$ be an object in a 2-category $\ccat{C}$. An \emph{arrow object} of $a$ is an object
    $\Ar{a}$ together with a diagram
-   \begin{equation}
+   \begin{equation*}
       \begin{tikzcd}
          \Ar{a} \ar[r,bend left,"\dom" {domA,anchor = south}] \ar[r,bend right,"\cod"' {codA,anchor = north}]
             & a
          \twocellA{\kappa}
       \end{tikzcd}
-   \end{equation}
+   \end{equation*}
    which is universal among such diagrams: any diagram as on the left below factors uniquely as on
    the right
-   \begin{equation}\label{eqn:up_for_arrows}
+   \begin{equation*}
       \begin{tikzcd}
          x \ar[r,bend left,"d" domA] \ar[r,bend right,"c"' codA]
             & a
@@ -2781,7 +2792,7 @@ factorization system on $\ccat{C}$, and in this case we say that $\ccat{C}$ \emp
             & a
          \twocellA{\kappa}
       \end{tikzcd}
-   \end{equation}
+   \end{equation*}
    Moreover, given a commutative square in $\ccat{C}(x,a)$, i.e., another $d'\colon x\to a$, $c'\colon x\to a$, $\alpha'\colon d'\Rightarrow c'$
    as on the left above, and 2-cells $\beta\colon d\Rightarrow d'$ and $\gamma\colon c\Rightarrow c'$
    such that $\alpha'\circ\beta=\gamma\circ\alpha$, there is a unique
@@ -2829,7 +2840,7 @@ $$
 as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand diagram in \eqref{eqn:arrow_traced} follows from this equation and the axioms of traced categories (Section~\ref{sec:intuition_for_traced}).
 \end{example}
 
-\begin{lemma}\label{lem:2-adjunction}
+\begin{lemma}\label{lem:2_adjunction}
    Let $R\colon\ccat{C}\to\ccat{D}$ be a 2-functor, and suppose that $\ccat{C}$ has arrow objects.
    Then $R$ has a left 2-adjoint if and only if $R$ has a left 1-adjoint and $R$ preserves arrow
    objects.
@@ -2939,7 +2950,7 @@ that extend the 1-adjunctions constructed in \cite{Abramsky2}.
  \end{corollary}
  
 \begin{proof}
-Let $R$ be either $\UM$, $\UT$, or $\UC$. Its underlying 1-functor has a left adjoint, constructed in \cite{Abramsky2}. We showed in Remark~\ref{rem:pres_joint_detect} that $\MMonCat$, $\TTrCat$, and $\CCompCat$ have arrow objects, which are preserved by $R$. The result follows by Lemma~\ref{lem:2-adjunction}.
+Let $R$ be either $\UM$, $\UT$, or $\UC$. Its underlying 1-functor has a left adjoint, constructed in \cite{Abramsky2}. We showed in Remark~\ref{rem:pres_joint_detect} that $\MMonCat$, $\TTrCat$, and $\CCompCat$ have arrow objects, which are preserved by $R$. The result follows by Lemma~\ref{lem:2_adjunction}.
 
 \end{proof}
 
@@ -2971,7 +2982,7 @@ Let $R$ be either $\UM$, $\UT$, or $\UC$. Its underlying 1-functor has a left ad
    $\pi_b\epsilon=\rho$. By universality once more, because $\rho\epsilon s=\rho$, we obtain
    $\epsilon s=1_s$.
 
-   It follows from Lemma~\ref{lem:fully-faithful_surjective_equiv} that $\pi_a$ is fully-faithful.
+   It follows from Lemma~\ref{lem:fully_faithful_surjective_equiv} that $\pi_a$ is fully-faithful.
 \end{proof}
 
 \section{Strict vs. strong morphisms}\label{sec:strict_vs_strong}
@@ -3016,7 +3027,7 @@ Let $\scat{D}$, $\pcat{D}$, and $\ccat{C}$ be 2-categories, and let $U\colon\pca
  \item\label{item:left2adj}
    The functor $U\iota\colon\scat{D}\to\ccat{C}$ has a left 2-adjoint $F$.
 %    (equivalently,
-%   $U\iota$ has a left 1-adjoint and preserves arrow objects; see Lemma~\ref{lem:2-adjunction}).
+%   $U\iota$ has a left 1-adjoint and preserves arrow objects; see Lemma~\ref{lem:2_adjunction}).
  \item\label{item:pres_ff}
    The functor $U\iota$ preserves fully-faithful morphisms (equivalently, $F$ preserves
    bijective-on-objects morphisms).
@@ -3082,7 +3093,7 @@ Property~\ref{item:createSEs} holds for the case $\scat{D}=\CCompCat$ because it
    $p_A\colon A\pto QA$ will become the unit of the $Q\dashv\iota$ adjunction. Because $U$ creates
    surjective equivalences, it suffices to show that $Uq_A$ is a surjective equivalence. But $q_A$
    is fully-faithful by construction, so $Uq_A$ is fully-faithful, hence by
-   Lemma~\ref{lem:fully-faithful_surjective_equiv} it suffices to construct a section of $Uq_A$. We can
+   Lemma~\ref{lem:fully_faithful_surjective_equiv} it suffices to construct a section of $Uq_A$. We can
    easily check that $Ur_A\circ\eta_{UA}$ is such a section:
    \begin{equation*}
       \begin{tikzcd}
@@ -3098,7 +3109,7 @@ Property~\ref{item:createSEs} holds for the case $\scat{D}=\CCompCat$ because it
    We next must show that the morphism $p_A\colon A\pto QA$ has the following universal property: for
    any strong morphism $f\colon A\pto B$ there is a unique strict morphism $f'\colon QA\to B$ such that
    $f=f'\circ p_A$. From this, it follows that $Q$ extends to a 1-functor which is left adjoint to
-   $\iota$. It then follows from Lemma~\ref{lem:2-adjunction} that $Q$ extends to a 2-functor which is
+   $\iota$. It then follows from Lemma~\ref{lem:2_adjunction} that $Q$ extends to a 2-functor which is
    left 2-adjoint to $\iota$, completing the proof of the theorem.
 
    First, given an $f\colon A\pto B$, define a strict morphism $\tilde{f}\colon FUA\to\Path{f}$ as the
@@ -3257,7 +3268,7 @@ morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
          A \ar[urr,dashed,"p'_A"] \ar[rr,equal] && A
       \end{tikzcd}
    \end{equation*}
-   By Lemma~\ref{lem:fully-faithful_surjective_equiv}, it follows that $q_A$ is an equivalence in
+   By Lemma~\ref{lem:fully_faithful_surjective_equiv}, it follows that $q_A$ is an equivalence in
    $\VVer(\dcat{D})$. Hence composition with $q_A$ induces the left equivalence in
    \begin{equation*}
       \begin{tikzcd}
@@ -3291,16 +3302,6 @@ morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
    \end{equation*}
    showing that $QA$ is free-on-objects.
 \end{proof}
-
-\begin{definition}\label{def:free_on_objects}
-
-Say that a monoidal (resp. traced or compact) category is \emph{free-on-objects} if there is a set $\cat{O}$ and a bijective-on-objects functor $\FM(\cat{O})\onto\cat{C}$, (resp. $\FT(\cat{O})\onto\cat{C}$ or $\FC(\cat{O})\onto\cat{C}$), where $\FM$, $\FT$, and $\FC$ are the free functors defined in \eqref{eqn:adjunctions}. Denote by
-$$
-\MMonFrObCat\ss\MMonCat\qquad \TTrFrObCat\ss\TTrCat\qquad\CCompFrObCat\ss\CCompCat
-$$
-the full 2-subcategories spanned by those monoidal (resp. traced or compact) categories $\cat{C}$ that are free-on-objects.
-
-\end{definition}
 
 \begin{corollary}\label{cor:object_frees}
    The canonical inclusions
