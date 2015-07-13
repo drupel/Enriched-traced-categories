@@ -2697,9 +2697,15 @@ which follow entirely from earlier work. They will be used to prove of our main 
 \appendix
 \chapter{Appendix}
 
-This section is mostly independent from the rest of the paper. It is really only used to prove Corollary~\ref{cor:object_frees}.
+This section is mostly independent from the rest of the paper. It is really only used to prove Corollary~\ref{cor:object_frees}, the three biequivalences
+\begin{gather*}
+   \MMonFrObCat \to \MMonCatStrong \qquad
+      \TTrFrObCat \to \TTrCatStrong \qquad
+      \CCompFrObCat \to \CCompCatStrong,
+\end{gather*}
+free-on-objects and strict functors vs. arbitrary objects and strong functors.  This result will not be new to experts, but we found it difficult to find in the literature.
 
-\section{Fully-faithful, etc.}
+\section{Fully-faithful / bijective-on-objects factorization}
 
 \begin{definition}\label{def:fully-faithful}
    Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{fully-faithful} if the
