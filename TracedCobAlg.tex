@@ -1050,6 +1050,58 @@ the strict 2-categorical case, where $\cat{V}=\Cat$.
    $\cat{R}$ using a hooked arrow.
 \end{definition}
 
+The case of bijective-on-objects / fully faithful factorization systems on our 2-categories ($\Cat$-enriched categories) of interest will be useful throughout the paper. 
+
+\begin{definition}\label{def:fully_faithful}
+   Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{fully-faithful} if the
+   functor $\ccat{C}(x,a)\to\ccat{C}(x,b)$ induced by composition with $f$ is fully-faithful for
+   every $x$.
+
+   That is, $f$ is fully-faithful if, for every diagram
+   \begin{equation*}
+      \begin{tikzcd}[row sep=large]
+         x \ar[r,bend left,"u"] \ar[r,bend right,"v"']
+               \ar[d,equal]
+            & a \ar[d,"f"] \\
+         x \ar[r,bend left,"u'" domA] \ar[r,bend right,"v'"' codA]
+            & b
+         \twocellA{\alpha'}
+      \end{tikzcd}
+   \end{equation*}
+   such that $fu=u'$ and $fv=v'$, there exists a unique $\alpha\colon u\Rightarrow v$ such that
+   $f\alpha=\alpha'$.
+\end{definition}
+
+\begin{definition}\label{def:bijective_on_objects}
+   Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{bijective-on-objects} if
+   it is left orthogonal to every fully-faithful morphism.
+
+   If every morphism $f$ of $\ccat{C}$ can be factored into a
+bijective-on-objects morphism followed by a fully-faithful morphism, then this forms an orthogonal
+factorization system on $\ccat{C}$, and in this case we say that $\ccat{C}$ \emph{has a bijective-on-objects / fully faithful factorization system}.
+\end{definition}
+
+\begin{definition}\label{def:surjective_equivalence}
+   Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is a \emph{surjective
+   equivalence} if it can be extended to an adjoint equivalence $g\dashv f$ in which the unit is the
+   identity. That is, there is a morphism $g\colon b\to a$ and 2-cell $\epsilon\colon gf\iso 1_a$
+   such that $fg=1_b$, $\epsilon g=1_g$, and $f\epsilon=1_f$.
+\end{definition}
+
+\begin{lemma}\label{lem:fully_faithful_surjective_equiv}
+   Let $f\colon a\to b$ and $g\colon b\to a$ be morphisms in a 2-category such that $fg=1_b$. Then $f$
+   (together with $g$) is a surjective equivalence if and only if $f$ is fully-faithful.
+\end{lemma}
+\begin{proof}
+   Suppose $g\dashv f$ is a surjective equivalence. Then for any $x$,
+   $f^*\colon\ccat{C}(x,a)\to\ccat{C}(x,b)$ is an equivalence of categories, hence fully-faithful.
+   Thus $f$ is fully-faithful.
+
+   Conversely suppose $f$ is fully-faithful. Then because $fgf=f=f 1_a$, there is a unique
+   $\epsilon\colon gf\Rightarrow 1_a$ such that $f\epsilon=1_f$. It is easy to check that $\epsilon$
+   is an isomorphism, and that $\epsilon g=1_g$.
+\end{proof}
+
 \chapter{Background on equipments}\label{chap:background_equipments}
 
 This section introduces equipments, which we use to properly situate traced and compact categories.
@@ -1271,9 +1323,9 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
 \begin{definition}\label{def:induced_locally_equivalent_equipment}
    Let $\dcat{Y}$ be a double category and $F_0\colon\dcat{X}_0\to\dcat{Y}_0$ be a functor. A strict
    pullback of the form \eqref{eqn:local_equiv} defines a double category $\dcat{X}$, which we denote
-   \begin{equation}
+   \begin{equation*}
     \dcat{X}\coloneqq F_0^*(\dcat{Y})
-   \end{equation}
+   \end{equation*}
    and call the \emph{equipment induced by $F_0$}. If $\dcat{Y}$ is an equipment, $F_0^*(\dcat{Y})$ will be too, because fibrations are
    stable under pullback. By Remark~\ref{rem:strict_vs_pseudo_pullback}, the obvious equipment
    functor $F_0^*(\dcat{Y})\to\dcat{Y}$ is a local equivalence.
@@ -1642,10 +1694,10 @@ taken from~\cite[Definitions~4.3~and~4.5, Theorem~4.17]{Schultz2015}:
    Let $\dcat{D}$ be an exact equipment. If a vertical morphism $f$ in $\dcat{D}$ is $\bo$
    (respectively $\ff$), then $f$ is a bijective-on-objects (respectively fully-faithful) morphism
    in $\VVer(\dcat{D})$ in the sense of
-   Definitions~\ref{def:fully-faithful}, \ref{def:bijective_on_objects}.\todo{uses appendix}
+   Definitions~\ref{def:fully_faithful} and \ref{def:bijective_on_objects}.
 \end{lemma}
 \begin{proof}
-   It is easy to see that the condition in Definition~\ref{def:fully-faithful} of $f$ being
+   It is easy to see that the condition in Definition~\ref{def:fully_faithful} of $f$ being
    fully-faithful in $\VVer(\dcat{D})$ is a special case of the condition of the unit 2-cell on $f$
    being cartesian in $\dcat{D}$. If $f$ is $\bo$, then Theorem~\ref{thm:orthogonal} in particular
    implies that $f$ is left orthogonal to every $\ff$ morphism, hence $f$ is bijective-on-objects
@@ -1761,7 +1813,7 @@ fiber over an object $C$ is the category of copresheaves on $C$:
    Let $\dcat{D}$ be an equipment such that $\dcat{D}_0$ has a terminal object $1$. We define the
    category $\CPsh(\dcat{D})$, bifibered over $\dcat{D}_0$, and similarly $\Psh(\dcat{D})$, by the
    pullbacks
-   \begin{equation}
+   \begin{equation*}
      \begin{tikzcd}
          \CPsh(\dcat{D}) \ar[r] \ar[d,two heads] \arrow[dr,phantom,"\lrcorner",very near start]
             & \dcat{D}_1 \ar[d,two heads] \\
@@ -1775,7 +1827,7 @@ fiber over an object $C$ is the category of copresheaves on $C$:
          1\times\dcat{D}_0 \ar[r,"1\times\dcat{D}_0"']
             & \dcat{D}_0\times\dcat{D}_0
       \end{tikzcd}
-   \end{equation}
+   \end{equation*}
 \end{definition}
 
 \begin{example}
@@ -2413,9 +2465,9 @@ that these are morphisms of fibrations, i.e., that they preserve cartesian morph
 Theorem~\ref{thm:Mod_vs_bo} is a key piece in the proof of \ref{thm:TheoremB}, but we will need a
 modification for the proof of \ref{thm:TheoremA}. The latter results are concerned with compact
 (respectively traced) categories which are ``free-on-objects''.
-Theorem~\ref{thm:free_on_objects_strong_equivalence} provides the modification of
-Theorem~\ref{thm:Mod_vs_bo} in a general form, which we then specialize to the cases of interest for
-the present paper in Corollary~\ref{cor:TrCat_ObjectFree}.
+%Theorem~\ref{thm:free_on_objects_strong_equivalence} provides the modification of
+%Theorem~\ref{thm:Mod_vs_bo} in a general form, which we then specialize to the cases of interest for
+%the present paper in Corollary~\ref{cor:TrCat_ObjectFree}.
 
 We first need to capture this idea of free-on-objects monoidal categories in a general, abstract form.
 Throughout this section we will consider an equipment $\dcat{D}$ together with a category $\cat{C}$
@@ -2641,7 +2693,7 @@ which follow entirely from earlier work. They will be used to prove of our main 
 
 \section{Deducing the main results}\label{sec:deducing}
 
-\begin{named}{Theorem A}\label{thm:TheoremA_statement}
+\begin{named}{Theorem A}\label{thm:TheoremA}
   There are equivalences of 1-categories
   \begin{align*}
      &\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrFrObCat
@@ -2712,58 +2764,6 @@ This section is mostly independent from the rest of the paper. It is really only
       \CCompFrObCat \to \CCompCatStrong,
 \end{gather*}
 free-on-objects and strict functors vs. arbitrary objects and strong functors.  This result will not be new to experts, but we found it difficult to find in the literature.
-
-\section{Fully-faithful / bijective-on-objects factorization}
-
-\begin{definition}\label{def:fully-faithful}
-   Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{fully-faithful} if the
-   functor $\ccat{C}(x,a)\to\ccat{C}(x,b)$ induced by composition with $f$ is fully-faithful for
-   every $x$.
-
-   That is, $f$ is fully-faithful if, for every diagram
-   \begin{equation*}
-      \begin{tikzcd}[row sep=large]
-         x \ar[r,bend left,"u"] \ar[r,bend right,"v"']
-               \ar[d,equal]
-            & a \ar[d,"f"] \\
-         x \ar[r,bend left,"u'" domA] \ar[r,bend right,"v'"' codA]
-            & b
-         \twocellA{\alpha'}
-      \end{tikzcd}
-   \end{equation*}
-   such that $fu=u'$ and $fv=v'$, there exists a unique $\alpha\colon u\Rightarrow v$ such that
-   $f\alpha=\alpha'$.
-\end{definition}
-
-\begin{definition}\label{def:bijective_on_objects}
-   Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{bijective-on-objects} if
-   it is left orthogonal to every fully-faithful morphism.
-
-   If every morphism $f$ of $\ccat{C}$ can be factored into a
-bijective-on-objects morphism followed by a fully-faithful morphism, then this forms an orthogonal
-factorization system on $\ccat{C}$, and in this case we say that $\ccat{C}$ \emph{has a bijective-on-objects / fully faithful factorization system}.
-\end{definition}
-
-\begin{definition}\label{def:surjective_equivalence}
-   Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is a \emph{surjective
-   equivalence} if it can be extended to an adjoint equivalence $g\dashv f$ in which the unit is the
-   identity. That is, there is a morphism $g\colon b\to a$ and 2-cell $\epsilon\colon gf\iso 1_a$
-   such that $fg=1_b$, $\epsilon g=1_g$, and $f\epsilon=1_f$.
-\end{definition}
-
-\begin{lemma}\label{lem:fully_faithful_surjective_equiv}
-   Let $f\colon a\to b$ and $g\colon b\to a$ be morphisms in a 2-category such that $fg=1_b$. Then $f$
-   (together with $g$) is a surjective equivalence if and only if $f$ is fully-faithful.
-\end{lemma}
-\begin{proof}
-   Suppose $g\dashv f$ is a surjective equivalence. Then for any $x$,
-   $f^*\colon\ccat{C}(x,a)\to\ccat{C}(x,b)$ is an equivalence of categories, hence fully-faithful.
-   Thus $f$ is fully-faithful.
-
-   Conversely suppose $f$ is fully-faithful. Then because $fgf=f=f 1_a$, there is a unique
-   $\epsilon\colon gf\Rightarrow 1_a$ such that $f\epsilon=1_f$. It is easy to check that $\epsilon$
-   is an isomorphism, and that $\epsilon g=1_g$.
-\end{proof}
 
 \section{Arrow objects and mapping path objects}
 
@@ -2869,16 +2869,16 @@ as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand di
 \begin{definition}\label{def:mapping_path_objects}
    Let $f\colon a\to b$ be a morphism in a 2-category $\ccat{C}$. A \emph{mapping path object} of
    $f$ is an object $\Path{f}$ together with a diagram
-   \begin{equation}
+   \begin{equation*}
       \begin{tikzcd}[column sep=small]
          & |[alias=domA]| \Path{f} \ar[dl,"\pi_a"'] \ar[dr,"\pi_b"] & \\
          a \ar[rr,"f"' codA] && b
          \twocelliso[pos=.6]{A}{\rho}
       \end{tikzcd}
-   \end{equation}
+   \end{equation*}
    where $\rho$ is an isomorphism, which is universal among such diagrams: any diagram as on the
    left below, in which $\alpha$ is an isomorphism, factors uniquely as on the right
-   \begin{equation}
+   \begin{equation*}
       \begin{tikzcd}[column sep=small]
          & |[alias=domA]| x \ar[dl,"g"'] \ar[dr,"h"] & \\
          a \ar[rr,"f"' codA] && b
@@ -2891,7 +2891,7 @@ as morphisms $A\otimes U\to B'\otimes U$. The commutativity of the right-hand di
          a \ar[rr,"f"' codA] && b
          \twocelliso[pos=.6]{A}{\rho}
       \end{tikzcd}
-   \end{equation}
+   \end{equation*}
    Moreover, given another $g'\colon x\to a$, $h'\colon x\to b$, $\alpha'\colon fg'\iso h'$ as on
    the left above, and isomorphisms $\beta\colon g\iso g'$ and $\gamma\colon h\iso h'$ such that
    $\alpha'\circ f\beta=\gamma\circ\alpha$, there is a unique isomorphism
@@ -2963,7 +2963,7 @@ Let $R$ be either $\UM$, $\UT$, or $\UC$. Its underlying 1-functor has a left ad
 \begin{proof}
    By the universal property of $\Path{f}$ there is a unique morphism $s_f\colon a\to \Path{f}$ such
    that
-   \begin{equation}
+   \begin{equation*}
       \begin{tikzcd}[column sep=small]
          & |[alias=domA]| a \ar[dl,equal] \ar[dr,"f"] & \\
          a \ar[rr,"f"' codA] && b
@@ -2976,7 +2976,7 @@ Let $R$ be either $\UM$, $\UT$, or $\UC$. Its underlying 1-functor has a left ad
          a \ar[rr,"f"' codA] && b
          \twocelliso[pos=.6]{A}{\rho}
       \end{tikzcd}
-   \end{equation}
+   \end{equation*}
    Using the 2-dimensional universality of $\Path{f}$, we can obtain that there is a unique
    isomorphism $\epsilon\colon s\pi_a\iso 1_{\Path{f}}$ such that $\pi_a\epsilon=1_{\pi_a}$ and
    $\pi_b\epsilon=\rho$. By universality once more, because $\rho\epsilon s=\rho$, we obtain
@@ -3080,13 +3080,13 @@ Property~\ref{item:createSEs} holds for the case $\scat{D}=\CCompCat$ because it
    Suppose that $(\scat{D},\pcat{D},\ccat{C},U,\iota)$ admits strong morphism classifiers. Then the functor $\iota$ has a left 2-adjoint $Q\colon\pcat{D}\to\scat{D}$. The
    counit $q_A\colon QA\to A$ of this adjunction is given by factoring the counit of the
    $F\dashv U\iota$ adjunction:
-   \begin{equation}
+   \begin{equation*}
       \begin{tikzcd}
          FUA \ar[r,two heads,"r_A"] \ar[dr,"\epsilon_A"']
             & QA \ar[d,hook,"q_A"] \\
          & A
       \end{tikzcd}
-   \end{equation}
+   \end{equation*}
 \end{theorem}
 \begin{proof}
    We will begin by showing that $q_A$ is a surjective equivalence for any $A$, whose inverse
@@ -3161,7 +3161,7 @@ Property~\ref{item:createSEs} holds for the case $\scat{D}=\CCompCat$ because it
 
    Finally, we need to verify that if $f''\colon QA\to B$ is any other strict morphism such that
    $f=f''\circ p_A$, then $f''=f'$. We begin by factoring $f''=\pi_B\circ\hat{f}''$:
-   \begin{equation}\label{eq:f-hat_fact}
+   \begin{equation}\label{eq:f_hat_fact}
       \begin{tikzcd}[column sep=0em]
          & |[alias=domA]| QA \ar[dl,"q_A"'] \ar[dr,equal] & \\
          A \ar[rr,squiggly,"p_A"' codA] \ar[d,equal]
@@ -3186,7 +3186,7 @@ Property~\ref{item:createSEs} holds for the case $\scat{D}=\CCompCat$ because it
       \end{tikzcd}
    \end{equation*}
    commutes, as then $\hat{f}''=\hat{f}$ by orthogonality, and $f''=\pi_B\hat{f}''=\pi_B\hat{f}=f'$.
-   The lower triangle $\pi_A\circ\hat{f}''=q_A$ follows directly from \eqref{eq:f-hat_fact}. To show
+   The lower triangle $\pi_A\circ\hat{f}''=q_A$ follows directly from \eqref{eq:f_hat_fact}. To show
    that the upper triangle $\tilde{f}=\hat{f}''\circ r_A$ commutes, it suffices to check equality of
    the adjoints $s_{Uf}=U(\hat{f}''\circ r_A)\circ\eta_{UA}$. We will check this using the universal
    property of the mapping path object $U\Path{f}=\Path{Uf}$ by showing that
