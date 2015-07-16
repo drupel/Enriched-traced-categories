@@ -1626,7 +1626,7 @@ for later exactness proofs.
 
 \begin{proposition}\label{prop:collapse_local_equivalence}
    If $\dcat{D}$ is an exact equipment, then collapse induces an equipment functor denoted
-   $\Col{\textrm{--}}\colon\dMod(\dcat{D})\to\dcat{D}$. The functor $\Col{\textrm{--}}$ is a local
+   $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$. The functor $\ColDash$ is a local
    equivalence.
 \end{proposition}
 
@@ -1635,9 +1635,9 @@ for later exactness proofs.
    $(f,\vec{f}\mspace{2mu})\colon(a,M)\to(b,N)$, a vertical morphism $\Col{f}\colon\Col{M}\to\Col{N}$ in
    $\dcat{D}$, defining a functor $\Mon(\dcat{D})\to\dcat{D}_0$.
 
-   The functor $\Col{\textrm{--}}$ is defined on proarrows and 2-cells using the inverse of the
+   The functor $\ColDash$ is defined on proarrows and 2-cells using the inverse of the
    equivalence \eqref{eqn:exact_Hor_Bimod}. Because the collapse 2-cell is cartesian, it follows
-   that $\Col{\textrm{--}}$ is a local equivalence.
+   that $\ColDash$ is a local equivalence.
 \end{proof}
 
 Recall the notion of orthogonal factorization systems for categories and strict 2-categories from
@@ -1716,6 +1716,18 @@ in~\cite{Schultz2015}, but which logically fit in the current section.
    \end{equation*}
 \end{definition}
 
+We are now in a position to connect the introductory notation of \eqref{eq:single_fiber_tr} and
+\eqref{eq:single_fiber_comp} to the notation we use throughout the paper. Recall from Section~\ref{sec:free_and_geometry} the free monoid monad $\TM\iso\TT$ on set. Then we have the following pseudo-pullback squares;
+see Lemma~\ref{lem:Mon_pullback} and Theorem~\ref{thm:Mod_vs_bo}.
+\begin{equation}\label{eqn:2pullbacks_1fiber}
+   \begin{tikzcd}
+      \TrCat_{\LabSet}\equiv\CompCat_{\LabSet}\ar[r]\ar[d]\ar[rd,phantom,"\lrcorner" very near start]
+       &\dTrProf^\bo\ar[d,"\cod"]\ar[r]\ar[rd,phantom,"\lrcorner" very near start]
+       &\dCompProf^\bo\ar[d,"\cod"]\\
+      \{*\}\ar[r,"\TT(\LabSet)"']&\TrCat\ar[r,"\Int"']&\CompCat
+   \end{tikzcd}
+\end{equation}
+
 \begin{lemma}\label{lem:Mon_vs_bo}
    Let $\dcat{D}$ be an exact equipment. There is an equivalence of fibrations on the left, such
    that the triangle on the right also commutes:
@@ -1727,7 +1739,7 @@ in~\cite{Schultz2015}, but which logically fit in the current section.
       \end{tikzcd}
       \qquad\quad
       \begin{tikzcd}[column sep=0em]
-         \Mon(\dcat{D}) \ar[rr,"\equiv"] \ar[dr,"\Col{\textrm{--}}"' pos=.3]
+         \Mon(\dcat{D}) \ar[rr,"\equiv"] \ar[dr,"\ColDash"' pos=.3]
             && \dcat{D}_0^{\bo} \ar[dl,"\cod" pos=.3] \\
          & \dcat{D}_0 &
       \end{tikzcd}
@@ -1781,7 +1793,7 @@ in~\cite{Schultz2015}, but which logically fit in the current section.
 \end{theorem}
 \begin{proof}
    Because the equipment functors 
-   $\Col{\textrm{--}}\colon\dMod(\dcat{D})\to\dcat{D}$ and $\cod\colon\dcat{D}^{\bo}\to\dcat{D}$ are both local equivalences (see Proposition~\ref{prop:collapse_local_equivalence}), the equivalence
+   $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$ and $\cod\colon\dcat{D}^{\bo}\to\dcat{D}$ are both local equivalences (see Proposition~\ref{prop:collapse_local_equivalence}), the equivalence
    of Lemma~\ref{lem:Mon_vs_bo} extends to an equivalence of equipments.
 \end{proof}
 
@@ -1976,7 +1988,7 @@ It may seem strange at first to define a profunctor $T\tickar T'$ between traced
 profunctor $\Int(T)\tickar\Int(T')$. The next proposition serves as a first sanity check on this
 definition, and the remainder of this paper provides further support.
 
-\begin{proposition}
+\begin{proposition}\label{prop:2iso_traced}
    There is an isomorphism of 2-categories, $\VVer(\dTrProf)\iso\TTrCat$.
 \end{proposition}
 \begin{proof}
@@ -1987,7 +1999,7 @@ definition, and the remainder of this paper provides further support.
    $\Int$ is locally fully faithful (Lemma~\ref{lemma:fully_faithful_and_trace}(i)).
 \end{proof}
 
-We record the following:
+We record the following, which follow by definition (and Proposition~\ref{prop:2iso_traced}):
 \begin{align*}
    \MonCat  &= \dMonProf_0  & \MMonCat  &\iso \VVer(\dMonProf) \\
    \TrCat   &= \dTrProf_0   & \TTrCat   &\iso \VVer(\dTrProf)  \\
@@ -1995,6 +2007,8 @@ We record the following:
 \end{align*}
 
 \section{$\dMonProf$, $\dTrProf$, and $\dCompProf$ are exact}\label{sec:exactness_proofs}
+
+Recall the definition of exact equipments from Section~\ref{sec:exactness_and_boff}.
 
 \begin{proposition}\label{prop:MonProf_exact}
    The equipment $\dMonProf$ is exact.
@@ -2080,29 +2094,16 @@ We record the following:
    We will show that the object $\Col{M}_{\MTCfont{T}}$ and the 1-cell component $i'_M\colon
    T\to\Col{M}_{\MTCfont{T}}$ of the collapse embedding of $M$ in $\dTrProf$ can be constructed by
    the factorization
-   \begin{equation*}
+   \begin{equation}\label{eqn:collapses_in_traced}
       \begin{tikzcd}[column sep=large]
          T \ar[r,hook,"\eta_T"] \ar[d,two heads,"i'_M"']
             & \UCT\Int(T) \ar[d,two heads,"\UCT i_M"] \\
          \Col{M}_{\MTCfont{T}} \ar[r,hook] & \UCT\Col{M}_{\MTCfont{C}}.
       \end{tikzcd}
-   \end{equation*}
-   Note that by Lemma~\ref{lem:Tr_bo_Int}, there is an isomorphism
-   $\Col{M}_{\MTCfont{C}}\iso\Int\Col{M}_{\MTCfont{T}}$.
+   \end{equation}
+   from Lemma~\ref{lem:Tr_bo_Int}, which also says that there is an isomorphism
+   $\Col{M}_{\MTCfont{C}}\iso\Int\Col{M}_{\MTCfont{T}}$ and $i_M=\Int(i'_M)$.
 
-   % An embedding $M\to T'$ in $\dTrProf$ is an embedding in $\dCompProf$ of the form
-   % $$(\Int(f),\phi)\colon(\Int(T),M)\to\Int(T').$$
-   % Thus we can construct the set of embeddings
-   % $\Emb_{\mathrm{Tr}}(M,T')$ as the pullback
-   % \begin{equation}\label{eq:Emb_Tr}
-   %    \begin{tikzcd}
-   %       \Emb_{\mathrm{Tr}}(M,T') \ar[r] \ar[d] \ar[dr,phantom,"\lrcorner" very near start]
-   %          & \Emb_{\mathrm{C}}(M,\Int(T')) \ar[d] \\
-   %       \TrCat(T,T') \ar[r,"\Int"'] & \CompCat(\Int(T),\Int(T'))
-   %    \end{tikzcd}
-   % \end{equation}
-   % where the vertical functions send an embedding to its underlying 1-cell. Note also that this
-   % pullback is functorial/natural in $T'$.
    Consider the following commutative diagram:
    \begin{equation*}
       \begin{tikzcd}[column sep=between origins,row sep=between origins]
@@ -2127,36 +2128,6 @@ We record the following:
             && \CompCat(\Int(T),\Int(T'))
       \end{tikzcd}
    \end{equation*}
-%   \begin{equation*}
-%      \begin{tikzcd}[row sep={0,between origins},column sep={0,between origins}]
-%         \TrCat(\Col{M}_{\MTCfont{T}},T')
-%               \ar[r,"\eta_{T'}\circ\textrm{--}"]
-%               \ar[dd,"\textrm{--}\circ i'_M"']
-%               \ar[ddr,phantom,"\lrcorner" very near start]
-%            &[2em,between borders]
-%               \TrCat(\Col{M}_{\MTCfont{T}},\UCT\Int(T'))
-%               \ar[dd,"\textrm{--}\circ i'_M"']
-%               \ar[dr,phantom,"\iso" sloped]
-%            &[6.6em]
-%            &[6.6em] \\[2.3em]
-%         && \CompCat(\Col{M}_{\MTCfont{C}},\Int(T'))
-%               \ar[ddr,phantom,"\iso" sloped]
-%               \ar[dddr,bend right=15,"\textrm{--}\circ i_M" description] & \\[1.7em]
-%         \TrCat(T,T')
-%               \ar[r,"\eta_{T'}\circ\textrm{--}"]
-%               \ar[ddrrr,bend right=9,looseness=1.1,"\Int"' sloped]
-%            & \TrCat(T,\UCT\Int(T'))
-%               \ar[ddrr,"\iso"' sloped] && \\[.6em]
-%            &&& \Emb_{\mathrm{C}}(M,\Int(T')) \ar[d] \\[4em]
-%         &&& \CompCat(\Int(T),\Int(T'))
-%      \end{tikzcd}
-%   \end{equation*}
-   % The left square is a pullback, by the orthogonality of $i'_M\in\bo$ and $\eta_{T'}\in\ff$.
-   % The right square is a pullback as well, because the top and bottom maps are isos. Comparing with~\eqref{eq:Emb_Tr}, we get a natural bijection
-   % $\Emb_{\mathrm{Tr}}(M,T')\iso\TrCat(\Col{M}_{\MTCfont{T}},T')$, showing that $\Col{M}_{\MTCfont{T}}$ is the collapse of
-   % $M$ in $\dTrProf$. Moreover, by examining this equivalence, we can see that the collapse $M\to
-   % T'$ in $\dTrProf$ is given by the collapse $(\Int(i'_M),\vec{\imath}_M)\colon M\to\Int(T')$ in
-   % $\dCompProf$, and hence is cartesian.
 
    The left square is a pullback, by the orthogonality of $i'_M\in\bo$ and $\eta_{T'}\in\ff$. The
    right square is a pullback as well, because the top and bottom maps are isos. Comparing the outer
@@ -2182,13 +2153,13 @@ We record the following:
    $\dMonProf$ which is closed under collapse, it is clear here as well.
 
    Now we consider $\dTrProf$. By the construction of collapses in
-   Proposition~\ref{prop:TrProf_exact}, a vertical morphism $F\colon T\to T'$ is in $\bo$ if and
+   \eqref{eqn:collapses_in_traced}, \todo{D: Patrick, clarify} a vertical morphism $F\colon T\to T'$ is in $\bo$ if and
    only if both $\Int(F)$ and the underlying monoidal functor $\UTM(F)$ are in $\bo$. By
-   Lemma~\ref{lemma:fully_faithful_and_trace}, $F$ is bijective-on-objects if and only if $\Int(F)$
+   Lemma~\ref{lemma:fully_faithful_and_trace}(iv), $F$ is bijective-on-objects if and only if $\Int(F)$
    is, and the same is clearly true of $\UTM$.
 
    Finally, by the definition of $\dTrProf$, a vertical morphism $F$ is in $\ff$ if and only if
-   $\Int(F)$ is, so the result again follows from Lemma~\ref{lemma:fully_faithful_and_trace}.
+   $\Int(F)$ is, so the result again follows from Lemma~\ref{lemma:fully_faithful_and_trace}(iv).
 \end{proof}
 
 
@@ -2199,7 +2170,7 @@ Recall the definition of $\Ptd$ from Definition~\ref{def:ptd}. The primary goal 
 to establish the equivalence of the three fibrations
 \begin{equation}\label{eqn:primary_goal}
    \begin{tikzcd}
-      \CPsh(\dCompProf) \equiv \Ptd(\dCompProf) \equiv \Mon(\dCompProf).
+      \CPsh(\dCompProf) \equiv \Ptd(\dCompProf) \equiv \Mon(\dCompProf)
    \end{tikzcd}
 \end{equation}
 over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} and
@@ -2211,8 +2182,10 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
    as categorifications of basic facts from group theory.
 
    We can think of profunctors between compact categories as playing the role of relations between
-   groups which are stable under multiplication, with pointed profunctors, respectively monoids,
-   acting like reflexive, respectively reflexive and transitive, relations. Then the equivalence
+   groups which are stable under multiplication. Pointed profunctors
+   act like reflexive relations, and monoids in profunctors act like reflexive and transitive relations. 
+   
+   In this way, the equivalence
    $\CPsh(\dCompProf)\equiv\Mon(\dCompProf)$ categorifies the standard fact that a subgroup
    determines, and is determined by, the conjugacy congruence. The equivalence
    $\Ptd(\dCompProf)\equiv\Mon(\dCompProf)$ would seem to be saying that every reflexive relation
@@ -2249,7 +2222,7 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
       i(\id_{d^*})\boxtimes n_2)\cdot(\id_c\otimes \eta_d).
    \]
 
-   It is straightforward to check that this multiplication is associative. To show that we have $N$
+   It is straightforward to check that this multiplication is associative. Remark~\ref{rem:suffices_for_monoidal_monoid} says that, in order to show that $N$
    together with $i$ and $\bullet$ define an object in $\Mon(\dCompProf)$, we must additionally show
    that this multiplication satisfies the equations \eqref{eq:Prof_monoid_C} and
    \eqref{eq:MnProf_monoid_exchange}. We will begin by showing that $n\bullet i(f)=n\cdot f$ for any
@@ -2352,7 +2325,7 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
    categories.
 \end{proof}
 
-Consider for a moment the fibration $\End(\dCompProf)$, defined by the pullback
+Consider for a moment the fibration $\End(\dCompProf)\onto\CompCat$, defined by the pullback
 \begin{equation*}
    \begin{tikzcd}[column sep=0em]
       \End(\dCompProf) \ar[d,two heads] \ar[r] \ar[dr,phantom,"\lrcorner" very near start]
@@ -2380,12 +2353,12 @@ that these are morphisms of fibrations, i.e., that they preserve cartesian morph
 \begin{proof}
    Let $M\colon C\to\Set$ be an object in $\CPsh(\dCompProf)$. Given any $f\colon c\to d$ in $ C$,
    we must define an element $i(f)\in FM(c,d)=M(c^*\otimes d)$. Since $M$ is a monoidal profunctor,
-   there is a given unit element $I_M\in M(I)$, with which we can define $i(f)=((\id_{c^*}\otimes
+   there is a given unit element $I_M\in M(I)$, with which we can define $i(f)\coloneqq((\id_{c^*}\otimes
    f)\circ\eta_c)\cdot I_M$. It is easy to check that this construction of a unit $i$ is functorial.
 \end{proof}
 
 \begin{lemma}\label{Lem:comp prof bijection}
-   Given any $N\in\Ptd(\dCompProf)$, there is a natural bijection $N(a,b)\iso
+   Given any pointed endo-profunctor $i\colon\Hom_C\to N$ in $\Ptd(\dCompProf)$, there is a natural bijection $N(a,b)\iso
    N(I,a^*\otimes b)$ for any objects $a,b\in C$.
 \end{lemma}
 \begin{proof}
@@ -2410,7 +2383,7 @@ that these are morphisms of fibrations, i.e., that they preserve cartesian morph
       \end{tikzcd}
    \end{equation*}
 \end{proposition}
-\begin{proof}
+\begin{proof}\todo{D: Patrick, clean this up. Functors have subtly wrong types, etc.}
    By Proposition~\ref{Prop:canonical unit}, the functor
    $F\colon\CPsh(\dCompProf)\to\End(\dCompProf)$ naturally factors through
    $\Ptd(\dCompProf)$.
@@ -2432,7 +2405,7 @@ that these are morphisms of fibrations, i.e., that they preserve cartesian morph
    \end{equation*}
 \end{proposition}
 \begin{proof}
-   Follows directly from Proposition~\ref{prop:unit_implies_monoid} and
+   This follows directly from Proposition~\ref{prop:unit_implies_monoid} and
    Proposition~\ref{Prop:ptd_prof_equivalence}.
 \end{proof}
 
@@ -2462,20 +2435,28 @@ modification for the proof of \ref{thm:TheoremA}. The latter results are concern
 %the present paper in Corollary~\ref{cor:TrCat_ObjectFree}.
 
 We first need to capture this idea of free-on-objects monoidal categories in a general, abstract form.
-Throughout this section we will consider an equipment $\dcat{D}$ together with a category $\cat{C}$
+Throughout this section we will consider an equipment $\dcat{D}$ together with a category $\cat{S}$
 and an adjunction
 \begin{equation}\label{eqn:adjunction_objectfree}
-   \Adjoint{\cat{C}}{\dcat{D}_0}{F}{U}.
+   \Adjoint{\cat{S}}{\dcat{D}_0}{F}{U}.
 \end{equation}
-Let $T=UF$ be the induced monad on $\cat{C}$, and let $\cat{C}_T$ be the Kleisli category. The
-inclusion $k_T\colon\cat{C}_T\to\dcat{D}_0$ induces an equipment $\dcat{D}_T\coloneqq k_T^*\dcat{D}$
+Let $T=UF$ be the induced monad on $\cat{S}$, and let $\cat{S}_T$ be the Kleisli category. The
+fully faithful inclusion $k_T\colon\cat{S}_T\to\dcat{D}_0$ induces an equipment $\dcat{D}_T\coloneqq k_T^*\dcat{D}$
 and a fully faithful local equivalence, which we denote
-\begin{equation*}
+\begin{equation}\label{eqn:FFLE_DT}
    \varphi_T\colon \dcat{D}_T\to\dcat{D}.
-\end{equation*}
+\end{equation}
 Note that, in general, if $\dcat{D}$ is exact, we should \emph{not} expect $\dcat{D}_T$ to be exact.
 
-Recall the free-forgetful monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in
+Recall the free-forgetful adjunctions
+$$
+  \Set\leftrightarrows\MonCat
+\qquad
+  \Set\leftrightarrows\TrCat
+\qquad
+  \Set\leftrightarrows\CompCat\qquad
+$$
+and the corresponding monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in
 Section~\ref{sec:free_and_geometry}. The following equipments are good examples to keep in mind when
 reading the results in this section.
 
@@ -2488,11 +2469,11 @@ reading the results in this section.
    \end{align*}
 \end{definition}
 
-$\dFrMonProf$ is just the full sub-equipment of $\dMonProf$ spanned by the monoidal categories which
+In other words, $\dFrMonProf$ is just the full sub-equipment of $\dMonProf$ spanned by the monoidal categories which
 are free on a set, and similarly for the other two. We will write
-$\FrMonCat\coloneqq\Ver(\dFrMonProf)$, etc.
+$\FrMonCat\coloneqq\dFrMonProf_0$ (and similarly for traced an compact) for the vertical 1-categories; that is, $\FrMonCat\iso\Set_{\TM}$, etc.
 
-With $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ as above, it follows from Lemma~\ref{lemma:FFLE_Mod}
+With $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ as in \eqref{eqn:FFLE_DT}, it follows from Lemma~\ref{lemma:FFLE_Mod}
 that $\dMod(\varphi_T)\colon\dMod(\dcat{D}_T)\to\dMod(\dcat{D})$ is a fully faithful local
 equivalence. If $\dcat{D}$ is exact, we can use the equivalence
 $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ from Theorem~\ref{thm:Mod_vs_bo} to identify
@@ -2504,9 +2485,9 @@ image, as in the following definition.
    follows: the vertical category is defined by the pullback
    \begin{equation*}
       \begin{tikzcd}
-         (\dcat{D}_F^{\bo})_0 \ar[r] \ar[dr,phantom,"\lrcorner" very near start] \ar[d,"(\psi_F)_0"']
-            & \cat{C} \ar[d,"F"] \\
-         \dcat{D}_0^{\bo} \ar[r,"\dom"']
+         (\dcat{D}_F^{\bo})_0 \ar[d] \ar[dr,phantom,"\lrcorner" very near start] \ar[r,"(\psi_F)_0"]
+            &\dcat{D}_0^{\bo} \ar[d,"\dom"] \\
+        \cat{S} \ar[r,"F"'] 
             & \dcat{D}_0
       \end{tikzcd}
    \end{equation*}
@@ -2523,11 +2504,11 @@ image, as in the following definition.
 We will write $\psi_F\colon\dcat{D}_F^{\bo}\to\dcat{D}^{\bo}$ for the induced local equivalence.
 \end{definition}
 
-For intuition, see Definition~\ref{def:free_on_objects}. The following proposition follows from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\ref{lemma:FFLE_Mod}:
+For intuition, see Definition~\ref{def:free_on_objects}. 
 
 \begin{proposition}\label{prop:objectfree_Mod_bo}
-   Let $\dcat{D}$ be an exact equipment and $\cat{C}$ a category, together with an adjunction
-   $U\colon\dcat{D}_0\leftrightarrows\cat{C}:\!F$, and let $T=UF$ be the induced monad.  There is a
+   Let $\dcat{D}$ be an exact equipment and $\cat{S}$ a category, together with an adjunction
+   $F\colon\cat{S}\leftrightarrows \dcat{D}_0:\!U$, let $T=UF$ be the induced monad, and let $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ be as in \eqref{eqn:FFLE_DT}.  There is a
       commuting diagram of equipments, in which the vertical functors are equivalences and the
       horizontal functors are local equivalences:
    \begin{equation*}
@@ -2537,22 +2518,33 @@ For intuition, see Definition~\ref{def:free_on_objects}. The following propositi
          \dcat{D}_F^{\bo} \ar[r,"\psi_F"'] & \dcat{D}^{\bo}
       \end{tikzcd}
    \end{equation*}
-\end{proposition}
-
-
-\begin{lemma}\label{lem:free-on-obs_inclusion}
-   Let $\dcat{D}$ be an exact equipment and $\cat{S}$ a category, together with an adjunction
-   $F\colon\cat{S}\leftrightarrows\dcat{D}_0:\!U$, and let $T=UF$ be the induced monad. Suppose
-   moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{S})$. Then the following composite is a fully
-   faithful local equivalence:
+   
+   Suppose moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{S})$. Then the following composite is
+    a fully faithful local equivalence:
    \begin{equation*}
       \begin{tikzcd}
-         \dMod(\dcat{D}_T)\ar[r,"\dMod(\varphi_T)"] &[1.5em] \dMod(\dcat{D}) \ar[r,"\Col{\textrm{--}}"] & \dcat{D}.
+         \dMod(\dcat{D}_T)\ar[r,"\dMod(\varphi_T)"] &[1.5em] \dMod(\dcat{D}) \ar[r,"\ColDash"] & \dcat{D}.
       \end{tikzcd}
    \end{equation*}
-\end{lemma}
+
+\end{proposition}
+
 \begin{proof}
-   By Proposition~\ref{prop:objectfree_Mod_bo} and Theorem~\ref{thm:Mod_vs_bo}, it suffices to
+
+The first claim follows directly from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\ref{lemma:FFLE_Mod}. Assume $U(\bo)\subseteq\mathrm{iso}(\cat{S})$.
+%\begin{lemma}\label{lem:free-on-obs_inclusion}
+%   Let $\dcat{D}$ be an exact equipment and $\cat{S}$ a category, together with an adjunction
+%   $F\colon\cat{S}\leftrightarrows\dcat{D}_0:\!U$, and let $T=UF$ be the induced monad. Suppose
+%   moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{S})$. Then the following composite is a fully
+%   faithful local equivalence:
+%   \begin{equation*}
+%      \begin{tikzcd}
+%         \dMod(\dcat{D}_T)\ar[r,"\dMod(\varphi_T)"] &[1.5em] \dMod(\dcat{D}) \ar[r,"\ColDash"] & \dcat{D}.
+%      \end{tikzcd}
+%   \end{equation*}
+%\end{lemma}
+%\begin{proof}
+   By Theorem~\ref{thm:Mod_vs_bo}, it suffices to
    consider the composition
    \begin{equation*}
       \begin{tikzcd}
@@ -2595,7 +2587,7 @@ the full 2-subcategories spanned by those monoidal (resp. traced or compact) cat
 
 \end{definition}
 
-So for example, $\MMonFrObCat$ is the vertical 2-category of $\dMonProf_{\FM}^{\bo}$, as defined in Definition~\ref{def:DFbo}.
+So for example, $\MMonFrObCat$ is the vertical 2-category of $\dMonProf_{\FM}^{\bo}$, as defined in Definition~\ref{def:DFbo}. 
 
 \begin{corollary}\label{cor:TrCat_ObjectFree}
    There are fully-faithful local equivalences of equipments, shown to the left
@@ -2607,19 +2599,18 @@ So for example, $\MMonFrObCat$ is the vertical 2-category of $\dMonProf_{\FM}^{\
    by which we obtain the isomorphisms of 2-categories shown to the right.
 \end{corollary}
 \begin{proof}
-   The fully-faithful local equivalences follow immediately from
-   Lemma~\ref{lem:free-on-obs_inclusion}, letting $\cat{S}=\Set$. The isomorphisms follow directly from Proposition~\ref{prop:objectfree_Mod_bo} and Definition~\ref{def:free_on_objects}.
+   This follows from Proposition~\ref{prop:objectfree_Mod_bo}, letting $\cat{S}=\Set$ and Definition~\ref{def:free_on_objects}.
 \end{proof}
 
-For the reader's convenience, we connect the notation of \eqref{eq:single_fiber_tr} and
-\eqref{eq:single_fiber_comp} to the present section using the following pseudo-pullback squares;
-see Lemma~\ref{lem:Mon_pullback} and~\ref{lem:Mon_vs_bo}.
+We are now in a position to connect the introductory notation of \eqref{eq:single_fiber_tr} and
+\eqref{eq:single_fiber_comp} to that of the present section, using the following pseudo-pullback squares;
+see Lemma~\ref{lem:Mon_pullback} and Theorem~\ref{thm:Mod_vs_bo}.
 \begin{equation}\label{eqn:2pullbacks_1fiber}
    \begin{tikzcd}
       \TrCat_{\LabSet}\equiv\CompCat_{\LabSet}\ar[r]\ar[d]\ar[rd,phantom,"\lrcorner" very near start]
-       &\Mon(\dFrTrProf)\ar[d,"\MOb"]\ar[r]\ar[rd,phantom,"\lrcorner" very near start]
-       &\Mon(\dFrCompProf)\ar[d,"\MOb"]\\
-      \{*\}\ar[r,"\TT(\LabSet)"']&\FrTrCat\ar[r,"\Int"']&\FrCompCat
+       &\dTrProf^\bo\ar[d,"\cod"]\ar[r]\ar[rd,phantom,"\lrcorner" very near start]
+       &\dCompProf^\bo\ar[d,"\cod"]\\
+      \{*\}\ar[r,"\TT(\LabSet)"']&\TrCat\ar[r,"\Int"']&\CompCat
    \end{tikzcd}
 \end{equation}
 
@@ -2645,32 +2636,23 @@ see Lemma~\ref{lem:Mon_pullback} and~\ref{lem:Mon_vs_bo}.
    \end{equation*}
    using the functor $\alpha$ defined in Section~\ref{sec:free_and_geometry}. In this way, the
    equipment $\dFrTrProf$ can be defined formally, purely in terms of $\dCompProf$, $\dMonProf$, and
-   the $\FM\dashv\UM$ adjunction. Thus Corollary~\ref{cor:TrCat_ObjectFree}, together with \eqref{eqn:FTrProf_pullback}, can be seen as providing
-   an alternative \emph{definition} of the 2-category $\TTrCat$. This definition does not involve any explicit mention of the trace structure defined in Section~\ref{sec:intuition_for_traced}.
+   the adjunctions $\FM\dashv\UM$ and $\FC\dashv\UC$. Thus Corollary~\ref{cor:TrCat_ObjectFree}, together with \eqref{eqn:FTrProf_pullback}, can be seen as providing
+   an alternative \emph{definition} of the 2-category $\TTrCat$. This definition does not involve any explicit mention of the trace structure defined in \cite{JoyalStreetVerity} and recalled in Section~\ref{sec:intuition_for_traced}.
 \end{remark}
 
 We conclude this section by recording two simple lemmas which use definitions from this section but
 which follow entirely from earlier work. They will be used to prove of our main results.
 
 \begin{lemma}\label{lem:FrCompProf_Psh_Mon}
-   There is an equivalence of fibrations
+   There are equivalences of fibrations
    \begin{equation*}
-      \begin{tikzcd}[column sep=-1.5em]
+      \begin{tikzcd}[column sep=-1.25em]
          \CPsh(\dFrCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
             && \Mon(\dFrCompProf) \ar[dl,two heads,"\MOb"] \\
             & \FrCompCat &
       \end{tikzcd}
-   \end{equation*}
-\end{lemma}
-\begin{proof}
-   The equipment functor $\dFrCompProf\to\dCompProf$ is (by definition) a local equivalence
-   (Definition~\ref{def:local_equivalence}), so the result follows from~Proposition~\ref{Prop:mon_prof_equivalence}, and Lemmas~\ref{lem:Mon_pullback} and~\ref{lem:Psh_pullback}.
-\end{proof}
-
-\begin{lemma}\label{lem:FrMonCompProf_Psh_Mon}
-   There is an equivalence of fibrations
-   \begin{equation*}
-      \begin{tikzcd}[column sep=-1.5em]
+      \quad\tn{and}\quad
+        \begin{tikzcd}[column sep=-1.25em]
          \CPsh(\dFrTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
             && \Mon(\dFrTrProf) \ar[dl,two heads,"\MOb"] \\
             & \FrTrCat &
@@ -2678,10 +2660,24 @@ which follow entirely from earlier work. They will be used to prove of our main 
    \end{equation*}
 \end{lemma}
 \begin{proof}
-   The equipment functor $\dFrTrProf\to\dFrCompProf$ is (by definition) a local equivalence
-   (Definition~\ref{def:local_equivalence}), so the result follows from
-   Lemmas~\ref{lem:FrCompProf_Psh_Mon}, \ref{lemma:FFLE_Mod}, \ref{lem:Mon_pullback}, and \ref{lem:Psh_pullback}.
+   The equipment functors $\dFrCompProf\to\dCompProf$ and $\dFrTrProf\to\dFrCompProf$ are (by definition) local equivalences. The left-hand equivalence follows from~Proposition~\ref{Prop:mon_prof_equivalence}, and Lemmas~\ref{lem:Mon_pullback} and~\ref{lem:Psh_pullback}. The right-hand equivalence then follows from Lemmas~\ref{lemma:FFLE_Mod}, \ref{lem:Mon_pullback}, and \ref{lem:Psh_pullback}.
 \end{proof}
+
+%\begin{lemma}\label{lem:FrMonCompProf_Psh_Mon}
+%   There is an equivalence of fibrations
+%   \begin{equation*}
+%      \begin{tikzcd}[column sep=-1.5em]
+%         \CPsh(\dFrTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+%            && \Mon(\dFrTrProf) \ar[dl,two heads,"\MOb"] \\
+%            & \FrTrCat &
+%      \end{tikzcd}
+%   \end{equation*}
+%\end{lemma}
+%\begin{proof}
+%   The equipment functor $\dFrTrProf\to\dFrCompProf$ is (by definition) a local equivalence
+%   (Definition~\ref{def:local_equivalence}), so the result follows from
+%   Lemmas~\ref{lem:FrCompProf_Psh_Mon}, \ref{lemma:FFLE_Mod}, \ref{lem:Mon_pullback}, and \ref{lem:Psh_pullback}.
+%\end{proof}
 
 \section{Deducing the main results}\label{sec:deducing}
 
@@ -2712,7 +2708,7 @@ which follow entirely from earlier work. They will be used to prove of our main 
          & \FrCompCat &
       \end{tikzcd}
    \end{equation*}
-   By Lemmas~\ref{lem:FrCompProf_Psh_Mon} and~\ref{lem:FrMonCompProf_Psh_Mon}, we have equivalences of 1-categories
+   By Lemma~\ref{lem:FrCompProf_Psh_Mon}, we have equivalences of 1-categories
    $$
    \CPsh(\dFrTrProf)\simeq\Mon(\dFrTrProf)\quad\text{and}\quad\CPsh(\dFrCompProf)\simeq\Mon(\dFrCompProf).
    $$ 
@@ -2743,7 +2739,7 @@ $$
 \end{named}
 
 \begin{proof}
-   This follows from Lemmas~\ref{lem:FrCompProf_Psh_Mon}, \ref{lem:FrMonCompProf_Psh_Mon}, and \ref{lem:Mon_vs_bo}.
+   This follows from Lemmas~\ref{lem:FrCompProf_Psh_Mon} and \ref{lem:Mon_vs_bo}.
 \end{proof}
 
 \appendix
