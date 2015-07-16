@@ -1273,8 +1273,8 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
    There is an equipment $\dSpan$ of spans in $\Set$. Its vertical category is
    $\dSpan_0\coloneqq\Set$. A horizontal 1-cell between sets $A$ and $B$ is a span $A\from S\to B$,
    their composition is defined by a pullback of spans, and a 2-cell in $\dSpan$ is a commutative
-   diagram in $\Set$ of the obvious shape. The cartesian 2-cells in this equipment are obtained by
-   taking a limit in $\Set$.
+   diagram in $\Set$ of the obvious shape. A cartesian 2-cell in this equipment is obtained by
+   taking an evident limit in $\Set$.
 \end{example}
 
 \begin{definition}\label{def:local_equivalence}
@@ -1288,7 +1288,9 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
             & \dcat{Y}_0\times\dcat{Y}_0
       \end{tikzcd}
    \end{equation}
-   If $F_0\colon\dcat{X}_0\to\dcat{Y}_0$ is fully faithful, we say that $F$ is a \emph{fully faithful local equivalence}.
+where the left-hand and right-hand arrows are the frame fibrations. 
+
+If moreover $F_0\colon\dcat{X}_0\to\dcat{Y}_0$ is fully faithful, we say that $F$ is a \emph{fully faithful local equivalence}.
 \end{definition}
 
 \begin{remark}\label{rem:strict_vs_pseudo_pullback}
@@ -1419,9 +1421,16 @@ morphisms.
    \end{gather}
    Specifically, equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B} simply say that
    $\bullet$ is a well defined morphism $M\odot M\to M$, while \eqref{eq:Prof_monoid_C} says that
-   $\bullet$ is unital with respect to $i$. In fact, it is easy to see that equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B}
-   follow from \eqref{eq:Prof_monoid_C} and the associativity of $\bullet$.
-\end{example}
+   $\bullet$ is unital with respect to $i$. 
+   
+   \end{example}
+
+\begin{remark}\label{rem:suffices_for_monoid}
+
+It is easy to see that equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B}
+   follow from \eqref{eq:Prof_monoid_C} and the associativity of $\bullet$. Thus, when proving that $\bullet\colon M\odot M\to M$ and $i\colon\Hom_C\to M$ form a monoid, it suffices to prove \eqref{eq:Prof_monoid_unit}, \eqref{eq:Prof_monoid_C}, and associativity of $\bullet$.
+
+\end{remark}
 
 \begin{example}\label{ex:mod_span_prof}
    Let $\dSpan$ be the equipment defined in Example~\ref{ex:dspan}. A monoid in $\dSpan$ consists of
@@ -1467,7 +1476,7 @@ structure, which is a local equivalence.
    units.
 
    The fibration morphism $\Mon(\dcat{D})\to\dcat{D}_1$ factors through $\Ptd(\dcat{D})$ in the
-   evident way.
+   evident way. We will not again mention $\Ptd(\dcat{D})$ until Section~\ref{sec:special_CompProf}.
 \end{definition}
 
 \begin{lemma}\label{lem:Mon_pullback}
@@ -1685,21 +1694,18 @@ taken from~\cite[Definitions~4.3~and~4.5, Theorem~4.17]{Schultz2015}:
 \begin{remark}
    As in Definition~\ref{def:orthogonal}, we will use the hooked arrow $\inj$ to indicate $\ff$
    morphisms and the two-headed arrow $\onto$ to indicate $\bo$ morphisms. However, we sometimes use
-   the latter symbol to indicate fibrations of categories (e.g., as we did in \ref{thm:TheoremB}).
-   These two uses of the symbol $\onto$ can be distinguished as follows. If the arrow occurs between
-   objects in an equipment, then it indicates a $\bo$ map; if it occurs as a structural part of a
-   given equipment, e.g., as in Definition~\ref{def:equipment}, then it indicates a fibration.
-\end{remark}
+   the latter symbol to indicate fibrations of categories (e.g., as we did in \ref{thm:TheoremB} or when defining the frame fibration for equipments, Definition~\ref{def:equipment}). Hopefully, our meaning will be clear from context.
+   \end{remark}
 
 The rest of this section records a definition and some easy results which were not
 in~\cite{Schultz2015}, but which logically fit in the current section.
 
 \begin{definition}
    Let $\dcat{D}$ be an exact equipment. We define the equipment $\dcat{D}^{\bo}$ as follows: the
-   vertical category $\dcat{D}_0^{\bo}\ss\dcat{D}_0^{\rightarrow}$ is the full subcategory of the arrow category
+   vertical category $\dcat{D}_0^{\bo}\ss\dcat{D}_0^{\rightarrow}$ is the full subcategory of the arrow category of
    $\dcat{D}_0$ spanned by the arrows in the class $\bo$. The rest of the structure is defined by
    setting $\dcat{D}^{\bo}\coloneqq\cod^*\dcat{D}$ (see
-   Definition~\ref{def:induced_locally_equivalent_equipment}), i.e., by the strict pullback
+   Definition~\ref{def:induced_locally_equivalent_equipment}), i.e., by the strict pullback of categories
    \begin{equation*}
       \begin{tikzcd}[column sep=large]
          \dcat{D}_1^{\bo} \ar[r] \ar[d, two heads] \ar[dr,phantom,"\lrcorner" very near start]
@@ -1774,8 +1780,8 @@ in~\cite{Schultz2015}, but which logically fit in the current section.
    \]
 \end{theorem}
 \begin{proof}
-   Because the equipment functors $\cod\colon\dcat{D}^{\bo}\to\dcat{D}$ and
-   $\Col{\textrm{--}}\colon\dMod(\dcat{D})\to\dcat{D}$ are both local equivalences (see Proposition~\ref{prop:collapse_local_equivalence}), the equivalence
+   Because the equipment functors 
+   $\Col{\textrm{--}}\colon\dMod(\dcat{D})\to\dcat{D}$ and $\cod\colon\dcat{D}^{\bo}\to\dcat{D}$ are both local equivalences (see Proposition~\ref{prop:collapse_local_equivalence}), the equivalence
    of Lemma~\ref{lem:Mon_vs_bo} extends to an equivalence of equipments.
 \end{proof}
 
@@ -1789,7 +1795,9 @@ $\HHor(\dcat{D})(C,1)$. We can give a direct construction of the bifibration ove
 fiber over an object $C$ is the category of copresheaves on $C$:
 
 \begin{definition}\label{def:copresheaves}
-   Let $\dcat{D}$ be an equipment such that $\dcat{D}_0$ has a terminal object $1$. We define the
+   Let $\dcat{D}$ be an equipment with a terminal object $1\in\dcat{D}_0$.%
+   \footnote{In fact, this definition makes sense for any object of $\dcat{D}_0$, but for our purposes we require the terminal object. }
+   We define the
    category $\CPsh(\dcat{D})$, bifibered over $\dcat{D}_0$, and similarly $\Psh(\dcat{D})$, by the
    pullbacks
    \begin{equation*}
@@ -1861,7 +1869,7 @@ If $\dcat{D}=\dProf$ then an object of $\CPsh(\dcat{D})$ is a pair $(C,H)$, wher
 
 \chapter{Equipments of monoidal categories and profunctors}\label{chap:equipments_monoidal_profunctors}
 
-In this section we setup the necessary equipment to prove our main results, \ref{thm:TheoremA} and
+In this section we set up the necessary equipment to prove our main results, \ref{thm:TheoremA} and
 \ref{thm:TheoremB}. The high-level view of the argument runs as follows.
 
 The free compact category on a set $\LabSet$ is $\LCob{\LabSet}$ by
@@ -1897,7 +1905,7 @@ m_2)\cdot\sigma_{c_1,c_2}^{-1}$ then one says $M$ is \emph{symmetric monoidal}.%
 
 A \emph{monoidal profunctor morphism} $\phi\colon M\to N$ is simply a monoidal transformation.
 Spelling this out in bimodule notation, $\phi$ is an ordinary morphism of profunctors such that
-$\phi(m_1\boxtimes m_2)=\phi(m_1)\boxtimes\phi(m_2)$ and $\phi(I_M)=I_N$. One can define 2-cells
+$\phi(m_1\boxtimes m_2)=\phi(m_1)\boxtimes\phi(m_2)$ and $\phi(I_M)=I_N$. We define 2-cells
 between monoidal profunctors as we did for ordinary profunctors (see \eqref{eqn:Prof2cells}):
 \begin{equation}\label{eqn:cell_MonProf}
    \begin{tikzcd}
@@ -1914,8 +1922,8 @@ between monoidal profunctors as we did for ordinary profunctors (see \eqref{eqn:
       &\Set
    \end{tikzcd}
 \end{equation}
-except the functors $F$ and $G$ are assumed to be strong monoidal, and the natural transformation
-$\phi$ is also assumed monoidal.
+except the functors $F$ and $G$ are assumed to be strict monoidal, and the natural transformation
+$\phi$ is also assumed monoidal. (The definition would also work to define an equipment if $F$ and $G$ were assumed strong, rather than strict.)
 
 To see that we have defined a double category, it remains to check that the horizontal composition
 (as defined in Section~\ref{sec:profunctors}) of monoidal profunctors is monoidal. This follows from
@@ -1936,7 +1944,7 @@ the fact that reflexive coequalizers, as in \eqref{eqn:coendComp}, commute with 
 
 We will also want to work out what a monoid (in the sense of Section~\ref{sec:monoids_bimods}) in
 $\dMonProf$ looks like using the above bimodule notation. A unit for a monoidal profunctor
-$M\colon\cat{C}\tickar\cat{C}$ is a unit $i$ as in Example~\ref{ex:monoid_in_Prof} such that
+$M\colon\cat{C}\tickar\cat{C}$ is a unit $i\colon\Hom_{\cat{C}}\to M$ as in Example~\ref{ex:monoid_in_Prof} such that
 \begin{equation}\label{eq:MnProf_monoid_unit}
    i(\id_{I_{\cat{C}}})=I_M \quad\text{and}\quad i(f\otimes g)=i(f)\boxtimes i(g)
 \end{equation}
@@ -1947,8 +1955,13 @@ Example~\ref{ex:monoid_in_Prof}, we require additionally the equations
    (m_1\boxtimes m'_1)\bullet(m_2\boxtimes m'_2) = (m_1\bullet m_2)\boxtimes(m'_1\bullet m'_2)
       \label{eq:MnProf_monoid_exchange}
 \end{gather}
-for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e')$. Note that
-\eqref{eq:MnProf_monoid_I} follows immediately from the identification $i(\id_{I_{\cat{C}}})=I_M$.
+for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e')$. 
+
+\begin{remark}\label{rem:suffices_for_monoidal_monoid}
+
+Equation \eqref{eq:MnProf_monoid_I} follows immediately from \eqref{eq:Prof_monoid_C} and the identification $i(\id_{I_{\cat{C}}})=I_M$. Thus, to prove that $i$ and $\bullet$ form a monoid in $\dMonProf$, it suffices to show \eqref{eq:MnProf_monoid_unit} and \eqref{eq:MnProf_monoid_exchange}, in addition to the requirements discussed in Remark~\ref{rem:suffices_for_monoid}.
+
+\end{remark}
 
 Now that $\dMonProf$ has been defined, we construct the equipments $\dCompProf$ and $\dTrProf$ using
 Definition~\ref{def:induced_locally_equivalent_equipment} and the functors
@@ -1971,7 +1984,7 @@ definition, and the remainder of this paper provides further support.
    there is a bijection $\VVer(\dTrProf)(F,G)\iso\TTrCat(F,G)$ for any traced functors $F,G\colon
    T\to T'$, which preserves units and composition. By the definition of $\dTrProf$, we have
    $\VVer(\dTrProf)(F,G)=\CCompCat(\Int(F),\Int(G))$. The result then follows from the fact that
-   $\Int$ is locally fully faithful.
+   $\Int$ is locally fully faithful (Lemma~\ref{lemma:fully_faithful_and_trace}(i)).
 \end{proof}
 
 We record the following:
