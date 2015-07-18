@@ -32,7 +32,6 @@
 \DeclareMathOperator{\MOb}{\lvert\mspace{2mu}\cdot\mspace{2mu}\rvert}
 \DeclareMathOperator{\Tr}{Tr}
 
-
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem*{theorem*}{Theorem}
@@ -43,6 +42,9 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem*{lemma*}{Lemma}
 
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{warning}[theorem]{Warning}
+
 \newtheorem*{namedthm}{\namedthmname}
 \newcounter{namedthm}
 \makeatletter
@@ -52,16 +54,6 @@
    \namedthm\def\@currentlabel{#1}}
   {\endnamedthm}
 \makeatother
-
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{exercise}{Exercise}[section]
-
-\theoremstyle{remark}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{warning}[theorem]{Warning}
-
 
 \newcommand{\prodb}{\mathbin{\Pi}}
 \newcommand{\iso}{\cong}
