@@ -39,7 +39,7 @@
    The axioms of traced categories are fully encoded by $\LCob{\LabSet}$ in the sense that there is
    an equivalence between $\LCob{\LabSet}$-algebras, for varying $\LabSet$, and traced categories
    with varying object set. The same holds for compact categories, the difference being in terms of
-   variance in $\LabSet$. As a consequence of our main theorem, we give a characterization of the 2-category of traced categories solely in terms of those of monoidal and compact categories, without any reference to the usual structures or axioms of traced categories. In an appendix we offer a complete proof of the well-known relationship between the 2-category of monoidal categories and strong functors and the 2-category of monoidal categories whose object set is free and strict functors; similarly for traced and compact categories. \todo{D: Patrick, ok?}\\
+   variance in $\LabSet$. As a consequence of our main theorem, we give a characterization of the 2-category of traced categories solely in terms of those of monoidal and compact categories, without any reference to the usual structures or axioms of traced categories. In an appendix we offer a complete proof of the well-known relationship between the 2-category of monoidal categories with strong functors and the 2-category of monoidal categories whose object set is free with strict functors; similarly for traced and compact categories. \todo{D: Patrick, ok?}\\
 
    \noindent\textbf{Keywords:} Traced monoidal categories, compact closed categories, monoidal categories, lax functors, equipments, operads, factorization systems.
 \end{abstract}
@@ -135,17 +135,17 @@ shift'' between the second and third columns.
 The relationship between these interpretations of string diagrams is most easily made precise when
 the set $\LabSet$ of labels is fixed. Let $\TTrCat$ (resp. $\TTrCatStrong$) denote the 2-category of traced categories,
 traced strict (resp. strong) monoidal functors, and monoidal natural isomorphisms \cite{HK}, and let $\TrCat$
-denote the underlying 1-category of $\TTrCat$. \todo{In footnote, mention tilde's, $\MMonCatStrong$?}%
+denote the underlying 1-category of $\TTrCat$ \todo{In footnote, mention tilde's, $\MMonCatStrong$?}%
 \footnote{
    We use a similar notational convention throughout this paper. We denote named 1-categories,
    monoidal categories, and operads with bold roman letters, e.g., $\ncat{Cob}$, and unnamed
    1-categories with script, e.g., $\cat{C}$. For named 2-categories or bicategories we do almost
    the same, but change the font of the first letter to calligraphic, such as $\nncat{T}{rCat}$; for
-   unnamed 2-categories we use (unbold) calligraphic, e.g., $\ccat{D}$.Finally, for equipments
+   unnamed 2-categories we use (unbold) calligraphic, e.g., $\ccat{D}$.  Finally, for equipments
    (special double categories, see Section~\ref{chap:background_equipments}) we make the first letter
    blackboard bold, whether named (e.g., $\ndcat{P}{rof}$) or unnamed (e.g., $\dcat{D}$). The
    objects in a category, 2-category, or double category will be denoted with the usual math font
-   (e.g., $T\in\Ob\TrCat$). By the \emph{underlying 1-category} of a 2-category, we mean the one obtained by dropping (not quotienting by) the 2-cells.}
+   (e.g., $T\in\Ob\TrCat$). By the \emph{underlying 1-category} of a 2-category, we mean the one obtained by dropping (not quotienting by) the 2-cells.}.
 Finally, let $\TrCat_{\LabSet}$ denote the subcategory in which the object set is fixed to be free
 on the set $\LabSet$, together with identity-on-objects functors. 
 
@@ -162,9 +162,9 @@ will be generalized in \ref{thm:TheoremA_statement} and proven as such in Sectio
 For each of our main results about traced categories in this paper, we will also prove an analogous
 result about compact closed symmetric monoidal categories, hereafter \emph{compact categories}. The
 definition of compact category can be found in Section~\ref{sec:compact_and_int}, or
-in~\cite{MacL--CTWM}. Let $\CCompCat$ (resp. $\CCompCatStrong$) denote the 2-category of compact categories and strict (resp. strong) functors, and let $\CompCat$
+in~\cite{MacL--CTWM}. Let $\CCompCat$ (resp. $\CCompCatStrong$) denote the 2-category of compact categories with strict (resp. strong) functors, and let $\CompCat$
 denote the underlying 1-category of $\CCompCat$. As above, let $\CompCat_{\LabSet}$ denote the subcategory of
-compact categories whose object set is free on the set $\LabSet$ (so the objects are strings
+compact categories whose object set is free on the set $\LabSet$ (so the objects are strings such as
 $o_1o_2o_3^*$ of labels $o_i\in\LabSet$ and their formal duals, and the tensor product is
 concatenation), together with identity-on-objects functors. 
 
@@ -557,7 +557,7 @@ $\Cob$ \cite{Abadi}, for which morphisms in the left class $\cat{L}$ include no 
 the operad of interest in~\cite{VagnerSpivakLerman} is $\cat{L}$.
 
 If one wished to make minor modifications in the axioms of traced categories to create some new sort
-of category $\ncat{Tr'Cat}$, one may proceed by imagining the string diagrams that make sense in
+of category $\ncat{Tr'Cat}$, one may proceed by imagining the string diagrams that make sense in \todo{DR: Can we change ``make sense in'' to something like ``should describe'', since $\ncat{Tr'Cat}$ is not yet defined?}
 $\ncat{Tr'Cat}$. For example, one may want to consider cartesian traced categories, in which wires
 can split or terminate abruptly. Or one might want to allow splitting but not allow abrupt
 termination.
@@ -583,7 +583,7 @@ includes the data of a function
    \varphi\colon\inp{X}\sqcup\outp{Y}\to\outp{X}\sqcup\inp{Y},
 \end{equation*}
 which is both injective and surjective, we can obtain the desired indexing operad $\Cob'$ by
-requiring surjectivity but not injectivity in $\varphi$.
+requiring surjectivity but not injectivity in $\varphi$. \todo{DR: Should \cite{RupelSpivak} be mentioned here?}
 
 \section{Plan of the paper}
 
@@ -663,7 +663,7 @@ functions
 \begin{equation}\label{dia:trace function}
    \Tr^U_{X,Y}\colon\Hom_{\cat{M}}(U\otimes X,U\otimes Y)\to\Hom_{\cat{M}}(X,Y)
 \end{equation}
-for $U,X,Y\in\Ob(\cat{M})$ satisfying several, say seven, equational axioms. When traced categories
+for $U,X,Y\in\Ob(\cat{M})$ satisfying several, say seven,\todo{DR: Why not simply write ``seven''?} equational axioms. When traced categories
 are defined, e.g., in \cite{JoyalStreetVerity}, one often sees the trace functions, as well as each
 of the axioms, accompanied by a picture. For example, (\ref{dia:trace function}) applied to an
 arbitrary morphism $f\colon U\otimes X\to U\otimes Y$ might be accompanied by this picture:
@@ -896,7 +896,7 @@ The following facts hold for any traced category $\cat{C}$:
    \item The unit $\cat{C}\to\Int(\cat{C})$ is fully faithful. It follows that $\Int\colon\TTrCat\to\CCompCat$ is locally fully faithful.
    \item If $\cat{D}$ is a monoidal category and $F\colon\cat{D}\to\cat{C}$ is a fully faithful symmetric
       monoidal functor, then $\cat{D}$ has a unique trace for which $F$ is a traced functor.
-   \item If $\cat{C}$ is compact then the unit $\cat{C}\To{\raisebox{-1ex}{$\equiv$}}\Int(\cat{C})$ is an equivalence.
+   \item If $\cat{C}$ is compact then the unit \todo{DR: Should this be written more precisely as ``the unit of the 2-adjunction above''?} $\cat{C}\To{\raisebox{-1ex}{$\equiv$}}\Int(\cat{C})$ is an equivalence.
    \item Suppose that $\cat{C'}$ is a traced category and that $F\colon \cat{C}\to \cat{C}'$ is a
       traced functor. Then $F$ is bijective-on-objects (resp. fully-faithful) if and only if
       $\Int(F)$ is.
@@ -906,7 +906,7 @@ The following facts hold for any traced category $\cat{C}$:
    These are all shown in, or trivially derived from,~\cite{JoyalStreetVerity}.
 \end{proof}
 
-\section{Free traced and compact categories, and geometry}\label{sec:free_and_geometry}
+\section{Free traced and compact categories, and geometry \todo{DR: This section title feels misleading, geometry makes me think algebraic- or differential-, but we don't really say anything about geometry.}}\label{sec:free_and_geometry}
 
 Let $\CCat$ (resp. $\CCat_\iso$) denote the 2-category of small categories, functors, and natural transformations (resp. natural isomorphisms). There are free/forgetful (strict) 2-adjunctions of 2-categories, as to the left:
 \begin{align}
@@ -947,7 +947,7 @@ underlying set functors, i.e.,~the following diagram commutes:
    \end{tikzcd}
 \end{equation}
 Because the functor $\UCM\colon\CompCat\to\MonCat$ commutes with the right adjoints of the
-adjunctions to $\Set$, i.e., $\UM\UCM=\UC$, it induces a monad morphism $\alpha\colon\TC\to\TM$ (a natural transformation
+adjunctions to $\Set$, i.e., $\UM\UCM=\UC$, it induces a monad morphism $\alpha\colon\TM\to\TC$ (i.e. a natural transformation
 $\alpha\colon\TM\to\TC$ compatible with the units and multiplications), given by the composition of
 the natural transformations
 
@@ -1047,7 +1047,7 @@ the strict 2-categorical case, where $\cat{V}=\Cat$.
       \item If $m\boxslash e$ for all $e\in\cat{R}$, then $m\in\cat{L}$. Likewise, if $m\boxslash e$
          for all $m\in\cat{L}$, then $e\in\cat{R}$.
    \end{itemize}
-   As shown, we often indicate morphisms in $\cat{L}$ using a two-headed arrow, and morphisms in
+   As shown, we often indicate morphisms in $\cat{L}$ using a two-headed arrow and morphisms in
    $\cat{R}$ using a hooked arrow.
 \end{definition}
 
@@ -1151,7 +1151,7 @@ f)\otimes n=m\otimes(f\cdot n)$ whenever the equation makes sense.
 
 For any category $\cat{C}$, there is a profunctor
 $\Hom_{\cat{C}}\colon\op{\cat{C}}\times\cat{C}\to\Set$, and these hom profunctors act as units for
-the tensor product. Precisely, if $M$ is as above, there are canonical isomorphisms
+the tensor product. More precisely, if $M$ is as above, there are canonical isomorphisms
 $\Hom_{\cat{C}}\otimes M \iso M \iso M\otimes\Hom_{\cat{D}}$.
 
 \section{Equipments}
@@ -1606,8 +1606,8 @@ for later exactness proofs.
 \begin{proof}
    Let $M\colon C\tickar C$ be a monoid in $\dProf$, as in Example~\ref{ex:monoid_in_Prof}.
    It is straightforward to use $M$ to construct a category $\Col{M}$ with the same
-   objects as $C$, and with hom sets defined by, for any pair of objects $c,d\in\Ob(C)$,
-   $\Col{M}(c,d)\coloneqq M(c,d)$. For any object $c$, the identity is provided by $i(\id_C)$, while
+   objects as $C$, and with hom sets defined by $\Col{M}(c,d)\coloneqq M(c,d)$, for any pair of objects 
+   $c,d\in\Ob(C)$. For any object $c$, the identity is provided by $i(\id_C)$, while
    the multiplication $\bullet$ of $M$ provides the composition of $\Col{M}$.
 
    The unit of $M$ can also be used to construct an identity-on-objects functor $i_M\colon
@@ -1633,7 +1633,7 @@ for later exactness proofs.
 \begin{proof}
    It is easy to use the universal property of collapse to construct, from any monoid homomorphism
    $(f,\vec{f}\mspace{2mu})\colon(a,M)\to(b,N)$, a vertical morphism $\Col{f}\colon\Col{M}\to\Col{N}$ in
-   $\dcat{D}$, defining a functor $\Mon(\dcat{D})\to\dcat{D}_0$.
+   $\dcat{D}$, thus defining a functor $\Mon(\dcat{D})\to\dcat{D}_0$.
 
    The functor $\ColDash$ is defined on proarrows and 2-cells using the inverse of the
    equivalence \eqref{eqn:exact_Hor_Bimod}. Because the collapse 2-cell is cartesian, it follows
@@ -1671,7 +1671,7 @@ taken from~\cite[Definitions~4.3~and~4.5, Theorem~4.17]{Schultz2015}:
 \end{definition}
 
 \begin{theorem}\label{thm:orthogonal}
-   If an equipment $\dcat{D}$ is regular (in particular, if $\dcat{D}$ is exact) then the vertical
+   If an equipment $\dcat{D}$ is regular \todo{DR: Regularity of equipments was never defined.} (in particular, if $\dcat{D}$ is exact) then the vertical
    2-category $\VVer(\dcat{D})$ admits a 2-orthogonal factorization system $(\bo,\ff)$ as in
    Definition~\ref{def:boff}. In particular, there is an orthogonal factorization system $(\bo,\ff)$
    on the vertical 1-category $\dcat{D}_0$.
@@ -1810,7 +1810,7 @@ fiber over an object $C$ is the category of copresheaves on $C$:
    Let $\dcat{D}$ be an equipment with a terminal object $1\in\dcat{D}_0$.%
    \footnote{In fact, this definition makes sense for any object of $\dcat{D}_0$, but for our purposes we require the terminal object. }
    We define the
-   category $\CPsh(\dcat{D})$, bifibered over $\dcat{D}_0$, and similarly $\Psh(\dcat{D})$, by the
+   categories $\CPsh(\dcat{D})$ and $\Psh(\dcat{D})$, each bifibered over $\dcat{D}_0$, by the
    pullbacks
    \begin{equation*}
      \begin{tikzcd}
@@ -1912,7 +1912,7 @@ for any $m\in M(c,d)$. If moreover $m_2\boxtimes m_1 = \sigma_{d_1,d_2}\cdot(m_1
 m_2)\cdot\sigma_{c_1,c_2}^{-1}$ then one says $M$ is \emph{symmetric monoidal}.%
 \footnote{
    We will generally suppress the word \emph{symmetric} since all monoidal categories are by
-   assumption; see Warning~\ref{warn:symmetric}.
+   assumption; see Warning~\ref{warn:symmetric}.\todo{DR: This does not really seem proper since there can be monoidal profunctors between symmetric categories which are not symmetric.  Perhaps it should be stated that all monoidal profunctors are assumed to be symmetric.}
 }
 
 A \emph{monoidal profunctor morphism} $\phi\colon M\to N$ is simply a monoidal transformation.
@@ -1934,8 +1934,8 @@ between monoidal profunctors as we did for ordinary profunctors (see \eqref{eqn:
       &\Set
    \end{tikzcd}
 \end{equation}
-except the functors $F$ and $G$ are assumed to be strict monoidal, and the natural transformation
-$\phi$ is also assumed monoidal. (The definition would also work to define an equipment if $F$ and $G$ were assumed strong, rather than strict.)
+except the functors $F$ and $G$ are assumed to be strict monoidal and the natural transformation
+$\phi$ is assumed monoidal. (The definition would also work to define an equipment if $F$ and $G$ were assumed strong, rather than strict.)
 
 To see that we have defined a double category, it remains to check that the horizontal composition
 (as defined in Section~\ref{sec:profunctors}) of monoidal profunctors is monoidal. This follows from
@@ -2018,9 +2018,9 @@ Recall the definition of exact equipments from Section~\ref{sec:exactness_and_bo
    Proposition~\ref{prop:Prof_is_exact}, we obtain a category $\Col{M}$, an identity-on-objects
    morphism $i_M\colon C\to\Col{M}$, and a cartesian 2-cell, $\vec{\imath}_M$, so that
    $(i_M,\vec{\imath}_M)$ is an embedding. The category $\Col{M}$ has an canonical monoidal structure,
-   which on objects is just that of $C$, and on morphisms is induced from the fact that $M$ is a
+   which on objects is just that of $C$, and on morphisms is induced \todo{DR: Do you really mean to say that the monoidal structure is induced from a fact?} from the fact that $M$ is a
    monoidal profunctor. It is also easy to verify the second part of
-   Definition~\ref{def:exact_equipment}: a $(M,N)$-bimodule is precisely the data of a profunctor
+   Definition~\ref{def:exact_equipment}: an $(M,N)$-bimodule is precisely the data of a profunctor
    $\Col{M}\tickar\Col{N}$.
 \end{proof}
 
@@ -2063,7 +2063,7 @@ Recall the definition of exact equipments from Section~\ref{sec:exactness_and_bo
    \end{itemize}
 \end{lemma}
 \begin{proof}
-   The trace structure on $M$ follows easily from Lemma~\ref{lemma:fully_faithful_and_trace} (ii).
+   The existence and uniqueness of a trace structure on $M$ follows easily from Lemma~\ref{lemma:fully_faithful_and_trace} (ii).
    For the second part, consider the diagram
    \begin{equation*}
       \begin{tikzcd}[column sep=4em, row sep=5ex]
@@ -2130,7 +2130,7 @@ Recall the definition of exact equipments from Section~\ref{sec:exactness_and_bo
    \end{equation*}
 
    The left square is a pullback, by the orthogonality of $i'_M\in\bo$ and $\eta_{T'}\in\ff$. The
-   right square is a pullback as well, because the top and bottom maps are isos. Comparing the outer
+   right square is a pullback as well, because the top and bottom maps are isomorphisms. Comparing the outer
    square with the pullback in Lemma~\ref{lemma:embed_for_LE}, and noting that $\Mon(\Int)(M)=M$, we
    obtain a natural bijection $\Emb_{\mathrm{Tr}}(M,T')\iso\TrCat(\Col{M}_{\MTCfont{T}},T')$,
    showing that $\Col{M}_{\MTCfont{T}}$ is the collapse of $M$ in $\dTrProf$. Moreover, by examining
@@ -2144,7 +2144,7 @@ Recall the definition of exact equipments from Section~\ref{sec:exactness_and_bo
 \end{proof}
 
 \begin{proposition}\label{prop:boff_well_named}
-   Let $\dcat{D}$ be $\dProf$, $\dMonProf$,$\dTrProf$, or $\dCompProf$, each of which is exact. A vertical morphism
+   Let $\dcat{D}$ be $\dProf$, $\dMonProf$,$\dTrProf$, or $\dCompProf$, each of which is exact \todo{This assertion doesn’t really belong as part of the Proposition, perhaps it should be moved into the proof when it is used.} . A vertical morphism
    $F$ in $\dcat{D}$ is in $\bo$ (resp. $\ff$) in the sense of Theorem~\ref{thm:orthogonal} if and only
    $F$ is bijective-on-objects (resp. fully-faithful) in the usual sense.
 \end{proposition}
@@ -2544,11 +2544,10 @@ The first claim follows directly from Theorem~\ref{thm:Mod_vs_bo} and Lemma~\ref
 %   \end{equation*}
 %\end{lemma}
 %\begin{proof}
-   By Theorem~\ref{thm:Mod_vs_bo}, it suffices to
-   consider the composition
+   By Theorem~\ref{thm:Mod_vs_bo}, it suffices to consider the composition
    \begin{equation*}
       \begin{tikzcd}
-         \dcat{D}^{\bo}_F \ar[r,"\psi_F"] & \dcat{D}^{\bo} \ar[r,"\cod"] & \dcat{D}
+         \dcat{D}^{\bo}_F \ar[r,"\psi_F"] & \dcat{D}^{\bo} \ar[r,"\cod"] & \dcat{D}.
       \end{tikzcd}
    \end{equation*}
    By definition, both $\psi_F$ and $\cod$ are local equivalences, hence the composition is also.
@@ -2795,7 +2794,7 @@ The 2-categories $\CCat$, $\CCat_\iso$, $\MMonCatStrong$, $\TTrCatStrong$, and $
 have arrow objects. Clearly for an object $\cat{A}\in\CCat$, the usual arrow category $\cat{A}^2$ of
 arrows and commutative squares, has the necessary universal property. Similarly, the arrow category
 of $\cat{A}$ in $\CCat_\iso$ is the category whose objects are isomorphisms in $\cat{A}$, and whose
-morphisms are commutative squares (in which the other morphisms need not be isos).
+morphisms are commutative squares (in which the other morphisms need not be isomorphisms).
 
 Arrow objects in $\MMonCatStrong$ are preserved by the forgetful functor to $\CCat$. If
 $(\cat{M},I,\otimes)$ is a monoidal category then the arrow object $\cat{M}^2$ (in $\CCat$) has a
@@ -2966,7 +2965,7 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
    Examples~\ref{ex:arrow_objects}~and~\ref{ex:mapping_paths}. Each has a notion of cone, in fact a
    certain weighted limit cone in $\CCat$, though we will not discuss that notion here. We mentioned
    in passing that the structure morphisms for that cone are strict monoidal functors and that they
-   ``preserve and jointly detect" strictness in the sense of
+   ``preserve and jointly detect'' strictness in the sense of
    Definition~\ref{def:preserve_jdetect_strictness} below. In particular, the 2-categories
    $\MMonCat$, $\TTrCat$, and $\CCompCat$ also have arrow objects and mapping path objects, and the
    inclusions of strict-into-strong (e.g., $\MMonCat\to\MMonCatStrong$) preserve them. Looking back
@@ -3130,7 +3129,7 @@ following cases:
 \end{itemize}
 We will now show that in each case the collection admits strong morphism classifiers. 
 
-Property \ref{item:boff} is proved as \ref{lem:(bo,ff)_really_is} and the exactness of $\dMonProf$,
+Property \ref{item:boff} is proved as Lemma~\ref{lem:(bo,ff)_really_is} and the exactness of $\dMonProf$,
 $\dTrProf$, and $\dCompProf$; see Section~\ref{sec:exactness_proofs}. Property \ref{item:ioofflff}
 is obvious for $\MMonCat$ and $\CCompCat$, and by definition (see
 Remark~\ref{rem:traced_2morphisms}) for $\TTrCat$.  Property \ref{item:arrowMPO} is shown in
@@ -3145,7 +3144,7 @@ $\scat{D}=\MMonCat$.
 Suppose that $F\colon A\to B$ is a strict monoidal functor and that there is a surjective
 equivalence $g\dashv U\iota(F)$ in $\CCat$. Let $f\colon a\to b$ denote $U\iota(F)$, so $g\colon
 b\to a$. By Definition~\ref{def:surjective_equivalence}, we have a 2-cell $\epsilon\colon gf\iso
-1_a$ and $1_b=fg$, $\epsilon g=1_g$ and $f\epsilon=1_f$. A strong functor $G\colon B\to A$ with
+1_a$ and equalities $1_b=fg$, $\epsilon g=1_g$ and $f\epsilon=1_f$. A strong functor $G\colon B\to A$ with
 $UG=g$ of course acts the same as $g$ on objects and morphisms. Thus it suffices to give the
 coherence isomorphisms $\mu\colon I_A\To{\cong}G(I_B)$ and $\mu_{x,y}\colon G(x)\otimes
 G(y)\To{\cong} G(x\otimes y)$ for objects $x,y\in B$, which satisfy the required equations. Define
@@ -3374,11 +3373,11 @@ morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
    $\scat{D}(A,B)\iso\pcat{D}(\iota A,\iota B)$ for any $A$ and $B$ which are
    free-on-objects. In fact, this will hold as long as $A$ is free-on-objects. We say that $A$ is
    \emph{flexible} in this case, i.e.,~if every strong morphism out of $A$ is isomorphic to a strict
-   morphism.
+   morphism.\todo{DR: We never actually use this term anywhere else, remove this sentence?}
 
    If $A\in\scat{D}$ is free-on-objects, then there exists an object $s\in\cat{S}$ and a $\bo$
    morphism $f\colon F(\Disc(s))\twoheadrightarrow A$ in $\scat{D}$. By the $F\dashv U$
-   adjunction, there is a unique morphism $\tilde{f}\colon\Disc(s)\to UA$ such that
+   adjunction \todo{DR: The abuse of notation replacing $U$ by $U\iota$ was stated in the proof of Theorem~\ref{thm:strong_classifier}, is this convention still in effect?  It might be good to reiterate the convention here.}, there is a unique morphism $\tilde{f}\colon\Disc(s)\to UA$ such that
    $f=\epsilon_A\circ Ff$. Factoring $\epsilon_A=q_A\circ r_A$ as in
    Theorem~\ref{thm:strong_classifier}, we obtain by orthogonality a unique lift $p'_A\in\scat{D}$
    in the square
@@ -3444,7 +3443,7 @@ Let $\cat{S}=\Set$, and let $\Disc\colon\cat{S}\leftrightarrows\Cat:\Ob$ be the 
 \begin{thebibliography}{XXX}
 
  \bibitem{Abadi}
- J.~Abadi, On the Existence of an Orthogonal Factorization System on 1-Cob and 2-Cob, \url{http://arxiv.org/abs/1506.03119} (2015).
+ J.~Abadi, Orthogonal factorization systems on 1- and 2-cob, In preparation (2015).
 
  \bibitem{Abramsky1}
  S.~Abramsky, Retracing some paths in process algebra, CONCUR'96: Concurrency Theory (1996), pp.~1--17.
@@ -3497,7 +3496,7 @@ M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of 
  S.~Lack, A 2-categories companion (English summary), Towards higher categories, 105--191, IMA Vol. Math. Appl., 152  (2010), Springer, New York.
 
  \bibitem{LackHomotopy}
- S.~Lack, Homotopy-theoretic aspects of 2-monads (English summary), JJournal of Homotopy and Related Structures 2 (2007), no. 2, 229 -- 260.
+ S.~Lack, Homotopy-theoretic aspects of 2-monads (English summary), Journal of Homotopy and Related Structures 2 (2007), no. 2, 229 -- 260.
 
  \bibitem{Leinster}
  T.~Leinster, Higher Operads, higher categories, London Mathematical Society Lecture Note Series, 298, Cambridge University Press, Cambridge (2004).
