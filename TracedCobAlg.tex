@@ -12,7 +12,7 @@
 \setheaderspaces{*}{1.5\onelineskip}{*} % {headdrop}{headsep}{ratio}
 \checkandfixthelayout
 
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{1}
 \setcounter{secnumdepth}{2}
 \pagestyle{ruled}
 \renewcommand*{\chaptitlefont}{\bfseries\Large}
@@ -51,11 +51,6 @@
 
 % \setcounter{tocdepth}{1}
 % \tableofcontents*
-~\\
-TODO:
-\begin{enumerate}
-\item Kill or reduce table of contents before publishing.
-\end{enumerate}
 
 \tableofcontents
 
@@ -590,9 +585,7 @@ $\Cob$ \cite{Abadi}, for which morphisms in the left class $\cat{L}$ include no 
 the operad of interest in~\cite{VagnerSpivakLerman} is $\cat{L}$.
 
 If one wished to make minor modifications in the axioms of traced categories to create some new sort
-of category $\ncat{Tr'Cat}$, one may proceed by imagining the string diagrams that make sense in
-\todo{DR: Can we change ``make sense in'' to something like ``should describe'', since
-$\ncat{Tr'Cat}$ is not yet defined?} $\ncat{Tr'Cat}$. For example, one may want to consider
+of category $\ncat{Tr'Cat}$, one may proceed by imagining the string diagrams that should describe compositions in $\ncat{Tr'Cat}$. For example, one may want to consider
 cartesian traced categories, in which wires can split or terminate abruptly. Or one might want to
 allow splitting but not allow abrupt termination.
 \begin{equation*} \begin{tikzpicture}[wiring diagram,bb min width =.7cm, bb port sep =1, bbx=.6cm,bb port length=3pt]
@@ -606,7 +599,11 @@ allow splitting but not allow abrupt termination.
    \draw[ar] let \p1=(X2.north east), \p2=(X1.north west), \n1={\y2+\bby}, \n2=\bbportlen in
       (X2_out1) to[in=0] (\x1+.7*\n2,\n1) -- (\x2-.7*\n2,\n1) to[out=180] (X1_in1);
 \end{tikzpicture} \end{equation*}
-We can accommodate any such modification of string diagrams for $\ncat{Tr'Cat}$ by modifying the
+There is sometimes a tension between identity morphisms and the trace structure, e.g., if the morphisms are dynamical systems. Imagining the wiring diagrams for traced categories without identities is straightforward (the relevant operad is $\cat{L}$ above), whereas determining the relevant axiomatization for them is not. 
+
+\todo[inline]{DS: Include something like the following?\\An approach to this issue, was suggested in \cite{ABP}, in which traced categories without identities are embedded in larger categories as ``traced ideals"; however, it may sometimes be preferable to work with the category on its own terms.}
+
+We can accommodate any of the above such modification of string diagrams for $\ncat{Tr'Cat}$ by modifying the
 indexing operad $\Cob$ to some operad $\Cob'$. Using $\cat{L}$ for dynamical systems in
 \cite{VagnerSpivakLerman} is an example of this. As another, suppose that, as above, we want string
 diagrams in which wires can split but not terminate. Noting that an oriented cobordism $\varphi$
@@ -615,8 +612,7 @@ includes the data of a function
    \varphi\colon\inp{X}\sqcup\outp{Y}\to\outp{X}\sqcup\inp{Y},
 \end{equation*}
 which is both injective and surjective, we can obtain the desired indexing operad $\Cob'$ by
-requiring surjectivity but not injectivity in $\varphi$. \todo{DR: Should \cite{RupelSpivak} be
-mentioned here?}
+requiring surjectivity but not injectivity in $\varphi$. These were found to be useful in \cite{RupelSpivak}. 
 
 \section{Plan of the paper}
 
@@ -1714,7 +1710,7 @@ for later exactness proofs.
 
 Recall the notion of orthogonal factorization systems for categories and strict 2-categories from
 Definition~\ref{def:orthogonal}. Definition~\ref{def:boff} and Theorem~\ref{thm:orthogonal} are
-taken from~\cite[Definitions~4.3~and~4.5, Theorem~4.17]{Schultz2015}:
+taken from~\cite[Definitions~4.3~and~4.5; Definition~5.1~and~Theorem~4.17]{Schultz2015}.
 
 \begin{definition}
       \label{def:boff}
@@ -1743,10 +1739,11 @@ taken from~\cite[Definitions~4.3~and~4.5, Theorem~4.17]{Schultz2015}:
    monoid structure). We say that $f$ is $\ff$ if the unit square is cartesian.
 \end{definition}
 
+
+
 \begin{theorem}
       \label{thm:orthogonal}
-   If an equipment $\dcat{D}$ is regular \todo{DR: Regularity of equipments was never defined.} (in
-   particular, if $\dcat{D}$ is exact) then the vertical 2-category $\VVer(\dcat{D})$ admits a
+   If an equipment $\dcat{D}$ is exact, then the vertical 2-category $\VVer(\dcat{D})$ admits a
    2-orthogonal factorization system $(\bo,\ff)$ as in Definition~\ref{def:boff}. In particular,
    there is an orthogonal factorization system $(\bo,\ff)$ on the vertical 1-category $\dcat{D}_0$.
 \end{theorem}
@@ -3562,6 +3559,9 @@ $\bo$ morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
 
  \bibitem{Abramsky2}
  S.~Abramsky, Abstract scalars, loops, and free traced and strongly compact closed categories, Proceedings of CALCO (2005), pp.~1--31.
+
+ \bibitem{ABP}
+ S.~Abramsky, R.~Blute, P.~Panangaden, Nuclear and Trace Ideals in Tensored ????Categories, arXiv preprint math/9805102 (1998).
 
  \bibitem{AdamekHerrlichStrecker}
  J.~Adamek, H.~Herrlich, and G.E.~Strecker, Abstract and Concrete Categories: The joy of cats, Dover Publications (2009).
