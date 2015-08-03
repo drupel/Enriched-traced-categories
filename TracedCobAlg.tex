@@ -131,8 +131,8 @@ shift'' between the second and third columns.
       \label{subsec:statement_of_main_thm}
 
 The relationship between these interpretations of string diagrams is most easily made precise when
-the set $\LabSet$ of labels is fixed. Let $\TTrCat$ (resp. $\TTrCatStrong$) denote the 2-category of
-traced categories, traced strict (resp. strong) monoidal functors, and monoidal natural isomorphisms
+the set $\LabSet$ of labels is fixed. Let $\TTrCat$ (resp.\ $\TTrCatStrong$) denote the 2-category of
+traced categories, traced strict (resp.\ strong) monoidal functors, and monoidal natural isomorphisms
 \cite{HK}, and let $\TrCat$ denote the underlying 1-category of $\TTrCat$%
 \footnote{
    We use a similar notational convention throughout this paper. We denote named 1-categories,
@@ -163,8 +163,8 @@ will be generalized in \ref{thm:TheoremA_statement} and proven as such in Sectio
 For each of our main results about traced categories in this paper, we will also prove an analogous
 result about compact closed symmetric monoidal categories, hereafter \emph{compact categories}. The
 definition of compact category can be found in Section~\ref{sec:compact_and_int}, or
-in~\cite{MacL--CTWM}. Let $\CCompCat$ (resp. $\CCompCatStrong$) denote the 2-category of compact
-categories with strict (resp. strong) functors, and let $\CompCat$ denote the underlying 1-category
+in~\cite{MacL--CTWM}. Let $\CCompCat$ (resp.\ $\CCompCatStrong$) denote the 2-category of compact
+categories with strict (resp.\ strong) functors, and let $\CompCat$ denote the underlying 1-category
 of $\CCompCat$. As above, let $\CompCat_{\LabSet}$ denote the subcategory of compact categories
 whose objects are free on the set $\LabSet$ (so the objects are strings such as $o_1o_2o_3^*$ of
 labels $o_i\in\LabSet$ and their formal duals, and the tensor product is concatenation), together
@@ -245,7 +245,7 @@ free-on-objects. Let $\TrFrObCat$ and $\CompFrObCat$ (respectively) denote their
 \end{named}
 
 The proof of this result can be found in Section~\ref{sec:deducing}. In order to see how the
-free-on- objects traced (resp. compact) categories relate to general traced categories, we prove in
+free-on- objects traced (resp.\ compact) categories relate to general traced categories, we prove in
 Appendix~\ref{appendix} the following result, which is well-known but difficult to find in the
 literature:
 
@@ -287,8 +287,8 @@ on lax functors $\cat{C}\to\Set$ for general compact categories $\cat{C}$.
 We will see (in Theorem~\ref{thm:orthogonal} and Proposition~\ref{prop:CompProf_exact}) that there
 is a factorization system on $\TrCat$, and similarly on $\CompCat$, in which the left class consists
 of bijective-on-objects functors and the right class consists of fully faithful functors. Let
-$\TrCat^{\bo}$ (resp.~$\CompCat^{\bo}$) be the full subcategory of the arrow category $\TrCat^{\to}$
-(resp.~$\CompCat^{\to}$) spanned by the bijective-on-objects functors.
+$\TrCat^{\bo}$ (resp.\ $\CompCat^{\bo}$) be the full subcategory of the arrow category $\TrCat^{\to}$
+(resp.\ $\CompCat^{\to}$) spanned by the bijective-on-objects functors.
 
 Using these factorization systems, we will see that the domain functors
 \[
@@ -958,7 +958,7 @@ ${(\inp{X},\outp{X})}^*\coloneqq(\outp{X},\inp{X})$.
       \item If $\cat{C}$ is compact then the unit
          $\cat{C}\To{\raisebox{-1ex}{$\equiv$}}\Int(\cat{C})$ is an equivalence.
       \item Suppose that $\cat{C'}$ is a traced category and that $F\colon \cat{C}\to \cat{C}'$ is a
-         traced functor. Then $F$ is bijective-on-objects (resp. fully-faithful) if and only if
+         traced functor. Then $F$ is bijective-on-objects (resp.\ fully-faithful) if and only if
          $\Int(F)$ is.
    \end{enumerate}
 \end{lemma}
@@ -969,8 +969,8 @@ ${(\inp{X},\outp{X})}^*\coloneqq(\outp{X},\inp{X})$.
 \section{Free traced and compact categories}
       \label{sec:free_and_geometry}
 
-Let $\CCat$ (resp. $\CCat_\iso$) denote the 2-category of small categories, functors, and natural
-transformations (resp. natural isomorphisms). There are free/forgetful (strict) 2-adjunctions of
+Let $\CCat$ (resp.\ $\CCat_\iso$) denote the 2-category of small categories, functors, and natural
+transformations (resp.\ natural isomorphisms). There are free/forgetful (strict) 2-adjunctions of
 2-categories, as to the left:
 \begin{align}
    \nonumber
@@ -2241,8 +2241,8 @@ Recall the definition of exact equipments from Section~\ref{sec:exactness_and_bo
 \begin{proposition}
       \label{prop:boff_well_named}
    Let $\dcat{D}$ be $\dProf$, $\dMonProf$,$\dTrProf$, or $\dCompProf$. A vertical morphism $F$ in
-   $\dcat{D}$ is in $\bo$ (resp. $\ff$) in the sense of Theorem~\ref{thm:orthogonal} if and only $F$
-   is bijective-on-objects (resp. fully-faithful) in the usual sense.
+   $\dcat{D}$ is in $\bo$ (resp.\ $\ff$) in the sense of Theorem~\ref{thm:orthogonal} if and only $F$
+   is bijective-on-objects (resp.\ fully-faithful) in the usual sense.
 \end{proposition}
 \begin{proof}
    For $\dProf$ and $\dMonProf$, this is clear by inspection, and as $\dCompProf$ is a full
@@ -2464,7 +2464,7 @@ defined. Thus, we have the diagram
    \CPsh(\dCompProf) \ar[ur,shift left,"F"] \ar[dr,shift left,"F"] & \\
    & \End(\dCompProf) \ar[ul,shift left,"U"]
 \end{tikzcd} \end{equation}
-in which the triangle invlolving the $F$'s and the triangle involving the $U$'s both commute.
+in which the triangle involving the $F$'s and the triangle involving the $U$'s both commute.
 
 \begin{lemma}
       \label{Lem:comp prof bijection}
@@ -2667,14 +2667,14 @@ For intuition, see Definition~\ref{def:free_on_objects}.
 
 \begin{definition}
       \label{def:free_on_objects}
-   Say that a monoidal (resp. traced or compact) category is \emph{free-on-objects} if there is a
-   set $\LabSet$ and a bijective-on-objects functor $\FM(\LabSet)\onto\cat{C}$, (resp.
+   Say that a monoidal (resp.\ traced or compact) category is \emph{free-on-objects} if there is a
+   set $\LabSet$ and a bijective-on-objects functor $\FM(\LabSet)\onto\cat{C}$, (resp.\
    $\FT(\LabSet)\onto\cat{C}$ or $\FC(\LabSet)\onto\cat{C}$), where $\FM$, $\FT$, and $\FC$ are the
    free functors defined in \eqref{eqn:adjunctions}. Denote by
    \[
       \MMonFrObCat\ss\MMonCat\qquad \TTrFrObCat\ss\TTrCat\qquad\CCompFrObCat\ss\CCompCat
    \]
-   the full 2-subcategories spanned by those monoidal (resp. traced or compact) categories $\cat{C}$
+   the full 2-subcategories spanned by those monoidal (resp.\ traced or compact) categories $\cat{C}$
    that are free-on-objects. Equivalently, using Definition~\ref{def:DFbo} and
    Proposition~\ref{prop:objectfree_Mod_bo},
    \begin{gather*}
@@ -3068,9 +3068,9 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
       \cat{A} \ar[rr,"F"' codA] && \cat{B}
       \twocelliso[pos=.6]{A}{\alpha}
    \end{tikzcd} \]
-   in which $G$ and $H$ are strong (resp. strict) monoidal functors, the induced functor
+   in which $G$ and $H$ are strong (resp.\ strict) monoidal functors, the induced functor
    $\hat{\alpha}\colon\cat{X}\to P(F)$, given on objects by $x\mapsto(G(x),H(x),\alpha_x)$, will be
-   strong (resp. strict) as well.
+   strong (resp.\ strict) as well.
 
    If $\cat{A}$ and $\cat{B}$ are traced categories and $F$ is a traced functor, one obtains a
    canonical trace structure on the monoidal category $P(F)$ in a manner similar to that shown in
@@ -3160,7 +3160,7 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
    It follows from Lemma~\ref{lem:fully_faithful_surjective_equiv} that $\pi_a$ is fully-faithful.
 \end{proof}
 
-\section{Strict vs. strong morphisms}
+\section{Strict vs.\ strong morphisms}
       \label{sec:strict_vs_strong}
 
 Between monoidal categories, there are several notions of functor: strict, strong, lax, and colax.
