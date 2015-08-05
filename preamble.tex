@@ -4,9 +4,11 @@
 \usepackage{amssymb}
 \usepackage{fixltx2e}
 \usepackage[T1]{fontenc}
-\usepackage{newpxtext}
-\usepackage[varg,bigdelims]{newpxmath}
-\linespread{1.1}
+%\usepackage{newpxtext}
+%\usepackage[varg,bigdelims]{newpxmath}
+\usepackage[only,boxslash]{stmaryrd}
+\usepackage[sc]{mathpazo}
+\linespread{1.05}
 \usepackage[cal=euler,scr=rsfso]{mathalfa}
 \usepackage{bm}
 \usepackage{inputenc}
@@ -15,11 +17,13 @@
 \usepackage{enumitem}
 \usepackage{booktabs}
 \usepackage{tikz}
-\usepackage{todonotes}
-\usepackage[bookmarks=true,colorlinks=true, linkcolor=MidnightBlue, citecolor=cyan]{hyperref}
+%\usepackage{todonotes}
+%\usepackage[bookmarks=true,colorlinks=true, linkcolor=MidnightBlue, citecolor=cyan]{hyperref}
+\RequirePackage{hyperref}
+\hypersetup{colorlinks,linkcolor={blue!50!black},citecolor={red!50!black},urlcolor={blue!80!black}}
 
-\usetikzlibrary{decorations.markings,decorations.pathmorphing,arrows.meta,calc,fit,quotes,cd}
-\hypersetup{final}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing,arrows.meta,calc,fit,quotes,cd,positioning}
+%\hypersetup{final}
 
 \newcommand{\id}{\mathrm{id}}
 \DeclareMathOperator{\dom}{dom}
@@ -63,6 +67,10 @@
 \newcommand{\iso}{\cong}
 \renewcommand{\equiv}{\simeq}
 \newcommand{\pto}{\rightsquigarrow}
+
+
+% when not using newpxmath
+\newcommand{\vmathbb}[1]{\mathbb{#1}}
 
 \newcommand{\cat}[1]{\mathscr{#1}} %category variable
 \newcommand{\ncat}[1]{\mathbf{#1}} %named category

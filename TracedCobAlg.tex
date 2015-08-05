@@ -1,3 +1,4 @@
+\pdfoutput=1
 \documentclass[11pt,oneside,article]{memoir}
 \input{preamble.tex}
 
@@ -969,7 +970,7 @@ ${(\inp{X},\outp{X})}^*\coloneqq(\outp{X},\inp{X})$.
 \section{Free traced and compact categories}
       \label{sec:free_and_geometry}
 
-Let $\CCat$ (resp.\ $\CCat_\iso$) denote the 2-category of small categories, functors, and natural
+Let $\CCat$ (resp.\ $\CCat_{\iso}$) denote the 2-category of small categories, functors, and natural
 transformations (resp.\ natural isomorphisms). There are free/forgetful (strict) 2-adjunctions of
 2-categories, as to the left:
 \begin{align}
@@ -977,10 +978,10 @@ transformations (resp.\ natural isomorphisms). There are free/forgetful (strict)
    \FM&\colon\CCat_{\;\;} \leftrightarrows\MMonCat:\!\UM
       & \Set &\leftrightarrows\MonCat \\
    \label{eqn:adjunctions}
-   \FT&\colon\CCat_\iso\leftrightarrows\TTrCat:\!\UT
+   \FT&\colon\CCat_{\iso}\leftrightarrows\TTrCat:\!\UT
       & \Set &\leftrightarrows\TrCat \\
    \nonumber
-   \FC&\colon\CCat_\iso\leftrightarrows\CCompCat:\!\UC
+   \FC&\colon\CCat_{\iso}\leftrightarrows\CCompCat:\!\UC
       & \Set&\leftrightarrows\CompCat
 \end{align}
 These have underlying 1-adjunctions (e.g., $\Cat\leftrightarrows\TrCat$), which \cite{Abramsky2}
@@ -2898,10 +2899,10 @@ result will not be new to experts, but we found it difficult to find in the lite
 
 \begin{example}
       \label{ex:arrow_objects}
-The 2-categories $\CCat$, $\CCat_\iso$, $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$
+The 2-categories $\CCat$, $\CCat_{\iso}$, $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$
 have arrow objects. Clearly for an object $\cat{A}\in\CCat$, the usual arrow category $\cat{A}^2$ of
 arrows and commutative squares, has the necessary universal property. Similarly, the arrow category
-of $\cat{A}$ in $\CCat_\iso$ is the category whose objects are isomorphisms in $\cat{A}$, and whose
+of $\cat{A}$ in $\CCat_{\iso}$ is the category whose objects are isomorphisms in $\cat{A}$, and whose
 morphisms are commutative squares (in which the other morphisms need not be isomorphisms).
 
 Arrow objects in $\MMonCatStrong$ are preserved by the forgetful functor to $\CCat$. If
@@ -2932,10 +2933,10 @@ $a^\ast\To{(f^{-1})^\ast}b^\ast$.
 The 2-morphisms between traced categories are also defined to be isomorphisms (see
 Remark~\ref{rem:traced_2morphisms}). For a traced category $\cat{T}\in\TTrCatStrong$, the arrow
 object $\cat{T}^2$ has the isomorphisms in $\cat{T}$ as objects and commuting squares as morphisms;
-i.e., it too is preserved by the 2-functor $\TTrCatStrong\to\Cat_\iso$. To see the traced structure
-of $\cat{T}^2$, suppose given objects $a\colon A\To{\iso} A'$, $b\colon B\To{\iso} B'$, and $u\colon
-U\To{\iso} U'$, as well as a morphism $(f,g)\colon a\otimes u\to b\otimes u$ as in the diagram to
-the left
+i.e., it too is preserved by the 2-functor $\TTrCatStrong\to\Cat_{\iso}$. To see the traced
+structure of $\cat{T}^2$, suppose given objects $a\colon A\To{\iso} A'$, $b\colon B\To{\iso} B'$,
+and $u\colon U\To{\iso} U'$, as well as a morphism $(f,g)\colon a\otimes u\to b\otimes u$ as in the
+diagram to the left
 \begin{equation}
       \label{eqn:arrow_traced}
    \begin{tikzcd}
@@ -2991,9 +2992,9 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
    \[
       \FM\colon\CCat\leftrightarrows\MMonCat:\!\UM
       \qquad
-      \FT\colon\CCat_\iso\leftrightarrows\TTrCat:\!\UT
+      \FT\colon\CCat_{\iso}\leftrightarrows\TTrCat:\!\UT
       \qquad
-      \FC\colon\CCat_\iso\leftrightarrows\CCompCat:\!\UC
+      \FC\colon\CCat_{\iso}\leftrightarrows\CCompCat:\!\UC
    \]
    that extend the 1-adjunctions constructed in \cite{Abramsky2}.
 \end{corollary}
@@ -3041,7 +3042,7 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
 
 \begin{example}
       \label{ex:mapping_paths}
-   The 2-categories $\CCat$, $\CCat_\iso$, $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$
+   The 2-categories $\CCat$, $\CCat_{\iso}$, $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$
    have mapping path objects. For a morphism $F\colon\cat{A}\to\cat{B}$ in $\CCat$, the mapping path
    category $P(F)$ is a cousin to the comma category $(F\downarrow\id_{\cat{B}})$: the objects are
    triples
@@ -3052,11 +3053,11 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
    \]
    and a morphism $(A,B,i)\to (A',B',i')$ in $P(F)$ consists of a pair of morphisms $A\to A'$ in
    $\cat{A}$ and $B\to B'$ in $\cat{B}$ such that the evident diagram commutes. The 2-category
-   $\CCat_\iso$  has exactly the same mapping path objects as $\CCat$.
+   $\CCat_{\iso}$  has exactly the same mapping path objects as $\CCat$.
 
    The mapping path object of a strong functor $F\colon\cat{A}\to\cat{B}$ between monoidal, traced,
    or compact categories exists and is preserved by the forgetful functors to $\CCat$ and
-   $\CCat_\iso$. In the monoidal case, the mapping path object $P(F)$ of the functor between
+   $\CCat_{\iso}$. In the monoidal case, the mapping path object $P(F)$ of the functor between
    underlying categories has a canonical monoidal structure, e.g.,
    \[
       (A,B,i)\otimes (A',B',i')\coloneqq(A\otimes A',B\otimes B', (i\otimes i')\circ\mu_{A,A'}^{-1})
@@ -3094,9 +3095,9 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
    \[
       \UM\colon\MMonCat\to\CCat
          \qquad
-      \UT\colon\TTrCat\to\CCat_\iso
+      \UT\colon\TTrCat\to\CCat_{\iso}
          \qquad
-      \UC\colon\CCompCat\to\Cat_\iso
+      \UC\colon\CCompCat\to\Cat_{\iso}
    \]
    preserve arrow objects and mapping path objects.
 \end{remark}
@@ -3254,10 +3255,10 @@ following cases:
    \item $\scat{D}=\MMonCat, \quad \pcat{D}=\MMonCatStrong, \quad \ccat{C}=\CCat$, where
       $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion and $U\colon\pcat{D}\to\ccat{C}$ is the
       forgetful functor;
-   \item $\scat{D}=\TTrCat, \quad \pcat{D}=\TTrCatStrong, \quad \ccat{C}=\CCat_\iso$, where
+   \item $\scat{D}=\TTrCat, \quad \pcat{D}=\TTrCatStrong, \quad \ccat{C}=\CCat_{\iso}$, where
       $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion and $U\colon\pcat{D}\to\ccat{C}$ is the
       forgetful functor; or
-   \item $\scat{D}=\CCompCat, \quad \pcat{D}=\CCompCatStrong, \quad \ccat{C}=\CCat_\iso$, where
+   \item $\scat{D}=\CCompCat, \quad \pcat{D}=\CCompCatStrong, \quad \ccat{C}=\CCat_{\iso}$, where
       $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion and $U\colon\pcat{D}\to\ccat{C}$ is the
       forgetful functor.
 \end{itemize}
