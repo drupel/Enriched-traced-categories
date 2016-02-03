@@ -1,3 +1,4 @@
+\pdfoutput=1
 \documentclass[11pt,oneside,article]{memoir}
 \input{preamble.tex}
 
@@ -12,6 +13,10 @@
 \setheaderspaces{*}{1.5\onelineskip}{*} % {headdrop}{headsep}{ratio}
 \checkandfixthelayout
 
+\makeatletter
+\def\blfootnote{\gdef\@thefnmark{}\@footnotetext}
+\makeatother
+
 \setcounter{tocdepth}{1}
 \setcounter{secnumdepth}{2}
 \pagestyle{ruled}
@@ -20,18 +25,16 @@
 \setsubsecheadstyle{\bfseries\raggedright}
 
 \title{String diagrams for traced and compact categories are oriented 1-cobordisms}
-\author{
-   David I. Spivak%
-      \thanks{Spivak and Schultz were supported by AFOSR grant FA9550--14--1--0031, ONR grant N000141310260, and NASA grant NNH13ZEA001N.}
-   \and Patrick Schultz${}^*$%\footnotemark[1]
-   \and Dylan Rupel
-}
+\author{David I. Spivak\thanks{Supported by AFOSR grant FA9550--14--1--0031, ONR grant N000141310260, and NASA grant NNH13ZEA001N.} \and Patrick Schultz${}^*$\\ \and \small{\textit{Massachusetts Institute of Technology, Cambridge, MA 02139}} \and Dylan Rupel\thanks{Corresponding author}\thanks{Present address: University of Notre Dame, Notre Dame, IN 46556}\\ \small{\textit{Northeastern University, Boston, MA 02115}}}
+
+
 \date{\vspace{-3ex}}
 
 \begin{document}
 \firmlists*
 
 \maketitle
+\blfootnote{\textit{Email addresses:} \href{mailto:dspivak@math.mit.edu}{dspivak@math.mit.edu}, \href{schultzp@mit.edu}{schultzp@mit.edu}, \href{drupel@nd.edu}{drupel@nd.edu}}
 \begin{abstract}
    We give an alternate conception of string diagrams as labeled 1-dimensional oriented cobordisms,
    the operad of which we denote by $\LCob{\LabSet}$, where $\LabSet$ is the set of string labels.
@@ -969,7 +972,7 @@ ${(\inp{X},\outp{X})}^*\coloneqq(\outp{X},\inp{X})$.
 \section{Free traced and compact categories}
       \label{sec:free_and_geometry}
 
-Let $\CCat$ (resp.\ $\CCat_\iso$) denote the 2-category of small categories, functors, and natural
+Let $\CCat$ (resp.\ $\CCat_{\iso}$) denote the 2-category of small categories, functors, and natural
 transformations (resp.\ natural isomorphisms). There are free/forgetful (strict) 2-adjunctions of
 2-categories, as to the left:
 \begin{align}
@@ -977,10 +980,10 @@ transformations (resp.\ natural isomorphisms). There are free/forgetful (strict)
    \FM&\colon\CCat_{\;\;} \leftrightarrows\MMonCat:\!\UM
       & \Set &\leftrightarrows\MonCat \\
    \label{eqn:adjunctions}
-   \FT&\colon\CCat_\iso\leftrightarrows\TTrCat:\!\UT
+   \FT&\colon\CCat_{\iso}\leftrightarrows\TTrCat:\!\UT
       & \Set &\leftrightarrows\TrCat \\
    \nonumber
-   \FC&\colon\CCat_\iso\leftrightarrows\CCompCat:\!\UC
+   \FC&\colon\CCat_{\iso}\leftrightarrows\CCompCat:\!\UC
       & \Set&\leftrightarrows\CompCat
 \end{align}
 These have underlying 1-adjunctions (e.g., $\Cat\leftrightarrows\TrCat$), which \cite{Abramsky2}
@@ -2898,10 +2901,10 @@ result will not be new to experts, but we found it difficult to find in the lite
 
 \begin{example}
       \label{ex:arrow_objects}
-The 2-categories $\CCat$, $\CCat_\iso$, $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$
+The 2-categories $\CCat$, $\CCat_{\iso}$, $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$
 have arrow objects. Clearly for an object $\cat{A}\in\CCat$, the usual arrow category $\cat{A}^2$ of
 arrows and commutative squares, has the necessary universal property. Similarly, the arrow category
-of $\cat{A}$ in $\CCat_\iso$ is the category whose objects are isomorphisms in $\cat{A}$, and whose
+of $\cat{A}$ in $\CCat_{\iso}$ is the category whose objects are isomorphisms in $\cat{A}$, and whose
 morphisms are commutative squares (in which the other morphisms need not be isomorphisms).
 
 Arrow objects in $\MMonCatStrong$ are preserved by the forgetful functor to $\CCat$. If
@@ -2932,10 +2935,10 @@ $a^\ast\To{(f^{-1})^\ast}b^\ast$.
 The 2-morphisms between traced categories are also defined to be isomorphisms (see
 Remark~\ref{rem:traced_2morphisms}). For a traced category $\cat{T}\in\TTrCatStrong$, the arrow
 object $\cat{T}^2$ has the isomorphisms in $\cat{T}$ as objects and commuting squares as morphisms;
-i.e., it too is preserved by the 2-functor $\TTrCatStrong\to\Cat_\iso$. To see the traced structure
-of $\cat{T}^2$, suppose given objects $a\colon A\To{\iso} A'$, $b\colon B\To{\iso} B'$, and $u\colon
-U\To{\iso} U'$, as well as a morphism $(f,g)\colon a\otimes u\to b\otimes u$ as in the diagram to
-the left
+i.e., it too is preserved by the 2-functor $\TTrCatStrong\to\Cat_{\iso}$. To see the traced
+structure of $\cat{T}^2$, suppose given objects $a\colon A\To{\iso} A'$, $b\colon B\To{\iso} B'$,
+and $u\colon U\To{\iso} U'$, as well as a morphism $(f,g)\colon a\otimes u\to b\otimes u$ as in the
+diagram to the left
 \begin{equation}
       \label{eqn:arrow_traced}
    \begin{tikzcd}
@@ -2991,9 +2994,9 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
    \[
       \FM\colon\CCat\leftrightarrows\MMonCat:\!\UM
       \qquad
-      \FT\colon\CCat_\iso\leftrightarrows\TTrCat:\!\UT
+      \FT\colon\CCat_{\iso}\leftrightarrows\TTrCat:\!\UT
       \qquad
-      \FC\colon\CCat_\iso\leftrightarrows\CCompCat:\!\UC
+      \FC\colon\CCat_{\iso}\leftrightarrows\CCompCat:\!\UC
    \]
    that extend the 1-adjunctions constructed in \cite{Abramsky2}.
 \end{corollary}
@@ -3041,7 +3044,7 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
 
 \begin{example}
       \label{ex:mapping_paths}
-   The 2-categories $\CCat$, $\CCat_\iso$, $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$
+   The 2-categories $\CCat$, $\CCat_{\iso}$, $\MMonCatStrong$, $\TTrCatStrong$, and $\CCompCatStrong$
    have mapping path objects. For a morphism $F\colon\cat{A}\to\cat{B}$ in $\CCat$, the mapping path
    category $P(F)$ is a cousin to the comma category $(F\downarrow\id_{\cat{B}})$: the objects are
    triples
@@ -3052,11 +3055,11 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
    \]
    and a morphism $(A,B,i)\to (A',B',i')$ in $P(F)$ consists of a pair of morphisms $A\to A'$ in
    $\cat{A}$ and $B\to B'$ in $\cat{B}$ such that the evident diagram commutes. The 2-category
-   $\CCat_\iso$  has exactly the same mapping path objects as $\CCat$.
+   $\CCat_{\iso}$  has exactly the same mapping path objects as $\CCat$.
 
    The mapping path object of a strong functor $F\colon\cat{A}\to\cat{B}$ between monoidal, traced,
    or compact categories exists and is preserved by the forgetful functors to $\CCat$ and
-   $\CCat_\iso$. In the monoidal case, the mapping path object $P(F)$ of the functor between
+   $\CCat_{\iso}$. In the monoidal case, the mapping path object $P(F)$ of the functor between
    underlying categories has a canonical monoidal structure, e.g.,
    \[
       (A,B,i)\otimes (A',B',i')\coloneqq(A\otimes A',B\otimes B', (i\otimes i')\circ\mu_{A,A'}^{-1})
@@ -3094,9 +3097,9 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
    \[
       \UM\colon\MMonCat\to\CCat
          \qquad
-      \UT\colon\TTrCat\to\CCat_\iso
+      \UT\colon\TTrCat\to\CCat_{\iso}
          \qquad
-      \UC\colon\CCompCat\to\Cat_\iso
+      \UC\colon\CCompCat\to\Cat_{\iso}
    \]
    preserve arrow objects and mapping path objects.
 \end{remark}
@@ -3254,10 +3257,10 @@ following cases:
    \item $\scat{D}=\MMonCat, \quad \pcat{D}=\MMonCatStrong, \quad \ccat{C}=\CCat$, where
       $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion and $U\colon\pcat{D}\to\ccat{C}$ is the
       forgetful functor;
-   \item $\scat{D}=\TTrCat, \quad \pcat{D}=\TTrCatStrong, \quad \ccat{C}=\CCat_\iso$, where
+   \item $\scat{D}=\TTrCat, \quad \pcat{D}=\TTrCatStrong, \quad \ccat{C}=\CCat_{\iso}$, where
       $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion and $U\colon\pcat{D}\to\ccat{C}$ is the
       forgetful functor; or
-   \item $\scat{D}=\CCompCat, \quad \pcat{D}=\CCompCatStrong, \quad \ccat{C}=\CCat_\iso$, where
+   \item $\scat{D}=\CCompCat, \quad \pcat{D}=\CCompCatStrong, \quad \ccat{C}=\CCat_{\iso}$, where
       $\iota\colon\scat{D}\to\pcat{D}$ is the inclusion and $U\colon\pcat{D}\to\ccat{C}$ is the
       forgetful functor.
 \end{itemize}
@@ -3554,7 +3557,7 @@ $\bo$ morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
 \begin{thebibliography}{XXX}
 
  \bibitem{Abadi}
- J.~Abadi, On the Existence of an Orthogonal Factorization System on 1-Cob and 2-Cob, \url{http://arxiv.org/abs/1506.03119} (2015).
+ J.~Abadi, On the Existence of an Orthogonal Factorization System on 1-Cob and 2-Cob, Preprint: \url{http://arxiv.org/abs/1506.03119} (2015).
 
  \bibitem{Abramsky1}
  S.~Abramsky, Retracing some paths in process algebra, CONCUR'96: Concurrency Theory (1996), pp.~1--17.
@@ -3563,13 +3566,13 @@ $\bo$ morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
  S.~Abramsky, Abstract scalars, loops, and free traced and strongly compact closed categories, Proceedings of CALCO (2005), pp.~1--31.
 
  \bibitem{ABP}
- S.~Abramsky, R.~Blute, P.~Panangaden, Nuclear and Trace Ideals in Tensored ????Categories, arXiv preprint math/9805102 (1998).
+ S.~Abramsky, R.~Blute, P.~Panangaden, Nuclear and Trace Ideals in Tensored $*$-Categories, Preprint: \url{http://arxiv.org/abs/math/9805102} (1998).
 
  \bibitem{AdamekHerrlichStrecker}
  J.~Adamek, H.~Herrlich, and G.E.~Strecker, Abstract and Concrete Categories: The joy of cats, Dover Publications (2009).
 
  \bibitem{BaezDolan}
- J.C.~Baez, J.~Dolan, Higher-dimensional Algebra and Topological Quantum Field Theory, Journal of Mathematical Physics 36 (1995), no. 11, 6073?6105.
+ J.C.~Baez, J.~Dolan, Higher-dimensional Algebra and Topological Quantum Field Theory, Journal of Mathematical Physics, 36 (1995), no. 11, pp.~6073--6105.
 
  \bibitem{BorceuxV1}
 F.~Borceux, Handbook of Categorical Algebra: Volume 1, Basic Category Theory, Cambridge University Press (1994).
@@ -3579,38 +3582,38 @@ F.~Borceux, Handbook of Categorical Algebra: Volume 1, Basic Category Theory, Ca
 
  \bibitem{BorceuxBourn}
  F.~Borceux, D.~Bourn, Mal'cev, protomodular, homological and semi-abelian categories, Mathematics
- and Its Applications 566, Kluwer (2004).
+ and Its Applications, 566, Kluwer (2004).
 
 \bibitem{Bourke}
- J.~Bourke, Two-dimensional monadicity (English summary), Advances in Mathematics 252 (2014), pp. 708 -- 747.
+ J.~Bourke, Two-dimensional monadicity (English summary), Advances in Mathematics, 252 (2014), pp.~708--747.
 
  \bibitem{FreydYetter}
  P.~Freyd, D.N.~Yetter, Braided compact closed categories with applications to low-dimensional topology,
-Advances in Mathematics 77 (1989), no. 2, 156?182.
+Advances in Mathematics, 77 (1989), no. 2, pp.~156--182.
 
  \bibitem{HackneyRobertson}
  P.~Hackney, M.~Robertson, On the category of props, Preprint: \url{http://arxiv.org/abs/1207.2773v2} (2012).
 
  \bibitem{HK}
-M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of traced monoidal categories and tortile monoidal categories, Mathematical Proceedings of the Cambridge Philosophical Society 148 no. 1 (2010).
+M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of traced monoidal categories and tortile monoidal categories, Mathematical Proceedings of the Cambridge Philosophical Society, 148 (2010), no. 1.
 
  \bibitem{JoyalStreetVerity}
- A.~Joyal, R.~Street, and D.~Verity, Traced monoidal categories, Mathematical Proceedings of the Cambridge Philosophical Society 119, no. 3 (1996), pp.~447--468.
+ A.~Joyal, R.~Street, and D.~Verity, Traced monoidal categories, Mathematical Proceedings of the Cambridge Philosophical Society, 119 (1996), no. 3, pp.~447--468.
 
  \bibitem{KellyLaplaza}
- G.M.~Kelly, M.L.~Laplaza, Coherence for compact closed categories, Journal of Pure and Applied Algebra 19 (1980), pp.~193--213.
+ G.M.~Kelly, M.L.~Laplaza, Coherence for compact closed categories, Journal of Pure and Applied Algebra, 19 (1980), pp.~193--213.
 
  \bibitem{Kelly}
- G.M.~Kelly, Doctrinal adjunction, Category Seminar (Proc. Sem., Sydney, 1972/1973), Lecture Notes in Math., Vol. 420, (1974) Springer, Berlin, pp. 257�280.
+ G.M.~Kelly, Doctrinal adjunction, Category Seminar (Proc. Sem., Sydney, 1972/1973), Lecture Notes in Math., 420 (1974) Springer, Berlin, pp.~257--280.
 
  \bibitem{Kock}
- J.~Kock, Frobenius algebras and 2D topological quantum field theories, London Mathematical Society Student Texts, 59. Cambridge University Press, Cambridge (2004).
+ J.~Kock, Frobenius algebras and 2D topological quantum field theories, London Mathematical Society Student Texts, 59, Cambridge University Press, Cambridge (2004).
 
  \bibitem{LackCompanion}
- S.~Lack, A 2-categories companion (English summary), Towards higher categories, 105--191, IMA Vol. Math. Appl., 152  (2010), Springer, New York.
+ S.~Lack, A 2-categories companion (English summary), Towards higher categories, pp.~105--191, IMA Vol. Math. Appl., 152  (2010), Springer, New York.
 
  \bibitem{LackHomotopy}
- S.~Lack, Homotopy-theoretic aspects of 2-monads (English summary), Journal of Homotopy and Related Structures 2 (2007), no. 2, 229 -- 260.
+ S.~Lack, Homotopy-theoretic aspects of 2-monads (English summary), Journal of Homotopy and Related Structures, 2 (2007), no. 2, pp.~229--260.
 
  \bibitem{Leinster}
  T.~Leinster, Higher Operads, higher categories, London Mathematical Society Lecture Note Series, 298, Cambridge University Press, Cambridge (2004).
@@ -3619,13 +3622,13 @@ M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of 
  S.~MacLane, Categories for the Working Mathematician, Springer Science \& Business Media (1978).
 
  \bibitem{MacL--NAC}
-S.~MacLane, Natural Associativity and Commutativity, Rice University Studies 49 no. 4 (1963).
+S.~MacLane, Natural Associativity and Commutativity, Rice University Studies, 49 (1963), no. 4.
 
  \bibitem{Miller}
- G.~Miller, The magical number seven, plus or minus two: Some limits on our capacity for processing information, Psychological review 63, no. 2 (1956), pp.~81.
+ G.~Miller, The magical number seven, plus or minus two: Some limits on our capacity for processing information, Psychological review, 63 (1956), no. 2, pp.~81.
 
  \bibitem{PontoShulman}
- K.~Ponto and M.~Shulman, Traces in symmetric monoidal categories, Expositiones Mathematicae 32, no. 3 (2014), pp.~248--273.
+ K.~Ponto and M.~Shulman, Traces in symmetric monoidal categories, Expositiones Mathematicae, 32 (2014), no. 3, pp.~248--273.
 
  \bibitem{RupelSpivak}
  D.~Rupel and D.~I.~Spivak, The operad of temporal wiring diagrams: Formalizing a graphical language for discrete-time processes, Preprint: \url{http://arxiv.org/abs/1307.6894} (2013).
@@ -3634,7 +3637,7 @@ S.~MacLane, Natural Associativity and Commutativity, Rice University Studies 49 
  P.~Schultz, Regular and exact (virtual) double categories, Preprint: \url{http://arxiv.org/abs/1505.00712} (2015)
 
  \bibitem{Shulman}
- M.~Shulman, Framed bicategories and monoidal fibrations, Theory and Applications of Categories 20 (2008), No. 18, 650--738.
+ M.~Shulman, Framed bicategories and monoidal fibrations, Theory and Applications of Categories, 20 (2008), no. 18, pp.~650--738.
 
  \bibitem{Spivak}
  D.~I.~Spivak, The operad of wiring diagrams: Formalizing a graphical language for databases, recursion, and plug-and-play circuits, Preprint: \url{http://arxiv.org/abs/1305.0297} (2013).
@@ -3643,10 +3646,10 @@ S.~MacLane, Natural Associativity and Commutativity, Rice University Studies 49 
  D.~Vagner, D.~I.~Spivak, and E.~Lerman, Algebras of open dynamical systems on the operad of wiring diagrams, Preprint: \url{http://arxiv.org/abs/1408.1598} (2014).
 
  \bibitem{Wood1}
- R.~J.~Wood, Abstract proarrows. I. Cahiers Topologie G\'{e}om. Diff\'{e}rentielle, 23 no. 3 (1982) pp. 279--290.
+ R.~J.~Wood, Abstract proarrows. I. Cahiers Topologie G\'{e}om. Diff\'{e}rentielle, 23 (1982), no. 3, pp.~279--290.
 
  \bibitem{Wood2}
- R.~J. Wood. Proarrows. II. Cahiers Topologie G\'{e}om. Diff\'{e}rentielle Cat\'{e}g., 26 no. 2, (1985) pp. 135 -- 168.
+ R.~J. Wood. Proarrows. II. Cahiers Topologie G\'{e}om. Diff\'{e}rentielle, 26 (1985), no. 2, pp.~135--168.
 
 \end{thebibliography}
 
