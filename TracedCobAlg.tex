@@ -961,7 +961,7 @@ ${(\inp{X},\outp{X})}^*\coloneqq(\outp{X},\inp{X})$.
       \item If $\cat{C}$ is compact then the unit
          $\cat{C}\To{\raisebox{-1ex}{$\equiv$}}\Int(\cat{C})$ is an equivalence.
       \item Suppose that $\cat{C'}$ is a traced category and that $F\colon \cat{C}\to \cat{C}'$ is a
-         traced functor. Then $F$ is bijective-on-objects (resp.\ fully-faithful) if and only if
+         traced functor. Then $F$ is bijective-on-objects (resp.\ fully faithful) if and only if
          $\Int(F)$ is.
    \end{enumerate}
 \end{lemma}
@@ -1123,11 +1123,11 @@ The case of bijective-on-objects / fully faithful factorization systems on certa
 
 \begin{definition}
       \label{def:fully_faithful}
-   Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{fully-faithful} if the
-   functor $\ccat{C}(x,a)\to\ccat{C}(x,b)$, induced by composition with $f$, is fully-faithful for
+   Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{fully faithful} if the
+   functor $\ccat{C}(x,a)\to\ccat{C}(x,b)$, induced by composition with $f$, is fully faithful for
    every $x$.
 
-   That is, $f$ is fully-faithful if, for every diagram
+   That is, $f$ is fully faithful if, for every diagram
    \begin{equation*} \begin{tikzcd}[row sep=large]
          x \ar[r,bend left,"u"] \ar[r,bend right,"v"']
                \ar[d,equal]
@@ -1143,7 +1143,7 @@ The case of bijective-on-objects / fully faithful factorization systems on certa
 \begin{definition}
       \label{def:bijective_on_objects}
    Say that a morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{bijective-on-objects} if
-   it is left orthogonal to every fully-faithful morphism.
+   it is left orthogonal to every fully faithful morphism.
 
    We say that a 2-category \emph{has a bijective-on-objects / fully faithful factorization system}
    if these two classes form an orthogonal factorization system as in
@@ -1247,7 +1247,7 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
             \twocellA{\phi}
          \end{tikzcd} \end{equation}
       \item A \emph{unit} functor $U\colon\dcat{D}_0\to\dcat{D}_1$, which is a
-         retraction of both $L$ and $R$, i.e., $L\circ U=\id_{\dcat{D}_0}=R\circ U$. We will often
+         section of both $L$ and $R$, i.e., $L\circ U=\id_{\dcat{D}_0}=R\circ U$. We will often
          abuse notation by writing $c$ for the unit proarrow $U(c)\colon c\tickar c$, and similarly
          for vertical arrows.
       \item A functor $\odot\colon\dcat{D}_1\times_{\dcat{D}_0}\dcat{D}_1\to\dcat{D}_1$, called
@@ -1264,10 +1264,7 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
 
    A \emph{strong double functor} $\dcat{D}\to\dcat{E}$ consists of functors
    $\dcat{D}_0\to\dcat{E}_0$ and $\dcat{D}_1\to\dcat{E}_1$ commuting with the frames $L,R$, and
-   preserving the unit $U$ and horizontal composition $\odot$ up to coherent isomorphism. There is
-   also a notion of \emph{lax double functor} which only preserves units and composition up to
-   non-invertible 2-cell. While important to the theory of double categories and equipments in
-   general, in this paper we will only be concerned with strong double functors.
+   preserving the unit $U$ and horizontal composition $\odot$ up to coherent isomorphism.
 \end{definition}
 
 \begin{definition}
@@ -1388,8 +1385,8 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
    equipment $\dMod(\dcat{D})$ of \emph{monoids and bimodules} is defined as follows (see also
    \cite{Shulman}):
    \begin{itemize}
-      \item The objects are \emph{monoids} in $\dcat{D}$: tuples $(c,M,i_M,m_M)$ consisting of an
-         object $c$ of $\dcat{D}$, a proarrow $M\colon c\tickar c$, and unit and
+      \item The vertical category $\dMod(\dcat{D})_0$, denoted $\Mon(\dcat{D})$, is the category of monoids in $\dcat{D}$.  More precisely, the objects are \emph{monoids}: tuples $(c,M,i_M,m_M)$ consisting of an
+         object $c$ of $\dcat{D}$ and a proarrow $M\colon c\tickar c$ together with unit and
          multiplication cells
          \begin{equation}
                \label{eqn:unit_and_mult}
@@ -1409,8 +1406,7 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
               \twocellA{m_M}
             \end{tikzcd}
          \end{equation}
-         satisfying the evident unit and associativity axioms.
-      \item The vertical arrows are \emph{monoid homomorphisms}: pairs $(f,\vec{f}\mspace{2mu})$ of a vertical arrow
+         satisfying the evident unit and associativity axioms.  The vertical arrows are \emph{monoid homomorphisms}: pairs $(f,\vec{f}\mspace{2mu})$ consisting of a vertical arrow
          $f\colon c\to d$ in $\dcat{D}$ and a cell
          \[ \begin{tikzcd}
             c \ar[r,tick,"M" domA] \ar[d,"f"']
@@ -1458,18 +1454,20 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
          \end{tikzcd} \]
          which are compatible with the left and right actions of the bimodules.
    \end{itemize}
-
-   If $F\colon\dcat{C}\to\dcat{D}$ is an equipment functor, then there is an evident equipment
-   functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$.
 \end{definition}
 
-If $M$ and $N$ are monoids, we denote by $\Bimod{M}{N}$ the 1-category of $(M,N)$-bimodules and
-bimodule morphisms.
+If $F\colon\dcat{C}\to\dcat{D}$ is an equipment functor, then there is an evident equipment
+functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$.  In fact, we have the following which is immediate from the definitions.
+\begin{lemma}
+      \label{lemma:FFLE_Mod}
+   Let $F\colon\dcat{D}\to\dcat{E}$ be an equipment functor. If $F$ is a local equivalence then so is $\dMod(F)\colon\dMod(\dcat{D})\to\dMod(\dcat{E})$.  If, moreover, $F$ is fully faithful then so is $\dMod(F)$.
+\end{lemma}
+
 
 \begin{example}
       \label{ex:monoid_in_Prof}
    Consider a monoid $M\colon C\tickar C$ in $\dProf$. The unit is a profunctor morphism
-   $i\colon\Hom_{C}\to M$. So for any $f\colon c\to d$ in $C$ there is an element $i(f)\in M(c,d)$,
+   $i\colon\Hom_{C}\to M$. So for any $g\colon c\to d$ in $C$ there is an element $i(g)\in M(c,d)$,
    such that
    \begin{equation}
          \label{eq:Prof_monoid_unit}
@@ -1478,7 +1476,7 @@ bimodule morphisms.
    whenever this makes sense.
 
    The multiplication $M\odot M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and
-   $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative, and satisfies the
+   $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative and satisfies the
    following equations whenever they make sense:
    \begin{gather}
       (f\cdot m_2)\bullet(m_1\cdot h) = f\cdot(m_2\bullet m_1)\cdot h
@@ -1514,14 +1512,6 @@ bimodule morphisms.
    In other words, we have $\dMod(\dSpan)\iso\dProf$.
 \end{example}
 
-Recall Definition~\ref{def:local_equivalence}, from which the following lemma is straightforward.
-
-\begin{lemma}
-      \label{lemma:FFLE_Mod}
-   Let $F\colon\dcat{D}\to\dcat{E}$ be an equipment functor. If $F$ is a local equivalence (resp.\ a
-   fully faithful local equivalence) then so is $\dMod(F)\colon\dMod(\dcat{D})\to\dMod(\dcat{E}).$
-\end{lemma}
-
 There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$ sending a
 monoid $M\colon c\tickar c$ to its underlying object $c=|M|$. We denote its vertical part,
 $\Mon(\dcat{D})\to\dcat{D}_0$ the same way. There is also an equipment functor
@@ -1529,8 +1519,8 @@ $U\colon\dcat{D}\to\dMod(\dcat{D})$, sending $d$ to the unit $d\tickar d$ with t
 structure, which is a local equivalence.
 
 \begin{lemma}
-   Let $\dcat{D}$ be an equipment, $f\colon c\to d$ a vertical morphism, and $M\colon d\tickar d$ a
-   monoid. There is a unique monoid structure on the restriction $M(f,f)$ such that the cartesian
+   Let $\dcat{D}$ be an equipment, $f\colon c\to d$ a vertical morphism, and $N\colon d\tickar d$ a
+   monoid. There is a unique monoid structure on the restriction $N(f,f)$ such that the cartesian
    2-cell is a monoid homomorphism. In other words, $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ is a
    fibration, and there is a morphism of fibrations
    \[ \begin{tikzcd}[column sep=tiny]
@@ -1649,7 +1639,9 @@ Theorem~\ref{thm:orthogonal}.
    In other words, $\Col{M}$ represents the functor $\Emb(M,\textrm{--})\colon\dcat{D}_0\to\Set$.
 \end{definition}
 
-We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz2015}.
+We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz2015}.  
+For monoids $M$ and $N$, we denote by $\Bimod{M}{N}$ the 1-category of $(M,N)$-bimodules and
+bimodule morphisms.
 
 \begin{definition}
       \label{def:exact_equipment}
@@ -1657,7 +1649,7 @@ We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz
    \begin{itemize}
       \item every monoid $M\colon c\tickar c$ has a collapse as above, with $\vec{\imath}_M$
          cartesian, and
-      \item for every pair of monoids $M,N$, the restriction functor
+      \item for every pair of monoids $M$ and $N$ the restriction functor
          \begin{equation}
                \label{eqn:exact_Hor_Bimod}
             \HHor(\dcat{D})(\Col{M},\Col{N})\To{\raisebox{-1ex}{$\equiv$}}\Bimod{M}{N}
@@ -1756,13 +1748,13 @@ taken from~\cite[Definitions~4.3~and~4.5; Definition~5.1~and~Theorem~4.17]{Schul
 \begin{lemma}
       \label{lem:(bo,ff)_really_is}
    Let $\dcat{D}$ be an exact equipment. If a vertical morphism $f$ in $\dcat{D}$ is $\bo$
-   (respectively $\ff$), then $f$ is a bijective-on-objects (respectively fully-faithful) morphism
+   (respectively $\ff$), then $f$ is a bijective-on-objects (respectively fully faithful) morphism
    in $\VVer(\dcat{D})$ in the sense of Definitions~\ref{def:fully_faithful} and
    \ref{def:bijective_on_objects}.
 \end{lemma}
 \begin{proof}
    It is easy to see that the condition in Definition~\ref{def:fully_faithful} of $f$ being
-   fully-faithful in $\VVer(\dcat{D})$ is a special case of the condition of the unit 2-cell on $f$
+   fully faithful in $\VVer(\dcat{D})$ is a special case of the condition of the unit 2-cell on $f$
    being cartesian in $\dcat{D}$. If $f$ is $\bo$, then Theorem~\ref{thm:orthogonal} in particular
    implies that $f$ is left orthogonal to every $\ff$ morphism, hence $f$ is bijective-on-objects
    by Definition~\ref{def:bijective_on_objects}.
@@ -2245,7 +2237,7 @@ Recall the definition of exact equipments from Section~\ref{sec:exactness_and_bo
       \label{prop:boff_well_named}
    Let $\dcat{D}$ be $\dProf$, $\dMonProf$,$\dTrProf$, or $\dCompProf$. A vertical morphism $F$ in
    $\dcat{D}$ is in $\bo$ (resp.\ $\ff$) in the sense of Theorem~\ref{thm:orthogonal} if and only $F$
-   is bijective-on-objects (resp.\ fully-faithful) in the usual sense.
+   is bijective-on-objects (resp.\ fully faithful) in the usual sense.
 \end{proposition}
 \begin{proof}
    For $\dProf$ and $\dMonProf$, this is clear by inspection, and as $\dCompProf$ is a full
@@ -2689,7 +2681,7 @@ For intuition, see Definition~\ref{def:free_on_objects}.
 
 \begin{corollary}
       \label{cor:TrCat_ObjectFree}
-   There are fully-faithful local equivalences of equipments, in the left column, and equivalences
+   There are fully faithful local equivalences of equipments, in the left column, and equivalences
    of 2-categories, in the right:
    \begin{align*}
       \dMod(\dFrMonProf)  &\to \dMonProf &\MMon(\dFrMonProf)&\equiv\MMonFrObCat\\
@@ -3115,15 +3107,15 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
 \begin{lemma}
       \label{lem:fully_faithful_surjective_equiv}
    Let $f\colon a\to b$ and $g\colon b\to a$ be morphisms in a 2-category such that $fg=1_b$. Then
-   $f$ (together with $g$) is a surjective equivalence if and only if $f$ is fully-faithful in the
+   $f$ (together with $g$) is a surjective equivalence if and only if $f$ is fully faithful in the
    sense of Definition~\ref{def:fully_faithful}.
 \end{lemma}
 \begin{proof}
    Suppose $g\dashv f$ is a surjective equivalence. Then for any $x$,
-   $f^*\colon\ccat{C}(x,a)\to\ccat{C}(x,b)$ is an equivalence of categories, hence fully-faithful.
-   Thus $f$ is fully-faithful.
+   $f^*\colon\ccat{C}(x,a)\to\ccat{C}(x,b)$ is an equivalence of categories, hence fully faithful.
+   Thus $f$ is fully faithful.
 
-   Conversely suppose $f$ is fully-faithful. Then because $fgf=f=f 1_a$, there is a unique
+   Conversely suppose $f$ is fully faithful. Then because $fgf=f=f 1_a$, there is a unique
    $\epsilon\colon gf\Rightarrow 1_a$ such that $f\epsilon=1_f$. It is easy to check that $\epsilon$
    is an isomorphism, and that $\epsilon g=1_g$.
 \end{proof}
@@ -3131,7 +3123,7 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
 \begin{lemma}
       \label{lem:mapping_path_equiv}
    For any morphism $f\colon a\to b$ with a mapping path object $\Path{f}$, the projection
-   $\pi_a\colon \Path{f}\to a$ is a surjective equivalence, hence fully-faithful.
+   $\pi_a\colon \Path{f}\to a$ is a surjective equivalence, hence fully faithful.
 \end{lemma}
 \begin{proof}
    By the universal property of $\Path{f}$ there is a unique morphism $s\colon a\to \Path{f}$ such
@@ -3160,7 +3152,7 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
       \pi_b\epsilon s=\rho s=1_f=\pi_b1_s.
    \]
 
-   It follows from Lemma~\ref{lem:fully_faithful_surjective_equiv} that $\pi_a$ is fully-faithful.
+   It follows from Lemma~\ref{lem:fully_faithful_surjective_equiv} that $\pi_a$ is fully faithful.
 \end{proof}
 
 \section{Strict vs.\ strong morphisms}
@@ -3186,7 +3178,7 @@ Example~\ref{ex:strictifiable}.
 \begin{definition}
       \label{def:preserve_jdetect_strictness}
    Let $\scat{D}$ and $\pcat{D}$ be 2-categories and let $\iota\colon\scat{D}\to\pcat{D}$ be a
-   2-functor that is identity-on-objects, faithful, and locally fully-faithful. We say that the
+   2-functor that is identity-on-objects, faithful, and locally fully faithful. We say that the
    triple $(\scat{D},\pcat{D},i)$ \emph{has mapping path objects} if $\pcat{D}$ has mapping path
    objects as in Definition~\ref{def:mapping_path_objects} such that
    \begin{itemize}
@@ -3212,9 +3204,9 @@ $(\scat{D},\pcat{D},\ccat{C},U,\iota)$ \emph{admits strong morphism classifiers}
 following properties:
 \begin{enumerate}
    \item\label{item:boff}
-      The 2-category $\scat{D}$ has a bijective-on-objects/fully-faithful factorization.
+      The 2-category $\scat{D}$ has a bijective-on-objects/fully faithful factorization.
    \item\label{item:ioofflff}
-      The functor $\iota$ is identity-on-objects, faithful, and locally fully-faithful.
+      The functor $\iota$ is identity-on-objects, faithful, and locally fully faithful.
    \item\label{item:arrowMPO}
       The triple $(\scat{D},\pcat{D},\iota)$ has both arrow objects and mapping path objects
       (Definition~\ref{def:preserve_jdetect_strictness}).
@@ -3223,7 +3215,7 @@ following properties:
       %(equivalently,
       %$U\iota$ has a left 1-adjoint and preserves arrow objects; see Lemma~\ref{lem:2_adjunction}).
    \item\label{item:pres_ff}
-      The functor $U\iota$ preserves fully-faithful morphisms (equivalently, $F$ preserves
+      The functor $U\iota$ preserves fully faithful morphisms (equivalently, $F$ preserves
       bijective-on-objects morphisms).
    \item\label{item:pres_MPO}
       The functor $U$ preserves mapping path objects.
@@ -3237,7 +3229,7 @@ following properties:
 \end{definition}
 
 \begin{remark}
-   Other than those involving bijective-on-objects or fully-faithful morphisms, all of the
+   Other than those involving bijective-on-objects or fully faithful morphisms, all of the
    properties enumerated in Definition~\ref{def:strictifiable} (namely,
    Properties~\ref{item:ioofflff}, \ref{item:arrowMPO}, \ref{item:left2adj}, \ref{item:pres_MPO},
    \ref{item:reflids}, and \ref{item:createSEs}) hold whenever $\scat{D}$ is the 2-category of
@@ -3322,7 +3314,7 @@ for morphisms in $\pcat{D}$.
    $q_A$ is a surjective equivalence for any $A$, whose inverse $p_A\colon A\pto QA$ will become the
    unit of the $Q\dashv\iota$ adjunction. We write $U$ to denote $U\iota$, in a minor abuse of
    notation. Because $U$ creates surjective equivalences, it suffices to show that $Uq_A$ is a
-   surjective equivalence. But $q_A$ is fully-faithful by construction, so $Uq_A$ is fully-faithful,
+   surjective equivalence. But $q_A$ is fully faithful by construction, so $Uq_A$ is fully faithful,
    hence by Lemma~\ref{lem:fully_faithful_surjective_equiv} it suffices to construct a section of
    $Uq_A$. We can easily check that $Ur_A\circ\eta_{UA}$ is such a section:
    \[ \begin{tikzcd}
@@ -3474,7 +3466,7 @@ for morphisms in $\pcat{D}$.
 Our next goal is to show, continuing the assumptions of the Theorem~\ref{thm:strong_classifier},
 that $\pcat{D}$ is 2-equivalent to the full subcategory of $\scat{D}$ spanned by those objects which
 are ``free-on-objects''. To make this precise, we will further assume we have a 1-category
-$\cat{S}$, together with a fully-faithful functor $\Disc\colon\cat{S}\to\ccat{C}_0$ into the
+$\cat{S}$, together with a fully faithful functor $\Disc\colon\cat{S}\to\ccat{C}_0$ into the
 underlying category of $\ccat{C}$ with right adjoint $\Ob$, such that a morphism $f$ in $\ccat{C}_0$
 is $\bo$ if and only if $\Ob f$ is an isomorphism. The reader may recognize this situation from
 Proposition~\ref{prop:objectfree_Mod_bo}. We will write $\ccatFrOb{D}$ for the full sub-2-category
@@ -3526,7 +3518,7 @@ $\bo$ morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
    $\iota q_A$ is an equivalence in $\pcat{D}$. We will be done if we can show that $QA$ is
    free-on-objects.
 
-   Consider the counit $\epsilon_{UA}\colon\Disc(\Ob(UA))\to UA$. Because $\Disc$ is fully-faithful,
+   Consider the counit $\epsilon_{UA}\colon\Disc(\Ob(UA))\to UA$. Because $\Disc$ is fully faithful,
    it follows that $\Ob(\epsilon_{UA})$ is an isomorphism, hence $\epsilon_{UA}\in\bo$, and
    therefore $F(\epsilon_{UA})\in\bo$ as well. Thus we can take the composition
    \[ \begin{tikzcd}
