@@ -1262,8 +1262,8 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
    $\dcat{D}$, and whose 2-cells are the 2-cells of $\dcat{D}$ of the form \eqref{eqn:2cell} such
    that $f=\id_c$ and $f'=\id_{c'}$.
 
-   A \emph{strong double functor} $\dcat{D}\to\dcat{E}$ consists of functors
-   $\dcat{D}_0\to\dcat{E}_0$ and $\dcat{D}_1\to\dcat{E}_1$ commuting with the frames $L,R$, and
+   A \emph{strong double functor} $\dcat{C}\to\dcat{D}$ consists of functors
+   $\dcat{C}_0\to\dcat{D}_0$ and $\dcat{C}_1\to\dcat{D}_1$ commuting with the frames $L,R$, and
    preserving the unit $U$ and horizontal composition $\odot$ up to coherent isomorphism.
 \end{definition}
 
@@ -1339,18 +1339,18 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
 
 \begin{definition}
       \label{def:local_equivalence}
-   We refer to an equipment functor $F\colon\dcat{X}\to\dcat{Y}$ as a \emph{local equivalence} if
+   We refer to an equipment functor $F\colon\dcat{C}\to\dcat{D}$ as a \emph{local equivalence} if
    the following square is a pseudo-pullback of categories:
    \begin{equation} \begin{tikzcd}
          \label{eqn:local_equiv}
-      \dcat{X}_1 \ar[r,"F_1"] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
-         & \dcat{Y}_1 \ar[d,two heads] \\
-      \dcat{X}_0\times\dcat{X}_0 \ar[r,"F_0\times F_0"']
-         & \dcat{Y}_0\times\dcat{Y}_0
+      \dcat{C}_1 \ar[r,"F_1"] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+         & \dcat{D}_1 \ar[d,two heads] \\
+      \dcat{C}_0\times\dcat{C}_0 \ar[r,"F_0\times F_0"']
+         & \dcat{D}_0\times\dcat{D}_0
    \end{tikzcd} \end{equation}
    where the left-hand and right-hand arrows are the frame fibrations.
 
-   If moreover $F_0\colon\dcat{X}_0\to\dcat{Y}_0$ is fully faithful, we say that $F$ is a
+   If moreover $F_0\colon\dcat{C}_0\to\dcat{D}_0$ is fully faithful, we say that $F$ is a
    \emph{fully faithful local equivalence}.
 \end{definition}
 
@@ -1364,15 +1364,15 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
 
 \begin{definition}
       \label{def:induced_locally_equivalent_equipment}
-   Let $\dcat{Y}$ be a double category and $F_0\colon\dcat{X}_0\to\dcat{Y}_0$ be a functor. A strict
-   pullback of the form \eqref{eqn:local_equiv} defines a double category $\dcat{X}$, which we denote
+   Let $\dcat{D}$ be a double category and $F_0\colon\dcat{C}_0\to\dcat{D}_0$ be a functor. A strict
+   pullback of the form \eqref{eqn:local_equiv} defines a double category $\dcat{C}$, which we denote
    \[
-      \dcat{X}\coloneqq F_0^*(\dcat{Y})
+      \dcat{C}\coloneqq F_0^*(\dcat{D})
    \]
-   and call the \emph{equipment induced by $F_0$}. If $\dcat{Y}$ is an equipment, $F_0^*(\dcat{Y})$
-   will be too, because fibrations are stable under pullback. By
-   Remark~\ref{rem:strict_vs_pseudo_pullback}, the obvious equipment functor
-   $F_0^*(\dcat{Y})\to\dcat{Y}$ is a local equivalence.
+   and call the \emph{equipment induced by $F_0$}. If $\dcat{D}$ is an equipment, $F_0^*(\dcat{D})$
+   will be as well, because fibrations are stable under pullback. By
+   Remark~\ref{rem:strict_vs_pseudo_pullback}, the induced equipment functor
+   $F_0^*(\dcat{D})\to\dcat{D}$ is a local equivalence.
 \end{definition}
 
 \section{The monoids and bimodules construction}
@@ -1460,7 +1460,7 @@ If $F\colon\dcat{C}\to\dcat{D}$ is an equipment functor, then there is an eviden
 functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$.  In fact, we have the following which is immediate from the definitions.
 \begin{lemma}
       \label{lemma:FFLE_Mod}
-   Let $F\colon\dcat{D}\to\dcat{E}$ be an equipment functor. If $F$ is a local equivalence then so is $\dMod(F)\colon\dMod(\dcat{D})\to\dMod(\dcat{E})$.  If, moreover, $F$ is fully faithful then so is $\dMod(F)$.
+   Let $F\colon\dcat{C}\to\dcat{D}$ be an equipment functor. If $F$ is a local equivalence then so is $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$.  If, moreover, $F$ is fully faithful then so is $\dMod(F)$.
 \end{lemma}
 
 
@@ -1526,7 +1526,7 @@ structure, which is a local equivalence.
    \[ \begin{tikzcd}[column sep=tiny]
       \Mon(\dcat{D}) \ar[d,two heads,"\MOb"'] \ar[r]
          & \dcat{D}_1 \ar[d,two heads] \\
-      \dcat{D}_0 \ar[r,"\Delta"']&\dcat{D}_0\times\dcat{D}_0
+      \dcat{D}_0 \ar[r,"\Delta"']&\dcat{D}_0\times\dcat{D}_0.
    \end{tikzcd} \]
 \end{lemma}
 
@@ -1544,21 +1544,17 @@ structure, which is a local equivalence.
 
 \begin{lemma}
       \label{lem:Mon_pullback}
-   Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor, and suppose $F$ is a local equivalence
-   (Definition~\ref{def:local_equivalence}). Then the induced square
+   Let $F\colon\dcat{C}\to\dcat{D}$ be a local equivalence. Then the induced square
    \[ \begin{tikzcd}
-      \Mon(\dcat{X}) \ar[r,"\Mon(F)"] \ar[d,two heads,"\MOb"'] \ar[dr,phantom,"\lrcorner" very near start]
-         & \Mon(\dcat{Y}) \ar[d,two heads,"\MOb"] \\
-      \dcat{X}_0 \ar[r,"F_0"']
-         & \dcat{Y}_0
+      \Mon(\dcat{C}) \ar[r,"\Mon(F)"] \ar[d,two heads,"\MOb"'] \ar[dr,phantom,"\lrcorner" very near start]
+         & \Mon(\dcat{D}) \ar[d,two heads,"\MOb"] \\
+      \dcat{C}_0 \ar[r,"F_0"']
+         & \dcat{D}_0
    \end{tikzcd} \]
    is a pseudo-pullback of categories.
 \end{lemma}
 \begin{proof}
-   By Remark~\ref{rem:strict_vs_pseudo_pullback}, we may assume without loss of generality that the
-   pullback in Definition~\ref{def:local_equivalence} is strict. With this simplification, it is
-   then straightforward to check directly that the above square is again a strict pullback, and
-   hence (by Remark~\ref{rem:strict_vs_pseudo_pullback} again) is a pseudo-pullback.
+   We may assume without loss of generality that the pullback in Definition~\ref{def:local_equivalence} realizing $F\colon\dcat{C}\to\dcat{D}$ as a local equivalence is strict.  With this simplification, it is then straightforward to check directly that the above square is again a strict pullback, and hence (by Remark~\ref{rem:strict_vs_pseudo_pullback}) is a pseudo-pullback.
 \end{proof}
 
 \section{Exactness and the $(\bo,\ff)$ factorization}
@@ -1873,36 +1869,28 @@ following pseudo-pullback squares; see Lemma~\ref{lem:Mon_pullback} and Theorem~
       & \CompCat
 \end{tikzcd} \end{equation}
 
-\section{Internal presheaves and copresheaves}
+\section{Internal copresheaves}
       \label{sec:internal_presheaves}
 
-Presheaves on a category $\cat{C}$ can be identified with profunctors $1\tickar\cat{C}$ in $\dProf$,
-and dually for copresheaves, which are more relevant to us. Motivated by this, we will think of
+Copresheaves on a category $\cat{C}$ can be identified with profunctors $\cat{C}\tickar1$ in $\dProf$. Motivated by this, we will think of
 proarrows $C\tickar 1$ in any equipment $\dcat{D}$ with a terminal object 1 as ``internal
-copresheaves'' on the object $C$. For each object, there is a category of copresheaves
-$\HHor(\dcat{D})(C,1)$. We can give a direct construction of the bifibration over $\dcat{D}_0$ whose
+copresheaves'' on the object $C$.  For each object, there is a category of copresheaves
+$\HHor(\dcat{D})(C,1)$.  We can give a direct construction of the bifibration over $\dcat{D}_0$ whose
 fiber over an object $C$ is the category of copresheaves on $C$:
 
 \begin{definition}
       \label{def:copresheaves}
    Let $\dcat{D}$ be an equipment with a terminal object $1\in\dcat{D}_0$.%
-   \footnote{In fact, this definition makes sense for any object of $\dcat{D}_0$, but for our
+   \footnote{In fact, such a definition makes sense for any object of $\dcat{D}_0$, but for our
    purposes we require the terminal object.}
-   We define the categories $\CPsh(\dcat{D})$ and $\Psh(\dcat{D})$, each bifibered over
-   $\dcat{D}_0$, by the pullbacks
+   We define the category $\CPsh(\dcat{D})$, bifibered over
+   $\dcat{D}_0$, by the pullback
    \begin{equation*}
      \begin{tikzcd}
          \CPsh(\dcat{D}) \ar[r] \ar[d,two heads] \arrow[dr,phantom,"\lrcorner",very near start]
             & \dcat{D}_1 \ar[d,two heads] \\
          \dcat{D}_0\times 1 \ar[r,"\dcat{D}_0\times 1"']
-            & \dcat{D}_0\times\dcat{D}_0
-      \end{tikzcd}
-      \qquad
-      \begin{tikzcd}
-         \Psh(\dcat{D}) \ar[r] \ar[d,two heads] \arrow[dr,phantom,"\lrcorner",very near start]
-            & \dcat{D}_1 \ar[d,two heads] \\
-         1\times\dcat{D}_0 \ar[r,"1\times\dcat{D}_0"']
-            & \dcat{D}_0\times\dcat{D}_0
+            & \dcat{D}_0\times\dcat{D}_0.
       \end{tikzcd}
    \end{equation*}
 \end{definition}
@@ -1913,7 +1901,7 @@ and $H\colon C\to\Set$ is a functor. A morphism $(C,H)\to(C',H')$ is a pair $(F,
 functor and a natural transformation, as in the lax triangle
 \[ \begin{tikzcd}[column sep=.6cm]
    C\ar[rr,"F"]\ar[rd,"H"']&\ar[d,phantom,"\overset{F^\sharp}{\Rightarrow}" near start]&C'\ar[dl,"H'"]\\
-   &\Set
+   &\Set.
 \end{tikzcd} \]
 \end{example}
 
@@ -1930,7 +1918,7 @@ functor and a natural transformation, as in the lax triangle
          & \dcat{Y}_0.
    \end{tikzcd} \end{equation}
    Moreover, if $F$ is a local equivalence (Definition~\ref{def:local_equivalence}),
-   then~\eqref{eq:CPsh_square} is a pseudo-pullback.  Similarly for $\Psh$.
+   then~\eqref{eq:CPsh_square} is a pseudo-pullback.
 \end{lemma}
 \begin{proof}
    Consider the cube
