@@ -1296,29 +1296,29 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
    (defined in Section~\ref{sec:monoidal_profunctors}) will play a major role in this paper.
 
    The vertical category of $\dProf$ is the 1-category $\dProf_0=\Cat$ of small 1-categories and
-   functors. Given objects $C,D\in\dProf_0$, a horizontal arrow between them is a profunctor
-   $C\tickar D$, as described in Section~\ref{sec:profunctors}. A 2-cell $\phi$ in $\dProf$, as to
+   functors. Given objects $\cat{C},\cat{D}\in\dProf_0$, a horizontal arrow between them is a profunctor
+   $\cat{C}\tickar\cat{D}$, as described in Section~\ref{sec:profunctors}. A 2-cell $\phi$ in $\dProf$, as to
    the left, denotes a natural transformation, as to the right, in \eqref{eqn:Prof2cells}:
    \begin{equation}
          \label{eqn:Prof2cells}
       \begin{tikzcd}
-         A \ar[r,tick,"X" domA] \ar[d,"F"']
-            & B\ar[d,"{G}"] \\
-         C \ar[r,tick,"Y"' codA]
-            & D
+         \cat{A} \ar[r,tick,"X" domA] \ar[d,"F"']
+            & \cat{B}\ar[d,"{G}"] \\
+         \cat{C} \ar[r,tick,"Y"' codA]
+            & \cat{D}
          \twocellA{\phi}
       \end{tikzcd}
       \hspace{.6in}
       \begin{tikzcd}[column sep=.8em, row sep=5ex]
-         \op{A}\times B \ar[dr,"X"'] \ar[rr,"\op{F}\times G"]
+         \op{\cat{A}}\times \cat{B} \ar[dr,"X"'] \ar[rr,"\op{F}\times G"]
             & \ar[d,phantom,"\overset{\phi}{\Rightarrow}" near start]
-            & \op{C}\times D\ar[dl,"Y"] \\
+            & \op{\cat{C}}\times \cat{D}\ar[dl,"Y"] \\
          & \Set
       \end{tikzcd}
    \end{equation}
    The horizontal composite of profunctors is defined by the coequalizer \eqref{eqn:coendComp}. Note
    that the coequalizer \eqref{eqn:coendComp} is in fact a reflexive coequalizer, using $\id_b\in
-   B(b,b)$.
+   \cat{B}(b,b)$.
 
    One can show that the we have defined a double category, and it is an equipment because for any
    $F, G,Y$ as in \eqref{eqn:Prof2cells}, there is a cartesian 2-cell whose domain is the profunctor
@@ -1585,7 +1585,7 @@ Theorem~\ref{thm:orthogonal}.
       \label{lemma:embed_for_LE}
    Suppose that $F\colon\dcat{C}\to\dcat{D}$ is a local equivalence induced by
    $F_0\colon\dcat{C}_0\to\dcat{D}_0$. Suppose $M\in\Mon(\dcat{C})$ is a monoid and $c\in\dcat{C}_0$
-   is an object, and let $N=\Mon(F)(M)$ and $d=F_0(c)$. Then we have a pullback square, natural in
+   is an object, and let $N=\Mon(F)(M)$ and $d=F_0(c)$. Then we have a pullback square in $\Set$, natural in
    $M$ and $c$:
       \[ \begin{tikzcd}
          \Emb_{\dcat{C}}(M,c)\ar[r]\ar[d]\ar[rd,phantom,"\lrcorner" very near start]
@@ -1611,23 +1611,23 @@ Theorem~\ref{thm:orthogonal}.
    such that any other embedding of $M$ factors uniquely through $\vec{\imath}_M$:
    \begin{equation*}
       \begin{tikzcd}
-         C \ar[r,tick,"M" domA] \ar[d,"f"']
-         & C \ar[d,"f"]
+         c \ar[r,tick,"M" domA] \ar[d,"f"']
+         & c \ar[d,"f"]
          \\
-         X \ar[r,tick,"X"']
-         & X
+         x \ar[r,tick,"x"']
+         & x
          \twocellA{\vec{f}}
       \end{tikzcd}
       \quad = \quad
       \begin{tikzcd}
-         C \ar[r,tick,"M" domA] \ar[d,"i_M"']
-         & C \ar[d,"i_M"]
+         c \ar[r,tick,"M" domA] \ar[d,"i_M"']
+         & c \ar[d,"i_M"]
          \\
          \Col{M} \ar[r,tick,"\Col{M}"' {domB,codA}] \ar[d,"\tilde{f}"']
          & \Col{M} \ar[d,"\tilde{f}"]
          \\
-         X \ar[r,tick,"X"' codB]
-         & X
+         x \ar[r,tick,"x"' codB]
+         & x
          \twocellA{\vec{\imath}_M}
          \twocellB[pos=.6]{\id_{\tilde{f}}}
       \end{tikzcd}
@@ -1664,14 +1664,14 @@ for later exactness proofs.
    The equipment $\dProf$ is exact.
 \end{proposition}
 \begin{proof}
-   Let $M\colon C\tickar C$ be a monoid in $\dProf$, as in Example~\ref{ex:monoid_in_Prof}. It is
-   straightforward to use $M$ to construct a category $\Col{M}$ with the same objects as $C$, and
-   with hom sets defined by $\Col{M}(c,d)\coloneqq M(c,d)$, for any pair of objects $c,d\in\Ob(C)$.
-   For any object $c$, the identity is provided by $i(\id_C)$, while the multiplication $\bullet$ of
+   Let $M\colon \cal{C}\tickar \cal{C}$ be a monoid in $\dProf$, as in Example~\ref{ex:monoid_in_Prof}. It is
+   straightforward to use $M$ to construct a category $\Col{M}$ with the same objects as $\cat{C}$, and
+   with hom sets defined by $\Col{M}(c,d)\coloneqq M(c,d)$, for any pair of objects $c,d\in\Ob(\cat{C})$.
+   For any object $c$, the identity is provided by $i(\id_{\cat{C}})$, while the multiplication $\bullet$ of
    $M$ provides the composition of $\Col{M}$.
 
    The unit of $M$ can also be used to construct an identity-on-objects functor $i_M\colon
-   C\to\Col{M}$, and the 2-cell $\vec{\imath}_M$ is trivial, sending any element of $M$ to itself as
+   \cat{C}\to\Col{M}$, and the 2-cell $\vec{\imath}_M$ is trivial, sending any element of $M$ to itself as
    a morphism of $\Col{M}$. It is easy to see that $\vec{\imath}_M$ is cartesian, and that
    $(i_M,\vec{\imath}_M)$ is a collapse. It is also simple to verify the second part of
    Definition~\ref{def:exact_equipment}: a $(M,N)$-bimodule is precisely the data of a profunctor
@@ -1707,28 +1707,28 @@ taken from~\cite[Definitions~4.3~and~4.5; Definition~5.1~and~Theorem~4.17]{Schul
 
 \begin{definition}
       \label{def:boff}
-   Let $\dcat{D}$ be an equipment, and let $f\colon C\to D$ be a vertical morphism. Consider the
+   Let $\dcat{D}$ be an equipment, and let $f\colon c\to d$ be a vertical morphism. Consider the
    restriction square and unit square shown below:
    \begin{equation*}
       \begin{tikzcd}
-         C \ar[r,tick,"{D(f,f)}" domA] \ar[d,"f"']
-         & C \ar[d,"f"]
+         c \ar[r,tick,"{d(f,f)}" domA] \ar[d,"f"']
+         & c \ar[d,"f"]
          \\
-         D \ar[r,tick,"D"' codA]
-         & D
-         \twocellalt{A}{\tn{cart}}
+         d \ar[r,tick,"d"' codA]
+         & d
+         \twocellA{\tn{cart}}
      \end{tikzcd}
   \qquad\qquad
      \begin{tikzcd}
-         C \ar[r,tick,"C" domA] \ar[d,"f"']
-         & C \ar[d,"f"]
+         c \ar[r,tick,"c" domA] \ar[d,"f"']
+         & c \ar[d,"f"]
          \\
-         D \ar[r,tick,"D"' codA]
-         & D
+         d \ar[r,tick,"d"' codA]
+         & d
          \twocellA{\vec{\id_f}}
      \end{tikzcd}
    \end{equation*}
-   We say that $f$ is $\bo$ if the restriction square is a collapse (where $D(f,f)$ has the induced
+   We say that $f$ is $\bo$ if the restriction square is a collapse (where $d(f,f)$ has the induced
    monoid structure). We say that $f$ is $\ff$ if the unit square is cartesian.
 \end{definition}
 
