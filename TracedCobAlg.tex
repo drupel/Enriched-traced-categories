@@ -1356,10 +1356,17 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
 
 \begin{remark}
       \label{rem:strict_vs_pseudo_pullback}
-   It is a standard fact that, for 1-categories, a strict pullback of an isofibration along an arbitrary
-   functor is also a pseudo-pullback. Any Grothendieck fibration (or opfibration) is in
-   particular an isofibration, so if the square \eqref{eqn:local_equiv} is a strict pullback, then it
-   is also a pseudo-pullback.
+   It is a standard fact that, for 1-categories, a strict pullback of an isofibration along an
+   arbitrary functor is also a pseudo-pullback. Any Grothendieck fibration (or opfibration) is in
+   particular an isofibration, so if the square \eqref{eqn:local_equiv} is a strict pullback, then
+   it is also a pseudo-pullback.
+
+   Also note that the fibrations in \eqref{eqn:local_equiv} are equivalent to the functors
+   $\dcat{C}_0\times\dcat{C}_0\to\CCat$ sending $(c,d)$ to $\HHor(\dcat{C})(c,d)$, and similarly for
+   $\dcat{D}$, and that $F$ is a local equivalence if and only if the induced functors
+   $\HHor(\dcat{C})(c,d)\to\HHor(\dcat{D})(F_0(c),F_0(d))$ are equivalences of categories for every
+   pair of objects $(c,d)$. The square \eqref{eqn:local_equiv} is a strict pullback precisely when
+   these are isomorphisms of categories.
 \end{remark}
 
 \begin{definition}
