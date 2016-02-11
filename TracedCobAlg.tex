@@ -1580,7 +1580,7 @@ Theorem~\ref{thm:orthogonal}.
       c \ar[r,tick,"M" domA] \ar[d,"f"']
          & c \ar[d,"f"] \\
       x \ar[r,tick,"x"' codA]
-         & x
+         & x.
       \twocellA{\vec{f}}
    \end{tikzcd} \]
    We will sometimes write an embedding as $(f,\vec{f}\mspace{2mu})\colon(c,M)\to x$, or even just $f\colon M\to
@@ -1599,7 +1599,7 @@ Theorem~\ref{thm:orthogonal}.
          &\Emb_{\dcat{D}}(N,d)\ar[d]
          \\
          \dcat{C}_0(|M|,c)\ar[r]
-         &\dcat{D}_0(|N|,d)
+         &\dcat{D}_0(|N|,d).
       \end{tikzcd} \]
 \end{lemma}
 
@@ -1608,8 +1608,8 @@ Theorem~\ref{thm:orthogonal}.
    universal embedding of $M$. That is, the collapse of $M$ is an object $\Col{M}\in\dcat{D}_0$ together with an
    embedding
    \[ \begin{tikzcd}
-      c \ar[r,tick,"M" domA] \ar[d,"i_M"']
-      & c \ar[d,"i_M"]
+      c \ar[r,tick,"M" domA] \ar[d,two heads,"i_M"']
+      & c \ar[d,two heads,"i_M"]
       \\
       \Col{M} \ar[r,tick,"\Col{M}"' codA]
       & \Col{M}
@@ -1627,14 +1627,14 @@ Theorem~\ref{thm:orthogonal}.
       \end{tikzcd}
       \quad = \quad
       \begin{tikzcd}
-         c \ar[r,tick,"M" domA] \ar[d,"i_M"']
-         & c \ar[d,"i_M"]
+         c \ar[r,tick,"M" domA] \ar[d,two heads,"i_M"']
+         & c \ar[d,two heads,"i_M"]
          \\
          \Col{M} \ar[r,tick,"\Col{M}"' {domB,codA}] \ar[d,"\tilde{f}"']
          & \Col{M} \ar[d,"\tilde{f}"]
          \\
          x \ar[r,tick,"x"' codB]
-         & x
+         & x.
          \twocellA{\vec{\imath}_M}
          \twocellB[pos=.6]{\id_{\tilde{f}}}
       \end{tikzcd}
@@ -1807,8 +1807,8 @@ in~\cite{Schultz2015}, but which logically fit in the current section.
    \end{equation*}
 \end{lemma}
 \begin{proof}
-   The equivalence simply sends any monoid $(a,M)$ to the collapse morphism $i_M\colon
-   a\twoheadrightarrow\Col{M}$, which is in $\bo$. For any monoid homomorphism
+   The equivalence sends a monoid $(a,M)$ to the collapse morphism $i_M\colon
+   a\twoheadrightarrow\Col{M}$, which is in $\bo$ by exactness of $\dcat{D}$. For any monoid homomorphism
    $(f,\vec{f}\mspace{2mu})$, there exists a unique $\tilde{f}$ such that
    \begin{equation*}
       \begin{tikzcd}
@@ -1854,10 +1854,7 @@ in~\cite{Schultz2015}, but which logically fit in the current section.
    \end{tikzcd} \]
 \end{theorem}
 \begin{proof}
-   Because the equipment functors $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$ and
-   $\cod\colon\dcat{D}^{\bo}\to\dcat{D}$ are both local equivalences (see
-   Proposition~\ref{prop:collapse_local_equivalence}), the equivalence of Lemma~\ref{lem:Mon_vs_bo}
-   extends to an equivalence of equipments.
+   By Proposition~\ref{prop:collapse_local_equivalence} the equipment functor $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$ is a local equivalence and $\cod\colon\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence by definition of $\dcat{D}^{\bo}$.  It follows that the equivalence of Lemma~\ref{lem:Mon_vs_bo} extends to an equivalence of equipments.
 \end{proof}
 
 We are now in a position to connect the introductory notation of \eqref{eq:single_fiber_tr} and
@@ -1891,7 +1888,7 @@ fiber over an object $C$ is the category of copresheaves on $C$:
    \footnote{In fact, such a definition makes sense for any object of $\dcat{D}_0$, but for our
    purposes we require the terminal object.}
    We define the category $\CPsh(\dcat{D})$, bifibered over
-   $\dcat{D}_0$, by the pullback
+   $\dcat{D}_0$, by the strict pullback of categories
    \begin{equation*}
      \begin{tikzcd}
          \CPsh(\dcat{D}) \ar[r] \ar[d,two heads] \arrow[dr,phantom,"\lrcorner",very near start]
@@ -1914,39 +1911,38 @@ functor and a natural transformation, as in the lax triangle
 
 \begin{lemma}
       \label{lem:Psh_pullback}
-   Let $F\colon\dcat{X}\to\dcat{Y}$ be an equipment functor. Suppose that $\dcat{X}_0$ and
-   $\dcat{Y}_0$ have terminal objects, and that $F$ preserves them. Then there is an induced
+   Let $F\colon\dcat{C}\to\dcat{D}$ be an equipment functor. Suppose that $\dcat{C}_0$ and
+   $\dcat{D}_0$ have terminal objects preserved by $F$. Then there is an induced
    morphism of fibrations
    \begin{equation} \begin{tikzcd}
          \label{eq:CPsh_square}
-      \CPsh(\dcat{X}) \ar[r,"\tilde{F}"] \ar[d,two heads] % \ar[dr,phantom,"\lrcorner" very near start]
-         & \CPsh(\dcat{Y}) \ar[d,two heads] \\
-      \dcat{X}_0 \ar[r,"F_0"']
-         & \dcat{Y}_0.
+      \CPsh(\dcat{C}) \ar[r,"\tilde{F}"] \ar[d,two heads] % \ar[dr,phantom,"\lrcorner" very near start]
+         & \CPsh(\dcat{D}) \ar[d,two heads] \\
+      \dcat{C}_0 \ar[r,"F_0"']
+         & \dcat{D}_0.
    \end{tikzcd} \end{equation}
-   Moreover, if $F$ is a local equivalence (Definition~\ref{def:local_equivalence}),
-   then~\eqref{eq:CPsh_square} is a pseudo-pullback.
+   Moreover, if $F$ is a local equivalence, then~\eqref{eq:CPsh_square} is a pseudo-pullback.
 \end{lemma}
 \begin{proof}
    Consider the cube
    \[ \begin{tikzcd}[row sep={40,between origins}, column sep={55,between origins}]
-      \CPsh(\dcat{X}) \ar[rr,"\tilde{F}"] \ar[dr] \ar[dd,two heads]
-      &[-10] & \CPsh(\dcat{Y}) \ar[dd,two heads] \ar[dr] &[-10] \\[-5]
-      & \dcat{X}_1 \ar[rr,crossing over,"F_1" near start]
-         && \dcat{Y}_1 \ar[dd,two heads] \\
-      \dcat{X}_0\times 1 \ar[rr,"F_0\times 1" pos=.75]
+      \CPsh(\dcat{C}) \ar[rr,"\tilde{F}"] \ar[dr] \ar[dd,two heads]
+      &[-10] & \CPsh(\dcat{D}) \ar[dd,two heads] \ar[dr] &[-10] \\[-5]
+      & \dcat{C}_1 \ar[rr,crossing over,"F_1" near start]
+         && \dcat{D}_1 \ar[dd,two heads] \\
+      \dcat{C}_0\times 1 \ar[rr,"F_0\times 1" pos=.75]
             \ar[dr,"\id\times 1"' {pos=.25,inner sep=2pt}]
-         && \dcat{Y}_0\times 1 \ar[dr,"\id\times 1"' {pos=.25,inner sep=2pt}] & \\[-5]
-      & \dcat{X}_0\times\dcat{X}_0 \ar[rr,"F_0\times F_0"']
+         && \dcat{D}_0\times 1 \ar[dr,"\id\times 1"' {pos=.25,inner sep=2pt}] & \\[-5]
+      & \dcat{C}_0\times\dcat{C}_0 \ar[rr,"F_0\times F_0"']
             \ar[from=uu,crossing over,two heads]
-         && \dcat{Y}_0\times\dcat{Y}_0.
+         && \dcat{D}_0\times\dcat{D}_0.
    \end{tikzcd} \]
    The bottom face of the cube commutes because $F_0$ preserves terminal objects. The right face of
-   the cube is a pullback (as is the left, by definition), hence there is a unique $\tilde{F}$
+   the cube is a strict pullback (as is the left, by definition), hence there is a unique $\tilde{F}$
    making the cube commute.
 
    If $F$ is a local equivalence, then the front face is a pseudo-pullback. The left and right faces
-   are pullbacks, hence pseudo-pullbacks (see Remark~\ref{rem:strict_vs_pseudo_pullback}), so the
+   are strict pullbacks along fibrations, hence pseudo-pullbacks (see Remark~\ref{rem:strict_vs_pseudo_pullback}).  It follows that the
    back face is a pseudo-pullback as well.
 \end{proof}
 
