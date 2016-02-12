@@ -1652,14 +1652,16 @@ bimodule morphisms.
 \end{lemma}
 \begin{proof}
    For a proarrow $X\colon\Col{M}\tickar\Col{N}$ of $\dcat{D}$, define $\tilde X\colon c\tickar d$ by the cartesian 2-cell
-   \[ \begin{tikzcd}
-      c \ar[r,tick, "\tilde X" domA] \ar[d,"i_M"']
-         & d\ar[d,"i_N"] \\
-      \Col{M} \ar[r,tick,"X"' codA]
-         & \Col{N}.
-      \twocellA{\tn{cart}}
-   \end{tikzcd} \]
-   Since this is cartesian, we obtain the equality
+   \begin{equation}\label{eq:bimodule}
+      \begin{tikzcd}
+         c \ar[r,tick, "\tilde X" domA] \ar[d,"i_M"']
+            & d\ar[d,"i_N"] \\
+         \Col{M} \ar[r,tick,"X"' codA]
+            & \Col{N}.
+         \twocellA{\tn{cart}}
+      \end{tikzcd}
+   \end{equation}
+   Then a 2-cell $X\Rightarrow Y$ immediately lifts to a 2-cell $\tilde X\Rightarrow \tilde Y$.  Since \eqref{eq:bimodule} is cartesian, we obtain an equality
    \[ \begin{tikzcd}
       c \ar[r,tick,"M" domA] \ar[d,"i_M"']
          & c \ar[r,tick, "\tilde X" domB] \ar[d,"i_M"']
@@ -1685,7 +1687,7 @@ bimodule morphisms.
       \twocellA{l_{\tilde X}}
       \twocellB{\tn{cart}}
    \end{tikzcd}\]
-   giving the action of $M$ on $\tilde X$.  The action of $N$ on $\tilde X$ is obtained similarly.
+   giving the action of $M$ on $\tilde X$.  The action of $N$ on $\tilde X$ is obtained similarly and one easily checks the axioms making $\tilde X$ an $(M,N)$-bimodule.  
 \end{proof}
 
 \begin{definition}
