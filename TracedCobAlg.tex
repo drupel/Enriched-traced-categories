@@ -1430,7 +1430,7 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
                c \ar[r,tick,"M"] \ar[d,equal]
                   & |[alias=domA]| c \ar[r,tick,"B"]
                   & d \ar[d,equal] \\
-               c \ar[rr,"B"' codA]
+               c \ar[rr,tick,"B"' codA]
                   && d
                \twocellA{l_B}
             \end{tikzcd}
@@ -1439,7 +1439,7 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
                c \ar[r,tick,"B"] \ar[d,equal]
                   & |[alias=domA]| d \ar[r,tick,"N"]
                   & d \ar[d,equal] \\
-               c \ar[rr,"B"' codA]
+               c \ar[rr,tick,"B"' codA]
                && d
                \twocellA{r_B}
             \end{tikzcd}
@@ -1646,12 +1646,53 @@ We recall the definition of exact equipments from~\cite[Proposition 5.4]{Schultz
 For monoids $M$ and $N$, we denote by $\Bimod{M}{N}$ the 1-category of $(M,N)$-bimodules and
 bimodule morphisms.
 
+\begin{lemma}
+   Let $M\colon c\tickar c$ and $N\colon d\tickar d$ be monoids in an equipment $\dcat{D}$ and assume they admit collapses $\Col{M}$ and $\Col{N}$, respectively.  Then restriction induces a functor 
+   \[\HHor(\dcat{D})(\Col{M},\Col{N})\to\Bimod{M}{N}.\]
+\end{lemma}
+\begin{proof}
+   For a proarrow $X\colon\Col{M}\tickar\Col{N}$ of $\dcat{D}$, define $\tilde X\colon c\tickar d$ by the cartesian 2-cell
+   \[ \begin{tikzcd}
+      c \ar[r,tick, "\tilde X" domA] \ar[d,"i_M"']
+         & d\ar[d,"i_N"] \\
+      \Col{M} \ar[r,tick,"X"' codA]
+         & \Col{N}.
+      \twocellA{\tn{cart}}
+   \end{tikzcd} \]
+   Since this is cartesian, we obtain the equality
+   \[ \begin{tikzcd}
+      c \ar[r,tick,"M" domA] \ar[d,"i_M"']
+         & c \ar[r,tick, "\tilde X" domB] \ar[d,"i_M"']
+         & d\ar[d,"i_N"] \\
+      \Col{M} \ar[r,tick,"\Col{M}"' codA] \ar[d,equal]
+         & |[alias=domC]| \Col{M} \ar[r,tick,"X"' codB]
+         & \Col{N} \ar[d,equal] \\
+      \Col{M} \ar[rr,tick,"X"' codC]
+         && \Col{N}
+      \twocellA{\vec{\imath}_M}
+      \twocellB{\tn{cart}}
+      \twocelliso{C}{}
+   \end{tikzcd} 
+   \quad = \quad
+   \begin{tikzcd}
+      c \ar[r,tick,"M"] \ar[d,equal]
+         & |[alias=domA]| c \ar[r,tick,"\tilde X"]
+         & d \ar[d,equal] \\
+      c \ar[rr,tick,"\tilde X"' {codA,domB}] \ar[d,"i_M"']
+         && d \ar[d,"i_N"]\\
+      \Col{M} \ar[rr,tick,"X"' codB]
+         && \Col{N}
+      \twocellA{l_{\tilde X}}
+      \twocellB{\tn{cart}}
+   \end{tikzcd}\]
+   giving the action of $M$ on $\tilde X$.  The action of $N$ on $\tilde X$ is obtained similarly.
+\end{proof}
+
 \begin{definition}
       \label{def:exact_equipment}
-   An equipment $\dcat{D}$ is \emph{exact} if
+   An equipment $\dcat{D}$ is \emph{exact} if the following hold:
    \begin{itemize}
-      \item every monoid $M\colon c\tickar c$ has a collapse as above, with $\vec{\imath}_M$
-         cartesian, and
+      \item every monoid $M\colon c\tickar c$ has a collapse $\Col{M}$ with $\vec{\imath}_M$ cartesian;
       \item for every pair of monoids $M$ and $N$ the restriction functor
          \begin{equation}
                \label{eqn:exact_Hor_Bimod}
@@ -1660,11 +1701,6 @@ bimodule morphisms.
          is an equivalence of categories.
    \end{itemize}
 \end{definition}
-
-It is proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its equipment
-$\dMod(\dcat{D})$ of monoids and modules is exact. Thus Proposition~\ref{prop:Prof_is_exact} follows
-from Example~\ref{ex:mod_span_prof}, but we prove the result directly because it serves as a model
-for later exactness proofs.
 
 \begin{proposition}
       \label{prop:Prof_is_exact}
@@ -1684,6 +1720,9 @@ for later exactness proofs.
    Definition~\ref{def:exact_equipment}: a $(M,N)$-bimodule is precisely the data of a profunctor
    $\Col{M}\tickar\Col{N}$.
 \end{proof}
+\begin{remark}
+  It was proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its equipment $\dMod(\dcat{D})$ of monoids and modules is exact. Thus Proposition~\ref{prop:Prof_is_exact} follows from Example~\ref{ex:mod_span_prof}, but we include the direct proof above as a model for later exactness proofs.
+\end{remark}
 
 \begin{example}
       \label{ex:span_not_exact}
@@ -1900,11 +1939,11 @@ fiber over an object $C$ is the category of copresheaves on $C$:
 \end{definition}
 
 \begin{example}
-If $\dcat{D}=\dProf$ then an object of $\CPsh(\dcat{D})$ is a pair $(C,H)$, where $C$ is a category
-and $H\colon C\to\Set$ is a functor. A morphism $(C,H)\to(C',H')$ is a pair $(F,F^\sharp)$ of a
+If $\dcat{D}=\dProf$ then an object of $\CPsh(\dcat{D})$ is a pair $(\cat{C},H)$, where $\cat{C}$ is a category
+and $H\colon \cat{C}\to\Set$ is a functor. A morphism $(\cat{C},H)\to(\cat{C}',H')$ is a pair $(F,F^\sharp)$ of a
 functor and a natural transformation, as in the lax triangle
 \[ \begin{tikzcd}[column sep=.6cm]
-   C\ar[rr,"F"]\ar[rd,"H"']&\ar[d,phantom,"\overset{F^\sharp}{\Rightarrow}" near start]&C'\ar[dl,"H'"]\\
+   \cat{C}\ar[rr,"F"]\ar[rd,"H"']&\ar[d,phantom,"\overset{F^\sharp}{\Rightarrow}" near start]&\cat{C}'\ar[dl,"H'"]\\
    &\Set.
 \end{tikzcd} \]
 \end{example}
@@ -1937,9 +1976,8 @@ functor and a natural transformation, as in the lax triangle
             \ar[from=uu,crossing over,two heads]
          && \dcat{D}_0\times\dcat{D}_0.
    \end{tikzcd} \]
-   The bottom face of the cube commutes because $F_0$ preserves terminal objects. The right face of
-   the cube is a strict pullback (as is the left, by definition), hence there is a unique $\tilde{F}$
-   making the cube commute.
+   Since $F_0$ preserves terminal objects, the bottom face of the cube commutes. The left and right faces of
+   the cube are strict pullbacks by definition, hence there is a unique $\tilde{F}$ making the cube commute.
 
    If $F$ is a local equivalence, then the front face is a pseudo-pullback. The left and right faces
    are strict pullbacks along fibrations, hence pseudo-pullbacks (see Remark~\ref{rem:strict_vs_pseudo_pullback}).  It follows that the
@@ -2067,8 +2105,8 @@ $\Int\colon\TrCat\to\CompCat$ and $\UCM\colon\CompCat\to\MonCat$ as in \eqref{eq
    forgetful functor. Define $\dTrProf\coloneqq\Int^*(\dCompProf)$.
 \end{definition}
 
-It may seem strange at first to define a profunctor $T\tickar T'$ between traced categories to be a
-profunctor $\Int(T)\tickar\Int(T')$. The next proposition serves as a first sanity check on this
+It may seem strange at first to define a profunctor $\cat{T}\tickar \cat{T}'$ between traced categories to be a
+profunctor $\Int(\cat{T})\tickar\Int(\cat{T}')$. The next proposition serves as a first sanity check on this
 definition, and the remainder of this paper provides further support.
 
 \begin{proposition}
@@ -2078,7 +2116,7 @@ definition, and the remainder of this paper provides further support.
 \begin{proof}
    Clearly these two 2-categories have the same underlying 1-category, so it suffices to show that
    there is a bijection $\VVer(\dTrProf)(F,G)\iso\TTrCat(F,G)$ for any traced functors $F,G\colon
-   T\to T'$, which preserves units and composition. By the definition of $\dTrProf$, we have
+   \cat{T}\to \cat{T}'$, which preserve units and composition. By the definition of $\dTrProf$, we have
    $\VVer(\dTrProf)(F,G)=\CCompCat(\Int(F),\Int(G))$. The result then follows from the fact that
    $\Int$ is locally fully faithful (Lemma~\ref{lemma:fully_faithful_and_trace}(i)).
 \end{proof}
@@ -2100,10 +2138,10 @@ Recall the definition of exact equipments from Section~\ref{sec:exactness_and_bo
    The equipment $\dMonProf$ is exact.
 \end{proposition}
 \begin{proof}
-   Suppose that $M\colon C\tickar C$ is a monoid in $\dMonProf$. Following the proof of
+   Suppose that $M\colon \cat{C}\tickar \cat{C}$ is a monoid in $\dMonProf$. Following the proof of
    Proposition~\ref{prop:Prof_is_exact}, we obtain a category $\Col{M}$, an identity-on-objects
-   morphism $i_M\colon C\to\Col{M}$, and a cartesian 2-cell, $\vec{\imath}_M$, so that
-   $(i_M,\vec{\imath}_M)$ is an embedding. The category $\Col{M}$ has an canonical monoidal
+   morphism $i_M\colon \cat{C}\to\Col{M}$, and a cartesian 2-cell, $\vec{\imath}_M$, so that
+   $(i_M,\vec{\imath}_M)$ is an embedding. The category $\Col{M}$ has a canonical monoidal
    structure, which on objects is just that of $C$, and on morphisms is induced by the monoidal
    profunctor structure of $M$. It is also easy to verify the second part of
    Definition~\ref{def:exact_equipment}: an $(M,N)$-bimodule is precisely the data of a profunctor
@@ -2115,7 +2153,7 @@ Recall the definition of exact equipments from Section~\ref{sec:exactness_and_bo
    The equipment $\dCompProf$ is exact.
 \end{proposition}
 \begin{proof}
-   We can consider a monoid $M\colon C\tickar C$ in $\dCompProf$ as a monoid in $\dMonProf$, which
+   We can consider a monoid $M\colon \cat{C}\tickar \cat{C}$ in $\dCompProf$ as a monoid in $\dMonProf$, which
    has a collapse embedding $i_M\colon M\to \Col{M}$ by Proposition~\ref{prop:MonProf_exact}. The
    collapse $\Col{M}$ is a monoidal category, and by Theorem~\ref{thm:Mod_vs_bo}, $i_M$ is a (strict
    symmetric monoidal) $\bo$ functor. But any monoidal functor preserves duals, so every object of
@@ -2126,38 +2164,38 @@ Recall the definition of exact equipments from Section~\ref{sec:exactness_and_bo
 
 \begin{lemma}
       \label{lem:Tr_bo_Int}
-   Let $T$ be a traced category, $C$ a compact category, and $F\colon\Int(T)\twoheadrightarrow C$ a
+   Let $\cat{T}$ be a traced category, $\cat{C}$ a compact category, and $F\colon\Int(\cat{T})\twoheadrightarrow \cat{C}$ a
    bijective-on-objects strict symmetric monoidal functor. Considering the factorization in
    $\MonCat$:
    \[ \begin{tikzcd}[column sep=large]
-      \UTM T \ar[r,hook,"\UTM\eta_{T}"] \ar[d,two heads]
-         & \UCM\Int(T) \ar[d,two heads,"\UCM F"] \\
-      M \ar[r,hook] & \UCM C
+      \UTM \cat{T} \ar[r,hook,"\UTM\eta_{\cat{T}}"] \ar[d,two heads]
+         & \UCM\Int(\cat{T}) \ar[d,two heads,"\UCM F"] \\
+      \cat{M} \ar[r,hook] & \UCM \cat{C}
    \end{tikzcd} \]
    \begin{itemize}
-      \item there is a unique trace structure on $M$---defining a traced category $T'$ with $\UTM
-         T'=M$---such that the factorization lifts to $\TrCat$:
+      \item there is a unique trace structure on $\cat{M}$---defining a traced category $\cat{T}'$ with $\UTM
+         \cat{T}'=\cat{M}$---such that the factorization lifts to $\TrCat$:
          \[ \begin{tikzcd}[column sep=large]
-            T \ar[r,hook,"\eta_{T}"] \ar[d,two heads,"G"']
-               & \UCT\Int(T) \ar[d,two heads,"\UCT F"] \\
-            T' \ar[r,hook,"H"'] & \UCT C
+            \cat{T} \ar[r,hook,"\eta_{\cat{T}}"] \ar[d,two heads,"G"']
+               & \UCT\Int(\cat{T}) \ar[d,two heads,"\UCT F"] \\
+            \cat{T}' \ar[r,hook,"H"'] & \UCT \cat{C}
          \end{tikzcd} \]
-      \item there is an isomorphism $\alpha\colon\Int(T')\iso C$, such that $\UCT\alpha\circ
-         \eta_{T'}=H$ and $\alpha\circ\Int(G)=F$.
+      \item there is an isomorphism $\alpha\colon\Int(\cat{T}')\iso \cat{C}$, such that $\UCT\alpha\circ
+         \eta_{\cat{T}'}=H$ and $\alpha\circ\Int(G)=F$.
    \end{itemize}
 \end{lemma}
 \begin{proof}
-   The existence and uniqueness of a trace structure on $M$ follows easily from
+   The existence and uniqueness of a trace structure on $\cat{M}$ follows easily from
    Lemma~\ref{lemma:fully_faithful_and_trace} (ii). For the second part, consider the diagram
    \[ \begin{tikzcd}[column sep=4em, row sep=5ex]
-      T \ar[r,hook,"\eta_{T}"] \ar[d,two heads,"G"']
-         & \UCT\Int(T) \ar[d,two heads,"\UCT\Int(G)"']
+      \cat{T} \ar[r,hook,"\eta_{\cat{T}}"] \ar[d,two heads,"G"']
+         & \UCT\Int(\cat{T}) \ar[d,two heads,"\UCT\Int(G)"']
             \ar[ddr,two heads,bend left=25,"\UCT F"] &[between origins] \\
-      T' \ar[r,hook,"\eta_{T'}"] \ar[drr,hook,bend right=15,"H"']
-         & \UCT\Int(T') \ar[dr,"\UCT\alpha"' {inner sep=0pt,pos=.25}] & \\[-10]
-      &&\UCT C
+      \cat{T}' \ar[r,hook,"\eta_{\cat{T}'}"] \ar[drr,hook,bend right=15,"H"']
+         & \UCT\Int(\cat{T}') \ar[dr,"\UCT\alpha"' {inner sep=0pt,pos=.25}] & \\[-10]
+      &&\UCT \cat{C}
    \end{tikzcd} \]
-   where $\alpha\colon\Int(T')\to C$ is the adjunct of $H$. By
+   where $\alpha\colon\Int(\cat{T}')\to \cat{C}$ is the adjunct of $H$. By
    Lemma~\ref{lemma:fully_faithful_and_trace} (iii, iv), $\alpha$ is $\ff$. Since $G$ is $\bo$, we
    know that $\UCT\Int(G)$ is $\bo$ by Lemma~\ref{lemma:fully_faithful_and_trace} (iv), and
    therefore $\alpha$ is as well. Hence $\alpha$ is both $\ff$ and $\bo$, and is therefore an
@@ -2169,18 +2207,18 @@ Recall the definition of exact equipments from Section~\ref{sec:exactness_and_bo
    The equipment $\dTrProf$ is exact.
 \end{proposition}
 \begin{proof}
-   We begin by showing that every monoid in $\dTrProf$ has a collapse. Let $M\colon T\tickar T$ be a
-   monoid in $\dTrProf$, i.e.\ a monoid $M\colon\Int(T)\tickar\Int(T)$ in $\dCompProf$. Define
-   $\Col{M}_{\MTCfont{C}}$ and $(i_M,\vec{\imath}_M)\colon (\Int(T),M)\to\Col{M}_{\MTCfont{C}}$ to
+   We begin by showing that every monoid in $\dTrProf$ has a collapse. Let $M\colon \cat{T}\tickar \cat{T}$ be a
+   monoid in $\dTrProf$, i.e.\ a monoid $M\colon\Int(\cat{T})\tickar\Int(\cat{T})$ in $\dCompProf$. Define
+   $\Col{M}_{\MTCfont{C}}$ and $(i_M,\vec{\imath}_M)\colon (\Int(\cat{T}),M)\to\Col{M}_{\MTCfont{C}}$ to
    be the collapse embedding of $M$ in $\dCompProf$.
 
    We will show that the object $\Col{M}_{\MTCfont{T}}$ and the 1-cell component $i'_M\colon
-   T\to\Col{M}_{\MTCfont{T}}$ of the collapse embedding of $M$ in $\dTrProf$ can be constructed by
+   \cat{T}\to\Col{M}_{\MTCfont{T}}$ of the collapse embedding of $M$ in $\dTrProf$ can be constructed by
    the factorization
    \begin{equation} \begin{tikzcd}[column sep=large]
          \label{eqn:collapses_in_traced}
-      T \ar[r,hook,"\eta_T"] \ar[d,two heads,"i'_M"']
-         & \UCT\Int(T) \ar[d,two heads,"\UCT i_M"] \\
+      \cat{T} \ar[r,hook,"\eta_T"] \ar[d,two heads,"i'_M"']
+         & \UCT\Int(\cat{T}) \ar[d,two heads,"\UCT i_M"] \\
       \Col{M}_{\MTCfont{T}} \ar[r,hook] & \UCT\Col{M}_{\MTCfont{C}}.
    \end{tikzcd} \end{equation}
    as in Lemma~\ref{lem:Tr_bo_Int}, which also says that there is an isomorphism
@@ -2188,32 +2226,32 @@ Recall the definition of exact equipments from Section~\ref{sec:exactness_and_bo
 
    Consider the following commutative diagram:
    \[ \begin{tikzcd}[column sep=between origins,row sep=between origins]
-      \TrCat(\Col{M}_{\MTCfont{T}},T')
-            \ar[r,"\eta_{T'}\circ\textrm{--}"]
+      \TrCat(\Col{M}_{\MTCfont{T}},\cat{T}')
+            \ar[r,"\eta_{\cat{T}'}\circ\textrm{--}"]
             \ar[dd,"\textrm{--}\circ i'_M"']
             \ar[ddr,phantom,"\lrcorner" very near start]
-         &[2.4em,between borders] \TrCat(\Col{M}_{\MTCfont{T}},\UCT\Int(T'))
+         &[2.4em,between borders] \TrCat(\Col{M}_{\MTCfont{T}},\UCT\Int(\cat{T}'))
             \ar[dr,phantom,"\iso"' sloped]
             \ar[dd,"\textrm{--}\circ i'_M"']
             \ar[rr,"\iso"]
          &[6.4em]
-         &[6.4em] \Emb_{\MTCfont{C}}(M,\Int(T')) \ar[dd] \\[2em]
-      && \CompCat(\Col{M}_{\MTCfont{C}},\Int(T'))
+         &[6.4em] \Emb_{\MTCfont{C}}(M,\Int(\cat{T}')) \ar[dd] \\[2em]
+      && \CompCat(\Col{M}_{\MTCfont{C}},\Int(\cat{T}'))
             \ar[ur,phantom,"\iso" sloped]
             \ar[dr,"\textrm{--}\circ i_M" {description,inner sep=.2ex}] \\[3.4em]
-      \TrCat(T,T')
-            \ar[r,"\eta_{T'}\circ\textrm{--}"]
+      \TrCat(\cat{T},\cat{T}')
+            \ar[r,"\eta_{\cat{T}'}\circ\textrm{--}"]
             \ar[rrr,bend right=12,"\Int"']
-         & \TrCat(T,\UCT\Int(T'))
+         & \TrCat(\cat{T},\UCT\Int(\cat{T}'))
             \ar[rr,"\iso"]
-         && \CompCat(\Int(T),\Int(T'))
+         && \CompCat(\Int(\cat{T}),\Int(\cat{T}'))
    \end{tikzcd} \]
 
-   The left square is a pullback, by the orthogonality of $i'_M\in\bo$ and $\eta_{T'}\in\ff$. The
+   The left square is a pullback, by the orthogonality of $i'_M\in\bo$ and $\eta_{\cat{T}'}\in\ff$. The
    right square is a pullback as well, because the top and bottom maps are isomorphisms. Comparing
    the outer square with the pullback in Lemma~\ref{lemma:embed_for_LE}, and noting that
    $\Mon(\Int)(M)=M$, we obtain a natural bijection
-   $\Emb_{\mathrm{Tr}}(M,T')\iso\TrCat(\Col{M}_{\MTCfont{T}},T')$, showing that
+   $\Emb_{\mathrm{Tr}}(M,\cat{T}')\iso\TrCat(\Col{M}_{\MTCfont{T}},\cat{T}')$, showing that
    $\Col{M}_{\MTCfont{T}}$ is the collapse of $M$ in $\dTrProf$. Moreover, by examining this
    equivalence, we can see that the collapse $M\to \Col{M}_{\MTCfont{T}}$ in $\dTrProf$ is given by
    the collapse $(\Int(i'_M),\vec{\imath}_M)\colon M\to\Int\;\Col{M}_{\MTCfont{T}}$ in $\dCompProf$,
@@ -2412,7 +2450,7 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
    categories.
 \end{proof}
 
-Consider for a moment the fibration $\End(\dCompProf)\onto\CompCat$, defined by the pullback
+Consider for a moment the fibration $\End(\dCompProf)\onto\CompCat$, defined by the strict pullback
 \[ \begin{tikzcd}[column sep=0em]
    \End(\dCompProf) \ar[d,two heads] \ar[r] \ar[dr,phantom,"\lrcorner" very near start]
       & \dCompProf_1 \ar[d,two heads] \\
