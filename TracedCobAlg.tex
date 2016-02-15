@@ -60,10 +60,8 @@
 \chapter{Introduction}
       \label{chap:intro}
 
-Traced symmetric monoidal categories, hereafter \emph{traced categories}, have been used to model
-processes with feedback~\cite{Abramsky1} or operators with fixed points~\cite{PontoShulman}. A
-graphical calculus for traced categories was developed by Joyal, Street, and
-Verity~\cite{JoyalStreetVerity}, in which string diagrams of the form
+Traced (symmetric monoidal) categories have been used to model processes with feedback~\cite{Abramsky1} or operators with fixed points~\cite{PontoShulman}. A graphical calculus for traced categories was developed by Joyal, Street, and
+Verity~\cite{JoyalStreetVerity} in which string diagrams of the form
 \begin{equation}\begin{tikzpicture}[wiring diagram,baseline]
       \label{dia:string_diagram}
    \node[bb={2}{1}, bb name=$X_1$] (X1) {};
@@ -89,109 +87,158 @@ Verity~\cite{JoyalStreetVerity}, in which string diagrams of the form
    \draw[ar] let \p1=(X2.south east), \p2=(X1.south west), \n1={\y1-\bby}, \n2=\bbportlen in
       (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
 \end{tikzpicture}\end{equation}
-represent compositions. That is, new morphisms are constructed from old by specifying which outputs
-will be fed back into which inputs. In fact, these are related to Penrose diagrams in $\ncat{Vect}$,
+represent compositions in a traced category $\cat{T}$. That is, new morphisms are constructed from old by specifying which outputs
+will be fed back into which inputs. In fact, these are related to Penrose diagrams in $\ncat{Vect}$
 and the word \emph{traced} originates in this vector space terminology~\cite{JoyalStreetVerity}.
 
-\section{Traced string diagrams as cobordisms}
-      \label{sec:traced_string_cob}
+The string diagrams of \cite{JoyalStreetVerity} typically do not explicitly include the outer box $Y$. If we include it, as in (\ref{dia:string_diagram}), the resulting \emph{wiring diagram} can be given a seemingly new interpretation: it represents a 1-dimensional cobordism between oriented 0-manifolds.  Indeed, the objects in $\Cob$ are signed sets $(\inp{X},\outp{X})$, each of which can be drawn as a box with input wires $\inp{X}$ entering on the left and output wires $\outp{X}$ exiting on the right. 
+\begin{equation*}
+   \begin{tikzpicture}[node distance=0 and 0, baseline=(current bounding box.center)]
+      \node (A1) {$-$};
+      \node[below=-.1 of A1] (A2) {$-$};
+      \node[below=-.1 of A2] (A3) {$-$};
+      \node[below=-.1 of A3] (B1) {$+$};
+      \node[below=-.1 of B1] (B2) {$+$};
+   \end{tikzpicture}
+   \hspace{4em}
+   \begin{tikzpicture}[wiring diagram, bby=1.2ex, baseline=(current bounding box.center)]
+      \node[bb={3}{2},bb name=$X$] {};
+   \end{tikzpicture}
+\end{equation*}
+Moreover, the wiring diagram itself in which boxes $X_1,\ldots,X_n$ are wired together inside a larger box $Y$ can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$.  In fact, this is more appropriately interpreted as a morphism in the operad $\Cob$ underlying the symmetric monoidal category of oriented 1-cobordisms.  
 
-A string diagram usually does not explicitly include the outer box $Y$. If we include it, as in
-(\ref{dia:string_diagram}), the resulting \emph{wiring diagram} can be given another interpretation:
-it represents a 1-dimensional cobordism between oriented 0-manifolds. For example, the box $X_1$ in
-the picture includes only the data of a pair of finite sets,
-$(\inp{X_1},\outp{X_1})=(\{1a,1b\},\{1c\})$, which can be interpreted as an oriented 0-manifold.
-Moreover, the wiring diagram itself, in which boxes $X_1,\ldots,X_n$ are wired together inside a
-larger box $Y$, can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$.
-This is a morphism in the (colored) operad $\Cob$, underlying the symmetric monoidal category of
-oriented 1-cobordisms; see Section~\ref{subsec:wds_and_cob}.
+There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{T}$ than in a cobordism. Namely, each input and output of a box must be labeled by an object of $\cat{T}$ and the wires connecting boxes must respect the labels (e.g. in (\ref{dia:string_diagram}) object $2d$ must equal object $1b$).  We will thus consider the (colored) operad $\LCob{\LabSet}$ of oriented 1-dimensional cobordisms over a fixed set of labels $\LabSet$.  The following shows the two approaches to drawing a 2-ary morphism $X_1,X_2\to Y$ in $\LCob{\LabSet}$:
 
-There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{C}$
-than in a cobordism. Namely, each input and output of a box must be labeled by an object of
-$\cat{C}$ and the wires connecting boxes must respect the labels (e.g., in
-(\ref{dia:string_diagram}), object $2d$ must equal object $1b$). We will thus consider the operad
-$\LCob{\LabSet}$ of oriented 1-dimensional cobordisms over a fixed set $\LabSet$ of labels.
-
-In the table below, we record these two interpretations of a string diagram. Note the ``degree
-shift'' between the second and third columns.
-\begin{center} \begin{tabular}{lll}
+\begin{equation*}
+   \begin{tikzpicture}[x=1cm,y=1ex,node distance=1 and 1,semithick,every label quotes/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},every to/.style={out=0,in=180},baseline=(current bounding box.center)]
+      \node ["$\inp{X}_{1a}$" left] (X1a) {$-$};
+      \node [below=0 of X1a, "$\inp{X}_{1b}$" left] (X1b) {$-$};
+      \node [below=0 of X1b, "$\outp{X}_{1c}$" left] (X1c) {$+$};
+      \node [below=1.5 of X1c, "$\inp{X}_{2a}$" left] (X2a) {$-$};
+      \node [below=0 of X2a, "$\inp{X}_{2b}$" left] (X2b) {$-$};
+      \node [below=0 of X2b, "$\outp{X}_{2c}$" left] (X2c) {$+$};
+      \node [below=0 of X2c, "$\outp{X}_{2d}$" left] (X2d) {$+$};
+      \node [below right=1.5 and 2 of X1a, "$\inp{Y}_a$" right] (Ya) {$-$};
+      \node [below=1.5 of Ya, "$\inp{Y}_b$" right] (Yb) {$-$};
+      \node [below=1.5 of Yb, "$\outp{Y}_c$" right] (Yc) {$+$};
+      \draw (X1a) to (Yb);
+      \draw (X1b) to[in=0] (X2d);
+      \draw (X1c) to[in=0] (X2b);
+      \draw (X2a) to (Ya);
+      \draw (X2c) to (Yc);
+   \end{tikzpicture}
+   \qquad
+   \begin{tikzpicture}[wiring diagram, baseline=(current bounding box.center)]
+      \node[bb={2}{1}, bb name=$X_1$] (X1) {};
+      \node[bb={2}{2}, right=of X1, bb name=$X_2$] (X2) {};
+      \node[bb={2}{1}, fit={(X1) (X2) ($(X1.north)+(0,2)$) ($(X1.south)-(0,1)$)},bb name =$Y$] (Y) {};
+      \draw[label]
+          node[above left=of Y_in1]     {$\inp{Y}_a$}
+          node[above left=of Y_in2]     {$\inp{Y}_b$}
+          node[above right=of Y_out1]   {$\outp{Y}_c$}
+          node[above left=1pt and -2pt of X1_in1]    {$\inp{X}_{1a}$}
+          node[above left=1pt and -2pt of X1_in2]    {$\inp{X}_{1b}$}
+          node[above right=1pt and -2pt of X1_out1]  {$\outp{X}_{1c}$}
+          node[above left=3pt and -2pt of X2_in1]    {$\inp{X}_{2a}$}
+          node[above left=2pt and -2pt of X2_in2]    {$\inp{X}_{2b}$}
+          node[above right=1pt and -2pt of X2_out1]  {$\outp{X}_{2c}$}
+          node[above right=0pt and -2pt of X2_out2]  {$\outp{X}_{2d}$};
+      \draw[ar] (Y_in2') to (X1_in1);
+      \draw[ar] (X1_out1) to (X2_in2);
+      \draw[ar] (X2_out1) to (Y_out1');
+      \draw[ar] let \p1=(X1.north west), \p2=(X1.north east), \n1={\y1+\bby}, \n2=\bbportlen in
+          (Y_in1') to (\x1-\n2,\n1) -- (\x2+\n2,\n1) to (X2_in1);
+      \draw[ar] let \p1=(X2.south east), \p2=(X1.south west), \n1={\y1-\bby}, \n2=\bbportlen in
+         (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
+   \end{tikzpicture}
+\end{equation*}
+In the table below, we record these two interpretations of a string diagram. Note the ``degree shift'' between the second and third columns.
+\begin{center} \begin{tabular}{l|l|l}
    \toprule
       \multicolumn{3}{c}{Interpretations of string diagrams} \\
    \midrule
-      String diagram & Traced category $\cat{C}$ & $\LCob{\LabSet}$ \\
+      String diagram & Traced category $\cat{T}$ & $\LCob{\LabSet}$ \\
    \midrule
-      Wire label set, $\LabSet$ & Objects, $\LabSet\coloneqq\Ob(\cat{C})$ & Label set, $\LabSet$ \\
-      Boxes, e.g., \tikz[wiring diagram,bb port sep=1,bby=2.4pt,bb min width=5.5pt,
+      Wire label set, $\LabSet$ & Objects, $\LabSet\coloneqq\Ob(\cat{T})$ & Label set, $\LabSet$ \\
+      Boxes, e.g. \tikz[wiring diagram,bb port sep=1,bby=2.4pt,bb min width=5.5pt,
                   bb port length=2pt,bb rounded corners=1pt,baseline=(B.south)]
                {\node[bb={1}{2}] (B) {};}
-         & Morphisms in $\cat{C}$& Objects (oriented 0-mfds over $\LabSet$) \\
-      String diagrams & Compositions in $\cat{C}$& Morphisms (cobordisms over $\LabSet$) \\
+         & Morphisms in $\cat{T}$& Objects (oriented 0-mfds over $\LabSet$) \\
+      String diagrams & Compositions in $\cat{T}$& Morphisms (cobordisms over $\LabSet$) \\
       Nesting & Axioms of traced cats & Composition (of cobordisms) \\
    \bottomrule
 \end{tabular} \end{center}
 
-\subsection{The formal connection between Cob-algebras and traced categories}
-      \label{subsec:statement_of_main_thm}
-
-The relationship between these interpretations of string diagrams is most easily made precise when
-the set $\LabSet$ of labels is fixed. Let $\TTrCat$ (resp.\ $\TTrCatStrong$) denote the 2-category of
-traced categories, traced strict (resp.\ strong) monoidal functors, and monoidal natural isomorphisms
-\cite{HK}, and let $\TrCat$ denote the underlying 1-category of $\TTrCat$%
-\footnote{
-   We use a similar notational convention throughout this paper. We denote named 1-categories,
-   monoidal categories, and operads with bold roman letters, e.g., $\ncat{Cob}$, and unnamed
-   1-categories with script, e.g., $\cat{C}$. For named 2-categories or bicategories we do almost
-   the same, but change the font of the first letter to calligraphic, such as $\nncat{T}{rCat}$; for
-   unnamed 2-categories we use (unbold) calligraphic, e.g., $\ccat{D}$.  Finally, for equipments
-   (special double categories, see Section~\ref{chap:background_equipments}) we make the first
-   letter blackboard bold, whether named (e.g., $\ndcat{P}{rof}$) or unnamed (e.g., $\dcat{D}$). The
-   objects in a category, 2-category, or double category will be denoted with the usual math font
-   (e.g., $T\in\Ob\TrCat$). By the \emph{underlying 1-category} of a 2-category, we mean the one
-   obtained by dropping (not quotienting by) the 2-cells.
-}.
-Finally, let $\TrCat_{\LabSet}$ denote the subcategory in which the monoid of objects is fixed to be
-free on the set $\LabSet$, together with identity-on-objects functors.
-
-For any monoidal category $\cat{M}$, we denote by $\cat{M}\alg\coloneqq\ncat{Lax}(\cat{M},\Set)$ the
-category of lax functors $\cat{M}\to\Set$. Then there is an equivalence of categories
-\begin{equation}
+To make precise the relationship between these interpretations of string diagrams, we fix the set $\LabSet$ of labels.  Let $\TrCat$ denote the 1-category of traced categories and traced strict monoidal functors.  Write $\TrCat_{\LabSet}$ for the subcategory in which the monoid of objects is fixed to be free on the set $\LabSet$ together with identity-on-objects functors.  
+\begin{named}{Theorem 0}
+   \label{th:traced is cob alg}
+   There is an equivalence of 1-categories
+   \begin{equation}
       \label{eq:single_fiber_tr}
-   \LCob{\LabSet}\alg\equiv\TrCat_{\LabSet}.
-\end{equation}
-Some intuition for this statement will be given in Section~\ref{subsec:cobalg_and_trCat}, and it
-will be generalized in \ref{thm:TheoremA_statement} and proven as such in Section~\ref{sec:deducing}.
+      \LCob{\LabSet}\alg\equiv\TrCat_{\LabSet},
+   \end{equation}
+   where, given any monoidal category $\cat{M}$, we denote by $\cat{M}\alg\coloneqq\ncat{Lax}(\cat{M},\Set)$ the category of lax functors $\cat{M}\to\Set$.  
+\end{named}
+To build intuition for this statement note that the same data are required, and the same conditions are satisfied, whether one is specifying a lax functor $P\in\LCob{\LabSet}\alg$ or a traced category $\cat{T}\in\TrCat_{\LabSet}$ with objects freely generated by the set $\LabSet$.  First, for each box $X=(\inp{X},\outp{X})$ that might appear in a string diagram, both $P\colon\LCob{\LabSet}\to\Set$ and $\cat{T}$ require a set, $P(X)$ and $\Hom_{\cat{T}}(\inp{X},\outp{X})$, respectively.  Second, for each string diagram, both $P$ and $\cat{T}$ require a function: an action on morphisms in the case of $P$ and a formula for performing the required compositions, tensors, and traces in the case of $\cat{T}$. The condition that $P$ is functorial corresponds to the fact that $\cat{T}$ satisfies the axioms of traced categories.
 
-\subsection{Compact categories vs.\ traced categories}
-
-For each of our main results about traced categories in this paper, we will also prove an analogous
-result about compact closed symmetric monoidal categories, hereafter \emph{compact categories}. The
-definition of compact category can be found in Section~\ref{sec:compact_and_int}, or
-in~\cite{MacL--CTWM}. Let $\CCompCat$ (resp.\ $\CCompCatStrong$) denote the 2-category of compact
-categories with strict (resp.\ strong) functors, and let $\CompCat$ denote the underlying 1-category
-of $\CCompCat$. As above, let $\CompCat_{\LabSet}$ denote the subcategory of compact categories
-whose objects are free on the set $\LabSet$ (so the objects are strings such as $o_1o_2o_3^*$ of
-labels $o_i\in\LabSet$ and their formal duals, and the tensor product is concatenation), together
-with identity-on-objects functors.
-
-There is an equivalence of categories
+We will briefly specify how to construct a lax functor $P$ from a traced category $(\cat{T},\otimes,I,\Tr)$ whose objects are freely generated by $\LabSet$. In what follows, we abuse notation slightly: given a relative set $\iota\colon Z\to\LabSet$, we will use the same symbol $Z$ to denote the tensor $\bigotimes_{z\in Z}\iota(z)$ in $\cat{T}$.  For an oriented 0-manifold $X=\inp{X}\sqcup \outp{X}$ over $\LabSet$, set $P(X)\coloneqq\Hom_{\cat{T}}(\inp{X},\outp{X})$. Given a cobordism $\Phi\colon X\to Y$, we need a function $P(\Phi)\colon P(X)\to P(Y)$. To specify it, note that for any cobordism $\Phi$ there exist $A,B,C,D,E\in\Ob\cat{T}$ such that $\inp{X}\cong C\otimes A$, $\outp{X}\cong C\otimes B$, $\inp{Y}\cong A\otimes D$, $\outp{Y}\cong B\otimes D$, and $E$ is the set of floating loops in $\Phi$; thus $\Phi$ is essentially equivalent to the cobordism shown on the left side of (\ref{eq:cob_and_trace_pic}).
 \begin{equation}
-      \label{eq:single_fiber_comp}
-   \LCob{\LabSet}\alg\equiv\CompCat_{\LabSet}.
+      \label{eq:cob_and_trace_pic}
+   \begin{tikzpicture}[x=1cm,y=1ex,node distance=1 and 1,semithick,every label quotes/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},every to/.style={out=0,in=180},baseline=(current bounding box.center)]
+      \node ["$A$" left] (X1a) {$-$};
+      \node [above=0.25 of X1a] {$X$};
+      \node [below=0 of X1a, "$C$" left] (X1b) {$-$};
+      \node [below=0 of X1b, "$C$" left] (X2a) {$+$};
+      \node [below=0 of X2a, "$B$" left] (X2b) {$+$};
+      \node [right=2 of X1a, "$A$" right] (Y1a) {$-$};
+      \node [above=0.25 of Y1a] {$Y$};
+      \node [below=0 of Y1a, "$D$" right] (Y1b) {$-$};
+      \node [below=0 of Y1b, "$D$" right] (Y2a) {$+$};
+      \node [below=0 of Y2a, "$B$" right] (Y2b) {$+$};
+      \node [right=1.45 of X2a, "$E$" left] {};
+      \draw (X1a) to (Y1a);
+      \draw (X1b) to[in=0] (X2a);
+      \draw (X2b) to (Y2b);
+      \draw (Y1b) to[in=180,out=180] (Y2a);
+      \draw ($(X1b)+(1.25,-2.75)$) to[in=0] ($(X1b)+(1.25,-0.25)$);
+      \draw ($(X1b)+(1.25,-0.25)$) to[in=180,out=180] ($(X1b)+(1.25,-2.75)$);
+   \end{tikzpicture}
+   \qquad\qquad
+   \begin{tikzpicture}[wiring diagram, bby=1.4ex, baseline=(current bounding box.center)]
+      \node[bb port sep=1.5, bb={2}{2}] (domain) {$f$};
+      \node[bb={2}{2}, fit={(domain) ($(domain.north)+(0,3)$) ($(domain.south)-(0,1)$)}, bb name=$P(\Phi)(f)$] (codomain) {};
+      \draw[ar] (codomain_in1') to (domain_in2);
+      \draw[ar] (domain_out2) to (codomain_out1');
+      \draw[ar] let \p1=(domain.north east), \p2=(domain.north west), \n1={\y1+\bby}, \n2=\bbportlen in
+          (domain_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (domain_in1);  %Trace on C
+      \draw[ar] let \p1=(domain.south west), \p2=(domain.south east), \n1={\y1-\bby}, \n2=\bbportlen in
+          (codomain_in2') to[in=180] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=0] (codomain_out2'); %Identity on D
+      \draw[ar] let \p1=(domain.north east) in
+          (\x1+.7*\bbx,\y1+\bby) to[in=0] (\x1+.7*\bbx,\y1+2*\bby) -- (\x1+.6*\bbx,\y1+2*\bby) to[out=180] (\x1+.6*\bbx,\y1+\bby) -- (\x1+.7*\bbx,\y1+\bby);%Loop
+      \draw[label] let \p1=(domain.north east) in
+          node[below left=of codomain_in1]     {$A$}
+          node[below left=of codomain_in2]     {$D$}
+          node[below right=of codomain_out1]    {$B$}
+          node[below right=of codomain_out2]    {$D$}
+          node[above left=.6 and 0 of codomain_out1']  {$E$}
+          node[below left=of domain_in1]     {$C$}
+          node[below left=of domain_in2]     {$A$}
+          node[below right=of domain_out2]    {$B$}
+          node[below right=of domain_out1]   {$C$};
+   \end{tikzpicture}
 \end{equation}
-Equations \eqref{eq:single_fiber_tr} and \eqref{eq:single_fiber_comp} and the relationship between
-them will be generalized in \ref{thm:TheoremA_statement}; see also \eqref{eqn:2pullbacks_1fiber}.
+With the above notation, for $f\in P(X)$ we can follow the string diagram (right side of (\ref{eq:cob_and_trace_pic})) and define
+\begin{equation}
+      \label{eq:cob algebra formula}
+   P(\Phi)(f)\coloneqq\Tr_{A,B}^C[f]\otimes D\otimes\Tr^E_{I,I}[E],
+\end{equation}
+where we abuse notation and write $D$ and $E$ for the identity maps on these objects.  One may easily check, using each axiom of $\Tr$ in an essential way, that \eqref{eq:cob algebra formula} defines an algebra over $\LCob{\LabSet}$.  However, we will not prove \ref{th:traced is cob alg} directly as indicated here but to specify our proof strategy we must introduce more notation.
+
 
 \section{The main results}
       \label{subsec:main_results}
 
-The equivalence \eqref{eq:single_fiber_tr} (and likewise \eqref{eq:single_fiber_comp}) has two
-drawbacks: the object set of the traced category is fixed, and it is assumed to be freely generated
-by some set under tensor products (and duals, in the compact case); we refer to this later condition
-using the term \emph{free-on-objects}. Much of the work in this paper is to relax these two
-conditions. For the latter, we prove that the 2-category of traced categories and strong functors is
-biequivalent to that of free-on-objects traced categories and strict functors; see
-Corollary~\ref{cor:object_frees}. For the former, we first explain what kind of variance is
-appropriate.
+The equivalence \eqref{eq:single_fiber_tr} has two drawbacks: the object set of the traced category is fixed and it is assumed to be freely generated by some set under tensor products; we refer to this later condition using the term \emph{free-on-objects}. Much of the work in this paper is to relax these two conditions. For the latter, we prove that the 2-category of traced categories and strong functors is biequivalent to that of free-on-objects traced categories and strict functors; see Corollary~\ref{cor:object_frees}. For the former, we first explain what kind of object variance is appropriate.
 
 There are adjunctions
 \[
@@ -248,7 +295,7 @@ free-on-objects. Let $\TrFrObCat$ and $\CompFrObCat$ (respectively) denote their
 \end{named}
 
 The proof of this result can be found in Section~\ref{sec:deducing}. In order to see how the
-free-on- objects traced (resp.\ compact) categories relate to general traced categories, we prove in
+free-on-objects traced (resp.\ compact) categories relate to general traced categories, we prove in
 Appendix~\ref{appendix} the following result, which is well-known but difficult to find in the
 literature:
 
@@ -328,7 +375,7 @@ We will prove the following theorem in Section~\ref{sec:deducing}, generalizing
    There are equivalences of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1em]
-         \int\limits^{\mathclap{\cat{C}\in\TrCat}} \Lax(\Int(\cat{C}),\Set)
+         \int\limits^{\mathclap{\cat{T}\in\TrCat}} \Lax(\Int(\cat{T}),\Set)
                \ar[rr,"\equiv"] \ar[dr,two heads]
             && \TrCat^{\bo} \ar[dl,two heads,"\dom" pos=.4] \\
          & \TrCat &
@@ -344,167 +391,59 @@ We will prove the following theorem in Section~\ref{sec:deducing}, generalizing
 \end{named}
 
 We can give a better high-level story once we have reviewed \emph{equipments}; see the introduction
-to Section~\ref{chap:equipments_monoidal_profunctors}. For the remainder of the introduction, we
-will attempt to build intuition.
+to Section~\ref{chap:equipments_monoidal_profunctors}.
 
-\section{Wiring Diagrams, cobordisms, and traced categories}
 
-In this section, we give a bit more intuition about the connection between wiring diagrams and
-cobordisms, and the equivalence between the category of traced categories and the category of
-cobordism algebras.
 
-\subsection{Wiring diagrams and $\Cob$}
-      \label{subsec:wds_and_cob}
+\newpage
 
-The objects in $\Cob$ are signed sets $(\inp{X},\outp{X})$, each of which can be drawn as a box with
-input wires $\inp{X}$ drawn entering the box, on its left, and output wires $\outp{X}$ drawn exiting
-the box, on its right. For the time being, we call the latter style \emph{an interface}.
+\section{Statements too general for intro that need to be placed somewhere}
 
-\begin{equation*}
-   \begin{tikzpicture}[node distance=0 and 0, baseline=(current bounding box.center)]
-      \node (A1) {$-$};
-      \node[below=-.1 of A1] (A2) {$-$};
-      \node[below=-.1 of A2] (A3) {$-$};
-      \node[below=-.1 of A3] (B1) {$+$};
-      \node[below=-.1 of B1] (B2) {$+$};
-   \end{tikzpicture}
-   \hspace{4em}
-   \begin{tikzpicture}[wiring diagram, bby=1.2ex, baseline=(current bounding box.center)]
-      \node[bb={3}{2},bb name=$X$] {};
-   \end{tikzpicture}
-\end{equation*}
+Let $\TTrCat$ (resp.\ $\TTrCatStrong$) denote the 2-category of
+traced categories, traced strict (resp.\ strong) monoidal functors, and monoidal natural isomorphisms
+\cite{HK}, and let $\TrCat$ denote the underlying 1-category of $\TTrCat$%
+\footnote{
+   We use a similar notational convention throughout this paper. We denote named 1-categories,
+   monoidal categories, and operads with bold roman letters, e.g., $\ncat{Cob}$, and unnamed
+   1-categories with script, e.g., $\cat{C}$. For named 2-categories or bicategories we do almost
+   the same, but change the font of the first letter to calligraphic, such as $\nncat{T}{rCat}$; for
+   unnamed 2-categories we use (unbold) calligraphic, e.g., $\ccat{D}$.  Finally, for equipments
+   (special double categories, see Section~\ref{chap:background_equipments}) we make the first
+   letter blackboard bold, whether named (e.g., $\ndcat{P}{rof}$) or unnamed (e.g., $\dcat{D}$). The
+   objects in a category, 2-category, or double category will be denoted with the usual math font
+   (e.g., $T\in\Ob\TrCat$). By the \emph{underlying 1-category} of a 2-category, we mean the one
+   obtained by dropping (not quotienting by) the 2-cells.
+}.
+Finally, let $\TrCat_{\LabSet}$ denote the subcategory in which the monoid of objects is fixed to be
+free on the set $\LabSet$, together with identity-on-objects functors.
 
-Wiring diagrams seem to be a new way to visualize morphisms in the symmetric monoidal category
-$\Cob$ of 1-dimensional oriented cobordisms. In fact, they are better suited to the operad
-associated to $\Cob$. The following shows the two approaches to drawing a 2-ary morphism $X_1,X_2\to
-Y$:
 
-\begin{equation*}
-   \begin{tikzpicture}[wiring diagram, baseline=(current bounding box.center)]
-      \node[bb={2}{1}, bb name=$X_1$] (X1) {};
-      \node[bb={2}{2}, right=of X1, bb name=$X_2$] (X2) {};
-      \node[bb={2}{1}, fit={(X1) (X2) ($(X1.north)+(0,2)$) ($(X1.south)-(0,1)$)},bb name =$Y$] (Y) {};
-      \draw[label]
-          node[above left=of Y_in1]     {$\inp{Y}_a$}
-          node[above left=of Y_in2]     {$\inp{Y}_b$}
-          node[above right=of Y_out1]   {$\outp{Y}_c$}
-          node[above left=1pt and -2pt of X1_in1]    {$\inp{X}_{1a}$}
-          node[above left=1pt and -2pt of X1_in2]    {$\inp{X}_{1b}$}
-          node[above right=1pt and -2pt of X1_out1]  {$\outp{X}_{1c}$}
-          node[above left=3pt and -2pt of X2_in1]    {$\inp{X}_{2a}$}
-          node[above left=2pt and -2pt of X2_in2]    {$\inp{X}_{2b}$}
-          node[above right=1pt and -2pt of X2_out1]  {$\outp{X}_{2c}$}
-          node[above right=0pt and -2pt of X2_out2]  {$\outp{X}_{2d}$};
-      \draw[ar] (Y_in2') to (X1_in1);
-      \draw[ar] (X1_out1) to (X2_in2);
-      \draw[ar] (X2_out1) to (Y_out1');
-      \draw[ar] let \p1=(X1.north west), \p2=(X1.north east), \n1={\y1+\bby}, \n2=\bbportlen in
-          (Y_in1') to (\x1-\n2,\n1) -- (\x2+\n2,\n1) to (X2_in1);
-      \draw[ar] let \p1=(X2.south east), \p2=(X1.south west), \n1={\y1-\bby}, \n2=\bbportlen in
-         (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
-   \end{tikzpicture}
-   \qquad
-   \begin{tikzpicture}[x=1cm,y=1ex,node distance=1 and 1,semithick,every label quotes/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},every to/.style={out=0,in=180},baseline=(current bounding box.center)]
-      \node ["$\inp{X}_{1a}$" left] (X1a) {$-$};
-      \node [below=0 of X1a, "$\inp{X}_{1b}$" left] (X1b) {$-$};
-      \node [below=0 of X1b, "$\outp{X}_{1c}$" left] (X1c) {$+$};
-      \node [below=1.5 of X1c, "$\inp{X}_{2a}$" left] (X2a) {$-$};
-      \node [below=0 of X2a, "$\inp{X}_{2b}$" left] (X2b) {$-$};
-      \node [below=0 of X2b, "$\outp{X}_{2c}$" left] (X2c) {$+$};
-      \node [below=0 of X2c, "$\outp{X}_{2d}$" left] (X2d) {$+$};
-      \node [below right=1.5 and 2 of X1a, "$\inp{Y}_a$" right] (Ya) {$-$};
-      \node [below=1.5 of Ya, "$\inp{Y}_b$" right] (Yb) {$-$};
-      \node [below=1.5 of Yb, "$\outp{Y}_c$" right] (Yc) {$+$};
-      \draw (X1a) to (Yb);
-      \draw (X1b) to[in=0] (X2d);
-      \draw (X1c) to[in=0] (X2b);
-      \draw (X2a) to (Ya);
-      \draw (X2c) to (Yc);
-   \end{tikzpicture}
-\end{equation*}
+Some intuition for this statement will be given in Section~\ref{subsec:cobalg_and_trCat}, and it
+will be generalized in \ref{thm:TheoremA_statement} and proven as such in Section~\ref{sec:deducing}.
 
-\subsection{$\Cob$-algebras and traced categories}
-      \label{subsec:cobalg_and_trCat}
+\subsection{Compact categories vs.\ traced categories}
 
-Here we sketch the equivalence of categories
-\[
-   \LCob{\LabSet}\alg\equiv\TrCat_{\LabSet}
-\]
-from Section~\ref{subsec:statement_of_main_thm}. We will see that the same data are required, and
-the same conditions are satisfied, whether one is specifying a lax functor $P\in\LCob{\LabSet}\alg$
-or a traced category $\cat{C}\in\TrCat_{\LabSet}$ with objects generated by a set $\LabSet$.
+For each of our main results about traced categories in this paper, we will also prove an analogous
+result about compact closed symmetric monoidal categories, hereafter \emph{compact categories}. The
+definition of compact category can be found in Section~\ref{sec:compact_and_int}, or
+in~\cite{MacL--CTWM}. Let $\CCompCat$ (resp.\ $\CCompCatStrong$) denote the 2-category of compact
+categories with strict (resp.\ strong) functors, and let $\CompCat$ denote the underlying 1-category
+of $\CCompCat$. As above, let $\CompCat_{\LabSet}$ denote the subcategory of compact categories
+whose objects are free on the set $\LabSet$ (so the objects are strings such as $o_1o_2o_3^*$ of
+labels $o_i\in\LabSet$ and their formal duals, and the tensor product is concatenation), together
+with identity-on-objects functors.
 
-First, for each box $X=(\inp{X},\outp{X})$ that might appear in a string diagram, both
-$P\colon\LCob{\LabSet}\to\Set$ and $\cat{C}$ require a set, $P(X)$ and
-$\Hom_{\cat{C}}(\inp{X},\outp{X})$, respectively. Second, for each string diagram, both $P$ and
-$\cat{C}$ require a function: an action on morphisms, in the case of $P$, and a formula for
-performing the required compositions, tensors, and traces, in the case of $\cat{C}$. The condition
-that $P$ is functorial corresponds to the fact that $\cat{C}$ satisfies the axioms of traced
-categories.
-
-We will briefly specify how to construct a lax functor $P$ from a traced category
-$(\cat{C},\otimes,I,\Tr)$, whose objects are freely generated by $\LabSet$. We will abuse notation
-slightly as follows: Given a relative set $\iota\colon Z\to\LabSet$, we will use the same symbol $Z$
-to denote the tensor $\bigotimes_{z\in Z}\iota(z)$ in $\cat{C}$.
-
-For an oriented 0-manifold $X=\inp{X}\sqcup \outp{X}$ over $\LabSet$, we set
-$P(X)\coloneqq\Hom_{\cat{C}}(\inp{X},\outp{X})$. Given a cobordism $\Phi\colon X\to Y$, we need a
-function $P(\Phi)\colon P(X)\to P(Y)$. For any cobordism $\Phi$, there exist
-$A,B,C,D,E\in\Ob\cat{C}$ such that $\inp{X}\cong C\otimes A$, $\outp{X}\cong C\otimes B$,
-$\inp{Y}\cong A\otimes D$, $\outp{Y}\cong B\otimes D$, and $E$ is the set of floating loops in
-$\Phi$; thus $\Phi$ is essentially equivalent to the cobordism shown on the right side of
-(\ref{eq:cob_and_trace_pic}).
+There is an equivalence of categories
 \begin{equation}
-      \label{eq:cob_and_trace_pic}
-   \begin{tikzpicture}[wiring diagram, bby=1.4ex, baseline=(current bounding box.center)]
-      \node[bb port sep=1.5, bb={2}{2}] (domain) {$f$};
-      \node[bb={2}{2}, fit={(domain) ($(domain.north)+(0,3)$) ($(domain.south)-(0,1)$)}, bb name=$P(\Phi)(f)$] (codomain) {};
-      \draw[ar] (codomain_in1') to (domain_in2);
-      \draw[ar] (domain_out2) to (codomain_out1');
-      \draw[ar] let \p1=(domain.north east), \p2=(domain.north west), \n1={\y1+\bby}, \n2=\bbportlen in
-          (domain_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (domain_in1);  %Trace on C
-      \draw[ar] let \p1=(domain.south west), \p2=(domain.south east), \n1={\y1-\bby}, \n2=\bbportlen in
-          (codomain_in2') to[in=180] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=0] (codomain_out2'); %Identity on D
-      \draw[ar] let \p1=(domain.north east) in
-          (\x1+.7*\bbx,\y1+\bby) to[in=0] (\x1+.7*\bbx,\y1+2*\bby) -- (\x1+.6*\bbx,\y1+2*\bby) to[out=180] (\x1+.6*\bbx,\y1+\bby) -- (\x1+.7*\bbx,\y1+\bby);%Loop
-      \draw[label] let \p1=(domain.north east) in
-          node[below left=of codomain_in1]     {$A$}
-          node[below left=of codomain_in2]     {$D$}
-          node[below right=of codomain_out1]    {$B$}
-          node[below right=of codomain_out2]    {$D$}
-          node[above left=.6 and 0 of codomain_out1']  {$E$}
-          node[below left=of domain_in1]     {$C$}
-          node[below left=of domain_in2]     {$A$}
-          node[below right=of domain_out2]    {$B$}
-          node[below right=of domain_out1]   {$C$};
-   \end{tikzpicture}
-   \qquad\qquad
-   \begin{tikzpicture}[x=1cm,y=1ex,node distance=1 and 1,semithick,every label quotes/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},every to/.style={out=0,in=180},baseline=(current bounding box.center)]
-      \node ["$A$" left] (X1a) {$-$};
-      \node [above=0.25 of X1a] {$X$};
-      \node [below=0 of X1a, "$C$" left] (X1b) {$-$};
-      \node [below=0 of X1b, "$C$" left] (X2a) {$+$};
-      \node [below=0 of X2a, "$B$" left] (X2b) {$+$};
-      \node [right=2 of X1a, "$A$" right] (Y1a) {$-$};
-      \node [above=0.25 of Y1a] {$Y$};
-      \node [below=0 of Y1a, "$D$" right] (Y1b) {$-$};
-      \node [below=0 of Y1b, "$D$" right] (Y2a) {$+$};
-      \node [below=0 of Y2a, "$B$" right] (Y2b) {$+$};
-      \node [right=1.45 of X2a, "$E$" left] {};
-      \draw (X1a) to (Y1a);
-      \draw (X1b) to[in=0] (X2a);
-      \draw (X2b) to (Y2b);
-      \draw (Y1b) to[in=180,out=180] (Y2a);
-      \draw ($(X1b)+(1.25,-2.75)$) to[in=0] ($(X1b)+(1.25,-0.25)$);
-      \draw ($(X1b)+(1.25,-0.25)$) to[in=180,out=180] ($(X1b)+(1.25,-2.75)$);
-   \end{tikzpicture}
+      \label{eq:single_fiber_comp}
+   \LCob{\LabSet}\alg\equiv\CompCat_{\LabSet}.
 \end{equation}
-With the above notation, for $f\in P(X)$ we can follow the string diagram (left of
-(\ref{eq:cob_and_trace_pic})) and define
-\begin{equation}
-      \label{eq:cob algebra formula}
-   P(\Phi)(f)\coloneqq\Tr_{A,B}^C[f]\otimes D\otimes\Tr^E_{I,I}[\id_E].
-\end{equation}
+Equations \eqref{eq:single_fiber_tr} and \eqref{eq:single_fiber_comp} and the relationship between
+them will be generalized in \ref{thm:TheoremA_statement}; see also \eqref{eqn:2pullbacks_1fiber}.
+
+
+
+ 
 
 
 \section{Applications of the operadic perspective}
