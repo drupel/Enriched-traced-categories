@@ -248,8 +248,7 @@ inducing the monad $\TT$ on $\Set$, which is in fact isomorphic to the free mono
 
 Similarly, the compact category $\LCob{\LabSet}$ varies functorially in $\LabSet\in\Set$ and gives rise to a functor
 \[(\LCob{\bullet})\colon\Set_{\TT}\to\CompCat\]
-to the category $\CompCat$ of compact categories and strict functors. %whose image is exactly the full subcategory $\CompFrObCat$ spanned by the compact categories that are free-on-objects.  
-We can compose this with $\Lax(-,\Set)$ to obtain a functor which we denote
+to the category $\CompCat$ of compact categories and strict functors where the image of $\LabSet$ is precisely the free compact category on $\LabSet$ (e.g. see \cite{KellyLaplaza,Abramsky2}).  We can compose this with $\Lax(-,\Set)$ to obtain a functor which we denote
 \begin{equation}
       \label{eqn:cob/bullet}
    (\LCob{\bullet})\alg\colon\Set_{\TT}^{\mathrm{op}}\too\Cat.
@@ -262,7 +261,7 @@ By applying the Grothendieck construction to (\ref{eqn:cob/bullet}), we obtain a
      &\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrFrObCat.
   \end{align*}
 \end{named}
-This result is proven in Section~\ref{sec:deducing}.
+This result is proven in Section~\ref{sec:deducing} together with an analogous statement for compact categories.
 
 \begin{remark}
    The most naive way of handling variation of the label set $\LabSet$ is to use plain functions $\LabSet\to\LabSet'$. That is, instead of taking the Grothendieck construction of the functors \eqref{eqn:cob/bullet}, we could use the most evident functor $\Lax(\LCob{\bullet},\Set)\colon\op{\Set}\to\Cat$. This would lead to a version of \ref{thm:TheoremA_statement} in which the right hand side is a 2-category of ``traced colored PROPs''. We will not pursue this direction in the paper; however, the interested reader familiar with PROPs should have no difficulty defining traced colored PROPs and proving the analogue of \ref{thm:TheoremA_statement} as a corollary of our results. For more on PROPs, see e.g.~\cite{HackneyRobertson}.
@@ -967,53 +966,6 @@ induces a functor between the Kleisli categories in the other direction:
    \FMC\colon\Set_{\TM}\to\Set_{\TC}
 \end{equation}
 
-\subsection{$\LCob{\LabSet}$ is the free compact category on $\LabSet$}
-
-To connect the geometry (string diagrams) with the algebra (free compact categories), we recall the
-following folklore theorem.
-
-\begin{theorem}
-   The free compact category on one generator is equivalent to $\Cob$, the category of oriented
-   1-dimensional cobordisms.
-\end{theorem}
-
-See \cite[Theorem 3.6]{FreydYetter} for a proof of the non-symmetric version, \cite{Kock} and
-\cite{BaezDolan} for the 2-dimensional version with brief comments on the 1-dimensional version. See
-also \cite{KellyLaplaza} and \cite{Abramsky2} for combinatorial descriptions of $\Cob$ as the free
-compact category functor.  Because the free functor is a left adjoint, hence preserves colimits, we
-have the following corollary.
-
-\begin{corollary}
-      \label{cor:free_compact_is_Cob}
-   For any set $\LabSet$, the free compact category on $\LabSet$ is equivalent to $\LCob{O}$, the
-   category of oriented $\LabSet$-labeled 1-cobordisms.
-\end{corollary}
-
-\subsection{Set-theoretic description of $\Cob$}
-
-Here we give a brief combinatorial description of the category $\Cob$, for the reader's convenience.
-The objects are finite signed sets, $X=(\inp{X},\outp{X})$. A morphism $X\to Y$ can be identified
-with a set $C$ and four injections (left-hand side of \eqref{eqn:describing_cob}):
-\begin{equation}
-      \label{eqn:describing_cob}
-\begin{tikzcd}[row sep=1cm, column sep = 1cm]
-   &\inp{X}\ar[d]\\
-   \outp{X}\ar[r]&C&\inp{Y}\ar[l]\\
-   &\outp{Y}\ar[u]
-\end{tikzcd}
-\hspace{.6in}
-\begin{tikzcd}[row sep=.5cm, column sep =.5cm]
-   &\inp{X}\ar[d]\\
-   \outp{X}\ar[r]&C&\inp{Y}\ar[l]\ar[d]\\
-   &\outp{Y}\ar[u]\ar[r]&D&\inp{Z}\ar[l]\\
-   &&\outp{Z}\ar[u]
-\end{tikzcd}
-\end{equation}
-such that the image of the vertical maps $\inp{X}+\outp{Y}\to C$ is equal to that of the horizontal
-maps, $\outp{X}+\inp{Y}\to C$. Composition is achieved by quotienting the middle square in the
-right-hand diagram of \eqref{eqn:describing_cob}, while the monoidal structure is provided by
-disjoint unions of sets.
-
 \section{Orthogonal factorization systems}
       \label{sec:factorization_systems}
 
@@ -1159,7 +1111,7 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
       \twocellA{\tn{cart}}
    \end{tikzcd} \]
    which we call a \emph{cartesian 2-cell}. We refer to $M$ as the \emph{restriction of $N$ along
-   $f$ and $g$}, written $M=N(f,g)$.  By an \emph{equipment functor}, we simply mean a strong double functor between equipments.
+   $f$ and $g$}, written $M=N(g,f)$.  By an \emph{equipment functor}, we simply mean a strong double functor between equipments.
 \end{definition}
 \begin{remark}
   Equipments were extensively studied in \cite[Section 4]{Shulman} under the name \emph{framed bicategories}.
@@ -1209,9 +1161,9 @@ Our main tool in this paper will be equipments of profunctors as in the followin
          &[1.5em] \op{\cat{C}'}\times\cat{D}' \ar[r,"M"]
          & \Set,
    \end{tikzcd}\]
-   denoted $N(F,F'):\cat{C}\tickar\cat{D}$, such that
+   denoted $N(F',F):\cat{C}\tickar\cat{D}$, such that
    \[ \begin{tikzcd}
-      \cat{C} \ar[r,tick,"{N(F,F')}" domA] \ar[d,"F"']
+      \cat{C} \ar[r,tick,"{N(F',F)}" domA] \ar[d,"F"']
          & \cat{C}'\ar[d,"F'"] \\
       \cat{D} \ar[r,tick,"N"' codA]
          & \cat{D}'
@@ -1888,8 +1840,7 @@ functor and a natural transformation, as in the lax triangle
 In this section we set up the necessary equipment to prove our main results, \ref{thm:TheoremA} and
 \ref{thm:TheoremB}. The high-level view of the argument runs as follows.
 
-The free compact category on a set $\LabSet$ is $\LCob{\LabSet}$ by
-Corollary~\ref{cor:free_compact_is_Cob}. For any compact category $\cat{C}$, there is an equivalence
+For any compact category $\cat{C}$, there is an equivalence
 of categories (Proposition~\ref{prop:unit_implies_monoid}) between the lax functors $\cat{C}\to\Set$
 and the monoids on $\cat{C}$ in the equipment $\dCompProf$ (Definition~\ref{def:CompProf}). Because
 $\dCompProf$ is an exact equipment (Proposition~\ref{prop:CompProf_exact}), the monoids on $\cat{C}$
