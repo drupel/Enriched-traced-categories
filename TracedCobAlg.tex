@@ -2108,7 +2108,7 @@ We prove this result by factoring the desired equivalence as a composition of tw
    \end{tikzcd} \]
 \end{corollary}
 \begin{proof}
-   Since $\Int\colon\dTrProf\to\dCompProf$ is a local equivalence and preserves the terminal object, Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} give a factorization of the desired equivalence of fibrations through that of Theorem~\ref{thm:mon_prof_equivalence}.
+   Since $\Int\colon\dTrProf\to\dCompProf$ is a local equivalence and preserves the terminal object, Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} give a factorization of the desired equivalence of fibrations as a composition of three equivalences with that of Theorem~\ref{thm:mon_prof_equivalence} in the middle.
 \end{proof}
 
 To prove Theorem~\ref{thm:mon_prof_equivalence} we introduce a third fibration and establish its equivalence with each of $\CPsh(\dCompProf)$ and $\Mon(\dCompProf)$.
@@ -2556,11 +2556,7 @@ which follows entirely from earlier work. It will be used to prove of our main r
    \end{equation*}
 \end{lemma}
 \begin{proof}
-   The equipment functors $\dFrCompProf\to\dCompProf$ and $\dFrTrProf\to\dFrCompProf$ are (by
-   definition) local equivalences. The left-hand equivalence follows
-   from~Theorem~\ref{thm:mon_prof_equivalence}, and Lemmas~\ref{lem:Mon_pullback}
-   and~\ref{lem:Psh_pullback}. The right-hand equivalence then follows from
-   Lemmas~\ref{lemma:FFLE_Mod}, \ref{lem:Mon_pullback}, and \ref{lem:Psh_pullback}.
+   The equipment functor $\dFrCompProf\to\dCompProf$ is a local equivalence which preserves terminal objects by definition.  Thus Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} give a factorization of the left-hand equivalence of fibrations as a composition of three equivalences with that of Theorem~\ref{thm:mon_prof_equivalence} in the middle.  Since $\dFrTrProf\to\dFrCompProf$ has the same properties, we see similarly that the right-hand equivalence factors as a composition of three equivalences with the left-hand equivalence in the middle.
 \end{proof}
 
 \section{Deducing the main results}
