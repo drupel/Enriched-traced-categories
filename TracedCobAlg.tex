@@ -1373,18 +1373,6 @@ structure, which is a local equivalence.
    \end{tikzcd} \]
 \end{lemma}
 
-\begin{definition}
-      \label{def:ptd}
-   Let $\dcat{D}$ be an equipment. There is a fibration
-   $\Ptd(\dcat{D})\twoheadrightarrow\dcat{D}_0$, whose objects are ``pointed proarrows''---proarrows
-   $A\colon d\tickar d$ in $\dcat{D}$ equipped with a unit from \eqref{eqn:unit_and_mult}, but not a
-   multiplication---and whose morphisms are 2-cells (as in a monoid homomorphism) which preserve the
-   units.
-
-   The fibration morphism $\Mon(\dcat{D})\to\dcat{D}_0$ factors through $\Ptd(\dcat{D})$ in the
-   evident way. We will not again mention $\Ptd(\dcat{D})$ until Section~\ref{sec:special_CompProf}.
-\end{definition}
-
 \begin{lemma}
       \label{lem:Mon_pullback}
    Let $F\colon\dcat{C}\to\dcat{D}$ be a local equivalence. Then the induced square
@@ -1835,7 +1823,7 @@ $\dCompProf$ is an exact equipment (Proposition~\ref{prop:CompProf_exact}), the 
 can be identified with the bijective-on-objects functors out of $\cat{C}$ by
 Theorem~\ref{thm:Mod_vs_bo}; this establishes the equivalence
 $\CPsh(\dCompProf)\equiv\CompCat^{\bo}$. Similar results hold for traced categories; see
-Proposition~\ref{Prop:mon_prof_equivalence} and Corollary~\ref{cor:Tr_mon_prof_equivalence}. These
+Theorem~\ref{thm:mon_prof_equivalence} and Corollary~\ref{cor:Tr_mon_prof_equivalence}. These
 results suffice to prove \ref{thm:TheoremB}.
 
 The remaining difficulty is dealing with freeness-on-objects, which we need for \ref{thm:TheoremA}.
@@ -2099,45 +2087,111 @@ Recall the definition of exact equipments from Section~\ref{sec:exactness_and_bo
 \section{Special properties of $\dCompProf$}
       \label{sec:special_CompProf}
 
-Recall the definition of $\Ptd$ from Definition~\ref{def:ptd}. The primary goal of this section is
-to establish the equivalence of the three fibrations
-\begin{equation} \begin{tikzcd}
-      \label{eqn:primary_goal}
-   \CPsh(\dCompProf) \equiv \Ptd(\dCompProf) \equiv \Mon(\dCompProf)
+This section aims to establish the following equivalence of fibrations.
+\begin{theorem}
+      \label{thm:mon_prof_equivalence}
+   There is an equivalence of fibrations
+   \[ \begin{tikzcd}[column sep=-.5em]
+      \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+         && \Mon(\dCompProf) \ar[dl,two heads,"\MOb"] \\
+         & \CompCat. &
+   \end{tikzcd} \]
+\end{theorem}
+We prove this result by factoring the desired equivalence as a composition of two more manageable equivalences in Proposition~\ref{Prop:ptd_prof_equivalence} and Proposition~\ref{prop:unit_implies_monoid} below.
+\begin{corollary}
+      \label{cor:Tr_mon_prof_equivalence}
+   There is an equivalence of fibrations
+   \[ \begin{tikzcd}[column sep=-.5em]
+      \CPsh(\dTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+         && \Mon(\dTrProf) \ar[dl,two heads,"\MOb"] \\
+         & \TrCat. &
+   \end{tikzcd} \]
+\end{corollary}
+\begin{proof}
+   Since $\Int\colon\dTrProf\to\dCompProf$ is a local equivalence and preserves the terminal object, Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} give a factorization of the desired equivalence of fibrations through that of Theorem~\ref{thm:mon_prof_equivalence}.
+\end{proof}
+
+To prove Theorem~\ref{thm:mon_prof_equivalence} we introduce a third fibration and establish its equivalence with each of $\CPsh(\dCompProf)$ and $\Mon(\dCompProf)$.
+\begin{definition}
+      \label{def:ptd}
+   Given an equipment $\dcat{D}$ there is a fibration $\Ptd(\dcat{D})\twoheadrightarrow\dcat{D}_0$, whose objects are ``pointed proarrows''---proarrows $A\colon d\tickar d$ in $\dcat{D}$ equipped with a unit from \eqref{eqn:unit_and_mult}, but not a multiplication---and whose morphisms are 2-cells (as in a monoid homomorphism) which preserve the units.
+\end{definition}
+
+\begin{lemma}
+      \label{Lem:comp prof bijection}
+   Given any pointed endo-profunctor $i\colon\Hom_\cat{C}\to N$ in $\Ptd(\dCompProf)$, there is a natural
+   bijection $N(a,b)\iso N(I,a^*\otimes b)$ for any objects $a,b\in \cat{C}$.
+\end{lemma}
+\begin{proof}
+   Given $n\in N(a,b)$, we can construct an element
+   \[
+      (i(\id_{a^*})\boxtimes n)\cdot\eta_a \in N(I,a^*\otimes b).
+   \]
+   Conversely, given $n'\in N(I,a^*\otimes b)$, we can construct an element
+   \[
+      (\epsilon_a\otimes\id_b)\cdot(i(\id_a)\boxtimes n') \in N(a,b).
+   \]
+   It is simple to check that this defines a natural bijection.
+\end{proof}
+
+Consider the fibration $\End(\dCompProf)\onto\CompCat$, defined by the strict pullback
+\[ \begin{tikzcd}[column sep=0em]
+   \End(\dCompProf) \ar[d,two heads] \ar[r] \ar[dr,phantom,"\lrcorner" very near start]
+      & \dCompProf_1 \ar[d,two heads] \\
+   \CompCat \ar[r,"\Delta"']
+      & \CompCat\times\CompCat.
+\end{tikzcd} \]
+We can define the functors
+\begin{equation} \begin{tikzcd}[column sep=-1em]
+   \label{eqn:functors_1C_CC}
+   \CPsh(\dCompProf) \ar[rr,shift left,"F"] \ar[dr,two heads]
+   && \End(\dCompProf) \ar[ll,shift left,"U"] \ar[dl,two heads] \\
+   & \CompCat &
 \end{tikzcd} \end{equation}
-over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} and
-\ref{Prop:mon_prof_equivalence}.
+where $FM\colon\op{\cat{C}}\times \cat{C}\to\Set$ is defined by $FM(a,b)\coloneqq M(a^*\otimes b)$ while $UN\colon \cat{C}\to\Set$ is given by $UN(a)\coloneqq N(I,a)$. It is simple to check that these are morphisms of fibrations, i.e. that they preserve cartesian morphisms.
+
+\begin{proposition}
+      \label{Prop:canonical unit}
+   The functor $F\colon\CPsh(\dCompProf)\to\End(\dCompProf)$ factors through $\Ptd(\dCompProf)$.
+\end{proposition}
+\begin{proof}
+   Let $M\colon \cat{C}\to\Set$ be an object in $\CPsh(\dCompProf)$. Since $M$ is a monoidal profunctor, there is a given unit element $I_M\in M(I)$.  Thus given any $f\colon c\to d$ in $ \cat{C}$, we can define the element $i(f)\in FM(c,d)=M(c^*\otimes d)$ via
+   \[i(f)\coloneqq((\id_{c^*}\otimes f)\circ\eta_c)\cdot I_M.\]
+   It is easy to check that this construction of a unit $i$ is functorial.
+\end{proof}
+
+Thus, we have induced functors $F,U\colon\CPsh(\dCompProf)\leftrightarrows\Ptd(\dCompProf)$ giving the diagram
+\begin{equation} \begin{tikzcd}[row sep=tiny]
+      \label{eqn:ptd_functors_1C_CC}
+   & \Ptd(\dCompProf) \ar[dd] \ar[dl,shift left,"U"] \\
+   \CPsh(\dCompProf) \ar[ur,shift left,"F"] \ar[dr,shift left,"F"] & \\
+   & \End(\dCompProf) \ar[ul,shift left,"U"]
+\end{tikzcd} \end{equation}
+in which the triangle involving the $F$'s and the triangle involving the $U$'s both commute.
+
+\begin{proposition}
+      \label{Prop:ptd_prof_equivalence}
+   The functors $F$ and $U$ from (\ref{eqn:ptd_functors_1C_CC}) form an equivalence of fibrations
+   \[ \begin{tikzcd}[column sep=-.5em]
+      \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+         && \Ptd(\dCompProf) \ar[dl,two heads,"\MOb"] \\
+         & \CompCat &
+   \end{tikzcd} \]
+\end{proposition}
+\begin{proof}
+   If $M\in\CPsh(\dCompProf)$, i.e., $M$ is a lax functor $\cat{C}\to\Set$ for some compact $\cat{C}$, then
+   $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any $a\in \cat{C}$. On the other hand, given
+   $N\in\Ptd(\dCompProf)$, $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from
+   Lemma~\ref{Lem:comp prof bijection}.
+\end{proof}
 
 \begin{remark}
-   One can think of compact categories as a categorification of groups, where duals of objects act
-   like inverses of group elements. From this perspective, the results of this section can be seen
-   as categorifications of basic facts from group theory.
-
-   We can think of profunctors between compact categories as playing the role of relations between
-   groups which are stable under multiplication. Pointed profunctors act like reflexive relations,
-   and monoids in profunctors act like reflexive and transitive relations. In fact, one can define
-   an equipment of groups, group homomorphisms, and equivariant relations, in which monoids are
-   precisely reflexive transitive relations. It is easy to see that copresheaves, i.e./ equivariant
-   relations $1\tickar G$, are the same as subgroups of $G$.
-
-   In this way, the equivalence
-   $\CPsh(\dCompProf)\equiv\Mon(\dCompProf)$ categorifies the standard fact that a subgroup
-   determines, and is determined by, the conjugacy congruence. The equivalence
-   $\Ptd(\dCompProf)\equiv\Mon(\dCompProf)$ would seem to be saying that every reflexive relation
-   (stable under multiplication) on a group is in fact transitive, which while true is perhaps less
-   familiar than the conjugacy relation. However, in the definition of a Mal'cev category (see
-   \cite{BorceuxBourn}), this property is singled out as characterizing categories in which some
-   amount of classical group theory can be developed. By analogy, we might think of this section as
-   proving that $\dCompProf$ is a ``Mal'cev equipment''.
-\end{remark}
-
-\begin{remark}
-   The proof of Proposition~\ref{prop:unit_implies_monoid} is very difficult to follow in the
+   The proof of Proposition~\ref{prop:unit_implies_monoid} below is very difficult to follow in the
    equational form presented. We will use the bimodule notation discussed in
    Example~\ref{ex:profunctors} and Section~\ref{sec:monoidal_profunctors}, but we highly recommend that
-   the interested reader convert the equations into string diagrams. If $N\colon C\tickar C$ is a
+   the interested reader convert the equations into string diagrams. If $N\colon \cat{C}\tickar \cat{C}$ is a
    profunctor, the trick is to draw elements $n\in N(c_1,c_2)$ as if they were special arrows
-   $c_1\to c_2$. They can be composed on either side with actual morphisms of $C$ but not with other
+   $c_1\to c_2$. They can be composed on either side with actual morphisms of $\cat{C}$ but not with other
    special arrows. The operation $\boxtimes$ of a monoidal profunctor then looks like the tensor of
    morphisms.
 \end{remark}
@@ -2152,14 +2206,13 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
    fibrations, so we must show that $U$ is an equivalence of categories.
 
    To define an inverse functor $U^{-1}$, consider an object of $\Ptd(\dCompProf)$, i.e.,~a
-   profunctor $N\colon C\tickar C$ with basepoint $i\colon\Hom_C\to N$. We can define a
-   multiplication on $N$ by the following formula: given any $n_1\in N(c,d)$ and $n_2\in N(d,e)$,
+   profunctor $N\colon \cat{C}\tickar \cat{C}$ with basepoint $i\colon\Hom_\cat{C}\to N$. We can define a
+   multiplication on $N$ by the formula
    \[
       n_2\bullet n_1 \coloneqq (\epsilon_d\otimes\id_e)\cdot(n_1\boxtimes
-      i(\id_{d^*})\boxtimes n_2)\cdot(\id_c\otimes \eta_d).
+      i(\id_{d^*})\boxtimes n_2)\cdot(\id_c\otimes \eta_d)
    \]
-
-   It is straightforward to check that this multiplication is associative.
+   for any $n_1\in N(c,d)$ and $n_2\in N(d,e)$.  It is straightforward to check that this multiplication is associative.
    Remark~\ref{rem:suffices_for_monoidal_monoid} says that, in order to show that $N$ together with
    $i$ and $\bullet$ define an object in $\Mon(\dCompProf)$, we must additionally show that this
    multiplication satisfies the equations \eqref{eq:Prof_monoid_C} and
@@ -2219,11 +2272,11 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
             \cdot (\id_c\otimes\eta_d)\Bigr] \\
       &\qquad \boxtimes \Bigl[(\epsilon_{d'}\otimes\id_{e'})
             \cdot \bigl(n'_1\boxtimes i(\id_{d'^*})\boxtimes n'_2\bigr)
-            \cdot (\id_{c'}\otimes\eta_{d'})\Bigr]
+            \cdot (\id_{c'}\otimes\eta_{d'})\Bigr].
    \end{align*}
    Thus we have shown that the multiplication $\bullet$ defines a monoid $U^{-1}(N)$.
 
-   To define $U^{-1}$ on morphisms, suppose that $M\in\MonProf(C, C)$ is another monoidal profunctor
+   To define $U^{-1}$ on morphisms, suppose that $M\in\MonProf(\cat{C}, \cat{C})$ is another monoidal profunctor
    with unit, and that $\phi\colon M\to N$ is a monoidal profunctor morphism which preserves units.
    Then $\phi$ also preserves the canonical multiplications:
    \begin{align*}
@@ -2242,7 +2295,7 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
    \end{align*}
 
    Clearly $U\circ U^{-1}=\id_{\Ptd(\dCompProf)}$. For the other direction, consider a monoid
-   $M\colon C\tickar C$ with unit $i$ and multiplication $\star$. Then the multiplication $\bullet$
+   $M\colon \cat{C}\tickar \cat{C}$ with unit $i$ and multiplication $\star$. Then the multiplication $\bullet$
    defined above in fact coincides with $\star$:
    \begin{align*}
       n_2\star n_1
@@ -2263,112 +2316,29 @@ over $\CompCat$. We will do so in Propositions~\ref{prop:unit_implies_monoid} an
    categories.
 \end{proof}
 
-Consider for a moment the fibration $\End(\dCompProf)\onto\CompCat$, defined by the strict pullback
-\[ \begin{tikzcd}[column sep=0em]
-   \End(\dCompProf) \ar[d,two heads] \ar[r] \ar[dr,phantom,"\lrcorner" very near start]
-      & \dCompProf_1 \ar[d,two heads] \\
-   \CompCat \ar[r,"\Delta"']
-      & \CompCat\times\CompCat.
-\end{tikzcd} \]
-We can define the functors
-\begin{equation} \begin{tikzcd}[column sep=-1em]
-   \label{eqn:functors_1C_CC}
-   \CPsh(\dCompProf) \ar[rr,shift left,"F"] \ar[dr,two heads]
-   && \End(\dCompProf) \ar[ll,shift left,"U"] \ar[dl,two heads] \\
-   & \CompCat &
-\end{tikzcd} \end{equation}
-where $FM\colon\op{C}\times C\to\Set$ is defined by $FM(a,b)\coloneqq M(a^*\otimes b)$, and in the
-other direction, $UN\colon C\to\Set$ is given by $UN(a)\coloneqq N(I,a)$. It is simple to check
-that these are morphisms of fibrations, i.e., that they preserve cartesian morphisms.
+\begin{remark}
+   One can think of compact categories as a categorification of groups, where duals of objects act
+   like inverses of group elements. From this perspective, the results of this section can be seen
+   as categorifications of basic facts from group theory.
 
-\begin{proposition}
-      \label{Prop:canonical unit}
-   The functor $F\colon\CPsh(\dCompProf)\to\End(\dCompProf)$, from (\ref{eqn:functors_1C_CC}),
-   factors through $\Ptd(\dCompProf)$.
-\end{proposition}
-\begin{proof}
-   Let $M\colon C\to\Set$ be an object in $\CPsh(\dCompProf)$. Given any $f\colon c\to d$ in $ C$,
-   we must define an element $i(f)\in FM(c,d)=M(c^*\otimes d)$. Since $M$ is a monoidal profunctor,
-   there is a given unit element $I_M\in M(I)$, with which we can define $i(f)\coloneqq((\id_{c^*}\otimes
-   f)\circ\eta_c)\cdot I_M$. It is easy to check that this construction of a unit $i$ is functorial.
-\end{proof}
+   We can think of profunctors between compact categories as playing the role of relations between
+   groups which are stable under multiplication. Pointed profunctors act like reflexive relations,
+   and monoids in profunctors act like reflexive and transitive relations. In fact, one can define
+   an equipment of groups, group homomorphisms, and equivariant relations, in which monoids are
+   precisely reflexive transitive relations. It is easy to see that copresheaves, i.e./ equivariant
+   relations $1\tickar G$, are the same as subgroups of $G$.
 
-We will also write $F,U\colon\CPsh(\dCompProf)\leftrightarrows\End(\dCompProf)$ for the functors so
-defined. Thus, we have the diagram
-\begin{equation} \begin{tikzcd}[row sep=tiny]
-      \label{eqn:ptd_functors_1C_CC}
-   & \Ptd(\dCompProf) \ar[dd] \ar[dl,shift left,"U"] \\
-   \CPsh(\dCompProf) \ar[ur,shift left,"F"] \ar[dr,shift left,"F"] & \\
-   & \End(\dCompProf) \ar[ul,shift left,"U"]
-\end{tikzcd} \end{equation}
-in which the triangle involving the $F$'s and the triangle involving the $U$'s both commute.
+   In this way, the equivalence
+   $\CPsh(\dCompProf)\equiv\Mon(\dCompProf)$ categorifies the standard fact that a subgroup
+   determines, and is determined by, the conjugacy congruence. The equivalence
+   $\Ptd(\dCompProf)\equiv\Mon(\dCompProf)$ would seem to be saying that every reflexive relation
+   (stable under multiplication) on a group is in fact transitive, which while true is perhaps less
+   familiar than the conjugacy relation. However, in the definition of a Mal'cev category (see
+   \cite{BorceuxBourn}), this property is singled out as characterizing categories in which some
+   amount of classical group theory can be developed. By analogy, we might think of this section as
+   proving that $\dCompProf$ is a ``Mal'cev equipment''.
+\end{remark}
 
-\begin{lemma}
-      \label{Lem:comp prof bijection}
-   Given any pointed endo-profunctor $i\colon\Hom_C\to N$ in $\Ptd(\dCompProf)$, there is a natural
-   bijection $N(a,b)\iso N(I,a^*\otimes b)$ for any objects $a,b\in C$.
-\end{lemma}
-\begin{proof}
-   Given $n\in N(a,b)$, we can construct an element
-   \[
-      (i(\id_{a^*})\boxtimes n)\cdot\eta_a \in N(I,a^*\otimes b).
-   \]
-   Conversely, given $n'\in N(I,a^*\otimes b)$, we can construct an element
-   \[
-      (\epsilon_a\otimes\id_b)\cdot(i(\id_a)\boxtimes n') \in N(a,b).
-   \]
-   It is simple to check that this defines a natural bijection.
-\end{proof}
-
-In fact, Lemma~\ref{Lem:comp prof bijection} has a converse, showing that for any
-$N\in\End(\dCompProf)$, there is a bijection between points $i\colon \Hom\to N$ and natural
-bijections $N(a,b)\iso N(I,a*\otimes b)$. We will not need this fact, so we leave it as an exercise
-for the interested reader.
-
-\begin{proposition}
-      \label{Prop:ptd_prof_equivalence}
-   The functors $F$ and $U$ from (\ref{eqn:ptd_functors_1C_CC}) form an equivalence of fibrations
-   \[ \begin{tikzcd}[column sep=-.5em]
-      \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
-         && \Ptd(\dCompProf) \ar[dl,two heads,"\MOb"] \\
-         & \CompCat &
-   \end{tikzcd} \]
-\end{proposition}
-\begin{proof}
-   If $M\in\CPsh(\dCompProf)$, i.e., $M$ is a lax functor $C\to\Set$ for some compact $C$, then
-   $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any $a\in C$. On the other hand, given
-   $N\in\Ptd(\dCompProf)$, $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from
-   Lemma~\ref{Lem:comp prof bijection}.
-\end{proof}
-
-\begin{proposition}
-      \label{Prop:mon_prof_equivalence}
-   There is an equivalence of fibrations
-   \[ \begin{tikzcd}[column sep=-.5em]
-      \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
-         && \Mon(\dCompProf) \ar[dl,two heads,"\MOb"] \\
-         & \CompCat &
-   \end{tikzcd} \]
-\end{proposition}
-\begin{proof}
-   This follows directly from Proposition~\ref{prop:unit_implies_monoid} and
-   Proposition~\ref{Prop:ptd_prof_equivalence}.
-\end{proof}
-
-\begin{corollary}
-      \label{cor:Tr_mon_prof_equivalence}
-   There is an equivalence of fibrations
-   \[ \begin{tikzcd}[column sep=-.5em]
-      \CPsh(\dTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
-         && \Mon(\dTrProf) \ar[dl,two heads,"\MOb"] \\
-         & \TrCat &
-   \end{tikzcd} \]
-\end{corollary}
-\begin{proof}
-   Using the fact that $\Int\colon\dTrProf\to\dCompProf$ is a local equivalence, and preserves the
-   terminal object, together with Lemmas~\ref{lem:Psh_pullback} and~\ref{lem:Mon_pullback}, we can
-   obtain the equivalence by pulling back Proposition~\ref{Prop:mon_prof_equivalence} along $\Int$.
-\end{proof}
 
 \section{Monoids on free objects}
       \label{sec:monoids_on_free}
@@ -2588,7 +2558,7 @@ which follows entirely from earlier work. It will be used to prove of our main r
 \begin{proof}
    The equipment functors $\dFrCompProf\to\dCompProf$ and $\dFrTrProf\to\dFrCompProf$ are (by
    definition) local equivalences. The left-hand equivalence follows
-   from~Proposition~\ref{Prop:mon_prof_equivalence}, and Lemmas~\ref{lem:Mon_pullback}
+   from~Theorem~\ref{thm:mon_prof_equivalence}, and Lemmas~\ref{lem:Mon_pullback}
    and~\ref{lem:Psh_pullback}. The right-hand equivalence then follows from
    Lemmas~\ref{lemma:FFLE_Mod}, \ref{lem:Mon_pullback}, and \ref{lem:Psh_pullback}.
 \end{proof}
@@ -2677,7 +2647,7 @@ previous results.
          & \FrCompCat &
       \end{tikzcd}
    \end{equation*}
-   The result follows from Proposition~\ref{Prop:mon_prof_equivalence} and
+   The result follows from Theorem~\ref{thm:mon_prof_equivalence} and
    Corollary~\ref{cor:Tr_mon_prof_equivalence}, together with Lemma~\ref{lem:Mon_vs_bo}.
 \end{proof}
 
