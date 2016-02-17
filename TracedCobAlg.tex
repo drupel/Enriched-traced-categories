@@ -256,7 +256,7 @@ to the category $\CompCat$ of compact categories and strict functors where the i
 By applying the Grothendieck construction (denoted by $\int$ here) to (\ref{eqn:cob/bullet}), we obtain a fibration for which the fiber over a set $\LabSet$ is equivalent (e.g using \eqref{eq:single_fiber_tr}) to $\TrCat_{\LabSet}$.  Let $\TrFrObCat\subset\TrCat$ denote the full subcategory spanned by the traced categories that are free-on-objects.
 \begin{named}{Theorem A}
       \label{thm:TheoremA_statement}
-  There is an equivalences of 1-categories
+  There is an equivalence of 1-categories
   \begin{align*}
      &\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrFrObCat.
   \end{align*}
@@ -266,61 +266,34 @@ This result is proven in Section~\ref{sec:deducing} together with an analogous s
    The most naive way of handling variation of the label set $\LabSet$ is to use plain functions $\LabSet\to\LabSet'$. That is, instead of taking the Grothendieck construction of the functors \eqref{eqn:cob/bullet}, we could use the most evident functor $\Lax(\LCob{\bullet},\Set)\colon\op{\Set}\to\Cat$. This would lead to a version of \ref{thm:TheoremA_statement} in which the right hand side is a 2-category of ``traced colored PROPs''. We will not pursue this direction in the paper; however, the interested reader familiar with PROPs should have no difficulty defining traced colored PROPs and proving the analogue of \ref{thm:TheoremA_statement} as a corollary of our results. For more on PROPs, see e.g.~\cite{HackneyRobertson}.
 \end{remark}
 
-In the course of proving \ref{thm:TheoremA_statement}, we will also prove a more general result
-on lax functors $\cat{C}\to\Set$ for general compact categories $\cat{C}$.
+In the course of proving \ref{thm:TheoremA_statement}, we will also establish a similar result which constructs the category of traced categories with bijective-on-objects functors.  To make this precise, we prove (Theorem~\ref{thm:orthogonal} and Proposition~\ref{prop:CompProf_exact}) that the well-known $(\bo,\ff)$ factorization system of $\Cat$ restricts to a factorization system on $\TrCat$, more precisely the left class consists of bijective-on-objects functors and the right class consists of fully faithful functors. 
 
-We will see (in Theorem~\ref{thm:orthogonal} and Proposition~\ref{prop:CompProf_exact}) that there
-is a factorization system on $\TrCat$, and similarly on $\CompCat$, in which the left class consists
-of bijective-on-objects functors and the right class consists of fully faithful functors. Let
-$\TrCat^{\bo}$ (resp.\ $\CompCat^{\bo}$) be the full subcategory of the arrow category $\TrCat^{\to}$
-(resp.\ $\CompCat^{\to}$) spanned by the bijective-on-objects functors.
-
-Using these factorization systems, we will see that the domain functors
-\[
-   \dom\colon\TrCat^{\bo}\twoheadrightarrow\TrCat
-   \qquad\text{and}\qquad
-   \dom\colon\CompCat^{\bo}\twoheadrightarrow\CompCat
-\]
-are fibrations. For a fixed traced category $\cat{T}$, the fiber
-$\TrCat^{\bo}_{\cat{T}/}\coloneqq\dom^{-1}(\cat{T})$ is the category of strict monoidal,
-bijective-on-objects functors from $\cat{T}$ to another traced category, with the evident
-commutative triangles as morphisms, and likewise for $\CompCat^{\bo}_{\cat{C}/}$ with $\cat{C}$ a
-compact category. Note that we have isomorphisms $\TrCat_{\LabSet}\iso\TrCat^{\bo}_{(\FT\LabSet)/}$
-and $\CompCat_{\LabSet}\iso\CompCat^{\bo}_{(\FC\LabSet)/}$.
+Write $\TrCat^{\bo}$ for the full subcategory of the arrow category $\TrCat^{\to}$ spanned by the bijective-on-objects functors.  The existence of this factorization system implies that the domain functor
+\[\dom\colon\TrCat^{\bo}\twoheadrightarrow\TrCat\]
+is a fibration.  For a fixed traced category $\cat{T}$, the fiber $\TrCat^{\bo}_{\cat{T}/}\coloneqq\dom^{-1}(\cat{T})$ is the category of strict monoidal, bijective-on-objects functors from $\cat{T}$ to another traced category, with the evident commutative triangles as morphisms.  Note that we have an isomorphism $\TrCat_{\LabSet}\iso\TrCat^{\bo}_{(\FT\LabSet)/}$.
 
 Recall from~\cite{JoyalStreetVerity} that traced categories can be thought of as full subcategories
-of compact categories.  The Int construction, applied to a traced category $\cat{C}$, returns the
-smallest compact category $\Int(\cat{C})$ of which it is a monoidal subcategory. We will recall these
+of compact categories.  The Int construction, applied to a traced category $\cat{T}$, returns the
+smallest compact category $\Int(\cat{T})$ of which it is a monoidal subcategory. We will recall these
 notions in Sections~\ref{sec:intuition_for_traced} and~\ref{sec:compact_and_int}.
 
-Generalizing \eqref{eq:single_fiber_tr} and \eqref{eq:single_fiber_comp}, we can give a complete
-characterization of lax functors out of compact categories. For a fixed traced category $\cat{T}$
-and a fixed compact category $\cat{C}$, there are equivalences of categories
+Generalizing \eqref{eq:single_fiber_tr}, we can give a complete characterization of lax functors out of such compact categories. For a fixed traced category $\cat{T}$, there is an equivalence of categories
 \begin{equation}
       \label{eqn:lax_compcat_bo}
-   \Lax(\Int(\cat{T}),\Set)\equiv\TrCat^{\bo}_{\cat{T}/}
-   \qquad\text{and}\qquad
-   \Lax(\cat{C},\Set)\equiv\CompCat^{\bo}_{\cat{C}/}.
+   \Lax(\Int(\cat{T}),\Set)\equiv\TrCat^{\bo}_{\cat{T}/}.
 \end{equation}
 We will prove the following theorem in Section~\ref{sec:deducing}, generalizing
 \ref{thm:TheoremA_statement}:
 
 \begin{named}{Theorem B}
       \label{thm:TheoremB_statement}
-   There are equivalences of fibrations
+   There is an equivalence of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1em]
          \int\limits^{\mathclap{\cat{T}\in\TrCat}} \Lax(\Int(\cat{T}),\Set)
                \ar[rr,"\equiv"] \ar[dr,two heads]
             && \TrCat^{\bo} \ar[dl,two heads,"\dom" pos=.4] \\
          & \TrCat &
-      \end{tikzcd}
-      \qquad\text{and}\qquad
-      \begin{tikzcd}[column sep=-1em]
-         \int\limits^{\mathclap{\cat{C}\in\CompCat}} \Lax(\cat{C},\Set)
-               \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \CompCat^{\bo} \ar[dl,two heads,"\dom" pos=.4] \\
-         & \CompCat &
       \end{tikzcd}
    \end{equation*}
 \end{named}
@@ -439,122 +412,28 @@ them will be generalized in \ref{thm:TheoremA_statement}; see also \eqref{eqn:2p
    (\LCob{\bullet})\alg\colon\Set_{\TC}^{\mathrm{op}}\too\Cat.
 \end{equation}
 
- 
+\[
+   \qquad\text{and}\qquad
+   \dom\colon\CompCat^{\bo}\twoheadrightarrow\CompCat
+\]
+
+\begin{equation}
+   \qquad\text{and}\qquad
+   \Lax(\cat{C},\Set)\equiv\CompCat^{\bo}_{\cat{C}/}.
+\end{equation}
+
+\begin{equation*}
+      \qquad\text{and}\qquad
+      \begin{tikzcd}[column sep=-1em]
+         \int\limits^{\mathclap{\cat{C}\in\CompCat}} \Lax(\cat{C},\Set)
+               \ar[rr,"\equiv"] \ar[dr,two heads]
+            && \CompCat^{\bo} \ar[dl,two heads,"\dom" pos=.4] \\
+         & \CompCat &
+      \end{tikzcd}
+\end{equation*}
+
 }%%% end erase %%%
 
-\section{Applications of the operadic perspective}
-
-The operadic perspective on traced categories may be useful in concrete applications, such as for
-modeling nested process diagrams. It may also be useful in pure mathematics, because the operad $\Cob$,
-which indexes traced categories, can be easily modified to model a variety of other doctrines.
-These two applications will be discussed in more detail in
-Sections~\ref{subsec:modular}~and~\ref{subsec:math_application} respectively.
-
-\subsection{Modular design}
-      \label{subsec:modular}
-
-When designing or investigating a complex system, it is often useful to think in terms of
-interacting subsystems, put together to make a larger whole. In manufacturing, this is often called
-\emph{modular design}. Each object in $\Cob$ represents an interface, or \emph{module}, with a
-fixed number and type of inputs and outputs. The morphisms in $\Cob$ correspond to strategies by
-which these interfaces can be wired together into a process, which itself has an interface (the outer box).
-
-An algebra $P\colon\Cob\to\Set$ provides semantics for these interfaces
-(\cite{RupelSpivak},\cite{VagnerSpivakLerman}). For each interface $X$, the set $P(X)$ represents
-the set of possible ``fillers'' for it. For example, one might imagine that each interface $X$ can
-be filled by any state machine having that interface; in this case $P(X)$ would be the set of such
-state machines. For a morphism $\varphi\colon X_1,\ldots,X_n\to Y$, the function $P(\varphi)$ tells
-us how to construct a filler of interface $Y$, given fillers on each $X_i$. Composition of
-cobordisms are drawn as nested diagrams:
-\begin{equation*} \begin{tikzpicture}[wiring diagram, bb small]
-   \node[bb={2}{2}] (X1) {};
-   \node[bb={1}{1}, fit={(X1) ($(X1.north)+(0,1)$)}, dashed] (Y1) {};
-   \node[bb={2}{1}, below right=4 and 0 of X1] (X2) {};
-   \node[bb={0}{2},below left=of X2] (X3) {};
-   \node[bb={1}{2}, fit=(X2) (X3), dashed] (Y2) {};
-   \node[bb={1}{2}, fit=(Y1) (Y2)] (Z) {};
-   \draw[ar] (Z_in1') to (Y2_in1);
-   \draw[ar] (Y2_in1') to (X2_in1);
-   \draw[ar] (X3_out1) to (X2_in2);
-   \draw[ar] (X3_out2) to (Y2_out2');
-   \draw (Y2_out2) to (Z_out2');
-   \draw[ar] (Y1_in1') to (X1_in2);
-   \draw (X1_out2) to (Y1_out1');
-   \draw[ar] (Y1_out1) to (Z_out1');
-   \draw (X2_out1) to (Y2_out1');
-   \draw[ar] let \p1=(Y2.north east), \p2=(Y1.south west), \n1={\y1+\bby}, \n2=\bbportlen in
-      (Y2_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (Y1_in1);
-   \draw[ar] let \p1=(X1.north east), \p2=(X1.north west), \n1={\y1+\bby}, \n2=\bbportlen in
-      (X1_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in1);
-   \node[anchor=south] at (Z.north) {$X\xrightarrow{\Phi}Y\xrightarrow{\Psi}Z$};
-
-   \node[bb={2}{2}, right=10 of X1] (X1') {};
-   \node[bb={2}{1}, below right=4 and 0 of X1'] (X2') {};
-   \node[bb={0}{2},below left=of X2'] (X3') {};
-   \node[bb={1}{2}, fit={($(X1'.north)+(0,1)$) (X2') (X3')}, inner xsep=2*\bbx, inner ysep=2*\bby] (Z') {};
-   \draw[ar] (X3'_out1) to (X2'_in2);
-   \draw[ar] (Z'_in1') to (X2'_in1);
-   \draw[ar] (X1'_out2) to (Z'_out1');
-   \draw[ar] (X3'_out2) to (Z'_out2');
-   \draw[ar] let \p1=(X2'.north east), \p2=(X1'.south west), \n1={\y1+2*\bby}, \n2=\bbportlen in
-      (X2'_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1'_in2);
-   \draw[ar] let \p1=(X1'.north east), \p2=(X1'.north west), \n1={\y1+\bby}, \n2=\bbportlen in
-      (X1'_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1'_in1);
-   \node[anchor=south] at (Z'.north) {$X\xrightarrow{\Psi\circ\Phi}Z$};
-\end{tikzpicture} \end{equation*}
-
-In our model for modular design, any way to chunk the small boxes inside the big one will yield the
-same result. This is a reflection of the functoriality of $P\colon\Cob\to\Set$, which says that
-commutative diagrams in $\Cob$ are sent to commutative diagrams of sets. Nested structures, given
-by composition of such morphisms, may be useful for the kind of chunking that humans use to
-understand complex systems~\cite{Miller}.
-
-\subsection{Mathematical application: varying the operad}
-      \label{subsec:math_application}
-
-Formalizing modular design using operads, as in~\cite{Spivak},~\cite{RupelSpivak},
-and~\cite{VagnerSpivakLerman} was the original motivation for the present paper, as the drawings had
-strong similarities to those found in traced categories. However, it should be noted that none of
-these papers actually uses $\Cob$ as the indexing category for their algebras, and hence none are
-actually directly related to traced categories. In fact, they use three different operads, of
-varying degrees of similarity to $\Cob$. For example, there is an orthogonal factorization system on
-$\Cob$ \cite{Abadi}, for which morphisms in the left class $\cat{L}$ include no closed loops, and
-the operad of interest in~\cite{VagnerSpivakLerman} is $\cat{L}$.
-
-If one wished to make minor modifications in the axioms of traced categories to create some new sort
-of category $\ncat{Tr'Cat}$, one may proceed by imagining the string diagrams that should describe
-compositions in $\ncat{Tr'Cat}$. For example, one may want to consider cartesian traced categories,
-in which wires can split or terminate abruptly. Or one might want to allow splitting but not allow
-abrupt termination.
-\begin{equation*} \begin{tikzpicture}[wiring diagram,bb min width =.7cm, bb port sep =1, bbx=.6cm,bb port length=3pt]
-   \node[bb port sep=1.6, bb={2}{2}, bb name=$f$] (X1) {};
-   \node[bb port sep=.8,bb={1}{1}, right=.7 of X1_out1, bb name=$g$] (X2) {};
-   \node[bb={1}{2}, fit={(X1) (X2) ($(X1.north)+(0,1)$)}] (Y) {};
-   \draw[ar] (Y_in1') to (X1_in2);
-   \draw[ar,pos=.8] (X1_out1) to (X2_in1);
-   \draw (X2_out1) to (Y_out1');
-   \draw[ar] (X1_out2) to (Y_out2');
-   \draw[ar] let \p1=(X2.north east), \p2=(X1.north west), \n1={\y2+\bby}, \n2=\bbportlen in
-      (X2_out1) to[in=0] (\x1+.7*\n2,\n1) -- (\x2-.7*\n2,\n1) to[out=180] (X1_in1);
-\end{tikzpicture} \end{equation*}
-There is sometimes a tension between identity morphisms and the trace structure, e.g., if the
-morphisms are dynamical systems. Imagining the wiring diagrams for traced categories without
-identities is straightforward (the relevant operad is $\cat{L}$ above), whereas determining the
-relevant axiomatization for them is not. An approach to this issue was suggested in \cite{ABP}, in
-which traced categories without identities are embedded in larger categories as ``trace ideals";
-however, it may sometimes be preferable to work with the category on its own terms.
-
-We can accommodate any of the above such modification of string diagrams for $\ncat{Tr'Cat}$ by
-modifying the indexing operad $\Cob$ to some operad $\Cob'$. Using $\cat{L}$ for dynamical systems
-in \cite{VagnerSpivakLerman} is an example of this. As another, suppose that, as above, we want
-string diagrams in which wires can split but not terminate. Noting that an oriented cobordism
-$\varphi$ includes the data of a function
-\begin{equation*}
-   \varphi\colon\inp{X}\sqcup\outp{Y}\to\outp{X}\sqcup\inp{Y},
-\end{equation*}
-which is both injective and surjective, we can obtain the desired indexing operad $\Cob'$ by
-requiring surjectivity but not injectivity in $\varphi$. These were found to be useful in
-\cite{RupelSpivak}.
 
 \section{Plan of the paper}
 
@@ -2168,7 +2047,7 @@ in which the triangle involving the $F$'s and the triangle involving the $U$'s b
    special arrows. The operation $\boxtimes$ of a monoidal profunctor then looks like the tensor of
    morphisms.
 \end{remark}
-
+\todo{Change proof to use string diagrams.}
 \begin{proposition}
       \label{prop:unit_implies_monoid}
    The forgetful functor $\Mon(\dCompProf)\to\Ptd(\dCompProf)$ is an equivalence of fibrations over
@@ -2363,7 +2242,7 @@ reading the results in this section.
 
 In other words, $\dFrMonProf$ is just the full sub-equipment of $\dMonProf$ spanned by the monoidal
 categories which are free on a set, and similarly for the other two. We will write
-$\FrMonCat\coloneqq\dFrMonProf_0$ (and similarly for traced an compact) for the vertical
+$\FrMonCat\coloneqq\dFrMonProf_0$ (and similarly for traced and compact) for the vertical
 1-categories; that is, $\FrMonCat\iso\Set_{\TM}$, etc.
 
 With $\varphi_T\colon\dcat{D}_T\to\dcat{D}$ as in \eqref{eqn:FFLE_DT}, it follows from
