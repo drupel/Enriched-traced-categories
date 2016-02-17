@@ -1110,7 +1110,36 @@ out and give a few examples. An excellent reference is Shulman's paper \cite{Shu
       \twocellA{\tn{cart}}
    \end{tikzcd} \]
    which we call a \emph{cartesian 2-cell}. We refer to $M$ as the \emph{restriction of $N$ along
-   $f$ and $g$}, written $M=N(g,f)$.  By an \emph{equipment functor}, we simply mean a strong double functor between equipments.
+   $f$ and $g$}, written $M=N(g,f)$.  
+\end{definition}
+
+\begin{definition}
+      \label{def:local_equivalence}
+   By an \emph{equipment functor}, we simply mean a strong double functor between equipments.  We refer to an equipment functor $F\colon\dcat{C}\to\dcat{D}$ as a \emph{local equivalence} if the following square strictly commutes and is a pseudo-pullback of categories:
+   \begin{equation} \begin{tikzcd}
+         \label{eqn:local_equiv}
+      \dcat{C}_1 \ar[r,"F_1"] \ar[d,two heads,"(L,R)"] \ar[dr,phantom,"\lrcorner" very near start]
+         & \dcat{D}_1 \ar[d,two heads,"(L,R)"'] \\
+      \dcat{C}_0\times\dcat{C}_0 \ar[r,"F_0\times F_0"']
+         & \dcat{D}_0\times\dcat{D}_0.
+   \end{tikzcd} \end{equation}
+   If moreover $F_0\colon\dcat{C}_0\to\dcat{D}_0$ is fully faithful, we say that $F$ is a \emph{fully faithful local equivalence}.
+\end{definition}
+
+\begin{remark}
+      \label{rem:strict_vs_pseudo_pullback}
+   It is a standard fact for 1-categories that a strict pullback of an isofibration along an arbitrary functor is a pseudo-pullback. Any Grothendieck fibration (or opfibration) is in particular an isofibration, so the square \eqref{eqn:local_equiv} being a strict pullback implies it is also a pseudo-pullback.
+
+   Also note that the frame fibration for $\dcat{C}$ is equivalent to the functor $\dcat{C}_0\times\dcat{C}_0\to\CCat$ sending $(c,d)$ to $\HHor(\dcat{C})(c,d)$ and similarly for $\dcat{D}$.  Then $F$ is a local equivalence if and only if the induced functors $\HHor(\dcat{C})(c,d)\to\HHor(\dcat{D})(F_0(c),F_0(d))$ are equivalences of categories for every pair of objects $(c,d)$. The square \eqref{eqn:local_equiv} is a strict pullback precisely when these are isomorphisms of categories.
+\end{remark}
+
+\begin{definition}
+      \label{def:induced_locally_equivalent_equipment}
+   Let $\dcat{D}$ be a double category and $F_0\colon\dcat{C}_0\to\dcat{D}_0$ be a functor. A strict pullback of the form \eqref{eqn:local_equiv} defines a double category $\dcat{C}$, which we denote
+   \[
+      \dcat{C}\coloneqq F_0^*(\dcat{D}).
+   \]
+   If $\dcat{D}$ is an equipment, $F_0^*(\dcat{D})$ will be as well since fibrations are stable under pullback. In this case we call $F_0^*(\dcat{D})$ the \emph{equipment induced by $F_0$}. By Remark~\ref{rem:strict_vs_pseudo_pullback}, the induced equipment functor $F_0^*(\dcat{D})\to\dcat{D}$ is a local equivalence.
 \end{definition}
 
 Our main tool in this paper will be equipments of profunctors as in the following example.
@@ -1165,9 +1194,7 @@ Our main tool in this paper will be equipments of profunctors as in the followin
          & \cat{D}'
       \twocellA{\phi}
    \end{tikzcd}\]
-   is a cartesian 2-cell.
-
-   Note that an easy Yoneda lemma argument yields $\VVer(\dProf)\equiv\CCat$, the 2-category of
+   is a cartesian 2-cell.  Note that an easy Yoneda lemma argument yields $\VVer(\dProf)\equiv\CCat$, the 2-category of
    small categories.
 \end{example}
 %An equipment $\dcat{D}$ is often named according to its horizontal arrows. In Example~\ref{ex:profunctors} we discussed profunctors, which are the horizontal arrows in an equipment $\dProf$. Variations on $\dProf$, such as $\dMonProf, \dTrProf,$ and $\dCompProf$ (defined in Section~\ref{sec:monoidal_profunctors}) will play a major role in this paper.
@@ -1180,43 +1207,6 @@ Our main tool in this paper will be equipments of profunctors as in the followin
    diagram in $\Set$ of the obvious shape. A cartesian 2-cell in this equipment is obtained by
    taking an evident limit in $\Set$.
 \end{example}
-
-\begin{definition}
-      \label{def:local_equivalence}
-   We refer to an equipment functor $F\colon\dcat{C}\to\dcat{D}$ as a \emph{local equivalence} if
-   the following square strictly commutes and is a pseudo-pullback of categories:
-   \begin{equation} \begin{tikzcd}
-         \label{eqn:local_equiv}
-      \dcat{C}_1 \ar[r,"F_1"] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
-         & \dcat{D}_1 \ar[d,two heads] \\
-      \dcat{C}_0\times\dcat{C}_0 \ar[r,"F_0\times F_0"']
-         & \dcat{D}_0\times\dcat{D}_0
-   \end{tikzcd} \end{equation}
-   where the left-hand and right-hand arrows are the frame fibrations $(L,R)$.
-
-   If moreover $F_0\colon\dcat{C}_0\to\dcat{D}_0$ is fully faithful, we say that $F$ is a
-   \emph{fully faithful local equivalence}.
-\end{definition}
-
-\begin{remark}
-      \label{rem:strict_vs_pseudo_pullback}
-   It is a standard fact for 1-categories that a strict pullback of an isofibration along an arbitrary functor is a pseudo-pullback. Any Grothendieck fibration (or opfibration) is in particular an isofibration, so the square \eqref{eqn:local_equiv} being a strict pullback implies it is also a pseudo-pullback.
-
-   Also note that the frame fibration for $\dcat{C}$ is equivalent to the functor $\dcat{C}_0\times\dcat{C}_0\to\CCat$ sending $(c,d)$ to $\HHor(\dcat{C})(c,d)$ and similarly for $\dcat{D}$.  Then $F$ is a local equivalence if and only if the induced functors $\HHor(\dcat{C})(c,d)\to\HHor(\dcat{D})(F_0(c),F_0(d))$ are equivalences of categories for every pair of objects $(c,d)$. The square \eqref{eqn:local_equiv} is a strict pullback precisely when these are isomorphisms of categories.
-\end{remark}
-
-\begin{definition}
-      \label{def:induced_locally_equivalent_equipment}
-   Let $\dcat{D}$ be a double category and $F_0\colon\dcat{C}_0\to\dcat{D}_0$ be a functor. A strict
-   pullback of the form \eqref{eqn:local_equiv} defines a double category $\dcat{C}$, which we denote
-   \[
-      \dcat{C}\coloneqq F_0^*(\dcat{D})
-   \]
-   and call the \emph{equipment induced by $F_0$}. If $\dcat{D}$ is an equipment, $F_0^*(\dcat{D})$
-   will be as well, because fibrations are stable under pullback. By
-   Remark~\ref{rem:strict_vs_pseudo_pullback}, the induced equipment functor
-   $F_0^*(\dcat{D})\to\dcat{D}$ is a local equivalence.
-\end{definition}
 
 \section{The monoids and bimodules construction}
       \label{sec:monoids_bimods}
@@ -1357,15 +1347,15 @@ functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$.  In fact, we have the
 
 There is an evident forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$ sending a
 monoid $M\colon c\tickar c$ to its underlying object $c=|M|$. We denote its vertical part,
-$\Mon(\dcat{D})\to\dcat{D}_0$ the same way. There is also an equipment functor
-$U\colon\dcat{D}\to\dMod(\dcat{D})$, sending $c$ to the unit $c\tickar c$ with the trivial monoid
-structure, which is a local equivalence.
+$\Mon(\dcat{D})\to\dcat{D}_0$ by the same symbol. There is also a local equivalence
+$U\colon\dcat{D}\to\dMod(\dcat{D})$ sending $c$ to the unit $c\tickar c$ with the trivial monoid
+structure.
 
 \begin{lemma}
    Let $\dcat{D}$ be an equipment, $f\colon c\to d$ a vertical morphism, and $N\colon d\tickar d$ a
    monoid. There is a unique monoid structure on the restriction $N(f,f)$ such that the cartesian
    2-cell is a monoid homomorphism. In other words, $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ is a
-   fibration, and there is a morphism of fibrations
+   fibration and there is a morphism of fibrations
    \[ \begin{tikzcd}[column sep=tiny]
       \Mon(\dcat{D}) \ar[d,two heads,"\MOb"'] \ar[r]
          & \dcat{D}_1 \ar[d,two heads] \\
@@ -1385,7 +1375,7 @@ structure, which is a local equivalence.
    is a pseudo-pullback of categories.
 \end{lemma}
 \begin{proof}
-   We may assume without loss of generality that the pullback in Definition~\ref{def:local_equivalence} realizing $F\colon\dcat{C}\to\dcat{D}$ as a local equivalence is strict.  With this simplification, it is then straightforward to check directly that the above square is again a strict pullback, and hence (by Remark~\ref{rem:strict_vs_pseudo_pullback}) is a pseudo-pullback.
+   We may assume without loss of generality that the pullback in Definition~\ref{def:local_equivalence} realizing $F\colon\dcat{C}\to\dcat{D}$ as a local equivalence is strict.  It is then straightforward to check directly that the above square is again a strict pullback and hence a pseudo-pullback following Remark~\ref{rem:strict_vs_pseudo_pullback}.
 \end{proof}
 
 \section{Exactness and the $(\bo,\ff)$ factorization}
@@ -1529,6 +1519,22 @@ bimodule morphisms.
 \end{definition}
 
 \begin{proposition}
+      \label{prop:collapse_local_equivalence}
+   If $\dcat{D}$ is an exact equipment, then collapse induces an equipment functor denoted
+   $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$. The functor $\ColDash$ is a local equivalence.
+\end{proposition}
+\begin{proof}
+   It is easy to use the universal property of collapse to construct, from any monoid homomorphism
+   $(f,\vec{f}\mspace{2mu})\colon(c,M)\to(d,N)$, a vertical morphism
+   $\Col{f}\colon\Col{M}\to\Col{N}$ in $\dcat{D}$, thus defining a functor
+   $\Mon(\dcat{D})\to\dcat{D}_0$.
+
+   The functor $\ColDash$ is defined on proarrows and 2-cells using the inverse of the equivalence
+   \eqref{eqn:exact_Hor_Bimod}. Because the collapse 2-cell is cartesian, it follows that $\ColDash$
+   is a local equivalence.
+\end{proof}
+
+\begin{proposition}
       \label{prop:Prof_is_exact}
    The equipment $\dProf$ is exact.
 \end{proposition}
@@ -1557,29 +1563,13 @@ bimodule morphisms.
    not cartesian. The second condition of exactness also fails.
 \end{example}
 
-\begin{proposition}
-      \label{prop:collapse_local_equivalence}
-   If $\dcat{D}$ is an exact equipment, then collapse induces an equipment functor denoted
-   $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$. The functor $\ColDash$ is a local equivalence.
-\end{proposition}
-\begin{proof}
-   It is easy to use the universal property of collapse to construct, from any monoid homomorphism
-   $(f,\vec{f}\mspace{2mu})\colon(c,M)\to(d,N)$, a vertical morphism
-   $\Col{f}\colon\Col{M}\to\Col{N}$ in $\dcat{D}$, thus defining a functor
-   $\Mon(\dcat{D})\to\dcat{D}_0$.
-
-   The functor $\ColDash$ is defined on proarrows and 2-cells using the inverse of the equivalence
-   \eqref{eqn:exact_Hor_Bimod}. Because the collapse 2-cell is cartesian, it follows that $\ColDash$
-   is a local equivalence.
-\end{proof}
-
 Recall the notion of orthogonal factorization systems for categories and strict 2-categories from
 Definition~\ref{def:orthogonal}. Definition~\ref{def:boff} and Theorem~\ref{thm:orthogonal} are
 taken from~\cite[Definitions~4.3~and~4.5; Definition~5.1~and~Theorem~4.17]{Schultz2015}.
 
 \begin{definition}
       \label{def:boff}
-   Let $\dcat{D}$ be an equipment, and let $f\colon c\to d$ be a vertical morphism. Consider the
+   Let $\dcat{D}$ be an equipment and $f\colon c\to d$ a vertical morphism of $\dcat{D}$. Consider the
    restriction square and unit square shown below:
    \begin{equation*}
       \begin{tikzcd}
@@ -1600,8 +1590,7 @@ taken from~\cite[Definitions~4.3~and~4.5; Definition~5.1~and~Theorem~4.17]{Schul
          \twocellA{\vec{\id_f}}
      \end{tikzcd}
    \end{equation*}
-   We say that $f$ is $\bo$ if the restriction square is a collapse (where $d(f,f)$ has the induced
-   monoid structure). We say that $f$ is $\ff$ if the unit square is cartesian.
+   We say that $f$ is $\bo$ if the restriction square, where $d(f,f)$ has the induced monoid structure, is a collapse. We say that $f$ is $\ff$ if the unit square is cartesian.
 \end{definition}
 
 
@@ -1644,7 +1633,7 @@ in~\cite{Schultz2015}, but which logically fit in the current section.
    vertical category $\dcat{D}_0^{\bo}\ss\dcat{D}_0^{\rightarrow}$ is the full subcategory of the arrow category of
    $\dcat{D}_0$ spanned by the arrows in the class $\bo$. The rest of the structure is defined by
    setting $\dcat{D}^{\bo}\coloneqq\cod^*\dcat{D}$ (see
-   Definition~\ref{def:induced_locally_equivalent_equipment}), i.e., by the strict pullback of categories
+   Definition~\ref{def:induced_locally_equivalent_equipment}), i.e. by the strict pullback of categories
    \[ \begin{tikzcd}[column sep=large]
       \dcat{D}_1^{\bo} \ar[r] \ar[d, two heads] \ar[dr,phantom,"\lrcorner" very near start]
          & \dcat{D}_1 \ar[d, two heads] \\
@@ -1702,7 +1691,7 @@ in~\cite{Schultz2015}, but which logically fit in the current section.
 
    By \cite[Lemma 4.14]{Schultz2015}, if $\vec{f}$ is cartesian then so is $\vec{\id}_{\tilde{f}}$,
    and clearly the converse also holds. It follows that the left triangle is a morphism of
-   fibrations, because if $\vec{f}$ is cartesian over $f$ then $(f,\tilde{f})$ is as well. The
+   fibrations since $\vec{f}$ being cartesian over $f$ implies $(f,\tilde{f})$ is as well. The
    inverse equivalence $\dcat{D}^\bo_0\to\Mon(\dcat{D})$ sends a $\bo$ map $f\colon c\to d$ to the
    restriction $d(f,f)$ with its induced monoid structure.
 \end{proof}
@@ -2556,7 +2545,7 @@ which follows entirely from earlier work. It will be used to prove of our main r
    \end{equation*}
 \end{lemma}
 \begin{proof}
-   The equipment functor $\dFrCompProf\to\dCompProf$ is a local equivalence which preserves terminal objects by definition.  Thus Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} give a factorization of the left-hand equivalence of fibrations as a composition of three equivalences with that of Theorem~\ref{thm:mon_prof_equivalence} in the middle.  Since $\dFrTrProf\to\dFrCompProf$ has the same properties, we see similarly that the right-hand equivalence factors as a composition of three equivalences with the left-hand equivalence in the middle.
+   The equipment functor $\dFrCompProf\to\dCompProf$ is by definition a local equivalence which preserves terminal objects.  Thus Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} give a factorization of the left-hand equivalence of fibrations as a composition of three equivalences with that of Theorem~\ref{thm:mon_prof_equivalence} in the middle.  Since $\dFrTrProf\to\dFrCompProf$ has the same properties, we see similarly that the right-hand equivalence factors as a composition of three equivalences with the left-hand equivalence in the middle.
 \end{proof}
 
 \section{Deducing the main results}
