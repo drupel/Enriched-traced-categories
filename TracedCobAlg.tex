@@ -1293,7 +1293,7 @@ There is an evident forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ se
       \label{lemma:embed_for_LE}
    Suppose that $F\colon\dcat{C}\to\dcat{D}$ is a local equivalence induced by
    $F_0\colon\dcat{C}_0\to\dcat{D}_0$. Suppose $M\in\Mon(\dcat{C})$ is a monoid and $c\in\dcat{C}_0$
-   is an object, and let $N=\Mon(F)(M)$ and $d=F_0(c)$. Then we have a pullback square in $\Set$, natural in
+   is an object.  For $N=\Mon(F)(M)$ and $d=F_0(c)$ we have a pullback square in $\Set$, natural in
    $M$ and $c$:
       \[ \begin{tikzcd}
          \Emb_{\dcat{C}}(M,c)\ar[r]\ar[d]\ar[rd,phantom,"\lrcorner" very near start]
@@ -1343,12 +1343,10 @@ There is an evident forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ se
    In other words, $\Col{M}$ represents the functor $\Emb(M,\textrm{--})\colon\dcat{D}_0\to\Set$.
 \end{definition}
 
-For monoids $M$ and $N$, we denote by $\Bimod{M}{N}$ the 1-category of $(M,N)$-bimodules and
-bimodule morphisms.
-
 \begin{lemma}
    Let $M\colon c\tickar c$ and $N\colon d\tickar d$ be monoids in an equipment $\dcat{D}$ and assume they admit collapses $\Col{M}$ and $\Col{N}$, respectively.  Then restriction induces a functor 
-   \[\HHor(\dcat{D})(\Col{M},\Col{N})\to\Bimod{M}{N}.\]
+   \[\HHor(\dcat{D})(\Col{M},\Col{N})\to\Bimod{M}{N},\]
+   where $\Bimod{M}{N}$ denotes the 1-category of $(M,N)$-bimodules and bimodule morphisms.
 \end{lemma}
 \begin{proof}
    For a proarrow $X\colon\Col{M}\tickar\Col{N}$ of $\dcat{D}$, define $\tilde X\colon c\tickar d$ by the cartesian 2-cell
@@ -1467,13 +1465,12 @@ Definition~\ref{def:orthogonal}.
    Let $\dcat{D}$ be an exact equipment. We define the equipment $\dcat{D}^{\bo}$ as follows: the
    vertical category $\dcat{D}_0^{\bo}\ss\dcat{D}_0^{\rightarrow}$ is the full subcategory of the arrow category of
    $\dcat{D}_0$ spanned by the arrows in the class $\bo$. The rest of the structure is defined by
-   setting $\dcat{D}^{\bo}\coloneqq\cod^*\dcat{D}$ (see
-   Definition~\ref{def:induced_locally_equivalent_equipment}), i.e. by the strict pullback of categories
+   setting $\dcat{D}^{\bo}\coloneqq\cod^*\dcat{D}$, i.e. by the strict pullback of categories
    \[ \begin{tikzcd}[column sep=large]
       \dcat{D}_1^{\bo} \ar[r] \ar[d, two heads] \ar[dr,phantom,"\lrcorner" very near start]
          & \dcat{D}_1 \ar[d, two heads] \\
       \dcat{D}_0^{\bo}\times\dcat{D}_0^{\bo} \ar[r,"\cod\times\cod"']
-         & \dcat{D}_0\times\dcat{D}_0
+         & \dcat{D}_0\times\dcat{D}_0.
    \end{tikzcd} \]
 \end{definition}
 
@@ -1535,7 +1532,7 @@ In order to properly understand the full equipment $\dcat{D}^{\bo}$ we need to i
 \begin{definition}
       \label{def:monoids_and_modules}
    Let $\dcat{D}$ be an equipment with local coequalizers, i.e.,~such that each category
-   $\HHor(\dcat{D})(A,B)$ has coequalizers and $\odot$ preserves coequalizers in each variable. The
+   $\HHor(\dcat{D})(c,d)$ has coequalizers and $\odot$ preserves coequalizers in each variable. The
    equipment $\dMod(\dcat{D})$ of \emph{monoids and bimodules} is defined as follows (see also
    \cite{Shulman}):
    \begin{itemize}
