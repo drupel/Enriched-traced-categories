@@ -350,7 +350,7 @@ This is established in Section~\ref{sec:exactness_proofs} by proving the followi
    \end{equation*}
 \end{named}
 
-Our main tool in understanding this result will be the 2-categorical notion of \emph{(proarrow) equipments}, which we introduce in Section~\ref{chap:background_equipments}. We will introduce the notion of \emph{monoidal profunctors} and the equipment thereof in Section\ref{chap:equipments_monoidal_profunctors}.
+Our main tool in understanding this result will be the 2-categorical notion of \emph{(proarrow) equipments}, which we recall in Section~\ref{chap:background_equipments}. We will introduce what appears to be a new definition of \emph{monoidal profunctors}, and the equipment thereof, in Section\ref{chap:equipments_monoidal_profunctors}.
 
 \erase{%%% begin erase %%%
 \newpage
@@ -489,14 +489,14 @@ them will be generalized in \ref{thm:TheoremA_statement}; see also \eqref{eqn:2p
 \section{Plan of the paper}
 \todo[inline]{Make sure this plan is still correct.}
 
-Section~\ref{sec:equipments} reviews the notion of an equipment (or framed bicategory \cite{Shulman}).  In Section~\ref{sec:internal_presheaves} we record the definition of copresheaves internal to an equipment which will allow us to reformulate and properly understand our main theorems. Section~\ref{sec:monoids_bimods} recalls monoids in an equipment and establishes basic facts and constructions needed for the main theorems, in particular exact equipments \cite{Schultz2015} are defined using this language.  In Section~\ref{sec:monoidal,compact,traced} we review monoidal, traced, and compact categories. We finally introduce the equipments of profunctors ($\dMonProf, \dTrProf$, and $\dCompProf$) at the heart of the paper in Section~\ref{sec:monoidal_profunctors}.   In Section~\ref{sec:special_CompProf} we prove the special properties about $\dCompProf$ which are at the core of our results.  Indeed one might view the rest of the paper as a formal wrapper for the results in that section.  In Section~\ref{sec:exactness_proofs} we prove that the equipments of interest are exact and then apply the theory developed in Section~\ref{chap:background_equipments} to deduce \ref{thm:TheoremB}.  In Section~\ref{sec:monoids_on_free} we deal with the freeness-on-objects needed for \ref{thm:TheoremA}. The appendix contains material that is not necessary to the paper. Its function is to prove the biequivalence between the 2-category $\MMonCatStrong$ of monoidal categories with arbitrary object set and strong functors, on the one hand, and the 2-category $\MMonFrObCat$ of monoidal categories with free object set and strict functors. We do the same for traced and compact categories, all in Corollary~\ref{cor:object_frees}.
+Section~\ref{sec:equipments} reviews the notion of an equipment (or framed bicategory \cite{Shulman}).  In Section~\ref{sec:internal_presheaves} we record the definition of copresheaves internal to an equipment which will allow us to reformulate and properly understand our main theorems. Section~\ref{sec:monoids_bimods} recalls monoids and bimodules in an equipment and establishes basic facts and constructions needed for the main theorems; in particular, exact equipments \cite{Schultz2015} are defined using this language.  In Section~\ref{sec:monoidal,compact,traced} we review monoidal, traced, and compact categories. We finally introduce various equipments of monoidal profunctors ($\dMonProf, \dTrProf$, and $\dCompProf$) at the heart of the paper in Section~\ref{sec:monoidal_profunctors}.   In Section~\ref{sec:special_CompProf} we prove the special properties about $\dCompProf$ which are at the core of our results.  Indeed one might view the rest of the paper as a formal wrapper for the results in that section.  In Section~\ref{sec:exactness_proofs} we prove that the equipments of interest are exact and then apply the theory developed in Section~\ref{chap:background_equipments} to deduce \ref{thm:TheoremB}.  In Section~\ref{sec:monoids_on_free} we deal with the freeness-on-objects needed for \ref{thm:TheoremA}. The appendix contains material that is not necessary to the paper. Its function is to prove the biequivalence between the 2-category $\MMonCatStrong$ of monoidal categories with arbitrary object set and strong functors, on the one hand, and the 2-category $\MMonFrObCat$ of monoidal categories with free object set and strict functors. We do the same for traced and compact categories, all in Corollary~\ref{cor:object_frees}.
 
 \section*{Acknowledgments}
 
 Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect the operad-algebra
 picture in \cite{RupelSpivak} to string diagrams in traced categories. We also thank Mike Shulman
 for many useful conversations, and Tobias Fritz, Justin Hilburn, and Dmitry Vagner for helpful
-comments on drafts of this paper.
+comments on drafts of this paper. Finally, we thank our referee for many useful suggestions.
 
 
 \chapter{Background on equipments}
@@ -522,12 +522,12 @@ out and give two relevant examples. An excellent reference is Shulman's paper \c
          $\dcat{D}$. For any two objects $c,d\in\dcat{D}_0$, we will write
          $\dcat{D}_0(c,d)$ for the set of vertical arrows from $c$ to $d$. We refer to
          objects of $\dcat{D}_0$ as objects of $\dcat{D}$.
-      \item A category $\dcat{D}_1$, equipped with two functors $L,R\colon\dcat{D}_1\to\dcat{D}_0$,
+      \item A category $\dcat{D}_1$, equipped with two functors $\lframe,\rframe\colon\dcat{D}_1\to\dcat{D}_0$,
          called the \emph{left frame} and \emph{right frame} functors. Given an object
-         $M\in\Ob(\dcat{D}_1)$ with $c=L(M)$ and $c'=R(M)$, we say that $M$ is a \emph{proarrow} (or
+         $M\in\Ob(\dcat{D}_1)$ with $c=\lframe(M)$ and $c'=\rframe(M)$, we say that $M$ is a \emph{proarrow} (or
             \emph{horizontal arrow}) \emph{from $c$ to $c'$} and write $M\colon c\tickar c'$. A
             morphism $\phi\colon M\to N$ in $\dcat{D}_1$ is called a 2-cell, and is drawn as
-            follows, where $f=L(\phi)$ and $f'=R(\phi)$:
+            follows, where $f=\lframe(\phi)$ and $f'=\rframe(\phi)$:
          \begin{equation} \begin{tikzcd}
                \label{eqn:2cell}
             c \ar[r,tick,"M" domA] \ar[d,"f"']
@@ -537,28 +537,28 @@ out and give two relevant examples. An excellent reference is Shulman's paper \c
               & d'
             \twocellA{\phi}
          \end{tikzcd} \end{equation}
-      \item A \emph{unit} functor $U\colon\dcat{D}_0\to\dcat{D}_1$, which is a
-         section of both $L$ and $R$, i.e.\ $L\circ U=\id_{\dcat{D}_0}=R\circ U$. We will often
-         abuse notation by writing $c$ for the unit proarrow $U(c)\colon c\tickar c$, and similarly
+      \item A \emph{unit} functor $\unit\colon\dcat{D}_0\to\dcat{D}_1$, which is a
+         section of both $\lframe$ and $\rframe$, i.e.\ $\lframe\circ\unit=\id_{\dcat{D}_0}=\rframe\circ\unit$. We will often
+         abuse notation by writing $c$ for the unit proarrow $\unit(c)\colon c\tickar c$, and similarly
          for vertical arrows.
       \item A functor $\odot\colon\dcat{D}_1\times_{\dcat{D}_0}\dcat{D}_1\to\dcat{D}_1$, called
          \emph{horizontal composition}, that is weakly associative and unital in the sense that
          there are coherent unitor and associator isomorphisms. See \cite{Shulman} for more details.
    \end{itemize}
    Given a double category $\dcat{D}$ there is a strict 2-category called the \emph{vertical
-   2-category}, denoted $\VVer(\dcat{D})$, whose underlying 1-category\footnote{By the \emph{underlying 1-category} of a 2-category, we mean the one obtained by dropping (not quotienting by) the 2-cells.} is $\dcat{D}_0$ and whose 2-morphisms $f\Rightarrow f'$ are defined to be 2-cells \eqref{eqn:2cell} where $M=U(c)$ and $N=U(d)$ are unit proarrows. There is also a \emph{horizontal bicategory}, denoted $\HHor(\dcat{D})$, whose objects and 1-cells are the objects and horizontal 1-cells of
+   2-category}, denoted $\VVer(\dcat{D})$, whose underlying 1-category\footnote{By the \emph{underlying 1-category} of a 2-category, we mean the one obtained by dropping (not quotienting by) the 2-cells.} is $\dcat{D}_0$ and whose 2-morphisms $f\Rightarrow f'$ are defined to be 2-cells \eqref{eqn:2cell} where $M=\unit(c)$ and $N=\unit(d)$ are unit proarrows. There is also a \emph{horizontal bicategory}, denoted $\HHor(\dcat{D})$, whose objects and 1-cells are the objects and horizontal 1-cells of
    $\dcat{D}$ and whose 2-cells are the 2-cells of $\dcat{D}$ of the form \eqref{eqn:2cell} such that $f=\id_c$ and $f'=\id_{c'}$.
 
    A \emph{strong double functor} $F\colon\dcat{C}\to\dcat{D}$ consists of functors
-   $F_0\colon\dcat{C}_0\to\dcat{D}_0$ and $F_1\colon\dcat{C}_1\to\dcat{D}_1$ commuting with the frames $L,R$, and
-   preserving the unit $U$ and horizontal composition $\odot$ up to coherent isomorphism.
+   $F_0\colon\dcat{C}_0\to\dcat{D}_0$ and $F_1\colon\dcat{C}_1\to\dcat{D}_1$ commuting with the frames $\lframe$,$\rframe$, and
+   preserving the unit $\unit$ and horizontal composition $\odot$ up to coherent isomorphism.
 \end{definition}
 
 \begin{definition}
       \label{def:equipment}
    An \emph{equipment} is a double category $\dcat{D}$ in which the frame functor
    \[
-      (L,R)\colon\dcat{D}_1\onto\dcat{D}_0\times\dcat{D}_0
+      (\lframe,\rframe)\colon\dcat{D}_1\onto\dcat{D}_0\times\dcat{D}_0
    \]
    is a fibration. If $f\colon c\to d$ and $f'\colon c'\to d'$ are vertical morphisms and $N\colon
    d\tickar d'$ is a proarrow, a cartesian morphism $M\to N$ in $\dcat{D}_1$ over $(f,f')$ is a
@@ -579,8 +579,8 @@ out and give two relevant examples. An excellent reference is Shulman's paper \c
    By an \emph{equipment functor}, we simply mean a strong double functor between equipments.  We refer to an equipment functor $F\colon\dcat{C}\to\dcat{D}$ as a \emph{local equivalence} if the following square strictly commutes and is a pseudo-pullback of categories:
    \begin{equation} \begin{tikzcd}
          \label{eqn:local_equiv}
-      \dcat{C}_1 \ar[r,"F_1"] \ar[d,two heads,"{(L,R)}"'] \ar[dr,phantom,"\lrcorner" very near start]
-         & \dcat{D}_1 \ar[d,two heads,"{(L,R)}"] \\
+      \dcat{C}_1 \ar[r,"F_1"] \ar[d,two heads,"{(\lframe,\rframe)}"'] \ar[dr,phantom,"\lrcorner" very near start]
+         & \dcat{D}_1 \ar[d,two heads,"{(\lframe,\rframe)}"] \\
       \dcat{C}_0\times\dcat{C}_0 \ar[r,"F_0\times F_0"']
          & \dcat{D}_0\times\dcat{D}_0.
    \end{tikzcd} \end{equation}
