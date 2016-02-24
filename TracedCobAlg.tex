@@ -323,7 +323,7 @@ By applying the Grothendieck construction (denoted by $\int$ here) to (\ref{eqn:
      &\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrFrObCat.
   \end{align*}
 \end{named}
-This result is proven in Section~\ref{sec:deducing} together with an analogous statement for compact categories.
+This result is proven in Section~\ref{sec:monoids_on_free} together with an analogous statement for compact categories.
 \begin{remark}
    The most naive way of handling variation of the label set $\LabSet$ is to use plain functions $\LabSet\to\LabSet'$. That is, instead of taking the Grothendieck construction of the functors \eqref{eqn:cob/bullet}, we could use the most evident functor $\Lax(\LCob{\bullet},\Set)\colon\op{\Set}\to\Cat$. This would lead to a version of \ref{thm:TheoremA_statement} in which the right hand side is a 2-category of ``traced colored PROPs''. We will not pursue this direction in the paper; however, the interested reader familiar with PROPs should have no difficulty defining traced colored PROPs and proving the analogue of \ref{thm:TheoremA_statement} as a corollary of our results. For more on PROPs, see e.g.~\cite{HackneyRobertson}.
 \end{remark}
@@ -1199,6 +1199,15 @@ To conclude our discussion of equipments we formalize the idea of free-on-object
    \Adjoint{\cat{S}}{\dcat{D}_0.}{F}{U}
 \end{equation}
 \begin{definition}
+   \label{def:kleisli equipment}
+   Let $T=UF$ be the monad on $\cat{S}$ corresponding to the adjunction \eqref{eqn:adjunction_objectfree} and write $\cat{S}_T$ for the Kleisli category of $T$.  The fully faithful inclusion $k_T\colon\cat{S}_T\to\dcat{D}_0$ induces an equipment $\dcat{D}_T\coloneqq k_T^*\dcat{D}$ and a fully faithful local equivalence which we denote
+   \begin{equation}
+      \label{eqn:FFLE_DT}
+      \varphi_T\colon \dcat{D}_T\to\dcat{D}.
+   \end{equation}
+\end{definition}
+Note that $\dcat{D}$ being exact does \emph{not} imply $\dcat{D}_T$ is exact.  If $\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ from Theorem~\ref{thm:Mod_vs_bo} to identify $\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the image of $\dMod(\varphi_T)$, more precisely we propose the following.
+\begin{definition}
       \label{def:DFbo}
    Define the equipment $\dcat{D}_F^{\bo}$ as follows: the vertical category is defined by the strict pullback
    \[ \begin{tikzcd}
@@ -1217,12 +1226,6 @@ To conclude our discussion of equipments we formalize the idea of free-on-object
    \end{tikzcd} \]
    We will write $\psi_F\colon\dcat{D}_F^{\bo}\to\dcat{D}^{\bo}$ for the induced local equivalence.
 \end{definition}
-Let $T=UF$ be the monad on $\cat{S}$ corresponding to the adjunction \eqref{eqn:adjunction_objectfree} and write $\cat{S}_T$ for the Kleisli category of $T$.  The fully faithful inclusion $k_T\colon\cat{S}_T\to\dcat{D}_0$ induces an equipment $\dcat{D}_T\coloneqq k_T^*\dcat{D}$ and a fully faithful local equivalence which we denote
-\begin{equation}
-      \label{eqn:FFLE_DT}
-   \varphi_T\colon \dcat{D}_T\to\dcat{D}.
-\end{equation}
-Note that $\dcat{D}$ being exact does \emph{not} imply $\dcat{D}_T$ is exact.  If $\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ from Theorem~\ref{thm:Mod_vs_bo} to identify $\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the image of $\dMod(\varphi_T)$, more precisely we have the following.
 \begin{proposition}
       \label{prop:objectfree_Mod_bo}
    There is a commuting diagram of equipments, in which the vertical functors are equivalences and the horizontal functors are local equivalences:
@@ -1281,7 +1284,7 @@ Note that $\dcat{D}$ being exact does \emph{not} imply $\dcat{D}_T$ is exact.  I
    Note however that $\dSpan$ is not exact. The collapse of a monoid $C\from S\to C$ in $\dSpan$ must be its pushout $\Col{S}\iso C\sqcup_SC$, but the associated embedding is not cartesian. The second condition of exactness also fails.
 \end{example}
 \begin{remark}
-  It was proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Thus the equipment $\dProf$ is exact.
+  It was proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Thus the equipment $\dProf$ is exact.  In Section~\ref{sec:monoidal_profunctors} we will define equipments of profunctors on monoidal categories and verify their exactness directly in Section~\ref{sec:exactness_proofs}.  The key ingredient in verifying that the equipment of traced profunctors is exact will be orthogonal factorization systems.
 \end{remark}
 
 \begin{example}
@@ -1799,7 +1802,7 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
 \end{remark}
 
 
-\section{$\dMonProf$, $\dTrProf$, and $\dCompProf$ are exact}
+\section{$\dMonProf$, $\dCompProf$, and $\dTrProf$ are exact}
       \label{sec:exactness_proofs}
 
 As we have seen in Section~\ref{sec:monoids_bimods} the exactness of an equipment gives rise to many equivalences of fibrations, thus to establish our main theorems we aim first to show that the equipments from Section~\ref{sec:monoidal_profunctors} are all exact.
@@ -1959,123 +1962,60 @@ As a corollary we obtain our second main theorem.
    The result then follows from Theorem~\ref{thm:mon_prof_equivalence} and Corollary~\ref{cor:Tr_mon_prof_equivalence}.
 \end{proof}
 
+\section{Monoids on free objects}
+      \label{sec:monoids_on_free}
 
-\section{Free traced and compact categories}
-      \label{sec:free_and_geometry}
+To conclude we address \ref{thm:TheoremA} which is concerned with traced and compact categories which are ``free-on-objects''.
 
-Let $\CCat$ (resp.\ $\CCat_{\iso}$) denote the 2-category of small categories, functors, and natural
-transformations (resp.\ natural isomorphisms). There are free/forgetful (strict) 2-adjunctions of
-2-categories, as to the left:
-\begin{align}
-   \nonumber
-   \FM&\colon\CCat_{\;\;} \leftrightarrows\MMonCat:\!\UM
-      & \Set &\leftrightarrows\MonCat \\
+Consider the free-forgetful adjunctions
+\begin{equation}
    \label{eqn:adjunctions}
-   \FT&\colon\CCat_{\iso}\leftrightarrows\TTrCat:\!\UT
-      & \Set &\leftrightarrows\TrCat \\
-   \nonumber
-   \FC&\colon\CCat_{\iso}\leftrightarrows\CCompCat:\!\UC
-      & \Set&\leftrightarrows\CompCat
-\end{align}
-These have underlying 1-adjunctions (e.g. $\Cat\leftrightarrows\TrCat$), which \cite{Abramsky2}
-constructs in detail. We will not need the 2-adjunctions in the main body of this paper; however,
-we prove they exist in Corollary~\ref{cor:2_adjunctions_MonTrComp}. For the time being, we
-consider only their underlying 1-adjunctions, which we can compose with the discrete adjunction
-$\Disc\colon\Set\leftrightarrows\Cat:\!\Ob$ to obtain 1-adjunctions as to the right in
-\eqref{eqn:adjunctions}. We will write $\TM, \TT$, and $\TC$ for the respective monads induced
-on $\Set$. Note that $\TM$ and $\TT$ are both isomorphic to the free monoid monad, while $\TC$ is
-isomorphic to the free monoid-with-involution monad.%
+   \Adjoint{\Set}{\MonCat}{\FM}{\UM}
+   \qquad
+   \Adjoint{\Set}{\CompCat}{\FC}{\UC}
+   \qquad
+   \Adjoint{\Set}{\TrCat}{\FT}{\UT}
+\end{equation}
+and write $\TM,\TC,$ and $\TT$ for the corresponding monads on $\Set$.  Note that $\TM$ and $\TT$ are both isomorphic to the free monoid monad, while $\TC$ is isomorphic to the free monoid-with-involution monad.%
 \footnote{
    Note that $\TM$ is not the free-\emph{commutative}-monoid monad, even though the objects of
    $\MonCat$ are \emph{symmetric} monoidal categories, because the symmetries are encoded in natural
    isomorphisms, not equalities.
 }
-There is an isomorphism of categories $\Set_{\TM}\iso\Set_{\TT}$, because $\TM\iso\TT$. The Kleisli
-categories $\Set_{\TM}$, $\Set_{\TT}$, and $\Set_{\TC}$ are equivalent to the full subcategories of
-$\MonCat$, $\TrCat$, and $\CompCat$ (respectively) spanned by objects which are free on a set.
-
-The forgetful functors between the categories of structured monoidal categories commute with the
-underlying set functors, i.e. the following diagram commutes:
-\begin{equation}
-   \label{eqn:tetrahedron}
-   \begin{tikzcd}
-      & \TrCat \ar[dr,"\UTM"] \ar[dd,"\UT" near start] & \\
-      \CompCat \ar[rr,crossing over,"\UCM"' near start] \ar[dr,"\UC"'] \ar[ru,"\UCT"]
-         && \MonCat \ar[dl,"\UM"] \\
-      & \Set &
-   \end{tikzcd}
-\end{equation}
-Because the functor $\UCM\colon\CompCat\to\MonCat$ commutes with the right adjoints of the
-adjunctions to $\Set$, i.e., $\UM\UCM=\UC$, it induces a monad morphism $\alpha\colon\TC\to\TM$
-(i.e. a natural transformation $\alpha\colon\TM\to\TC$ compatible with the units and
-multiplications), given by the composition of the natural transformations
-\begin{equation*} \begin{tikzcd}[column sep=2cm]
-   \TM\ar[r,equal]\ar[d,dashed,"\alpha"']&\UM\FM\ar[r,"\UM\FM\eta_C"]&\UM\FM\UC\FC\ar[d,equal]\\
-   \TC&\UM\UCM\FC\ar[l,equal]&\UM\FM\UM\UCM\FC\ar[l,"\UM\epsilon_M\UCM\FC"]
-\end{tikzcd} \end{equation*}
-The component $\alpha_{\LabSet}$ of this transformation is simply the evident inclusion of the free
-monoid on a set $\LabSet$ into the free monoid-with-involution on $\LabSet$. In this way, $\UCM$
-induces a functor between the Kleisli categories in the other direction:
-\begin{equation}
-      \label{eqn:FMC}
-   \FMC\colon\Set_{\TM}\to\Set_{\TC}.
-\end{equation}
-
-
-\section{Monoids on free objects}
-      \label{sec:monoids_on_free}
-
-Theorem~\ref{thm:Mod_vs_bo} is a key piece in the proof of \ref{thm:TheoremB}, but we will need a
-modification for the proof of \ref{thm:TheoremA}. The latter results are concerned with compact
-(respectively traced) categories which are ``free-on-objects''.
-%Theorem~\ref{thm:free_on_objects_strong_equivalence} provides the modification of
-%Theorem~\ref{thm:Mod_vs_bo} in a general form, which we then specialize to the cases of interest for
-%the present paper in Corollary~\ref{cor:TrCat_ObjectFree}.
-
-Recall the free-forgetful adjunctions
+Following Definition~\ref{def:kleisli equipment}, we have equipments:
 \[
-   \Set\leftrightarrows\MonCat
+   \dFrMonProf  \coloneqq \dMonProf_{\TM}
    \qquad
-   \Set\leftrightarrows\TrCat
+   \dFrCompProf \coloneqq \dCompProf_{\TC}
    \qquad
-   \Set\leftrightarrows\CompCat\qquad
+   \dFrTrProf   \coloneqq \dTrProf_{\TT} 
 \]
-and the corresponding monads $\TM,\TT,$ and $\TC$ on $\Set$, defined in
-Section~\ref{sec:free_and_geometry}. The following equipments are good examples to keep in mind when
-reading the results in this section.
-
-\begin{definition}
-      \label{def:freeMon_equips}
-   We define the equipments:
-   \begin{align*}
-      \dFrMonProf  &\coloneqq \dMonProf_{\TM}   \\
-      \dFrTrProf   &\coloneqq \dTrProf_{\TT}     \\
-      \dFrCompProf &\coloneqq \dCompProf_{\TC}
-   \end{align*}
-\end{definition}
-
-In other words, $\dFrMonProf$ can be identified with the full sub-equipment of $\dMonProf$ spanned by the monoidal categories which are free on a set, and similarly for the other two. We will write $\FrMonCat\coloneqq\dFrMonProf_0$ (and similarly for traced and compact) for the vertical 1-categories; that is, $\FrMonCat=\Set_{\TM}$, etc.
-
+In other words, $\dFrMonProf$ can be identified with the full sub-equipment of $\dMonProf$ spanned by the monoidal categories which are free on a set, similarly for $\dFrCompProf$ and $\dFrTrProf$.  We will write 
+\begin{align*}
+   \FrMonCat&\coloneqq\dFrMonProf_0=\Set_{\TM}\\
+   \FrCompCat&\coloneqq\dFrCompProf_0=\Set_{\TC}\\
+   \FrTrCat&\coloneqq\dFrTrProf_0=\Set_{\TT}
+\end{align*}
+for the vertical 1-categories.
 
 \begin{definition}
       \label{def:free_on_objects}
-   Say that a monoidal (resp.\ traced or compact) category is \emph{free-on-objects} if there is a
-   set $\LabSet$ and a bijective-on-objects functor $\FM(\LabSet)\onto\cat{C}$, (resp.\
-   $\FT(\LabSet)\onto\cat{C}$ or $\FC(\LabSet)\onto\cat{C}$), where $\FM$, $\FT$, and $\FC$ are the
-   free functors defined in \eqref{eqn:adjunctions}. Denote by
+   A monoidal (resp.\ compact or traced) category $\cat{M}$ is \emph{free-on-objects} if there is a
+   set $\LabSet$ and a bijective-on-objects functor $\FM(\LabSet)\onto\cat{M}$, (resp.\
+   $\FC(\LabSet)\onto\cat{C}$ or $\FT(\LabSet)\onto\cat{T}$). Denote by
    \[
-      \MMonFrObCat\ss\MMonCat\qquad \TTrFrObCat\ss\TTrCat\qquad\CCompFrObCat\ss\CCompCat
+      \MMonFrObCat\ss\MMonCat\qquad\CCompFrObCat\ss\CCompCat\qquad\TTrFrObCat\ss\TTrCat
    \]
-   the full 2-subcategories spanned by those monoidal (resp.\ traced or compact) categories $\cat{C}$
-   that are free-on-objects. Equivalently, using Definition~\ref{def:DFbo} and
-   Proposition~\ref{prop:objectfree_Mod_bo},
+   the full 2-subcategories spanned by those monoidal (resp.\ compact or traced) categories
+   that are free-on-objects. In other words, using Definition~\ref{def:DFbo} we may write
    \begin{gather*}
       \MMonFrObCat \coloneqq \VVer\left(\dMonProf_{\FM}^{\bo}\right) \qquad
-      \TTrFrObCat \coloneqq \VVer\left(\dTrProf_{\FT}^{\bo}\right) \\
-      \CCompFrObCat \coloneqq \VVer\left(\dCompProf_{\FC}^{\bo}\right).
+      \CCompFrObCat \coloneqq \VVer\left(\dCompProf_{\FC}^{\bo}\right) \\
+      \TTrFrObCat \coloneqq \VVer\left(\dTrProf_{\FT}^{\bo}\right).
    \end{gather*}
 \end{definition}
 
+As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the following.
 \begin{corollary}
       \label{cor:TrCat_ObjectFree}
    There are fully faithful local equivalences of equipments, in the left column, and equivalences
@@ -2087,40 +2027,12 @@ In other words, $\dFrMonProf$ can be identified with the full sub-equipment of $
    \end{align*}
 \end{corollary}
 \begin{proof}
-   The left column follows from the second part of Proposition~\ref{prop:objectfree_Mod_bo}, while
+   The left column comes from the second part of Proposition~\ref{prop:objectfree_Mod_bo}, while
    the right column follows by applying $\VVer$ to the equivalence
    $\dMod(\dcat{D}_T)\equiv\dcat{D}^{\bo}_F$ in the first part of
    Proposition~\ref{prop:objectfree_Mod_bo}.
 \end{proof}
 
-\begin{remark}
-      \label{rem:characterization_of_traced}
-   Because the monads $\TM$ and $\TT$ are in fact isomorphic, we have
-   \[
-      \FrTrCat = \Set_{\TT} \iso \Set_{\TM} = \FrMonCat.
-   \]
-   By combining the definitions of $\dFrTrProf$ and $\dTrProf$, it is easy to see that the square
-   \begin{equation} \begin{tikzcd}
-         \label{eqn:FTrProf_pullback}
-      \dFrTrProf_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
-         & \dCompProf_1 \ar[d,two heads] \\
-      \FrMonCat\times\FrMonCat \ar[r]
-         & \CompCat\times\CompCat
-   \end{tikzcd} \end{equation}
-   is a pullback, where the bottom functor is given in each variable by the composition
-   \[ \begin{tikzcd}
-      \FrMonCat \ar[r,"\FMC"] & \FrCompCat \ar[r] & \CompCat
-   \end{tikzcd} \]
-   using the functor $\FMC$ from \eqref{eqn:FMC}. In this way, the
-   equipment $\dFrTrProf$ can be defined formally, purely in terms of $\dCompProf$, $\dMonProf$, and
-   the adjunctions $\FM\dashv\UM$ and $\FC\dashv\UC$. Thus Corollary~\ref{cor:TrCat_ObjectFree},
-   together with \eqref{eqn:FTrProf_pullback}, can be seen as providing an alternative
-   \emph{definition} of the 2-category $\TTrCat$. This definition does not involve any explicit
-   mention of the trace structure defined in \cite{JoyalStreetVerity}.
-\end{remark}
-
-We conclude this section by recording a simple lemma which uses definitions from this section but
-which follows entirely from earlier work. It will be used to prove of our main results.
 
 \begin{lemma}
       \label{lem:FrCompProf_Psh_Mon}
@@ -2165,7 +2077,7 @@ which follows entirely from earlier work. It will be used to prove of our main r
          \int\limits^{\mathclap{\LabSet\in\Set_{\TC}}}(\LCob{\LabSet})\alg
                \ar[rr,phantom,"\iso"] \ar[dr,two heads]
             && \CPsh(\dFrCompProf) \ar[dl,two heads] \\
-         & \FrCompCat &
+         & \FrCompCat. &
       \end{tikzcd}
    \end{equation*}
    By Lemma~\ref{lem:FrCompProf_Psh_Mon}, we have equivalences of 1-categories
@@ -2179,9 +2091,63 @@ which follows entirely from earlier work. It will be used to prove of our main r
    \[
       \MMon(\dFrTrProf)\equiv\TTrFrObCat
       \quad\text{and}\quad
-      \MMon(\dFrCompProf)\equiv\CCompFrObCat
+      \MMon(\dFrCompProf)\equiv\CCompFrObCat.
    \]
 \end{proof}
+
+
+
+\begin{remark}
+      \label{rem:characterization_of_traced}
+      The forgetful functors between the categories of structured monoidal categories commute with the
+underlying set functors, i.e. the following diagram commutes:
+\begin{equation}
+   \label{eqn:tetrahedron}
+   \begin{tikzcd}
+      & \TrCat \ar[dr,"\UTM"] \ar[dd,"\UT" near start] & \\
+      \CompCat \ar[rr,crossing over,"\UCM"' near start] \ar[dr,"\UC"'] \ar[ru,"\UCT"]
+         && \MonCat \ar[dl,"\UM"] \\
+      & \Set &
+   \end{tikzcd}
+\end{equation}
+Because the functor $\UCM\colon\CompCat\to\MonCat$ commutes with the right adjoints of the
+adjunctions to $\Set$, i.e. $\UM\UCM=\UC$, it induces a monad morphism $\alpha\colon\TM\to\TC$
+(i.e. a natural transformation $\alpha\colon\TM\to\TC$ compatible with the units and
+multiplications), given by the composition of the natural transformations
+\begin{equation*} \begin{tikzcd}[column sep=2cm]
+   \TM\ar[r,equal]\ar[d,dashed,"\alpha"']&\UM\FM\ar[r,"\UM\FM\eta_C"]&\UM\FM\UC\FC\ar[d,equal]\\
+   \TC&\UM\UCM\FC\ar[l,equal]&\UM\FM\UM\UCM\FC\ar[l,"\UM\epsilon_M\UCM\FC"]
+\end{tikzcd} \end{equation*}
+The component $\alpha_{\LabSet}$ of this transformation is simply the evident inclusion of the free
+monoid on a set $\LabSet$ into the free monoid-with-involution on $\LabSet$. In this way, $\UCM$
+induces a functor between the Kleisli categories in the other direction:
+\begin{equation*}
+      \label{eqn:FMC}
+   \FMC\colon\Set_{\TM}\to\Set_{\TC}.
+\end{equation*}
+   Because the monads $\TM$ and $\TT$ are in fact isomorphic, we have
+   \[
+      \FrTrCat = \Set_{\TT} \iso \Set_{\TM} = \FrMonCat.
+   \]
+   By combining the definitions of $\dFrTrProf$ and $\dTrProf$, it is easy to see that the square
+   \begin{equation} \begin{tikzcd}
+         \label{eqn:FTrProf_pullback}
+      \dFrTrProf_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
+         & \dCompProf_1 \ar[d,two heads] \\
+      \FrMonCat\times\FrMonCat \ar[r]
+         & \CompCat\times\CompCat
+   \end{tikzcd} \end{equation}
+   is a pullback, where the bottom functor is given in each variable by the composition
+   \[ \begin{tikzcd}
+      \FrMonCat \ar[r,"\FMC"] & \FrCompCat \ar[r] & \CompCat.
+   \end{tikzcd} \]
+   In this way, the
+   equipment $\dFrTrProf$ can be defined formally, purely in terms of $\dCompProf$, $\dMonProf$, and
+   the adjunctions $\FM\dashv\UM$ and $\FC\dashv\UC$. Thus Corollary~\ref{cor:TrCat_ObjectFree},
+   together with \eqref{eqn:FTrProf_pullback}, can be seen as providing an alternative
+   \emph{definition} of the 2-category $\TTrCat$. This definition does not involve any explicit
+   mention of the trace structure defined in \cite{JoyalStreetVerity}.
+\end{remark}
 
 \appendix
 \chapter{Appendix}
