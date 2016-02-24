@@ -1399,8 +1399,7 @@ Given a morphism $f\colon X\to Y$ in $\cat{C}$, we denote by $f^*\colon Y^*\to X
    Y^*\To{\eta_X}X^*\otimes X\otimes Y^* \To{f}X^*\otimes Y\otimes Y^*\To{\epsilon_Y}X^*.
 \end{equation*}
 It is easy to check that a strong functor $F\colon\cat{C}\to\cat{M}$ to a monoidal category preserves all duals that exist
-in $\cat{C}$, i.e. there is a natural isomorphism $F(c^*)\iso F(c)^*$. From this, it follows that
-if $F,G\colon\cat{C}\to\cat{C'}$ are functors between compact categories, then any natural
+in $\cat{C}$, i.e. there is a natural isomorphism $F(c^*)\iso F(c)^*$.  From this, it follows that if $F,G\colon\cat{C}\to\cat{C'}$ are functors between compact categories, then any natural
 transformation $\alpha\colon F\to G$ is a natural isomorphism. Indeed, for any object $c\in\cat{C}$,
 the inverse of the $c$-component $\alpha_c\colon Fc\to Gc$ is given by the dual morphism
 $(\alpha_{c^*})^*\colon Gc\to Fc$ to the dual component.  Thus all 2-cells in $\CCompCat$ are invertible.
@@ -1812,7 +1811,7 @@ As we have seen in Section~\ref{sec:monoids_bimods} the exactness of an equipmen
 \begin{proof}
    Suppose that $M\colon \cat{C}\tickar \cat{C}$ is a monoid in $\dMonProf$. It is straightforward to use $M$ to construct a category $\Col{M}$ with the same objects as $\cat{C}$, and with hom sets defined by $\Col{M}(c,d)\coloneqq M(c,d)$ for any pair of objects $c,d\in\Ob(\cat{C})$. For any object $c$, the identity is provided by $i(\id_{\cat{C}})$, while the multiplication $\bullet$ of $M$ provides the composition of $\Col{M}$.  
 
-   The unit of $M$ can also be used to construct an identity-on-objects functor $i_M\colon\cat{C}\to\Col{M}$, and the 2-cell $\vec{\imath}_M$ is trivial, sending any element of $M$ to itself as a morphism of $\Col{M}$. It is easy to see that $\vec{\imath}_M$ is cartesian, and that $(i_M,\vec{\imath}_M)$ is a collapse. The category $\Col{M}$ has a canonical monoidal structure, which on objects is just that of $\cat{C}$ and on morphisms is induced by the monoidal profunctor structure of $M$.  It is also simple to verify the second part of Definition~\ref{def:exact_equipment}: a $(M,N)$-bimodule is precisely the data of a profunctor $\Col{M}\tickar\Col{N}$.
+   The unit of $M$ can also be used to construct an identity-on-objects functor $i_M\colon\cat{C}\to\Col{M}$ with the trivial 2-cell $\vec{\imath}_M$ sending any element of $M$ to itself as a morphism of $\Col{M}$. It is easy to see that $\vec{\imath}_M$ is cartesian and that $(i_M,\vec{\imath}_M)$ is a collapse. The category $\Col{M}$ has a canonical monoidal structure, which on objects is just that of $\cat{C}$ and on morphisms is induced by the monoidal profunctor structure of $M$.  It is also simple to verify the second part of Definition~\ref{def:exact_equipment}: a $(M,N)$-bimodule is precisely the data of a profunctor $\Col{M}\tickar\Col{N}$.
 \end{proof}
 
 \begin{proposition}
@@ -1824,36 +1823,37 @@ As we have seen in Section~\ref{sec:monoids_bimods} the exactness of an equipmen
    has a collapse embedding $i_M\colon M\to \Col{M}$ by Proposition~\ref{prop:MonProf_exact}. The
    collapse $\Col{M}$ is a monoidal category and, by Theorem~\ref{thm:Mod_vs_bo}, $i_M$ is a (strict
    symmetric monoidal) $\bo$ functor. But any monoidal functor preserves duals, so every object of
-   $\Col{M}$ has a dual, hence $\Col{M}$ is compact. Because the map
-   $\UCM\colon\dCompProf\to\dMonProf$ is a fully faithful local equivalence, it follows that
-   $\Col{M}$ is a collapse in $\dCompProf$.
+   $\Col{M}$ has a dual, hence $\Col{M}$ is compact. The map $\UCM\colon\dCompProf\to\dMonProf$ is a fully faithful local equivalence and so $\Col{M}$ being a collapse in $\dMonProf$ implies is a collapse in $\dCompProf$.
 \end{proof}
-
+We record the following consequence of Theorem~\ref{thm:orthogonal} in the current notation.
+\begin{corollary}
+   The 2-categories $\MMonCat$ and $\CCompCat$ admit 2-orthogonal factorization systems.  
+\end{corollary}
+We abuse notation slightly and write $(\bo,\ff)$ for both of the factorization systems above.  Note that we write morphisms in $\ff$ with a hooked arrow and morphisms in $\bo$ with a two-headed arrow.  Recall the adjunction \eqref{dia:traced_compact_adjunction} and write $\eta_{\cat{T}}:\cat{T}\to\UCT\Int(\cat{T})$ for the unit morphism.
 \begin{lemma}
       \label{lem:Tr_bo_Int}
    Let $\cat{T}$ be a traced category, $\cat{C}$ a compact category, and $F\colon\Int(\cat{T})\twoheadrightarrow \cat{C}$ a
-   bijective-on-objects strict symmetric monoidal functor. Considering the factorization in
-   $\MonCat$:
+   bijective-on-objects monoidal functor. Consider any orthogonal factorization in
+   $\MonCat$ as follows:
    \[ \begin{tikzcd}[column sep=large]
-      \UTM \cat{T} \ar[r,hook,"\UTM\eta_{\cat{T}}"] \ar[d,two heads]
+      \UTM \cat{T} \ar[r,hook,"\UTM\eta_{\cat{T}}"] \ar[d,two heads,"\exists G"']
          & \UCM\Int(\cat{T}) \ar[d,two heads,"\UCM F"] \\
-      \cat{M} \ar[r,hook] & \UCM \cat{C}
+      \cat{M} \ar[r,hook,"\exists H"] & \UCM \cat{C}.
    \end{tikzcd} \]
-   \begin{itemize}
-      \item there is a unique trace structure on $\cat{M}$---defining a traced category $\cat{T}'$ with $\UTM
+   There is a unique trace structure on $\cat{M}$---defining a traced category $\cat{T}'$ with $\UTM
          \cat{T}'=\cat{M}$---such that the factorization lifts to $\TrCat$:
          \[ \begin{tikzcd}[column sep=large]
             \cat{T} \ar[r,hook,"\eta_{\cat{T}}"] \ar[d,two heads,"G"']
                & \UCT\Int(\cat{T}) \ar[d,two heads,"\UCT F"] \\
-            \cat{T}' \ar[r,hook,"H"'] & \UCT \cat{C}
+            \cat{T}' \ar[r,hook,"H"'] & \UCT \cat{C}.
          \end{tikzcd} \]
-      \item there is an isomorphism $\alpha\colon\Int(\cat{T}')\iso \cat{C}$, such that $\UCT\alpha\circ
+   Moreover, there is an isomorphism $\alpha\colon\Int(\cat{T}')\iso \cat{C}$ such that $\UCT\alpha\circ
          \eta_{\cat{T}'}=H$ and $\alpha\circ\Int(G)=F$.
-   \end{itemize}
 \end{lemma}
 \begin{proof}
-   The existence and uniqueness of a trace structure on $\cat{M}$ follows easily from
-   Lemma~\ref{lemma:fully_faithful_and_trace} (ii). For the second part, consider the diagram
+   Since $H:\cat{M}\to\UCM\cat{C}$ is fully faithful, the trace on $\UCT\cat{C}$ uniquely determines the desired trace structure on $\cat{T}'$ so that $H$ is a traced functor.  It also follows that $G$ respects the trace in $\cat{T}$ since $\UCT F\circ\eta_{\cat{T}}$ does.
+
+   For the final claim, consider the diagram
    \[ \begin{tikzcd}[column sep=4em, row sep=5ex]
       \cat{T} \ar[r,hook,"\eta_{\cat{T}}"] \ar[d,two heads,"G"']
          & \UCT\Int(\cat{T}) \ar[d,two heads,"\UCT\Int(G)"']
@@ -1862,11 +1862,7 @@ As we have seen in Section~\ref{sec:monoids_bimods} the exactness of an equipmen
          & \UCT\Int(\cat{T}') \ar[dr,"\UCT\alpha"' {inner sep=0pt,pos=.25}] & \\[-10]
       &&\UCT \cat{C}
    \end{tikzcd} \]
-   where $\alpha\colon\Int(\cat{T}')\to \cat{C}$ is the adjunct of $H$. By
-   Lemma~\ref{lemma:fully_faithful_and_trace} (iii, iv), $\alpha$ is $\ff$. Since $G$ is $\bo$, we
-   know that $\UCT\Int(G)$ is $\bo$ by Lemma~\ref{lemma:fully_faithful_and_trace} (iv), and
-   therefore $\alpha$ is as well. Hence $\alpha$ is both $\ff$ and $\bo$, and is therefore an
-   isomorphism, completing the proof.
+   where $\alpha\colon\Int(\cat{T}')\to \cat{C}$ is the adjunct of $H$, which is fully faithful since $H$ is.  Since $G$ is $\bo$, $\UCT\Int(G)$ will be $\bo$ as well.  But $\UCT F$ is $\bo$ so $\UCT \alpha$, and hence $\alpha$, must be $\bo$ also.  Since $\alpha$ is both $\ff$ and $\bo$, it is an isomorphism, completing the proof.
 \end{proof}
 
 \begin{proposition}
@@ -1874,38 +1870,28 @@ As we have seen in Section~\ref{sec:monoids_bimods} the exactness of an equipmen
    The equipment $\dTrProf$ is exact.
 \end{proposition}
 \begin{proof}
-   We begin by showing that every monoid in $\dTrProf$ has a collapse. Let $M\colon \cat{T}\tickar \cat{T}$ be a
-   monoid in $\dTrProf$, i.e.\ a monoid $M\colon\Int(\cat{T})\tickar\Int(\cat{T})$ in $\dCompProf$. Define
-   $\Col{M}_{\MTCfont{C}}$ and $(i_M,\vec{\imath}_M)\colon (\Int(\cat{T}),M)\to\Col{M}_{\MTCfont{C}}$ to
-   be the collapse embedding of $M$ in $\dCompProf$.
-
-   We will show that the object $\Col{M}_{\MTCfont{T}}$ and the 1-cell component $i'_M\colon
-   \cat{T}\to\Col{M}_{\MTCfont{T}}$ of the collapse embedding of $M$ in $\dTrProf$ can be constructed by
-   the factorization
+   Let $M\colon \cat{T}\tickar \cat{T}$ be a monoid in $\dTrProf$.  By definition of $\dTrProf$ this is a monoid $M\colon\Int(\cat{T})\tickar\Int(\cat{T})$ in $\dCompProf$, i.e. $M=\Mon(\Int)(M)$. Define $\Col{M}_{\MTCfont{C}}$ and $(i_M,\vec{\imath}_M)\colon (\Int(\cat{T}),M)\to\Col{M}_{\MTCfont{C}}$ to
+   be the collapse embedding of $M$ in $\dCompProf$.  Then applying Lemma~\ref{lem:Tr_bo_Int} with $F=i_M$ gives a traced category $\Col{M}_{\MTCfont{T}}$ and a $\bo$ functor $i'_M:\cat{T}\to\Col{M}_{\MTCfont{T}}$ as in the diagram below:
    \begin{equation} \begin{tikzcd}[column sep=large]
          \label{eqn:collapses_in_traced}
-      \cat{T} \ar[r,hook,"\eta_T"] \ar[d,two heads,"i'_M"']
+      \cat{T} \ar[r,hook,"\eta_{\cat{T}}"] \ar[d,two heads,"i'_M"']
          & \UCT\Int(\cat{T}) \ar[d,two heads,"\UCT i_M"] \\
       \Col{M}_{\MTCfont{T}} \ar[r,hook] & \UCT\Col{M}_{\MTCfont{C}}.
    \end{tikzcd} \end{equation}
-   as in Lemma~\ref{lem:Tr_bo_Int}, which also says that there is an isomorphism
-   $\Col{M}_{\MTCfont{C}}\iso\Int\Col{M}_{\MTCfont{T}}$ and $i_M=\Int(i'_M)$.
 
-   Consider the following commutative diagram:
+   To see that $\Col{M}_{\MTCfont{T}}$ is a collapse in $\dTrProf$ we must establish the bijection $\Emb_{\mathrm{Tr}}(M,\cat{T}')\iso\TrCat(\Col{M}_{\MTCfont{T}},\cat{T}')$ natural in the traced category $\cat{T}'$.  Since $\Col{M}_{\MTCfont{C}}$ is a collapse in $\dCompProf$, there is a bijection $\Emb_{\MTCfont{C}}(M,\Int(\cat{T}'))\iso\CompCat(\Col{M}_{\MTCfont{C}},\Int(\cat{T}'))$ and precomposition with $i_M$ gives a map $\Emb_{\MTCfont{C}}(M,\Int(\cat{T}'))\to\CompCat(\Int(\cat{T}),\Int(\cat{T}'))$.  Using the adjunction isomorphism and precomposition with the isomorphism $\alpha:\Int(\Col{M}_{\MTCfont{T}})\iso\Col{M}_{\MTCfont{C}}$ from Lemma~\ref{lem:Tr_bo_Int} we get an isomorphism
+   \[\TrCat(\Col{M}_{\MTCfont{T}},\UCT\Int(\cat{T}'))\iso\CompCat(\Int(\Col{M}_{\MTCfont{T}}),\Int(\cat{T}'))\iso\CompCat(\Col{M}_{\MTCfont{C}},\Int(\cat{T}')).\]
+   Since $i_M=\alpha\circ\Int(i'_M)$, these isomorphisms fit together into the following commutative diagram:
    \[ \begin{tikzcd}[column sep=between origins,row sep=between origins]
       \TrCat(\Col{M}_{\MTCfont{T}},\cat{T}')
             \ar[r,"\eta_{\cat{T}'}\circ\textrm{--}"]
             \ar[dd,"\textrm{--}\circ i'_M"']
             \ar[ddr,phantom,"\lrcorner" very near start]
          &[2.4em,between borders] \TrCat(\Col{M}_{\MTCfont{T}},\UCT\Int(\cat{T}'))
-            \ar[dr,phantom,"\iso"' sloped]
             \ar[dd,"\textrm{--}\circ i'_M"']
             \ar[rr,"\iso"]
          &[6.4em]
-         &[6.4em] \Emb_{\MTCfont{C}}(M,\Int(\cat{T}')) \ar[dd] \\[2em]
-      && \CompCat(\Col{M}_{\MTCfont{C}},\Int(\cat{T}'))
-            \ar[ur,phantom,"\iso" sloped]
-            \ar[dr,"\textrm{--}\circ i_M" {description,inner sep=.2ex}] \\[3.4em]
+         &[6.4em] \Emb_{\MTCfont{C}}(M,\Int(\cat{T}')) \ar[dd] \\[2em]\\[3.4em]
       \TrCat(\cat{T},\cat{T}')
             \ar[r,"\eta_{\cat{T}'}\circ\textrm{--}"]
             \ar[rrr,bend right=12,"\Int"']
@@ -1913,20 +1899,10 @@ As we have seen in Section~\ref{sec:monoids_bimods} the exactness of an equipmen
             \ar[rr,"\iso"]
          && \CompCat(\Int(\cat{T}),\Int(\cat{T}'))
    \end{tikzcd} \]
+   The left square is a pullback, by the orthogonality of $i'_M\in\bo$ and $\eta_{\cat{T}'}\in\ff$, and the
+   right square is a pullback because the top and bottom maps are isomorphisms.  Hence the outer square is a pullback as well.  By Lemma~~\ref{lemma:embed_for_LE}, this pullback defines $\Emb_{\mathrm{Tr}}(M,\cat{T}')$ and thus we obtain the desired natural isomorphism $\Emb_{\mathrm{Tr}}(M,\cat{T}')\iso\TrCat(\Col{M}_{\MTCfont{T}},\cat{T}')$.  Since the trivial monoid on $\Col{M}_{\MTCfont{T}}$ in $\dTrProf$ is by definition the trivial monoid on $\Int(\Col{M}_{\MTCfont{T}})\iso\Col{M}_{\MTCfont{C}}$ in $\dCompProf$, the collapse embedding $M\Rightarrow\Col{M}_{\MTCfont{T}}$ is (after composition with the isomorphism $\alpha$) just the collapse $(i_M,\vec{\imath}_M)$ in $\dCompProf$, and hence is cartesian.
 
-   The left square is a pullback, by the orthogonality of $i'_M\in\bo$ and $\eta_{\cat{T}'}\in\ff$. The
-   right square is a pullback as well, because the top and bottom maps are isomorphisms. Comparing
-   the outer square with the pullback in Lemma~\ref{lemma:embed_for_LE}, and noting that
-   $\Mon(\Int)(M)=M$, we obtain a natural bijection
-   $\Emb_{\mathrm{Tr}}(M,\cat{T}')\iso\TrCat(\Col{M}_{\MTCfont{T}},\cat{T}')$, showing that
-   $\Col{M}_{\MTCfont{T}}$ is the collapse of $M$ in $\dTrProf$. Moreover, by examining this
-   equivalence, we can see that the collapse $M\to \Col{M}_{\MTCfont{T}}$ in $\dTrProf$ is given by
-   the collapse $(\Int(i'_M),\vec{\imath}_M)\colon M\to\Int\;\Col{M}_{\MTCfont{T}}$ in $\dCompProf$,
-   and hence is cartesian.
-
-   The second condition of Definition~\ref{def:exact_equipment} follows immediately from
-   Proposition~\ref{prop:CompProf_exact} and the fact that the inclusion $\dTrProf\to\dCompProf$ is
-   a local equivalence.
+   Since the inclusion $\dTrProf\to\dCompProf$ is a local equivalence and $\dCompProf$ is exact, the second condition of Definition~\ref{def:exact_equipment} follows immediately.
 \end{proof}
 
 As a corollary we obtain our second main theorem.
