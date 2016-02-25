@@ -949,6 +949,68 @@ There is an evident forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ se
    By Remark~\ref{rem:strict_vs_pseudo_pullback}, we may assume that the pullback in Definition~\ref{def:local_equivalence} realizing $F\colon\dcat{C}\to\dcat{D}$ as a local equivalence is strict. It is then straightforward to check directly that the above square is again a strict pullback and hence a pseudo-pullback.
 \end{proof}
 
+In many cases, $\Mon(\dcat{C})$ will be the vertical part of an equipment.
+
+\begin{definition}
+      \label{def:monoids_and_modules}
+   Let $\dcat{D}$ be an equipment with local coequalizers, i.e.\ such that each category
+   $\HHor(\dcat{D})(c,d)$ has coequalizers and $\odot$ preserves coequalizers in each variable. The
+   equipment $\dMod(\dcat{D})$ of \emph{monoids and bimodules} is defined as follows (see also
+   \cite{Shulman}):
+   \begin{itemize}
+      \item The vertical category $\dMod(\dcat{D})_0$ is the category $\Mon(\dcat{D})$ of monoids in $\dcat{D}$.
+      \item The proarrows $B\colon M\tickar N$ are \emph{bimodules}: triples $(B,l_B,r_B)$
+         consisting of a proarrow $B\colon c\tickar d$ in $\dcat{D}$ and cells
+         \begin{equation*}
+            \begin{tikzcd}
+               c \ar[r,tick,"M"] \ar[d,equal]
+                  & |[alias=domA]| c \ar[r,tick,"B"]
+                  & d \ar[d,equal] \\
+               c \ar[rr,tick,"B"' codA]
+                  && d
+               \twocellA{l_B}
+            \end{tikzcd}
+            \qquad
+            \begin{tikzcd}
+               c \ar[r,tick,"B"] \ar[d,equal]
+                  & |[alias=domA]| d \ar[r,tick,"N"]
+                  & d \ar[d,equal] \\
+               c \ar[rr,tick,"B"' codA]
+               && d
+               \twocellA{r_B}
+            \end{tikzcd}
+         \end{equation*}
+         satisfying evident monoid action axioms.
+      \item The horizontal composition $B_1\otimes B_2$ of bimodules $B_1\colon M\tickar M'$ and
+         $B_2\colon M'\tickar M''$ is given by the coequalizer in $\HHor(\dcat{D})(M,M'')$
+         \[
+            B_1\odot M'\odot B_2 \rightrightarrows B_1\odot B_2 \to B_1\otimes B_2
+         \]
+         together with the evident left $M$ and right $M''$ actions.
+      \item The 2-cells are \emph{bimodule homomorphisms}: cells in $\dcat{D}$
+         \[ \begin{tikzcd}
+           c \ar[r,tick,"A"] \ar[d,"f"' domA]
+              & c' \ar[d,"f'" codA] \\
+           d \ar[r,tick,"B"']
+              & d'
+           \twocellA{\phi}
+         \end{tikzcd} \]
+         which are compatible with the left and right actions of the bimodules.
+   \end{itemize}
+We will write $\Bimod{M}{N}$ to denote the 1-category of $(M,N)$-bimodules and bimodule morphisms.
+
+\end{definition}
+
+The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ extends to a forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$. There is also a local equivalence $U\colon\dcat{D}\to\dMod(\dcat{D})$ sending $c$ to the unit $c\tickar c$ with the trivial monoid structure. If $F\colon\dcat{C}\to\dcat{D}$ is an equipment functor, then there is an evident equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$.
+
+\begin{lemma}
+      \label{lemma:FFLE_Mod}
+   For a local equivalence $F\colon\dcat{C}\to\dcat{D}$ the induced functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$ is a local equivalence. If $F$ is fully faithful, then so is $\dMod(F)$.
+\end{lemma}
+
+
+\section{Exact equipments and $\bo$, $\ff$ factorization}
+
 \begin{definition}
       \label{def:embedding}
    Let $M\colon c\tickar c$ be a monoid in an equipment $\dcat{D}$. An \emph{embedding} of $M$ into
@@ -1021,8 +1083,7 @@ There is an evident forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ se
 
 \begin{lemma}
    Let $M\colon c\tickar c$ and $N\colon d\tickar d$ be monoids in an equipment $\dcat{D}$ and assume they admit collapses $\Col{M}$ and $\Col{N}$, respectively. Then restriction induces a functor 
-   \[\HHor(\dcat{D})(\Col{M},\Col{N})\to\Bimod{M}{N},\]
-   where $\Bimod{M}{N}$ denotes the 1-category of $(M,N)$-bimodules and bimodule morphisms.
+   \[\HHor(\dcat{D})(\Col{M},\Col{N})\to\Bimod{M}{N}.\]
 \end{lemma}
 \begin{proof}
    For a proarrow $X\colon\Col{M}\tickar\Col{N}$ of $\dcat{D}$, define $\tilde X\colon c\tickar d$ by the cartesian 2-cell
@@ -1246,60 +1307,6 @@ The bijective-on-objects vertical arrows of an exact equipment $\dcat{D}$ will p
    The inverse equivalence $\dcat{D}^\bo_0\to\Mon(\dcat{D})$ sends a $\bo$ map $f\colon c\to d$ to the restriction $d(f,f)$ with its induced monoid structure.
 \end{proof}
 
-In order to properly understand the entire equipment $\dcat{D}^{\bo}$ as in Proposition~\ref{prop:Mon_vs_bo} we need to introduce the equipment of monoids and bimodules in $\dcat{D}$.
-\begin{definition}
-      \label{def:monoids_and_modules}
-   Let $\dcat{D}$ be an equipment with local coequalizers, i.e.\ such that each category
-   $\HHor(\dcat{D})(c,d)$ has coequalizers and $\odot$ preserves coequalizers in each variable. The
-   equipment $\dMod(\dcat{D})$ of \emph{monoids and bimodules} is defined as follows (see also
-   \cite{Shulman}):
-   \begin{itemize}
-      \item The vertical category $\dMod(\dcat{D})_0$ is the category $\Mon(\dcat{D})$ of monoids in $\dcat{D}$.
-      \item The proarrows $B\colon M\tickar N$ are \emph{bimodules}: triples $(B,l_B,r_B)$
-         consisting of a proarrow $B\colon c\tickar d$ in $\dcat{D}$ and cells
-         \begin{equation*}
-            \begin{tikzcd}
-               c \ar[r,tick,"M"] \ar[d,equal]
-                  & |[alias=domA]| c \ar[r,tick,"B"]
-                  & d \ar[d,equal] \\
-               c \ar[rr,tick,"B"' codA]
-                  && d
-               \twocellA{l_B}
-            \end{tikzcd}
-            \qquad
-            \begin{tikzcd}
-               c \ar[r,tick,"B"] \ar[d,equal]
-                  & |[alias=domA]| d \ar[r,tick,"N"]
-                  & d \ar[d,equal] \\
-               c \ar[rr,tick,"B"' codA]
-               && d
-               \twocellA{r_B}
-            \end{tikzcd}
-         \end{equation*}
-         satisfying evident monoid action axioms.
-      \item The horizontal composition $B_1\otimes B_2$ of bimodules $B_1\colon M\tickar M'$ and
-         $B_2\colon M'\tickar M''$ is given by the coequalizer in $\HHor(\dcat{D})(M,M'')$
-         \[
-            B_1\odot M'\odot B_2 \rightrightarrows B_1\odot B_2 \to B_1\otimes B_2
-         \]
-         together with the evident left $M$ and right $M''$ actions.
-      \item The 2-cells are \emph{bimodule homomorphisms}: cells in $\dcat{D}$
-         \[ \begin{tikzcd}
-           c \ar[r,tick,"A"] \ar[d,"f"' domA]
-              & c' \ar[d,"f'" codA] \\
-           d \ar[r,tick,"B"']
-              & d'
-           \twocellA{\phi}
-         \end{tikzcd} \]
-         which are compatible with the left and right actions of the bimodules.
-   \end{itemize}
-\end{definition}
-
-The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ extends to a forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$. There is also a local equivalence $U\colon\dcat{D}\to\dMod(\dcat{D})$ sending $c$ to the unit $c\tickar c$ with the trivial monoid structure. If $F\colon\dcat{C}\to\dcat{D}$ is an equipment functor, then there is an evident equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we have the following which is immediate from the definitions.
-\begin{lemma}
-      \label{lemma:FFLE_Mod}
-   For a local equivalence $F\colon\dcat{C}\to\dcat{D}$ the induced functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$ is a local equivalence. If $F$ is fully faithful, then so is $\dMod(F)$.
-\end{lemma}
 
 \begin{proposition}
       \label{prop:collapse_local_equivalence}
