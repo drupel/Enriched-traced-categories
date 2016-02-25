@@ -406,6 +406,7 @@ the traced categories that are free-on-objects.
 This result is proven in Section~\ref{sec:monoids_on_free} together with an analogous statement for
 compact categories.
 
+\todo[inline]{Find a place for this remark later, as per reviewer's comment?}
 \begin{remark}
   The most naive way of handling variation of the label set $\LabSet$ is to use plain functions
   $\LabSet\to\LabSet'$, rather than maps in the Kleisli category $\Set_{\TT}$. That is, instead of
@@ -418,11 +419,12 @@ compact categories.
   e.g.~\cite{HackneyRobertson}.
 \end{remark}
 
-In the course of proving \ref{thm:TheoremA_statement}, we will also establish a similar result which
-constructs the category of bijective-on-objects functors between traced categories. To make this
-precise, we prove (Theorem~\ref{thm:orthogonal} and Proposition~\ref{prop:CompProf_exact}) that the
-well-known $(\bo,\ff)$ factorization system of $\Cat$ restricts to a factorization system on
-$\TrCat$; more precisely the left class consists of bijective-on-objects functors and the right
+In the course of proving \ref{thm:TheoremA_statement}, we will also establish generalizations
+characterizing lax functors out of arbitrary compact categories, and in particular lax functors out
+of $\Int(\cat{T})$ for an arbitrary traced category $\cat{T}$. In order to state this
+characteization, we prove (Theorem~\ref{thm:orthogonal} and Proposition~\ref{prop:CompProf_exact})
+that the well-known $(\bo,\ff)$ factorization system of $\Cat$ restricts to a factorization system
+on $\TrCat$; more precisely the left class consists of bijective-on-objects functors and the right
 class consists of fully faithful functors.
 
 Write $\TrCat^{\bo}$ for the full subcategory of the arrow category $\TrCat^{\to}$ spanned by the
@@ -438,15 +440,15 @@ commutative triangles as morphisms. Note that we have an isomorphism
 $\TrCat_{\LabSet}\iso\TrCat^{\bo}_{(\FT\LabSet)/}$.
 
 Recall from~\cite{JoyalStreetVerity} that traced categories can be thought of as full subcategories
-of compact categories: the Int construction applied to a traced category $\cat{T}$ returns the
+of compact categories: the Int construction applied to a traced category $\cat{T}$ builds the
 smallest compact category $\Int(\cat{T})$ of which $\cat{T}$ is a monoidal subcategory. Generalizing
 \eqref{eq:single_fiber_tr}, we can give a complete characterization of lax functors out of such
 compact categories: for a fixed traced category $\cat{T}$ there is an equivalence of categories
 \[
   \Lax(\Int(\cat{T}),\Set)\equiv\TrCat^{\bo}_{\cat{T}/}.
 \]
-This is established in Section~\ref{sec:exactness_proofs} by proving the following generalization of
-\ref{thm:TheoremA_statement}.
+In Section~\ref{sec:exactness_proofs} we show that these equivalences glue together to form an
+equivalence of fibrations:
 
 \begin{named}{Theorem B}
     \label{thm:TheoremB_statement}
@@ -461,7 +463,7 @@ This is established in Section~\ref{sec:exactness_proofs} by proving the followi
   \end{equation*}
 \end{named}
 
-Our main tool in understanding this result will be the 2-categorical notion of \emph{(proarrow)
+Our main tool in proving this result will be the 2-categorical notion of \emph{(proarrow)
 equipments}, which we recall in Section~\ref{chap:background_equipments}. We will introduce what
 appears to be a new definition of \emph{monoidal profunctors}, and the equipment thereof, in
 Section\ref{chap:equipments_monoidal_profunctors}.
