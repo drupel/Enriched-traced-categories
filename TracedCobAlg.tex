@@ -34,22 +34,26 @@
 \firmlists*
 
 \maketitle
-\blfootnote{\textit{Email addresses:} \href{mailto:dspivak@math.mit.edu}{dspivak@math.mit.edu}, \href{schultzp@mit.edu}{schultzp@mit.edu}, \href{drupel@nd.edu}{drupel@nd.edu}}
-\begin{abstract}
-   We give an alternate conception of string diagrams as labeled 1-dimensional oriented cobordisms,
-   the operad of which we denote by $\LCob{\LabSet}$, where $\LabSet$ is the set of string labels.
-   The axioms of traced categories are fully encoded by $\LCob{\LabSet}$ in the sense that there is
-   an equivalence between $\LCob{\LabSet}$-algebras, for varying $\LabSet$, and traced categories
-   with varying object set. The same holds for compact categories, the difference being in terms of
-   variance in $\LabSet$. As a consequence of our main theorem, we give a characterization of the
-   2-category of traced categories solely in terms of those of monoidal and compact categories,
-   without any reference to the usual structures or axioms of traced categories. In an appendix we
-   offer a complete proof of the well-known relationship between the 2-category of monoidal
-   categories with strong functors and the 2-category of monoidal categories whose object set is
-   free with strict functors; similarly for traced and compact categories. \\
+\blfootnote{\textit{Email addresses:} \href{mailto:dspivak@math.mit.edu}{dspivak@math.mit.edu},%
+  \href{schultzp@mit.edu}{schultzp@mit.edu},%
+  \href{drupel@nd.edu}{drupel@nd.edu}
+}
 
-   \noindent\textbf{Keywords:} Traced monoidal categories, compact closed categories, monoidal
-   categories, lax functors, equipments, operads, factorization systems.
+\begin{abstract}
+  We give an alternate conception of string diagrams as labeled 1-dimensional oriented cobordisms,
+  the operad of which we denote by $\LCob{\LabSet}$, where $\LabSet$ is the set of string labels.
+  The axioms of traced categories are fully encoded by $\LCob{\LabSet}$ in the sense that there is
+  an equivalence between $\LCob{\LabSet}$-algebras, for varying $\LabSet$, and traced categories
+  with varying object set. The same holds for compact categories, the difference being in terms of
+  variance in $\LabSet$. As a consequence of our main theorem, we give a characterization of the
+  2-category of traced categories solely in terms of those of monoidal and compact categories,
+  without any reference to the usual structures or axioms of traced categories. In an appendix we
+  offer a complete proof of the well-known relationship between the 2-category of monoidal
+  categories with strong functors and the 2-category of monoidal categories whose object set is free
+  with strict functors; similarly for traced and compact categories. \\
+
+  \noindent\textbf{Keywords:} Traced monoidal categories, compact closed categories, monoidal
+  categories, lax functors, equipments, operads, factorization systems.
 \end{abstract}
 
 % \setcounter{tocdepth}{1}
@@ -58,101 +62,120 @@
 \tableofcontents
 
 \chapter{Introduction}
-      \label{chap:intro}
+  \label{chap:intro}
 
-Traced (symmetric monoidal) categories have been used to model processes with feedback~\cite{Abramsky1} or operators with fixed points~\cite{PontoShulman}. A graphical calculus for traced categories was developed by Joyal, Street, and
-Verity~\cite{JoyalStreetVerity} in which string diagrams of the form
+Traced (symmetric monoidal) categories have been used to model processes with
+feedback~\cite{Abramsky1} or operators with fixed points~\cite{PontoShulman}. A graphical calculus
+for traced categories was developed by Joyal, Street, and Verity~\cite{JoyalStreetVerity} in which
+string diagrams of the form
 \begin{equation}\begin{tikzpicture}[wiring diagram,baseline]
-      \label{dia:string_diagram}
-   \node[bb={2}{1}, bb name=$X_1$] (X1) {};
-   \node[bb={2}{2}, right=of X1, bb name=$X_2$] (X2) {};
-   \node[bb={2}{1}, dashed, fit={(X1) (X2) ($(X1.north)+(0,1.5)$) ($(X1.south)-(0,1)$)},
-            bb name=$Y$] (Y) {};
-   \draw[label]
-      node[above left=of Y_in1]     {$a$}
-      node[above left=of Y_in2]     {$b$}
-      node[above right=of Y_out1]   {$c$}
-      node[above left=of X1_in1]    {$1a$}
-      node[above left=of X1_in2]    {$1b$}
-      node[above right=of X1_out1]  {$1c$}
-      node[above left=of X2_in1]    {$2a$}
-      node[above left=of X2_in2]    {$2b$}
-      node[above right=of X2_out1]  {$2c$}
-      node[above right=of X2_out2]  {$2d$};
-   \draw[ar] (Y_in2') to (X1_in1);
-   \draw[ar] (X1_out1) to (X2_in2);
-   \draw[ar] (X2_out1) to (Y_out1');
-   \draw[ar] let \p1=(X1.north west), \p2=(X1.north east), \n1={\y1+\bby}, \n2=\bbportlen in
-      (Y_in1') to (\x1-\n2,\n1) -- (\x2+\n2,\n1) to (X2_in1);
-   \draw[ar] let \p1=(X2.south east), \p2=(X1.south west), \n1={\y1-\bby}, \n2=\bbportlen in
-      (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
+    \label{dia:string_diagram}
+  \node[bb={2}{1}, bb name=$X_1$] (X1) {};
+  \node[bb={2}{2}, right=of X1, bb name=$X_2$] (X2) {};
+  \node[bb={2}{1}, dashed, fit={(X1) (X2) ($(X1.north)+(0,1.5)$) ($(X1.south)-(0,1)$)},
+        bb name=$Y$] (Y) {};
+  \draw[label]
+    node[above left=of Y_in1]     {$a$}
+    node[above left=of Y_in2]     {$b$}
+    node[above right=of Y_out1]   {$c$}
+    node[above left=of X1_in1]    {$1a$}
+    node[above left=of X1_in2]    {$1b$}
+    node[above right=of X1_out1]  {$1c$}
+    node[above left=of X2_in1]    {$2a$}
+    node[above left=of X2_in2]    {$2b$}
+    node[above right=of X2_out1]  {$2c$}
+    node[above right=of X2_out2]  {$2d$};
+  \draw[ar] (Y_in2') to (X1_in1);
+  \draw[ar] (X1_out1) to (X2_in2);
+  \draw[ar] (X2_out1) to (Y_out1');
+  \draw[ar] let \p1=(X1.north west), \p2=(X1.north east), \n1={\y1+\bby}, \n2=\bbportlen in
+    (Y_in1') to (\x1-\n2,\n1) -- (\x2+\n2,\n1) to (X2_in1);
+  \draw[ar] let \p1=(X2.south east), \p2=(X1.south west), \n1={\y1-\bby}, \n2=\bbportlen in
+    (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
 \end{tikzpicture}\end{equation}
-represent compositions in a traced category $\cat{T}$. That is, new morphisms are constructed from old by specifying which outputs
-will be fed back into which inputs. These are related to Penrose diagrams in $\ncat{Vect}$
-and the word \emph{traced} originates in this vector space terminology~\cite{JoyalStreetVerity}.
+represent compositions in a traced category $\cat{T}$. That is, new morphisms are constructed from
+old by specifying which outputs will be fed back into which inputs. These are related to Penrose
+diagrams in $\ncat{Vect}$ and the word \emph{traced} originates in this vector space
+terminology~\cite{JoyalStreetVerity}.
 
-The string diagrams of \cite{JoyalStreetVerity} typically do not explicitly include the outer box $Y$. If we include it, as in (\ref{dia:string_diagram}), the resulting \emph{wiring diagram} can be given a seemingly new interpretation: it represents a 1-dimensional cobordism between oriented 0-manifolds. Indeed, the objects in $\Cob$ are signed sets $X=\inp{X}\sqcup\outp{X}$, each of which can be drawn as a box with input wires $\inp{X}$ entering on the left and output wires $\outp{X}$ exiting on the right. 
+The string diagrams of \cite{JoyalStreetVerity} typically do not explicitly include the outer box
+$Y$. If we include it, as in (\ref{dia:string_diagram}), the resulting \emph{wiring diagram} can be
+given a seemingly new interpretation: it represents a 1-dimensional cobordism between oriented
+0-manifolds. Indeed, the objects in $\Cob$ are signed sets $X=\inp{X}\sqcup\outp{X}$, each of which
+can be drawn as a box with input wires $\inp{X}$ entering on the left and output wires $\outp{X}$
+exiting on the right.
 \begin{equation*}
-   \begin{tikzpicture}[node distance=0 and 0, baseline=(current bounding box.center)]
-      \node (A1) {$-$};
-      \node[below=-.1 of A1] (A2) {$-$};
-      \node[below=-.1 of A2] (A3) {$-$};
-      \node[below=-.1 of A3] (B1) {$+$};
-      \node[below=-.1 of B1] (B2) {$+$};
-   \end{tikzpicture}
-   \hspace{4em}
-   \begin{tikzpicture}[wiring diagram, bby=1.2ex, baseline=(current bounding box.center)]
-      \node[bb={3}{2},bb name=$X$] {};
-   \end{tikzpicture}
+  \begin{tikzpicture}[node distance=0 and 0, baseline=(current bounding box.center)]
+    \node (A1) {$-$};
+    \node[below=-.1 of A1] (A2) {$-$};
+    \node[below=-.1 of A2] (A3) {$-$};
+    \node[below=-.1 of A3] (B1) {$+$};
+    \node[below=-.1 of B1] (B2) {$+$};
+  \end{tikzpicture}
+  \hspace{4em}
+  \begin{tikzpicture}[wiring diagram, bby=1.2ex, baseline=(current bounding box.center)]
+    \node[bb={3}{2},bb name=$X$] {};
+  \end{tikzpicture}
 \end{equation*}
-Moreover, the wiring diagram itself in which boxes $X_1,\ldots,X_n$ are wired together inside a larger box $Y$ can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$. In fact, this is more appropriately interpreted as a morphism in the (colored) operad $\Cob$ underlying the symmetric monoidal category of oriented 1-cobordisms. 
+Moreover, the wiring diagram itself in which boxes $X_1,\ldots,X_n$ are wired together inside a
+larger box $Y$ can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$.
+In fact, this is more appropriately interpreted as a morphism in the (colored) operad $\Cob$
+underlying the symmetric monoidal category of oriented 1-cobordisms.
 
-There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{T}$ than in a cobordism. Namely, each input and output of a box must be labeled by an object of $\cat{T}$ and the wires connecting boxes must respect the labels (e.g.\ in (\ref{dia:string_diagram}) objects $1c$ and $2b$ must be equal). We will thus consider the operad $\LCob{\LabSet}$ of oriented 1-dimensional cobordisms over a fixed set of labels $\LabSet$. \todo[inline]{I would actually move the following sentence and diagram to the end of the previous paragraph, and remove the reference to $\LabSet$, since labels are not shown in the diagram.} The following shows the two approaches to drawing a 2-ary morphism $X_1,X_2\to Y$ in $\LCob{\LabSet}$:
-
+There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{T}$
+than in a cobordism. Namely, each input and output of a box must be labeled by an object of
+$\cat{T}$ and the wires connecting boxes must respect the labels (e.g.\ in
+(\ref{dia:string_diagram}) objects $1c$ and $2b$ must be equal). We will thus consider the operad
+$\LCob{\LabSet}$ of oriented 1-dimensional cobordisms over a fixed set of labels $\LabSet$.
+\todo[inline]{I would actually move the following sentence and diagram to the end of the previous
+paragraph, and remove the reference to $\LabSet$, since labels are not shown in the diagram.} The
+following shows the two approaches to drawing a 2-ary morphism $X_1,X_2\to Y$ in $\LCob{\LabSet}$:
 \begin{equation*}
-   \begin{tikzpicture}[x=1cm,y=1ex,node distance=1 and 1,semithick,every label quotes/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},every to/.style={out=0,in=180},baseline=(current bounding box.center)]
-      \node ["$\inp{X}_{1a}$" left] (X1a) {$-$};
-      \node [below=0 of X1a, "$\inp{X}_{1b}$" left] (X1b) {$-$};
-      \node [below=0 of X1b, "$\outp{X}_{1c}$" left] (X1c) {$+$};
-      \node [below=1.5 of X1c, "$\inp{X}_{2a}$" left] (X2a) {$-$};
-      \node [below=0 of X2a, "$\inp{X}_{2b}$" left] (X2b) {$-$};
-      \node [below=0 of X2b, "$\outp{X}_{2c}$" left] (X2c) {$+$};
-      \node [below=0 of X2c, "$\outp{X}_{2d}$" left] (X2d) {$+$};
-      \node [below right=1.5 and 2 of X1a, "$\inp{Y}_a$" right] (Ya) {$-$};
-      \node [below=1.5 of Ya, "$\inp{Y}_b$" right] (Yb) {$-$};
-      \node [below=1.5 of Yb, "$\outp{Y}_c$" right] (Yc) {$+$};
-      \draw (X1a) to (Yb);
-      \draw (X1b) to[in=0] (X2d);
-      \draw (X1c) to[in=0] (X2b);
-      \draw (X2a) to (Ya);
-      \draw (X2c) to (Yc);
-   \end{tikzpicture}
-   \qquad
-   \begin{tikzpicture}[wiring diagram, baseline=(current bounding box.center)]
-      \node[bb={2}{1}, bb name=$X_1$] (X1) {};
-      \node[bb={2}{2}, right=of X1, bb name=$X_2$] (X2) {};
-      \node[bb={2}{1}, fit={(X1) (X2) ($(X1.north)+(0,2)$) ($(X1.south)-(0,1)$)},bb name =$Y$] (Y) {};
-      \draw[label]
-          node[above left=of Y_in1]     {$\inp{Y}_a$}
-          node[above left=of Y_in2]     {$\inp{Y}_b$}
-          node[above right=of Y_out1]   {$\outp{Y}_c$}
-          node[above left=1pt and -2pt of X1_in1]    {$\inp{X}_{1a}$}
-          node[above left=1pt and -2pt of X1_in2]    {$\inp{X}_{1b}$}
-          node[above right=1pt and -2pt of X1_out1]  {$\outp{X}_{1c}$}
-          node[above left=3pt and -2pt of X2_in1]    {$\inp{X}_{2a}$}
-          node[above left=2pt and -2pt of X2_in2]    {$\inp{X}_{2b}$}
-          node[above right=1pt and -2pt of X2_out1]  {$\outp{X}_{2c}$}
-          node[above right=0pt and -2pt of X2_out2]  {$\outp{X}_{2d}$};
-      \draw[ar] (Y_in2') to (X1_in1);
-      \draw[ar] (X1_out1) to (X2_in2);
-      \draw[ar] (X2_out1) to (Y_out1');
-      \draw[ar] let \p1=(X1.north west), \p2=(X1.north east), \n1={\y1+\bby}, \n2=\bbportlen in
-          (Y_in1') to (\x1-\n2,\n1) -- (\x2+\n2,\n1) to (X2_in1);
-      \draw[ar] let \p1=(X2.south east), \p2=(X1.south west), \n1={\y1-\bby}, \n2=\bbportlen in
-         (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
-   \end{tikzpicture}
+  \begin{tikzpicture}[x=1cm,y=1ex,node distance=1 and 1,semithick,every label quotes/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},every to/.style={out=0,in=180},baseline=(current bounding box.center)]
+    \node ["$\inp{X}_{1a}$" left] (X1a) {$-$};
+    \node [below=0 of X1a, "$\inp{X}_{1b}$" left] (X1b) {$-$};
+    \node [below=0 of X1b, "$\outp{X}_{1c}$" left] (X1c) {$+$};
+    \node [below=1.5 of X1c, "$\inp{X}_{2a}$" left] (X2a) {$-$};
+    \node [below=0 of X2a, "$\inp{X}_{2b}$" left] (X2b) {$-$};
+    \node [below=0 of X2b, "$\outp{X}_{2c}$" left] (X2c) {$+$};
+    \node [below=0 of X2c, "$\outp{X}_{2d}$" left] (X2d) {$+$};
+    \node [below right=1.5 and 2 of X1a, "$\inp{Y}_a$" right] (Ya) {$-$};
+    \node [below=1.5 of Ya, "$\inp{Y}_b$" right] (Yb) {$-$};
+    \node [below=1.5 of Yb, "$\outp{Y}_c$" right] (Yc) {$+$};
+    \draw (X1a) to (Yb);
+    \draw (X1b) to[in=0] (X2d);
+    \draw (X1c) to[in=0] (X2b);
+    \draw (X2a) to (Ya);
+    \draw (X2c) to (Yc);
+  \end{tikzpicture}
+  \qquad
+  \begin{tikzpicture}[wiring diagram, baseline=(current bounding box.center)]
+    \node[bb={2}{1}, bb name=$X_1$] (X1) {};
+    \node[bb={2}{2}, right=of X1, bb name=$X_2$] (X2) {};
+    \node[bb={2}{1}, fit={(X1) (X2) ($(X1.north)+(0,2)$) ($(X1.south)-(0,1)$)},bb name =$Y$] (Y) {};
+    \draw[label]
+      node[above left=of Y_in1]     {$\inp{Y}_a$}
+      node[above left=of Y_in2]     {$\inp{Y}_b$}
+      node[above right=of Y_out1]   {$\outp{Y}_c$}
+      node[above left=1pt and -2pt of X1_in1]    {$\inp{X}_{1a}$}
+      node[above left=1pt and -2pt of X1_in2]    {$\inp{X}_{1b}$}
+      node[above right=1pt and -2pt of X1_out1]  {$\outp{X}_{1c}$}
+      node[above left=3pt and -2pt of X2_in1]    {$\inp{X}_{2a}$}
+      node[above left=2pt and -2pt of X2_in2]    {$\inp{X}_{2b}$}
+      node[above right=1pt and -2pt of X2_out1]  {$\outp{X}_{2c}$}
+      node[above right=0pt and -2pt of X2_out2]  {$\outp{X}_{2d}$};
+    \draw[ar] (Y_in2') to (X1_in1);
+    \draw[ar] (X1_out1) to (X2_in2);
+    \draw[ar] (X2_out1) to (Y_out1');
+    \draw[ar] let \p1=(X1.north west), \p2=(X1.north east), \n1={\y1+\bby}, \n2=\bbportlen in
+      (Y_in1') to (\x1-\n2,\n1) -- (\x2+\n2,\n1) to (X2_in1);
+    \draw[ar] let \p1=(X2.south east), \p2=(X1.south west), \n1={\y1-\bby}, \n2=\bbportlen in
+      (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
+  \end{tikzpicture}
 \end{equation*}
-In the table below, we record these two interpretations of a string diagram. Note the ``degree shift'' between the second and third columns.
+
+In the table below, we record these two interpretations of a string diagram. Note the ``degree
+shift'' between the second and third columns.
 \begin{center} \begin{tabular}{l|l|l}
    \toprule
       \multicolumn{3}{c}{Interpretations of string diagrams} \\
@@ -168,145 +191,194 @@ In the table below, we record these two interpretations of a string diagram. Not
       Nesting & Axioms of traced cats & Composition (of cobordisms) \\
    \bottomrule
 \end{tabular} \end{center}
-In the last row above, each of the seven axioms of traced categories is vacuous from the cobordism perspective in the sense that both sides of the equation correspond to the same cobordism (up to diffeomorphism). For example, the axiom of \emph{superposition} reads:
+In the last row above, each of the seven axioms of traced categories is vacuous from the cobordism
+perspective in the sense that both sides of the equation correspond to the same cobordism (up to
+diffeomorphism). For example, the axiom of \emph{superposition} reads:
 \[
-   \Tr^U_{X,Y}\big[f\big]\otimes g=\Tr^U_{X\otimes W,Y\otimes Z}\big[f\otimes g\big]
+  \Tr^U_{X,Y}\big[f\big]\otimes g=\Tr^U_{X\otimes W,Y\otimes Z}\big[f\otimes g\big]
 \]
 for every $f\colon U\otimes X\to U\otimes Y$ and $g\colon W\to Z$, or diagramatically:
 \[\tikzset{bbx=.8cm,bb port sep=1.5}
-   \begin{tikzpicture}[wiring diagram,baseline=(current bounding box.center)]
-   \node[bb={2}{2}, bb name=$f$] (X1) {};
-   \node[bb port sep=1,bb={1}{1}, below=2 of X1, bb name=$g$] (X2) {};
-         \node[bb={1}{1}, fit={(X1) ($(X1.north)+(0,1)$)}, dashed] (Z) {};
-         \node[bb={2}{2}, fit={(Z) (X2)}] (Y) {};
-         \draw[ar] (Y_in1') to (Z_in1);
-         \draw (Z_in1') to (X1_in2);
-         \draw[ar] (Y_in2') to (X2_in1);
-         \draw (X1_out2) to (Z_out1');
-         \draw[ar] (Z_out1) to (Y_out1');
-         \draw[ar] (X2_out1) to (Y_out2');
-         \draw[ar] let \p1=(X1.north east), \p2=(X2.north west), \n1={\y1+\bby}, \n2=\bbportlen in
-             (X1_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in1);
-         \draw[label]
-             node[above left=of Y_in1] {$X$}
-             node[below left=of Y_in2] {$W$}
-             node[above right=of Y_out1] {$Y$}
-             node[below right=of Y_out2] {$Z$}
-             node[below left=of X1_in1] {$U$}
-             node[below left=of X1_in2] {$X$}
-             node[below right=of X1_out2] {$Y$}
-             node[below right=of X1_out1] {$U$}
-             node[below left=of X2_in1] {$W$}
-             node[below right=of X2_out1] {$Z$};
-      \end{tikzpicture}
-      \quad=\quad
-      \begin{tikzpicture}[wiring diagram,baseline=(current bounding box.center)]
-         \node[bb={2}{2}, bb name=$f$] (X1) {};
-         \node[bb port sep=1,bb={1}{1}, below=of X1, bb name=$g$] (X2) {};
-         \node[bb={3}{3}, fit={(X1) (X2)}, dashed] (Z) {};
-         \node[bb={2}{2}, fit={(Z) ($(Z.north)+(0,1)$)}] (Y) {};
-         \draw[ar] (Y_in1') to (Z_in2);
-         \draw (Z_in2') to (X1_in2);
-         \draw[ar] (Y_in2') to (Z_in3);
-         \draw (Z_in3') to (X2_in1);
-         \draw (X1_out2) to (Z_out2');
-         \draw[ar] (Z_out2) to (Y_out1');
-         \draw (X2_out1) to (Z_out3');
-         \draw[ar] (Z_out3) to (Y_out2');
-         \draw (Z_in1') to (X1_in1);
-         \draw (X1_out1) to (Z_out1');
-         \draw[ar] let \p1=(Z.north east), \p2=(Z.north west), \n1={\y1+\bby}, \n2=\bbportlen in
-             (Z_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (Z_in1);
-         \draw[label]
-             node[above left=of Y_in1] {$X$}
-             node[below left=of Y_in2] {$W$}
-             node[above right=of Y_out1] {$Y$}
-             node[below right=of Y_out2] {$Z$}
-             node[below left=of X1_in1] {$U$}
-             node[below left=of X1_in2] {$X$}
-             node[below right=of X1_out2] {$Y$}
-             node[below right=of X1_out1] {$U$}
-             node[below left=of X2_in1] {$W$}
-             node[below right=of X2_out1] {$Z$};
-   \end{tikzpicture}
+  \begin{tikzpicture}[wiring diagram,baseline=(current bounding box.center)]
+    \node[bb={2}{2}, bb name=$f$] (X1) {};
+    \node[bb port sep=1,bb={1}{1}, below=2 of X1, bb name=$g$] (X2) {};
+    \node[bb={1}{1}, fit={(X1) ($(X1.north)+(0,1)$)}, dashed] (Z) {};
+    \node[bb={2}{2}, fit={(Z) (X2)}] (Y) {};
+    \draw[ar] (Y_in1') to (Z_in1);
+    \draw (Z_in1') to (X1_in2);
+    \draw[ar] (Y_in2') to (X2_in1);
+    \draw (X1_out2) to (Z_out1');
+    \draw[ar] (Z_out1) to (Y_out1');
+    \draw[ar] (X2_out1) to (Y_out2');
+    \draw[ar] let \p1=(X1.north east), \p2=(X2.north west), \n1={\y1+\bby}, \n2=\bbportlen in
+      (X1_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in1);
+    \draw[label]
+      node[above left=of Y_in1] {$X$}
+      node[below left=of Y_in2] {$W$}
+      node[above right=of Y_out1] {$Y$}
+      node[below right=of Y_out2] {$Z$}
+      node[below left=of X1_in1] {$U$}
+      node[below left=of X1_in2] {$X$}
+      node[below right=of X1_out2] {$Y$}
+      node[below right=of X1_out1] {$U$}
+      node[below left=of X2_in1] {$W$}
+      node[below right=of X2_out1] {$Z$};
+  \end{tikzpicture}
+  \quad=\quad
+  \begin{tikzpicture}[wiring diagram,baseline=(current bounding box.center)]
+    \node[bb={2}{2}, bb name=$f$] (X1) {};
+    \node[bb port sep=1,bb={1}{1}, below=of X1, bb name=$g$] (X2) {};
+    \node[bb={3}{3}, fit={(X1) (X2)}, dashed] (Z) {};
+    \node[bb={2}{2}, fit={(Z) ($(Z.north)+(0,1)$)}] (Y) {};
+    \draw[ar] (Y_in1') to (Z_in2);
+    \draw (Z_in2') to (X1_in2);
+    \draw[ar] (Y_in2') to (Z_in3);
+    \draw (Z_in3') to (X2_in1);
+    \draw (X1_out2) to (Z_out2');
+    \draw[ar] (Z_out2) to (Y_out1');
+    \draw (X2_out1) to (Z_out3');
+    \draw[ar] (Z_out3) to (Y_out2');
+    \draw (Z_in1') to (X1_in1);
+    \draw (X1_out1) to (Z_out1');
+    \draw[ar] let \p1=(Z.north east), \p2=(Z.north west), \n1={\y1+\bby}, \n2=\bbportlen in
+      (Z_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (Z_in1);
+    \draw[label]
+      node[above left=of Y_in1] {$X$}
+      node[below left=of Y_in2] {$W$}
+      node[above right=of Y_out1] {$Y$}
+      node[below right=of Y_out2] {$Z$}
+      node[below left=of X1_in1] {$U$}
+      node[below left=of X1_in2] {$X$}
+      node[below right=of X1_out2] {$Y$}
+      node[below right=of X1_out1] {$U$}
+      node[below left=of X2_in1] {$W$}
+      node[below right=of X2_out1] {$Z$};
+  \end{tikzpicture}
 \]
 
-To make precise the relationship between these interpretations of string diagrams, we fix the set $\LabSet$ of labels. Let $\TrCat$ denote the 1-category of traced categories and traced strict monoidal functors. Write $\TrCat_{\LabSet}$ for the subcategory in which the monoid of objects is fixed to be free on the set $\LabSet$, together with identity-on-objects functors. 
-\begin{named}{Theorem 0}
-   \label{th:traced is cob alg}
-   There is an equivalence of 1-categories
-   \begin{equation}
-      \label{eq:single_fiber_tr}
-      \LCob{\LabSet}\alg\equiv\TrCat_{\LabSet},
-   \end{equation}
-   where, given any monoidal category $\cat{M}$, we denote by $\cat{M}\alg\coloneqq\ncat{Lax}(\cat{M},\Set)$ the category of lax functors $\cat{M}\to\Set$. 
-\end{named}
-To build intuition for this statement note that the same data are required, and the same conditions are satisfied, whether one is specifying a lax functor $P\in\LCob{\LabSet}\alg$ or a traced category $\cat{T}\in\TrCat_{\LabSet}$ with objects freely generated by the set $\LabSet$. First, for each box $X=(\inp{X},\outp{X})$ that might appear in a string diagram, both $P\colon\LCob{\LabSet}\to\Set$ and $\cat{T}$ require a set, $P(X)$ and $\Hom_{\cat{T}}(\inp{X},\outp{X})$, respectively. Second, for each string diagram, both $P$ and $\cat{T}$ require a function: an action on morphisms in the case of $P$ and a formula for performing the required compositions, tensors, and traces in the case of $\cat{T}$. The condition that $P$ is functorial corresponds to the fact that $\cat{T}$ satisfies the axioms of traced categories.
+To make precise the relationship between these interpretations of string diagrams, we fix the set
+$\LabSet$ of labels. Let $\TrCat$ denote the 1-category of traced categories and traced strict
+monoidal functors. Write $\TrCat_{\LabSet}$ for the subcategory in which the monoid of objects is
+fixed to be free on the set $\LabSet$, together with identity-on-objects functors.
 
-We will briefly specify how to construct a lax functor $P$ from a traced category $(\cat{T},\otimes,I,\Tr)$ whose objects are freely generated by $\LabSet$. In what follows, we abuse notation slightly: given a relative set $\iota\colon Z\to\LabSet$ we will use the same symbol $Z$ to denote the tensor $\bigotimes_{z\in Z}\iota(z)$ in $\cat{T}$. For an oriented 0-manifold $X=\inp{X}\sqcup \outp{X}$ over $\LabSet$, put $P(X)\coloneqq\Hom_{\cat{T}}(\inp{X},\outp{X})$. Given a cobordism $\Phi\colon X\to Y$, we need a function $P(\Phi)\colon P(X)\to P(Y)$. To specify it, note that for any cobordism $\Phi$ there exist $A,B,C,D,E\in\Ob(\cat{T})$ such that $\inp{X}\cong C\otimes A$, $\outp{X}\cong C\otimes B$, $\inp{Y}\cong A\otimes D$, $\outp{Y}\cong B\otimes D$, and $E$ is the set of floating loops in $\Phi$; thus $\Phi$ is essentially equivalent to the cobordism shown on the left side of (\ref{eq:cob_and_trace_pic}).
+\begin{named}{Theorem 0}
+    \label{th:traced is cob alg}
+  There is an equivalence of 1-categories
+  \begin{equation}
+      \label{eq:single_fiber_tr}
+    \LCob{\LabSet}\alg\equiv\TrCat_{\LabSet},
+  \end{equation}
+  where, given any monoidal category $\cat{M}$, we denote by
+  $\cat{M}\alg\coloneqq\ncat{Lax}(\cat{M},\Set)$ the category of lax functors $\cat{M}\to\Set$.
+\end{named}
+
+To build intuition for this statement note that the same data are required, and the same conditions
+are satisfied, whether one is specifying a lax functor $P\in\LCob{\LabSet}\alg$ or a traced category
+$\cat{T}\in\TrCat_{\LabSet}$ with objects freely generated by the set $\LabSet$. First, for each box
+$X=(\inp{X},\outp{X})$ that might appear in a string diagram, both $P\colon\LCob{\LabSet}\to\Set$
+and $\cat{T}$ require a set, $P(X)$ and $\Hom_{\cat{T}}(\inp{X},\outp{X})$, respectively. Second,
+for each string diagram, both $P$ and $\cat{T}$ require a function: an action on morphisms in the
+case of $P$ and a formula for performing the required compositions, tensors, and traces in the case
+of $\cat{T}$. The condition that $P$ is functorial corresponds to the fact that $\cat{T}$ satisfies
+the axioms of traced categories.
+
+We will briefly specify how to construct a lax functor $P$ from a traced category
+$(\cat{T},\otimes,I,\Tr)$ whose objects are freely generated by $\LabSet$. In what follows, we abuse
+notation slightly: given a relative set $\iota\colon Z\to\LabSet$ we will use the same symbol $Z$ to
+denote the tensor $\bigotimes_{z\in Z}\iota(z)$ in $\cat{T}$. For an oriented 0-manifold
+$X=\inp{X}\sqcup \outp{X}$ over $\LabSet$, put $P(X)\coloneqq\Hom_{\cat{T}}(\inp{X},\outp{X})$.
+Given a cobordism $\Phi\colon X\to Y$, we need a function $P(\Phi)\colon P(X)\to P(Y)$. To specify
+it, note that for any cobordism $\Phi$ there exist $A,B,C,D,E\in\Ob(\cat{T})$ such that
+$\inp{X}\cong C\otimes A$, $\outp{X}\cong C\otimes B$, $\inp{Y}\cong A\otimes D$, $\outp{Y}\cong
+B\otimes D$, and $E$ is the set of floating loops in $\Phi$; thus $\Phi$ is essentially equivalent
+to the cobordism shown on the left side of (\ref{eq:cob_and_trace_pic}).
 \begin{equation}
-      \label{eq:cob_and_trace_pic}
-   \begin{tikzpicture}[x=1cm,y=1ex,node distance=1 and 1,semithick,every label quotes/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},every to/.style={out=0,in=180},baseline=(current bounding box.center)]
-      \node ["$A$" left] (X1a) {$-$};
-      \node [above=0.25 of X1a] {$X$};
-      \node [below=0 of X1a, "$C$" left] (X1b) {$-$};
-      \node [below=0 of X1b, "$C$" left] (X2a) {$+$};
-      \node [below=0 of X2a, "$B$" left] (X2b) {$+$};
-      \node [right=2 of X1a, "$A$" right] (Y1a) {$-$};
-      \node [above=0.25 of Y1a] {$Y$};
-      \node [below=0 of Y1a, "$D$" right] (Y1b) {$-$};
-      \node [below=0 of Y1b, "$D$" right] (Y2a) {$+$};
-      \node [below=0 of Y2a, "$B$" right] (Y2b) {$+$};
-      \node [right=1.45 of X2a, "$E$" left] {};
-      \draw (X1a) to (Y1a);
-      \draw (X1b) to[in=0] (X2a);
-      \draw (X2b) to (Y2b);
-      \draw (Y1b) to[in=180,out=180] (Y2a);
-      \draw ($(X1b)+(1.25,-2.75)$) to[in=0] ($(X1b)+(1.25,-0.25)$);
-      \draw ($(X1b)+(1.25,-0.25)$) to[in=180,out=180] ($(X1b)+(1.25,-2.75)$);
-   \end{tikzpicture}
-   \qquad\qquad
-   \begin{tikzpicture}[wiring diagram, bby=1.4ex, baseline=(current bounding box.center)]
-      \node[bb port sep=1.5, bb={2}{2}] (domain) {$f$};
-      \node[bb={2}{2}, fit={(domain) ($(domain.north)+(0,3)$) ($(domain.south)-(0,1)$)}, bb name=$P(\Phi)(f)$] (codomain) {};
-      \draw[ar] (codomain_in1') to (domain_in2);
-      \draw[ar] (domain_out2) to (codomain_out1');
-      \draw[ar] let \p1=(domain.north east), \p2=(domain.north west), \n1={\y1+\bby}, \n2=\bbportlen in
-          (domain_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (domain_in1);  %Trace on C
-      \draw[ar] let \p1=(domain.south west), \p2=(domain.south east), \n1={\y1-\bby}, \n2=\bbportlen in
-          (codomain_in2') to[in=180] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=0] (codomain_out2'); %Identity on D
-      \draw[ar] let \p1=(domain.north east) in
-          (\x1+.7*\bbx,\y1+\bby) to[in=0] (\x1+.7*\bbx,\y1+2*\bby) -- (\x1+.6*\bbx,\y1+2*\bby) to[out=180] (\x1+.6*\bbx,\y1+\bby) -- (\x1+.7*\bbx,\y1+\bby);%Loop
-      \draw[label] let \p1=(domain.north east) in
-          node[below left=of codomain_in1]     {$A$}
-          node[below left=of codomain_in2]     {$D$}
-          node[below right=of codomain_out1]    {$B$}
-          node[below right=of codomain_out2]    {$D$}
-          node[above left=.6 and 0 of codomain_out1']  {$E$}
-          node[below left=of domain_in1]     {$C$}
-          node[below left=of domain_in2]     {$A$}
-          node[below right=of domain_out2]    {$B$}
-          node[below right=of domain_out1]   {$C$};
-   \end{tikzpicture}
+    \label{eq:cob_and_trace_pic}
+  \begin{tikzpicture}[
+      x=1cm, y=1ex, node distance=1 and 1, semithick,
+      every label quotes/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},
+      every to/.style={out=0,in=180},
+      baseline=(current bounding box.center)
+    ]
+    \node ["$A$" left] (X1a) {$-$};
+    \node [above=0.25 of X1a] {$X$};
+    \node [below=0 of X1a, "$C$" left] (X1b) {$-$};
+    \node [below=0 of X1b, "$C$" left] (X2a) {$+$};
+    \node [below=0 of X2a, "$B$" left] (X2b) {$+$};
+    \node [right=2 of X1a, "$A$" right] (Y1a) {$-$};
+    \node [above=0.25 of Y1a] {$Y$};
+    \node [below=0 of Y1a, "$D$" right] (Y1b) {$-$};
+    \node [below=0 of Y1b, "$D$" right] (Y2a) {$+$};
+    \node [below=0 of Y2a, "$B$" right] (Y2b) {$+$};
+    \node [right=1.45 of X2a, "$E$" left] {};
+    \draw (X1a) to (Y1a);
+    \draw (X1b) to[in=0] (X2a);
+    \draw (X2b) to (Y2b);
+    \draw (Y1b) to[in=180,out=180] (Y2a);
+    \draw ($(X1b)+(1.25,-2.75)$) to[in=0] ($(X1b)+(1.25,-0.25)$);
+    \draw ($(X1b)+(1.25,-0.25)$) to[in=180,out=180] ($(X1b)+(1.25,-2.75)$);
+  \end{tikzpicture}
+  \qquad\qquad
+  \begin{tikzpicture}[wiring diagram, bby=1.4ex, baseline=(current bounding box.center)]
+    \node[bb port sep=1.5, bb={2}{2}] (domain) {$f$};
+    \node[bb={2}{2}, fit={(domain) ($(domain.north)+(0,3)$) ($(domain.south)-(0,1)$)}, bb name=$P(\Phi)(f)$] (codomain) {};
+    \draw[ar] (codomain_in1') to (domain_in2);
+    \draw[ar] (domain_out2) to (codomain_out1');
+    \draw[ar] let \p1=(domain.north east), \p2=(domain.north west), \n1={\y1+\bby}, \n2=\bbportlen in
+      (domain_out1) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (domain_in1);  %Trace on C
+    \draw[ar] let \p1=(domain.south west), \p2=(domain.south east), \n1={\y1-\bby}, \n2=\bbportlen in
+      (codomain_in2') to[in=180] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=0] (codomain_out2'); %Identity on D
+    \draw[ar] let \p1=(domain.north east) in
+      (\x1+.7*\bbx,\y1+\bby) to[in=0] (\x1+.7*\bbx,\y1+2*\bby) -- (\x1+.6*\bbx,\y1+2*\bby) to[out=180] (\x1+.6*\bbx,\y1+\bby) -- (\x1+.7*\bbx,\y1+\bby);%Loop
+    \draw[label] let \p1=(domain.north east) in
+      node[below left=of codomain_in1]     {$A$}
+      node[below left=of codomain_in2]     {$D$}
+      node[below right=of codomain_out1]    {$B$}
+      node[below right=of codomain_out2]    {$D$}
+      node[above left=.6 and 0 of codomain_out1']  {$E$}
+      node[below left=of domain_in1]     {$C$}
+      node[below left=of domain_in2]     {$A$}
+      node[below right=of domain_out2]    {$B$}
+      node[below right=of domain_out1]   {$C$};
+  \end{tikzpicture}
 \end{equation}
-With the above notation, for $f\in P(X)$ we can follow the string diagram (right side of (\ref{eq:cob_and_trace_pic})) and define
+With the above notation, for $f\in P(X)$ we can follow the string diagram (right side of
+(\ref{eq:cob_and_trace_pic})) and define
 \begin{equation}
       \label{eq:cob algebra formula}
    P(\Phi)(f)\coloneqq\Tr_{A,B}^C[f]\otimes D\otimes\Tr^E_{I,I}[E],
 \end{equation}
-where we abuse notation and write $D$ and $E$ for the identity maps on these objects. One may easily check, using each axiom of the trace \cite{JoyalStreetVerity} in an essential way, that \eqref{eq:cob algebra formula} defines an algebra over $\LCob{\LabSet}$. We will not prove \ref{th:traced is cob alg} directly as indicated here but to specify our proof strategy we must introduce more notation.
-
+where we abuse notation and write $D$ and $E$ for the identity maps on these objects. One may easily
+check, using each axiom of the trace \cite{JoyalStreetVerity} in an essential way, that
+\eqref{eq:cob algebra formula} defines an algebra over $\LCob{\LabSet}$. We will not prove
+\ref{th:traced is cob alg} directly as indicated here but to specify our proof strategy we must
+introduce more notation.
 
 \section{The main results}
-      \label{sec:main_results}
+    \label{sec:main_results}
 
-The equivalence \eqref{eq:single_fiber_tr} has two significant conceptual drawbacks: the object set of the traced category is fixed, and it is assumed to be freely generated by some set under tensor products; we refer to this latter condition using the term \emph{free-on-objects}. Much of the work in this paper goes towards relaxing these two conditions. 
+The equivalence \eqref{eq:single_fiber_tr} has two significant conceptual drawbacks: the object set
+of the traced category is fixed, and it is assumed to be freely generated by some set under tensor
+products; we refer to this latter condition using the term \emph{free-on-objects}. Much of the work
+in this paper goes towards relaxing these two conditions.
 
-To handle the free-on-objects condition, we prove that the 2-category of traced categories and strong functors is biequivalent to that of free-on-objects traced categories and strict functors; see Corollary~\ref{cor:object_frees}. This result seems to be well-known to experts but is difficult to find in the literature.
+To handle the free-on-objects condition, we prove that the 2-category of traced categories and
+strong functors is biequivalent to that of free-on-objects traced categories and strict functors;
+see Corollary~\ref{cor:object_frees}. This result seems to be well-known to experts but is difficult
+to find in the literature.
 
-To overcome the use of a fixed object set, we first explain what kind of object variance is appropriate. There is an adjunction
-\[\Adjoint{\Set}{\TrCat}{\FT}{\UT}\]
-inducing a monad $\TT$ on $\Set$, which is in fact isomorphic to the free monoid monad. Let $\cat{T}$ and $\cat{T}'$ be free-on-objects traced categories where $\Ob(\cat{T})$ is the free monoid on a set $\LabSet$ and $\Ob(\cat{T}')$ is the free monoid on a set $\LabSet'$. A strict (traced) monoidal functor $F\colon \cat{T}\to \cat{T}'$ induces a homomorphism $\Ob(F)\colon\Ob(\cat{T})\to\Ob(\cat{T}')$ between the free monoids, or equivalently a function $\Ob F\colon\LabSet\to\TT(\LabSet')$ which can be identified with a morphism in the Kleisli category $\Set_{\TT}$ of this monad.
+To overcome the use of a fixed object set, we first explain what kind of object variance is
+appropriate. There is an adjunction
+\[
+  \Adjoint{\Set}{\TrCat}{\FT}{\UT}
+\]
+inducing a monad $\TT$ on $\Set$, which is in fact isomorphic to the free monoid monad. Let
+$\cat{T}$ and $\cat{T}'$ be free-on-objects traced categories where $\Ob(\cat{T})$ is the free
+monoid on a set $\LabSet$ and $\Ob(\cat{T}')$ is the free monoid on a set $\LabSet'$. A strict
+(traced) monoidal functor $F\colon \cat{T}\to \cat{T}'$ induces a homomorphism
+$\Ob(F)\colon\Ob(\cat{T})\to\Ob(\cat{T}')$ between the free monoids, or equivalently a function $\Ob
+F\colon\LabSet\to\TT(\LabSet')$ which can be identified with a morphism in the Kleisli category
+$\Set_{\TT}$ of this monad.
 
 The compact category $\LCob{\LabSet}$ clearly varies functorially in $\LabSet\in\Set$, but it is not
 much harder to see that it is also functorial in $\LabSet\in\Set_{\TT}$, giving rise to a functor
@@ -324,6 +396,7 @@ By applying the Grothendieck construction (denoted by $\int$ here) to (\ref{eqn:
 obtain a fibration for which the fiber over a set $\LabSet$ is equivalent (by \ref{th:traced is cob
 alg}) to $\TrCat_{\LabSet}$. Let $\TrFrObCat\subset\TrCat$ denote the full subcategory spanned by
 the traced categories that are free-on-objects.
+
 \begin{named}{Theorem A}
     \label{thm:TheoremA_statement}
   There is an equivalence of 1-categories
@@ -331,6 +404,7 @@ the traced categories that are free-on-objects.
     &\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrFrObCat.
   \end{align*}
 \end{named}
+
 This result is proven in Section~\ref{sec:monoids_on_free} together with an analogous statement for
 compact categories.
 
@@ -346,29 +420,53 @@ compact categories.
   e.g.~\cite{HackneyRobertson}.
 \end{remark}
 
-In the course of proving \ref{thm:TheoremA_statement}, we will also establish a similar result which constructs the category of bijective-on-objects functors between traced categories. To make this precise, we prove (Theorem~\ref{thm:orthogonal} and Proposition~\ref{prop:CompProf_exact}) that the well-known $(\bo,\ff)$ factorization system of $\Cat$ restricts to a factorization system on $\TrCat$; more precisely the left class consists of bijective-on-objects functors and the right class consists of fully faithful functors. 
+In the course of proving \ref{thm:TheoremA_statement}, we will also establish a similar result which
+constructs the category of bijective-on-objects functors between traced categories. To make this
+precise, we prove (Theorem~\ref{thm:orthogonal} and Proposition~\ref{prop:CompProf_exact}) that the
+well-known $(\bo,\ff)$ factorization system of $\Cat$ restricts to a factorization system on
+$\TrCat$; more precisely the left class consists of bijective-on-objects functors and the right
+class consists of fully faithful functors.
 
-Write $\TrCat^{\bo}$ for the full subcategory of the arrow category $\TrCat^{\to}$ spanned by the bijective-on-objects functors. The existence of the factorization system implies that the domain functor
-\[\dom\colon\TrCat^{\bo}\twoheadrightarrow\TrCat\]
-is a fibration. For a fixed traced category $\cat{T}$, the fiber $\TrCat^{\bo}_{\cat{T}/}\coloneqq\dom^{-1}(\cat{T})$ is the category of strict monoidal, bijective-on-objects functors from $\cat{T}$ to another traced category, with the evident commutative triangles as morphisms. Note that we have an isomorphism $\TrCat_{\LabSet}\iso\TrCat^{\bo}_{(\FT\LabSet)/}$.
+Write $\TrCat^{\bo}$ for the full subcategory of the arrow category $\TrCat^{\to}$ spanned by the
+bijective-on-objects functors. The existence of the factorization system implies that the domain
+functor
+\[
+  \dom\colon\TrCat^{\bo}\twoheadrightarrow\TrCat
+\]
+is a fibration. For a fixed traced category $\cat{T}$, the fiber
+$\TrCat^{\bo}_{\cat{T}/}\coloneqq\dom^{-1}(\cat{T})$ is the category of strict monoidal,
+bijective-on-objects functors from $\cat{T}$ to another traced category, with the evident
+commutative triangles as morphisms. Note that we have an isomorphism
+$\TrCat_{\LabSet}\iso\TrCat^{\bo}_{(\FT\LabSet)/}$.
 
-Recall from~\cite{JoyalStreetVerity} that traced categories can be thought of as full subcategories of compact categories: the Int construction applied to a traced category $\cat{T}$ returns the smallest compact category $\Int(\cat{T})$ of which $\cat{T}$ is a monoidal subcategory. Generalizing \eqref{eq:single_fiber_tr}, we can give a complete characterization of lax functors out of such compact categories: for a fixed traced category $\cat{T}$ there is an equivalence of categories
-\[\Lax(\Int(\cat{T}),\Set)\equiv\TrCat^{\bo}_{\cat{T}/}.\]
-This is established in Section~\ref{sec:exactness_proofs} by proving the following generalization of \ref{thm:TheoremA_statement}.
+Recall from~\cite{JoyalStreetVerity} that traced categories can be thought of as full subcategories
+of compact categories: the Int construction applied to a traced category $\cat{T}$ returns the
+smallest compact category $\Int(\cat{T})$ of which $\cat{T}$ is a monoidal subcategory. Generalizing
+\eqref{eq:single_fiber_tr}, we can give a complete characterization of lax functors out of such
+compact categories: for a fixed traced category $\cat{T}$ there is an equivalence of categories
+\[
+  \Lax(\Int(\cat{T}),\Set)\equiv\TrCat^{\bo}_{\cat{T}/}.
+\]
+This is established in Section~\ref{sec:exactness_proofs} by proving the following generalization of
+\ref{thm:TheoremA_statement}.
+
 \begin{named}{Theorem B}
-      \label{thm:TheoremB_statement}
-   There is an equivalence of fibrations
-   \begin{equation*}
-      \begin{tikzcd}[column sep=-1em]
-         \int\limits^{\mathclap{\cat{T}\in\TrCat}} \Lax(\Int(\cat{T}),\Set)
-               \ar[rr,"\equiv"] \ar[dr,two heads]
-            && \TrCat^{\bo} \ar[dl,two heads,"\dom" pos=.4] \\
-         & \TrCat. &
-      \end{tikzcd}
-   \end{equation*}
+    \label{thm:TheoremB_statement}
+  There is an equivalence of fibrations
+  \begin{equation*}
+    \begin{tikzcd}[column sep=-1em]
+      \int\limits^{\mathclap{\cat{T}\in\TrCat}} \Lax(\Int(\cat{T}),\Set)
+        \ar[rr,"\equiv"] \ar[dr,two heads]
+      && \TrCat^{\bo} \ar[dl,two heads,"\dom" pos=.4] \\
+      & \TrCat. &
+    \end{tikzcd}
+  \end{equation*}
 \end{named}
 
-Our main tool in understanding this result will be the 2-categorical notion of \emph{(proarrow) equipments}, which we recall in Section~\ref{chap:background_equipments}. We will introduce what appears to be a new definition of \emph{monoidal profunctors}, and the equipment thereof, in Section\ref{chap:equipments_monoidal_profunctors}.
+Our main tool in understanding this result will be the 2-categorical notion of \emph{(proarrow)
+equipments}, which we recall in Section~\ref{chap:background_equipments}. We will introduce what
+appears to be a new definition of \emph{monoidal profunctors}, and the equipment thereof, in
+Section\ref{chap:equipments_monoidal_profunctors}.
 
 \erase{%%% begin erase %%%
 \newpage
@@ -507,7 +605,25 @@ them will be generalized in \ref{thm:TheoremA_statement}; see also \eqref{eqn:2p
 \section{Plan of the paper}
 \todo[inline]{Make sure this plan is still correct.}
 
-Section~\ref{sec:equipments} reviews the notion of an equipment (or framed bicategory \cite{Shulman}). In Section~\ref{sec:internal_presheaves} we record the definition of copresheaves internal to an equipment which will allow us to reformulate and properly understand our main theorems. Section~\ref{sec:monoids_bimods} recalls monoids and bimodules in an equipment and establishes basic facts and constructions needed for the main theorems; in particular, exact equipments \cite{Schultz2015} are defined using this language. In Section~\ref{sec:monoidal,compact,traced} we review monoidal, traced, and compact categories. We finally introduce various equipments of monoidal profunctors ($\dMonProf, \dTrProf$, and $\dCompProf$) at the heart of the paper in Section~\ref{sec:monoidal_profunctors}.  In Section~\ref{sec:special_CompProf} we prove the special properties about $\dCompProf$ which are at the core of our results. Indeed one might view the rest of the paper as a formal wrapper for the results in that section. In Section~\ref{sec:exactness_proofs} we prove that the equipments of interest are exact and then apply the theory developed in Section~\ref{chap:background_equipments} to deduce \ref{thm:TheoremB}. In Section~\ref{sec:monoids_on_free} we deal with the freeness-on-objects needed for \ref{thm:TheoremA}. The appendix contains material that is not necessary to the paper. Its function is to prove the biequivalence between the 2-category $\MMonCatStrong$ of monoidal categories with arbitrary object set and strong functors, on the one hand, and the 2-category $\MMonFrObCat$ of monoidal categories with free object set and strict functors. We do the same for traced and compact categories, all in Corollary~\ref{cor:object_frees}.
+Section~\ref{sec:equipments} reviews the notion of an equipment (or framed bicategory
+\cite{Shulman}). In Section~\ref{sec:internal_presheaves} we record the definition of copresheaves
+internal to an equipment which will allow us to reformulate and properly understand our main
+theorems. Section~\ref{sec:monoids_bimods} recalls monoids and bimodules in an equipment and
+establishes basic facts and constructions needed for the main theorems; in particular, exact
+equipments \cite{Schultz2015} are defined using this language. In
+Section~\ref{sec:monoidal,compact,traced} we review monoidal, traced, and compact categories. We
+finally introduce various equipments of monoidal profunctors ($\dMonProf, \dTrProf$, and
+$\dCompProf$) at the heart of the paper in Section~\ref{sec:monoidal_profunctors}.  In
+Section~\ref{sec:special_CompProf} we prove the special properties about $\dCompProf$ which are at
+the core of our results. Indeed one might view the rest of the paper as a formal wrapper for the
+results in that section. In Section~\ref{sec:exactness_proofs} we prove that the equipments of
+interest are exact and then apply the theory developed in Section~\ref{chap:background_equipments}
+to deduce \ref{thm:TheoremB}. In Section~\ref{sec:monoids_on_free} we deal with the
+freeness-on-objects needed for \ref{thm:TheoremA}. The appendix contains material that is not
+necessary to the paper. Its function is to prove the biequivalence between the 2-category
+$\MMonCatStrong$ of monoidal categories with arbitrary object set and strong functors, on the one
+hand, and the 2-category $\MMonFrObCat$ of monoidal categories with free object set and strict
+functors. We do the same for traced and compact categories, all in Corollary~\ref{cor:object_frees}.
 
 \section*{Acknowledgments}
 
@@ -515,7 +631,6 @@ Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect th
 picture in \cite{RupelSpivak} to string diagrams in traced categories. We also thank Mike Shulman
 for many useful conversations, and Tobias Fritz, Justin Hilburn, and Dmitry Vagner for helpful
 comments on drafts of this paper. Finally, we thank our referee for many useful suggestions.
-
 
 \chapter{Background on equipments}
       \label{chap:background_equipments}
