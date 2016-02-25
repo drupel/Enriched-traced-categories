@@ -200,6 +200,17 @@
 
 \newcommand{\tickar}{\begin{tikzcd}[baseline=-0.5ex,cramped,sep=small,ampersand replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 
+\newcommand*{\cocolon}{% colon with spacing for backwards arrows
+  \nobreak
+  \mskip6mu plus1mu
+  \mathpunct{}%
+  \nonscript
+  \mkern-\thinmuskip
+  {:}%
+  \mskip2mu
+  \relax
+}
+
 \newcommand{\twocell}[3][]{\arrow[draw=none,to path={(dom#2.center)--(cod#2.center)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #3}}
 \newcommand{\twocellalt}[3][]{\arrow[draw=none,to path={(dom#2.center)--(cod#2.center)\tikztonodes}]{}[anchor=center,#1]{#3}}
 \newcommand{\twocelliso}[3][]{\twocellalt[#1]{#2}{\begin{smallmatrix}#3\\\iso\end{smallmatrix}}}

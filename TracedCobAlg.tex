@@ -543,16 +543,16 @@ The objects in a category, 2-category, or double category will be denoted with t
             \twocellA{\phi}
          \end{tikzcd} \end{equation}
       \item A \emph{unit} functor $\unit\colon\dcat{D}_0\to\dcat{D}_1$, which is a
-         section of both $\lframe$ and $\rframe$, i.e.\ $\lframe\circ\unit=\id_{\dcat{D}_0}=\rframe\circ\unit$. We will often
+         strict section of both $\lframe$ and $\rframe$, i.e.\ $\lframe\circ\unit=\id_{\dcat{D}_0}=\rframe\circ\unit$. We will often
          abuse notation by writing $c$ for the unit proarrow $\unit(c)\colon c\tickar c$, and similarly
          for vertical arrows.
       \item A functor $\odot\colon\dcat{D}_1\times_{\dcat{D}_0}\dcat{D}_1\to\dcat{D}_1$, called
-         \emph{horizontal composition}, that is weakly associative and unital in the sense that
+         \emph{horizontal composition}, which is weakly associative and unital in the sense that
          there are coherent unitor and associator isomorphisms. See \cite{Shulman} for more details.
    \end{itemize}
    Given a double category $\dcat{D}$ there is a strict 2-category called the \emph{vertical
    2-category}, denoted $\VVer(\dcat{D})$, whose underlying 1-category\footnote{By the \emph{underlying 1-category} of a 2-category, we mean the one obtained by dropping (not quotienting by) the 2-cells.} is $\dcat{D}_0$ and whose 2-morphisms $f\Rightarrow f'$ are defined to be 2-cells \eqref{eqn:2cell} where $M=\unit(c)$ and $N=\unit(d)$ are unit proarrows. There is also a \emph{horizontal bicategory}, denoted $\HHor(\dcat{D})$, whose objects and 1-cells are the objects and horizontal 1-cells of
-   $\dcat{D}$ and whose 2-cells are the 2-cells of $\dcat{D}$ of the form \eqref{eqn:2cell} such that $f=\id_c$ and $f'=\id_{c'}$.
+   $\dcat{D}$, and whose 2-cells are the 2-cells of $\dcat{D}$ of the form \eqref{eqn:2cell} such that $f=\id_c$ and $f'=\id_{c'}$.
 
    A \emph{strong double functor} $F\colon\dcat{C}\to\dcat{D}$ consists of functors
    $F_0\colon\dcat{C}_0\to\dcat{D}_0$ and $F_1\colon\dcat{C}_1\to\dcat{D}_1$ commuting with the frames $\lframe$,$\rframe$, and
@@ -594,7 +594,7 @@ The objects in a category, 2-category, or double category will be denoted with t
 
 \begin{remark}
       \label{rem:strict_vs_pseudo_pullback}
-   It is a standard fact for 1-categories that a strict pullback of an isofibration along an arbitrary functor is a pseudo-pullback. Any Grothendieck fibration (or opfibration) is in particular an isofibration, so the square \eqref{eqn:local_equiv} being a strict pullback implies it is also a pseudo-pullback.
+   It is a standard fact for 1-categories that a strict pullback of an isofibration along an arbitrary functor is a pseudo-pullback. Any Grothendieck fibration (or opfibration) is in particular an isofibration, so if the square \eqref{eqn:local_equiv} is a strict pullback, it will be a pseudo-pullback, and hence a local equivalence.
 
    Also note that the frame fibration for $\dcat{C}$ is equivalent to the functor $\dcat{C}_0\times\dcat{C}_0\to\CCat$, the 2-category of
    small categories, sending $(c,d)$ to $\HHor(\dcat{C})(c,d)$ and similarly for $\dcat{D}$. In this language, $F$ is a local equivalence if and only if the induced functors $\HHor(\dcat{C})(c,d)\to\HHor(\dcat{D})(F_0(c),F_0(d))$ are equivalences of categories for every pair of objects $(c,d)$. The square \eqref{eqn:local_equiv} is a strict pullback precisely when these are isomorphisms of categories.
@@ -613,19 +613,19 @@ The objects in a category, 2-category, or double category will be denoted with t
       \label{ex:dspan}
    There is an equipment $\dSpan$ of spans in $\Set$. Its vertical category is
    $\dSpan_0\coloneqq\Set$. A horizontal 1-cell between sets $A$ and $B$ is a span $A\from S\to B$,
-   their composition is defined by a pullback of spans, and a 2-cell in $\dSpan$ is a commutative
+   their horizontal composition is defined by a pullback of spans, and a 2-cell in $\dSpan$ is a commutative
    diagram in $\Set$ of the appropriate shape. A cartesian 2-cell in this equipment is obtained by
    taking an evident limit in $\Set$.
 \end{example}
 
-Our main tool in this paper will be equipments of profunctors as in the following example.
+Our main tool in this paper will be equipments in which the horizontal arrows are (generalizations of) profunctors, as in the following example.
 \begin{example}\label{ex:profunctors}
    The equipment $\dProf$ is a double category whose vertical category $\dProf_0=\Cat$ is the category of small 1-categories and
    functors. Given categories $\cat{C},\cat{C}'\in\dProf_0$, a proarrow 
    \[ \begin{tikzcd}
       \cat{C} \ar[r,tick,"M"] & \cat{C}'
    \end{tikzcd} \]
-   in $\dProf_1$ is a profunctor, that is a functor $M\colon\op{\cat{C}}\times\cat{C}'\to\Set$. The left and right frame functors are given by $L(M)=\cat{C}$ and $R(M)=\cat{C}'$. A 2-cell $\phi$ in $\dProf$, as to the left, denotes a natural transformation, as to the right, in \eqref{eqn:Prof2cells}:
+   in $\dProf_1$ is a profunctor, i.e.\ a functor $M\colon\op{\cat{C}}\times\cat{C}'\to\Set$. The left and right frame functors are given by $\lframe(M)=\cat{C}$ and $\rframe(M)=\cat{C}'$. A 2-cell $\phi$ in $\dProf$, as to the left, denotes a natural transformation, as to the right, in \eqref{eqn:Prof2cells}:
    \begin{equation}
          \label{eqn:Prof2cells}
       \begin{tikzcd}
@@ -643,7 +643,7 @@ Our main tool in this paper will be equipments of profunctors as in the followin
          & \Set.
       \end{tikzcd}
    \end{equation}
-   For any category $\cat{C}\in\dProf_0$, $\Hom_{\cat{C}}\colon\op{\cat{C}}\times\cat{C}\to\Set$ is a profunctor and $U(\cat{C})=\Hom_{\cat{C}}$ is the unit functor of $\dProf$. Given two profunctors
+   For any category $\cat{C}\in\dProf_0$, $\Hom_{\cat{C}}\colon\op{\cat{C}}\times\cat{C}\to\Set$ is a profunctor and $\unit(\cat{C})=\Hom_{\cat{C}}$ is the unit functor of $\dProf$. Given two profunctors
    \[ \begin{tikzcd}
       \cat{C} \ar[r,tick,"M"] & \cat{D} \ar[r,tick,"N"] & \cat{E},
    \end{tikzcd} \]
@@ -654,15 +654,15 @@ Our main tool in this paper will be equipments of profunctors as in the followin
          \ar[r,shift left] \ar[r,shift right]
       & \displaystyle\coprod_{d\in\cat{D}} M(c,d)\times N(d,e)
    \end{tikzcd} \end{equation}
-   where the two maps are given by the right and left actions of $\cat{D}$ on $M$ and $N$ respectively. We can write elements of $(M\odot N)(c,e)$ as tensors $m\otimes n$, where $m\in M(c,d)$ and $n\in N(d,e)$ for some $d\in\cat{D}$. The construction as a coequalizer then implies that $(m\cdot f)\otimes n=m\otimes(f\cdot n)$ whenever the equation makes sense. Note that the coequalizer \eqref{eqn:coendComp} is in fact a reflexive coequalizer, using $\id_b\in\cat{B}(b,b)$. Given a profunctor $M:\cat{C}\tickar\cat{C'}$ there are canonical isomorphisms $\Hom_{\cat{C}}\odot M \iso M \iso M\odot\Hom_{\cat{D}}$ which can be viewed as giving an action of $\Hom_{\cat{C}}$ and of $\Hom_{\cat{D}}$ on $M$ from the left and right respectively.
+   where the two maps are given by the right and left actions of $\cat{D}$ on $M$ and $N$ respectively. We can write elements of $(M\odot N)(c,e)$ as tensors $m\otimes n$, where $m\in M(c,d)$ and $n\in N(d,e)$ for some $d\in\cat{D}$. The construction as a coequalizer then implies that $(m\cdot f)\otimes n=m\otimes(f\cdot n)$ whenever the equation makes sense. Note that the coequalizer \eqref{eqn:coendComp} is in fact a reflexive coequalizer, using $\id_d\in\cat{D}(d,d)$. Given a profunctor $M\colon\cat{C}\tickar\cat{C'}$ there are canonical isomorphisms $\Hom_{\cat{C}}\odot M \iso M \iso M\odot\Hom_{\cat{D}}$ which can be viewed as giving an action of $\Hom_{\cat{C}}$ and of $\Hom_{\cat{D}}$ on $M$, from the left and right respectively.
 
-   Together these give $\dProf$ the structure of a double category. To see that $\dProf$ is an equipment, note that from a pair of functors $F\colon\cat{C}\to\cat{D}$, $F'\colon\cat{C}'\to\cat{D}'$ and a profunctor $N\colon \cat{D}\tickar\cat{D}'$ we may form the composite 
+   At this point we have given $\dProf$ the structure of a double category. To see that $\dProf$ is an equipment, note that from a pair of functors $F\colon\cat{C}\to\cat{D}$, $F'\colon\cat{C}'\to\cat{D}'$ and a profunctor $N\colon \cat{D}\tickar\cat{D}'$ we may form the composite 
    \[\begin{tikzcd}
       \op{\cat{C}}\times\cat{C}' \ar[r,"\op{F}\times F'"]
          &[1.5em] \op{\cat{D}}\times\cat{D}' \ar[r,"N"]
          & \Set,
    \end{tikzcd}\]
-   denoted $N(F',F):\cat{C}\tickar\cat{C}'$, such that
+   denoted $N(F',F)\colon\cat{C}\tickar\cat{C}'$, such that
    \begin{equation}
       \label{eq:cartesian profunctor morphism}
       \begin{tikzcd}
@@ -673,7 +673,7 @@ Our main tool in this paper will be equipments of profunctors as in the followin
       \twocellA{\phi}
       \end{tikzcd}
    \end{equation}
-   is a cartesian 2-cell. Note that an easy Yoneda lemma argument yields $\VVer(\dProf)\equiv\CCat$.
+   is a cartesian 2-cell. An straightforward Yoneda lemma argument yields $\VVer(\dProf)\equiv\CCat$.
 \end{example}
 %An equipment $\dcat{D}$ is often named according to its horizontal arrows. In Example~\ref{ex:profunctors} we discussed profunctors, which are the horizontal arrows in an equipment $\dProf$. Variations on $\dProf$, such as $\dMonProf, \dTrProf,$ and $\dCompProf$ (defined in Section~\ref{sec:monoidal_profunctors}) will play a major role in this paper.
 
@@ -1432,7 +1432,7 @@ and compositions computed using the trace of $\cat{T}$, see \cite{JoyalStreetVer
    2-functorial). This error was corrected in \cite{HK}, where it was shown that the appropriate
    2-morphisms between traced functors are natural \emph{isomorphisms}. 
 \end{remark}
-We denote by $\TTrCat$ the corrected 2-category of traced categories (where 2-cells are invertible), and we denote its underlying 1-category by $\TrCat$. Write $\UTM:\TTrCat\to\MMonCat$ for the forgetful functor.
+We denote by $\TTrCat$ the corrected 2-category of traced categories (where 2-cells are invertible), and we denote its underlying 1-category by $\TrCat$. Write $\UTM\colon\TTrCat\to\MMonCat$ for the forgetful functor.
 
 Every compact category $\cat{C}$ has a canonical trace structure, defined on a morphism $f\colon
 U\otimes X\to U\otimes Y$ morally (up to symmetries and identities) to be $\epsilon_U\circ f\circ
@@ -1623,7 +1623,7 @@ in which the triangle involving the $F$'s and the triangle involving the $U$'s b
    \end{tikzcd} \]
 \end{proposition}
 \begin{proof}
-   If $M\in\CPsh(\dCompProf)$, i.e., $M$ is a lax functor $\cat{C}\to\Set$ for some compact $\cat{C}$, then
+   If $M\in\CPsh(\dCompProf)$, i.e.\ $M$ is a lax functor $\cat{C}\to\Set$ for some compact $\cat{C}$, then
    $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any $a\in \cat{C}$. On the other hand, given
    $N\in\Ptd(\dCompProf)$, $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from
    Lemma~\ref{Lem:comp prof bijection}.
@@ -1838,7 +1838,7 @@ We record the following consequence of Theorem~\ref{thm:orthogonal} in the curre
 \begin{corollary}
    The 2-categories $\MMonCat$ and $\CCompCat$ admit 2-orthogonal factorization systems. 
 \end{corollary}
-We abuse notation slightly and write $(\bo,\ff)$ for both of the factorization systems above. Note that we write morphisms in $\ff$ with a hooked arrow and morphisms in $\bo$ with a two-headed arrow. Recall the adjunction \eqref{dia:traced_compact_adjunction} and write $\eta_{\cat{T}}:\cat{T}\to\UCT\Int(\cat{T})$ for the unit morphism.
+We abuse notation slightly and write $(\bo,\ff)$ for both of the factorization systems above. Note that we write morphisms in $\ff$ with a hooked arrow and morphisms in $\bo$ with a two-headed arrow. Recall the adjunction \eqref{dia:traced_compact_adjunction} and write $\eta_{\cat{T}}\colon\cat{T}\to\UCT\Int(\cat{T})$ for the unit morphism.
 \begin{lemma}
       \label{lem:Tr_bo_Int}
    Let $\cat{T}$ be a traced category, $\cat{C}$ a compact category, and $F\colon\Int(\cat{T})\twoheadrightarrow \cat{C}$ a
@@ -1860,7 +1860,7 @@ We abuse notation slightly and write $(\bo,\ff)$ for both of the factorization s
          \eta_{\cat{T}'}=H$ and $\alpha\circ\Int(G)=F$.
 \end{lemma}
 \begin{proof}
-   Since $H:\cat{M}\to\UCM\cat{C}$ is fully faithful, the trace on $\UCT\cat{C}$ uniquely determines the desired trace structure on $\cat{T}'$ so that $H$ is a traced functor. It also follows that $G$ respects the trace in $\cat{T}$ since $\UCT F\circ\eta_{\cat{T}}$ does.
+   Since $H\colon\cat{M}\to\UCM\cat{C}$ is fully faithful, the trace on $\UCT\cat{C}$ uniquely determines the desired trace structure on $\cat{T}'$ so that $H$ is a traced functor. It also follows that $G$ respects the trace in $\cat{T}$ since $\UCT F\circ\eta_{\cat{T}}$ does.
 
    For the final claim, consider the diagram
    \[ \begin{tikzcd}[column sep=4em, row sep=5ex]
@@ -1880,7 +1880,7 @@ We abuse notation slightly and write $(\bo,\ff)$ for both of the factorization s
 \end{proposition}
 \begin{proof}
    Let $M\colon \cat{T}\tickar \cat{T}$ be a monoid in $\dTrProf$. By definition of $\dTrProf$ this is a monoid $M\colon\Int(\cat{T})\tickar\Int(\cat{T})$ in $\dCompProf$, i.e.\ $M=\Mon(\Int)(M)$. Define $\Col{M}_{\MTCfont{C}}$ and $(i_M,\vec{\imath}_M)\colon (\Int(\cat{T}),M)\to\Col{M}_{\MTCfont{C}}$ to
-   be the collapse embedding of $M$ in $\dCompProf$. Then applying Lemma~\ref{lem:Tr_bo_Int} with $F=i_M$ gives a traced category $\Col{M}_{\MTCfont{T}}$ and a $\bo$ functor $i'_M:\cat{T}\to\Col{M}_{\MTCfont{T}}$ as in the diagram below:
+   be the collapse embedding of $M$ in $\dCompProf$. Then applying Lemma~\ref{lem:Tr_bo_Int} with $F=i_M$ gives a traced category $\Col{M}_{\MTCfont{T}}$ and a $\bo$ functor $i'_M\colon\cat{T}\to\Col{M}_{\MTCfont{T}}$ as in the diagram below:
    \begin{equation} \begin{tikzcd}[column sep=large]
          \label{eqn:collapses_in_traced}
       \cat{T} \ar[r,hook,"\eta_{\cat{T}}"] \ar[d,two heads,"i'_M"']
@@ -1888,7 +1888,7 @@ We abuse notation slightly and write $(\bo,\ff)$ for both of the factorization s
       \Col{M}_{\MTCfont{T}} \ar[r,hook] & \UCT\Col{M}_{\MTCfont{C}}.
    \end{tikzcd} \end{equation}
 
-   To see that $\Col{M}_{\MTCfont{T}}$ is a collapse in $\dTrProf$ we must establish the bijection $\Emb_{\mathrm{Tr}}(M,\cat{T}')\iso\TrCat(\Col{M}_{\MTCfont{T}},\cat{T}')$ natural in the traced category $\cat{T}'$. Since $\Col{M}_{\MTCfont{C}}$ is a collapse in $\dCompProf$, there is a bijection $\Emb_{\MTCfont{C}}(M,\Int(\cat{T}'))\iso\CompCat(\Col{M}_{\MTCfont{C}},\Int(\cat{T}'))$ and precomposition with $i_M$ gives a map $\Emb_{\MTCfont{C}}(M,\Int(\cat{T}'))\to\CompCat(\Int(\cat{T}),\Int(\cat{T}'))$. Using the adjunction isomorphism and precomposition with the isomorphism $\alpha:\Int(\Col{M}_{\MTCfont{T}})\iso\Col{M}_{\MTCfont{C}}$ from Lemma~\ref{lem:Tr_bo_Int} we get an isomorphism
+   To see that $\Col{M}_{\MTCfont{T}}$ is a collapse in $\dTrProf$ we must establish the bijection $\Emb_{\mathrm{Tr}}(M,\cat{T}')\iso\TrCat(\Col{M}_{\MTCfont{T}},\cat{T}')$ natural in the traced category $\cat{T}'$. Since $\Col{M}_{\MTCfont{C}}$ is a collapse in $\dCompProf$, there is a bijection $\Emb_{\MTCfont{C}}(M,\Int(\cat{T}'))\iso\CompCat(\Col{M}_{\MTCfont{C}},\Int(\cat{T}'))$ and precomposition with $i_M$ gives a map $\Emb_{\MTCfont{C}}(M,\Int(\cat{T}'))\to\CompCat(\Int(\cat{T}),\Int(\cat{T}'))$. Using the adjunction isomorphism and precomposition with the isomorphism $\alpha\colon\Int(\Col{M}_{\MTCfont{T}})\iso\Col{M}_{\MTCfont{C}}$ from Lemma~\ref{lem:Tr_bo_Int} we get an isomorphism
    \[\TrCat(\Col{M}_{\MTCfont{T}},\UCT\Int(\cat{T}'))\iso\CompCat(\Int(\Col{M}_{\MTCfont{T}}),\Int(\cat{T}'))\iso\CompCat(\Col{M}_{\MTCfont{C}},\Int(\cat{T}')).\]
    Since $i_M=\alpha\circ\Int(i'_M)$, these isomorphisms fit together into the following commutative diagram:
    \[ \begin{tikzcd}[column sep=between origins,row sep=between origins]
@@ -2196,7 +2196,7 @@ result will not be new to experts, but we found it difficult to find in the lite
          \twocellA{\kappa}
       \end{tikzcd}
    \end{equation*}
-   Moreover, given a commutative square in $\ccat{C}(x,a)$, i.e., another $d'\colon x\to a$,
+   Moreover, given a commutative square in $\ccat{C}(x,a)$, i.e.\ another $d'\colon x\to a$,
    $c'\colon x\to a$, $\alpha'\colon d'\Rightarrow c'$ as on the left above, and 2-cells
    $\beta\colon d\Rightarrow d'$ and $\gamma\colon c\Rightarrow c'$ such that
    $\alpha'\circ\beta=\gamma\circ\alpha$, there is a unique
@@ -2243,7 +2243,7 @@ $a^\ast\To{(f^{-1})^\ast}b^\ast$.
 The 2-morphisms between traced categories are also defined to be isomorphisms (see
 Remark~\ref{rem:traced_2morphisms}). For a traced category $\cat{T}\in\TTrCatStrong$, the arrow
 object $\cat{T}^2$ has the isomorphisms in $\cat{T}$ as objects and commuting squares as morphisms;
-i.e., it too is preserved by the 2-functor $\TTrCatStrong\to\Cat_{\iso}$. To see the traced
+i.e.\ it too is preserved by the 2-functor $\TTrCatStrong\to\Cat_{\iso}$. To see the traced
 structure of $\cat{T}^2$, suppose given objects $a\colon A\To{\iso} A'$, $b\colon B\To{\iso} B'$,
 and $u\colon U\To{\iso} U'$, as well as a morphism $(f,g)\colon a\otimes u\to b\otimes u$ as in the
 diagram to the left
@@ -2300,11 +2300,11 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
       \label{cor:2_adjunctions_MonTrComp}
    There are 2-adjunctions
    \[
-      \FM\colon\CCat\leftrightarrows\MMonCat:\!\UM
+      \FM\colon\CCat\leftrightarrows\MMonCat\cocolon\UM
       \qquad
-      \FT\colon\CCat_{\iso}\leftrightarrows\TTrCat:\!\UT
+      \FT\colon\CCat_{\iso}\leftrightarrows\TTrCat\cocolon\UT
       \qquad
-      \FC\colon\CCat_{\iso}\leftrightarrows\CCompCat:\!\UC
+      \FC\colon\CCat_{\iso}\leftrightarrows\CCompCat\cocolon\UC
    \]
    that extend the 1-adjunctions constructed in \cite{Abramsky2}.
 \end{corollary}
@@ -2854,7 +2854,7 @@ $\bo$ morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
    are biequivalences of 2-categories.
 \end{corollary}
 \begin{proof}
-   Let $\cat{S}=\Set$, and let $\Disc\colon\cat{S}\leftrightarrows\Cat:\Ob$ be the discrete
+   Let $\cat{S}=\Set$, and let $\Disc\colon\cat{S}\leftrightarrows\Cat\cocolon\Ob$ be the discrete
    adjunction. Note that a morphism $f$ in $\CCat$ is $\bo$ if and only if $\Ob(f)$ is an
    isomorphism. The result follows by Example~\ref{ex:strictifiable} and
    Theorem~\ref{thm:free_on_objects_strong_equivalence}.
