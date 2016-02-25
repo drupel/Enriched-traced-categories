@@ -599,7 +599,7 @@ The objects in a category, 2-category, or double category will be denoted with t
 
 \begin{definition}
       \label{def:local_equivalence}
-   By an \emph{equipment functor}, we simply mean a strong double functor between equipments. We refer to an equipment functor $F\colon\dcat{C}\to\dcat{D}$ as a \emph{local equivalence} if the following square strictly commutes and is a pseudo-pullback of categories:
+   By an \emph{equipment functor}, we simply mean a strong double functor between equipments. We refer to an equipment functor $F\colon\dcat{C}\to\dcat{D}$ as a \emph{local equivalence} if the following (strictly commuting) square is a pseudo-pullback of categories:
    \begin{equation} \begin{tikzcd}
          \label{eqn:local_equiv}
       \dcat{C}_1 \ar[r,"F_1"] \ar[d,two heads,"{(\lframe,\rframe)}"'] \ar[dr,phantom,"\lrcorner" very near start]
@@ -612,7 +612,7 @@ The objects in a category, 2-category, or double category will be denoted with t
 
 \begin{remark}
       \label{rem:strict_vs_pseudo_pullback}
-   It is a standard fact for 1-categories that a strict pullback of an isofibration along an arbitrary functor is a pseudo-pullback. Any Grothendieck fibration (or opfibration) is in particular an isofibration, so if the square \eqref{eqn:local_equiv} is a strict pullback, it will be a pseudo-pullback, and hence a local equivalence.
+   It is a standard fact for 1-categories that a strict pullback of an isofibration along an arbitrary functor is a pseudo-pullback. Any Grothendieck fibration (or opfibration) is in particular an isofibration, so if the square \eqref{eqn:local_equiv} is a strict pullback, it will be a pseudo-pullback, and hence a local equivalence. Any local equivalence can be replaced by an equivalent strict pullback, which we define in Definition~\ref{def:induced_locally_equivalent_equipment}.
 
    Also note that the frame fibration for $\dcat{C}$ is equivalent to the functor $\dcat{C}_0\times\dcat{C}_0\to\CCat$, the 2-category of
    small categories, sending $(c,d)$ to $\HHor(\dcat{C})(c,d)$ and similarly for $\dcat{D}$. In this language, $F$ is a local equivalence if and only if the induced functors $\HHor(\dcat{C})(c,d)\to\HHor(\dcat{D})(F_0(c),F_0(d))$ are equivalences of categories for every pair of objects $(c,d)$. The square \eqref{eqn:local_equiv} is a strict pullback precisely when these are isomorphisms of categories.
@@ -691,7 +691,7 @@ Our main tool in this paper will be equipments in which the horizontal arrows ar
       \twocellA{\phi}
       \end{tikzcd}
    \end{equation}
-   is a cartesian 2-cell. An straightforward Yoneda lemma argument yields $\VVer(\dProf)\equiv\CCat$.
+   is a cartesian 2-cell. A simple Yoneda lemma argument yields $\VVer(\dProf)\equiv\CCat$.
 \end{example}
 %An equipment $\dcat{D}$ is often named according to its horizontal arrows. In Example~\ref{ex:profunctors} we discussed profunctors, which are the horizontal arrows in an equipment $\dProf$. Variations on $\dProf$, such as $\dMonProf, \dTrProf,$ and $\dCompProf$ (defined in Section~\ref{sec:monoidal_profunctors}) will play a major role in this paper.
 
@@ -715,7 +715,7 @@ fiber over an object $c$ is the category of copresheaves on $c$:
    \begin{equation*}
      \begin{tikzcd}
          \CPsh(\dcat{D}) \ar[r] \ar[d,two heads] \arrow[dr,phantom,"\lrcorner",very near start]
-            & \dcat{D}_1 \ar[d,two heads] \\
+            & \dcat{D}_1 \ar[d,two heads,"\lframe\times\rframe"] \\
          1\times\dcat{D}_0 \ar[r,"1\times\dcat{D}_0"']
             & \dcat{D}_0\times\dcat{D}_0.
       \end{tikzcd}
@@ -775,7 +775,7 @@ functor and a natural transformation, as in the lax triangle
 Our eventual proofs of Theorems A and B will revolve around a careful understanding of internal monoids in an equipment $\dcat{D}$. In particular, following~\cite{Schultz2015}, the exactness of an equipment given in Definition~\ref{def:exact_equipment} and the $(\bo,\ff)$ factorization system given in Theorem~\ref{thm:orthogonal} are built on notions related to monoids in $\dcat{D}$.
 \begin{definition}
       \label{def:monoids}
-   Denote by $\Mon(\dcat{D})$ the category of monoids in $\dcat{D}$. More precisely, the objects are \emph{monoids}: tuples $(c,M,i_M,m_M)$ consisting of an object $c$ of $\dcat{D}$ and a proarrow $M\colon c\tickar c$ together with unit and multiplication cells
+   Denote by $\Mon(\dcat{D})$ the category of monoids in $\dcat{D}$. More precisely, the objects are \emph{monoids}: 4-tuples $(c,M,i_M,m_M)$ consisting of an object $c$ of $\dcat{D}$ and a proarrow $M\colon c\tickar c$ together with unit and multiplication cells
    \begin{equation}
       \label{eqn:unit_and_mult}
       \begin{tikzcd}
@@ -805,13 +805,13 @@ Our eventual proofs of Theorems A and B will revolve around a careful understand
    which respects the unit and multiplication cells of $M$ and $N$.
 \end{definition}
 
-There is an evident forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ sending a monoid $M\colon c\tickar c$ to its underlying object $c=|M|$. 
+There is an evident forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ sending a monoid $M\colon c\tickar c$ to its underlying object $|M|\coloneqq c$. 
 \begin{lemma}
    Let $\dcat{D}$ be an equipment. The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ is a
    fibration and there is a morphism of fibrations
    \[ \begin{tikzcd}[column sep=tiny]
       \Mon(\dcat{D}) \ar[d,two heads,"\MOb"'] \ar[r]
-         & \dcat{D}_1 \ar[d,two heads] \\
+         & \dcat{D}_1 \ar[d,two heads,"\lframe\times\rframe"] \\
       \dcat{D}_0 \ar[r,"\Delta"']&\dcat{D}_0\times\dcat{D}_0.
    \end{tikzcd} \]
 \end{lemma}
@@ -831,7 +831,7 @@ There is an evident forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ se
    is a pseudo-pullback of categories. 
 \end{lemma}
 \begin{proof}
-   We may assume without loss of generality that the pullback in Definition~\ref{def:local_equivalence} realizing $F\colon\dcat{C}\to\dcat{D}$ as a local equivalence is strict. It is then straightforward to check directly that the above square is again a strict pullback and hence a pseudo-pullback following Remark~\ref{rem:strict_vs_pseudo_pullback}.
+   By Remark~\ref{rem:strict_vs_pseudo_pullback}, we may assume that the pullback in Definition~\ref{def:local_equivalence} realizing $F\colon\dcat{C}\to\dcat{D}$ as a local equivalence is strict. It is then straightforward to check directly that the above square is again a strict pullback and hence a pseudo-pullback.
 \end{proof}
 
 \begin{definition}
