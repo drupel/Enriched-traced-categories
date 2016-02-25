@@ -308,24 +308,42 @@ To overcome the use of a fixed object set, we first explain what kind of object 
 \[\Adjoint{\Set}{\TrCat}{\FT}{\UT}\]
 inducing a monad $\TT$ on $\Set$, which is in fact isomorphic to the free monoid monad. Let $\cat{T}$ and $\cat{T}'$ be free-on-objects traced categories where $\Ob(\cat{T})$ is the free monoid on a set $\LabSet$ and $\Ob(\cat{T}')$ is the free monoid on a set $\LabSet'$. A strict (traced) monoidal functor $F\colon \cat{T}\to \cat{T}'$ induces a homomorphism $\Ob(F)\colon\Ob(\cat{T})\to\Ob(\cat{T}')$ between the free monoids, or equivalently a function $\Ob F\colon\LabSet\to\TT(\LabSet')$ which can be identified with a morphism in the Kleisli category $\Set_{\TT}$ of this monad.
 
-Similarly, the compact category $\LCob{\LabSet}$ varies functorially in $\LabSet\in\Set$ and gives rise to a functor
-\[(\LCob{\bullet})\colon\Set_{\TT}\to\CompCat\]
-to the category $\CompCat$ of compact categories and strict functors, under which $\LabSet$ is sent to the free compact category on $\LabSet$ (e.g.\ see \cite{KellyLaplaza,Abramsky2}). We can compose this with $\Lax(-,\Set)$ to obtain a functor which we denote
+The compact category $\LCob{\LabSet}$ clearly varies functorially in $\LabSet\in\Set$, but it is not
+much harder to see that it is also functorial in $\LabSet\in\Set_{\TT}$, giving rise to a functor
+\[
+  (\LCob{\bullet})\colon\Set_{\TT}\to\CompCat
+\]
+to the category $\CompCat$ of compact categories and strict functors, under which $\LabSet$ is sent
+to the free compact category on $\LabSet$ (e.g.\ see \cite{KellyLaplaza,Abramsky2}). We can compose
+this with $\Lax(-,\Set)$ to obtain a functor which we denote
 \begin{equation}
       \label{eqn:cob/bullet}
    (\LCob{\bullet})\alg\colon\Set_{\TT}^{\mathrm{op}}\too\Cat.
 \end{equation}
-By applying the Grothendieck construction (denoted by $\int$ here) to (\ref{eqn:cob/bullet}), we obtain a fibration for which the fiber over a set $\LabSet$ is equivalent (e.g.\ using \eqref{eq:single_fiber_tr}) to $\TrCat_{\LabSet}$. Let $\TrFrObCat\subset\TrCat$ denote the full subcategory spanned by the traced categories that are free-on-objects.
+By applying the Grothendieck construction (denoted by $\int$ here) to (\ref{eqn:cob/bullet}), we
+obtain a fibration for which the fiber over a set $\LabSet$ is equivalent (by \ref{th:traced is cob
+alg}) to $\TrCat_{\LabSet}$. Let $\TrFrObCat\subset\TrCat$ denote the full subcategory spanned by
+the traced categories that are free-on-objects.
 \begin{named}{Theorem A}
-      \label{thm:TheoremA_statement}
+    \label{thm:TheoremA_statement}
   There is an equivalence of 1-categories
   \begin{align*}
-     &\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrFrObCat.
+    &\int^{\LabSet\in\Set_{\TT}}(\LCob{\LabSet})\alg \to \TrFrObCat.
   \end{align*}
 \end{named}
-This result is proven in Section~\ref{sec:monoids_on_free} together with an analogous statement for compact categories.
+This result is proven in Section~\ref{sec:monoids_on_free} together with an analogous statement for
+compact categories.
+
 \begin{remark}
-   The most naive way of handling variation of the label set $\LabSet$ is to use plain functions $\LabSet\to\LabSet'$, rather than maps in the Kleisli category $\Set_{\TT}$. That is, instead of taking the Grothendieck construction of the functors \eqref{eqn:cob/bullet}, we could use the most evident functor $\Lax(\LCob{\bullet}\,,\Set)\colon\op{\Set}\to\Cat$. This would lead to a version of \ref{thm:TheoremA_statement} in which the right hand side is a 2-category of ``traced colored PROPs''. We will not pursue this direction in the paper; however, the interested reader familiar with PROPs should have no difficulty defining traced colored PROPs and proving the analogue of \ref{thm:TheoremA_statement} as a corollary of our results. For more on PROPs, see e.g.~\cite{HackneyRobertson}.
+  The most naive way of handling variation of the label set $\LabSet$ is to use plain functions
+  $\LabSet\to\LabSet'$, rather than maps in the Kleisli category $\Set_{\TT}$. That is, instead of
+  taking the Grothendieck construction of the functor \eqref{eqn:cob/bullet}, we could use the most
+  evident functor $\Lax(\LCob{\bullet}\,,\Set)\colon\op{\Set}\to\Cat$. This would lead to a version
+  of \ref{thm:TheoremA_statement} in which the right hand side is a 2-category of ``traced colored
+  PROPs''. We will not pursue this direction in the paper; however, the interested reader familiar
+  with PROPs should have no difficulty defining traced colored PROPs and proving the analogue of
+  \ref{thm:TheoremA_statement} as a corollary of our results. For more on PROPs, see
+  e.g.~\cite{HackneyRobertson}.
 \end{remark}
 
 In the course of proving \ref{thm:TheoremA_statement}, we will also establish a similar result which constructs the category of bijective-on-objects functors between traced categories. To make this precise, we prove (Theorem~\ref{thm:orthogonal} and Proposition~\ref{prop:CompProf_exact}) that the well-known $(\bo,\ff)$ factorization system of $\Cat$ restricts to a factorization system on $\TrCat$; more precisely the left class consists of bijective-on-objects functors and the right class consists of fully faithful functors. 
