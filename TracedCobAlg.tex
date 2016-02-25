@@ -681,10 +681,10 @@ Our main tool in this paper will be equipments in which the horizontal arrows ar
 \section{Internal copresheaves}
       \label{sec:internal_presheaves}
 
-Copresheaves on a category $\cat{C}$ can be identified with profunctors $\cat{C}\tickar1$ in $\dProf$. Motivated by this, we will think of
-proarrows $c\tickar 1$ in any equipment $\dcat{D}$ with a terminal object 1 as ``internal
+Copresheaves on a category $\cat{C}$ can be identified with profunctors $1\tickar\cat{C}$ in $\dProf$. Motivated by this, we will think of
+proarrows $1\tickar c$ in any equipment $\dcat{D}$ with a terminal object 1 as ``internal
 copresheaves'' on the object $c$. For each object, there is a category of copresheaves
-$\HHor(\dcat{D})(c,1)$. We can give a direct construction of the bifibration over $\dcat{D}_0$ whose
+$\HHor(\dcat{D})(1,c)$. We can give a direct construction of the bifibration over $\dcat{D}_0$ whose
 fiber over an object $c$ is the category of copresheaves on $c$:
 
 \begin{definition}
@@ -698,7 +698,7 @@ fiber over an object $c$ is the category of copresheaves on $c$:
      \begin{tikzcd}
          \CPsh(\dcat{D}) \ar[r] \ar[d,two heads] \arrow[dr,phantom,"\lrcorner",very near start]
             & \dcat{D}_1 \ar[d,two heads] \\
-         \dcat{D}_0\times 1 \ar[r,"\dcat{D}_0\times 1"']
+         1\times\dcat{D}_0 \ar[r,"1\times\dcat{D}_0"']
             & \dcat{D}_0\times\dcat{D}_0.
       \end{tikzcd}
    \end{equation*}
@@ -720,14 +720,14 @@ fiber over an object $c$ is the category of copresheaves on $c$:
 \end{lemma}
 \begin{proof}
    Consider the cube
-   \[ \begin{tikzcd}[row sep={40,between origins}, column sep={55,between origins}]
+   \[ \begin{tikzcd}[row sep={35,between origins}, column sep={55,between origins}]
       \CPsh(\dcat{C}) \ar[rr,"\tilde{F}"] \ar[dr] \ar[dd,two heads]
       &[-10] & \CPsh(\dcat{D}) \ar[dd,two heads] \ar[dr] &[-10] \\[-5]
       & \dcat{C}_1 \ar[rr,crossing over,"F_1" near start]
          && \dcat{D}_1 \ar[dd,two heads] \\
-      \dcat{C}_0\times 1 \ar[rr,"F_0\times 1" pos=.75]
-            \ar[dr,"\id\times 1"' {pos=.25,inner sep=2pt}]
-         && \dcat{D}_0\times 1 \ar[dr,"\id\times 1"' {pos=.25,inner sep=2pt}] & \\[-5]
+      1\times\dcat{C}_0 \ar[rr,"1\times F_0" pos=.75]
+            \ar[dr,"1\times\dcat{C}_0"' {pos=.25,inner sep=2pt}]
+         && 1\times\dcat{D}_0 \ar[dr,"1\times\dcat{D}_0"' {pos=.25,inner sep=2pt}] & \\[-5]
       & \dcat{C}_0\times\dcat{C}_0 \ar[rr,"F_0\times F_0"']
             \ar[from=uu,crossing over,two heads]
          && \dcat{D}_0\times\dcat{D}_0.
