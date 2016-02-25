@@ -120,15 +120,7 @@ exiting on the right.
 Moreover, the wiring diagram itself in which boxes $X_1,\ldots,X_n$ are wired together inside a
 larger box $Y$ can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$.
 In fact, this is more appropriately interpreted as a morphism in the (colored) operad $\Cob$
-underlying the symmetric monoidal category of oriented 1-cobordisms.
-
-There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{T}$
-than in a cobordism. Namely, each input and output of a box must be labeled by an object of
-$\cat{T}$ and the wires connecting boxes must respect the labels (e.g.\ in
-(\ref{dia:string_diagram}) objects $1c$ and $2b$ must be equal). We will thus consider the operad
-$\LCob{\LabSet}$ of oriented 1-dimensional cobordisms over a fixed set of labels $\LabSet$.
-\todo[inline]{I would actually move the following sentence and diagram to the end of the previous
-paragraph, and remove the reference to $\LabSet$, since labels are not shown in the diagram.} The
+underlying the symmetric monoidal category of oriented 1-cobordisms. The
 following shows the two approaches to drawing a 2-ary morphism $X_1,X_2\to Y$ in $\LCob{\LabSet}$:
 \begin{equation*}
   \begin{tikzpicture}[x=1cm,y=1ex,node distance=1 and 1,semithick,every label quotes/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},every to/.style={out=0,in=180},baseline=(current bounding box.center)]
@@ -173,6 +165,12 @@ following shows the two approaches to drawing a 2-ary morphism $X_1,X_2\to Y$ in
       (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
   \end{tikzpicture}
 \end{equation*}
+
+There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{T}$
+than in a cobordism. Namely, each input and output of a box must be labeled by an object of
+$\cat{T}$ and the wires connecting boxes must respect the labels (e.g.\ in
+(\ref{dia:string_diagram}) objects $1c$ and $2b$ must be equal). We will thus consider the operad
+$\LCob{\LabSet}$ of oriented 1-dimensional cobordisms over a fixed set of labels $\LabSet$.
 
 In the table below, we record these two interpretations of a string diagram. Note the ``degree
 shift'' between the second and third columns.
