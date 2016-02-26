@@ -751,65 +751,94 @@ The objects in a category, 2-category, or double category will be denoted with t
    taking an evident limit in $\Set$.
 \end{example}
 
-Our main tool in this paper will be equipments in which the horizontal arrows are (generalizations of) profunctors, as in the following example.
+Our main tool in this paper will be equipments in which the horizontal arrows are (generalizations
+of) profunctors, as in the following example.
+
 \begin{example}\label{ex:profunctors}
-   The equipment $\dProf$ is a double category whose vertical category $\dProf_0=\Cat$ is the category of small 1-categories and
-   functors. Given categories $\cat{C},\cat{C}'\in\dProf_0$, a proarrow 
-   \[ \begin{tikzcd}
-      \cat{C} \ar[r,tick,"M"] & \cat{C}'
-   \end{tikzcd} \]
-   in $\dProf_1$ is a profunctor, i.e.\ a functor $M\colon\op{\cat{C}}\times\cat{C}'\to\Set$. The left and right frame functors are given by $\lframe(M)=\cat{C}$ and $\rframe(M)=\cat{C}'$. A 2-cell $\phi$ in $\dProf$, as to the left, denotes a natural transformation, as to the right, in \eqref{eqn:Prof2cells}:
-   \begin{equation}
-         \label{eqn:Prof2cells}
-      \begin{tikzcd}
-         \cat{C} \ar[r,tick,"M" domA] \ar[d,"F"']
-            & \cat{C}'\ar[d,"F'"] \\
-         \cat{D} \ar[r,tick,"N"' codA]
-            & \cat{D}'
-         \twocellA{\phi}
-      \end{tikzcd}
-      \hspace{.6in}
-      \begin{tikzcd}[column sep=.8em, row sep=5ex]
-         \op{\cat{C}}\times \cat{C}' \ar[dr,"M"'] \ar[rr,"\op{F}\times F'"]
-            & \ar[d,phantom,"\overset{\phi}{\Rightarrow}" near start]
-            & \op{\cat{D}}\times \cat{D}'\ar[dl,"N"] \\
-         & \Set.
-      \end{tikzcd}
-   \end{equation}
-   For any category $\cat{C}\in\dProf_0$, $\Hom_{\cat{C}}\colon\op{\cat{C}}\times\cat{C}\to\Set$ is a profunctor and $\unit(\cat{C})=\Hom_{\cat{C}}$ is the unit functor of $\dProf$. Given two profunctors
-   \[ \begin{tikzcd}
-      \cat{C} \ar[r,tick,"M"] & \cat{D} \ar[r,tick,"N"] & \cat{E},
-   \end{tikzcd} \]
-   define the horizontal composition $M\odot N$ on objects $c\in\cat{C}$ and $e\in\cat{E}$ as the coequalizer of the diagram
-   \begin{equation} \begin{tikzcd}
-      \label{eqn:coendComp}
-      \displaystyle\coprod_{d_1,d_2\in\cat{D}} M(c,d_1)\times\cat{D}(d_1,d_2)\times N(d_2,e)
-         \ar[r,shift left] \ar[r,shift right]
-      & \displaystyle\coprod_{d\in\cat{D}} M(c,d)\times N(d,e)
-   \end{tikzcd} \end{equation}
-   where the two maps are given by the right and left actions of $\cat{D}$ on $M$ and $N$ respectively. We can write elements of $(M\odot N)(c,e)$ as tensors $m\otimes n$, where $m\in M(c,d)$ and $n\in N(d,e)$ for some $d\in\cat{D}$. The construction as a coequalizer then implies that $(m\cdot f)\otimes n=m\otimes(f\cdot n)$ whenever the equation makes sense. Note that the coequalizer \eqref{eqn:coendComp} is in fact a reflexive coequalizer, using $\id_d\in\cat{D}(d,d)$. Given a profunctor $M\colon\cat{C}\tickar\cat{C'}$ there are canonical isomorphisms $\Hom_{\cat{C}}\odot M \iso M \iso M\odot\Hom_{\cat{D}}$ which can be viewed as giving an action of $\Hom_{\cat{C}}$ and of $\Hom_{\cat{D}}$ on $M$, from the left and right respectively.
-
-   At this point we have given $\dProf$ the structure of a double category. To see that $\dProf$ is an equipment, note that from a pair of functors $F\colon\cat{C}\to\cat{D}$, $F'\colon\cat{C}'\to\cat{D}'$ and a profunctor $N\colon \cat{D}\tickar\cat{D}'$ we may form the composite 
-   \[\begin{tikzcd}
-      \op{\cat{C}}\times\cat{C}' \ar[r,"\op{F}\times F'"]
-         &[1.5em] \op{\cat{D}}\times\cat{D}' \ar[r,"N"]
-         & \Set,
-   \end{tikzcd}\]
-   denoted $N(F',F)\colon\cat{C}\tickar\cat{C}'$, such that
-   \begin{equation}
-      \label{eq:cartesian profunctor morphism}
-      \begin{tikzcd}
-      \cat{C} \ar[r,tick,"{N(F',F)}" domA] \ar[d,"F"']
-         & \cat{C}'\ar[d,"F'"] \\
+  The equipment $\dProf$ is a double category whose vertical category $\dProf_0=\Cat$ is the
+  category of small 1-categories and functors. Given categories $\cat{C},\cat{C}'\in\dProf_0$, a
+  proarrow
+  \[ \begin{tikzcd}
+    \cat{C} \ar[r,tick,"M"] & \cat{C}'
+  \end{tikzcd} \]
+  in $\dProf_1$ is a profunctor, i.e.\ a functor $M\colon\op{\cat{C}}\times\cat{C}'\to\Set$. The
+  left and right frame functors are given by $\lframe(M)=\cat{C}$ and $\rframe(M)=\cat{C}'$. A
+  2-cell $\phi$ in $\dProf$, as to the left, denotes a natural transformation, as to the right, in
+  \eqref{eqn:Prof2cells}:
+  \begin{equation}
+      \label{eqn:Prof2cells}
+    \begin{tikzcd}
+      \cat{C} \ar[r,tick,"M" domA] \ar[d,"F"']
+        & \cat{C}'\ar[d,"F'"] \\
       \cat{D} \ar[r,tick,"N"' codA]
-         & \cat{D}'
+        & \cat{D}'
       \twocellA{\phi}
-      \end{tikzcd}
-   \end{equation}
-   is a cartesian 2-cell. A simple Yoneda lemma argument yields $\VVer(\dProf)\equiv\CCat$.
-\end{example}
-%An equipment $\dcat{D}$ is often named according to its horizontal arrows. In Example~\ref{ex:profunctors} we discussed profunctors, which are the horizontal arrows in an equipment $\dProf$. Variations on $\dProf$, such as $\dMonProf, \dTrProf,$ and $\dCompProf$ (defined in Section~\ref{sec:monoidal_profunctors}) will play a major role in this paper.
+    \end{tikzcd}
+    \hspace{.6in}
+    \begin{tikzcd}[column sep=.8em, row sep=5ex]
+      \op{\cat{C}}\times \cat{C}' \ar[dr,"M"'] \ar[rr,"\op{F}\times F'"]
+        & \ar[d,phantom,"\overset{\phi}{\Rightarrow}" near start]
+        & \op{\cat{D}}\times \cat{D}'\ar[dl,"N"] \\
+      & \Set.
+    \end{tikzcd}
+  \end{equation}
+  The unit functor $\unit\colon\Cat\to\dProf_1$ sends a category $\cat{C}$ to the hom profunctor
+  $\Hom_{\cat{C}}\colon\op{\cat{C}}\times\cat{C}\to\Set$. Given two profunctors
+  \[ \begin{tikzcd}
+    \cat{C} \ar[r,tick,"M"] & \cat{D} \ar[r,tick,"N"] & \cat{E},
+  \end{tikzcd} \]
+  define the horizontal composition $M\odot N$ on objects $c\in\cat{C}$ and $e\in\cat{E}$ as the
+  coequalizer of the diagram
+  \begin{equation} \begin{tikzcd}
+      \label{eqn:coendComp}
+    \displaystyle\coprod_{d_1,d_2\in\cat{D}} M(c,d_1)\times\cat{D}(d_1,d_2)\times N(d_2,e)
+      \ar[r,shift left] \ar[r,shift right]
+    & \displaystyle\coprod_{d\in\cat{D}} M(c,d)\times N(d,e)
+  \end{tikzcd} \end{equation}
+  where the two maps are given by the right and left actions of $\cat{D}$ on $M$ and $N$
+  respectively. Note that the coequalizer \eqref{eqn:coendComp} is in fact a reflexive coequalizer,
+  using $\id_d\in\cat{D}(d,d)$. Given a profunctor $M\colon\cat{C}\tickar\cat{C'}$ there are
+  canonical isomorphisms $\Hom_{\cat{C}}\odot M \iso M \iso M\odot\Hom_{\cat{D}}$ which can be
+  viewed as giving an action of $\Hom_{\cat{C}}$ and of $\Hom_{\cat{D}}$ on $M$, from the left and
+  right respectively.
 
+  At this point we have given $\dProf$ the structure of a double category. To see that $\dProf$ is
+  an equipment, note that from a pair of functors $F\colon\cat{C}\to\cat{D}$,
+  $F'\colon\cat{C}'\to\cat{D}'$ and a profunctor $N\colon \cat{D}\tickar\cat{D}'$ we may form the
+  composite
+  \[\begin{tikzcd}
+    \op{\cat{C}}\times\cat{C}' \ar[r,"\op{F}\times F'"]
+      &[1.5em] \op{\cat{D}}\times\cat{D}' \ar[r,"N"]
+      & \Set,
+  \end{tikzcd}\]
+  denoted $N(F',F)\colon\cat{C}\tickar\cat{C}'$, such that
+  \begin{equation}
+      \label{eq:cartesian profunctor morphism}
+    \begin{tikzcd}
+      \cat{C} \ar[r,tick,"{N(F',F)}" domA] \ar[d,"F"']
+        & \cat{C}'\ar[d,"F'"] \\
+      \cat{D} \ar[r,tick,"N"' codA]
+        & \cat{D}'
+      \twocellA{\phi}
+    \end{tikzcd}
+  \end{equation}
+  is a cartesian 2-cell. A simple Yoneda lemma argument yields $\VVer(\dProf)\equiv\CCat$.
+\end{example}
+
+\begin{remark}
+  There is a strong analogy relating profunctors between categories with bimodules between rings.
+  Besides being a useful source of intuition, we can also exploit this analogy to provide a
+  convenient notation for working with profunctors.
+
+  If $M\colon\op{\cat{C}}\times\cat{D}\to\Set$ is a profunctor, then for any element $m\in M(c,d)$
+  and morphisms $f\colon c'\to c$ and $g\colon d\to d'$, we can write $g\cdot m\in M(c,d')$ and
+  $m\cdot f\in M(c',d)$ for the elements $M(\id,g)(m)$ and $M(f,\id)(m)$ respectively. Thus we think
+  of the functoriality of $M$ as providing left and right actions of $\cat{D}$ and $\cat{C}$ on the
+  elements of $M$. The equations $(g\cdot m)\cdot f = g\cdot (m\cdot f)$, $g'\cdot(g\cdot
+  m)=(g'\circ g)\cdot m$, and $(m\cdot f)\cdot f')=m\cdot(f\circ f')$ clearly hold whenever they
+  make sense.
+  \todo[author=Patrick,inline]{I will finish this.}
+\end{remark}
 
 \section{Internal copresheaves}
       \label{sec:internal_presheaves}
@@ -887,70 +916,88 @@ functor and a natural transformation, as in the lax triangle
 \section{Monoids and bimodules}
       \label{sec:monoids_bimods}
 
-Our eventual proofs of \ref{thm:TheoremA}~and~\ref{thm:TheoremB} will revolve around a careful understanding of internal monoids in an equipment $\dcat{D}$. In particular, following~\cite{Schultz2015}, the exactness of an equipment and the resulting $(\bo,\ff)$ factorization system given, both given in Section~\ref{sec:exactness_boff} are built on notions related to monoids in $\dcat{D}$.
+Our eventual proofs of \ref{thm:TheoremA}~and~\ref{thm:TheoremB} will revolve around a careful
+understanding of internal monoids in an equipment $\dcat{D}$. In particular,
+following~\cite{Schultz2015}, the exactness of an equipment and the resulting $(\bo,\ff)$
+factorization system given, both given in Section~\ref{sec:exactness_boff} are built on notions
+related to monoids in $\dcat{D}$.
+
 \begin{definition}
-      \label{def:monoids}
-   Denote by $\Mon(\dcat{D})$ the category of monoids in $\dcat{D}$. More precisely, the objects are \emph{monoids}: 4-tuples $(c,M,i_M,m_M)$ consisting of an object $c$ of $\dcat{D}$ and a proarrow $M\colon c\tickar c$ together with unit and multiplication cells
-   \begin{equation}
+    \label{def:monoids}
+  Denote by $\Mon(\dcat{D})$ the category of monoids in $\dcat{D}$. More precisely, the objects are
+  \emph{monoids}: 4-tuples $(c,M,i_M,m_M)$ consisting of an object $c$ of $\dcat{D}$ and a proarrow
+  $M\colon c\tickar c$ together with unit and multiplication cells
+  \begin{equation}
       \label{eqn:unit_and_mult}
-      \begin{tikzcd}
-         c \ar[r,tick,"c" domA] \ar[d,equal]
-            & c \ar[d,equal] \\
-         c \ar[r,tick,"M"' codA] & c
-         \twocellA{i_M}
-      \end{tikzcd}
-      \qquad
-      \begin{tikzcd}
-         c \ar[r,tick,"M"] \ar[d,equal]
-            & |[alias=domA]| c \ar[r,tick,"M"]
-            & c \ar[d,equal] \\
-         c \ar[rr,tick,"M"' codA]
-            && c
-         \twocellA{m_M}
-      \end{tikzcd}
-   \end{equation}
-   satisfying the evident unit and associativity axioms. The morphisms are \emph{monoid homomorphisms}: pairs $(f,\vec{f}\mspace{2mu})$ consisting of a vertical arrow $f\colon c\to d$ in $\dcat{D}$ and a cell
-   \[ \begin{tikzcd}
-         c \ar[r,tick,"M" domA] \ar[d,"f"']
-            & c \ar[d,"f"] \\
-         d \ar[r,tick,"N"' codA]
-            & d
-         \twocellA{\vec{f}}
-      \end{tikzcd} \]
-   which respects the unit and multiplication cells of $M$ and $N$.
+    \begin{tikzcd}
+      c \ar[r,tick,"c" domA] \ar[d,equal]
+        & c \ar[d,equal] \\
+      c \ar[r,tick,"M"' codA] & c
+      \twocellA{i_M}
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}
+      c \ar[r,tick,"M"] \ar[d,equal]
+        & |[alias=domA]| c \ar[r,tick,"M"]
+        & c \ar[d,equal] \\
+      c \ar[rr,tick,"M"' codA]
+        && c
+      \twocellA{m_M}
+    \end{tikzcd}
+  \end{equation}
+  satisfying the evident unit and associativity axioms. The morphisms are \emph{monoid
+  homomorphisms}: pairs $(f,\vec{f}\mspace{2mu})$ consisting of a vertical arrow $f\colon c\to d$ in
+  $\dcat{D}$ and a cell
+  \[ \begin{tikzcd}
+    c \ar[r,tick,"M" domA] \ar[d,"f"']
+      & c \ar[d,"f"] \\
+    d \ar[r,tick,"N"' codA]
+      & d
+    \twocellA{\vec{f}}
+  \end{tikzcd} \]
+  which respects the unit and multiplication cells of $M$ and $N$.
 \end{definition}
 
-There is an evident forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ sending a monoid $M\colon c\tickar c$ to its underlying object $|M|\coloneqq c$. 
+There is an evident forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ sending a monoid
+$M\colon c\tickar c$ to its underlying object $|M|\coloneqq c$.
+
 \begin{lemma}
-	\label{lemma:Mon_und_fib}
-   Let $\dcat{D}$ be an equipment. The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ is a
-   fibration and there is a morphism of fibrations
-   \[ \begin{tikzcd}[column sep=tiny]
-      \Mon(\dcat{D}) \ar[d,two heads,"\MOb"'] \ar[r]
-         & \dcat{D}_1 \ar[d,two heads,"\lframe\times\rframe"] \\
-      \dcat{D}_0 \ar[r,"\Delta"']&\dcat{D}_0\times\dcat{D}_0.
-   \end{tikzcd} \]
+    \label{lemma:Mon_und_fib}
+  Let $\dcat{D}$ be an equipment. The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ is a
+  fibration and there is a morphism of fibrations
+  \[ \begin{tikzcd}[column sep=tiny]
+    \Mon(\dcat{D}) \ar[d,two heads,"\MOb"'] \ar[r]
+      & \dcat{D}_1 \ar[d,two heads,"\lframe\times\rframe"] \\
+    \dcat{D}_0 \ar[r,"\Delta"']&\dcat{D}_0\times\dcat{D}_0.
+  \end{tikzcd} \]
 \end{lemma}
 \begin{proof}
-   Let $f\colon c\to d$ be a vertical morphism of $\dcat{D}$ and $N\colon d\tickar d$ a monoid in $\dcat{D}$. Since the 2-cell defining the restriction of $N$ along $f$ is cartesian, there is an induced monoid structure on $N(f,f)$ which in particular makes this cartesian 2-cell a monoid homomorphism. The result follows.
+  Let $f\colon c\to d$ be a vertical morphism of $\dcat{D}$ and $N\colon d\tickar d$ a monoid in
+  $\dcat{D}$. Since the 2-cell defining the restriction of $N$ along $f$ is cartesian, there is an
+  induced monoid structure on $N(f,f)$ which in particular makes this cartesian 2-cell a monoid
+  homomorphism. The result follows.
 \end{proof}
 
 \begin{lemma}
-      \label{lem:Mon_pullback}
-   For a local equivalence $F\colon\dcat{C}\to\dcat{D}$, the induced square
-   \[ \begin{tikzcd}
-      \Mon(\dcat{C}) \ar[r,"\Mon(F)"] \ar[d,two heads,"\MOb"'] \ar[dr,phantom,"\lrcorner" very near start]
-         & \Mon(\dcat{D}) \ar[d,two heads,"\MOb"] \\
-      \dcat{C}_0 \ar[r,"F_0"']
-         & \dcat{D}_0
-   \end{tikzcd} \]
-   is a pseudo-pullback of categories. 
+    \label{lem:Mon_pullback}
+  For a local equivalence $F\colon\dcat{C}\to\dcat{D}$, the induced square
+  \[ \begin{tikzcd}
+    \Mon(\dcat{C}) \ar[r,"\Mon(F)"] \ar[d,two heads,"\MOb"'] \ar[dr,phantom,"\lrcorner" very near start]
+      & \Mon(\dcat{D}) \ar[d,two heads,"\MOb"] \\
+    \dcat{C}_0 \ar[r,"F_0"']
+      & \dcat{D}_0
+  \end{tikzcd} \]
+  is a pseudo-pullback of categories. 
 \end{lemma}
 \begin{proof}
-   By Remark~\ref{rem:strict_vs_pseudo_pullback}, we may assume that the pullback in Definition~\ref{def:local_equivalence} realizing $F\colon\dcat{C}\to\dcat{D}$ as a local equivalence is strict. It is then straightforward to check directly that the above square is again a strict pullback and hence a pseudo-pullback.
+  By Remark~\ref{rem:strict_vs_pseudo_pullback}, we may assume that the pullback in
+  Definition~\ref{def:local_equivalence} realizing $F\colon\dcat{C}\to\dcat{D}$ as a local
+  equivalence is strict. It is then straightforward to check directly that the above square is again
+  a strict pullback and hence a pseudo-pullback.
 \end{proof}
 
-In all our cases of interest, $\Mon(\dcat{C})$ will be the vertical part of an equipment. The following is a standard construction; see \cite{Shulman}
+In all our cases of interest, $\Mon(\dcat{C})$ will be the vertical part of an equipment. The
+following is a standard construction; see \cite{Shulman}
 
 \begin{definition}
     \label{def:monoids_and_modules}
@@ -958,7 +1005,8 @@ In all our cases of interest, $\Mon(\dcat{C})$ will be the vertical part of an e
   $\HHor(\dcat{D})(c,d)$ has coequalizers and $\odot$ preserves coequalizers in each variable. The
   equipment $\dMod(\dcat{D})$ of \emph{monoids and bimodules} is defined as follows:
   \begin{itemize}
-    \item The vertical category $\dMod(\dcat{D})_0$ is the category $\Mon(\dcat{D})$ of monoids in $\dcat{D}$.
+    \item The vertical category $\dMod(\dcat{D})_0$ is the category $\Mon(\dcat{D})$ of monoids in
+      $\dcat{D}$.
     \item The proarrows $B\colon M\tickar N$ are \emph{bimodules}: triples $(B,l_B,r_B)$
       consisting of a proarrow $B\colon c\tickar d$ in $\dcat{D}$ and cells
       \begin{equation*}
@@ -1000,13 +1048,18 @@ In all our cases of interest, $\Mon(\dcat{C})$ will be the vertical part of an e
   We will write $\Bimod{M}{N}$ to denote the 1-category of $(M,N)$-bimodules and bimodule morphisms.
 \end{definition}
 
-The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ extends to a forgetful equipment functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$. There is also a local equivalence $U\colon\dcat{D}\to\dMod(\dcat{D})$ sending $c$ to the unit $c\tickar c$ with the trivial monoid structure. If $F\colon\dcat{C}\to\dcat{D}$ is an equipment functor, then there is an evident equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$.
+The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ extends to a forgetful equipment
+functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$. There is also a local equivalence
+$U\colon\dcat{D}\to\dMod(\dcat{D})$ sending $c$ to the unit $c\tickar c$ with the trivial monoid
+structure. If $F\colon\dcat{C}\to\dcat{D}$ is an equipment functor, then there is an evident
+equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$.
 
 \begin{lemma}
-      \label{lemma:FFLE_Mod}
-   For a local equivalence $F\colon\dcat{C}\to\dcat{D}$ the induced functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$ is a local equivalence. If $F$ is a fully faithful local equivalence, then so is $\dMod(F)$.
+    \label{lemma:FFLE_Mod}
+  For a local equivalence $F\colon\dcat{C}\to\dcat{D}$ the induced functor
+  $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$ is a local equivalence. If $F$ is a fully
+  faithful local equivalence, then so is $\dMod(F)$.
 \end{lemma}
-
 
 \section{Exact equipments and $\bo$, $\ff$ factorization}
 	\label{sec:exactness_boff}
