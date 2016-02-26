@@ -887,7 +887,7 @@ functor and a natural transformation, as in the lax triangle
 \section{Monoids and bimodules}
       \label{sec:monoids_bimods}
 
-Our eventual proofs of Theorems A and B will revolve around a careful understanding of internal monoids in an equipment $\dcat{D}$. In particular, following~\cite{Schultz2015}, the exactness of an equipment given in Definition~\ref{def:exact_equipment} and the $(\bo,\ff)$ factorization system given in Theorem~\ref{thm:orthogonal} are built on notions related to monoids in $\dcat{D}$.
+Our eventual proofs of \ref{thm:TheoremA}~and~\ref{thm:TheoremB} will revolve around a careful understanding of internal monoids in an equipment $\dcat{D}$. In particular, following~\cite{Schultz2015}, the exactness of an equipment and the resulting $(\bo,\ff)$ factorization system given, both given in Section~\ref{sec:exactness_boff} are built on notions related to monoids in $\dcat{D}$.
 \begin{definition}
       \label{def:monoids}
    Denote by $\Mon(\dcat{D})$ the category of monoids in $\dcat{D}$. More precisely, the objects are \emph{monoids}: 4-tuples $(c,M,i_M,m_M)$ consisting of an object $c$ of $\dcat{D}$ and a proarrow $M\colon c\tickar c$ together with unit and multiplication cells
@@ -922,6 +922,7 @@ Our eventual proofs of Theorems A and B will revolve around a careful understand
 
 There is an evident forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ sending a monoid $M\colon c\tickar c$ to its underlying object $|M|\coloneqq c$. 
 \begin{lemma}
+	\label{lemma:Mon_und_fib}
    Let $\dcat{D}$ be an equipment. The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ is a
    fibration and there is a morphism of fibrations
    \[ \begin{tikzcd}[column sep=tiny]
@@ -949,14 +950,13 @@ There is an evident forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ se
    By Remark~\ref{rem:strict_vs_pseudo_pullback}, we may assume that the pullback in Definition~\ref{def:local_equivalence} realizing $F\colon\dcat{C}\to\dcat{D}$ as a local equivalence is strict. It is then straightforward to check directly that the above square is again a strict pullback and hence a pseudo-pullback.
 \end{proof}
 
-In many cases, $\Mon(\dcat{C})$ will be the vertical part of an equipment.
+In all our cases of interest, $\Mon(\dcat{C})$ will be the vertical part of an equipment. The following is a standard construction; see \cite{Shulman}
 
 \begin{definition}
       \label{def:monoids_and_modules}
    Let $\dcat{D}$ be an equipment with local coequalizers, i.e.\ such that each category
    $\HHor(\dcat{D})(c,d)$ has coequalizers and $\odot$ preserves coequalizers in each variable. The
-   equipment $\dMod(\dcat{D})$ of \emph{monoids and bimodules} is defined as follows (see also
-   \cite{Shulman}):
+   equipment $\dMod(\dcat{D})$ of \emph{monoids and bimodules} is defined as follows:
    \begin{itemize}
       \item The vertical category $\dMod(\dcat{D})_0$ is the category $\Mon(\dcat{D})$ of monoids in $\dcat{D}$.
       \item The proarrows $B\colon M\tickar N$ are \emph{bimodules}: triples $(B,l_B,r_B)$
@@ -997,7 +997,7 @@ In many cases, $\Mon(\dcat{C})$ will be the vertical part of an equipment.
          \end{tikzcd} \]
          which are compatible with the left and right actions of the bimodules.
    \end{itemize}
-We will write $\Bimod{M}{N}$ to denote the 1-category of $(M,N)$-bimodules and bimodule morphisms.
+We will write $\Bimod{M}{N}$ to denote the 1-category of $(M,N)$-bimodules and bimodule morphisms, the underlying 1-category of $\HHor(\dMod(\dcat{D}))$.
 
 \end{definition}
 
@@ -1005,12 +1005,14 @@ The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ extends to a forge
 
 \begin{lemma}
       \label{lemma:FFLE_Mod}
-   For a local equivalence $F\colon\dcat{C}\to\dcat{D}$ the induced functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$ is a local equivalence. If $F$ is fully faithful, then so is $\dMod(F)$.
+   For a local equivalence $F\colon\dcat{C}\to\dcat{D}$ the induced functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$ is a local equivalence. If $F$ is a fully faithful local equivalence, then so is $\dMod(F)$.
 \end{lemma}
 
 
 \section{Exact equipments and $\bo$, $\ff$ factorization}
-
+	\label{sec:exactness_boff}
+	
+	\todo[inline]{Patrick: introduce this section.}
 \begin{definition}
       \label{def:embedding}
    Let $M\colon c\tickar c$ be a monoid in an equipment $\dcat{D}$. An \emph{embedding} of $M$ into
@@ -1122,7 +1124,7 @@ The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ extends to a forge
       \twocellA{l_{\tilde X}}
       \twocellB{\tn{cart}}
    \end{tikzcd}\]
-   giving the action of $M$ on $\tilde X$. The action of $N$ on $\tilde X$ is obtained similarly and one easily checks the axioms making $\tilde X$ an $(M,N)$-bimodule. 
+   giving the action of $M$ on $\tilde X$. The action $r_{\tilde X}$ of $N$ on $\tilde X$ is obtained similarly, and one easily checks the axioms making $\tilde X$ an $(M,N)$-bimodule. 
 \end{proof}
 
 \begin{definition}\cite[Proposition 5.4]{Schultz2015}
