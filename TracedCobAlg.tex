@@ -1193,6 +1193,22 @@ equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we
    \end{itemize}
 \end{definition}
 
+The monoids and bimodules construction for an exact equipment is in some sense degenerate, as we will see beginning in Proposition~\ref{prop:collapse_local_equivalence} and culminating in Theorem~\ref{thm:Mod_vs_bo}.\todo{P, can you improve this sentence?}
+
+\begin{proposition}
+      \label{prop:collapse_local_equivalence}
+   If $\dcat{D}$ is an exact equipment, then collapse induces an equipment functor $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$ which is a local equivalence.
+\end{proposition}
+\begin{proof}
+   It is easy to use the universal property of collapse to construct, from any monoid homomorphism
+   $(f,\vec{f}\mspace{2mu})\colon(c,M)\to(d,N)$, a vertical morphism
+   $\Col{f}\colon\Col{M}\to\Col{N}$ in $\dcat{D}$, thus defining a functor
+   $\Mon(\dcat{D})\to\dcat{D}_0$.
+
+   The functor $\ColDash$ is defined on horizontal arrows and 2-cells using the inverse of the equivalence
+   \eqref{eqn:exact_Hor_Bimod}. The collapse 2-cell being cartesian implies that $\ColDash$ is a local equivalence.
+\end{proof}
+
 With these definitions in place we can now introduce two distinguished classes of vertical morphisms in an equipment $\dcat{D}$. These will become the left and right classes in an orthogonal factorization system on $\VVer(\dcat{D})$ for exact equipments.
 \begin{definition}\cite[Definitions~4.3~and~4.5]{Schultz2015}
       \label{def:boff}
@@ -1359,21 +1375,6 @@ The bijective-on-objects vertical arrows of an exact equipment $\dcat{D}$ will p
    Moreover, the pair $(f,\tilde{f})$ defines a morphism of arrows $i_M\to i_N$ in $\dcat{D}_0^{\bo}$. By \cite[Lemma 4.14]{Schultz2015}, if $\vec{f}$ is cartesian then so is $\vec{\id}_{\tilde{f}}$, and clearly the converse also holds. It follows that the left triangle is a morphism of fibrations since $\vec{f}$ being cartesian over $f$ implies $(f,\tilde{f})$ is as well. 
 
    The inverse equivalence $\dcat{D}^\bo_0\to\Mon(\dcat{D})$ sends a $\bo$ map $f\colon c\to d$ to the restriction $d(f,f)$ with its induced monoid structure.
-\end{proof}
-
-
-\begin{proposition}
-      \label{prop:collapse_local_equivalence}
-   If $\dcat{D}$ is an exact equipment, then collapse induces an equipment functor $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$ which is a local equivalence.
-\end{proposition}
-\begin{proof}
-   It is easy to use the universal property of collapse to construct, from any monoid homomorphism
-   $(f,\vec{f}\mspace{2mu})\colon(c,M)\to(d,N)$, a vertical morphism
-   $\Col{f}\colon\Col{M}\to\Col{N}$ in $\dcat{D}$, thus defining a functor
-   $\Mon(\dcat{D})\to\dcat{D}_0$.
-
-   The functor $\ColDash$ is defined on proarrows and 2-cells using the inverse of the equivalence
-   \eqref{eqn:exact_Hor_Bimod}. The collapse 2-cell being cartesian implies that $\ColDash$ is a local equivalence.
 \end{proof}
 
 \begin{theorem}
