@@ -1479,12 +1479,11 @@ Theorem~\ref{thm:mon_prof_equivalence} and Corollary~\ref{cor:Tr_mon_prof_equiva
 results suffice to prove \ref{thm:TheoremB}.
 
 The remaining difficulty is dealing with freeness-on-objects, which we need for \ref{thm:TheoremA}.
-This is the purpose of Section~\ref{sec:monoids_on_free}. We deduce our main results in
-Section~\ref{sec:deducing}.
+This is the purpose of Section~\ref{sec:monoids_on_free}. 
 
 \section{Monoidal, Compact, and Traced Categories}
    \label{sec:monoidal,compact,traced}
-In this section we remind the reader of some categorical preliminaries: basic definitions and facts about monoidal, traced, and compact categories, lax and strong functors, and the Int construction.
+We begin by reminding the reader of some categorical preliminaries: basic definitions and facts about monoidal, traced, and compact categories, lax and strong functors, and the Int construction.
 
 A \emph{strict monoidal category} $\cat{M}$ is a category equipped with a functor
 $\otimes\colon\cat{M}\times\cat{M}\to\cat{M}$ and an object $I\in\cat{M}$, satisfying the usual
@@ -1550,10 +1549,10 @@ A \emph{trace structure} on a monoidal category $\cat{T}$ is a collection of fun
 \end{equation}
 for $U,X,Y\in\Ob(\cat{T})$ satisfying seven equational axioms, we refer the reader to \cite{JoyalStreetVerity} for more details. If $\cat{T}$ and $\cat{U}$ are traced categories, then a \emph{(strict) traced functor} is simply a strict symmetric monoidal functor which commutes with the trace operation.
 
-In \cite{JoyalStreetVerity}, it is shown that every traced category $\cat{T}$ embeds as a full subcategory of a compact category $\Int(\cat{T})$ whose objects are pairs from $\big(\Ob(\cat{T})\big)^2$ with morphisms given by
+In \cite{JoyalStreetVerity}, it is shown that every traced category $\cat{T}$ embeds as a full subcategory of a compact category $\Int(\cat{T})$ whose objects are pairs $(\inp{X},\outp{X})\in\Ob(\cat{T})\times\Ob(\cat{T})$ with morphisms given by
 \begin{equation*}
    \Hom_{\Int(\cat{T})}\big((\inp{X},\outp{X}),(\inp{Y},\outp{Y})\big)
-      = \Hom_{\cat{Y}}(\inp{X}\otimes\outp{Y},\outp{X}\otimes\inp{Y})
+      = \Hom_{\cat{T}}(\inp{X}\otimes\outp{Y},\outp{X}\otimes\inp{Y})
 \end{equation*}
 and compositions computed using the trace of $\cat{T}$, see \cite{JoyalStreetVerity} for more details.
 \begin{remark}
