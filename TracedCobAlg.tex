@@ -1605,8 +1605,8 @@ We record the following facts, which hold for any traced category $\cat{T}$; eac
 \section{Monoidal profunctors}
       \label{sec:monoidal_profunctors}
 
-Suppose $\cat{C}$ and $\cat{C}'$ are monoidal categories. A \emph{monoidal
-profunctor} $M$ from $\cat{C}$ to $\cat{C}'$ is an ordinary profunctor (see Example~\ref{ex:profunctors}) $M\colon \op{\cat{C}}\times\cat{C}'\to\Set$ in $\MMonCat$, i.e.\ $M\colon \op{\cat{C}}\times\cat{C}'\to\Set$ is equipped with a lax-monoidal structure where $\Set$ is endowed with the cartesian monoidal structure. In the bimodule notation, this means that there is an associative operation assigning to
+Suppose $\cat{C}$ and $\cat{D}$ are monoidal categories. A \emph{monoidal
+profunctor} $M$ from $\cat{C}$ to $\cat{D}$ is an ordinary profunctor (see Example~\ref{ex:profunctors}) $M\colon \op{\cat{C}}\times\cat{D}\to\Set$ in $\MMonCat$, i.e.\ $M\colon \op{\cat{C}}\times\cat{D}\to\Set$ is equipped with a lax-monoidal structure where $\Set$ is endowed with the cartesian monoidal structure. In the bimodule notation, this means that there is an associative operation assigning to
 any elements $m_1\in M(c_1,d_1)$ and $m_2\in M(c_2,d_2)$ an element $m_1\boxtimes m_2\in
 M(c_1\otimes c_2,d_1\otimes d_2)$ such that
 \[
@@ -1617,7 +1617,9 @@ as well as a distinguished element $I_M\in M(I,I)$ such that $I_M\boxtimes m = m
 for any $m\in M(c,d)$. A \emph{monoidal profunctor morphism} $\phi\colon M\to N$ is simply a monoidal transformation from $\MMonCat$ as in \eqref{eqn:Prof2cells}. Spelling this out in bimodule notation, $\phi$ is an ordinary morphism of profunctors such that
 $\phi(m_1\boxtimes m_2)=\phi(m_1)\boxtimes\phi(m_2)$ and $\phi(I_M)=I_N$.
 
-To see that we have defined a double category, it remains to check that the horizontal composition of monoidal profunctors is monoidal. This follows from the fact that the reflexive coequalizers from \eqref{eqn:coendComp} commute with products in $\Set$. Write $\dMonProf$ for this double category and note that it is in fact an equipment since the cartesian 2-cell \eqref{eq:cartesian profunctor morphism} is a monoidal transformation if $N$, $F$, and $F'$ are monoidal functors. We construct the equipments $\dCompProf$ and $\dTrProf$ using the functors $\UCM\colon\CompCat\to\MonCat$ and $\Int\colon\TrCat\to\CompCat$ in Definition~\ref{def:induced_locally_equivalent_equipment}. In particular, the vertical 1-categories of these equipments are given by
+To see that we have defined a double category, it remains to check that the horizontal composition of monoidal profunctors is monoidal. This follows from the fact that reflexive coequalizers---namely the ones from \eqref{eqn:coendComp}---commute with products in $\Set$. Write $\dMonProf$ for this double category, and note that it is in fact an equipment since the cartesian 2-cell \eqref{eq:cartesian profunctor morphism} is a monoidal transformation if $N$, $F$, and $F'$ are monoidal functors. 
+
+Let $\UCM\colon\CompCat\to\MonCat$ and $\Int\colon\TrCat\to\CompCat$ be the fully faithful functors defined above. Construct the induced equipments $\dCompProf\coloneqq\UCM^*(\dMonProf)$ and $\dTrProf\coloneqq\Int^*(\dCompProf)$ as in Definition~\ref{def:induced_locally_equivalent_equipment}. In particular, the vertical 1-categories of these equipments are given by
 \[\dMonProf_0=\MonCat,\quad\dCompProf_0=\CompCat,\quad\dTrProf_0=\TrCat.\]
 
 It may seem strange at first to define a profunctor $\cat{T}\tickar \cat{T}'$ between traced categories to be a
@@ -1650,7 +1652,8 @@ We are now in a position to connect the introductory notation of \eqref{eq:singl
    \{*\} \ar[r,"\FT(\LabSet)"']
       & \TrCat \ar[r,"\Int"']
       & \CompCat.
-\end{tikzcd} \end{equation}}%end erase
+\end{tikzcd} \end{equation}
+}%end erase
 
 
 \section{Special properties of $\dCompProf$}
@@ -1679,7 +1682,7 @@ We prove this result by factoring the desired equivalence as a composition of tw
    \end{tikzcd} \]
 \end{corollary}
 \begin{proof}
-   Since $\Int\colon\dTrProf\to\dCompProf$ is a local equivalence and preserves the terminal object, Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} give a factorization of the desired equivalence of fibrations as a composition of three equivalences with that of Theorem~\ref{thm:mon_prof_equivalence} in the middle.
+   We have that $\Int\colon\dTrProf\to\dCompProf$ is a local equivalence that preserves the terminal object. Thus using Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} we construct the desired equivalence $\CPsh(\dTrProf)\to\Mon(\dTrProf)$ as the pullback along $\Int$ of the equivalence $\CPsh(\dCompProf)\to\Mon(\dCompProf)$ from Theorem~\ref{thm:mon_prof_equivalence}.
 \end{proof}
 
 To prove Theorem~\ref{thm:mon_prof_equivalence} we introduce a third fibration and establish its equivalence with each of $\CPsh(\dCompProf)$ and $\Mon(\dCompProf)$.
