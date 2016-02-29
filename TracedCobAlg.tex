@@ -837,7 +837,15 @@ of) profunctors, as in the following example.
   elements of $M$. The equations $(g\cdot m)\cdot f = g\cdot (m\cdot f)$, $g'\cdot(g\cdot
   m)=(g'\circ g)\cdot m$, and $(m\cdot f)\cdot f')=m\cdot(f\circ f')$ clearly hold whenever they
   make sense.
-  \todo[author=Patrick,inline]{I will finish this.}
+  
+  The coequalizer \eqref{eqn:coendComp} can be easily expressed in this notation: the elements of
+  $(M\odot N)(c,e)$ are pairs $m\otimes n$ of elements $m\in M(c,d)$ and $n\in N(d,e)$ for some
+  $d\in\cat{D}$ modulo the relation $(m\cdot f)\otimes n = m\otimes(f\cdot n)$, whenever this makes
+  sense.
+  
+  Finally, a 2-cell $\phi$ of the form \eqref{eqn:Prof2cells} is function sending elements $m\in
+  M(c,c')$ to elements $\phi(m)\in N(Fc,F'c')$ such that the equation $\phi(f\cdot m\cdot
+  g)=F(f)\cdot\phi(m)\cdot F'(g)$ holds whenever it makes sense.
 \end{remark}
 
 \section{Internal copresheaves}
