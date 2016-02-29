@@ -1056,6 +1056,18 @@ following is a standard construction; see \cite{Shulman}
   We will write $\Bimod{M}{N}$ to denote the 1-category of $(M,N)$-bimodules and bimodule morphisms.
 \end{definition}
 
+\begin{example}
+      \label{ex:mod_span_prof}
+   Let $\dSpan$ be the equipment defined in Example~\ref{ex:dspan}. A monoid in $\dSpan$ consists of
+   a set $C$ and a span $C\from S\to C$, together with a function $e\colon C\to S$ and a function
+   $m\colon S\times_C S\to S$, satisfying certain properties. This is precisely the data required to
+   define a small category, whose object set is $C$ and morphism set is $S$, with identities given
+   by $e$ and composition given by $m$. Similarly, one can identify monoid homomorphisms in $\dSpan$
+   with functors between categories and bimodules in $\dSpan$ with profunctors between categories.
+   In other words, we have $\dMod(\dSpan)\iso\dProf$.
+
+\end{example}
+
 The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ extends to a forgetful equipment
 functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$. There is also a local equivalence
 $U\colon\dcat{D}\to\dMod(\dcat{D})$ sending $c$ to the unit $c\tickar c$ with the trivial monoid
@@ -1201,6 +1213,13 @@ equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we
    \end{itemize}
 \end{definition}
 
+\begin{example}
+The equipment $\dSpan$ is not exact. The collapse of a monoid $C\from S\to C$ in $\dSpan$ must be its pushout $\Col{S}\iso C\sqcup_SC$, but the associated embedding is not cartesian. The second condition of exactness also fails.
+
+It was proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Thus the equipment $\dProf\cong\dMod(\dSpan)$ is exact.
+
+\end{example}
+
 The monoids and bimodules construction for an exact equipment is in some sense degenerate, as we will see beginning in Proposition~\ref{prop:collapse_local_equivalence} and culminating in Theorem~\ref{thm:Mod_vs_bo}.\todo{P, can you improve this sentence?}
 
 \begin{proposition}
@@ -1244,7 +1263,7 @@ With these definitions in place we can now introduce two distinguished classes o
    We say that $f$ is $\bo$ if the restriction square, where $d(f,f)$ has the induced monoid structure, is a collapse. We say that $f$ is $\ff$ if the unit square is cartesian.
 \end{definition}
 
-To continue we briefly recall the notion of orthogonal factorization systems for 1-categories and strict 2-categories, these will be used throughout this paper, mainly to deal with the issue of object-variance. Additional background on orthogonal factorization systems can be found in \cite[Chapter 5.5]{BorceuxV1}. The main result below is that exact equipments admit orthogonal factorization systems. 
+In Section~\ref{sec:monoidal_profunctors} we will define equipments of profunctors on monoidal categories and verify their exactness directly in Section~\ref{sec:exactness_proofs}. The key ingredient in verifying that the equipment of traced profunctors is exact will be orthogonal factorization systems. Thus we briefly recall the notion of orthogonal factorization systems for 1-categories and strict 2-categories. Additional background on orthogonal factorization systems can be found in \cite[Chapter 5.5]{BorceuxV1}. The main result below is that exact equipments admit orthogonal factorization systems. 
 \begin{definition}
       \label{def:orthogonal}
    Let $\cat{V}$ be either $\Set$ or $\Cat$, and suppose that $\cat{C}$ is a $\cat{V}$-enriched
@@ -1402,7 +1421,8 @@ The bijective-on-objects vertical arrows of an exact equipment $\dcat{D}$ will p
    $\dMod(\dcat{D})\to\dcat{D}^{\bo}$.}
 \end{proof}
 
-To conclude our discussion of equipments we formalize the idea of free-on-objects monoidal categories in a general, abstract form. Consider an equipment $\dcat{D}$ together with an adjunction to a category $\cat{S}$:
+\todo[inline]{Move this to around Section 3.5, "Monoids on free objects"}
+Consider an equipment $\dcat{D}$ together with an adjunction to a category $\cat{S}$:
 \begin{equation}
       \label{eqn:adjunction_objectfree}
    \Adjoint{\cat{S}}{\dcat{D}_0.}{F}{U}
@@ -1415,20 +1435,23 @@ To conclude our discussion of equipments we formalize the idea of free-on-object
       \varphi_T\colon \dcat{D}_T\to\dcat{D}.
    \end{equation}
 \end{definition}
-Note that $\dcat{D}$ being exact does \emph{not} imply $\dcat{D}_T$ is exact. If $\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ from Theorem~\ref{thm:Mod_vs_bo} to identify $\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the image of $\dMod(\varphi_T)$, more precisely we propose the following.
+
+\todo[inline]{Fold the definition below into that above. Replace $\dcat{D}_{F}^{\bo}$ with $\dcat{D}_T^{\bo}$, replace $\psi_F$ with $\varphi_T^{\bo}$, and replace $(\psi_F)_0$ with $k_T^{\bo}$.}
+
+If $\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ from Theorem~\ref{thm:Mod_vs_bo} to identify $\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the image of $\dMod(\varphi_T)$.
 \begin{definition}
       \label{def:DFbo}
-   Define the equipment $\dcat{D}_F^{\bo}$ as follows: the vertical category is defined by the strict pullback
+   Let $\dcat{D}$ be an exact equipment with $k_T\colon\cat{S}_T\to\dcat{D}_0$ as above. Define the equipment $\dcat{D}_F^{\bo}$ as follows: the vertical category is defined by the strict pullback
    \[ \begin{tikzcd}
       (\dcat{D}_F^{\bo})_0 \ar[d] \ar[dr,phantom,"\lrcorner" very near start] \ar[r,"(\psi_F)_0"]
          &\dcat{D}_0^{\bo} \ar[d,"\dom"] \\
-     \cat{S} \ar[r,"F"']
+     \cat{S}_T \ar[r,"k_T"']
          & \dcat{D}_0
    \end{tikzcd} \]
    and the rest of the structure is defined by
    $\dcat{D}_F^{\bo}\coloneqq(\psi_F)_0^*\dcat{D}^{\bo}$, i.e.\ there is a strict pullback
    \[ \begin{tikzcd}
-      (\dcat{D}_F^{\bo})_1 \ar[r] \ar[dr,phantom,"\lrcorner" very near start] \ar[d]
+      (\dcat{D}_F^{\bo})_1 \ar[r] \ar[dr,phantom,"\lrcorner" very near start] \ar[d, two heads]
          & \dcat{D}_1^{\bo} \ar[d,two heads] \\
       (\dcat{D}_F^{\bo})_0\times(\dcat{D}_F^{\bo})_0 \ar[r]
          & \dcat{D}_0^{\bo}\times\dcat{D}_0^{\bo}.
@@ -1437,7 +1460,7 @@ Note that $\dcat{D}$ being exact does \emph{not} imply $\dcat{D}_T$ is exact. If
 \end{definition}
 \begin{proposition}
       \label{prop:objectfree_Mod_bo}
-   There is a commuting diagram of equipments, in which the vertical functors are equivalences and the horizontal functors are local equivalences:
+   There is a commutative diagram of equipments, in which the vertical functors are equivalences and the horizontal functors are local equivalences:
    \[ \begin{tikzcd}[column sep=large]
       \dMod(\dcat{D}_T) \ar[r,"\dMod(\varphi_T)"] \ar[d,"\equiv"']
          & \dMod(\dcat{D}) \ar[d,"\equiv"] \\
@@ -1479,22 +1502,6 @@ Note that $\dcat{D}$ being exact does \emph{not} imply $\dcat{D}_T$ is exact. If
    \end{tikzcd} \]
    as desired.
 \end{proof}
-
-\begin{example}
-      \label{ex:mod_span_prof}
-   Let $\dSpan$ be the equipment defined in Example~\ref{ex:dspan}. A monoid in $\dSpan$ consists of
-   a set $C$ and a span $C\from S\to C$, together with a function $e\colon C\to S$ and a function
-   $m\colon S\times_C S\to S$, satisfying certain properties. This is precisely the data required to
-   define a small category, whose object set is $C$ and morphism set is $S$, with identities given
-   by $e$ and composition given by $m$. Similarly, one can identify monoid homomorphisms in $\dSpan$
-   with functors between categories and bimodules in $\dSpan$ with profunctors between categories.
-   In other words, we have $\dMod(\dSpan)\iso\dProf$.
-
-   Note however that $\dSpan$ is not exact. The collapse of a monoid $C\from S\to C$ in $\dSpan$ must be its pushout $\Col{S}\iso C\sqcup_SC$, but the associated embedding is not cartesian. The second condition of exactness also fails.
-\end{example}
-\begin{remark}
-  It was proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Thus the equipment $\dProf$ is exact. In Section~\ref{sec:monoidal_profunctors} we will define equipments of profunctors on monoidal categories and verify their exactness directly in Section~\ref{sec:exactness_proofs}. The key ingredient in verifying that the equipment of traced profunctors is exact will be orthogonal factorization systems.
-\end{remark}
 
 \begin{example}
       \label{ex:monoid_in_Prof}
