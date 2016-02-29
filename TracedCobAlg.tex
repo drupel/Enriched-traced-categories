@@ -1052,7 +1052,7 @@ The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ extends to a forge
 functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$. There is also a local equivalence
 $U\colon\dcat{D}\to\dMod(\dcat{D})$ sending $c$ to the unit $c\tickar c$ with the trivial monoid
 structure. If $F\colon\dcat{C}\to\dcat{D}$ is an equipment functor, then there is an evident
-equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$.
+equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we have the following which is immediate from the definitions.
 
 \begin{lemma}
     \label{lemma:FFLE_Mod}
@@ -1254,8 +1254,8 @@ To continue we briefly recall the notion of orthogonal factorization systems for
 \footnote{
    We sometimes also use the two-headed arrow symbol $\twoheadrightarrow$
    to indicate fibrations of categories (e.g., as we did in \ref{thm:TheoremB} or
-   when defining the frame fibration for equipments, Definition~\ref{def:equipment}). Hopefully,
-   our meaning will be clear from context.
+   when defining the frame fibration for equipments, Definition~\ref{def:equipment}). Whether
+   we mean a $\bo$ map in an equipment or a fibration of categories should be clear from context.
 }
 
    
@@ -1302,7 +1302,7 @@ The bijective-on-objects vertical arrows of an exact equipment $\dcat{D}$ will p
 \begin{definition}
    Let $\dcat{D}$ be an exact equipment. We define the equipment $\dcat{D}^{\bo}$ as follows: the
    vertical category $\dcat{D}_0^{\bo}\ss\dcat{D}_0^{\rightarrow}$ is the full subcategory of the arrow category of
-   $\dcat{D}_0$ spanned by the arrows in the class $\bo$. The rest of the structure is defined by
+   $\dcat{D}_0$ spanned by the arrows in the class $\bo$. As such, we have functors $\dom,\cod\colon\dcat{D}_0^{\bo}\to\dcat{D}_0$. The rest of the structure of $\dcat{D}^{\bo}$ is defined by
    setting $\dcat{D}^{\bo}\coloneqq\cod^*\dcat{D}$, i.e.\ by the strict pullback of categories
    \[ \begin{tikzcd}[column sep=large]
       \dcat{D}_1^{\bo} \ar[r] \ar[d, two heads] \ar[dr,phantom,"\lrcorner" very near start]
@@ -1332,7 +1332,7 @@ The bijective-on-objects vertical arrows of an exact equipment $\dcat{D}$ will p
 \end{proposition}
 \begin{proof}
    The equivalence sends a monoid $(c,M)$ to the collapse morphism $i_M\colon
-   c\twoheadrightarrow\Col{M}$, which is in $\bo$ by exactness of $\dcat{D}$. Since $\vec{\imath}_M$ is the universal embedding of $M$, any monoid homomorphism $(f,\vec{f}\mspace{2mu})$ gives rise to a unique $\tilde{f}$ such that
+   c\twoheadrightarrow\Col{M}$, which is in $\bo$ by the exactness of $\dcat{D}$. Since $\vec{\imath}_M$ is the universal embedding of $M$, any monoid homomorphism $(f,\vec{f}\mspace{2mu})$ gives rise to a unique $\tilde{f}$ such that
    \begin{equation*}
       \begin{tikzcd}
          c \ar[r,tick,"M" domA] \ar[d,"f"']
