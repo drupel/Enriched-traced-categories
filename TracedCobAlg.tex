@@ -1544,7 +1544,7 @@ $(\alpha_{c^*})^*\colon Gc\to Fc$ to the dual component. Thus all 2-cells in $\C
 
 A \emph{trace structure} on a monoidal category $\cat{T}$ is a collection of functions
 \begin{equation}
-      \label{dia:trace function}
+      \label{dia:trace_function}
    \Tr^U_{X,Y}\colon\Hom_{\cat{T}}(U\otimes X,U\otimes Y)\to\Hom_{\cat{T}}(X,Y)
 \end{equation}
 for $U,X,Y\in\Ob(\cat{T})$ satisfying seven equational axioms, we refer the reader to \cite{JoyalStreetVerity} for more details. If $\cat{T}$ and $\cat{U}$ are traced categories, then a \emph{(strict) traced functor} is simply a strict symmetric monoidal functor which commutes with the trace operation.
@@ -1557,10 +1557,10 @@ In \cite{JoyalStreetVerity}, it is shown that every traced category $\cat{T}$ em
 and compositions computed using the trace of $\cat{T}$, see \cite{JoyalStreetVerity} for more details.
 \begin{remark}
       \label{rem:traced_2morphisms}
-   Traced categories were first defined in~\cite{JoyalStreetVerity}. However, those authors define
-   the 2-morphisms between traced functors to simply be monoidal transformations, but this choice does
+   Traced categories were first defined in~\cite{JoyalStreetVerity}, which defines
+   the 2-morphisms between traced functors to simply be monoidal transformations. However, this choice does
    not behave appropriately with the $\Int$ construction (for example $\Int$ would not be
-   2-functorial). This error was corrected in \cite{HK}, where it was shown that the appropriate
+   2-functorial). The error was corrected in \cite{HK}, where it was shown that the appropriate
    2-morphisms between traced functors are natural \emph{isomorphisms}. 
 \end{remark}
 We denote by $\TTrCat$ the corrected 2-category of traced categories (where 2-cells are invertible), and we denote its underlying 1-category by $\TrCat$. Write $\UTM\colon\TTrCat\to\MMonCat$ for the forgetful functor.
@@ -1579,14 +1579,13 @@ Thus we have a functor $\UCT\colon\CCompCat\to\TTrCat$. It is shown in~\cite{Joy
    \end{tikzcd}
 \end{equation}
 Note that $\UCM=\UCT\UTM$. In Remark~\ref{rem:characterization_of_traced} we will be able to formally define the 2-category
-$\TTrCat$ without mentioning the trace structure or the necessary seven axioms, but instead via the
+$\TTrCat$ without mentioning the trace structure \eqref{dia:trace_function} or the usual seven axioms, but instead via the
 relationship between compact and monoidal categories.
 
 
-\todo[inline]{Convert this lemma to just some facts we recall after traced categories.}
-\begin{lemma}
-      \label{lemma:fully_faithful_and_trace}
-   The following facts hold for any traced category $\cat{T}$:
+\begin{remark}
+      \label{rmk:fully_faithful_and_trace}
+We record the following facts, which hold for any traced category $\cat{T}$; each is shown in, or trivially derived from,~\cite{JoyalStreetVerity}:
    \begin{enumerate}[label={\upshape\roman*}.]
       \item The component $\cat{T}\to\Int(\cat{T})$ of the unit of the adjunction
          \eqref{dia:traced_compact_adjunction} is fully faithful. It follows that
@@ -1600,10 +1599,7 @@ relationship between compact and monoidal categories.
          traced functor. Then $F$ is bijective-on-objects (resp.\ fully faithful) if and only if
          $\Int(F)$ is.
    \end{enumerate}
-\end{lemma}
-\begin{proof}
-   These are all shown in, or trivially derived from,~\cite{JoyalStreetVerity}.
-\end{proof}
+\end{remark}
 
 
 \section{Monoidal profunctors}
@@ -2806,7 +2802,7 @@ Property~\ref{item:createSEs} holds for the case $\scat{D}=\CCompCat$ because it
 subcategory of $\MMonCat$. For the case $\scat{D}=\TTrCat$, suppose given a strict traced functor
 $F\colon A\to B$, and let $G\colon B\to A$ be the associated monoidal functor constructed above. To
 see that it is traced, note that $B\To{G}A\To{F}B$ is the identity, so $G$ is fully faithful, and
-the result follows from Lemma~\ref{lemma:fully_faithful_and_trace}.
+the result follows from Remark~\ref{rmk:fully_faithful_and_trace}.
 \end{example}
 
 Since $\iota$ is identity on objects, we often suppress it for convenience. We draw ordinary arrows
