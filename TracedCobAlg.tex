@@ -1421,14 +1421,14 @@ The bijective-on-objects vertical arrows of an exact equipment $\dcat{D}$ will p
    $\dMod(\dcat{D})\to\dcat{D}^{\bo}$.}
 \end{proof}
 
-\todo[inline]{Move this to around Section 3.5, "Monoids on free objects"}
+\todo[inline]{Move \ref{def:kleisli_equipment}, \ref{def:DFbo}, and \ref{prop:objectfree_Mod_bo} to the beginnging of Section 3.5, "Monoids on free objects"}
 Consider an equipment $\dcat{D}$ together with an adjunction to a category $\cat{S}$:
 \begin{equation}
       \label{eqn:adjunction_objectfree}
    \Adjoint{\cat{S}}{\dcat{D}_0.}{F}{U}
 \end{equation}
 \begin{definition}
-   \label{def:kleisli equipment}
+   \label{def:kleisli_equipment}
    Let $T=UF$ be the monad on $\cat{S}$ corresponding to the adjunction \eqref{eqn:adjunction_objectfree} and write $\cat{S}_T$ for the Kleisli category of $T$. The fully faithful inclusion $k_T\colon\cat{S}_T\to\dcat{D}_0$ induces an equipment $\dcat{D}_T\coloneqq k_T^*\dcat{D}$ and a fully faithful local equivalence which we denote
    \begin{equation}
       \label{eqn:FFLE_DT}
@@ -1502,6 +1502,8 @@ If $\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D
    \end{tikzcd} \]
    as desired.
 \end{proof}
+
+\todo[inline]{I have no idea what Example~\ref{ex:monoid_in_Prof} and Remark~\ref{rem:suffices_for_monoid} are doing here, or where they are supposed to go.}
 
 \begin{example}
       \label{ex:monoid_in_Prof}
@@ -2200,7 +2202,7 @@ and write $\TM,\TC,$ and $\TT$ for the corresponding monads on $\Set$. Note that
    $\MonCat$ are \emph{symmetric} monoidal categories, because the symmetries are encoded in natural
    isomorphisms, not equalities.
 }
-Following Definition~\ref{def:kleisli equipment}, we have equipments:
+Following Definition~\ref{def:kleisli_equipment}, we have equipments:
 \[
    \dFrMonProf  \coloneqq \dMonProf_{\TM}
    \qquad
