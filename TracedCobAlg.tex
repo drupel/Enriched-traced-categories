@@ -1421,88 +1421,6 @@ The bijective-on-objects vertical arrows of an exact equipment $\dcat{D}$ will p
    $\dMod(\dcat{D})\to\dcat{D}^{\bo}$.}
 \end{proof}
 
-\todo[inline]{Move \ref{def:kleisli_equipment}, \ref{def:DFbo}, and \ref{prop:objectfree_Mod_bo} to the beginnging of Section 3.5, "Monoids on free objects"}
-Consider an equipment $\dcat{D}$ together with an adjunction to a category $\cat{S}$:
-\begin{equation}
-      \label{eqn:adjunction_objectfree}
-   \Adjoint{\cat{S}}{\dcat{D}_0.}{F}{U}
-\end{equation}
-\begin{definition}
-   \label{def:kleisli_equipment}
-   Let $T=UF$ be the monad on $\cat{S}$ corresponding to the adjunction \eqref{eqn:adjunction_objectfree} and write $\cat{S}_T$ for the Kleisli category of $T$. The fully faithful inclusion $k_T\colon\cat{S}_T\to\dcat{D}_0$ induces an equipment $\dcat{D}_T\coloneqq k_T^*\dcat{D}$ and a fully faithful local equivalence which we denote
-   \begin{equation}
-      \label{eqn:FFLE_DT}
-      \varphi_T\colon \dcat{D}_T\to\dcat{D}.
-   \end{equation}
-\end{definition}
-
-\todo[inline]{Fold the definition below into that above. Replace $\dcat{D}_{F}^{\bo}$ with $\dcat{D}_T^{\bo}$, replace $\psi_F$ with $\varphi_T^{\bo}$, and replace $(\psi_F)_0$ with $k_T^{\bo}$.}
-
-If $\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ from Theorem~\ref{thm:Mod_vs_bo} to identify $\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the image of $\dMod(\varphi_T)$.
-\begin{definition}
-      \label{def:DFbo}
-   Let $\dcat{D}$ be an exact equipment with $k_T\colon\cat{S}_T\to\dcat{D}_0$ as above. Define the equipment $\dcat{D}_F^{\bo}$ as follows: the vertical category is defined by the strict pullback
-   \[ \begin{tikzcd}
-      (\dcat{D}_F^{\bo})_0 \ar[d] \ar[dr,phantom,"\lrcorner" very near start] \ar[r,"(\psi_F)_0"]
-         &\dcat{D}_0^{\bo} \ar[d,"\dom"] \\
-     \cat{S}_T \ar[r,"k_T"']
-         & \dcat{D}_0
-   \end{tikzcd} \]
-   and the rest of the structure is defined by
-   $\dcat{D}_F^{\bo}\coloneqq(\psi_F)_0^*\dcat{D}^{\bo}$, i.e.\ there is a strict pullback
-   \[ \begin{tikzcd}
-      (\dcat{D}_F^{\bo})_1 \ar[r] \ar[dr,phantom,"\lrcorner" very near start] \ar[d, two heads]
-         & \dcat{D}_1^{\bo} \ar[d,two heads] \\
-      (\dcat{D}_F^{\bo})_0\times(\dcat{D}_F^{\bo})_0 \ar[r]
-         & \dcat{D}_0^{\bo}\times\dcat{D}_0^{\bo}.
-   \end{tikzcd} \]
-   We will write $\psi_F\colon\dcat{D}_F^{\bo}\to\dcat{D}^{\bo}$ for the induced local equivalence.
-\end{definition}
-\begin{proposition}
-      \label{prop:objectfree_Mod_bo}
-   There is a commutative diagram of equipments, in which the vertical functors are equivalences and the horizontal functors are local equivalences:
-   \[ \begin{tikzcd}[column sep=large]
-      \dMod(\dcat{D}_T) \ar[r,"\dMod(\varphi_T)"] \ar[d,"\equiv"']
-         & \dMod(\dcat{D}) \ar[d,"\equiv"] \\
-      \dcat{D}_F^{\bo} \ar[r,"\psi_F"'] & \dcat{D}^{\bo}.
-   \end{tikzcd} \]
-
-   Suppose moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{S})$. Then the following composite is a
-   fully faithful local equivalence:
-   \[ \begin{tikzcd}
-      \dMod(\dcat{D}_T)\ar[r,"\dMod(\varphi_T)"] &[1.5em] \dMod(\dcat{D}) \ar[r,"\ColDash"] & \dcat{D}.
-   \end{tikzcd} \]
-\end{proposition}
-\begin{proof}
-   By Lemma~\ref{lemma:FFLE_Mod}, $\dMod(\varphi_T)\colon\dMod(\dcat{D}_T)\to\dMod(\dcat{D})$ is a fully faithful local equivalence. The remainder of the first claim follows from Theorem~\ref{thm:Mod_vs_bo} and the definition of $\dcat{D}^{\bo}_F$.
-
-   For the second claim, assume $U(\bo)\subseteq\mathrm{iso}(\cat{S})$. From Theorem~\ref{thm:Mod_vs_bo} and the first part of the proposition, it suffices to consider the composition
-   \[ \begin{tikzcd}
-      \dcat{D}^{\bo}_F \ar[r,"\psi_F"] & \dcat{D}^{\bo} \ar[r,"\cod"] & \dcat{D}.
-   \end{tikzcd} \]
-   By definition, both $\psi_F$ and $\cod$ are local equivalences, hence the composition is also.
-
-   To see that $(\cod\psi_F)_0$ is fully faithful, consider a pair of objects $p\colon
-   Fs\twoheadrightarrow D$ and $p'\colon Fs'\twoheadrightarrow D'$ in $(\dcat{D}_F^{\bo})_0$, and a
-   vertical morphism $f\colon D\to D'$ in $\dcat{D}_0$. In the square
-   \[ \begin{tikzcd}
-      \dcat{D}_0(Fs,Fs') \ar[r,"p'\circ\textrm{--}"] \ar[d,"\iso"']
-         & \dcat{D}_0(Fs,D') \ar[d,"\iso"] \\
-      \cat{S}(s,UFs') \ar[r,"Up'\circ\textrm{--}"']
-         & \cat{S}(s,UD')
-   \end{tikzcd} \]
-   which commutes by naturality of the adjunction bijection, the bottom function is a bijection
-   since $U(p')$ is an isomorphism for any $p'\in\bo$. Hence the top
-   function is a bijection, which shows that there exists a unique lift of $f$ to a morphism in
-   $(\dcat{D}_F^{\bo})_0$:
-   \[ \begin{tikzcd}
-      Fs \ar[r,"\hat{f}"] \ar[d,two heads,"p"']
-         & Fs' \ar[d,two heads,"p'"] \\
-      D \ar[r,"f"'] & D'
-   \end{tikzcd} \]
-   as desired.
-\end{proof}
-
 \todo[inline]{I have no idea what Example~\ref{ex:monoid_in_Prof} and Remark~\ref{rem:suffices_for_monoid} are doing here, or where they are supposed to go.}
 
 \begin{example}
@@ -2184,6 +2102,91 @@ As a corollary we obtain our second main theorem.
 
 \section{Monoids on free objects}
       \label{sec:monoids_on_free}
+
+\todo[inline]{Paste begin}
+
+Consider an equipment $\dcat{D}$ together with an adjunction to a category $\cat{S}$:
+\begin{equation}
+      \label{eqn:adjunction_objectfree}
+   \Adjoint{\cat{S}}{\dcat{D}_0.}{F}{U}
+\end{equation}
+\begin{definition}
+   \label{def:kleisli_equipment}
+   Let $T=UF$ be the monad on $\cat{S}$ corresponding to the adjunction \eqref{eqn:adjunction_objectfree} and write $\cat{S}_T$ for the Kleisli category of $T$. The fully faithful inclusion $k_T\colon\cat{S}_T\to\dcat{D}_0$ induces an equipment $\dcat{D}_T\coloneqq k_T^*\dcat{D}$ and a fully faithful local equivalence which we denote
+   \begin{equation}
+      \label{eqn:FFLE_DT}
+      \varphi_T\colon \dcat{D}_T\to\dcat{D}.
+   \end{equation}
+\end{definition}
+
+\todo[inline]{Fold the definition below into that above. Replace $\dcat{D}_{F}^{\bo}$ with $\dcat{D}_T^{\bo}$, replace $\psi_F$ with $\varphi_T^{\bo}$, and replace $(\psi_F)_0$ with $k_T^{\bo}$.}
+
+If $\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ from Theorem~\ref{thm:Mod_vs_bo} to identify $\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the image of $\dMod(\varphi_T)$.
+\begin{definition}
+      \label{def:DFbo}
+   Let $\dcat{D}$ be an exact equipment with $k_T\colon\cat{S}_T\to\dcat{D}_0$ as above. Define the equipment $\dcat{D}_F^{\bo}$ as follows: the vertical category is defined by the strict pullback
+   \[ \begin{tikzcd}
+      (\dcat{D}_F^{\bo})_0 \ar[d] \ar[dr,phantom,"\lrcorner" very near start] \ar[r,"(\psi_F)_0"]
+         &\dcat{D}_0^{\bo} \ar[d,"\dom"] \\
+     \cat{S}_T \ar[r,"k_T"']
+         & \dcat{D}_0
+   \end{tikzcd} \]
+   and the rest of the structure is defined by
+   $\dcat{D}_F^{\bo}\coloneqq(\psi_F)_0^*\dcat{D}^{\bo}$, i.e.\ there is a strict pullback
+   \[ \begin{tikzcd}
+      (\dcat{D}_F^{\bo})_1 \ar[r] \ar[dr,phantom,"\lrcorner" very near start] \ar[d, two heads]
+         & \dcat{D}_1^{\bo} \ar[d,two heads] \\
+      (\dcat{D}_F^{\bo})_0\times(\dcat{D}_F^{\bo})_0 \ar[r]
+         & \dcat{D}_0^{\bo}\times\dcat{D}_0^{\bo}.
+   \end{tikzcd} \]
+   We will write $\psi_F\colon\dcat{D}_F^{\bo}\to\dcat{D}^{\bo}$ for the induced local equivalence.
+\end{definition}
+\begin{proposition}
+      \label{prop:objectfree_Mod_bo}
+   There is a commutative diagram of equipments, in which the vertical functors are equivalences and the horizontal functors are local equivalences:
+   \[ \begin{tikzcd}[column sep=large]
+      \dMod(\dcat{D}_T) \ar[r,"\dMod(\varphi_T)"] \ar[d,"\equiv"']
+         & \dMod(\dcat{D}) \ar[d,"\equiv"] \\
+      \dcat{D}_F^{\bo} \ar[r,"\psi_F"'] & \dcat{D}^{\bo}.
+   \end{tikzcd} \]
+
+   Suppose moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{S})$. Then the following composite is a
+   fully faithful local equivalence:
+   \[ \begin{tikzcd}
+      \dMod(\dcat{D}_T)\ar[r,"\dMod(\varphi_T)"] &[1.5em] \dMod(\dcat{D}) \ar[r,"\ColDash"] & \dcat{D}.
+   \end{tikzcd} \]
+\end{proposition}
+\begin{proof}
+   By Lemma~\ref{lemma:FFLE_Mod}, $\dMod(\varphi_T)\colon\dMod(\dcat{D}_T)\to\dMod(\dcat{D})$ is a fully faithful local equivalence. The remainder of the first claim follows from Theorem~\ref{thm:Mod_vs_bo} and the definition of $\dcat{D}^{\bo}_F$.
+
+   For the second claim, assume $U(\bo)\subseteq\mathrm{iso}(\cat{S})$. From Theorem~\ref{thm:Mod_vs_bo} and the first part of the proposition, it suffices to consider the composition
+   \[ \begin{tikzcd}
+      \dcat{D}^{\bo}_F \ar[r,"\psi_F"] & \dcat{D}^{\bo} \ar[r,"\cod"] & \dcat{D}.
+   \end{tikzcd} \]
+   By definition, both $\psi_F$ and $\cod$ are local equivalences, hence the composition is also.
+
+   To see that $(\cod\psi_F)_0$ is fully faithful, consider a pair of objects $p\colon
+   Fs\twoheadrightarrow D$ and $p'\colon Fs'\twoheadrightarrow D'$ in $(\dcat{D}_F^{\bo})_0$, and a
+   vertical morphism $f\colon D\to D'$ in $\dcat{D}_0$. In the square
+   \[ \begin{tikzcd}
+      \dcat{D}_0(Fs,Fs') \ar[r,"p'\circ\textrm{--}"] \ar[d,"\iso"']
+         & \dcat{D}_0(Fs,D') \ar[d,"\iso"] \\
+      \cat{S}(s,UFs') \ar[r,"Up'\circ\textrm{--}"']
+         & \cat{S}(s,UD')
+   \end{tikzcd} \]
+   which commutes by naturality of the adjunction bijection, the bottom function is a bijection
+   since $U(p')$ is an isomorphism for any $p'\in\bo$. Hence the top
+   function is a bijection, which shows that there exists a unique lift of $f$ to a morphism in
+   $(\dcat{D}_F^{\bo})_0$:
+   \[ \begin{tikzcd}
+      Fs \ar[r,"\hat{f}"] \ar[d,two heads,"p"']
+         & Fs' \ar[d,two heads,"p'"] \\
+      D \ar[r,"f"'] & D'
+   \end{tikzcd} \]
+   as desired.
+\end{proof}
+
+\todo[inline]{Paste end}
 
 To conclude we address \ref{thm:TheoremA} which is concerned with traced and compact categories which are ``free-on-objects''.
 
