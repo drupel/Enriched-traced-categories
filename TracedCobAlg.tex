@@ -1671,7 +1671,6 @@ This section aims to establish the following equivalence of fibrations.
 \end{theorem}
 We prove this result by factoring the desired equivalence as a composition of two more manageable equivalences in Proposition~\ref{Prop:ptd_prof_equivalence} and Proposition~\ref{prop:unit_implies_monoid} below.
 
-\todo{Fix error in this proof.}
 \begin{corollary}
       \label{cor:Tr_mon_prof_equivalence}
    There is an equivalence of fibrations
@@ -1685,10 +1684,10 @@ We prove this result by factoring the desired equivalence as a composition of tw
    We have that $\Int\colon\dTrProf\to\dCompProf$ is a local equivalence that preserves the terminal object. Thus using Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} we construct the desired equivalence $\CPsh(\dTrProf)\to\Mon(\dTrProf)$ as the pullback along $\Int$ of the equivalence $\CPsh(\dCompProf)\to\Mon(\dCompProf)$ from Theorem~\ref{thm:mon_prof_equivalence}.
 \end{proof}
 
-To prove Theorem~\ref{thm:mon_prof_equivalence} we introduce a third fibration and establish its equivalence with each of $\CPsh(\dCompProf)$ and $\Mon(\dCompProf)$.
+To prove Theorem~\ref{thm:mon_prof_equivalence} we introduce a third fibration, that of pointed endo-proarrows, and establish its equivalence with each of $\CPsh(\dCompProf)$ and $\Mon(\dCompProf)$.
 \begin{definition}
       \label{def:ptd}
-   Given an equipment $\dcat{D}$ there is a fibration $\Ptd(\dcat{D})\twoheadrightarrow\dcat{D}_0$ whose objects are \emph{pointed proarrows}, i.e.\ proarrows $A\colon d\tickar d$ in $\dcat{D}$ equipped with a unit as in \eqref{eqn:unit_and_mult} (but not a multiplication), and whose morphisms are 2-cells which preserve the units.
+   Given an equipment $\dcat{D}$ there is a fibration $\Ptd(\dcat{D})\twoheadrightarrow\dcat{D}_0$ whose objects are \emph{pointed proarrows}, i.e.\ proarrows $M\colon c\tickar c$ in $\dcat{D}$ equipped with a unit $i_M\colon c\to M$ as in \eqref{eqn:unit_and_mult} (but not a multiplication), and whose morphisms are 2-cells which preserve the units. We refer to objects in $\Ptd(\dcat{D})$ as \emph{pointed endo-proarrows}.
 \end{definition}
 
 \begin{lemma}
@@ -1699,11 +1698,11 @@ To prove Theorem~\ref{thm:mon_prof_equivalence} we introduce a third fibration a
 \begin{proof}
    Given $n\in N(a,b)$, we can construct an element
    \[
-      (i(\id_{a^*})\boxtimes n)\cdot\eta_a \in N(I,a^*\otimes b).
+      \big(i(\id_{a^*})\boxtimes n\big)\cdot\eta_a \in N(I,a^*\otimes b).
    \]
    Conversely, given $n'\in N(I,a^*\otimes b)$, we can construct an element
    \[
-      (\epsilon_a\otimes\id_b)\cdot(i(\id_a)\boxtimes n') \in N(a,b).
+      (\epsilon_a\otimes\id_b)\cdot\big(i(\id_a)\boxtimes n'\big) \in N(a,b).
    \]
    It is simple to check that this defines a natural bijection.
 \end{proof}
