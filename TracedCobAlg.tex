@@ -2022,7 +2022,7 @@ This derives mainly from basic properties of the $\Int$ construction; see Remark
 To see that $\Col{M}_{\MTCfont{T}}$ is a collapse in $\dTrProf$ we must establish the bijection $\Emb_{\mathrm{Tr}}(M,\cat{T}')\iso\TrCat(\Col{M}_{\MTCfont{T}},\cat{T}')$, natural in the traced category $\cat{T}'$. 
 %   Since $\Col{M}_{\MTCfont{C}}$ is a collapse in $\dCompProf$, there is a bijection $\Emb_{\mathrm{Cp}}(M,\Int(\cat{T}'))\iso\CompCat(\Col{M}_{\MTCfont{C}},\Int(\cat{T}'))$ and precomposition with $i_M$ gives a map $\Emb_{\mathrm{Cp}}(M,\Int(\cat{T}'))\to\CompCat(\Int(\cat{T}),\Int(\cat{T}'))$. 
  
-   Using the adjunction isomorphism and precomposition with the inverse of $\alpha\colon\Int(\Col{M}_{\MTCfont{T}})\iso\Col{M}_{\MTCfont{C}}$ from Lemma~\ref{lem:Tr_bo_Int}, we get an isomorphism
+   Using the adjunction bijection and precomposition with the inverse of $\alpha\colon\Int(\Col{M}_{\MTCfont{T}})\iso\Col{M}_{\MTCfont{C}}$ from Lemma~\ref{lem:Tr_bo_Int}, we get an isomorphism
    \[\TrCat(\Col{M}_{\MTCfont{T}},\UCT\Int(\cat{T}'))\iso\CompCat(\Int(\Col{M}_{\MTCfont{T}}),\Int(\cat{T}'))\iso\CompCat(\Col{M}_{\MTCfont{C}},\Int(\cat{T}')).\]
    Since $i_M=\alpha\circ\Int(i'_M)$, and by the naturality of the $(\Int,\UCT)$ adjunction, these morphisms become the right-hand square of the following commutative diagram:
    \[ \begin{tikzcd}[column sep=between origins,row sep=between origins]
@@ -2177,7 +2177,7 @@ With the setup as in Definition~\ref{def:kleisli_equipment}, suppose also that $
    as desired.
 \end{proof}
 
-To conclude we address \ref{thm:TheoremA} which is concerned with traced and compact categories which are ``free-on-objects''.
+We apply the above work to define equipments of monoidal, traced, and compact categories that are "free-on-objects" and conclude by addressing \ref{thm:TheoremA}.
 
 Consider the free-forgetful adjunctions
 \begin{equation}
@@ -2191,7 +2191,7 @@ Consider the free-forgetful adjunctions
 and write $\TM,\TC,$ and $\TT$ for the corresponding monads on $\Set$. Note that $\TM$ and $\TT$ are both isomorphic to the free monoid monad, while $\TC$ is isomorphic to the free monoid-with-involution monad.%
 \footnote{
    Note that $\TM$ is not the free-\emph{commutative}-monoid monad, even though the objects of
-   $\MonCat$ are \emph{symmetric} monoidal categories, because the symmetries are encoded in natural
+   $\MonCat$ are \emph{symmetric} monoidal categories, because the symmetries are encoded by natural
    isomorphisms, not equalities.
 }
 Following Definition~\ref{def:kleisli_equipment}, we have equipments:
@@ -2202,7 +2202,7 @@ Following Definition~\ref{def:kleisli_equipment}, we have equipments:
    \qquad
    \dFrTrProf   \coloneqq \dTrProf_{\TT} 
 \]
-In other words, $\dFrMonProf$ can be identified with the full sub-equipment of $\dMonProf$ spanned by the monoidal categories which are free on a set, similarly for $\dFrCompProf$ and $\dFrTrProf$. We will write 
+In other words, $\dFrMonProf\to\dMonProf$ is a fully faithful local equivalence, meaning it can be identified with the full sub-equipment of $\dMonProf$ spanned by the monoidal categories which are \emph{free on a set}; similarly for $\dFrCompProf$ and $\dFrTrProf$. (Note that this is very different from being free-on-objects.) We will write 
 \begin{align*}
    \FrMonCat&\coloneqq\dFrMonProf_0=\Set_{\TM}\\
    \FrCompCat&\coloneqq\dFrCompProf_0=\Set_{\TC}\\
