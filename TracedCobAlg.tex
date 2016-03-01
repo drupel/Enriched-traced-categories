@@ -1992,7 +1992,7 @@ We abuse notation slightly and denote each of the factorization systems above by
          \eta_{\cat{T}'}=H$ and $\alpha\circ\Int(G)=F$.
 \end{lemma}
 \begin{proof}
-   Since $H\colon\cat{M}\to\UCM\cat{C}$ is fully faithful, the trace on $\UCT\cat{C}$ uniquely determines the desired trace structure on $\cat{T}'$ by which $H$ is a traced functor. It also follows that $G$ respects the trace in $\cat{T}$ since $\UCT F\circ\eta_{\cat{T}}$ does.
+This derives mainly from basic properties of the $\Int$ construction; see Remark~\ref{rmk:fully_faithful_and_trace}. Since $H\colon\cat{M}\to\UCM\cat{C}$ is fully faithful, the trace on $\UCT\cat{C}$ uniquely determines the desired trace structure on $\cat{T}'$ by which $H$ is a traced functor. It also follows that $G$ respects the trace in $\cat{T}$ since $\UCT F\circ\eta_{\cat{T}}$ does.
 
    For the final claim, consider the diagram
    \[ \begin{tikzcd}[column sep=4em, row sep=5ex]
@@ -2003,7 +2003,7 @@ We abuse notation slightly and denote each of the factorization systems above by
          & \UCT\Int(\cat{T}') \ar[dr,"\UCT\alpha"' {inner sep=0pt,pos=.25}] & \\[-10]
       &&\UCT \cat{C}
    \end{tikzcd} \]
-   where $\alpha\colon\Int(\cat{T}')\to \cat{C}$ is the adjunct of $H$, which is fully faithful since $H$ is. Since $G$ is $\bo$, $\UCT\Int(G)$ will be $\bo$ as well. But $\UCT F$ is $\bo$ so $\UCT \alpha$, and hence $\alpha$, must be $\bo$ also. Since $\alpha$ is both $\ff$ and $\bo$, it is an isomorphism, completing the proof.
+   where $\alpha\colon\Int(\cat{T}')\to \cat{C}$ is the adjunct of $H$, which is fully faithful since $H$ is. Since $G$ is $\bo$, $\UCT\Int(G)$ will be $\bo$ as well. But $\UCT F$ is $\bo$, so $\UCT \alpha$ and hence $\alpha$ must be $\bo$ also. Since $\alpha$ is both $\ff$ and $\bo$, it is an isomorphism, completing the proof.
 \end{proof}
 
 \begin{proposition}
@@ -2011,7 +2011,7 @@ We abuse notation slightly and denote each of the factorization systems above by
    The equipment $\dTrProf$ is exact.
 \end{proposition}
 \begin{proof}
-   Let $M\colon \cat{T}\tickar \cat{T}$ be a monoid in $\dTrProf$. By definition of $\dTrProf$ this is a monoid $M\colon\Int(\cat{T})\tickar\Int(\cat{T})$ in $\dCompProf$, i.e.\ $M=\Mon(\Int)(M)$. Define $\Col{M}_{\MTCfont{C}}$ and $(i_M,\vec{\imath}_M)\colon (\Int(\cat{T}),M)\to\Col{M}_{\MTCfont{C}}$ to
+   Let $M\colon \cat{T}\tickar \cat{T}$ be a monoid in $\dTrProf$. By definition of $\dTrProf$ this is a monoid $M\colon\Int(\cat{T})\tickar\Int(\cat{T})$ in $\dCompProf$. Define $\Col{M}_{\MTCfont{C}}$ and $(i_M,\vec{\imath}_M)\colon (\Int(\cat{T}),M)\to\Col{M}_{\MTCfont{C}}$ to
    be the collapse embedding of $M$ in $\dCompProf$. Then applying Lemma~\ref{lem:Tr_bo_Int} with $F=i_M$ gives a traced category $\Col{M}_{\MTCfont{T}}$ and a $\bo$ functor $i'_M\colon\cat{T}\to\Col{M}_{\MTCfont{T}}$ as in the diagram below:
    \begin{equation} \begin{tikzcd}[column sep=large]
          \label{eqn:collapses_in_traced}
