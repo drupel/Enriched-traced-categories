@@ -1721,7 +1721,7 @@ With the fibration $\End(\dCompProf)\onto\CompCat$ from Definition~\ref{def:ptd}
 \begin{equation} \begin{tikzcd}[column sep=-1em]
    \label{eqn:functors_1C_CC}
    \CPsh(\dCompProf) \ar[rr,shift left,"F"] \ar[dr,two heads,"\MOb"']
-   && \End(\dCompProf) \ar[ll,shift left,"U"] \ar[dl,two heads,"\MOb"'] \\
+   && \End(\dCompProf) \ar[ll,shift left,"U"] \ar[dl,two heads,"\MOb"] \\
    & \CompCat &
 \end{tikzcd} \end{equation}
 where $FM\colon\op{\cat{C}}\times \cat{C}\to\Set$ is defined by $FM(a,b)\coloneqq M(a^*\otimes b)$ while $UN\colon \cat{C}\to\Set$ is given by $UN(a)\coloneqq N(I,a)$. It is simple to check that these are morphisms of fibrations, i.e.\ that they preserve cartesian morphisms.
@@ -1757,7 +1757,7 @@ in which the triangle involving the $F$'s and the triangle involving the $U$'s b
 \begin{proof}
    If $M\in\CPsh(\dCompProf)$, i.e.\ $M$ is a lax functor $\cat{C}\to\Set$ for some compact $\cat{C}$, then
    $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any $a\in \cat{C}$. On the other hand, given
-   $N\in\Ptd(\dCompProf)$, $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from
+   $N\in\Ptd(\dCompProf)$, we have $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the equivalence follows from
    Lemma~\ref{Lem:comp prof bijection}.
 \end{proof}
 
@@ -1785,7 +1785,7 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
    Remark~\ref{rem:suffices_for_monoid}.
 \end{remark}
 
-\begin{remark}
+\begin{remark}\label{rem:eliminate_me}
    The proof of Proposition~\ref{prop:unit_implies_monoid} below is very difficult to follow in the
    equational form presented. We will use the bimodule notation discussed in
    Example~\ref{ex:profunctors} and Section~\ref{sec:monoidal_profunctors}, but we highly recommend that
@@ -1795,7 +1795,7 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
    special arrows. The operation $\boxtimes$ of a monoidal profunctor then looks like the tensor of
    morphisms.
 \end{remark}
-\todo{Change proof to use string diagrams.}
+\todo{Change proof to use string diagrams. Eliminate Remark~\ref{rem:eliminate_me}.}
 \begin{proposition}
       \label{prop:unit_implies_monoid}
    The forgetful functor $\Mon(\dCompProf)\to\Ptd(\dCompProf)$ is an equivalence of fibrations over
