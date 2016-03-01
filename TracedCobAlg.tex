@@ -260,7 +260,7 @@ monoidal functors. Write $\TrCat_{\LabSet}$ for the subcategory in which the mon
 fixed to be free on the set $\LabSet$, together with identity-on-objects functors.
 
 \begin{named}{Theorem 0}
-    \label{th:traced is cob alg}
+    \label{thm:traced_is_cob_alg}
   There is an equivalence of 1-categories
   \begin{equation}
       \label{eq:single_fiber_tr}
@@ -349,7 +349,7 @@ With the above notation, for $f\in P(X)$ we can follow the string diagram (right
 where we abuse notation and write $D$ and $E$ for the identity maps on these objects. One may easily
 check, using each axiom of the trace \cite{JoyalStreetVerity} in an essential way, that
 \eqref{eq:cob algebra formula} defines an algebra over $\LCob{\LabSet}$. We will not prove
-\ref{th:traced is cob alg} directly as indicated here but to specify our proof strategy we must
+\ref{thm:traced_is_cob_alg} directly as indicated here but to specify our proof strategy we must
 introduce more notation.
 
 \section{The main results}
@@ -2011,7 +2011,7 @@ This derives mainly from basic properties of the $\Int$ construction; see Remark
    The equipment $\dTrProf$ is exact.
 \end{proposition}
 \begin{proof}
-   Let $M\colon \cat{T}\tickar \cat{T}$ be a monoid in $\dTrProf$. By definition of $\dTrProf$ this is a monoid $M\colon\Int(\cat{T})\tickar\Int(\cat{T})$ in $\dCompProf$. Define $\Col{M}_{\MTCfont{C}}$ and $(i_M,\vec{\imath}_M)\colon (\Int(\cat{T}),M)\to\Col{M}_{\MTCfont{C}}$ to
+   Let $M\colon \cat{T}\tickar \cat{T}$ be a monoid in $\dTrProf$. By definition of $\dTrProf$ this is a monoid $M\colon\Int(\cat{T})\tickar\Int(\cat{T})$ in $\dCompProf$, so $M=\Mon(\Int)(M)$ (in the language of Lemma~\ref{lemma:embed_for_LE}). Define $\Col{M}_{\MTCfont{C}}$ and $(i_M,\vec{\imath}_M)\colon (\Int(\cat{T}),M)\to\Col{M}_{\MTCfont{C}}$ to
    be the collapse embedding of $M$ in $\dCompProf$. Then applying Lemma~\ref{lem:Tr_bo_Int} with $F=i_M$ gives a traced category $\Col{M}_{\MTCfont{T}}$ and a $\bo$ functor $i'_M\colon\cat{T}\to\Col{M}_{\MTCfont{T}}$ as in the diagram below:
    \begin{equation} \begin{tikzcd}[column sep=large]
          \label{eqn:collapses_in_traced}
@@ -2044,9 +2044,9 @@ To see that $\Col{M}_{\MTCfont{T}}$ is a collapse in $\dTrProf$ we must establis
          && \CompCat(\Int(\cat{T}),\Int(\cat{T}'))
    \end{tikzcd} \]
    The left square is a pullback, by the orthogonality of $i'_M\in\bo$ and $\eta_{\cat{T}'}\in\ff$, and the
-   right square is a pullback because the top and bottom maps are isomorphisms. Hence the outer square is a pullback as well. By Lemma~~\ref{lemma:embed_for_LE}, this pullback defines $\Emb_{\mathrm{Tr}}(M,\cat{T}')$ and thus we obtain the desired natural isomorphism $\Emb_{\mathrm{Tr}}(M,\cat{T}')\iso\TrCat(\Col{M}_{\MTCfont{T}},\cat{T}')$. Since the trivial monoid on $\Col{M}_{\MTCfont{T}}$ in $\dTrProf$ is by definition the trivial monoid on $\Int(\Col{M}_{\MTCfont{T}})\iso\Col{M}_{\MTCfont{C}}$ in $\dCompProf$, the collapse embedding $M\Rightarrow\Col{M}_{\MTCfont{T}}$ is (after composition with the isomorphism $\alpha$) just the collapse $(i_M,\vec{\imath}_M)$ in $\dCompProf$, and hence is cartesian.
-
-   Since the inclusion $\dTrProf\to\dCompProf$ is a local equivalence and $\dCompProf$ is exact, the second condition of Definition~\ref{def:exact_equipment} follows immediately.
+   right square is a pullback because the top and bottom maps are isomorphisms. Hence the outer square is a pullback as well. Since $\Col{M}_{\MTCfont{C}}$ is a collapse in $\dCompProf$, there is a bijection $\Emb_{\mathrm{Cp}}(M,\Int(\cat{T}'))\iso\CompCat(\Col{M}_{\MTCfont{C}},\Int(\cat{T}'))$ so by Lemma~~\ref{lemma:embed_for_LE}, the outer pullback produces the desired natural isomorphism $\Emb_{\mathrm{Tr}}(M,\cat{T}')\iso\TrCat(\Col{M}_{\MTCfont{T}},\cat{T}')$. 
+   
+Since the trivial monoid on $\Col{M}_{\MTCfont{T}}$ in $\dTrProf$ is by definition the trivial monoid on $\Int(\Col{M}_{\MTCfont{T}})\iso\Col{M}_{\MTCfont{C}}$ in $\dCompProf$, the collapse embedding $M\Rightarrow\Col{M}_{\MTCfont{T}}$ is (after composition with the isomorphism $\alpha$) just the collapse $(i_M,\vec{\imath}_M)$ in $\dCompProf$, and hence is cartesian. Since the inclusion $\dTrProf\to\dCompProf$ is a local equivalence and $\dCompProf$ is exact, the second condition of Definition~\ref{def:exact_equipment} follows immediately.
 \end{proof}
 
 As a corollary we obtain our second main theorem.
@@ -2086,7 +2086,7 @@ As a corollary we obtain our second main theorem.
          & \TrCat. &
       \end{tikzcd}
    \end{equation*}
-   Since $\dCompProf$ and $\dTrProf$ are exact, we may apply Proposition~\ref{prop:Mon_vs_bo} to get equivalences of fibrations
+   Since $\dCompProf$ and $\dTrProf$ are exact by Proposition~\ref{prop:CompProf_exact}~and~\ref{prop:TrProf_exact}, we may apply Proposition~\ref{prop:Mon_vs_bo} to get equivalences of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=0em]
          \Mon(\dCompProf) \ar[rr,"\equiv"] \ar[dr,"\MOb"' pos=.3]
@@ -2106,6 +2106,8 @@ As a corollary we obtain our second main theorem.
 \section{Monoids on free objects}
       \label{sec:monoids_on_free}
 
+If $\cat{T}$ is the free traced category on a set $\LabSet$, a corollary of \ref{thm:TheoremB} is an isomorphism $\Lax(\Int(\cat{T}),\Set)\cong\TrCat_\LabSet$, where the latter is the category of traced categories with fixed object set $\LabSet$. This was called \ref{thm:traced_is_cob_alg} in the introduction. Our goal in the present section is to prove \ref{thm:TheoremA}, for which we must formalize what it means for an object in an equipment to itself be "free-on-objects".
+
 Consider an equipment $\dcat{D}$, and let $\dom\colon\dcat{D}_0^{\bo}\onto\dcat{D}_0$ denote the domain fibration. Suppose we are given an adjunction to a category $\cat{S}$:
 \begin{equation*}
    \Adjoint{\cat{S}}{\dcat{D}_0.}{F}{U}
@@ -2120,7 +2122,7 @@ Let $T=UF$ be the monad on $\cat{S}$ corresponding to this adjunction, write $\c
 
 \begin{definition}
    \label{def:kleisli_equipment}
-The fully faithful functors $k_T\colon\cat{S}_T\to\dcat{D}_0$ and $k_T^{\bo}\colon(\dcat{D}_T^{\bo})_0\to\dcat{D}_0^{\bo}$ induce equipments $\dcat{D}_T\coloneqq k_T^*\dcat{D}$ and $\dcat{D}_T^{\bo}\coloneqq (k_T^{\bo})^*\dcat{D}^{\bo}$, as well as fully faithful local equivalences which we denote
+The fully faithful functors $k_T\colon\cat{S}_T\to\dcat{D}_0$ and $k_T^{\bo}\colon(\dcat{D}_T^{\bo})_0\to\dcat{D}_0^{\bo}$ induce equipments $\dcat{D}_T\coloneqq k_T^*\dcat{D}$ and $\dcat{D}_T^{\bo}\coloneqq (k_T^{\bo})^*\dcat{D}^{\bo}$, as well as fully faithful local equivalences, which we denote
    \begin{equation}
       \label{eqn:FFLE_DT}
       \varphi_T\colon \dcat{D}_T\to\dcat{D}
