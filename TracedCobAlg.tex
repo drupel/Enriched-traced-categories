@@ -866,8 +866,9 @@ fiber over an object $c$ is the category of copresheaves on $c$:
    $\dcat{D}_0$, by the strict pullback of categories
    \begin{equation*}
      \begin{tikzcd}
-         \CPsh(\dcat{D}) \ar[r] \ar[d,two heads] \arrow[dr,phantom,"\lrcorner",very near start]
-            & \dcat{D}_1 \ar[d,two heads,"\lframe\times\rframe"] \\
+         \CPsh(\dcat{D}) \ar[r] \ar[d,two heads,"\MOb"']
+         \ar[dr,phantom,"\lrcorner",very near start]
+            & \dcat{D}_1 \ar[d,two heads,"{(\lframe,\rframe)}"] \\
          1\times\dcat{D}_0 \ar[r,"1\times\dcat{D}_0"']
             & \dcat{D}_0\times\dcat{D}_0.
       \end{tikzcd}
@@ -881,8 +882,8 @@ fiber over an object $c$ is the category of copresheaves on $c$:
    morphism of fibrations
    \begin{equation} \begin{tikzcd}
          \label{eq:CPsh_square}
-      \CPsh(\dcat{C}) \ar[r,"\tilde{F}"] \ar[d,two heads] % \ar[dr,phantom,"\lrcorner" very near start]
-         & \CPsh(\dcat{D}) \ar[d,two heads] \\
+      \CPsh(\dcat{C}) \ar[r,"\tilde{F}"] \ar[d,two heads,"\MOb"'] % \ar[dr,phantom,"\lrcorner" very near start]
+         & \CPsh(\dcat{D}) \ar[d,two heads,"\MOb"] \\
       \dcat{C}_0 \ar[r,"F_0"']
          & \dcat{D}_0.
    \end{tikzcd} \end{equation}
@@ -975,7 +976,7 @@ $M\colon c\tickar c$ to its underlying object $|M|\coloneqq c$.
   fibration and there is a morphism of fibrations
   \[ \begin{tikzcd}[column sep=tiny]
     \Mon(\dcat{D}) \ar[d,two heads,"\MOb"'] \ar[r]
-      & \dcat{D}_1 \ar[d,two heads,"\lframe\times\rframe"] \\
+      & \dcat{D}_1 \ar[d,two heads,"{(\lframe,\rframe)}"] \\
     \dcat{D}_0 \ar[r,"\Delta"']&\dcat{D}_0\times\dcat{D}_0.
   \end{tikzcd} \]
 \end{lemma}
@@ -1664,7 +1665,7 @@ This section aims to establish the following equivalence of fibrations.
       \label{thm:mon_prof_equivalence}
    There is an equivalence of fibrations
    \[ \begin{tikzcd}[column sep=-.5em]
-      \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+      \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads,"\MOb"']
          && \Mon(\dCompProf) \ar[dl,two heads,"\MOb"] \\
          & \CompCat. &
    \end{tikzcd} \]
@@ -1675,7 +1676,7 @@ We prove this result by factoring the desired equivalence as a composition of tw
       \label{cor:Tr_mon_prof_equivalence}
    There is an equivalence of fibrations
    \[ \begin{tikzcd}[column sep=-.5em]
-      \CPsh(\dTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+      \CPsh(\dTrProf) \ar[rr,"\equiv"] \ar[dr,two heads,"\MOb"']
          && \Mon(\dTrProf) \ar[dl,two heads,"\MOb"] \\
          & \TrCat. &
    \end{tikzcd} \]
@@ -1687,7 +1688,16 @@ We prove this result by factoring the desired equivalence as a composition of tw
 To prove Theorem~\ref{thm:mon_prof_equivalence} we introduce a third fibration, that of pointed endo-proarrows, and establish its equivalence with each of $\CPsh(\dCompProf)$ and $\Mon(\dCompProf)$.
 \begin{definition}
       \label{def:ptd}
-   Given an equipment $\dcat{D}$ there is a fibration $\Ptd(\dcat{D})\twoheadrightarrow\dcat{D}_0$ whose objects are \emph{pointed proarrows}, i.e.\ proarrows $M\colon c\tickar c$ in $\dcat{D}$ equipped with a unit $i_M\colon c\to M$ as in \eqref{eqn:unit_and_mult} (but not a multiplication), and whose morphisms are 2-cells which preserve the units. We refer to objects in $\Ptd(\dcat{D})$ as \emph{pointed endo-proarrows}.
+Given an equipment $\dcat{D}$, we define the fibration of \emph{endo-proarrows} by the strict pullback
+\[
+\begin{tikzcd}
+   \End(\dcat{D}) \ar[d,two heads, "\MOb"'] \ar[r] \ar[dr,phantom,"\lrcorner" very near start]
+      & \dcat{D}_1 \ar[d,two heads,"{(\lframe,\rframe)}"] \\
+   \dcat{D}_0 \ar[r,"\Delta"']
+      & \dcat{D}_0\times\dcat{D}_0.
+\end{tikzcd}
+\]   
+We also define a fibration $\Ptd(\dcat{D})\twoheadrightarrow\dcat{D}_0$ whose objects are \emph{pointed endo-proarrows}, i.e.\ endo-proarrows $M\colon c\tickar c$ in $\dcat{D}$ equipped with a unit $i_M\colon c\to M$ as in \eqref{eqn:unit_and_mult} (but not a multiplication), and whose morphisms are 2-cells which preserve the units. 
 \end{definition}
 
 \begin{lemma}
@@ -1707,18 +1717,11 @@ To prove Theorem~\ref{thm:mon_prof_equivalence} we introduce a third fibration, 
    It is simple to check that this defines a natural bijection.
 \end{proof}
 
-Consider the fibration $\End(\dCompProf)\onto\CompCat$ of endo-profunctors, defined by the strict pullback
-\[ \begin{tikzcd}[column sep=0em]
-   \End(\dCompProf) \ar[d,two heads] \ar[r] \ar[dr,phantom,"\lrcorner" very near start]
-      & \dCompProf_1 \ar[d,two heads] \\
-   \CompCat \ar[r,"\Delta"']
-      & \CompCat\times\CompCat.
-\end{tikzcd} \]
-We can define the functors
+With the fibration $\End(\dCompProf)\onto\CompCat$ from Definition~\ref{def:ptd}, we can define the functors
 \begin{equation} \begin{tikzcd}[column sep=-1em]
    \label{eqn:functors_1C_CC}
-   \CPsh(\dCompProf) \ar[rr,shift left,"F"] \ar[dr,two heads]
-   && \End(\dCompProf) \ar[ll,shift left,"U"] \ar[dl,two heads] \\
+   \CPsh(\dCompProf) \ar[rr,shift left,"F"] \ar[dr,two heads,"\MOb"']
+   && \End(\dCompProf) \ar[ll,shift left,"U"] \ar[dl,two heads,"\MOb"'] \\
    & \CompCat &
 \end{tikzcd} \end{equation}
 where $FM\colon\op{\cat{C}}\times \cat{C}\to\Set$ is defined by $FM(a,b)\coloneqq M(a^*\otimes b)$ while $UN\colon \cat{C}\to\Set$ is given by $UN(a)\coloneqq N(I,a)$. It is simple to check that these are morphisms of fibrations, i.e.\ that they preserve cartesian morphisms.
@@ -1729,7 +1732,7 @@ where $FM\colon\op{\cat{C}}\times \cat{C}\to\Set$ is defined by $FM(a,b)\coloneq
 \end{proposition}
 \begin{proof}
    Let $M\colon \cat{C}\to\Set$ be an object in $\CPsh(\dCompProf)$. Since $M$ is a monoidal profunctor, there is a given unit element $I_M\in M(I)$. Thus given any $f\colon c\to d$ in $ \cat{C}$, we can define the element $i(f)\in FM(c,d)=M(c^*\otimes d)$ via
-   \[i(f)\coloneqq((\id_{c^*}\otimes f)\circ\eta_c)\cdot I_M.\]
+   \[i(f)\coloneqq\big((\id_{c^*}\otimes f)\circ\eta_c\big)\cdot I_M.\]
    It is easy to check that this construction of a unit $i$ is functorial.
 \end{proof}
 
@@ -1746,7 +1749,7 @@ in which the triangle involving the $F$'s and the triangle involving the $U$'s b
       \label{Prop:ptd_prof_equivalence}
    The functors $F$ and $U$ from (\ref{eqn:ptd_functors_1C_CC}) form an equivalence of fibrations
    \[ \begin{tikzcd}[column sep=-.5em]
-      \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+      \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads,"\MOb"']
          && \Ptd(\dCompProf) \ar[dl,two heads,"\MOb"] \\
          & \CompCat &
    \end{tikzcd} \]
@@ -2245,13 +2248,13 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
    There are equivalences of fibrations
    \begin{equation*}
       \begin{tikzcd}[column sep=-1.25em]
-         \CPsh(\dFrCompProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+         \CPsh(\dFrCompProf) \ar[rr,"\equiv"] \ar[dr,two heads,"\MOb"']
             && \Mon(\dFrCompProf) \ar[dl,two heads,"\MOb"] \\
             & \FrCompCat &
       \end{tikzcd}
       \quad\tn{and}\quad
         \begin{tikzcd}[column sep=-1.25em]
-         \CPsh(\dFrTrProf) \ar[rr,"\equiv"] \ar[dr,two heads]
+         \CPsh(\dFrTrProf) \ar[rr,"\equiv"] \ar[dr,two heads,"\MOb"']
             && \Mon(\dFrTrProf) \ar[dl,two heads,"\MOb"] \\
             & \FrTrCat &
       \end{tikzcd}
@@ -3061,9 +3064,6 @@ $\bo$ morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
 \end{proof}
 
 \begin{thebibliography}{XXX}
-
- \bibitem{Abadi}
- J.~Abadi, On the Existence of an Orthogonal Factorization System on 1-Cob and 2-Cob, Preprint: \url{http://arxiv.org/abs/1506.03119} (2015).
 
  \bibitem{Abramsky1}
  S.~Abramsky, Retracing some paths in process algebra, CONCUR'96: Concurrency Theory (1996), pp.~1--17.
