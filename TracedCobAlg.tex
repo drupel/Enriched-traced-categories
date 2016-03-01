@@ -2062,7 +2062,7 @@ As a corollary we obtain our second main theorem.
       \end{tikzcd}
       \qquad\quad
       \begin{tikzcd}[column sep=-1em]
-         \int\limits^{\mathclap{\cat{I}\in\TrCat}} \Lax(\Int(\cat{I}),\Set)
+         \int\limits^{\mathclap{\cat{T}\in\TrCat}} \Lax(\Int(\cat{T}),\Set)
                \ar[rr,"\equiv"] \ar[dr,two heads]
             && \TrCat^{\bo} \ar[dl,two heads,"\dom" pos=.4] \\
          & \TrCat &
@@ -2080,7 +2080,7 @@ As a corollary we obtain our second main theorem.
       \end{tikzcd}
       \quad\text{and}\quad
       \begin{tikzcd}[column sep=-2em]
-         \int\limits^{\mathclap{\cat{I}\in\TrCat}}\Lax(\Int(\cat{I}),\Set)~~
+         \int\limits^{\mathclap{\cat{T}\in\TrCat}}\Lax(\Int(\cat{T}),\Set)~~
                \ar[rr,phantom,"\iso"] \ar[dr,two heads]
             && ~~\CPsh(\dTrProf) \ar[dl,two heads] \\
          & \TrCat. &
@@ -2106,13 +2106,13 @@ As a corollary we obtain our second main theorem.
 \section{Monoids on free objects}
       \label{sec:monoids_on_free}
 
-If $\cat{T}$ is the free traced category on a set $\LabSet$, a corollary of \ref{thm:TheoremB} is an isomorphism $\Lax(\Int(\cat{T}),\Set)\cong\TrCat_\LabSet$, where the latter is the category of traced categories with fixed object set $\LabSet$. This was called \ref{thm:traced_is_cob_alg} in the introduction. Our goal in the present section is to prove \ref{thm:TheoremA}, for which we must formalize what it means for an object in an equipment to itself be "free-on-objects".
+If we momentarily denote the free traced category on a set $\LabSet$ as $F(\LabSet)$, a corollary of \ref{thm:TheoremB} is an isomorphism $\Lax(\Int(\cat{T}),\Set)\cong\TrCat_\LabSet$, where the latter is the category of traced categories with fixed object set $\LabSet$. This was called \ref{thm:traced_is_cob_alg} in the introduction. Our goal in the present section is to prove \ref{thm:TheoremA}, for which we must formalize what it means for an object in an equipment to itself be "free-on-objects".
 
 Consider an equipment $\dcat{D}$, and let $\dom\colon\dcat{D}_0^{\bo}\onto\dcat{D}_0$ denote the domain fibration. Suppose we are given an adjunction to a category $\cat{S}$:
 \begin{equation*}
    \Adjoint{\cat{S}}{\dcat{D}_0.}{F}{U}
 \end{equation*}
-Let $T=UF$ be the monad on $\cat{S}$ corresponding to this adjunction, write $\cat{S}_T$ for the Kleisli category of $T$, and write $k_T\colon\cat{S}_T\to\dcat{D}_0$ for the fully faithful inclusion. Define $k_T^{\bo}$ to be the strict pullback of $k_T$ along $\dom$:
+Let $T=UF$ be the monad on $\cat{S}$ corresponding to this adjunction, and write $\cat{S}_T$ for the Kleisli category for $T$, i.e.\ the full subcategory of free objects $Fs$ in $\dcat{D}_0$. Let $k_T\colon\cat{S}_T\to\dcat{D}_0$ denote the inclusion, and define $k_T^{\bo}$ to be the strict pullback of $k_T$ along $\dom$:
    \[ \begin{tikzcd}
       (\dcat{D}_T^{\bo})_0 \ar[d] \ar[dr,phantom,"\lrcorner" very near start] \ar[r,"k_T^{\bo}"]
          &\dcat{D}_0^{\bo} \ar[d,"\dom"] \\
@@ -2131,12 +2131,10 @@ The fully faithful functors $k_T\colon\cat{S}_T\to\dcat{D}_0$ and $k_T^{\bo}\col
    \end{equation}
 \end{definition}
 
-If $\dcat{D}$ is exact, we can use the equivalence $\dMod(\dcat{D})\equiv\dcat{D}^{\bo}$ from Theorem~\ref{thm:Mod_vs_bo} to identify $\dMod(\dcat{D}_T)$ with the full subcategory of $\dcat{D}^{\bo}$ spanned by the objects in the image of $\dMod(\varphi_T)$.
-
 
 \begin{proposition}
       \label{prop:objectfree_Mod_bo}
-   There is a commutative diagram of equipments, in which the vertical functors are equivalences and the horizontal functors are local equivalences:
+With the setup as in Definition~\ref{def:kleisli_equipment}, suppose also that $\dcat{D}$ is exact. There is a commutative diagram of equipments, in which the vertical functors are equivalences and the horizontal functors are local equivalences:
    \[ \begin{tikzcd}[column sep=large]
       \dMod(\dcat{D}_T) \ar[r,"\dMod(\varphi_T)"] \ar[d,"\equiv"']
          & \dMod(\dcat{D}) \ar[d,"\equiv"] \\
