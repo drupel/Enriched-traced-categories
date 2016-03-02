@@ -536,7 +536,7 @@ Definition~\ref{def:free_on_objects}.
 
 
 Our work in this direction leads to a characterization (see
-Remark~\ref{rem:characterization_of_traced}) of the 2-category $\TTrCatStrong$ solely in terms of
+Section~\ref{sec:characterization_of_traced}) of the 2-category $\TTrCatStrong$ solely in terms of
 $\MMonCatStrong$ and $\CCompCatStrong$---and the relationship between them---without mention of the
 usual structures or axioms of traced categories as in \cite{JoyalStreetVerity}.
 
@@ -1666,7 +1666,7 @@ Thus we have a functor $\UCT\colon\CCompCat\to\TTrCat$. It is shown in~\cite{Joy
       \TTrCat\arrow[r,shift left=.5ex, "\Int"]&\CCompCat\arrow[l,shift left=.5ex,"\UCT"].
    \end{tikzcd}
 \end{equation}
-Note that $\UCM=\UCT\UTM$. In Remark~\ref{rem:characterization_of_traced} we will be able to formally define the 2-category
+Note that $\UCM=\UCT\UTM$. In Section~\ref{sec:characterization_of_traced} we will be able to formally define the 2-category
 $\TTrCat$ without mentioning the trace structure \eqref{dia:trace_function} or the usual seven axioms, but instead via the
 relationship between compact and monoidal categories.
 
@@ -2192,7 +2192,7 @@ As a corollary we obtain our second main theorem.
    The result then follows from Theorem~\ref{thm:mon_prof_equivalence} and Corollary~\ref{cor:Tr_mon_prof_equivalence}.
 \end{proof}
 
-\section{Monoids on free objects}
+\section{Objectwise-freeness}
       \label{sec:monoids_on_free}
 
 If we momentarily denote the free traced category on a set $\LabSet$ as $F(\LabSet)$, a corollary of \ref{thm:TheoremB} is an isomorphism $\Lax(\Int(\cat{T}),\Set)\cong\TrCat_\LabSet$, where the latter is the category of traced categories with fixed object set $\LabSet$. This was called \ref{thm:traced_is_cob_alg} in the introduction. Our goal in the present section is to prove \ref{thm:TheoremA}, for which we must formalize what it means for an object in an equipment to itself be objectwise-free.
@@ -2397,10 +2397,9 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
    \]
 \end{proof}
 
-
-
-\begin{remark}
-      \label{rem:characterization_of_traced}
+\section{Axiom-free definition of traced categories}
+      \label{sec:characterization_of_traced}
+     \todo[inline]{Introduce this section.}
       The forgetful functors between the categories of structured monoidal categories commute with the
 underlying set functors, i.e.\ the following diagram commutes:
 \begin{equation}
@@ -2417,12 +2416,11 @@ adjunctions to $\Set$, i.e.\ $\UM\UCM=\UC$, it induces a monad morphism $\alpha\
 (i.e.\ a natural transformation $\alpha\colon\TM\to\TC$ compatible with the units and
 multiplications), given by the composition of the natural transformations
 \begin{equation*} \begin{tikzcd}[column sep=2cm]
-   \TM\ar[r,equal]\ar[d,dashed,"\alpha"']&\UM\FM\ar[r,"\UM\FM\eta_C"]&\UM\FM\UC\FC\ar[d,equal]\\
-   \TC&\UM\UCM\FC\ar[l,equal]&\UM\FM\UM\UCM\FC\ar[l,"\UM\epsilon_M\UCM\FC"]
+   \TM\ar[r,equal]\ar[d,dashed,"\alpha"']&\UM\FM\ar[r,"\UM\FM\eta_{\MTCfont{C}}"]&\UM\FM\UC\FC\ar[d,equal]\\
+   \TC&\UM\UCM\FC\ar[l,equal]&\UM\FM\UM\UCM\FC\ar[l,"\UM\epsilon_{\MTCfont{M}}\UCM\FC"]
 \end{tikzcd} \end{equation*}
 The component $\alpha_{\LabSet}$ of this transformation is simply the evident inclusion of the free
-monoid on a set $\LabSet$ into the free monoid-with-involution on $\LabSet$. In this way, $\UCM$
-induces a functor between the Kleisli categories in the other direction:
+monoid on a set $\LabSet$ into the free monoid-with-involution on $\LabSet$. The monad map $\alpha$ induces a functor between the Kleisli categories:
 \begin{equation*}
       \label{eqn:FMC}
    \FMC\colon\Set_{\TM}\to\Set_{\TC}.
@@ -2431,25 +2429,26 @@ induces a functor between the Kleisli categories in the other direction:
    \[
       \FrTrCat = \Set_{\TT} \iso \Set_{\TM} = \FrMonCat.
    \]
-   By combining the definitions of $\dFrTrProf$ and $\dTrProf$, it is easy to see that the square
+
+The following proposition defines the 2-category $\TTrCat$ of traced categories purely in terms of $\dCompProf$, $\dMonProf$, and
+   the adjunctions $\FM\dashv\UM$ and $\FC\dashv\UC$. In particular, it does not involve any explicit
+   mention of the trace structure defined in \cite{JoyalStreetVerity}.
+   
+\begin{proposition}
+  Consider the functor $\FrMonCat\To{\FMC}\FrCompCat\To{k_{\MTCfont{C}}}\CompCat$ and the induced equipment $\dcat{F}\coloneqq(k_{\MTCfont{C}}\circ\FMC)^*(\dCompProf)$. The equipment $\dMod(\dcat{F})$ is equivalent to $\dTrProf$, and in particular there is an equivalence of 2-categories $\MMon(\dcat{F})\equiv\TTrCat$. 
+
+\end{proposition}   
+\begin{proof}
+   By combining the definitions of $\dFrTrProf$ and $\dTrProf$, it is easy to see that the following square is a pullback:
    \begin{equation} \begin{tikzcd}
          \label{eqn:FTrProf_pullback}
       \dFrTrProf_1 \ar[r] \ar[d,two heads] \ar[dr,phantom,"\lrcorner" very near start]
          & \dCompProf_1 \ar[d,two heads] \\
-      \FrMonCat\times\FrMonCat \ar[r]
+      \FrMonCat\times\FrMonCat \ar[r,"k_{\MTCfont{C}}\circ\FMC"']
          & \CompCat\times\CompCat
    \end{tikzcd} \end{equation}
-   is a pullback, where the bottom functor is given in each variable by the composition
-   \[ \begin{tikzcd}
-      \FrMonCat \ar[r,"\FMC"] & \FrCompCat \ar[r] & \CompCat.
-   \end{tikzcd} \]
-   In this way, the
-   equipment $\dFrTrProf$ can be defined formally, purely in terms of $\dCompProf$, $\dMonProf$, and
-   the adjunctions $\FM\dashv\UM$ and $\FC\dashv\UC$. Thus Corollary~\ref{cor:TrCat_ObjectFree},
-   together with \eqref{eqn:FTrProf_pullback}, can be seen as providing an alternative
-   \emph{definition} of the 2-category $\TTrCat$. This definition does not involve any explicit
-   mention of the trace structure defined in \cite{JoyalStreetVerity}.
-\end{remark}
+Thus we have an equivalence $\dcat{F}\equiv\dFrTrProf$, and the result follows by Corollary~\ref{cor:TrCat_ObjectFree}.
+\end{proof}
 
 \appendix
 \chapter{Appendix}
