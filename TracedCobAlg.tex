@@ -42,14 +42,14 @@
 \begin{abstract}
   We give an alternate conception of string diagrams as labeled 1-dimensional oriented cobordisms,
   the operad of which we denote by $\LCob{\LabSet}$, where $\LabSet$ is the set of string labels.
-  The axioms of traced categories are fully encoded by $\LCob{\LabSet}$ in the sense that there is
+  The axioms of traced (symmetric monoidal) categories are fully encoded by $\LCob{\LabSet}$ in the sense that there is
   an equivalence between $\LCob{\LabSet}$-algebras, for varying $\LabSet$, and traced categories
-  with varying object set. The same holds for compact categories, the difference being in terms of
+  with varying object set. The same holds for compact (closed) categories, the difference being in terms of
   variance in $\LabSet$. As a consequence of our main theorem, we give a characterization of the
   2-category of traced categories solely in terms of those of monoidal and compact categories,
   without any reference to the usual structures or axioms of traced categories. In an appendix we
   offer a complete proof of the well-known relationship between the 2-category of monoidal
-  categories with strong functors and the 2-category of monoidal categories whose object set is free
+  categories with strong monoidal functors and the 2-category of monoidal categories whose object set is free
   with strict functors; similarly for traced and compact categories. \\
 
   \noindent\textbf{Keywords:} Traced monoidal categories, compact closed categories, monoidal
@@ -58,7 +58,6 @@
 
 % \setcounter{tocdepth}{1}
 % \tableofcontents*
-\todo[inline]{Read and incorporate Christina's comments of Feb 29. Add her and referee to acknowledgments.}
 \tableofcontents
 
 \chapter{Introduction}
@@ -96,7 +95,7 @@ string diagrams of the form
 represent compositions in a traced category $\cat{T}$. That is, new morphisms are constructed from
 old by specifying which outputs will be fed back into which inputs. These are related to Penrose
 diagrams in $\ncat{Vect}$ and the word \emph{traced} originates in this vector space
-terminology~\cite{JoyalStreetVerity}.
+terminology.
 
 The string diagrams of \cite{JoyalStreetVerity} typically do not explicitly include the outer box
 $Y$. If we include it, as in (\ref{dia:string_diagram}), the resulting \emph{wiring diagram} can be
@@ -123,24 +122,6 @@ In fact, this is more appropriately interpreted as a morphism in the (colored) o
 underlying the symmetric monoidal category of oriented 1-cobordisms. The
 following shows the two approaches to drawing a 2-ary morphism $X_1,X_2\to Y$ in $\LCob{\LabSet}$:
 \begin{equation*}
-  \begin{tikzpicture}[x=1cm,y=1ex,node distance=1 and 1,semithick,every label quotes/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},every to/.style={out=0,in=180},baseline=(current bounding box.center)]
-    \node ["$\inp{X}_{1a}$" left] (X1a) {$-$};
-    \node [below=0 of X1a, "$\inp{X}_{1b}$" left] (X1b) {$-$};
-    \node [below=0 of X1b, "$\outp{X}_{1c}$" left] (X1c) {$+$};
-    \node [below=1.5 of X1c, "$\inp{X}_{2a}$" left] (X2a) {$-$};
-    \node [below=0 of X2a, "$\inp{X}_{2b}$" left] (X2b) {$-$};
-    \node [below=0 of X2b, "$\outp{X}_{2c}$" left] (X2c) {$+$};
-    \node [below=0 of X2c, "$\outp{X}_{2d}$" left] (X2d) {$+$};
-    \node [below right=1.5 and 2 of X1a, "$\inp{Y}_a$" right] (Ya) {$-$};
-    \node [below=1.5 of Ya, "$\inp{Y}_b$" right] (Yb) {$-$};
-    \node [below=1.5 of Yb, "$\outp{Y}_c$" right] (Yc) {$+$};
-    \draw (X1a) to (Yb);
-    \draw (X1b) to[in=0] (X2d);
-    \draw (X1c) to[in=0] (X2b);
-    \draw (X2a) to (Ya);
-    \draw (X2c) to (Yc);
-  \end{tikzpicture}
-  \qquad
   \begin{tikzpicture}[wiring diagram, baseline=(current bounding box.center)]
     \node[bb={2}{1}, bb name=$X_1$] (X1) {};
     \node[bb={2}{2}, right=of X1, bb name=$X_2$] (X2) {};
@@ -164,13 +145,31 @@ following shows the two approaches to drawing a 2-ary morphism $X_1,X_2\to Y$ in
     \draw[ar] let \p1=(X2.south east), \p2=(X1.south west), \n1={\y1-\bby}, \n2=\bbportlen in
       (X2_out2) to[in=0] (\x1+\n2,\n1) -- (\x2-\n2,\n1) to[out=180] (X1_in2);
   \end{tikzpicture}
+  \qquad\quad
+  \begin{tikzpicture}[x=1cm,y=1ex,node distance=1 and 1,semithick,every label quotes/.style={font=\everymath\expandafter{\the\everymath\scriptstyle}},every to/.style={out=0,in=180},baseline=(current bounding box.center)]
+    \node ["$\inp{X}_{1a}$" left] (X1a) {$-$};
+    \node [below=0 of X1a, "$\inp{X}_{1b}$" left] (X1b) {$-$};
+    \node [below=0 of X1b, "$\outp{X}_{1c}$" left] (X1c) {$+$};
+    \node [below=1.5 of X1c, "$\inp{X}_{2a}$" left] (X2a) {$-$};
+    \node [below=0 of X2a, "$\inp{X}_{2b}$" left] (X2b) {$-$};
+    \node [below=0 of X2b, "$\outp{X}_{2c}$" left] (X2c) {$+$};
+    \node [below=0 of X2c, "$\outp{X}_{2d}$" left] (X2d) {$+$};
+    \node [below right=1.5 and 2 of X1a, "$\inp{Y}_a$" right] (Ya) {$-$};
+    \node [below=1.5 of Ya, "$\inp{Y}_b$" right] (Yb) {$-$};
+    \node [below=1.5 of Yb, "$\outp{Y}_c$" right] (Yc) {$+$};
+    \draw (X1a) to (Yb);
+    \draw (X1b) to[in=0] (X2d);
+    \draw (X1c) to[in=0] (X2b);
+    \draw (X2a) to (Ya);
+    \draw (X2c) to (Yc);
+  \end{tikzpicture}
 \end{equation*}
 
 There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{T}$
 than in a cobordism. Namely, each input and output of a box must be labeled by an object of
 $\cat{T}$ and the wires connecting boxes must respect the labels (e.g.\ in
 (\ref{dia:string_diagram}) objects $1c$ and $2b$ must be equal). We will thus consider the operad
-$\LCob{\LabSet}$ of oriented 1-dimensional cobordisms over a fixed set of labels $\LabSet$.
+$\LCob{\LabSet}$ of oriented 1-dimensional cobordisms over a fixed set of labels $\LabSet$. We also write $\LCob{\LabSet}$ to denote the corresponding symmetric monoidal category.
 
 In the table below, we record these two interpretations of a string diagram. Note the ``degree
 shift'' between the second and third columns.
@@ -256,8 +255,7 @@ for every $f\colon U\otimes X\to U\otimes Y$ and $g\colon W\to Z$, or diagramati
 
 To make precise the relationship between these interpretations of string diagrams, we fix the set
 $\LabSet$ of labels. Let $\TrCat$ denote the 1-category of traced categories and traced strict
-monoidal functors. Write $\TrCat_{\LabSet}$ for the subcategory in which the monoid of objects is
-fixed to be free on the set $\LabSet$, together with identity-on-objects functors.
+monoidal functors. Write $\TrCat_{\LabSet}$ for the subcategory of those traced categories $\cat{T}$ for which the monoid of objects is free on the set $\LabSet$, with identity-on-objects functors $\cat{T}\to\cat{T}'$ between them.
 
 \begin{named}{Theorem 0}
     \label{thm:traced_is_cob_alg}
@@ -267,7 +265,7 @@ fixed to be free on the set $\LabSet$, together with identity-on-objects functor
     \LCob{\LabSet}\alg\equiv\TrCat_{\LabSet},
   \end{equation}
   where, given any monoidal category $\cat{M}$, we denote by
-  $\cat{M}\alg\coloneqq\ncat{Lax}(\cat{M},\Set)$ the category of lax functors $\cat{M}\to\Set$.
+  $\cat{M}\alg\coloneqq\ncat{Lax}(\cat{M},\Set)$ the category of lax functors $\cat{M}\to\Set$ and monoidal natural transformations.
 \end{named}
 
 To build intuition for this statement note that the same data are required, and the same conditions
@@ -631,8 +629,7 @@ functors. We do the same for traced and compact categories, all in Corollary~\re
 
 Thanks go to Steve Awodey and Ed Morehouse for suggesting we formally connect the operad-algebra
 picture in \cite{RupelSpivak} to string diagrams in traced categories. We also thank Mike Shulman
-for many useful conversations, and Tobias Fritz, Justin Hilburn, and Dmitry Vagner for helpful
-comments on drafts of this paper. Finally, we thank our referee for many useful suggestions.
+for many useful conversations, and Tobias Fritz, Justin Hilburn, Dmitry Vagner, and Christina Vasilakopoulou for helpful comments on drafts of this paper. Finally, we thank our referee for many useful suggestions.
 
 \chapter{Background on equipments}
       \label{chap:background_equipments}
@@ -686,13 +683,15 @@ The objects in a category, 2-category, or double category will be denoted with t
          there are coherent unitor and associator isomorphisms. See \cite{Shulman} for more details.
    \end{itemize}
    Given a double category $\dcat{D}$ there is a strict 2-category called the \emph{vertical
-   2-category}, denoted $\VVer(\dcat{D})$, whose underlying 1-category\footnote{By the \emph{underlying 1-category} of a 2-category, we mean the one obtained by dropping (not quotienting by) the 2-cells.} is $\dcat{D}_0$ and whose 2-morphisms $f\Rightarrow f'$ are defined to be 2-cells \eqref{eqn:2cell} where $M=\unit(c)$ and $N=\unit(d)$ are unit proarrows. There is also a \emph{horizontal bicategory}, denoted $\HHor(\dcat{D})$, whose objects and 1-cells are the objects and horizontal 1-cells of
+   2-category}, denoted $\VVer(\dcat{D})$, whose underlying 1-category is $\dcat{D}_0$ and whose 2-morphisms $f\Rightarrow f'$ are defined to be 2-cells \eqref{eqn:2cell} where $M=\unit(c)$ and $N=\unit(d)$ are unit proarrows. There is also a \emph{horizontal bicategory}, denoted $\HHor(\dcat{D})$, whose objects and 1-cells are the objects and horizontal 1-cells of
    $\dcat{D}$, and whose 2-cells are the 2-cells of $\dcat{D}$ of the form \eqref{eqn:2cell} such that $f=\id_c$ and $f'=\id_{c'}$.
 
    A \emph{strong double functor} $F\colon\dcat{C}\to\dcat{D}$ consists of functors
    $F_0\colon\dcat{C}_0\to\dcat{D}_0$ and $F_1\colon\dcat{C}_1\to\dcat{D}_1$ commuting with the frames $\lframe$,$\rframe$, and
    preserving the unit $\unit$ and horizontal composition $\odot$ up to coherent isomorphism.
 \end{definition}
+
+We denote fibrations of 1-categories using two-headed arrows $\onto$.
 
 \begin{definition}
       \label{def:equipment}
@@ -751,7 +750,7 @@ $\epsilon_f\colon\unit(c)\to\comp{f}\odot\conj{f}$ for the unit and counit of th
 
 \begin{remark}
       \label{rem:strict_vs_pseudo_pullback}
-   It is a standard fact for 1-categories that a strict pullback of an isofibration along an arbitrary functor is a pseudo-pullback. Any Grothendieck fibration (or opfibration) is in particular an isofibration, so if the square \eqref{eqn:local_equiv} is a strict pullback, it will be a pseudo-pullback, and hence a local equivalence. Any local equivalence can be replaced by an equivalent strict pullback, which we define in Definition~\ref{def:induced_locally_equivalent_equipment}.
+   It is a standard fact for 1-categories that a strict pullback of a Grothendieck fibration (or opfibration) along an arbitrary functor is a pseudo-pullback. Thus if the square \eqref{eqn:local_equiv} is a strict pullback, it will be a pseudo-pullback, and hence a local equivalence. Any local equivalence can be replaced by an equivalent strict pullback, which we define in Definition~\ref{def:induced_locally_equivalent_equipment}.
 
    Also note that the frame fibration for $\dcat{C}$ is equivalent to the functor $\dcat{C}_0\times\dcat{C}_0\to\CCat$, the 2-category of
    small categories, sending $(c,d)$ to $\HHor(\dcat{C})(c,d)$ and similarly for $\dcat{D}$. In this language, $F$ is a local equivalence if and only if the induced functors $\HHor(\dcat{C})(c,d)\to\HHor(\dcat{D})(F_0(c),F_0(d))$ are equivalences of categories for every pair of objects $(c,d)$. The square \eqref{eqn:local_equiv} is a strict pullback precisely when these are isomorphisms of categories.
@@ -902,7 +901,7 @@ fiber over an object $c$ is the category of copresheaves on $c$:
 \begin{lemma}
       \label{lem:Psh_pullback}
    Let $F\colon\dcat{C}\to\dcat{D}$ be an equipment functor. Suppose that $\dcat{C}_0$ and
-   $\dcat{D}_0$ have terminal objects preserved by $F_0$. Then there is an induced
+   $\dcat{D}_0$ have terminal objects, preserved by $F_0$. Then there is an induced
    morphism of fibrations
    \begin{equation} \begin{tikzcd}
          \label{eq:CPsh_square}
@@ -992,7 +991,7 @@ related to monoids in $\dcat{D}$.
 \end{definition}
 
 There is an evident forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ sending a monoid
-$M\colon c\tickar c$ to its underlying object $|M|\coloneqq c$.
+$M\colon c\tickar c$ to its underlying object $|M|\coloneqq c$. The following result can also be found in \cite{FioreGambinoKock}.\todo{P: Christina suggested we add this reference; thoughts?}
 
 \begin{lemma}
     \label{lemma:Mon_und_fib}
@@ -3186,6 +3185,11 @@ F.~Borceux, Handbook of Categorical Algebra: Volume 1, Basic Category Theory, Ca
 
 \bibitem{Bourke}
  J.~Bourke, Two-dimensional monadicity (English summary), Advances in Mathematics, 252 (2014), pp.~708--747.
+ 
+\bibitem{FioreGambinoKock}
+ T.M.~Fiore; N.~Gambino; J.~Kock
+Monads in double categories (English summary),  
+J. Pure Appl. Algebra 215 (2011), no. 6, pp.~1174--1197. 
 
  \bibitem{FreydYetter}
  P.~Freyd, D.N.~Yetter, Braided compact closed categories with applications to low-dimensional topology,
