@@ -900,7 +900,7 @@ fiber over an object $c$ is the category of copresheaves on $c$:
 \begin{lemma}
       \label{lem:Psh_pullback}
    Let $F\colon\dcat{C}\to\dcat{D}$ be an equipment functor. Suppose that $\dcat{C}_0$ and
-   $\dcat{D}_0$ have terminal objects preserved by $F$. Then there is an induced
+   $\dcat{D}_0$ have terminal objects preserved by $F_0$. Then there is an induced
    morphism of fibrations
    \begin{equation} \begin{tikzcd}
          \label{eq:CPsh_square}
@@ -1267,7 +1267,7 @@ possible to simplify the definition:
       & \unit(\Col{M}),
     \end{tikzcd}
   \end{equation}
-  or in other words if $\conj{i}_M\otimes_M\comp{i}_M\iso\unit(\Col{M})$.
+  or equivalently $\conj{i}_M\otimes_M\comp{i}_M\iso\unit(\Col{M})$.
 \end{proposition}
 \begin{proof}
   The restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic to the functor
@@ -1488,9 +1488,7 @@ The bijective-on-objects vertical arrows of an exact equipment $\dcat{D}$ will p
    \end{tikzcd} \]
 \end{theorem}
 \begin{proof}
-   By Proposition~\ref{prop:collapse_local_equivalence} the equipment functor $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$ is a local equivalence, and $\cod\colon\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence by definition of $\dcat{D}^{\bo}$. It follows that the equivalence from Proposition~\ref{prop:Mon_vs_bo} extends to an equivalence of equipments.
-   \todo[inline, author=David]{This proof is incomplete. In particular, it does not provide a strong functor
-   $\dMod(\dcat{D})\to\dcat{D}^{\bo}$.}
+   By Proposition~\ref{prop:collapse_local_equivalence} the equipment functor $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$ is a local equivalence, and $\cod\colon\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence by definition of $\dcat{D}^{\bo}$. It follows that the equivalence of fibrations from Proposition~\ref{prop:Mon_vs_bo} extends to an equivalence of equipments.
 \end{proof}
 
 \todo[inline]{I have no idea what Example~\ref{ex:monoid_in_Prof} and Remark~\ref{rem:suffices_for_monoid} are doing here, or where they are supposed to go.}
@@ -2283,7 +2281,7 @@ In other words, $\dFrMonProf\to\dMonProf$ is a fully faithful local equivalence,
    \FrCompCat&\coloneqq\dFrCompProf_0=\Set_{\TC}\\
    \FrTrCat&\coloneqq\dFrTrProf_0=\Set_{\TT}
 \end{align*}
-for the vertical 1-categories.
+for the vertical 1-categories. Note that each of these categories has a terminal object.
 
 \begin{definition}
       \label{def:free_on_objects}
@@ -2320,7 +2318,6 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
    Proposition~\ref{prop:objectfree_Mod_bo}.
 \end{proof}
 
-\todo{Fix error in this proof.}
 \begin{lemma}
       \label{lem:FrCompProf_Psh_Mon}
    There are equivalences of fibrations
@@ -2339,7 +2336,7 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
    \end{equation*}
 \end{lemma}
 \begin{proof}
-   The equipment functor $\dFrCompProf\to\dCompProf$ is by definition a local equivalence which preserves terminal objects. Thus Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} give a factorization of the left-hand equivalence of fibrations as a composition of three equivalences with that of Theorem~\ref{thm:mon_prof_equivalence} in the middle. Since $\dFrTrProf\to\dFrCompProf$ has the same properties, we see similarly that the right-hand equivalence factors as a composition of three equivalences with the left-hand equivalence in the middle.
+   The equipment functor $\varphi_{\MTCfont{C}}\colon\dFrCompProf\to\dCompProf$ (resp. $\varphi_{\MTCfont{T}}\colon\dFrTrProf\to\dTrProf$) is by definition a local equivalence, and it preserves terminal objects in the vertical category. Thus using Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} we construct the desired equivalence $\CPsh(\dFrCompProf)\to\Mon(\dFrCompProf)$ as the pullback along $\varphi_{\MTCfont{C}}$ of the equivalence $\CPsh(\dCompProf)\to\Mon(\dCompProf)$ from Theorem~\ref{thm:mon_prof_equivalence} (resp. for the traced case).
 \end{proof}
 
 
