@@ -393,7 +393,7 @@ this with $\Lax(-,\Set)$ to obtain a functor which we denote
 By applying the Grothendieck construction (denoted by $\int$ here) to (\ref{eqn:cob/bullet}), we
 obtain a fibration for which the fiber over a set $\LabSet$ is equivalent (by \ref{th:traced is cob
 alg}) to $\TrCat_{\LabSet}$. Let $\TrFrObCat\subset\TrCat$ denote the full subcategory spanned by
-the traced categories that are objectwise-free.
+the objectwise-free traced categories.
 
 \begin{named}{Theorem A}
     \label{thm:TheoremA_statement}
@@ -619,7 +619,9 @@ the core of our results. Indeed one might view the rest of the paper as a formal
 results in that section. In Section~\ref{sec:exactness_proofs} we prove that the equipments of
 interest are exact and then apply the theory developed in Section~\ref{chap:background_equipments}
 to deduce \ref{thm:TheoremB}. In Section~\ref{sec:monoids_on_free} we deal with the
-freeness-on-objects needed for \ref{thm:TheoremA}. The appendix contains material that is not
+freeness-on-objects needed for \ref{thm:TheoremA}. 
+
+The appendix contains material that is not
 necessary to the paper. Its function is to prove the biequivalence between the 2-category
 $\MMonCatStrong$ of monoidal categories with arbitrary object set and strong functors, on the one
 hand, and the 2-category $\MMonFrObCat$ of monoidal categories with free object set and strict
@@ -2268,9 +2270,10 @@ functors are equivalences and the horizontal functors are local equivalences:
    as desired.
 \end{proof}
 
-We apply the above work to define equipments of monoidal, compact, and traced categories that are objectwise-free and conclude by addressing \ref{thm:TheoremA}. The idea is that an objectwise-free monoidal category can be identified with a $\bo$-map out of the free monoidal category on a set. Thus we begin by defining the latter.
+We apply the above work to define equipments of objectwise-free monoidal, compact, and traced categories and conclude by addressing \ref{thm:TheoremA}. The idea is that an objectwise-free monoidal category can be identified with a $\bo$-map out of the free monoidal category on a set. Thus we begin by defining the latter.
 
-Consider the free-forgetful adjunctions
+Consider the free-forgetful adjunctions%
+\footnote{These three adjunctions in fact extend to 2-adjunctions; see Corollary~\ref{cor:2_adjunctions_MonTrComp}.}
 \begin{equation}
    \label{eqn:adjunctions}
    \Adjoint{\Set}{\MonCat}{\FM}{\UM}
@@ -2309,8 +2312,7 @@ for the vertical 1-categories. Note that each of these categories has a terminal
    \[
       \MMonFrObCat\ss\MMonCat\qquad\CCompFrObCat\ss\CCompCat\qquad\TTrFrObCat\ss\TTrCat
    \]
-   the full 2-subcategories spanned by those monoidal (resp.\ compact or traced) categories
-   that are objectwise-free. In other words, using Definition~\ref{def:kleisli_equipment} we may write
+   the full 2-subcategories spanned by the objectwise-free monoidal (resp.\ compact or traced) categories. In other words, using Definition~\ref{def:kleisli_equipment} we may write
    \begin{gather*}
       \MMonFrObCat \coloneqq \VVer\left(\dMonProf_{\TM}^{\bo}\right) \qquad
       \CCompFrObCat \coloneqq \VVer\left(\dCompProf_{\TC}^{\bo}\right) \\
@@ -2399,7 +2401,7 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
 
 \section{Axiom-free definition of traced categories}
       \label{sec:characterization_of_traced}
-     \todo[inline]{Introduce this section.}
+     \todo[inline]{Introduce this section. Rename it?}
       The forgetful functors between the categories of structured monoidal categories commute with the
 underlying set functors, i.e.\ the following diagram commutes:
 \begin{equation}
@@ -2453,16 +2455,16 @@ Thus we have an equivalence $\dcat{F}\equiv\dFrTrProf$, and the result follows b
 \appendix
 \chapter{Appendix}
       \label{appendix}
+\linespread{1.2}\selectfont
 
 This section is mostly independent from the rest of the paper. It is really only used to prove
 Corollary~\ref{cor:object_frees}, the three biequivalences
 \[
    \MMonFrObCat \to \MMonCatStrong \qquad
    \TTrFrObCat \to \TTrCatStrong \qquad
-   \CCompFrObCat \to \CCompCatStrong,
+   \CCompFrObCat \to \CCompCatStrong.
 \]
-comparing objectwise-free and strict functors with arbitrary objects and strong functors. This
-result will not be new to experts, but we found it difficult to find in the literature.
+Here, $\MMonFrObCat$ (resp. $\TTrFrObCat$ and $\CCompFrObCat$) is the 2-category of objectwise-free monoidal (resp. traced and compact) categories and strict functors between them, whereas $\MMonCatStrong$ (resp. $\TTrCatStrong$ and $\CCompCatStrong$) is the 2-category of monoidal (resp. traced and compact) categories with arbitrary objects and strong functors between them. This result will not be new to experts, but we found it difficult to find in the literature.
 
 \section{Arrow objects and mapping path objects}
 
@@ -2605,7 +2607,7 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
 \end{corollary}
 \begin{proof}
    Let $R$ be either $\UM$, $\UT$, or $\UC$. Its underlying 1-functor has a left adjoint,
-   constructed in \cite{Abramsky2}. We showed in Remark~\ref{rem:pres_joint_detect} that $\MMonCat$,
+   constructed in \cite{Abramsky2}. We showed in Example~\ref{ex:arrow_objects} that $\MMonCat$,
    $\TTrCat$, and $\CCompCat$ have arrow objects, which are preserved by $R$. The result follows by
    Lemma~\ref{lem:2_adjunction}.
 \end{proof}
@@ -2694,7 +2696,7 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
    in passing that the structure morphisms for that cone are strict monoidal functors and that they
    ``preserve and jointly detect'' strictness in the sense of
    Definition~\ref{def:preserve_jdetect_strictness} below. In particular, the 2-categories
-   $\MMonCat$, $\TTrCat$, and $\CCompCat$ also have arrow objects and mapping path objects, and the
+   $\MMonCat$, $\TTrCat$, and $\CCompCat$ (objectwise-free monoidal categories and strict functors) also have arrow objects and mapping path objects, and the
    inclusions of strict-into-strong (e.g., $\MMonCat\to\MMonCatStrong$) preserve them. Looking back
    at Examples~\ref{ex:arrow_objects}~and~\ref{ex:mapping_paths}, we see that the forgetful functors
    \[
@@ -2793,7 +2795,7 @@ Example~\ref{ex:strictifiable}.
    triple $(\scat{D},\pcat{D},i)$ \emph{has mapping path objects} if $\pcat{D}$ has mapping path
    objects as in Definition~\ref{def:mapping_path_objects} such that
    \begin{itemize}
-      \item for any $f\colon a\to b$ in $\cat{Y}$, the structure morphisms
+      \item for any $f\colon a\to b$ in $\pcat{D}$, the structure morphisms
          $a\From{\pi_a}P(f)\To{\pi_b}b$ are in $\scat{D}$, and
       \item the pair $(\pi_a,\pi_b)$ \emph{preserves and jointly detects morphisms in $\scat{D}$} in
          the following sense: for any morphism $\ell\colon x\to P(f)$ in $\pcat{D}$, we have that
@@ -3070,7 +3072,7 @@ for morphisms in $\pcat{D}$.
    The cases of $\TTrCat$ and $\CCompCat$ are analagous.
 \end{example}
 
-\section{Monoidal, traced, and compact categories that are objectwise-free}
+\section{Objectwise-free monoidal, traced, and compact categories}
 
 Our next goal is to show, continuing the assumptions of the Theorem~\ref{thm:strong_classifier},
 that $\pcat{D}$ is 2-equivalent to the full subcategory of $\scat{D}$ spanned by those objects which
