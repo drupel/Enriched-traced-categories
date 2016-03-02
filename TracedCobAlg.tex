@@ -1294,7 +1294,8 @@ The monoids and bimodules construction for an exact equipment is in some sense d
 
 \begin{proposition}
       \label{prop:collapse_local_equivalence}
-   If $\dcat{D}$ is an exact equipment, then collapse induces an equipment functor $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$ which is a local equivalence.
+   If $\dcat{D}$ is an exact equipment with local coequalizers, then collapse induces an equipment
+   functor $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$ which is a local equivalence.
 \end{proposition}
 \begin{proof}
   It is easy to use the universal property of collapse to construct, from any monoid homomorphism
@@ -1476,7 +1477,8 @@ The bijective-on-objects vertical arrows of an exact equipment $\dcat{D}$ will p
 
 \begin{theorem}
       \label{thm:Mod_vs_bo}
-   Let $\dcat{D}$ be an exact equipment. There is an equivalence of equipments
+   Let $\dcat{D}$ be an exact equipment with local coequalizers. There is an equivalence of
+   equipments
 %   \[
 %      \dMod(\dcat{D}) \iso \dcat{D}^{\bo}.
 %   \]
@@ -2012,6 +2014,8 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
 \section{$\dMonProf$, $\dCompProf$, and $\dTrProf$ are exact}
       \label{sec:exactness_proofs}
 
+\todo{Prove/mention that these equipments have local coequalizers}
+
 As we have seen in Section~\ref{sec:monoids_bimods} the exactness of an equipment gives rise to many equivalences of fibrations; thus to establish our main theorems we aim first to show that the equipments from Section~\ref{sec:monoidal_profunctors} are all exact.
 
 \begin{proposition}
@@ -2203,7 +2207,9 @@ The fully faithful functors $k_T\colon\cat{S}_T\to\dcat{D}_0$ and $k_T^{\bo}\col
 
 \begin{proposition}
       \label{prop:objectfree_Mod_bo}
-With the setup as in Definition~\ref{def:kleisli_equipment}, suppose also that $\dcat{D}$ is exact. There is a commutative diagram of equipments, in which the vertical functors are equivalences and the horizontal functors are local equivalences:
+With the setup as in Definition~\ref{def:kleisli_equipment}, suppose also that $\dcat{D}$ is exact
+and has local coequalizers. There is a commutative diagram of equipments, in which the vertical
+functors are equivalences and the horizontal functors are local equivalences:
    \[ \begin{tikzcd}[column sep=large]
       \dMod(\dcat{D}_T) \ar[r,"\dMod(\varphi_T)"] \ar[d,"\equiv"']
          & \dMod(\dcat{D}) \ar[d,"\equiv"] \\
