@@ -1145,8 +1145,8 @@ equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we
    universal embedding of $M$. That is, the collapse of $M$ is an object $\Col{M}\in\dcat{D}_0$ together with an
    embedding
    \[ \begin{tikzcd}
-      c \ar[r,tick,"M" domA] \ar[d,two heads,"i_M"']
-      & c \ar[d,two heads,"i_M"]
+      c \ar[r,tick,"M" domA] \ar[d,"i_M"']
+      & c \ar[d,"i_M"]
       \\
       \Col{M} \ar[r,tick,"\Col{M}"' codA]
       & \Col{M}
@@ -1164,8 +1164,8 @@ equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we
       \end{tikzcd}
       \quad = \quad
       \begin{tikzcd}
-         c \ar[r,tick,"M" domA] \ar[d,two heads,"i_M"']
-         & c \ar[d,two heads,"i_M"]
+         c \ar[r,tick,"M" domA] \ar[d,"i_M"']
+         & c \ar[d,"i_M"]
          \\
          \Col{M} \ar[r,tick,"\Col{M}"' {domB,codA}] \ar[d,"\tilde{f}"']
          & \Col{M} \ar[d,"\tilde{f}"]
@@ -1572,7 +1572,7 @@ This is the purpose of Section~\ref{sec:monoids_on_free}.
 
 \section{Monoidal, Compact, and Traced Categories}
    \label{sec:monoidal,compact,traced}
-We begin by reminding the reader of some categorical preliminaries: basic definitions and facts about monoidal, traced, and compact categories, lax and strong functors, and the Int construction.
+We begin by reminding the reader of some categorical preliminaries: basic definitions and facts about monoidal, traced, and compact categories, lax and strong functors, and the Int construction. Standard references include \cite{JoyalStreet}, \cite{KellyLaplaza}, and \cite{JoyalStreetVerity}.
 
 A \emph{strict monoidal category} $\cat{M}$ is a category equipped with a functor
 $\otimes\colon\cat{M}\times\cat{M}\to\cat{M}$ and an object $I\in\cat{M}$, satisfying the usual
@@ -1586,8 +1586,7 @@ satisfying equations $\sigma_{X,Y\otimes Z}=(\id_X\otimes\sigma_{X,Z})\circ(\sig
 \id_Z)$ and $\sigma_{Y,X}\circ\sigma_{X,Y}=\id_{X\otimes Y}$.
 \begin{warning}
       \label{warn:symmetric}
-   For the rest of this article, whenever we discuss monoidal categories, we will mean symmetric
-   strict monoidal categories.
+   Aside from the appendix, whenever we discuss monoidal categories in this article, we will mean symmetric strict monoidal categories.
 \end{warning}
 
 Let $\cat{M}$ and $\cat{N}$ be monoidal categories. A functor $F\colon\cat{M}\to\cat{N}$ is called \emph{lax monoidal} if it is equipped with coherence morphisms
@@ -1603,7 +1602,7 @@ satisfying certain compatibility equations (see, e.g.\ \cite{Leinster,BorceuxV2}
 Write $\MMonCat$ for the 2-category of strict symmetric monoidal categories, strict symmetric
 monoidal functors, and monoidal transformations. Let $\MonCat$ denote the underlying 1-category.
 
-A \emph{compact category} is a monoidal category $\cat{C}$ with the property that for every
+A \emph{compact category} is a (symmetric) monoidal category $\cat{C}$ with the property that for every
 object $X\in\cat{C}$ there exists an object $X^*$ and morphisms $\eta_X\colon I\to X^*\otimes X$ and
 $\epsilon_X\colon X\otimes X^*\to I$ such that the following diagrams commute:
 \begin{equation*}
@@ -1631,7 +1630,7 @@ transformation $\alpha\colon F\to G$ is a natural isomorphism. Indeed, for any o
 the inverse of the $c$-component $\alpha_c\colon Fc\to Gc$ is given by the dual morphism
 $(\alpha_{c^*})^*\colon Gc\to Fc$ to the dual component. Thus all 2-cells in $\CCompCat$ are invertible.
 
-A \emph{trace structure} on a monoidal category $\cat{T}$ is a collection of functions
+A \emph{trace structure} on a (symmetric) monoidal category $\cat{T}$ is a collection of functions
 \begin{equation}
       \label{dia:trace_function}
    \Tr^U_{X,Y}\colon\Hom_{\cat{T}}(U\otimes X,U\otimes Y)\to\Hom_{\cat{T}}(X,Y)
@@ -1643,7 +1642,7 @@ In \cite{JoyalStreetVerity}, it is shown that every traced category $\cat{T}$ em
    \Hom_{\Int(\cat{T})}\big((\inp{X},\outp{X}),(\inp{Y},\outp{Y})\big)
       = \Hom_{\cat{T}}(\inp{X}\otimes\outp{Y},\outp{X}\otimes\inp{Y})
 \end{equation*}
-and compositions computed using the trace of $\cat{T}$, see \cite{JoyalStreetVerity} for more details.
+and compositions computed using the trace of $\cat{T}$.
 \begin{remark}
       \label{rem:traced_2morphisms}
    Traced categories were first defined in~\cite{JoyalStreetVerity}, which defines
@@ -1656,9 +1655,15 @@ We denote by $\TTrCat$ the corrected 2-category of traced categories (where 2-ce
 
 Every compact category $\cat{C}$ has a canonical trace structure, defined on a morphism $f\colon
 U\otimes X\to U\otimes Y$ morally (up to symmetries and identities) to be $\epsilon_U\circ f\circ
-\eta_U$. More precisely, if $\sigma_{A,B}$ is the symmetry isomorphism, one defines
+\eta_U$. More precisely, if $\sigma_{A,B}$ is the symmetry isomorphism, one defines $\Tr^U_{X,Y}[f]$ to be the composite
 \begin{equation*}
-   \Tr^U_{X,Y}[f]\coloneqq(\epsilon_U\otimes Y)\circ (\sigma_{U^*,U}\otimes Y)\circ (U^*\otimes f)\circ (\eta_U\otimes X).
+\begin{tikzcd}[column sep=29pt]
+	X\ar[r,"\eta_U\otimes X"]&
+	U^*\otimes U\otimes X\ar[r,"U^*\otimes f"]&
+	U^*\otimes U\otimes Y\ar[r,"\sigma_{U^*,U}\otimes Y"]&[6pt]
+	U\otimes U^*\otimes Y\ar[r,"\epsilon_U\otimes Y"]&
+	Y
+\end{tikzcd}
 \end{equation*}
 Thus we have a functor $\UCT\colon\CCompCat\to\TTrCat$. It is shown in~\cite{JoyalStreetVerity}~and~\cite{HK} that this functor is the right half of the 2-adjunction
 \begin{equation}
@@ -1693,7 +1698,7 @@ We record the following facts, which hold for any traced category $\cat{T}$; eac
 
 \section{Monoidal profunctors}
       \label{sec:monoidal_profunctors}
-
+\todo[inline]{Mention that we may be introducing these for the first time?}
 Suppose $\cat{C}$ and $\cat{D}$ are monoidal categories. A \emph{monoidal
 profunctor} $M$ from $\cat{C}$ to $\cat{D}$ is an ordinary profunctor (see Example~\ref{ex:profunctors}) $M\colon \op{\cat{C}}\times\cat{D}\to\Set$ in $\MMonCat$, i.e.\ $M\colon \op{\cat{C}}\times\cat{D}\to\Set$ is equipped with a lax-monoidal structure where $\Set$ is endowed with the cartesian monoidal structure. In the bimodule notation, this means that there is an associative operation assigning to
 any elements $m_1\in M(c_1,d_1)$ and $m_2\in M(c_2,d_2)$ an element $m_1\boxtimes m_2\in
@@ -1706,9 +1711,9 @@ as well as a distinguished element $I_M\in M(I,I)$ such that $I_M\boxtimes m = m
 for any $m\in M(c,d)$. A \emph{monoidal profunctor morphism} $\phi\colon M\to N$ is simply a monoidal transformation from $\MMonCat$ as in \eqref{eqn:Prof2cells}. Spelling this out in bimodule notation, $\phi$ is an ordinary morphism of profunctors such that
 $\phi(m_1\boxtimes m_2)=\phi(m_1)\boxtimes\phi(m_2)$ and $\phi(I_M)=I_N$.
 
-To see that we have defined a double category, it remains to check that the horizontal composition of monoidal profunctors is monoidal. This follows from the fact that reflexive coequalizers---namely the ones from \eqref{eqn:coendComp}---commute with products in $\Set$. Write $\dMonProf$ for this double category, and note that it is in fact an equipment since the cartesian 2-cell \eqref{eq:cartesian profunctor morphism} is a monoidal transformation if $N$, $F$, and $F'$ are monoidal functors. 
+To see that we have defined a double category (where vertical arrows are strict monoidal functors), it remains to check that the horizontal composition of monoidal profunctors is monoidal. This follows from the fact that reflexive coequalizers---namely the ones from \eqref{eqn:coendComp}---commute with products in $\Set$. Write $\dMonProf$ for this double category, and note that it is in fact an equipment since the cartesian 2-cell \eqref{eq:cartesian profunctor morphism} is a monoidal transformation if $N$, $F$, and $F'$ are monoidal functors. 
 
-Let $\UCM\colon\CompCat\to\MonCat$ and $\Int\colon\TrCat\to\CompCat$ be the fully faithful functors defined above. Construct the induced equipments $\dCompProf\coloneqq\UCM^*(\dMonProf)$ and $\dTrProf\coloneqq\Int^*(\dCompProf)$ as in Definition~\ref{def:induced_locally_equivalent_equipment}. In particular, the vertical 1-categories of these equipments are given by
+The fully faithful functors $\UCM\colon\CompCat\to\MonCat$ and $\Int\colon\TrCat\to\CompCat$, defined above, induce equipments $\dCompProf\coloneqq\UCM^*(\dMonProf)$ and $\dTrProf\coloneqq\Int^*(\dCompProf)$ as in Definition~\ref{def:induced_locally_equivalent_equipment}. In particular, the vertical 1-categories of these equipments are given by
 \[\dMonProf_0=\MonCat,\quad\dCompProf_0=\CompCat,\quad\dTrProf_0=\TrCat.\]
 
 It may seem strange at first to define a profunctor $\cat{T}\tickar \cat{T}'$ between traced categories to be a
@@ -1748,7 +1753,7 @@ We are now in a position to connect the introductory notation of \eqref{eq:singl
 \section{Special properties of $\dCompProf$}
       \label{sec:special_CompProf}
 
-This section aims to establish the following equivalence of fibrations.
+This section aims to establish an equivalence between copresheaves on, and monoids in, compact (resp. traced) categories. See Definitions~\ref{def:copresheaves}~and~\ref{def:monoids}.
 \begin{theorem}
       \label{thm:mon_prof_equivalence}
    There is an equivalence of fibrations
@@ -1790,7 +1795,7 @@ We also define a fibration $\Ptd(\dcat{D})\twoheadrightarrow\dcat{D}_0$ whose ob
 
 \begin{lemma}
       \label{Lem:comp prof bijection}
-   Given any pointed endo-profunctor $i\colon\Hom_\cat{C}\to N$ in $\Ptd(\dCompProf)$, there is a natural
+   Let $\cat{C}$ be a compact category. For any pointed endo-profunctor $i\colon\Hom_\cat{C}\to N$ in $\Ptd(\dCompProf)$, there is a natural
    bijection $N(a,b)\iso N(I,a^*\otimes b)$ for any objects $a,b\in \cat{C}$.
 \end{lemma}
 \begin{proof}
@@ -2033,7 +2038,7 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
 
 \todo{Prove/mention that these equipments have local coequalizers}
 
-As we have seen in Section~\ref{sec:monoids_bimods} the exactness of an equipment gives rise to many equivalences of fibrations; thus to establish our main theorems we aim first to show that the equipments from Section~\ref{sec:monoidal_profunctors} are all exact.
+As we saw throughout Section~\ref{sec:monoids_bimods} the exactness of an equipment gives rise to many equivalences of fibrations. Thus to establish our main theorems we aim first to show that the equipments from Section~\ref{sec:monoidal_profunctors} are all exact, as in Definition~\ref{def:exact_equipment}.
 
 \begin{proposition}
       \label{prop:MonProf_exact}
@@ -2060,7 +2065,7 @@ We record the following consequence of Theorem~\ref{thm:orthogonal} in the curre
 \begin{corollary}
    The 2-categories $\MMonCat$ and $\CCompCat$ admit 2-orthogonal factorization systems. 
 \end{corollary}
-We abuse notation slightly and denote each of the factorization systems above by $(\bo,\ff)$. Note that we write morphisms in $\ff$ with a hooked arrow and morphisms in $\bo$ with a two-headed arrow. Recall the adjunction \eqref{dia:traced_compact_adjunction} and write $\eta_{\cat{T}}\colon\cat{T}\to\UCT\Int(\cat{T})$ for the unit component on $\cat{T}\in\TTrCat$.
+We abuse notation slightly and denote each of the factorization systems above by $(\bo,\ff)$. Recall the adjunction \eqref{dia:traced_compact_adjunction} and write $\eta_{\cat{T}}\colon\cat{T}\to\UCT\Int(\cat{T})$ for the unit component on $\cat{T}\in\TTrCat$.
 \begin{lemma}
       \label{lem:Tr_bo_Int}
    Let $\cat{T}$ be a traced category, $\cat{C}$ a compact category, and $F\colon\Int(\cat{T})\twoheadrightarrow \cat{C}$ a
@@ -2139,7 +2144,7 @@ To see that $\Col{M}_{\MTCfont{T}}$ is a collapse in $\dTrProf$ we must establis
 Since the trivial monoid on $\Col{M}_{\MTCfont{T}}$ in $\dTrProf$ is by definition the trivial monoid on $\Int(\Col{M}_{\MTCfont{T}})\iso\Col{M}_{\MTCfont{C}}$ in $\dCompProf$, the collapse embedding $M\Rightarrow\Col{M}_{\MTCfont{T}}$ is (after composition with the isomorphism $\alpha$) just the collapse $(i_M,\vec{\imath}_M)$ in $\dCompProf$, and hence is cartesian. Since the inclusion $\dTrProf\to\dCompProf$ is a local equivalence and $\dCompProf$ is exact, the second condition of Definition~\ref{def:exact_equipment} follows immediately.
 \end{proof}
 
-As a corollary we obtain our second main theorem.
+As a corollary we obtain our second main theorem. Recall that we use the notation $\int$ to denote the Grothendieck construction.
 \begin{named}{Theorem B}
       \label{thm:TheoremB}
    There are equivalences of fibrations
@@ -2212,7 +2217,7 @@ Let $T=UF$ be the monad on $\cat{S}$ corresponding to this adjunction, and write
 
 \begin{definition}
    \label{def:kleisli_equipment}
-The fully faithful functors $k_T\colon\cat{S}_T\to\dcat{D}_0$ and $k_T^{\bo}\colon(\dcat{D}_T^{\bo})_0\to\dcat{D}_0^{\bo}$ induce equipments $\dcat{D}_T\coloneqq k_T^*\dcat{D}$ and $\dcat{D}_T^{\bo}\coloneqq (k_T^{\bo})^*\dcat{D}^{\bo}$, as well as fully faithful local equivalences, which we denote
+The fully faithful functors $k_T\colon\cat{S}_T\to\dcat{D}_0$ and $k_T^{\bo}\colon(\dcat{D}_T^{\bo})_0\to\dcat{D}_0^{\bo}$ induce equipments $\dcat{D}_T\coloneqq k_T^*\dcat{D}$ and $\dcat{D}_T^{\bo}\coloneqq (k_T^{\bo})^*\dcat{D}^{\bo}$ (as in Definition~\ref{def:induced_locally_equivalent_equipment}), as well as fully faithful local equivalences, which we denote
    \begin{equation}
       \label{eqn:FFLE_DT}
       \varphi_T\colon \dcat{D}_T\to\dcat{D}
@@ -2233,7 +2238,7 @@ functors are equivalences and the horizontal functors are local equivalences:
       \dcat{D}_T^{\bo} \ar[r,"\varphi_T^{\bo}"'] & \dcat{D}^{\bo}.
    \end{tikzcd} \]
 
-   Suppose moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{S})$. Then the following composite is a
+   Suppose moreover that $U(\bo)\subseteq\mathrm{iso}(\cat{S})$, the set of isomorphisms in $\cat{S}$. Then the following composite is a
    fully faithful local equivalence:
    \[ \begin{tikzcd}
       \dMod(\dcat{D}_T)\ar[r,"\dMod(\varphi_T)"] &[1.5em] \dMod(\dcat{D}) \ar[r,"\ColDash"] & \dcat{D}.
@@ -2358,6 +2363,7 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
    The equipment functor $\varphi_{\MTCfont{C}}\colon\dFrCompProf\to\dCompProf$ (resp. $\varphi_{\MTCfont{T}}\colon\dFrTrProf\to\dTrProf$) is by definition a local equivalence, and it preserves terminal objects in the vertical category. Thus using Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} we construct the desired equivalence $\CPsh(\dFrCompProf)\to\Mon(\dFrCompProf)$ as the pullback along $\varphi_{\MTCfont{C}}$ of the equivalence $\CPsh(\dCompProf)\to\Mon(\dCompProf)$ from Theorem~\ref{thm:mon_prof_equivalence} (resp. for the traced case).
 \end{proof}
 
+\todo[inline]{We never said that $\Cob$ is the free compact category!!!}
 
 \begin{named}{Theorem A}
       \label{thm:TheoremA}
@@ -3200,6 +3206,9 @@ Advances in Mathematics, 77 (1989), no. 2, pp.~156--182.
 
  \bibitem{HK}
 M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of traced monoidal categories and tortile monoidal categories, Mathematical Proceedings of the Cambridge Philosophical Society, 148 (2010), no. 1.
+
+ \bibitem{JoyalStreet}
+ A.~Joyal; R.~Street, Braided tensor categories, Adv. Math. 102 (1993), no. 1, 20Ð-78. 
 
  \bibitem{JoyalStreetVerity}
  A.~Joyal, R.~Street, and D.~Verity, Traced monoidal categories, Mathematical Proceedings of the Cambridge Philosophical Society, 119 (1996), no. 3, pp.~447--468.
