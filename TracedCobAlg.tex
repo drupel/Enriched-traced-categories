@@ -1238,6 +1238,7 @@ equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we
 \end{definition}
 
 \begin{example}
+    \label{ex:exact_span_prof}
   The equipment $\dSpan$ is not exact. The collapse of a monoid $C\from S\to C$ in $\dSpan$ must be
   its pushout $\Col{S}\iso C\sqcup_SC$, but the associated embedding is not cartesian. The second
   condition of exactness also fails.
@@ -1272,9 +1273,10 @@ possible to simplify the definition:
 \begin{proof}
   The restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic to the functor
   $B\mapsto\comp{i}_M\odot B\odot\conj{i}_N$, with the left and right actions given by the left
-  action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$. We can construct an inverse
-  to this restriction functor, sending an $(M,N)$-bimodule $B$ to $\conj{i}_M\otimes_M
-  B\otimes_N\comp{i}_N$. It is easy to check that this gives an equivalence of categories:
+  action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$. Assuming
+  $\conj{i}_M\otimes_M\comp{i}_M\iso\unit(\Col{M})$, we can construct an inverse to this restriction
+  functor, sending an $(M,N)$-bimodule $B$ to $\conj{i}_M\otimes_M B\otimes_N\comp{i}_N$. It is easy
+  to check that this gives an equivalence of categories:
   \begin{align*}
     \conj{i}_M\otimes_M (\comp{i}_M\odot X\odot\conj{i}_N)\otimes_N\comp{i}_N
       &\iso (\conj{i}_M\otimes_M\comp{i}_M)\odot X\odot (\conj{i}_N\otimes_N\comp{i}_N) \\
@@ -1288,14 +1290,69 @@ possible to simplify the definition:
   \end{align*}
   where the mixed associativity of $\odot$ and $\otimes$ follows from the assumption that $\odot$
   preserves coequalizers in each variable.
+
+  Conversely, assuming the functor \eqref{eqn:exact_Hor_Bimod} is an equivalence, then we can prove
+  the isomorphism $\conj{i}_M\otimes_M\comp{i}_M\iso\unit(\Col{M})$ by restricting both sides:
+  \begin{align*}
+    \comp{i}_M\odot(\conj{i}_M\otimes_M\comp{i}_M)\odot\conj{i}_M
+      &\iso (\comp{i}_M\odot\conj{i}_M)\otimes_M(\comp{i}_M\odot\conj{i}_M) \\
+      &\iso M\otimes_M M \\
+      &\iso M \\
+      &\iso \comp{i}_M\odot\conj{i}_M \\
+      &\iso \comp{i}_M\odot\unit(\Col{M})\odot\conj{i}_M. \qedhere
+  \end{align*} 
 \end{proof}
 
-The monoids and bimodules construction for an exact equipment is in some sense degenerate, as we will see beginning in Proposition~\ref{prop:collapse_local_equivalence} and culminating in Theorem~\ref{thm:Mod_vs_bo}.\todo{P, can you improve this sentence?}
+\begin{example}
+      \label{ex:monoid_in_Prof}
+  While the exactness of $\dProf$ follows from formal reasons, as we saw in Example~\ref{ex:exact_span_prof}, it will be helpful to understand collapse in $\dProf$ concretely.
+  
+  Consider a monoid $M\colon \cat{C}\tickar \cat{C}$ in $\dProf$. The unit is a profunctor morphism
+  $i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element $i(f)\in M(c,d)$,
+  such that
+  \begin{equation}
+       \label{eq:Prof_monoid_unit}
+    g\cdot i(f)\cdot h = i(g\circ f\circ h)
+  \end{equation}
+  whenever this makes sense.
+
+  The multiplication $M\odot M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and
+  $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative and satisfies the
+  following equations whenever they make sense:
+  \begin{gather}
+    (f\cdot m_2)\bullet(m_1\cdot h) = f\cdot(m_2\bullet m_1)\cdot h
+       \label{eq:Prof_monoid_A}
+    \\ (m_3\cdot g)\bullet m_1 = m_3\bullet(g\cdot m_1)
+       \label{eq:Prof_monoid_B}
+    \\ m\bullet i(f) = m\cdot f
+          \quad\text{and}\quad
+       i(g)\bullet m = g\cdot m
+       \label{eq:Prof_monoid_C}
+  \end{gather}
+  Specifically, equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B} simply say that
+  $\bullet$ is a well defined morphism $M\odot M\to M$, while \eqref{eq:Prof_monoid_C} says that
+  $\bullet$ is unital with respect to $i$.
+  
+  The collapse $\Col{M}$ is then the category with the same objects as $\cat{C}$, with morphisms
+  $\Col{M}(c,d)=M(c,d)$, and with composition given by $\bullet$. The unit $i$ of $M$ gives the
+  functor $i_M\colon\cat{C}\to\Col{M}$.
+\end{example}
+
+\begin{remark}
+    \label{rem:suffices_for_monoid}
+  The equations \eqref{eq:Prof_monoid_unit}--\eqref{eq:Prof_monoid_C} are actually overdetermined.
+  It is easy to see that equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B} follow from
+  \eqref{eq:Prof_monoid_C} and the associativity of $\bullet$. Thus, when proving that
+  $\bullet\colon M\odot M\to M$ and $i\colon\Hom_{\cat{C}}\to M$ form a monoid, it suffices to prove
+  \eqref{eq:Prof_monoid_unit}, \eqref{eq:Prof_monoid_C}, and associativity of $\bullet$. These
+  observations will be used to slightly simplify the proof of
+  Proposition~\ref{prop:unit_implies_monoid}.
+\end{remark}
 
 \begin{proposition}
-      \label{prop:collapse_local_equivalence}
-   If $\dcat{D}$ is an exact equipment with local coequalizers, then collapse induces an equipment
-   functor $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$ which is a local equivalence.
+    \label{prop:collapse_local_equivalence}
+  If $\dcat{D}$ is an exact equipment with local coequalizers, then collapse induces an equipment
+  functor $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$ which is a local equivalence.
 \end{proposition}
 \begin{proof}
   It is easy to use the universal property of collapse to construct, from any monoid homomorphism
@@ -1490,45 +1547,6 @@ The bijective-on-objects vertical arrows of an exact equipment $\dcat{D}$ will p
 \begin{proof}
    By Proposition~\ref{prop:collapse_local_equivalence} the equipment functor $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$ is a local equivalence, and $\cod\colon\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence by definition of $\dcat{D}^{\bo}$. It follows that the equivalence of fibrations from Proposition~\ref{prop:Mon_vs_bo} extends to an equivalence of equipments.
 \end{proof}
-
-\todo[inline]{I have no idea what Example~\ref{ex:monoid_in_Prof} and Remark~\ref{rem:suffices_for_monoid} are doing here, or where they are supposed to go.}
-
-\begin{example}
-      \label{ex:monoid_in_Prof}
-   Consider a monoid $M\colon \cat{C}\tickar \cat{C}$ in $\dProf$. The unit is a profunctor morphism
-   $i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element $i(f)\in M(c,d)$,
-   such that
-   \begin{equation}
-         \label{eq:Prof_monoid_unit}
-      g\cdot i(f)\cdot h = i(g\circ f\circ h)
-   \end{equation}
-   whenever this makes sense.
-
-   The multiplication $M\odot M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and
-   $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative and satisfies the
-   following equations whenever they make sense:
-   \begin{gather}
-      (f\cdot m_2)\bullet(m_1\cdot h) = f\cdot(m_2\bullet m_1)\cdot h
-         \label{eq:Prof_monoid_A}
-      \\ (m_3\cdot g)\bullet m_1 = m_3\bullet(g\cdot m_1)
-         \label{eq:Prof_monoid_B}
-      \\ m\bullet i(f) = m\cdot f
-            \quad\text{and}\quad
-         i(g)\bullet m = g\cdot m
-         \label{eq:Prof_monoid_C}
-   \end{gather}
-   Specifically, equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B} simply say that
-   $\bullet$ is a well defined morphism $M\odot M\to M$, while \eqref{eq:Prof_monoid_C} says that
-   $\bullet$ is unital with respect to $i$.
-\end{example}
-
-\begin{remark}
-      \label{rem:suffices_for_monoid}
-   It is easy to see that equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B} follow
-   from \eqref{eq:Prof_monoid_C} and the associativity of $\bullet$. Thus, when proving that
-   $\bullet\colon M\odot M\to M$ and $i\colon\Hom_{\cat{C}}\to M$ form a monoid, it suffices to prove
-   \eqref{eq:Prof_monoid_unit}, \eqref{eq:Prof_monoid_C}, and associativity of $\bullet$. These observations will be used to slightly simplify the proof of Proposition~\ref{prop:unit_implies_monoid}.
-\end{remark}
 
 
 
