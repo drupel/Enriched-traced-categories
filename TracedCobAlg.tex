@@ -706,11 +706,33 @@ The objects in a category, 2-category, or double category will be denoted with t
          & c'\ar[d,"f'"] \\
       d \ar[r,tick,"N"' codA]
          & d'
-      \twocellA{\tn{cart}}
+      \twocellalt{A}{\tn{cart}}
    \end{tikzcd} \]
    which we call a \emph{cartesian 2-cell}. We refer to $M$ as the \emph{restriction of $N$ along
    $f$ and $f'$}, written $M=N(f',f)$. 
 \end{definition}
+
+For any vertical morphism $f\colon c\to d$ in an equipment $\dcat{D}$, there are two canonical proarrows $\comp{f}\colon c\tickar d$ and $\conj{f}\colon d\tickar c$, called respectively the \emph{companion} and \emph{conjoint} of $f$, defined by restriction:
+\begin{equation}
+  \begin{tikzcd}
+    c \ar[r,tick,"\comp{f}" domA] \ar[d,"f"']
+    & d \ar[d,equal] \\
+    d \ar[r,tick,"\unit(d)"' codA] & d
+    \twocellalt{A}{\tn{cart}}
+  \end{tikzcd}
+  \quad
+  \begin{tikzcd}
+    d \ar[r,tick,"\conj{f}" domA] \ar[d,equal]
+    & c \ar[d,"f"] \\
+    d \ar[r,tick,"\unit(d)"' codA] & d.
+    \twocellalt{A}{\tn{cart}}
+  \end{tikzcd}
+\end{equation}
+In \cite{??}, it is shown that all restrictions can be obtained by composing with companions and
+conjoints. In particular, $N(f,g)\iso\comp{f}\odot N\odot\conj{g}$ for any proarrow $N$. Moreover,
+$\comp{f}$ and $\conj{f}$ form an adjunction in $\HHor(\dcat{D})$; we write
+$\eta_f\colon\conj{f}\odot\comp{f}\to\unit(d)$ and
+$\epsilon_f\colon\unit(c)\to\comp{f}\odot\conj{f}$ for the unit and counit of this adjunction.
 
 \begin{definition}
       \label{def:local_equivalence}
@@ -1201,25 +1223,72 @@ equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we
 \end{proof}
 
 \begin{definition}\cite[Proposition 5.4]{Schultz2015}
-      \label{def:exact_equipment}
-   An equipment $\dcat{D}$ is \emph{exact} if the following hold:
-   \begin{itemize}
-      \item every monoid $M\colon c\tickar c$ has a collapse $\Col{M}$ with $\vec{\imath}_M$ cartesian;
-      \item for every pair of monoids $M$ and $N$ the restriction functor
-         \begin{equation}
-               \label{eqn:exact_Hor_Bimod}
-            \HHor(\dcat{D})(\Col{M},\Col{N})\To{\raisebox{-1ex}{$\equiv$}}\Bimod{M}{N}
-         \end{equation}
-         is an equivalence of categories.
-   \end{itemize}
+    \label{def:exact_equipment}
+  An equipment $\dcat{D}$ is \emph{exact} if the following hold:
+  \begin{enumerate}
+    \item every monoid $M\colon c\tickar c$ has a collapse $\Col{M}$ with $\vec{\imath}_M$
+      cartesian;
+    \item for every pair of monoids $M$ and $N$ the restriction functor
+    \begin{equation}
+        \label{eqn:exact_Hor_Bimod}
+      \HHor(\dcat{D})(\Col{M},\Col{N})\To{\raisebox{-1ex}{$\equiv$}}\Bimod{M}{N}
+    \end{equation}
+    is an equivalence of categories.
+  \end{enumerate}
 \end{definition}
 
 \begin{example}
-The equipment $\dSpan$ is not exact. The collapse of a monoid $C\from S\to C$ in $\dSpan$ must be its pushout $\Col{S}\iso C\sqcup_SC$, but the associated embedding is not cartesian. The second condition of exactness also fails.
+  The equipment $\dSpan$ is not exact. The collapse of a monoid $C\from S\to C$ in $\dSpan$ must be
+  its pushout $\Col{S}\iso C\sqcup_SC$, but the associated embedding is not cartesian. The second
+  condition of exactness also fails.
 
-It was proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Thus the equipment $\dProf\cong\dMod(\dSpan)$ is exact.
-
+  It was proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its
+  equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Thus the equipment
+  $\dProf\cong\dMod(\dSpan)$ is exact.
 \end{example}
+
+Exact equipments arising in practice almost always have local coequalizers, and in this case it is
+possible to simplify the definition:
+
+\begin{proposition}
+    \label{prop:exact_coeqs}
+  Let $\dcat{D}$ be an equipment with local coequalizers, and suppose $\dcat{D}$ satisfies Condition
+  1 of Definition~\ref{def:exact_equipment}. Then $\dcat{D}$ satisfies Condition 2 if and only if
+  for every monoid $M\colon c\tickar c$, the following diagram is a coequalizer in
+  $\HHor(\dcat{D})(\Col{M},\Col{M})$:
+  \begin{equation}
+      \label{eqn:exact_coeq}
+    \begin{tikzcd}
+      \conj{i}_M\odot\comp{i}_M\odot\conj{i}_M\odot\comp{i}_M
+        \ar[r,shift left,"\epsilon_{i_M}\odot\conj{i}_M\odot\comp{i}_M"]
+        \ar[r,shift right,"\conj{i}_M\odot\comp{i}_M\odot\epsilon_{i_M}"']
+      &[3.5em] \conj{i}_M\odot\comp{i}_M
+        \ar[r,"\epsilon_{i_M}"]
+      & \unit(\Col{M}),
+    \end{tikzcd}
+  \end{equation}
+  or in other words if $\conj{i}_M\otimes_M\comp{i}_M\iso\unit(\Col{M})$.
+\end{proposition}
+\begin{proof}
+  The restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic to the functor
+  $B\mapsto\comp{i}_M\odot B\odot\conj{i}_N$, with the left and right actions given by the left
+  action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$. We can construct an inverse
+  to this restriction functor, sending an $(M,N)$-bimodule $B$ to $\conj{i}_M\otimes_M
+  B\otimes_N\comp{i}_N$. It is easy to check that this gives an equivalence of categories:
+  \begin{align*}
+    \conj{i}_M\otimes_M (\comp{i}_M\odot X\odot\conj{i}_N)\otimes_N\comp{i}_N
+      &\iso (\conj{i}_M\otimes_M\comp{i}_M)\odot X\odot (\conj{i}_N\otimes_N\comp{i}_N) \\
+      &\iso \unit(\Col{M})\odot X\odot \unit(\Col{N}) \\
+      &\iso X \\
+    \intertext{and}
+    \comp{i}_M\odot (\conj{i}_M\otimes_M B\otimes_N\comp{i}_N)\odot \conj{i}_N
+      &\iso (\comp{i}_M\odot\conj{i}_M)\otimes_M B\otimes_N (\comp{i}_N\odot\conj{i}_N) \\
+      &\iso M\otimes_M B\otimes_N N \\
+      &\iso B 
+  \end{align*}
+  where the mixed associativity of $\odot$ and $\otimes$ follows from the assumption that $\odot$
+  preserves coequalizers in each variable.
+\end{proof}
 
 The monoids and bimodules construction for an exact equipment is in some sense degenerate, as we will see beginning in Proposition~\ref{prop:collapse_local_equivalence} and culminating in Theorem~\ref{thm:Mod_vs_bo}.\todo{P, can you improve this sentence?}
 
@@ -1228,13 +1297,13 @@ The monoids and bimodules construction for an exact equipment is in some sense d
    If $\dcat{D}$ is an exact equipment, then collapse induces an equipment functor $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$ which is a local equivalence.
 \end{proposition}
 \begin{proof}
-   It is easy to use the universal property of collapse to construct, from any monoid homomorphism
-   $(f,\vec{f}\mspace{2mu})\colon(c,M)\to(d,N)$, a vertical morphism
-   $\Col{f}\colon\Col{M}\to\Col{N}$ in $\dcat{D}$, thus defining a functor
-   $\Mon(\dcat{D})\to\dcat{D}_0$.
+  It is easy to use the universal property of collapse to construct, from any monoid homomorphism
+  $(f,\vec{f}\mspace{2mu})\colon(c,M)\to(d,N)$, a vertical morphism $\Col{f}\colon\Col{M}\to\Col{N}$
+  in $\dcat{D}$, thus defining a functor $\Mon(\dcat{D})\to\dcat{D}_0$.
 
-   The functor $\ColDash$ is defined on horizontal arrows and 2-cells using the inverse of the equivalence
-   \eqref{eqn:exact_Hor_Bimod}. The collapse 2-cell being cartesian implies that $\ColDash$ is a local equivalence.
+  The functor $\ColDash$ is defined on horizontal arrows and 2-cells using the inverse of the
+  equivalence \eqref{eqn:exact_Hor_Bimod}. The collapse 2-cell being cartesian implies that
+  $\ColDash$ is a local equivalence. It is straightforward to verify that this is a strong double functor using the method of the proof of Proposition~\ref{prop:exact_coeqs}.
 \end{proof}
 
 With these definitions in place we can now introduce two distinguished classes of vertical morphisms in an equipment $\dcat{D}$. These will become the left and right classes in an orthogonal factorization system on $\VVer(\dcat{D})$ for exact equipments.
