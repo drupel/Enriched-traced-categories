@@ -765,15 +765,6 @@ $\epsilon_f\colon\unit(c)\to\comp{f}\odot\conj{f}$ for the unit and counit of th
    If $\dcat{D}$ is an equipment, $F_0^*(\dcat{D})$ will be as well since fibrations are stable under pullback. In this case we call $F_0^*(\dcat{D})$ the \emph{equipment induced by $F_0$}. By Remark~\ref{rem:strict_vs_pseudo_pullback}, the induced equipment functor $F_0^*(\dcat{D})\to\dcat{D}$ is a local equivalence.
 \end{definition}
 
-\begin{example}
-      \label{ex:dspan}
-   There is an equipment $\dSpan$ of spans in $\Set$. Its vertical category is
-   $\dSpan_0\coloneqq\Set$. A horizontal 1-cell between sets $A$ and $B$ is a span $A\from S\to B$,
-   their horizontal composition is defined by a pullback of spans, and a 2-cell in $\dSpan$ is a commutative
-   diagram in $\Set$ of the appropriate shape. A cartesian 2-cell in this equipment is obtained by
-   taking an evident limit in $\Set$.
-\end{example}
-
 Our main tool in this paper will be equipments in which the horizontal arrows are (generalizations
 of) profunctors, as in the following example.
 
@@ -1240,13 +1231,8 @@ equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we
 
 \begin{example}
     \label{ex:exact_span_prof}
-  The equipment $\dSpan$ is not exact. The collapse of a monoid $C\from S\to C$ in $\dSpan$ must be
-  its pushout $\Col{S}\iso C\sqcup_SC$, but the associated embedding is not cartesian. The second
-  condition of exactness also fails.
-
-  It was proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its
-  equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Thus the equipment
-  $\dProf\cong\dMod(\dSpan)$ is exact.
+   It was proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its
+  equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Since there is an equivalence $\dProf\cong\dMod(\dSpan)$~\cite{Shulman}, where $\dSpan$ is the equipment of spans in $\Set$, the equipment $\dProf$ is exact.
 \end{example}
 
 Exact equipments arising in practice almost always have local coequalizers, and in this case it is
@@ -2363,7 +2349,7 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
    The equipment functor $\varphi_{\MTCfont{C}}\colon\dFrCompProf\to\dCompProf$ (resp. $\varphi_{\MTCfont{T}}\colon\dFrTrProf\to\dTrProf$) is by definition a local equivalence, and it preserves terminal objects in the vertical category. Thus using Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} we construct the desired equivalence $\CPsh(\dFrCompProf)\to\Mon(\dFrCompProf)$ as the pullback along $\varphi_{\MTCfont{C}}$ of the equivalence $\CPsh(\dCompProf)\to\Mon(\dCompProf)$ from Theorem~\ref{thm:mon_prof_equivalence} (resp. for the traced case).
 \end{proof}
 
-\todo[inline]{We never said that $\Cob$ is the free compact category!!!}
+\todo[inline]{We never said that $\LCob{\LabSet}$ is the free compact category on $\LabSet$!!!}
 
 \begin{named}{Theorem A}
       \label{thm:TheoremA}
