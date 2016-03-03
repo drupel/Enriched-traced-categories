@@ -1869,7 +1869,7 @@ Example~\ref{ex:monoid_in_Prof} where
 for any morphisms $f$ and $g$ in $\cat{C}$. Similarly, the multiplication $\bullet$ on $M$ must satisfy
 \begin{gather}
    I_M\bullet I_M=I_M \label{eq:MnProf_monoid_I} \\
-   (m_1\boxtimes m'_1)\bullet(m_2\boxtimes m'_2) = (m_1\bullet m_2)\boxtimes(m'_1\bullet m'_2)
+   (m_2\boxtimes m'_2)\bullet(m_1\boxtimes m'_1) = (m_2\bullet m_1)\boxtimes(m'_2\bullet m'_1)
       \label{eq:MnProf_monoid_exchange}
 \end{gather}
 for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e')$, in addition to the requirements from Example~\ref{ex:monoid_in_Prof}.
@@ -1912,20 +1912,22 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
     i(\id_{d^*})\boxtimes n_2)\cdot(\id_c\otimes \eta_d)
   \]
   for any $n_1\in N(c,d)$ and $n_2\in N(d,e)$, or in picture form:
-  \begin{equation}
+  \begin{equation*}
     \begin{tikzpicture}[string diagram]
       \matrix {
         \node [draw]        (n1)  {$n_1$}; \\
-        \node [draw,dashed] (mid) {};      \\
         \node [draw]        (n2)  {$n_2$}; \\
       };
-      \draw[ar] (n1) ++(-1.2cm,0) to["c"pos=.2] (n1);
-      \draw[ar] (n1) to[in=0,looseness=2,"d"] (mid);
-      \draw (mid.east) -- (mid.west);
-      \draw[ar] (mid) to[out=180,in=180,looseness=2,"d"'] (n2);
+      \begin{scope}[on background layer]
+        \node[fit={(n1) (n2)}] (back) {};
+      \end{scope}
+      \draw[ar] ($(n1)-(1.2cm,0)$) to["c"pos=.2] (n1);
+      \draw[ar] (n1) -- (n1-|back.east) to[in=0,looseness=2,"d"] (back.east);
+      \draw (back.east) -- (back.west);
+      \draw[ar] (back.west) to[out=180,looseness=2,"d"'] (n2-|back.west) -- (n2);
       \draw[ar] (n2) to["e"pos=.8] +(1.2cm,0);
     \end{tikzpicture}
-  \end{equation}
+  \end{equation*}
    
   It is straightforward to check that this multiplication is associative.
   Remark~\ref{rem:suffices_for_monoidal_monoid} says that, in order to show that $N$ together with

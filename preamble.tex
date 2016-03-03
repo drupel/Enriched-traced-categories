@@ -21,7 +21,7 @@
 \RequirePackage{hyperref}
 \hypersetup{colorlinks,linkcolor={blue!50!black},citecolor={red!50!black},urlcolor={blue!80!black}}
 
-\usetikzlibrary{decorations.markings,decorations.pathmorphing,arrows.meta,calc,fit,quotes,cd,positioning}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing,arrows.meta,calc,fit,quotes,cd,positioning,backgrounds}
 %\hypersetup{final}
 
 \newcommand{\id}{\mathrm{id}}
@@ -307,13 +307,14 @@
     every matrix/.style={
       column sep={1cm,between origins},
       row sep={1cm,between origins},
-      nodes={minimum size=.6cm}
+      nodes={minimum size=.6cm,fill=white}
     },
     every edge quotes/.style={
       auto,
       execute at begin node=$\scriptstyle,
       execute at end node=$
-    }
+    },
+    every fit/.style={inner sep=.15cm,fill=white!80!black}
   }
 }
 
