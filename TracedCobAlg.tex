@@ -58,7 +58,7 @@
 
 % \setcounter{tocdepth}{1}
 % \tableofcontents*
-\tableofcontents
+\tableofcontents*
 
 \chapter{Introduction}
   \label{chap:intro}
@@ -402,7 +402,7 @@ strong functors is biequivalent to that of objectwise-free traced categories and
 see Corollary~\ref{cor:object_frees}. This result seems to be well-known to experts but is difficult to find in the literature.
 
 \begin{remark}
-Another way to address the condition of objectwise-free traced categories and strict functors between them is to embrace it and deal with PROPs rather than monoidal categories. In fact, there is an analogue of \ref{thm:TheoremA_statement} in which $\TrFrObCat$ is replaced by $\TrPROP$. We do not prove this result, but we will clarify it at an appropriate time; see Remark~\ref{rem:PROP}.
+Another way to address the condition of objectwise-freeness is to embrace it, and ask that functors between them be not only strict but also send generating objects to generating objects,  i.e.\ to consider PROPs rather than monoidal categories. In fact, there is an analogue of \ref{thm:TheoremA_statement} in which $\TrFrObCat$ is replaced by $\TrPROP$. We do not prove this result, but we will clarify it at an appropriate time; see Remark~\ref{rem:PROP}.
 \end{remark}
 
 In the course of proving \ref{thm:TheoremA_statement}, we will also establish generalizations
@@ -679,7 +679,7 @@ The objects in a category, 2-category, or double category will be denoted with t
    preserving the unit $\unit$ and horizontal composition $\odot$ up to coherent isomorphism.
 \end{definition}
 
-We denote fibrations of 1-categories using two-headed arrows $\onto$.
+Recall that a \emph{fibration} of categories $p\colon\cat{E}\to\cat{B}$ is a functor with a lifting property: for every $f\colon b'\to b$ in $\cat{B}$ and object $e\in\cat{E}$ with $p(e)=b$, there exists $e'\to e$ over $f$ that is \emph{cartesian}, i.e.\ universal in an appropriate sense. We denote fibrations of 1-categories using two-headed arrows $\onto$.
 
 \begin{definition}
       \label{def:equipment}
@@ -717,11 +717,23 @@ For any vertical morphism $f\colon c\to d$ in an equipment $\dcat{D}$, there are
     \twocellalt{A}{\tn{cart}}
   \end{tikzcd}
 \end{equation}
-In \cite{??}, it is shown that all restrictions can be obtained by composing with companions and
+In \cite{Shulman}, it is shown that all restrictions can be obtained by composing with companions and
 conjoints. In particular, $N(f,g)\iso\comp{f}\odot N\odot\conj{g}$ for any proarrow $N$. Moreover,
 $\comp{f}$ and $\conj{f}$ form an adjunction in $\HHor(\dcat{D})$; we write
 $\eta_f\colon\conj{f}\odot\comp{f}\to\unit(d)$ and
 $\epsilon_f\colon\unit(c)\to\comp{f}\odot\conj{f}$ for the unit and counit of this adjunction.
+
+Recall that a pseudo-pullback of a cospan $A_1\To{f_1}A\From{f_2}A_2$ is a diagram
+\begin{equation}
+	\label{eqn:pseudopullback}
+\begin{tikzcd}[sep=small]
+X\ar[r,"g_1"]\ar[d,"g_2"']\ar[rd,phantom,"\overset{\alpha}{\footnotesize\cong}"]&A_2\ar[d,"f_2"]\\
+A_1\ar[r,"f_1"']&A
+\end{tikzcd}
+\end{equation}
+where the tuple $(X,g_1,g_2,\alpha)$ is universal, up to equivalence, for data of that shape. This definition makes sense in any 2-category $\ccat{C}$, though we will use it only in a special case, described in the next paragraph.
+
+Suppose that $\ccat{C}=\CCat$, that $f_2$ is a fibration, and that the square in \eqref{eqn:pseudopullback} strictly commutes, i.e.\ that $\alpha$ is the identity. It is a standard fact that a strict pullback of a Grothendieck fibration along an arbitrary functor is a fibration and that the strict pullback is also a pseudo-pullback. The upshot is that $g_2$ is a pseudo-pullback if and only if, for any strict pullback $g_2'$ of $f_2$ along $f_1$, the induced map $g_2\to g_2'$ is an equivalence of fibrations.
 
 \begin{definition}
       \label{def:local_equivalence}
@@ -738,7 +750,7 @@ $\epsilon_f\colon\unit(c)\to\comp{f}\odot\conj{f}$ for the unit and counit of th
 
 \begin{remark}
       \label{rem:strict_vs_pseudo_pullback}
-   It is a standard fact for 1-categories that a strict pullback of a Grothendieck fibration (or opfibration) along an arbitrary functor is a pseudo-pullback. Thus if the square \eqref{eqn:local_equiv} is a strict pullback, it will be a pseudo-pullback, and hence a local equivalence. Any local equivalence can be replaced by an equivalent strict pullback, which we define in Definition~\ref{def:induced_locally_equivalent_equipment}.
+As discussed above, if the square \eqref{eqn:local_equiv} is a strict pullback, it will be a pseudo-pullback, and hence a local equivalence. Any local equivalence can be replaced by an equivalent strict pullback, which we define in Definition~\ref{def:induced_locally_equivalent_equipment}.
 
    Also note that the frame fibration for $\dcat{C}$ is equivalent to the functor $\dcat{C}_0\times\dcat{C}_0\to\CCat$, the 2-category of
    small categories, sending $(c,d)$ to $\HHor(\dcat{C})(c,d)$ and similarly for $\dcat{D}$. In this language, $F$ is a local equivalence if and only if the induced functors $\HHor(\dcat{C})(c,d)\to\HHor(\dcat{D})(F_0(c),F_0(d))$ are equivalences of categories for every pair of objects $(c,d)$. The square \eqref{eqn:local_equiv} is a strict pullback precisely when these are isomorphisms of categories.
