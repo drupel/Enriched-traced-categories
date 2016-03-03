@@ -1915,8 +1915,8 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
   \begin{equation*}
     \begin{tikzpicture}[string diagram]
       \matrix {
-        \node [draw]        (n1)  {$n_1$}; \\
-        \node [draw]        (n2)  {$n_2$}; \\
+        \node [draw]        (n1)  {n_1}; \\
+        \node [draw]        (n2)  {n_2}; \\
       };
       \begin{scope}[on background layer]
         \node[fit={(n1) (n2)}] (back) {};
@@ -1935,6 +1935,52 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
   multiplication satisfies the equations \eqref{eq:Prof_monoid_C} and
   \eqref{eq:MnProf_monoid_exchange}. We will begin by showing that $n\bullet i(f)=n\cdot f$ for any
   $n\in N(d,e)$ and $f\colon c\to d$:
+  \begin{equation*}
+    \begin{tikzpicture}[string diagram]
+      \matrix {
+        \node [draw,circle] (f) {f}; \\
+        \node [draw]        (n) {n}; \\
+      };
+      \begin{scope}[on background layer]
+        \node[fit={(f) (n)}] (back) {};
+      \end{scope}
+      \draw[ar] ($(f)-(1cm,0)$) -- (f);
+      \draw[ar] (f) -- (f-|back.east) to[in=0,looseness=2] (back.east);
+      \draw (back.east) -- (back.west);
+      \draw[ar] (back.west) to[out=180,looseness=2] (n-|back.west) -- (n);
+      \draw[ar] (n) to +(1cm,0);
+    \end{tikzpicture}
+    \quad = \quad
+    \begin{tikzpicture}[string diagram]
+      \matrix {
+        \node [draw,circle] (f) {f}; &
+        \node [fill=none] (phantom a) {}; \\
+        \node (phantom b) {}; &
+        \node [draw]        (n) {n}; \\
+      };
+      \begin{scope}[on background layer]
+        \node[fit={(phantom a) (n)}] (back) {};
+      \end{scope}
+      \draw[ar] ($(f)-(1cm,0)$) -- (f);
+      \draw (f.east) to[in=0,looseness=2] ($(f.east)!.5!(phantom b.east)$)
+        -- ($(f.west)!.5!(phantom b.west)$) to[out=180,looseness=2] (phantom b.west);
+      \draw[ar] (phantom b.west) -- (n.west);
+      \draw[ar] (n) to +(1cm,0);
+    \end{tikzpicture}
+    \quad = \quad
+    \begin{tikzpicture}[string diagram]
+      \matrix {
+        \node [draw,circle] (f) {f}; &
+        \node [draw]        (n) {n}; \\
+      };
+      \begin{scope}[on background layer]
+        \node[fit={(n)}] {};
+      \end{scope}
+      \draw[ar] ($(f)-(1cm,0)$) -- (f);
+      \draw[ar] (f) -- (n);
+      \draw[ar] (n) to +(1cm,0);
+    \end{tikzpicture}
+  \end{equation*}
   \begin{align*}
     n\bullet i(f)
     &= (\epsilon_d\otimes\id_e) \cdot \bigl(i(f)\boxtimes i(\id_{d^*})\boxtimes n\bigr)

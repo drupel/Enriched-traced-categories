@@ -305,16 +305,24 @@
     decoration={markings,mark=at position .5 with {\arrow{stealth};}},
     ar/.style={postaction={decorate}},
     every matrix/.style={
-      column sep={1cm,between origins},
+      column sep={1.2cm,between origins},
       row sep={1cm,between origins},
-      nodes={minimum size=.6cm,fill=white}
+      every rectangle node/.style={minimum size=.6cm},
+      every circle node/.style={minimum size=.66cm},
+      nodes={
+        inner sep=0pt,
+        fill=white,
+        execute at begin node=$,
+        execute at end node=$
+      }
     },
     every edge quotes/.style={
       auto,
       execute at begin node=$\scriptstyle,
       execute at end node=$
     },
-    every fit/.style={inner sep=.15cm,fill=white!80!black}
+    every fit/.style={inner sep=.15cm,fill=white!80!black},
+    baseline=(current bounding box)
   }
 }
 
