@@ -382,7 +382,7 @@ much harder to see that it is also functorial in $\LabSet\in\Set_{\TT}$, giving 
   (\LCob{\bullet})\colon\Set_{\TT}\to\CompCat
 \]
 to the category $\CompCat$ of compact categories and strict functors, under which $\LabSet$ is sent
-to the free compact category on $\LabSet$ (e.g.\ see \cite{KellyLaplaza,Abramsky2}). We can compose
+to the free compact category on $\LabSet$ \todo{This is saying $\LCob{\LabSet}$ is the free compact category on $\LabSet$, right?} (e.g.\ see \cite{KellyLaplaza,Abramsky2}).  We can compose
 this with $\Lax(-,\Set)$ to obtain a functor which we denote
 \begin{equation}
       \label{eqn:cob/bullet}
@@ -942,7 +942,7 @@ functor and a natural transformation, as in the lax triangle
 Our eventual proofs of \ref{thm:TheoremA}~and~\ref{thm:TheoremB} will revolve around a careful
 understanding of internal monoids in an equipment $\dcat{D}$. In particular,
 following~\cite{Schultz2015}, the exactness of an equipment and the resulting $(\bo,\ff)$
-factorization system given, both given in Section~\ref{sec:exactness_boff} are built on notions
+factorization system, both given in Section~\ref{sec:exactness_boff}, are built on notions
 related to monoids in $\dcat{D}$.
 
 \begin{definition}
@@ -1073,7 +1073,7 @@ following is a standard construction; see \cite{Shulman}
 
 \begin{example}
       \label{ex:mod_span_prof}
-   Let $\dSpan$ be the equipment defined in Example~\ref{ex:dspan}. A monoid in $\dSpan$ consists of
+   Let $\dSpan$ be the equipment defined in Example~\ref{ex:dspan}\todo{Span example was removed, this one should be also in light of Ex. 2.4.6, correct?.}. A monoid in $\dSpan$ consists of
    a set $C$ and a span $C\from S\to C$, together with a function $e\colon C\to S$ and a function
    $m\colon S\times_C S\to S$, satisfying certain properties. This is precisely the data required to
    define a small category, whose object set is $C$ and morphism set is $S$, with identities given
@@ -1558,7 +1558,7 @@ This is the purpose of Section~\ref{sec:monoids_on_free}.
 
 \section{Monoidal, Compact, and Traced Categories}
    \label{sec:monoidal,compact,traced}
-We begin by reminding the reader of some categorical preliminaries: basic definitions and facts about monoidal, traced, and compact categories, lax and strong functors, and the Int construction. Standard references include \cite{JoyalStreet}, \cite{KellyLaplaza}, and \cite{JoyalStreetVerity}.
+We begin by reminding the reader of some categorical preliminaries: basic definitions and facts about monoidal, traced, and compact categories, lax and strong functors, and the Int construction. Standard references include \cite{KellyLaplaza}, \cite{JoyalStreet}, and \cite{JoyalStreetVerity}.
 
 A \emph{strict monoidal category} $\cat{M}$ is a category equipped with a functor
 $\otimes\colon\cat{M}\times\cat{M}\to\cat{M}$ and an object $I\in\cat{M}$, satisfying the usual
@@ -2349,7 +2349,7 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
    The equipment functor $\varphi_{\MTCfont{C}}\colon\dFrCompProf\to\dCompProf$ (resp. $\varphi_{\MTCfont{T}}\colon\dFrTrProf\to\dTrProf$) is by definition a local equivalence, and it preserves terminal objects in the vertical category. Thus using Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} we construct the desired equivalence $\CPsh(\dFrCompProf)\to\Mon(\dFrCompProf)$ as the pullback along $\varphi_{\MTCfont{C}}$ of the equivalence $\CPsh(\dCompProf)\to\Mon(\dCompProf)$ from Theorem~\ref{thm:mon_prof_equivalence} (resp. for the traced case).
 \end{proof}
 
-\todo[inline]{We never said that $\LCob{\LabSet}$ is the free compact category on $\LabSet$!!!}
+\todo[inline]{We never said that $\LCob{\LabSet}$ is the free compact category on $\LabSet$!!!  Didn't we?  See comment in intro.}
 
 \begin{named}{Theorem A}
       \label{thm:TheoremA}
