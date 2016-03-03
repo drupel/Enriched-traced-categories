@@ -298,7 +298,24 @@
    bb name/.style={append after command={\pgfextra{\node[anchor=north] at (\fixname.north) {#1};}}}
 }
 
-
+\tikzset{
+  string diagram/.style={
+    every to/.style={out=0,in=180,draw},
+    semithick,
+    decoration={markings,mark=at position .5 with {\arrow{stealth};}},
+    ar/.style={postaction={decorate}},
+    every matrix/.style={
+      column sep={1cm,between origins},
+      row sep={1cm,between origins},
+      nodes={minimum size=.6cm}
+    },
+    every edge quotes/.style={
+      auto,
+      execute at begin node=$\scriptstyle,
+      execute at end node=$
+    }
+  }
+}
 
 \newcommand{\vinp}[1]{\overline{\inp{#1}}}
 \newcommand{\voutp}[1]{\overline{\outp{#1}}}
