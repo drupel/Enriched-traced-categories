@@ -702,7 +702,7 @@ Recall that a \emph{fibration} of categories $p\colon\cat{E}\to\cat{B}$ is a fun
 \end{definition}
 
 For any vertical morphism $f\colon c\to d$ in an equipment $\dcat{D}$, there are two canonical proarrows $\comp{f}\colon c\tickar d$ and $\conj{f}\colon d\tickar c$, called respectively the \emph{companion} and \emph{conjoint} of $f$, defined by restriction:
-\begin{equation}
+\begin{equation*}
   \begin{tikzcd}
     c \ar[r,tick,"\comp{f}" domA] \ar[d,"f"']
     & d \ar[d,equal] \\
@@ -716,7 +716,7 @@ For any vertical morphism $f\colon c\to d$ in an equipment $\dcat{D}$, there are
     d \ar[r,tick,"\unit(d)"' codA] & d.
     \twocellalt{A}{\tn{cart}}
   \end{tikzcd}
-\end{equation}
+\end{equation*}
 In \cite{Shulman}, it is shown that all restrictions can be obtained by composing with companions and
 conjoints. In particular, $N(f,g)\iso\comp{f}\odot N\odot\conj{g}$ for any proarrow $N$. Moreover,
 $\comp{f}$ and $\conj{f}$ form an adjunction in $\HHor(\dcat{D})$; we write
@@ -1235,13 +1235,13 @@ equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we
   equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Thus $\dProf$ is exact, since there is an equivalence $\dProf\cong\dMod(\dSpan)$, where $\dSpan$ is the equipment of spans in $\Set$; see \cite{Shulman}.
 \end{example}
 
-Exact equipments arising in practice almost always have local coequalizers, and in this case it is
-possible to simplify the definition:
+Exact equipments arising in practice almost always have local coequalizers, and in this case it is possible to simplify the definition, as we show in Proposition~\ref{prop:exact_coeqs}. First, recall from Definition~\ref{def:equipment} the notion of companion $\comp{i}\colon a\tickar b$ and conjoint $\conj{i}\colon b\tickar a$ for any vertical map $i\colon a\to b$ in an equipment $\dcat{D}$; recall also the unit map $\unitOf{a}\colon a\tickar a$.
+
 
 \begin{proposition}
     \label{prop:exact_coeqs}
   Let $\dcat{D}$ be an equipment with local coequalizers, and suppose $\dcat{D}$ satisfies Condition
-  1 of Definition~\ref{def:exact_equipment}. Then $\dcat{D}$ satisfies Condition 2 if and only if
+  1 of Definition~\ref{def:exact_equipment}, giving $i_M\colon c\to\Col{M}$. Then $\dcat{D}$ satisfies Condition 2 if and only if
   for every monoid $M\colon c\tickar c$, the following diagram is a coequalizer in
   $\HHor(\dcat{D})(\Col{M},\Col{M})$:
   \begin{equation}
@@ -1252,22 +1252,22 @@ possible to simplify the definition:
         \ar[r,shift right,"\conj{i}_M\odot\comp{i}_M\odot\epsilon_{i_M}"']
       &[3.5em] \conj{i}_M\odot\comp{i}_M
         \ar[r,"\epsilon_{i_M}"]
-      & \unit(\Col{M}),
+      & \unitOf{\Col{M}}
     \end{tikzcd}
   \end{equation}
-  or equivalently $\conj{i}_M\otimes_M\comp{i}_M\iso\unit(\Col{M})$.
+  or, equivalently, $\conj{i}_M\otimes_M\comp{i}_M\iso\unitOf{\Col{M}}$.
 \end{proposition}
 \begin{proof}
   The restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic to the functor
   $B\mapsto\comp{i}_M\odot B\odot\conj{i}_N$, with the left and right actions given by the left
   action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$. Assuming
-  $\conj{i}_M\otimes_M\comp{i}_M\iso\unit(\Col{M})$, we can construct an inverse to this restriction
+  $\conj{i}_M\otimes_M\comp{i}_M\iso\unitOf{\Col{M}}$, we can construct an inverse to this restriction
   functor, sending an $(M,N)$-bimodule $B$ to $\conj{i}_M\otimes_M B\otimes_N\comp{i}_N$. It is easy
   to check that this gives an equivalence of categories:
   \begin{align*}
     \conj{i}_M\otimes_M (\comp{i}_M\odot X\odot\conj{i}_N)\otimes_N\comp{i}_N
       &\iso (\conj{i}_M\otimes_M\comp{i}_M)\odot X\odot (\conj{i}_N\otimes_N\comp{i}_N) \\
-      &\iso \unit(\Col{M})\odot X\odot \unit(\Col{N}) \\
+      &\iso \unitOf{\Col{M}}\odot X\odot \unitOf{\Col{N}} \\
       &\iso X \\
     \intertext{and}
     \comp{i}_M\odot (\conj{i}_M\otimes_M B\otimes_N\comp{i}_N)\odot \conj{i}_N
@@ -1279,14 +1279,14 @@ possible to simplify the definition:
   preserves coequalizers in each variable.
 
   Conversely, assuming the functor \eqref{eqn:exact_Hor_Bimod} is an equivalence, then we can prove
-  the isomorphism $\conj{i}_M\otimes_M\comp{i}_M\iso\unit(\Col{M})$ by restricting both sides:
+  the isomorphism $\conj{i}_M\otimes_M\comp{i}_M\iso\unitOf{\Col{M}}$ by restricting both sides:
   \begin{align*}
     \comp{i}_M\odot(\conj{i}_M\otimes_M\comp{i}_M)\odot\conj{i}_M
       &\iso (\comp{i}_M\odot\conj{i}_M)\otimes_M(\comp{i}_M\odot\conj{i}_M) \\
       &\iso M\otimes_M M \\
       &\iso M \\
       &\iso \comp{i}_M\odot\conj{i}_M \\
-      &\iso \comp{i}_M\odot\unit(\Col{M})\odot\conj{i}_M. \qedhere
+      &\iso \comp{i}_M\odot\unitOf{\Col{M}}\odot\conj{i}_M. \qedhere
   \end{align*} 
 \end{proof}
 
