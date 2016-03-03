@@ -1052,10 +1052,10 @@ following is a standard construction; see \cite{Shulman}
         \end{tikzcd}
       \end{equation*}
       satisfying evident monoid action axioms.
-    \item The horizontal composition $B_1\otimes B_2$ of bimodules $B_1\colon M\tickar M'$ and
+    \item The horizontal composition $B_1\otimes_{M'} B_2$ of bimodules $B_1\colon M\tickar M'$ and
       $B_2\colon M'\tickar M''$ is given by the coequalizer in $\HHor(\dcat{D})(M,M'')$
       \[
-        B_1\odot M'\odot B_2 \rightrightarrows B_1\odot B_2 \to B_1\otimes B_2
+        B_1\odot M'\odot B_2 \rightrightarrows B_1\odot B_2 \to B_1\otimes_{M'} B_2
       \]
       together with the evident left $M$ and right $M''$ actions.
     \item The 2-cells are \emph{bimodule homomorphisms}: cells in $\dcat{D}$
@@ -1070,18 +1070,6 @@ following is a standard construction; see \cite{Shulman}
   \end{itemize}
   We will write $\Bimod{M}{N}$ to denote the 1-category of $(M,N)$-bimodules and bimodule morphisms.
 \end{definition}
-
-\begin{example}
-      \label{ex:mod_span_prof}
-   Let $\dSpan$ be the equipment defined in Example~\ref{ex:dspan}\todo{Span example was removed, this one should be also in light of Ex. 2.4.6, correct?.}. A monoid in $\dSpan$ consists of
-   a set $C$ and a span $C\from S\to C$, together with a function $e\colon C\to S$ and a function
-   $m\colon S\times_C S\to S$, satisfying certain properties. This is precisely the data required to
-   define a small category, whose object set is $C$ and morphism set is $S$, with identities given
-   by $e$ and composition given by $m$. Similarly, one can identify monoid homomorphisms in $\dSpan$
-   with functors between categories and bimodules in $\dSpan$ with profunctors between categories.
-   In other words, we have $\dMod(\dSpan)\iso\dProf$.
-
-\end{example}
 
 The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ extends to a forgetful equipment
 functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$. There is also a local equivalence
@@ -1170,6 +1158,34 @@ equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we
    In other words, $\Col{M}$ represents the functor $\Emb(M,\textrm{--})\colon\dcat{D}_0\to\Set$.
 \end{definition}
 
+\begin{remark}
+	\label{rem:canonical_actions}
+ For any monoid $M\colon c\tickar c$, the companion $\comp{i}_M\colon a\tickar b$ (resp.\ the conjoint $\conj{i}_M\colon b\tickar a$) of the embedding $i_M\colon c\to\Col{M}$ has the structure of a left (resp.\ right) $M$-module. Indeed, these are given by rewriting the collapse 2-cell $\vec{\imath}_M$ as follows:
+	\[
+	\begin{tikzcd}
+      c\ar[r,tick,"M"]\ar[d,equal]&
+      |[alias=domA]| c\ar[r,tick,"\comp{i}_M"]&
+      \Col{M}\ar[d,equal]
+      \\
+      c\ar[r,tick,"\comp{i}_M"']&
+      |[alias=codA]| \Col{M}\ar[r,tick,"\Col{M}"']&
+      \Col{M}
+      \twocellA{}
+  \end{tikzcd}
+  \qquad\qquad
+  	\begin{tikzcd}
+			\Col{M}\ar[r,tick,"\conj{i}_M"]\ar[d,equal]&
+      |[alias=domA]| c\ar[r,tick,"M"]&
+      c\ar[d,equal]
+      \\
+      \Col{M}\ar[r,tick,"\Col{M}"']&
+      |[alias=codA]| \Col{M}\ar[r,tick,"\conj{i}_M"']&
+      c
+      \twocellA{}
+  \end{tikzcd}
+	\]
+\end{remark}
+
 \begin{lemma}
    Let $M\colon c\tickar c$ and $N\colon d\tickar d$ be monoids in an equipment $\dcat{D}$ and assume they admit collapses $\Col{M}$ and $\Col{N}$, respectively. Then restriction induces a functor 
    \[\HHor(\dcat{D})(\Col{M},\Col{N})\to\Bimod{M}{N}.\]
@@ -1235,8 +1251,7 @@ equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we
   equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Thus $\dProf$ is exact, since there is an equivalence $\dProf\cong\dMod(\dSpan)$, where $\dSpan$ is the equipment of spans in $\Set$; see \cite{Shulman}.
 \end{example}
 
-Exact equipments arising in practice almost always have local coequalizers, and in this case it is possible to simplify the definition, as we show in Proposition~\ref{prop:exact_coeqs}. First, recall from Definition~\ref{def:equipment} the notion of companion $\comp{i}\colon a\tickar b$ and conjoint $\conj{i}\colon b\tickar a$ for any vertical map $i\colon a\to b$ in an equipment $\dcat{D}$; recall also the unit map $\unitOf{a}\colon a\tickar a$.
-
+Exact equipments arising in practice almost always have local coequalizers, and in this case it is possible to simplify the definition, as we show in Proposition~\ref{prop:exact_coeqs}. Recall from Remark~\ref{rem:canonical_actions} the natural $M$-module structures on the companion $\comp{i}_M\colon a\tickar b$ and conjoint $\conj{i}_M\colon b\tickar a$ of the collapse embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unitOf{a}\colon a\tickar a$ for the unit map on an object $a$.
 
 \begin{proposition}
     \label{prop:exact_coeqs}
@@ -1258,9 +1273,11 @@ Exact equipments arising in practice almost always have local coequalizers, and 
   or, equivalently, $\conj{i}_M\otimes_M\comp{i}_M\iso\unitOf{\Col{M}}$.
 \end{proposition}
 \begin{proof}
-  The restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic to the functor
-  $B\mapsto\comp{i}_M\odot B\odot\conj{i}_N$, with the left and right actions given by the left
-  action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$. Assuming
+  By Condition~1 of Definition~\ref{def:exact_equipment}, we have $M\iso\comp{i}_M\odot\conj{i}_M$, so the final equivalence is just the definition of horizontal composition in $\dMod(\dcat{D})$; see Definition~\ref{def:monoids_and_modules} and Remark~\ref{rem:canonical_actions}. Below we will use the fact that, by definition of $\dcat{D}$ having local coequalizers, $\odot$ preserves coequalizers in each variable, and that $\otimes$ is defined as a coequalizer. Finally, note that the restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic to the functor
+  $X\mapsto\comp{i}_M\odot X\odot\conj{i}_N$, with the left and right actions given by the left
+  action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$. 
+  
+  Assuming
   $\conj{i}_M\otimes_M\comp{i}_M\iso\unitOf{\Col{M}}$, we can construct an inverse to this restriction
   functor, sending an $(M,N)$-bimodule $B$ to $\conj{i}_M\otimes_M B\otimes_N\comp{i}_N$. It is easy
   to check that this gives an equivalence of categories:
@@ -1273,13 +1290,11 @@ Exact equipments arising in practice almost always have local coequalizers, and 
     \comp{i}_M\odot (\conj{i}_M\otimes_M B\otimes_N\comp{i}_N)\odot \conj{i}_N
       &\iso (\comp{i}_M\odot\conj{i}_M)\otimes_M B\otimes_N (\comp{i}_N\odot\conj{i}_N) \\
       &\iso M\otimes_M B\otimes_N N \\
-      &\iso B 
+      &\iso B.
   \end{align*}
-  where the mixed associativity of $\odot$ and $\otimes$ follows from the assumption that $\odot$
-  preserves coequalizers in each variable.
 
-  Conversely, assuming the functor \eqref{eqn:exact_Hor_Bimod} is an equivalence, then we can prove
-  the isomorphism $\conj{i}_M\otimes_M\comp{i}_M\iso\unitOf{\Col{M}}$ by restricting both sides:
+  Conversely, assuming the functor \eqref{eqn:exact_Hor_Bimod} is an equivalence of categories, then we can prove
+  the isomorphism $\conj{i}_M\otimes_M\comp{i}_M\iso\unitOf{\Col{M}}$ by applying the restriction functor:
   \begin{align*}
     \comp{i}_M\odot(\conj{i}_M\otimes_M\comp{i}_M)\odot\conj{i}_M
       &\iso (\comp{i}_M\odot\conj{i}_M)\otimes_M(\comp{i}_M\odot\conj{i}_M) \\
@@ -1562,7 +1577,11 @@ We begin by reminding the reader of some categorical preliminaries: basic defini
 
 A \emph{strict monoidal category} $\cat{M}$ is a category equipped with a functor
 $\otimes\colon\cat{M}\times\cat{M}\to\cat{M}$ and an object $I\in\cat{M}$, satisfying the usual
-monoid axioms. In other words, a strict monoidal category is a monoid object in the category $\Cat$.
+monoid axioms.%
+\footnote{
+We also used the notation $\otimes$ to denote bimodule composition in Definition~\ref{def:monoids_and_modules}; hopefully the intended meaning of the symbol will be clear from context.
+}
+In other words, a strict monoidal category is a monoid object in the category $\Cat$.
 Such a category $\cat{M}$ is \emph{symmetric} if there are in addition natural
 isomorphisms
 \[
