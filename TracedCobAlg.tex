@@ -1570,8 +1570,11 @@ We record the following facts, which hold for any traced category $\cat{T}$; eac
 \section{Monoidal profunctors}
       \label{sec:monoidal_profunctors}
 \todo[inline]{Mention that we may be introducing these for the first time?}
-Suppose $\cat{C}$ and $\cat{D}$ are monoidal categories. A \emph{monoidal
-profunctor} $M$ from $\cat{C}$ to $\cat{D}$ is an ordinary profunctor (see Example~\ref{ex:profunctors}) $M\colon \op{\cat{C}}\times\cat{D}\to\Set$ in $\MMonCat$, i.e.\ $M\colon \op{\cat{C}}\times\cat{D}\to\Set$ is equipped with a lax-monoidal structure where $\Set$ is endowed with the cartesian monoidal structure. In the bimodule notation, this means that there is an associative operation assigning to
+Suppose $\cat{C}$ and $\cat{D}$ are monoidal categories. A \emph{monoidal profunctor} $M$ from
+$\cat{C}$ to $\cat{D}$ is an ordinary profunctor (see Example~\ref{ex:profunctors}) $M\colon
+\op{\cat{C}}\times\cat{D}\to\Set$ in $\MMonCat$, i.e.\ $M\colon \op{\cat{C}}\times\cat{D}\to\Set$ is
+equipped with a lax-monoidal structure where $\Set$ is endowed with the cartesian monoidal
+structure. In the bimodule notation, this means that there is an associative operation assigning to
 any elements $m_1\in M(c_1,d_1)$ and $m_2\in M(c_2,d_2)$ an element $m_1\boxtimes m_2\in
 M(c_1\otimes c_2,d_1\otimes d_2)$ such that
 \[
@@ -1579,10 +1582,26 @@ M(c_1\otimes c_2,d_1\otimes d_2)$ such that
       = (f_1\otimes f_2)\cdot(m_1\boxtimes m_2)\cdot(g_1\otimes g_2),
 \]
 as well as a distinguished element $I_M\in M(I,I)$ such that $I_M\boxtimes m = m = m\boxtimes I_M$
-for any $m\in M(c,d)$. A \emph{monoidal profunctor morphism} $\phi\colon M\to N$ is simply a monoidal transformation from $\MMonCat$ as in \eqref{eqn:Prof2cells}. Spelling this out in bimodule notation, $\phi$ is an ordinary morphism of profunctors such that
-$\phi(m_1\boxtimes m_2)=\phi(m_1)\boxtimes\phi(m_2)$ and $\phi(I_M)=I_N$.
+for any $m\in M(c,d)$. If moreover $m_2\boxtimes m_1 = \sigma_{d_1,d_2}\cdot(m_1\boxtimes
+m_2)\cdot\sigma_{c_1,c_2}^{-1}$, then one says $M$ is \emph{symmetric monoidal}.%
+\footnote{
+  We will generally suppress the word \emph{symmetric} since all monoidal categories and monoidal
+  profunctors are symmetric by assumption; see Warning~\ref{warn:symmetric}.
+} 
 
-To see that we have defined a double category (where vertical arrows are strict monoidal functors), it remains to check that the horizontal composition of monoidal profunctors is monoidal. This follows from the fact that reflexive coequalizers---namely the ones from \eqref{eqn:coendComp}---commute with products in $\Set$. Write $\dMonProf$ for this double category, and note that it is in fact an equipment since the cartesian 2-cell \eqref{eq:cartesian profunctor morphism} is a monoidal transformation if $N$, $F$, and $F'$ are monoidal functors. 
+A \emph{monoidal profunctor morphism} $\phi\colon M\to N$ is simply a monoidal transformation.
+Spelling this out in bimodule notation, $\phi$ is an
+ordinary morphism of profunctors such that $\phi(m_1\boxtimes m_2)=\phi(m_1)\boxtimes\phi(m_2)$ and
+$\phi(I_M)=I_N$.
+
+We define a double category $\dMonProf$ whose objects are (symmetric) monoidal categories, vertical
+arrows are strict (symmetric) monoidal functors, horizontal arrows are (symmetric) monoidal
+profunctors, and 2-cells are defined as in \eqref{eqn:Prof2cells}, requiring $\phi$ to be a monoidal
+transformation. It remains to check that the horizontal composition of monoidal profunctors is
+monoidal. This follows from the fact that reflexive coequalizers---namely the ones from
+\eqref{eqn:coendComp}---commute with products in $\Set$. Note that $\dMonProf$ is in fact an
+equipment since the cartesian 2-cell \eqref{eq:cartesian profunctor morphism} is a monoidal
+transformation if $N$, $F$, and $F'$ are monoidal functors.
 
 The fully faithful functors $\UCM\colon\CompCat\to\MonCat$ and $\Int\colon\TrCat\to\CompCat$, defined above, induce equipments $\dCompProf\coloneqq\UCM^*(\dMonProf)$ and $\dTrProf\coloneqq\Int^*(\dCompProf)$ as in Definition~\ref{def:induced_locally_equivalent_equipment}. In particular, the vertical 1-categories of these equipments are given by
 \[\dMonProf_0=\MonCat,\quad\dCompProf_0=\CompCat,\quad\dTrProf_0=\TrCat.\]
@@ -2165,6 +2184,111 @@ i(f_1\otimes f_2) = i(f_1)\boxtimes i(f_2):\qquad
   \]
   for any $n_1\in N(c,d)$, $n'_1\in N(c',d')$, $n_2\in N(d,e)$, and $n'_2\in N(d',e')$, which we
   prove below:
+  \begin{equation*}
+    \begin{tikzpicture}[string diagram]
+      \matrix {
+        \node [draw] (n1)  {n_1};  \\
+        \node [draw] (n1') {n'_1}; \\[.2cm]
+        \node [draw] (n2)  {n_2};  \\
+        \node [draw] (n2') {n'_2}; \\
+      };
+      \begin{scope}[on background layer]
+        \node[fit={(n1) (n2')}] (back) {};
+      \end{scope}
+      \begin{scope}[xshift=1cm]
+      \coordinate (ld') at ($(n1'.south west-|back.west)!.333!(n2.north west-|back.west)$);
+      \coordinate (ld) at ($(n1'.south west-|back.west)!.667!(n2.north west-|back.west)$);
+      \coordinate (rd') at ($(n1'.south east-|back.east)!.333!(n2.north east-|back.east)$);
+      \coordinate (rd) at ($(n1'.south east-|back.east)!.667!(n2.north east-|back.east)$);
+      \end{scope}
+      \draw[ar] ($(n1)-(1cm,0)$)  to["c"pos=.2]  (n1);
+      \draw[ar] ($(n1')-(1cm,0)$) to["c'"pos=.2] (n1');
+      \draw[ar] (n1)  -- (n1-|back.east)  to[in=0,looseness=1.1,"d"pos=.1] (rd);
+      \draw[ar] (n1') -- (n1'-|back.east) to[in=0,looseness=2,"d'"pos=.05] (rd');
+      \draw (rd') -- (ld');
+      \draw (rd) -- (ld);
+      \draw[ar] (ld') to[out=180,looseness=1.1,"d'"'pos=.9] (n2'-|back.west) -- (n2');
+      \draw[ar] (ld) to[out=180,looseness=2,"d"'pos=.95]  (n2-|back.west)  -- (n2);
+      \draw[ar] (n2)  to["e"pos=.8]  +(1cm,0);
+      \draw[ar] (n2') to["e'"pos=.8] +(1cm,0);
+    \end{tikzpicture}
+    \quad = \quad
+    \begin{tikzpicture}[string diagram]
+      \matrix {
+        \node [draw] (n1)  {n_1};  \\
+        \node [draw] (n2)  {n_2};  \\[.2cm]
+        \node [draw] (n1') {n'_1}; \\
+        \node [draw] (n2') {n'_2}; \\
+      };
+      \begin{scope}[on background layer]
+        \node[fit={(n1) (n2')}] (back) {};
+      \end{scope}
+      \coordinate (ld') at ($(n1'.south west-|back.west)!.5!(n2'.north west-|back.west)$);
+      \coordinate (ld) at ($(n1.south west-|back.west)!.5!(n2.north west-|back.west)$);
+      \coordinate (rd') at ($(n1'.south east-|back.east)!.5!(n2'.north east-|back.east)$);
+      \coordinate (rd) at ($(n1.south east-|back.east)!.5!(n2.north east-|back.east)$);
+      \coordinate (ll1) at ($(n1.west)-(1cm,0)$);
+      \coordinate (ll1') at (ll1|-n2);
+      \coordinate (lld') at ($(n2.south-|ll1)!.333!(n1'.north-|ll1)$);
+      \coordinate (lld) at ($(n2.south-|ll1)!.667!(n1'.north-|ll1)$);
+      \coordinate (ll2) at (ll1|-n1');
+      \coordinate (ll2') at (ll1|-n2');
+      \coordinate (rr1) at ($(n1.east)+(1cm,0)$);
+      \coordinate (rr1') at (rr1|-n2);
+      \coordinate (rrd') at ($(n2.south-|rr1)!.333!(n1'.north-|rr1)$);
+      \coordinate (rrd) at ($(n2.south-|rr1)!.667!(n1'.north-|rr1)$);
+      \coordinate (rr2) at (rr1|-n1');
+      \coordinate (rr2') at (rr1|-n2');
+      \draw[ar] ($(ll1)-(.5cm,0)$)  to["c"pos=.2]  (n1);
+      \draw[ar=.2] ($(ll1')-(.5cm,0)$) to["c'"pos=.2] (ll1')
+        to[looseness=.8] (n1'-|back.west) -- (n1');
+      \draw[ar=.45] (n1') -- (n1'-|back.east)
+        to[in=200,looseness=.8] (rr1')
+        to[in=60,out=20,looseness=1.6,"d'"pos=.05] (rrd')
+        to[out=240,in=0,looseness=.8] (rd');
+      \draw (n1) -- (rr1);
+      \draw[ar=.3,over] (rr1) to[in=-25,looseness=1.1,"d"pos=.1] (rrd)
+        to[out=155,in=0,looseness=.8] (rd);
+      \draw (rd') -- (ld');
+      \draw (rd) -- (ld);
+      \draw[ar=.6] (ld') to[out=180,in=-25,looseness=.8] (lld')
+        to[out=155,looseness=1.1,"d'"'pos=.9] (ll2')
+        to[looseness=.8] (n2');
+      \draw[ar=.6,over] (ld) to[out=180,in=60,looseness=.8] (lld)
+        to[out=240,in=200,looseness=1.6,"d"'pos=.95] (ll2)
+        to[out=20,looseness=.8] (n2-|back.west);
+      \draw (n2-|back.west) -- (n2);
+      \draw (n2) -- (n2-|back.east);
+      \draw[ar=.8,over] (n2-|back.east) to[looseness=.8] (rr2) to["e"] +(.5cm,0);
+      \draw[ar] (n2') to["e'"pos=.8] ($(rr2')+(.5cm,0)$);
+    \end{tikzpicture}
+    \quad = \quad
+    \begin{tikzpicture}[string diagram]
+      \matrix {
+        \node [draw] (n1)  {n_1};  \\
+        \node [draw] (n2)  {n_2};  \\[.2cm]
+        \node [draw] (n1') {n'_1}; \\
+        \node [draw] (n2') {n'_2}; \\
+      };
+      \begin{scope}[on background layer]
+        \node[fit={(n1) (n2')}] (back) {};
+      \end{scope}
+      \coordinate (ld') at ($(n1'.south west-|back.west)!.5!(n2'.north west-|back.west)$);
+      \coordinate (ld) at ($(n1.south west-|back.west)!.5!(n2.north west-|back.west)$);
+      \coordinate (rd') at ($(n1'.south east-|back.east)!.5!(n2'.north east-|back.east)$);
+      \coordinate (rd) at ($(n1.south east-|back.east)!.5!(n2.north east-|back.east)$);
+      \draw[ar] ($(n1)-(1cm,0)$)  to["c"pos=.2]  (n1);
+      \draw[ar] ($(n1')-(1cm,0)$) to["c'"pos=.2] (n1');
+      \draw[ar] (n1)  -- (n1-|back.east)  to[in=0,looseness=2,"d"pos=.1] (rd);
+      \draw[ar] (n1') -- (n1'-|back.east) to[in=0,looseness=2,"d'"pos=.05] (rd');
+      \draw (rd') -- (ld');
+      \draw (rd) -- (ld);
+      \draw[ar] (ld') to[out=180,looseness=2,"d'"'pos=.9] (n2'-|back.west) -- (n2');
+      \draw[ar] (ld) to[out=180,looseness=2,"d"'pos=.95]  (n2-|back.west)  -- (n2);
+      \draw[ar] (n2)  to["e"pos=.8]  +(1cm,0);
+      \draw[ar] (n2') to["e'"pos=.8] +(1cm,0);
+    \end{tikzpicture}
+  \end{equation*}
   \begin{align*}
     &(n_2\boxtimes n'_2)\bullet(n_1\boxtimes n'_1) \\
     &= (\epsilon_{d\otimes d'}\otimes\id_{e\otimes e'})

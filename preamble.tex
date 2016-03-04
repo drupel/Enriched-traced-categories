@@ -302,8 +302,14 @@
   string diagram/.style={
     every to/.style={out=0,in=180,draw},
     semithick,
-    decoration={markings,mark=at position .5 with {\arrow{stealth};}},
-    ar/.style={postaction={decorate}},
+    ar/.style={postaction={
+      decorate,
+      decoration={
+        markings,
+        mark=at position ##1 with {\arrow{stealth};}
+      }
+    }},
+    ar/.default=.5,
     every matrix/.style={
       column sep={1.2cm,between origins},
       row sep={1cm,between origins},
@@ -318,9 +324,12 @@
     },
     every edge quotes/.style={
       auto,
+      inner sep=2pt,
+      shape=circle,
       execute at begin node=$\scriptstyle,
       execute at end node=$
     },
+    over/.style={preaction={draw,line width=2.2pt,white}},
     every fit/.style={inner sep=.15cm,fill=white!80!black},
     baseline=(current bounding box)
   }
