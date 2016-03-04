@@ -2,44 +2,47 @@
 \usepackage{mathtools}
 \usepackage{amsthm}
 \usepackage{amssymb}
-\usepackage{fixltx2e}
 \usepackage[T1]{fontenc}
-\usepackage{newpxtext}
-\usepackage[varg,bigdelims,varbb]{newpxmath}
-\linespread{1.05}
+%\usepackage{newpxtext}
+%\usepackage[varg,bigdelims]{newpxmath}
+\usepackage[only,boxslash]{stmaryrd}
+\usepackage[sc]{mathpazo}
+\linespread{1.08}
 \usepackage[cal=euler,scr=rsfso]{mathalfa}
 \usepackage{bm}
 \usepackage{inputenc}
 \usepackage{microtype}
 \usepackage[usenames,dvipsnames]{xcolor}
-\usepackage{paralist}
+\usepackage{enumitem}
 \usepackage{booktabs}
 \usepackage{tikz}
 \usepackage{todonotes}
-\usepackage[bookmarks=true,colorlinks=true, linkcolor=MidnightBlue, citecolor=cyan]{hyperref}
+%\usepackage[bookmarks=true,colorlinks=true, linkcolor=MidnightBlue, citecolor=cyan]{hyperref}
+\RequirePackage{hyperref}
+\hypersetup{colorlinks,linkcolor={blue!50!black},citecolor={red!50!black},urlcolor={blue!80!black}}
 
-\usetikzlibrary{decorations.markings,arrows.meta,calc,fit,quotes,cd}
-\hypersetup{final}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing,arrows.meta,calc,fit,quotes,cd,positioning,backgrounds}
+%\hypersetup{final}
 
-\DeclareMathOperator{\id}{id}
+\newcommand{\id}{\mathrm{id}}
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\cod}{cod}
 \DeclareMathOperator{\dvert}{Vert}
 \DeclareMathOperator{\Lax}{Lax}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Mor}{Mor}
 \DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\MOb}{\lvert\mspace{2mu}\cdot\mspace{2mu}\rvert}
 \DeclareMathOperator{\Tr}{Tr}
-
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem*{theorem*}{Theorem}
-
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{corollary*}{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem*{lemma*}{Lemma}
-
 \newtheorem*{namedthm}{\namedthmname}
 \newcounter{namedthm}
 \makeatletter
@@ -59,78 +62,114 @@
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{warning}[theorem]{Warning}
 
-
 \newcommand{\prodb}{\mathbin{\Pi}}
 \newcommand{\iso}{\cong}
 \renewcommand{\equiv}{\simeq}
+\newcommand{\pto}{\rightsquigarrow}
+
+
+% when not using newpxmath
+\newcommand{\vmathbb}[1]{\mathbb{#1}}
 
 \newcommand{\cat}[1]{\mathscr{#1}} %category variable
 \newcommand{\ncat}[1]{\mathbf{#1}} %named category
 \newcommand{\ccat}[1]{\mathcal{#1}} % 2-category variable
-\newcommand{\dcat}[1]{\mathbb{#1}} %double category variable
+%\newcommand{\dcat}[1]{\pmb{\mathbb{#1}}} %double category variable
+\newcommand{\dcat}[1]{\vmathbb{#1}} %double category variable
+\newcommand{\scat}[1]{\ccat{#1}_s} % 2-category of strict morphisms
+\newcommand{\pcat}[1]{\tilde{\ccat{#1}}} % 2-category of pseudo-morphisms
+\newcommand{\ccatFrOb}[1]{\ccat{#1}_{\mathrm{FrOb}}}
 \newcommand{\fun}[1]{#1}               %functor variable
 \newcommand{\nfun}[1]{\mathbf{#1}}  %named functor
 \newcommand{\nncat}[2]{\bm{\ccat{#1}}\ncat{#2}} %named 2-category
 \newcommand{\ndcat}[2]{\dcat{#1}\ncat{#2}}
 
-\newcommand{\FM}{\nfun{F}_{M}}
-\newcommand{\UM}{\nfun{U}_{M}}
-\newcommand{\FT}{\nfun{F}_{T}}
-\newcommand{\UT}{\nfun{U}_{T}}
-\newcommand{\FC}{\nfun{F}_{C}}
-\newcommand{\UC}{\nfun{U}_{C}}
-\newcommand{\TM}{\nfun{T}_{M}}
-\newcommand{\TC}{\nfun{T}_{C}}
-\newcommand{\UCM}{\nfun{U}_{CM}}
-\newcommand{\UCT}{\nfun{U}_{CT}}
-\newcommand{\UTM}{\nfun{U}_{TM}}
-\newcommand{\FMC}{\nfun{F}_{MC}}
+
+\newcommand{\unit}{\mathsf{U}}
+\newcommand{\lframe}{\mathsf{L}}
+\newcommand{\rframe}{\mathsf{R}}
+\newcommand{\comp}[1]{\widehat{#1}}
+\newcommand{\conj}[1]{\widecheck{#1}}
+
+\newcommand{\unitOf}[1]{\unit#1}
+
+\newcommand{\LabSet}{\mathcal{O}}
+
+\newcommand{\MTCfont}[1]{\mathsf{#1}} %Use this font for labeling traced, compact, monoidal, etc.
+\newcommand{\FM}{\nfun{F}_{\MTCfont{M}}}
+\newcommand{\UM}{\nfun{U}_{\MTCfont{M}}}
+\newcommand{\FT}{\nfun{F}_{\MTCfont{T}}}
+\newcommand{\UT}{\nfun{U}_{\MTCfont{T}}}
+\newcommand{\FC}{\nfun{F}_{\MTCfont{C}}}
+\newcommand{\UC}{\nfun{U}_{\MTCfont{C}}}
+\newcommand{\TM}{\nfun{T}_{\MTCfont{M}}}
+\newcommand{\TT}{\nfun{T}_{\MTCfont{T}}}
+\newcommand{\TC}{\nfun{T}_{\MTCfont{C}}}
+\newcommand{\UCM}{\nfun{U}_{\MTCfont{CM}}}
+\newcommand{\UCT}{\nfun{U}_{\MTCfont{CT}}}
+\newcommand{\UTM}{\nfun{U}_{\MTCfont{TM}}}
+\newcommand{\FMC}{\nfun{F}_{\MTCfont{MC}}}
 
 \newcommand{\Set}{\ncat{Set}} % 1-cat Set
 \newcommand{\Span}{\nncat{S}{pan}} % bicat Span
 \newcommand{\dSpan}{\dcat{S}\ncat{pan}} % double cat Span
 \newcommand{\Cat}{\ncat{Cat}} % 1-cat Cat
 \newcommand{\CCat}{\nncat{C}{at}} % F-cat Cat
+\newcommand{\CCatIso}{\CCat_{\iso}}
 \newcommand{\Prof}{\nncat{P}{rof}} % bicat Prof(unctors)
 \newcommand{\dProf}{\ndcat{P}{rof}} % double cat Prof(unctors)
-\newcommand{\MonCat}{\ncat{MonCat}}
-\newcommand{\MMonCat}{\nncat{M}{onCat}} % 2-cat MonCat
-%\newcommand{\SSymMonCat}{\nncat{S}{ymMonCat}} % 2-cat SymMonCat
-\newcommand{\SSymMonCat}{\MMonCat}
-\newcommand{\MonProf}{\nncat{M}{onProf}} % bicat MProf (monoidal Prof)
-\newcommand{\dMonProf}{\ndcat{M}{onProf}} % double cat MProf (monoidal Prof)
-\newcommand{\MProf}{\nncat{M}{onProf}} % just to get old version to compile -- can delete
-\newcommand{\dMProf}{\ndcat{M}{Prof}} % just to get old version to compile -- can delete
-\newcommand{\FrMonCat}{\ncat{FrMonCat}}
-\newcommand{\FFrMonCat}{\nncat{F}{rMonCat}}
-\newcommand{\FrMonProf}{\nncat{F}{rMonProf}}
-\newcommand{\dFrMonProf}{\ndcat{F}{rMonProf}}
-%\newcommand{\EndoProf}{\ncat{EndoProf}}
+\newcommand{\MonCat}{\ncat{MnCat}}
+\newcommand{\MMonCat}{\nncat{M}{nCat}} % 2-cat MonCat
+\newcommand{\MMonCatStrong}{\widetilde{\nncat{M}{nCat}}}
 \newcommand{\MMonCatLax}{\MMonCat_{\mathrm{lax}}}
+%\newcommand{\SSymMonCat}{\nncat{S}{ymMonCat}} % 2-cat SymMonCat
+% \newcommand{\SSymMonCat}{\MMonCat}
+\newcommand{\MonProf}{\nncat{M}{nProf}} % bicat MnProf (monoidal Prof)
+\newcommand{\dMonProf}{\ndcat{M}{nProf}} % double cat MnProf (monoidal Prof)
+\newcommand{\FrMonCat}{\ncat{FMnCat}}
+\newcommand{\FFrMonCat}{\nncat{F}{MnCat}}
+\newcommand{\FrTrCat}{\ncat{FTrCat}}
+\newcommand{\FFrTrCat}{\nncat{F}{TrCat}}
+\newcommand{\FrMonProf}{\nncat{F}{MnProf}}
+\newcommand{\dFrMonProf}{\ndcat{F}{MnProf}}
 \newcommand{\dTrProf}{\ndcat{T}{rProf}}
-\newcommand{\CompCat}{\ncat{CompCat}} % 1-cat CompCat
-\newcommand{\CCompCat}{\nncat{C}{ompCat}} % 2-cat CompCat
-\newcommand{\CompProf}{\nncat{C}{ompProf}} % bicat CompProf
-\newcommand{\dCompProf}{\ndcat{C}{ompProf}} % bicat CompProf
-\newcommand{\FrCompCat}{\ncat{FrCompCat}}
-\newcommand{\FFrCompCat}{\nncat{F}{rCompCat}}
-\newcommand{\FrCompProf}{\nncat{F}{rCompProf}}
-\newcommand{\dFrCompProf}{\ndcat{F}{rCompProf}}
-\newcommand{\dFrMonCompProf}{\ndcat{F}{rMonCompProf}}
+\newcommand{\dFrTrProf}{\ndcat{F}{TrProf}}
+\newcommand{\dPROP}{\ndcat{P}{ROP}}
+\newcommand{\CompCat}{\ncat{CpCat}} % 1-cat CpCat
+\newcommand{\CCompCat}{\nncat{C}{pCat}} % 2-cat CpCat
+\newcommand{\CCompCatStrong}{\widetilde{\nncat{C}{pCat}}}
+\newcommand{\CompProf}{\nncat{C}{pProf}} % bicat CpProf
+\newcommand{\TTrProf}{\nncat{T}{rProf}} % bicat TrProf
+\newcommand{\dCompProf}{\ndcat{C}{pProf}} % bicat CpProf
+\newcommand{\FrCompCat}{\ncat{FCpCat}}
+\newcommand{\FFrCompCat}{\nncat{F}{CpCat}}
+\newcommand{\FrCompProf}{\nncat{F}{CpProf}}
+\newcommand{\dFrCompProf}{\ndcat{F}{CpProf}}
+\newcommand{\dFrMonCompProf}{\ndcat{F}{MCpProf}}
 \newcommand{\TrCat}{\ncat{TrCat}} % 1-cat TrCat
 \newcommand{\TTrCat}{\nncat{T}{rCat}} % 2-cat TrCat
+\newcommand{\TTrCatStrong}{\widetilde{\nncat{T}{rCat}}}
+\newcommand{\MMonFrObCat}{\nncat{M}{nFrObCat}}
+\newcommand{\MonFrObCat}{\ncat{MnFrObCat}}
 \newcommand{\TTrFrObCat}{\nncat{T}{rFrObCat}}
-\newcommand{\TrProp}{\ncat{TrProp}}
-\newcommand{\Prop}{\ncat{Prop}}
-% \def\2Cat{\tn{$2$-$\ncat{Cat}$}}
+\newcommand{\TrFrObCat}{\ncat{TrFrObCat}}
+\newcommand{\CCompFrObCat}{\nncat{C}{pFrObCat}}
+\newcommand{\CompFrObCat}{\ncat{CpFrObCat}}
+\newcommand{\CompPROP}{\ncat{CpPROP}}
+\newcommand{\TrPROP}{\ncat{TrPROP}}
+% \newcommand{\dObFrMonProf}{\ndcat{O}{bFrMnProf}}
+% \newcommand{\dObFrTrProf}{\ndcat{O}{bFrTrProf}}
+% \newcommand{\dObFrCompProf}{\ndcat{O}{bFrCpProf}}
 
 
 \newcommand{\Int}{\nfun{Int}}
 \newcommand{\List}{\nfun{List}}
-\newcommand{\TrFrObCat}{\nfun{TrFrObCat}}
-\newcommand{\TrFr}{\nfun{TrFr}}
-\newcommand{\CompFr}{\nfun{CompFr}}
-\newcommand{\Pt}{\ncat{Pt}} % 1-cat Pointed endo-bimodules
+\newcommand{\ColDash}{\Col{\textrm{--}}}
+%\newcommand{\TrFrObCat}{\nfun{TrFrObCat}}
+% \newcommand{\TrFr}{\nfun{TrFr}}
+% \newcommand{\CompFr}{\nfun{CpFr}}
+\newcommand{\End}{\ncat{End}}
+\newcommand{\Ptd}{\ncat{Ptd}} % 1-cat Pointed endo-bimodules
 \newcommand{\PPt}{\bm{\ccat{P}}\ncat{t}} % 2-cat Pointed endo-bimodules
 \newcommand{\Mon}{\ncat{Mon}} % 1-cat Mon(oids/ads)
 \newcommand{\MMon}{\bm{\ccat{M}}\ncat{on}} % 2-cat Mon(oids/ads)
@@ -141,13 +180,18 @@
 \newcommand{\HHor}{\bm{\ccat{H}}\ncat{or}} % horizontal bicat
 \newcommand{\Psh}{\ncat{Psh}}
 \newcommand{\CPsh}{\ncat{CPsh}}
+\newcommand{\Emb}{\mathrm{Emb}} % set of embeddings
+\newcommand{\Disc}{\mathrm{Disc}}
+\renewcommand{\Ob}{\mathrm{Ob}}
 
 \newcommand{\Col}[1]{\langle#1\rangle}
+\newcommand{\Ar}[1]{#1^2}
+\newcommand{\Path}[1]{P(#1)}
 
 \newcommand{\Cob}{\ncat{Cob}}
 \newcommand{\LCob}[1]{\Cob_{/#1}}
 \newcommand{\CobSetAlg}{\int^{\Set}(\LCob{\bullet})\alg}
-\newcommand{\CobKlsAlg}{\int^{\cat{O}\in\ncat{Kls}}(\Cob/\cat{O})\alg}
+% \newcommand{\CobKlsAlg}{}
 \newcommand{\op}[1]{{#1}^{\text{op}}}
 \newcommand{\vop}[1]{{#1}^{\text{vop}}}
 \newcommand{\hop}[1]{{#1}^{\text{hop}}}
@@ -158,12 +202,24 @@
 \newcommand{\LCoalg}[1][]{\mathbb{L}_{#1}\text{-}\Coalg}
 \newcommand{\LCoalgA}{\mathbb{L}_1\text{-}\Coalg}
 \newcommand{\LCoalgB}{\mathbb{L}_2\text{-}\Coalg}
-\newcommand{\Bimod}{\mathrm{Bimod}}
+\newcommand{\Bimod}[2]{{}_{#1}\mathrm{Bimod}_{#2}}
 
 \newcommand{\tickar}{\begin{tikzcd}[baseline=-0.5ex,cramped,sep=small,ampersand replacement=\&]{}\ar[r,tick]\&{}\end{tikzcd}}
 
+\newcommand*{\cocolon}{% colon with spacing for backwards arrows
+  \nobreak
+  \mskip6mu plus1mu
+  \mathpunct{}%
+  \nonscript
+  \mkern-\thinmuskip
+  {:}%
+  \mskip2mu
+  \relax
+}
+
 \newcommand{\twocell}[3][]{\arrow[draw=none,to path={(dom#2.center)--(cod#2.center)\tikztonodes}]{}[anchor=center,#1]{\Downarrow #3}}
 \newcommand{\twocellalt}[3][]{\arrow[draw=none,to path={(dom#2.center)--(cod#2.center)\tikztonodes}]{}[anchor=center,#1]{#3}}
+\newcommand{\twocelliso}[3][]{\twocellalt[#1]{#2}{\begin{smallmatrix}#3\\\iso\end{smallmatrix}}}
 \newcommand{\twocellA}[2][]{\twocell[#1]{A}{#2}}
 \newcommand{\twocellB}[2][]{\twocell[#1]{B}{#2}}
 \newcommand{\twocellC}[2][]{\twocell[#1]{C}{#2}}
@@ -174,68 +230,101 @@
 
 
 \tikzcdset{
-	arrow style=tikz,
-	diagrams={>={Classical TikZ Rightarrow[angle=63:4pt, line width=.6pt]}},
-	arrows={semithick}
+   arrow style=tikz,
+   diagrams={>={Classical TikZ Rightarrow[angle=63:4pt, line width=.6pt]}},
+   arrows={semithick}
 }
 
-\tikzset{tick/.style={postaction={decorate,decoration={markings,mark=at position 0.5 with {\draw[-] (0,.4ex) -- (0,-.4ex);}}}}}
-\tikzset{dom/.style={append after command={coordinate[alias=dom#1]}},
-		domA/.style={dom=A}, domB/.style={dom=B},
-		domC/.style={dom=C}, domD/.style={dom=D},
-		domE/.style={dom=E}, domF/.style={dom=F}}
-\tikzset{cod/.style={append after command={coordinate[alias=cod#1]}},
-		codA/.style={cod=A}, codB/.style={cod=B},
-		codC/.style={cod=C}, codD/.style={cod=D},
-		codE/.style={cod=E}, codF/.style={cod=F}}
+\tikzset{
+   tick/.style={postaction={
+      decorate,
+      decoration={markings, mark=at position 0.5 with {\draw[-] (0,.4ex) -- (0,-.4ex);}}}
+   }
+}
+\tikzset{
+   dom/.style={append after command={coordinate[alias=dom#1]}},
+   domA/.style={dom=A}, domB/.style={dom=B},
+   domC/.style={dom=C}, domD/.style={dom=D},
+   domE/.style={dom=E}, domF/.style={dom=F},
+   cod/.style={append after command={coordinate[alias=cod#1]}},
+   codA/.style={cod=A}, codB/.style={cod=B},
+   codC/.style={cod=C}, codD/.style={cod=D},
+   codE/.style={cod=E}, codF/.style={cod=F}
+}
 
 
 \tikzset{
-	wiring diagram/.style={
-		every to/.style={out=0,in=180,draw},
-		label/.style={
-			font=\everymath\expandafter{\the\everymath\scriptstyle},
-			inner sep=0pt,
-			node distance=2pt and -2pt},
-		semithick,
-		node distance=1 and 1,
-		decoration={markings, mark=at position .5 with {\arrow{stealth};}},
-		ar/.style={postaction={decorate}},
-		execute at begin picture={\tikzset{
-			x=\bbx, y=\bby,
-			every fit/.style={inner xsep=\bbx, inner ysep=\bby}}}
-		},
-	bbx/.store in=\bbx,
-	bbx = 1.5cm,
-	bby/.store in=\bby,
-	bby = 1.75ex,
-	bb port sep/.store in=\bbportsep,
-	bb port sep=2,
-	% bb wire sep/.store in=\bbwiresep,
-	% bb wire sep=1.75ex,
-	bb port length/.store in=\bbportlen,
-	bb port length=4pt,
-	bb min width/.store in=\bbminwidth,
-	bb min width=1cm,
-	bb rounded corners/.store in=\bbcorners,
-	bb rounded corners=2pt,
-	bb small/.style={bb port sep=1, bb port length=2.5pt, bbx=.4cm, bb min width=.4cm, bby=.7ex},
-	bb/.code 2 args={
-		\pgfmathsetlengthmacro{\bbheight}{\bbportsep * (max(#1,#2)+1) * \bby}
-		\pgfkeysalso{draw,minimum height=\bbheight,minimum width=\bbminwidth,outer sep=0pt,
-			rounded corners=\bbcorners,thick,
-			prefix after command={\pgfextra{\let\fixname\tikzlastnode}},
-			append after command={\pgfextra{\draw
-				\ifnum #1=0{} \else foreach \i in {1,...,#1} {
-					($(\fixname.north west)!{\i/(#1+1)}!(\fixname.south west)$) +(-\bbportlen,0) coordinate (\fixname_in\i) -- +(\bbportlen,0) coordinate (\fixname_in\i')}\fi
-				\ifnum #2=0{} \else foreach \i in {1,...,#2} {
-					($(\fixname.north east)!{\i/(#2+1)}!(\fixname.south east)$) +(-\bbportlen,0) coordinate (\fixname_out\i') -- +(\bbportlen,0) coordinate (\fixname_out\i)}\fi;
-			}}}
-	},
-	bb name/.style={append after command={\pgfextra{\node[anchor=north] at (\fixname.north) {#1};}}}
+   wiring diagram/.style={
+      every to/.style={out=0,in=180,draw},
+      label/.style={
+         font=\everymath\expandafter{\the\everymath\scriptstyle},
+         inner sep=0pt,
+         node distance=2pt and -2pt},
+      semithick,
+      node distance=1 and 1,
+      decoration={markings, mark=at position .5 with {\arrow{stealth};}},
+      ar/.style={postaction={decorate}},
+      execute at begin picture={\tikzset{
+         x=\bbx, y=\bby,
+         every fit/.style={inner xsep=\bbx, inner ysep=\bby}}}
+      },
+   bbx/.store in=\bbx,
+   bbx = 1.5cm,
+   bby/.store in=\bby,
+   bby = 1.75ex,
+   bb port sep/.store in=\bbportsep,
+   bb port sep=2,
+   % bb wire sep/.store in=\bbwiresep,
+   % bb wire sep=1.75ex,
+   bb port length/.store in=\bbportlen,
+   bb port length=4pt,
+   bb min width/.store in=\bbminwidth,
+   bb min width=1cm,
+   bb rounded corners/.store in=\bbcorners,
+   bb rounded corners=2pt,
+   bb small/.style={bb port sep=1, bb port length=2.5pt, bbx=.4cm, bb min width=.4cm, bby=.7ex},
+   bb/.code 2 args={
+      \pgfmathsetlengthmacro{\bbheight}{\bbportsep * (max(#1,#2)+1) * \bby}
+      \pgfkeysalso{draw,minimum height=\bbheight,minimum width=\bbminwidth,outer sep=0pt,
+         rounded corners=\bbcorners,thick,
+         prefix after command={\pgfextra{\let\fixname\tikzlastnode}},
+         append after command={\pgfextra{\draw
+            \ifnum #1=0{} \else foreach \i in {1,...,#1} {
+               ($(\fixname.north west)!{\i/(#1+1)}!(\fixname.south west)$) +(-\bbportlen,0) coordinate (\fixname_in\i) -- +(\bbportlen,0) coordinate (\fixname_in\i')}\fi
+            \ifnum #2=0{} \else foreach \i in {1,...,#2} {
+               ($(\fixname.north east)!{\i/(#2+1)}!(\fixname.south east)$) +(-\bbportlen,0) coordinate (\fixname_out\i') -- +(\bbportlen,0) coordinate (\fixname_out\i)}\fi;
+         }}}
+   },
+   bb name/.style={append after command={\pgfextra{\node[anchor=north] at (\fixname.north) {#1};}}}
 }
 
-
+\tikzset{
+  string diagram/.style={
+    every to/.style={out=0,in=180,draw},
+    semithick,
+    decoration={markings,mark=at position .5 with {\arrow{stealth};}},
+    ar/.style={postaction={decorate}},
+    every matrix/.style={
+      column sep={1.2cm,between origins},
+      row sep={1cm,between origins},
+      every rectangle node/.style={minimum size=.6cm},
+      every circle node/.style={minimum size=.66cm},
+      nodes={
+        inner sep=0pt,
+        fill=white,
+        execute at begin node=$,
+        execute at end node=$
+      }
+    },
+    every edge quotes/.style={
+      auto,
+      execute at begin node=$\scriptstyle,
+      execute at end node=$
+    },
+    every fit/.style={inner sep=.15cm,fill=white!80!black},
+    baseline=(current bounding box)
+  }
+}
 
 \newcommand{\vinp}[1]{\overline{\inp{#1}}}
 \newcommand{\voutp}[1]{\overline{\outp{#1}}}
@@ -248,7 +337,6 @@
 % \def\bbhline{\Xhline{2.5\arrayrulewidth}}
 \def\alg{{\text \textendash}\ncat{Alg}}
 \def\XCat{\ncat{XCat}}
-\def\To{\xrightarrow}
 \def\ul{\underline}
 \def\List{\textnormal{List}}
 \def\SList{\textnormal{SList}}
@@ -257,36 +345,40 @@
 \newcommand{\erase}[1]{{}}
 \def\NN{\mathbb{N}}
 \def\ss{\subseteq}
-\def\boo{{\Ob\iso}}
 \newcommand{\bo}{\mathsf{bo}}
 \newcommand{\ff}{\mathsf{ff}}
 
-%sets:
-\newcommand{\feeddd}[3]{{\tensor*[^{#2}_{\color{white}{!}}]{{|#1|}}{^{#3}}}}%the color thing is to get overlines to be the same height.
-\newcommand{\feeddc}[3]{{\tensor*[^{#2}]{{|#1|}}{_{#3}}}}
-\newcommand{\feedcd}[3]{{\tensor*[_{#2}]{{|#1|}}{^{#3}}}}
-\newcommand{\feedcc}[3]{{\tensor*[^{\color{white}{!}}_{#2}]{{|#1|}}{_{#3}}}}
-%maps
-\newcommand{\feeddb}[2]{{\tensor*[^{#2}]{{#1}}{}}}
-\newcommand{\feedbc}[2]{{\tensor*{{#1}}{^~_{#2}}}}
-\newcommand{\feedcb}[2]{{\tensor*[^~_{#2}]{{#1}}{}}}
-\newcommand{\feedbd}[2]{{\tensor*{{#1}}{^{#2}}}}
-%horrible maps
-\newcommand{\feedda}[3]{{\tensor*[^{#2}_{\color{white}{!}}]{{#1}}{^{#2}_{#3}}}}
-\newcommand{\feedca}[3]{{\tensor*[_{#2}]{{#1}}{_{#2}^{#3}}}}
-\newcommand{\feedad}[3]{{\tensor*[^{#2}_{#3}]{{#1}}{^{#2}}}}
-\newcommand{\feedac}[3]{{\tensor*[_{#2}^{#3}]{{#1}}{_{#2}}}}
-
-
 \newcommand{\into}{\hookrightarrow}
-\newcommand{\onto}{\to\!\!\!\!\!\to}
+\newcommand{\onto}{\twoheadrightarrow}
 \def\tn{\textnormal}
-\newcommand{\Too}[1]{\xrightarrow{\ \ #1\ \ }}
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\too}{\longrightarrow}
+\newcommand{\Too}[1]{\To{\ \ #1\ \ }}
+\newcommand{\from}{\leftarrow}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+\newcommand{\tto}{\rightrightarrows}
+\newcommand{\inj}{\hookrightarrow}
 \newcommand{\cev}[1]{\reflectbox{\ensuremath{\vec{\reflectbox{\ensuremath{#1}}}}}}
 \newtheorem{claim}[subsubsection]{Claim}
 \def\bfe{{\textbf{e}}}
 \def\bfo{{\textbf{o}}}
 \newcommand{\start}[1]{\textbf{Start here: #1}\\}
-\newcommand{\too}{\longrightarrow}
+\newcommand{\Adjoint}[4]{\begin{tikzcd}[ampersand replacement=\&]#1\ar[r,shift left,"#3"] \&#2\ar[l,shift left,"#4"]\end{tikzcd}}
 
 \allowdisplaybreaks
+
+\makeatletter
+ \DeclareRobustCommand\widecheck[1]{{\mathpalette\@widecheck{#1}}}
+ \def\@widecheck#1#2{%
+     \setbox\z@\hbox{\m@th$#1#2$}%
+     \setbox\tw@\hbox{\m@th$#1%
+        \widehat{%
+           \vrule\@width\z@\@height\ht\z@
+           \vrule\@height\z@\@width\wd\z@}$}%
+     \dp\tw@-\ht\z@
+     \@tempdima\ht\z@ \advance\@tempdima2\ht\tw@ \divide\@tempdima\thr@@
+     \setbox\tw@\hbox{%
+        \raise\@tempdima\hbox{\scalebox{1}[-1]{\lower\@tempdima\box
+ \tw@}}}%
+     {\ooalign{\box\tw@ \cr \box\z@}}}
+ \makeatother

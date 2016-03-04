@@ -1770,7 +1770,6 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
 
 \newpage
 \[
-m\cdot f:\qquad
 \begin{tikzpicture}[string diagram]
 	\matrix {
 		\node [draw, circle] (f) {f};&[.2cm]
@@ -1782,11 +1781,11 @@ m\cdot f:\qquad
 	\draw[ar] ($(f)-(1cm,0)$) to["c'"] (f);
 	\draw[ar] (f) to["c"] (m.west);
 	\draw[ar] (m) to["d"] +(1cm,0);
+	\node [above=2pt] at (current bounding box.north) {$m\cdot f$};
 \end{tikzpicture}
 \]
 
 \[
-g\cdot m:\qquad
 \begin{tikzpicture}[string diagram]
 	\matrix {
 		\node [draw]        (m) {m};&[.2cm]
@@ -1798,11 +1797,11 @@ g\cdot m:\qquad
 	\draw[ar] ($(m)-(1cm,0)$) to["c"] (m);
 	\draw[ar] (m) to["d"] (g);
 	\draw[ar] (g) to["d'"] +(1cm,0);
+	\node [above=2pt] at (current bounding box.north) {$g\cdot m$};
 \end{tikzpicture}
 \]
 
 \[
-m_2\bullet m_1:\qquad
 \begin{tikzpicture}[string diagram]
 	\matrix {
 		\node [draw] (m1) {m_1};&
@@ -1814,11 +1813,11 @@ m_2\bullet m_1:\qquad
 	\draw[ar] ($(m1)-(1cm,0)$) to["c"] (m1);
 	\draw[ar] (m1) to["d"] (m2);
 	\draw[ar] (m2) to["e"] +(1cm,0);
+	\node [above=2pt] at (current bounding box.north) {$m_2\bullet m_1$};
 \end{tikzpicture}
 \]
 
 \[
-i(f):\qquad
 \begin{tikzpicture}[string diagram]
 	\matrix {
 		\node [draw,circle] (f)  {f};\\
@@ -1828,6 +1827,7 @@ i(f):\qquad
 	\end{scope}
 	\draw[ar] ($(f)-(1cm,0)$) -- (f);
 	\draw[ar] (f) -- +(1cm,0);
+	\node [above=2pt] at (current bounding box.north) {$i(f)$};
 \end{tikzpicture}
 \]
 
@@ -1861,7 +1861,6 @@ m\bullet i(f) = m\cdot f:\qquad
 \]
 
 \[
-(f\cdot m_2)\bullet (m_1\cdot h) = f\cdot(m_2\bullet m_1)\cdot h:\qquad
 \begin{tikzpicture}[string diagram]
 	\matrix {
 		\node [draw,circle] (h)  {h};&
@@ -1877,11 +1876,11 @@ m\bullet i(f) = m\cdot f:\qquad
 	\draw[ar] (m1) -- (m2);
 	\draw[ar] (m2) -- (f);
 	\draw[ar] (f) -- +(1cm,0);
+	\node [above=2pt] at (current bounding box.north) {$(f\cdot m_2)\bullet (m_1\cdot h) = f\cdot(m_2\bullet m_1)\cdot h$};
 \end{tikzpicture}
 \]
 
 \[
-(m_3\cdot g)\bullet m_1 = m_3\bullet(g\cdot m_1):\qquad
 \begin{tikzpicture}[string diagram]
 	\matrix {
 		\node [draw]        (m1) {m_1};&
@@ -1895,11 +1894,11 @@ m\bullet i(f) = m\cdot f:\qquad
 	\draw[ar] (m1) -- (g);
 	\draw[ar] (g) -- (m3);
 	\draw[ar] (m3) -- +(1cm,0);
+	\node [above=2pt] at (current bounding box.north) {$(m_3\cdot g)\bullet m_1 = m_3\bullet(g\cdot m_1)$};
 \end{tikzpicture}
 \]
 
 \[
-I_M\in M(I,I):\qquad
 \begin{tikzpicture}[string diagram]
 	\matrix {
 		\node [draw, circle, white!80!black, fill=white!80!black] (I) {};\\
@@ -1910,26 +1909,11 @@ I_M\in M(I,I):\qquad
 	\draw [dashed] ($(I)-(1cm,0)$) -- +(2cm,0);
 	\node at ($(back.west)+(-.25cm,.2cm)$) {\scriptsize $I$};
 	\node at ($(back.east)+(.25cm,.2cm)$) {\scriptsize $I$};
+	\node [above=2pt] at (current bounding box.north) {$I_M=i(\id_I)$};
 \end{tikzpicture}
 \]
 
 \[
-I_M=i(\id_I):\qquad
-\begin{tikzpicture}[string diagram]
-	\matrix {
-		\node [draw, circle, white!80!black, fill=white!80!black] (I) {};\\
-	};
-	\begin{scope}[on background layer]
-		\node[fit={(I)}] (back) {};
-	\end{scope}
-	\draw [dashed] ($(I)-(1cm,0)$) -- +(2cm,0);
-	\node at ($(back.west)+(-.25cm,.2cm)$) {\scriptsize $I$};
-	\node at ($(back.east)+(.25cm,.2cm)$) {\scriptsize $I$};
-\end{tikzpicture}
-\]
-
-\[
-m_1\boxtimes m_2:\qquad
 \begin{tikzpicture}[string diagram]
 	\matrix {
 		\node [draw] (m1) {m_1};\\
@@ -1942,6 +1926,7 @@ m_1\boxtimes m_2:\qquad
 	\draw[ar] (m1) to["d_1"] +(1cm,0);
 	\draw[ar] (m2) to["d_2"] +(1cm,0);
 	\end{scope}
+	\node [above=2pt] at (current bounding box.north) {$m_1\boxtimes m_2$};
 \end{tikzpicture}
 \]
 
@@ -1973,8 +1958,6 @@ I\boxtimes m =  m:\qquad
 \]
 
 \[
-(g_1\cdot m_1\cdot f_1)\boxtimes (g_2\cdot m_2\cdot f_2) = 
-(g_1\otimes g_2)\cdot(m_1\boxtimes m_2)\cdot (f_1\otimes f_2):\qquad
 \begin{tikzpicture}[string diagram]
 	\matrix {
 		\node [draw, circle] (f1) {f_1};&
@@ -1995,6 +1978,7 @@ I\boxtimes m =  m:\qquad
 	\draw[ar] (g1) -- +(1cm,0);
 	\draw[ar] (g2) -- +(1cm,0);
 	\end{scope}
+	\node [above=2pt] at (current bounding box.north) {$(g_1\cdot m_1\cdot f_1)\boxtimes (g_2\cdot m_2\cdot f_2) = (g_1\otimes g_2)\cdot(m_1\boxtimes m_2)\cdot (f_1\otimes f_2)$};
 \end{tikzpicture}
 \]
 
@@ -2030,7 +2014,6 @@ m_1\boxtimes m_2 = \sigma_{d_1,d_2}\cdot(m_2\boxtimes m_1)\cdot\sigma_{c_1,c_2}^
 \]
 
 \[
-i(f_1\otimes f_2) = i(f_1)\boxtimes i(f_2):\qquad
 \begin{tikzpicture}[string diagram]
 	\matrix {
 		\node [draw,circle] (f1) {f_1};\\
@@ -2043,11 +2026,11 @@ i(f_1\otimes f_2) = i(f_1)\boxtimes i(f_2):\qquad
 	\draw[ar] (f1) to["d_1"] +(1cm,0);
 	\draw[ar] (f2) to["d_2"] +(1cm,0);
 	\end{scope}
+	\node [above=2pt] at (current bounding box.north) {$i(f_1\otimes f_2) = i(f_1)\boxtimes i(f_2)$};
 \end{tikzpicture}
 \]
 
 \[
-(m_2\boxtimes m_2')\bullet (m_1\boxtimes m_1') = (m_2\bullet m_1)\boxtimes(m_2'\bullet m_1'):\qquad
 \begin{tikzpicture}[string diagram]
 	\matrix {
 		\node [draw] (m1) {m_1};&
@@ -2064,6 +2047,7 @@ i(f_1\otimes f_2) = i(f_1)\boxtimes i(f_2):\qquad
 	\draw[ar] ($(m1')-(1cm,0)$) -- (m1');
 	\draw[ar] (m1') -- (m2');
 	\draw[ar] (m2') -- +(1cm,0);
+	\node [above=2pt] at (current bounding box.north) {$(m_2\boxtimes m_2')\bullet (m_1\boxtimes m_1') = (m_2\bullet m_1)\boxtimes(m_2'\bullet m_1')$};
 \end{tikzpicture}
 \]
 
