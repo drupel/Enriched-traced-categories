@@ -1883,6 +1883,308 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
    Remark~\ref{rem:suffices_for_monoid}.
 \end{remark}
 
+\newpage
+\[
+m\cdot f:\qquad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw, circle] (f) {f};&[.2cm]
+		\node [draw]         (m) {m};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(m)}] (back) {};
+	\end{scope}
+	\draw[ar] ($(f)-(1cm,0)$) to["c'"] (f);
+	\draw[ar] (f) to["c"] (m.west);
+	\draw[ar] (m) to["d"] +(1cm,0);
+\end{tikzpicture}
+\]
+
+\[
+g\cdot m:\qquad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw]        (m) {m};&[.2cm]
+		\node [draw,circle] (g) {g};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(m)}] (back) {};
+	\end{scope}
+	\draw[ar] ($(m)-(1cm,0)$) to["c"] (m);
+	\draw[ar] (m) to["d"] (g);
+	\draw[ar] (g) to["d'"] +(1cm,0);
+\end{tikzpicture}
+\]
+
+\[
+m_2\bullet m_1:\qquad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw] (m1) {m_1};&
+		\node [draw] (m2) {m_2};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(m1) (m2)}] (back) {};
+	\end{scope}
+	\draw[ar] ($(m1)-(1cm,0)$) to["c"] (m1);
+	\draw[ar] (m1) to["d"] (m2);
+	\draw[ar] (m2) to["e"] +(1cm,0);
+\end{tikzpicture}
+\]
+
+\[
+i(f):\qquad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw,circle] (f)  {f};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(f)}] (back) {};
+	\end{scope}
+	\draw[ar] ($(f)-(1cm,0)$) -- (f);
+	\draw[ar] (f) -- +(1cm,0);
+\end{tikzpicture}
+\]
+
+\[
+m\bullet i(f) = m\cdot f:\qquad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw, circle] (f) {f};&[.2cm]
+		\node [draw]         (m) {m};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(f) (m)}] (back) {};
+	\end{scope}
+	\draw[ar] ($(f)-(1cm,0)$) to (f);
+	\draw[ar] (f) to (m.west);
+	\draw[ar] (m) to +(1cm,0);
+\end{tikzpicture}
+\quad = \quad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw, circle] (f) {f};&[.2cm]
+		\node [draw]         (m) {m};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(m)}] (back) {};
+	\end{scope}
+	\draw[ar] ($(f)-(1cm,0)$) to (f);
+	\draw[ar] (f) to (m.west);
+	\draw[ar] (m) to +(1cm,0);
+\end{tikzpicture}
+\]
+
+\[
+(f\cdot m_2)\bullet (m_1\cdot h) = f\cdot(m_2\bullet m_1)\cdot h:\qquad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw,circle] (h)  {h};&
+		\node [draw]        (m1) {m_1};&
+		\node [draw]        (m2) {m_2};&
+		\node [draw,circle] (f)  {f};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(m1) (m2)}] (back) {};
+	\end{scope}
+	\draw[ar] ($(h)-(1cm,0)$) -- (h);
+	\draw[ar] (h) -- (m1);
+	\draw[ar] (m1) -- (m2);
+	\draw[ar] (m2) -- (f);
+	\draw[ar] (f) -- +(1cm,0);
+\end{tikzpicture}
+\]
+
+\[
+(m_3\cdot g)\bullet m_1 = m_3\bullet(g\cdot m_1):\qquad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw]        (m1) {m_1};&
+		\node [draw,circle] (g)  {g};&
+		\node [draw]        (m3) {m_3};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(m1) (g) (m3)}] (back) {};
+	\end{scope}
+	\draw[ar] ($(m1)-(1cm,0)$) -- (m1);
+	\draw[ar] (m1) -- (g);
+	\draw[ar] (g) -- (m3);
+	\draw[ar] (m3) -- +(1cm,0);
+\end{tikzpicture}
+\]
+
+\[
+I_M\in M(I,I):\qquad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw, circle, white!80!black, fill=white!80!black] (I) {};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(I)}] (back) {};
+	\end{scope}
+	\draw [dashed] ($(I)-(1cm,0)$) -- +(2cm,0);
+	\node at ($(back.west)+(-.25cm,.2cm)$) {\scriptsize $I$};
+	\node at ($(back.east)+(.25cm,.2cm)$) {\scriptsize $I$};
+\end{tikzpicture}
+\]
+
+\[
+I_M=i(\id_I):\qquad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw, circle, white!80!black, fill=white!80!black] (I) {};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(I)}] (back) {};
+	\end{scope}
+	\draw [dashed] ($(I)-(1cm,0)$) -- +(2cm,0);
+	\node at ($(back.west)+(-.25cm,.2cm)$) {\scriptsize $I$};
+	\node at ($(back.east)+(.25cm,.2cm)$) {\scriptsize $I$};
+\end{tikzpicture}
+\]
+
+\[
+m_1\boxtimes m_2:\qquad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw] (m1) {m_1};\\
+		\node [draw] (m2) {m_2};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(m1) (m2)}] (back) {};
+	\draw[ar] ($(m1)-(1cm,0)$) to["c_1"] (m1);
+	\draw[ar] ($(m2)-(1cm,0)$) to["c_2"] (m2);
+	\draw[ar] (m1) to["d_1"] +(1cm,0);
+	\draw[ar] (m2) to["d_2"] +(1cm,0);
+	\end{scope}
+\end{tikzpicture}
+\]
+
+\[
+I\boxtimes m =  m:\qquad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw, circle, white!80!black, fill=white!80!black] (I) {};\\
+		\node [draw] (m) {m};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(I) (m)}] (back) {};
+	\end{scope}
+	\draw [dashed] ($(I)-(1cm,0)$) -- +(2cm,0);
+	\draw[ar] ($(m)-(1cm,0)$) -- (m);
+	\draw[ar] (m) -- +(1cm,0);
+\end{tikzpicture}
+\quad=\quad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw] (m)  {m};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(m)}] (back) {};
+	\end{scope}
+	\draw[ar] ($(m)-(1cm,0)$) -- (m);
+	\draw[ar] (m) -- +(1cm,0);
+\end{tikzpicture}
+\]
+
+\[
+(g_1\cdot m_1\cdot f_1)\boxtimes (g_2\cdot m_2\cdot f_2) = 
+(g_1\otimes g_2)\cdot(m_1\boxtimes m_2)\cdot (f_1\otimes f_2):\qquad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw, circle] (f1) {f_1};&
+		\node [draw]         (m1)  {m_1};&
+		\node [draw, circle] (g1) {g_1};\\
+		\node [draw, circle] (f2) {f_2};&
+		\node [draw]         (m2)  {m_2};&
+		\node [draw, circle] (g2) {g_2};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(m1) (m2)}] (back) {};
+	\draw[ar] ($(f1)-(1cm,0)$) -- (f1);
+	\draw[ar] ($(f2)-(1cm,0)$) -- (f2);
+	\draw[ar] (f1) -- (m1);
+	\draw[ar] (f2) -- (m2);
+	\draw[ar] (m1) -- (g1);
+	\draw[ar] (m2) -- (g2);	
+	\draw[ar] (g1) -- +(1cm,0);
+	\draw[ar] (g2) -- +(1cm,0);
+	\end{scope}
+\end{tikzpicture}
+\]
+
+\[
+m_1\boxtimes m_2 = \sigma_{d_1,d_2}\cdot(m_2\boxtimes m_1)\cdot\sigma_{c_1,c_2}^{-1}:\qquad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw] (m1) {m_1};\\
+		\node [draw] (m2) {m_2};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(m1) (m2)}] (back) {};
+	\draw[ar] ($(m1)-(1cm,0)$) to["c_1"] (m1);
+	\draw[ar] ($(m2)-(1cm,0)$) to["c_2"] (m2);
+	\draw[ar] (m1) to["d_1"] +(1cm,0);
+	\draw[ar] (m2) to["d_2"] +(1cm,0);
+	\end{scope}
+\end{tikzpicture}
+\quad=\quad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw] (m2) {m_2};\\
+		\node [draw] (m1) {m_1};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(m1) (m2)}] (back) {};
+	\draw ($(m2)-(1cm,0)$) to["c_1"pos=0] (m1);
+	\draw ($(m1)-(1cm,0)$) to["c_2"pos=0] (m2);
+	\draw (m1) to["d_1"pos=1] ($(m2)+(1cm,0)$);
+	\draw (m2) to["d_2"pos=1] ($(m1)+(1cm,0)$);
+	\end{scope}
+\end{tikzpicture}
+\]
+
+\[
+i(f_1\otimes f_2) = i(f_1)\boxtimes i(f_2):\qquad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw,circle] (f1) {f_1};\\
+		\node [draw,circle] (f2) {f_2};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(f1) (f2)}] (back) {};
+	\draw[ar] ($(f1)-(1cm,0)$) to["c_1"] (f1);
+	\draw[ar] ($(f2)-(1cm,0)$) to["c_2"] (f2);
+	\draw[ar] (f1) to["d_1"] +(1cm,0);
+	\draw[ar] (f2) to["d_2"] +(1cm,0);
+	\end{scope}
+\end{tikzpicture}
+\]
+
+\[
+(m_2\boxtimes m_2')\bullet (m_1\boxtimes m_1') = (m_2\bullet m_1)\boxtimes(m_2'\bullet m_1'):\qquad
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw] (m1) {m_1};&
+		\node [draw] (m2) {m_2};\\
+		\node [draw] (m1') {m_1'};&
+		\node [draw] (m2') {m_2'};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(m1) (m2) (m1') (m2')}] (back) {};
+	\end{scope}
+	\draw[ar] ($(m1)-(1cm,0)$) -- (m1);
+	\draw[ar] (m1) -- (m2);
+	\draw[ar] (m2) -- +(1cm,0);
+	\draw[ar] ($(m1')-(1cm,0)$) -- (m1');
+	\draw[ar] (m1') -- (m2');
+	\draw[ar] (m2') -- +(1cm,0);
+\end{tikzpicture}
+\]
+
+\newpage
+
+
 \begin{proposition}
     \label{prop:unit_implies_monoid}
   The forgetful functor $\Mon(\dCompProf)\to\Ptd(\dCompProf)$ is an equivalence of fibrations over
