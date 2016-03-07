@@ -1832,7 +1832,6 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
 \]
 
 \[
-m\bullet i(f) = m\cdot f:\qquad
 \begin{tikzpicture}[string diagram]
 	\matrix {
 		\node [draw, circle] (f) {f};&[.2cm]
@@ -1844,10 +1843,8 @@ m\bullet i(f) = m\cdot f:\qquad
 	\draw[ar] ($(f)-(1cm,0)$) to (f);
 	\draw[ar] (f) to (m.west);
 	\draw[ar] (m) to +(1cm,0);
-\end{tikzpicture}
-\quad = \quad
-\begin{tikzpicture}[string diagram]
-	\matrix {
+	\node [right=.8cm of m] (equals) {=};
+	\matrix [right=.8cm of equals] {
 		\node [draw, circle] (f) {f};&[.2cm]
 		\node [draw]         (m) {m};\\
 	};
@@ -1857,6 +1854,7 @@ m\bullet i(f) = m\cdot f:\qquad
 	\draw[ar] ($(f)-(1cm,0)$) to (f);
 	\draw[ar] (f) to (m.west);
 	\draw[ar] (m) to +(1cm,0);
+	\node [above=2pt] at (current bounding box.north) {$m\bullet i(f) = m\cdot f$};
 \end{tikzpicture}
 \]
 
@@ -1909,6 +1907,21 @@ m\bullet i(f) = m\cdot f:\qquad
 	\draw [dashed] ($(I)-(1cm,0)$) -- +(2cm,0);
 	\node at ($(back.west)+(-.25cm,.2cm)$) {\scriptsize $I$};
 	\node at ($(back.east)+(.25cm,.2cm)$) {\scriptsize $I$};
+	\node [above=2pt] at (current bounding box.north) {$I_M\in M(I,I)$};
+\end{tikzpicture}
+\]
+
+\[
+\begin{tikzpicture}[string diagram]
+	\matrix {
+		\node [draw, circle, white!80!black, fill=white!80!black] (I) {};\\
+	};
+	\begin{scope}[on background layer]
+		\node[fit={(I)}] (back) {};
+	\end{scope}
+	\draw [dashed] ($(I)-(1cm,0)$) -- +(2cm,0);
+	\node at ($(back.west)+(-.25cm,.2cm)$) {\scriptsize $I$};
+	\node at ($(back.east)+(.25cm,.2cm)$) {\scriptsize $I$};
 	\node [above=2pt] at (current bounding box.north) {$I_M=i(\id_I)$};
 \end{tikzpicture}
 \]
@@ -1931,7 +1944,6 @@ m\bullet i(f) = m\cdot f:\qquad
 \]
 
 \[
-I\boxtimes m =  m:\qquad
 \begin{tikzpicture}[string diagram]
 	\matrix {
 		\node [draw, circle, white!80!black, fill=white!80!black] (I) {};\\
@@ -1943,10 +1955,8 @@ I\boxtimes m =  m:\qquad
 	\draw [dashed] ($(I)-(1cm,0)$) -- +(2cm,0);
 	\draw[ar] ($(m)-(1cm,0)$) -- (m);
 	\draw[ar] (m) -- +(1cm,0);
-\end{tikzpicture}
-\quad=\quad
-\begin{tikzpicture}[string diagram]
-	\matrix {
+	\node [right=.8cm of back] (equals) {=};
+	\matrix [right=.8cm of equals] {
 		\node [draw] (m)  {m};\\
 	};
 	\begin{scope}[on background layer]
@@ -1954,6 +1964,7 @@ I\boxtimes m =  m:\qquad
 	\end{scope}
 	\draw[ar] ($(m)-(1cm,0)$) -- (m);
 	\draw[ar] (m) -- +(1cm,0);
+	\node [above=2pt] at (current bounding box.north) {$I\boxtimes m =  m$};
 \end{tikzpicture}
 \]
 
@@ -1978,12 +1989,12 @@ I\boxtimes m =  m:\qquad
 	\draw[ar] (g1) -- +(1cm,0);
 	\draw[ar] (g2) -- +(1cm,0);
 	\end{scope}
-	\node [above=2pt] at (current bounding box.north) {$(g_1\cdot m_1\cdot f_1)\boxtimes (g_2\cdot m_2\cdot f_2) = (g_1\otimes g_2)\cdot(m_1\boxtimes m_2)\cdot (f_1\otimes f_2)$};
+	\node [above=2pt] at (current bounding box.north) {$(g_1\cdot m_1\cdot f_1)\boxtimes (g_2\cdot m_2\cdot f_2) = 
+(g_1\otimes g_2)\cdot(m_1\boxtimes m_2)\cdot (f_1\otimes f_2)$};
 \end{tikzpicture}
 \]
 
 \[
-m_1\boxtimes m_2 = \sigma_{d_1,d_2}\cdot(m_2\boxtimes m_1)\cdot\sigma_{c_1,c_2}^{-1}:\qquad
 \begin{tikzpicture}[string diagram]
 	\matrix {
 		\node [draw] (m1) {m_1};\\
@@ -1996,10 +2007,8 @@ m_1\boxtimes m_2 = \sigma_{d_1,d_2}\cdot(m_2\boxtimes m_1)\cdot\sigma_{c_1,c_2}^
 	\draw[ar] (m1) to["d_1"] +(1cm,0);
 	\draw[ar] (m2) to["d_2"] +(1cm,0);
 	\end{scope}
-\end{tikzpicture}
-\quad=\quad
-\begin{tikzpicture}[string diagram]
-	\matrix {
+	\node [right=.8cm of back] (equals) {=};
+	\matrix [right=.8cm of equals] {
 		\node [draw] (m2) {m_2};\\
 		\node [draw] (m1) {m_1};\\
 	};
@@ -2010,6 +2019,7 @@ m_1\boxtimes m_2 = \sigma_{d_1,d_2}\cdot(m_2\boxtimes m_1)\cdot\sigma_{c_1,c_2}^
 	\draw (m1) to["d_1"pos=1] ($(m2)+(1cm,0)$);
 	\draw (m2) to["d_2"pos=1] ($(m1)+(1cm,0)$);
 	\end{scope}
+	\node [above=2pt] at (current bounding box.north) {$m_1\boxtimes m_2 = \sigma_{d_1,d_2}\cdot(m_2\boxtimes m_1)\cdot\sigma_{c_1,c_2}^{-1}$};
 \end{tikzpicture}
 \]
 
@@ -2050,6 +2060,8 @@ m_1\boxtimes m_2 = \sigma_{d_1,d_2}\cdot(m_2\boxtimes m_1)\cdot\sigma_{c_1,c_2}^
 	\node [above=2pt] at (current bounding box.north) {$(m_2\boxtimes m_2')\bullet (m_1\boxtimes m_1') = (m_2\bullet m_1)\boxtimes(m_2'\bullet m_1')$};
 \end{tikzpicture}
 \]
+
+
 
 \newpage
 
