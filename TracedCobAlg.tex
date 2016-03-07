@@ -2336,6 +2336,71 @@ for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e
   Clearly $U\circ U^{-1}=\id_{\Ptd(\dCompProf)}$. For the other direction, consider a monoid
   $M\colon \cat{C}\tickar \cat{C}$ with unit $i$ and multiplication $\star$. Then the multiplication
   $\bullet$ defined above in fact coincides with $\star$:
+  \begin{multline*}
+    \begin{tikzpicture}[string diagram,ampersand replacement=\&]
+      \matrix {
+        \node [draw] (n1) {n1}; \&
+        \node [draw] (n2) {n2}; \\
+      };
+      \begin{scope}[on background layer]
+        \node[fit={(n1) (n2)}] {};
+      \end{scope}
+      \draw[ar] ($(n1)-(1cm,0)$) to["c"pos=.2] (n1);
+      \draw[ar] (n1) to["d"] (n2);
+      \draw[ar] (n2) to["e"pos=.8] +(1cm,0);
+    \end{tikzpicture}
+    \quad = \quad
+    \begin{tikzpicture}[string diagram,looseness=1.5,ampersand replacement=\&]
+      \matrix {
+        \node [draw] (n1) {n1}; \&[.5cm]
+        \node [draw] (n2) {n2}; \\
+      };
+      \coordinate (mid) at ($(n1.east)!.5!(n2.west)$);
+      \coordinate (top) at ($(mid)+(0,.3cm)$);
+      \coordinate (bot) at ($(mid)-(0,.3cm)$);
+      \begin{scope}[on background layer]
+        \node[fit={(n1) (n2) (top) (bot)}] {};
+      \end{scope}
+      \draw[ar] ($(n1)-(1cm,0)$) to["c"pos=.2] (n1);
+      \draw[ar] (n1) to (top);
+      \draw (top) to[in=0,"d"{pos=.45,inner sep=.5pt}] (mid) to[out=180] (bot);
+      \draw[ar] (bot) to (n2);
+      \draw[ar] (n2) to["e"pos=.8] +(1cm,0);
+    \end{tikzpicture}
+    \quad \\ = \quad
+    \begin{tikzpicture}[string diagram,looseness=1.5,ampersand replacement=\&]
+      \matrix {
+        \node [draw]        (n1)  {n_1}; \&[-.4cm]
+        \coordinate[left=.1cm] (counit); \\
+        \coordinate[right=.1cm] (unit); \&
+        \node [draw]        (n2)  {n_2}; \\
+      };
+      \coordinate (mid) at ($(n1)!.5!(n2)$);
+      \begin{scope}[on background layer]
+        \node[fit={(n1) (n2)}] (back) {};
+      \end{scope}
+      \draw[ar] ($(n1)-(1.2cm,0)$) to["c"pos=.2] (n1);
+      \draw[ar=.7] (n1) to (counit);
+      \draw (counit) to[in=0,"d"pos=.1] (counit|-mid) -- (unit|-mid) to[out=180] (unit);
+      \draw[ar] (unit) -- (n2);
+      \draw[ar] (n2) to["e"pos=.8] +(1.2cm,0);
+    \end{tikzpicture}
+    \quad = \quad
+    \begin{tikzpicture}[string diagram,ampersand replacement=\&]
+      \matrix {
+        \node [draw]        (n1)  {n_1}; \\
+        \node [draw]        (n2)  {n_2}; \\
+      };
+      \begin{scope}[on background layer]
+        \node[fit={(n1) (n2)}] (back) {};
+      \end{scope}
+      \draw[ar] ($(n1)-(1.2cm,0)$) to["c"pos=.2] (n1);
+      \draw[ar] (n1) -- (n1-|back.east) to[in=0,looseness=2,"d"pos=.4] (back.east);
+      \draw (back.east) -- (back.west);
+      \draw[ar] (back.west) to[out=180,looseness=2,"d"'pos=.6] (n2-|back.west) -- (n2);
+      \draw[ar] (n2) to["e"pos=.8] +(1.2cm,0);
+    \end{tikzpicture}
+  \end{multline*}
   \begin{align*}
     n_2\star n_1
       &= n_2 \star \Bigl[\bigl((\epsilon_d\otimes\id_d)
