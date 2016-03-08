@@ -331,6 +331,14 @@
     },
     over/.style={preaction={draw,line width=2.2pt,white}},
     every fit/.style={inner sep=.15cm,fill=white!80!black},
+    caption/.style={
+      at=(current bounding box.north),
+      above=.3cm,
+      inner sep=2pt,
+      append after command={\pgfextra{
+        \draw[line width=.03em] (\tikzlastnode.south west) -- (\tikzlastnode.south east);
+      }}
+    },
     baseline=(current bounding box)
   }
 }
