@@ -456,29 +456,30 @@ appears to be a new definition of \emph{monoidal profunctors}, and the equipment
 Section~\ref{chap:equipments_monoidal_profunctors}.
 
 \section{Plan of the paper}
-\todo[inline]{Make sure this plan is still correct.}
 
 Section~\ref{sec:equipments} reviews the notion of an equipment (or framed bicategory
-\cite{Shulman}). In Section~\ref{sec:internal_presheaves} we define copresheaves
-internal to an equipment, which will allow us to reformulate our main theorems in terms of
-equipments. Section~\ref{sec:monoids_bimods} recalls monoids and bimodules in an equipment and
-establishes basic facts and constructions needed for the main theorems; in particular, exact
-equipments \cite{Schultz2015} are defined using this language. In
-Section~\ref{sec:monoidal,compact,traced} we review monoidal, traced, and compact categories. We
-finally introduce various equipments of monoidal profunctors ($\dMonProf, \dTrProf$, and
-$\dCompProf$) at the heart of the paper in Section~\ref{sec:monoidal_profunctors}.  In
+\cite{Shulman}), while Section~\ref{sec:monoids_bimods} recalls monoids and bimodules in an
+equipment. Section~\ref{sec:exactness_boff} defines \emph{exact equipments}, which are central to
+our proof strategy, and which we believe to be of independent interest. The material of this section
+is original, though some of it appeared in the earlier unpublished \cite{Schultz2015}. In the short
+Section~\ref{sec:internal_presheaves} we define (co)presheaves internal to an equipment, which will
+allow us to reformulate our main theorems in terms of equipments.
+
+In Section~\ref{sec:monoidal,compact,traced} we briefly review monoidal, traced, and compact
+categories. We finally introduce various equipments of monoidal profunctors ($\dMonProf, \dTrProf$,
+and $\dCompProf$) at the heart of the paper in Section~\ref{sec:monoidal_profunctors}. In
 Section~\ref{sec:special_CompProf} we prove the special properties about $\dCompProf$ which are at
 the core of our results. Indeed one might view the rest of the paper as a formal wrapper for the
 results in that section. In Section~\ref{sec:exactness_proofs} we prove that the equipments of
-interest are exact and then apply the theory developed in Section~\ref{chap:background_equipments}
-to deduce \ref{thm:TheoremB}. In Section~\ref{sec:monoids_on_free} we deal with the
-freeness-on-objects needed for \ref{thm:TheoremA}.
+interest are exact, and apply the theory developed in Section~\ref{chap:background_equipments} to
+deduce \ref{thm:TheoremB}. In Section~\ref{sec:monoids_on_free} we deal with the objectwise-freeness
+needed for \ref{thm:TheoremA}.
 
-The appendix contains material that is not
-necessary to the paper. Its function is to prove the biequivalence between the 2-category
-$\MMonCatStrong$ of monoidal categories with arbitrary object set and strong functors, on the one
-hand, and the 2-category $\MMonFrObCat$ of monoidal categories with free object set and strict
-functors. We do the same for traced and compact categories, all in Corollary~\ref{cor:object_frees}.
+The appendix contains material that is not necessary to the paper. Its function is to prove the
+biequivalence between the 2-category $\MMonCatStrong$ of monoidal categories with arbitrary object
+set and strong functors, on the one hand, and the 2-category $\MMonFrObCat$ of monoidal categories
+with free object set and strict functors. We do the same for traced and compact categories, all in
+Corollary~\ref{cor:object_frees}.
 
 \section*{Acknowledgments}
 
@@ -730,82 +731,8 @@ of) profunctors, as in the following example.
   g)=F(f)\cdot\phi(m)\cdot F'(g)$ holds whenever it makes sense.
 \end{remark}
 
-\section{Internal copresheaves}
-      \label{sec:internal_presheaves}
-
-Copresheaves on a category $\cat{C}$ can be identified with profunctors $1\tickar\cat{C}$ in $\dProf$. Motivated by this, we will think of
-proarrows $1\tickar c$ in any equipment $\dcat{D}$ with a terminal object 1 as ``internal
-copresheaves'' on the object $c$. For each object, there is a category of copresheaves
-$\HHor(\dcat{D})(1,c)$. We can give a direct construction of the bifibration over $\dcat{D}_0$ whose
-fiber over an object $c$ is the category of copresheaves on $c$:
-
-\begin{definition}
-      \label{def:copresheaves}
-   Let $\dcat{D}$ be an equipment with a terminal object $1\in\dcat{D}_0$.%
-   \footnote{In fact, such a definition makes sense for any object of $\dcat{D}_0$, but for our
-   purposes we require the terminal object.}
-   We define the category $\CPsh(\dcat{D})$, bifibered over
-   $\dcat{D}_0$, by the strict pullback of categories
-   \begin{equation*}
-     \begin{tikzcd}
-         \CPsh(\dcat{D}) \ar[r] \ar[d,two heads,"\MOb"']
-         \ar[dr,phantom,"\lrcorner",very near start]
-            & \dcat{D}_1 \ar[d,two heads,"{(\lframe,\rframe)}"] \\
-         1\times\dcat{D}_0 \ar[r,"1\times\dcat{D}_0"']
-            & \dcat{D}_0\times\dcat{D}_0.
-      \end{tikzcd}
-   \end{equation*}
-\end{definition}
-
-\begin{lemma}
-      \label{lem:Psh_pullback}
-   Let $F\colon\dcat{C}\to\dcat{D}$ be an equipment functor. Suppose that $\dcat{C}_0$ and
-   $\dcat{D}_0$ have terminal objects, preserved by $F_0$. Then there is an induced
-   morphism of fibrations
-   \begin{equation} \begin{tikzcd}
-         \label{eq:CPsh_square}
-      \CPsh(\dcat{C}) \ar[r,"\tilde{F}"] \ar[d,two heads,"\MOb"'] % \ar[dr,phantom,"\lrcorner" very near start]
-         & \CPsh(\dcat{D}) \ar[d,two heads,"\MOb"] \\
-      \dcat{C}_0 \ar[r,"F_0"']
-         & \dcat{D}_0.
-   \end{tikzcd} \end{equation}
-   Moreover, if $F$ is a local equivalence, then~\eqref{eq:CPsh_square} is a pseudo-pullback.
-\end{lemma}
-\begin{proof}
-   Consider the cube
-   \[ \begin{tikzcd}[row sep={35,between origins}, column sep={55,between origins}]
-      \CPsh(\dcat{C}) \ar[rr,"\tilde{F}"] \ar[dr] \ar[dd,two heads]
-      &[-10] & \CPsh(\dcat{D}) \ar[dd,two heads] \ar[dr] &[-10] \\[-5]
-      & \dcat{C}_1 \ar[rr,crossing over,"F_1" near start]
-         && \dcat{D}_1 \ar[dd,two heads] \\
-      1\times\dcat{C}_0 \ar[rr,"1\times F_0" pos=.75]
-            \ar[dr,"1\times\dcat{C}_0"' {pos=.25,inner sep=2pt}]
-         && 1\times\dcat{D}_0 \ar[dr,"1\times\dcat{D}_0"' {pos=.25,inner sep=2pt}] & \\[-5]
-      & \dcat{C}_0\times\dcat{C}_0 \ar[rr,"F_0\times F_0"']
-            \ar[from=uu,crossing over,two heads]
-         && \dcat{D}_0\times\dcat{D}_0.
-   \end{tikzcd} \]
-   Since $F_0$ preserves terminal objects, the bottom face of the cube commutes. The left and right faces of
-   the cube are strict pullbacks by definition, hence there is a unique $\tilde{F}$ making the cube commute.
-
-   If $F$ is a local equivalence, then the front face is a pseudo-pullback. The left and right faces
-   are strict pullbacks along fibrations, hence pseudo-pullbacks (see Remark~\ref{rem:strict_vs_pseudo_pullback}). It follows that the
-   back face is a pseudo-pullback as well.
-\end{proof}
-\erase{%begin erase
-\begin{example}
-If $\dcat{D}=\dProf$ then an object of $\CPsh(\dcat{D})$ is a pair $(\cat{C},H)$, where $\cat{C}$ is a category
-and $H\colon \cat{C}\to\Set$ is a functor. A morphism $(\cat{C},H)\to(\cat{C}',H')$ is a pair $(F,F^\sharp)$ of a
-functor and a natural transformation, as in the lax triangle
-\[ \begin{tikzcd}[column sep=.6cm]
-   \cat{C}\ar[rr,"F"]\ar[rd,"H"']&\ar[d,phantom,"\overset{F^\sharp}{\Rightarrow}" near start]&\cat{C}'\ar[dl,"H'"]\\
-   &\Set.
-\end{tikzcd} \]
-\end{example}}%end erase
-
-
 \section{Monoids and bimodules}
-      \label{sec:monoids_bimods}
+    \label{sec:monoids_bimods}
 
 Our eventual proofs of \ref{thm:TheoremA}~and~\ref{thm:TheoremB} will revolve around a careful
 understanding of internal monoids in an equipment $\dcat{D}$. In particular,
@@ -1418,10 +1345,83 @@ The bijective-on-objects vertical arrows of an exact equipment $\dcat{D}$ will p
    By Proposition~\ref{prop:collapse_local_equivalence} the equipment functor $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$ is a local equivalence, and $\cod\colon\dcat{D}^{\bo}\to\dcat{D}$ is a local equivalence by definition of $\dcat{D}^{\bo}$. It follows that the equivalence of fibrations from Proposition~\ref{prop:Mon_vs_bo} extends to an equivalence of equipments.
 \end{proof}
 
+\section{Internal copresheaves}
+    \label{sec:internal_presheaves}
+
+Copresheaves on a category $\cat{C}$ can be identified with profunctors $1\tickar\cat{C}$ in $\dProf$. Motivated by this, we will think of
+proarrows $1\tickar c$ in any equipment $\dcat{D}$ with a terminal object 1 as ``internal
+copresheaves'' on the object $c$. For each object, there is a category of copresheaves
+$\HHor(\dcat{D})(1,c)$. We can give a direct construction of the bifibration over $\dcat{D}_0$ whose
+fiber over an object $c$ is the category of copresheaves on $c$:
+
+\begin{definition}
+      \label{def:copresheaves}
+   Let $\dcat{D}$ be an equipment with a terminal object $1\in\dcat{D}_0$.%
+   \footnote{In fact, such a definition makes sense for any object of $\dcat{D}_0$, but for our
+   purposes we require the terminal object.}
+   We define the category $\CPsh(\dcat{D})$, bifibered over
+   $\dcat{D}_0$, by the strict pullback of categories
+   \begin{equation*}
+     \begin{tikzcd}
+         \CPsh(\dcat{D}) \ar[r] \ar[d,two heads,"\MOb"']
+         \ar[dr,phantom,"\lrcorner",very near start]
+            & \dcat{D}_1 \ar[d,two heads,"{(\lframe,\rframe)}"] \\
+         1\times\dcat{D}_0 \ar[r,"1\times\dcat{D}_0"']
+            & \dcat{D}_0\times\dcat{D}_0.
+      \end{tikzcd}
+   \end{equation*}
+\end{definition}
+
+\begin{lemma}
+      \label{lem:Psh_pullback}
+   Let $F\colon\dcat{C}\to\dcat{D}$ be an equipment functor. Suppose that $\dcat{C}_0$ and
+   $\dcat{D}_0$ have terminal objects, preserved by $F_0$. Then there is an induced
+   morphism of fibrations
+   \begin{equation} \begin{tikzcd}
+         \label{eq:CPsh_square}
+      \CPsh(\dcat{C}) \ar[r,"\tilde{F}"] \ar[d,two heads,"\MOb"'] % \ar[dr,phantom,"\lrcorner" very near start]
+         & \CPsh(\dcat{D}) \ar[d,two heads,"\MOb"] \\
+      \dcat{C}_0 \ar[r,"F_0"']
+         & \dcat{D}_0.
+   \end{tikzcd} \end{equation}
+   Moreover, if $F$ is a local equivalence, then~\eqref{eq:CPsh_square} is a pseudo-pullback.
+\end{lemma}
+\begin{proof}
+   Consider the cube
+   \[ \begin{tikzcd}[row sep={35,between origins}, column sep={55,between origins}]
+      \CPsh(\dcat{C}) \ar[rr,"\tilde{F}"] \ar[dr] \ar[dd,two heads]
+      &[-10] & \CPsh(\dcat{D}) \ar[dd,two heads] \ar[dr] &[-10] \\[-5]
+      & \dcat{C}_1 \ar[rr,crossing over,"F_1" near start]
+         && \dcat{D}_1 \ar[dd,two heads] \\
+      1\times\dcat{C}_0 \ar[rr,"1\times F_0" pos=.75]
+            \ar[dr,"1\times\dcat{C}_0"' {pos=.25,inner sep=2pt}]
+         && 1\times\dcat{D}_0 \ar[dr,"1\times\dcat{D}_0"' {pos=.25,inner sep=2pt}] & \\[-5]
+      & \dcat{C}_0\times\dcat{C}_0 \ar[rr,"F_0\times F_0"']
+            \ar[from=uu,crossing over,two heads]
+         && \dcat{D}_0\times\dcat{D}_0.
+   \end{tikzcd} \]
+   Since $F_0$ preserves terminal objects, the bottom face of the cube commutes. The left and right faces of
+   the cube are strict pullbacks by definition, hence there is a unique $\tilde{F}$ making the cube commute.
+
+   If $F$ is a local equivalence, then the front face is a pseudo-pullback. The left and right faces
+   are strict pullbacks along fibrations, hence pseudo-pullbacks (see Remark~\ref{rem:strict_vs_pseudo_pullback}). It follows that the
+   back face is a pseudo-pullback as well.
+\end{proof}
+\erase{%begin erase
+\begin{example}
+If $\dcat{D}=\dProf$ then an object of $\CPsh(\dcat{D})$ is a pair $(\cat{C},H)$, where $\cat{C}$ is a category
+and $H\colon \cat{C}\to\Set$ is a functor. A morphism $(\cat{C},H)\to(\cat{C}',H')$ is a pair $(F,F^\sharp)$ of a
+functor and a natural transformation, as in the lax triangle
+\[ \begin{tikzcd}[column sep=.6cm]
+   \cat{C}\ar[rr,"F"]\ar[rd,"H"']&\ar[d,phantom,"\overset{F^\sharp}{\Rightarrow}" near start]&\cat{C}'\ar[dl,"H'"]\\
+   &\Set.
+\end{tikzcd} \]
+\end{example}}%end erase
+
 
 
 \chapter{Equipments of monoidal profunctors}
-      \label{chap:equipments_monoidal_profunctors}
+    \label{chap:equipments_monoidal_profunctors}
 
 In this section we set up the necessary equipment to prove our main results, \ref{thm:TheoremA} and
 \ref{thm:TheoremB}. The high-level view of the argument runs as follows.
