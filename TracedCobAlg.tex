@@ -173,21 +173,26 @@ $\LCob{\LabSet}$ of oriented 1-dimensional cobordisms over a fixed set of labels
 
 In the table below, we record these two interpretations of a string diagram. Note the ``degree
 shift'' between the second and third columns.
-\begin{center} \begin{tabular}{l|l|l}
-   \toprule
-      \multicolumn{3}{c}{Interpretations of string diagrams} \\
-   \midrule
-      String diagram & Traced category $\cat{T}$ & $\LCob{\LabSet}$ \\
-   \midrule
-      Wire label set, $\LabSet$ & Objects, $\LabSet\coloneqq\Ob(\cat{T})$ & Label set, $\LabSet$ \\
-      Boxes, e.g.\ \tikz[wiring diagram,bb port sep=1,bby=2.4pt,bb min width=5.5pt,
-                  bb port length=2pt,bb rounded corners=1pt,baseline=(B.south)]
-               {\node[bb={1}{2}] (B) {};}
-         & Morphisms in $\cat{T}$& Objects (oriented 0-mfds over $\LabSet$) \\
-      String diagrams & Compositions in $\cat{T}$& Morphisms (cobordisms over $\LabSet$) \\
-      Nesting & Axioms of traced cats & Composition (of cobordisms) \\
-   \bottomrule
-\end{tabular} \end{center}
+\begin{center}
+  \setlength{\tabcolsep}{10pt}
+  \begin{tabular}{lll}
+    \toprule
+    \multicolumn{3}{c}{Interpretations of string diagrams} \\
+    \midrule
+    String diagram & Traced category $\cat{T}$ & $\LCob{\LabSet}$ \\
+    \midrule
+    Wire label set, $\LabSet$ & Objects, $\LabSet\coloneqq\Ob(\cat{T})$ & Label set, $\LabSet$ \\
+    Boxes,
+      e.g.~\tikz[wiring diagram,bb port sep=1,bby=2.4pt,bb min width=5.5pt,
+            bb port length=2pt,bb rounded corners=1pt,baseline=(B.south)]
+        {\node[bb={1}{2}] (B) {};}
+    & Morphisms in $\cat{T}$& Objects (oriented 0-mfds over $\LabSet$) \\
+    String diagrams & Compositions in $\cat{T}$& Morphisms (cobordisms over $\LabSet$) \\
+    Nesting & Axioms of traced cats & Composition (of cobordisms) \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
 In the last row above, each of the seven axioms of traced categories is vacuous from the cobordism
 perspective in the sense that both sides of the equation correspond to the same cobordism (up to
 diffeomorphism). For example, the axiom of \emph{superposition} reads:
@@ -376,17 +381,17 @@ much harder to see that it is also functorial in $\LabSet\in\Set_{\TT}$, giving 
 \[
   (\LCob{\bullet})\colon\Set_{\TT}\to\CompCat
 \]
-to the category $\CompCat$ of compact categories and strict functors, under which $\LabSet$ is sent
-to the free compact category on $\LabSet$ \todo{This is saying $\LCob{\LabSet}$ is the free compact category on $\LabSet$, right?} (e.g.\ see \cite{KellyLaplaza,Abramsky2}).  We can compose
-this with $\Lax(-,\Set)$ to obtain a functor which we denote
+to the category $\CompCat$ of compact categories and strict functors, sending $\LabSet$ to
+$\LCob{\LabSet}$, the free compact category on $\LabSet$ (e.g.\ see \cite{KellyLaplaza,Abramsky2}).
+We can compose this with $\Lax(-,\Set)$ to obtain a functor which we denote
 \begin{equation}
       \label{eqn:cob/bullet}
    (\LCob{\bullet})\alg\colon\Set_{\TT}^{\mathrm{op}}\too\Cat.
 \end{equation}
 By applying the Grothendieck construction (denoted by $\int$ here) to (\ref{eqn:cob/bullet}), we
-obtain a fibration for which the fiber over a set $\LabSet$ is equivalent (by \ref{th:traced is cob
-alg}) to $\TrCat_{\LabSet}$. Let $\TrFrObCat\subset\TrCat$ denote the full subcategory spanned by
-the objectwise-free traced categories.
+obtain a fibration for which the fiber over a set $\LabSet$ is equivalent (by
+\ref{thm:traced_is_cob_alg}) to $\TrCat_{\LabSet}$. Let $\TrFrObCat\subset\TrCat$ denote the
+full subcategory spanned by the objectwise-free traced categories.
 
 \begin{named}{Theorem A}
     \label{thm:TheoremA_statement}
@@ -400,10 +405,6 @@ This result is proven in Section~\ref{sec:monoids_on_free} together with an anal
 The fact that the traced categories appearing in \ref{thm:TheoremA_statement} are assumed objectwise-free and the functors between them are strict is the second of two drawbacks mentioned above. To address it, we prove that the 2-category of traced categories and
 strong functors is biequivalent to that of objectwise-free traced categories and strict functors;
 see Corollary~\ref{cor:object_frees}. This result seems to be well-known to experts but is difficult to find in the literature.
-
-\begin{remark}
-Another way to address the condition of objectwise-freeness is to embrace it, and ask that functors between them be not only strict but also send generating objects to generating objects,  i.e.\ to consider PROPs rather than monoidal categories. In fact, there is an analogue of \ref{thm:TheoremA_statement} in which $\TrFrObCat$ is replaced by $\TrPROP$. We do not prove this result, but we will clarify it at an appropriate time; see Remark~\ref{rem:PROP}.
-\end{remark}
 
 In the course of proving \ref{thm:TheoremA_statement}, we will also establish generalizations
 characterizing lax functors out of arbitrary compact categories, and in particular lax functors out
@@ -452,15 +453,15 @@ equivalence of fibrations:
 Our main tool in proving this result will be the 2-categorical notion of \emph{(proarrow)
 equipments}, which we recall in Section~\ref{chap:background_equipments}. We will introduce what
 appears to be a new definition of \emph{monoidal profunctors}, and the equipment thereof, in
-Section\ref{chap:equipments_monoidal_profunctors}.
+Section~\ref{chap:equipments_monoidal_profunctors}.
 
 \section{Plan of the paper}
 \todo[inline]{Make sure this plan is still correct.}
 
 Section~\ref{sec:equipments} reviews the notion of an equipment (or framed bicategory
-\cite{Shulman}). In Section~\ref{sec:internal_presheaves} we record the definition of copresheaves
-internal to an equipment which will allow us to reformulate and properly understand our main
-theorems. Section~\ref{sec:monoids_bimods} recalls monoids and bimodules in an equipment and
+\cite{Shulman}). In Section~\ref{sec:internal_presheaves} we define copresheaves
+internal to an equipment, which will allow us to reformulate our main theorems in terms of
+equipments. Section~\ref{sec:monoids_bimods} recalls monoids and bimodules in an equipment and
 establishes basic facts and constructions needed for the main theorems; in particular, exact
 equipments \cite{Schultz2015} are defined using this language. In
 Section~\ref{sec:monoidal,compact,traced} we review monoidal, traced, and compact categories. We
@@ -471,7 +472,7 @@ the core of our results. Indeed one might view the rest of the paper as a formal
 results in that section. In Section~\ref{sec:exactness_proofs} we prove that the equipments of
 interest are exact and then apply the theory developed in Section~\ref{chap:background_equipments}
 to deduce \ref{thm:TheoremB}. In Section~\ref{sec:monoids_on_free} we deal with the
-freeness-on-objects needed for \ref{thm:TheoremA}. 
+freeness-on-objects needed for \ref{thm:TheoremA}.
 
 The appendix contains material that is not
 necessary to the paper. Its function is to prove the biequivalence between the 2-category
@@ -2392,7 +2393,7 @@ rigorous equational proofs.
       \draw[ar] (bot) to (n2);
       \draw[ar] (n2) to["e"pos=.8] +(1cm,0);
     \end{tikzpicture}
-    \quad \\[5pt] &= \quad
+    \\[5pt] &= \quad
     \begin{tikzpicture}[string diagram,looseness=1.5,ampersand replacement=\&]
       \matrix {
         \node [draw]        (n1)  {n_1}; \&[-.4cm]
