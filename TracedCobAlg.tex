@@ -1037,18 +1037,44 @@ equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we
   \end{enumerate}
 \end{definition}
 
+\begin{remark}
+    \label{rmk:exact_equiv_fibrations}
+  The restriction functor \eqref{eqn:exact_Hor_Bimod} is clearly natural, giving a natural
+  equivalence between pseudo-functors $\op{\Mon(\dcat{D})}\times\op{\Mon(\dcat{D})}\to\CCat$, or
+  equivalently an equivalence of fibrations the inverse of which gives rise to a strictly-commuting
+  pseudo-pullback square
+  \begin{equation*}
+    \begin{tikzcd}
+      \dMod(\dcat{D})_1 \ar[d,two heads] \ar[r]
+      & \dcat{D}_1 \ar[d,two heads] \\
+      \Mon(\dcat{D})\times\Mon(\dcat{D}) \ar[r,"\Col{\textrm{--}}\times\Col{\textrm{--}}"']
+      & \dcat{D}_0\times\dcat{D}_0.
+    \end{tikzcd}
+  \end{equation*}
+  We will show in Proposition~\ref{prop:collapse_local_equivalence} that this preserves horizontal
+  composition, defining a double functor, and hence a local equivalence.
+\end{remark}
+
 \begin{example}
     \label{ex:exact_span_prof}
-   It was proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its
-  equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Thus $\dProf$ is exact, since there is an equivalence $\dProf\cong\dMod(\dSpan)$, where $\dSpan$ is the equipment of spans in $\Set$; see \cite{Shulman}.
+  It was proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its
+  equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Thus $\dProf$ is exact, since there
+  is an equivalence $\dProf\cong\dMod(\dSpan)$, where $\dSpan$ is the equipment of spans in $\Set$;
+  see \cite{Shulman}.
 \end{example}
 
-Exact equipments arising in practice almost always have local coequalizers, and in this case it is possible to simplify the definition, as we show in Proposition~\ref{prop:exact_coeqs}. Recall from Remark~\ref{rem:canonical_actions} the natural $M$-module structures on the companion $\comp{i}_M\colon c\tickar \Col{M}$ and conjoint $\conj{i}_M\colon \Col{M}\tickar c$ of the collapse embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unit(a)\colon a\tickar a$ for the unit map on an object $a$.
+Exact equipments arising in practice almost always have local coequalizers, and in this case it is
+possible to simplify the definition, as we show in Proposition~\ref{prop:exact_coeqs}. Recall from
+Remark~\ref{rem:canonical_actions} the natural $M$-module structures on the companion
+$\comp{i}_M\colon c\tickar \Col{M}$ and conjoint $\conj{i}_M\colon \Col{M}\tickar c$ of the collapse
+embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unit(a)\colon a\tickar a$ for the unit
+map on an object $a$.
 
 \begin{proposition}
     \label{prop:exact_coeqs}
-  Suppose $\dcat{D}$ is an equipment with local coequalizers which satisfies Condition 1 of Definition~\ref{def:exact_equipment}. Then $\dcat{D}$ satisfies Condition 2 if and only if
-  for every monoid $M\colon c\tickar c$, the following diagram is a coequalizer in
+  Suppose $\dcat{D}$ is an equipment with local coequalizers which satisfies Condition 1 of
+  Definition~\ref{def:exact_equipment}. Then $\dcat{D}$ satisfies Condition 2 if and only if for
+  every monoid $M\colon c\tickar c$, the following diagram is a coequalizer in
   $\HHor(\dcat{D})(\Col{M},\Col{M})$:
   \begin{equation}
       \label{eqn:exact_coeq}
@@ -1064,14 +1090,18 @@ Exact equipments arising in practice almost always have local coequalizers, and 
   or, equivalently, $\conj{i}_M\otimes_M\comp{i}_M\iso\unit\Col{M}$.
 \end{proposition}
 \begin{proof}
-  By Condition~1 of Definition~\ref{def:exact_equipment}, we have $M\iso\comp{i}_M\odot\conj{i}_M$, so the final equivalence is just the definition of horizontal composition in $\dMod(\dcat{D})$; see Definition~\ref{def:monoids_and_modules} and Remark~\ref{rem:canonical_actions}. Below we will use the fact that, by definition of $\dcat{D}$ having local coequalizers, $\odot$ preserves coequalizers in each variable, and that $\otimes$ is defined as a coequalizer. Finally, note that the restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic to the functor
+  By Condition~1 of Definition~\ref{def:exact_equipment}, we have $M\iso\comp{i}_M\odot\conj{i}_M$,
+  so the final equivalence is just the definition of horizontal composition in $\dMod(\dcat{D})$;
+  see Definition~\ref{def:monoids_and_modules} and Remark~\ref{rem:canonical_actions}. Below we will
+  use the fact that, by definition of $\dcat{D}$ having local coequalizers, $\odot$ preserves
+  coequalizers in each variable, and that $\otimes$ is defined as a coequalizer. Finally, note that
+  the restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic to the functor
   $X\mapsto\comp{i}_M\odot X\odot\conj{i}_N$, with the left and right actions given by the left
-  action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$. 
-  
-  Assuming
-  $\conj{i}_M\otimes_M\comp{i}_M\iso\unit\Col{M}$, we can construct an inverse to this restriction
-  functor, sending an $(M,N)$-bimodule $B$ to $\conj{i}_M\otimes_M B\otimes_N\comp{i}_N$. It is easy
-  to check that this gives an equivalence of categories:
+  action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$.
+
+  Assuming $\conj{i}_M\otimes_M\comp{i}_M\iso\unit\Col{M}$, we can construct an inverse to this
+  restriction functor, sending an $(M,N)$-bimodule $B$ to $\conj{i}_M\otimes_M
+  B\otimes_N\comp{i}_N$. It is easy to check that this gives an equivalence of categories:
   \begin{align*}
     \conj{i}_M\otimes_M (\comp{i}_M\odot X\odot\conj{i}_N)\otimes_N\comp{i}_N
       &\iso (\conj{i}_M\otimes_M\comp{i}_M)\odot X\odot (\conj{i}_N\otimes_N\comp{i}_N) \\
@@ -1084,8 +1114,9 @@ Exact equipments arising in practice almost always have local coequalizers, and 
       &\iso B.
   \end{align*}
 
-  Conversely, assuming the functor \eqref{eqn:exact_Hor_Bimod} is an equivalence of categories, then we can prove
-  that $\conj{i}_M\otimes_M\comp{i}_M\iso\unit\Col{M}$ is an isomorphism by first applying the restriction functor:
+  Conversely, assuming the functor \eqref{eqn:exact_Hor_Bimod} is an equivalence of categories, then
+  we can prove that $\conj{i}_M\otimes_M\comp{i}_M\iso\unit\Col{M}$ is an isomorphism by first
+  applying the restriction functor:
   \begin{align*}
     \comp{i}_M\odot(\conj{i}_M\otimes_M\comp{i}_M)\odot\conj{i}_M
       &\iso (\comp{i}_M\odot\conj{i}_M)\otimes_M(\comp{i}_M\odot\conj{i}_M) \\
@@ -1093,16 +1124,18 @@ Exact equipments arising in practice almost always have local coequalizers, and 
       &\iso M \\
       &\iso \comp{i}_M\odot\conj{i}_M \\
       &\iso \comp{i}_M\odot\unit\Col{M}\odot\conj{i}_M. \qedhere
-  \end{align*} 
+  \end{align*}
 \end{proof}
 
 \begin{example}
     \label{ex:monoid_in_Prof}
-  While the exactness of $\dProf$ follows from formal reasons, as we saw in Example~\ref{ex:exact_span_prof}, it will be helpful to understand collapse in $\dProf$ concretely.
+  While the exactness of $\dProf$ follows from formal reasons, as we saw in
+  Example~\ref{ex:exact_span_prof}, it will be helpful to understand collapse in $\dProf$
+  concretely.
 
   Consider a monoid $M\colon \cat{C}\tickar \cat{C}$ in $\dProf$. The unit is a profunctor morphism
-  $i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element $i(f)\in M(c,d)$,
-  such that
+  $i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element
+  $i(f)\in M(c,d)$, such that
   \begin{equation}
       \label{eq:Prof_monoid_unit}
     g\cdot i(f)\cdot h = i(g\circ f\circ h)
@@ -1125,7 +1158,7 @@ Exact equipments arising in practice almost always have local coequalizers, and 
   Specifically, equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B} simply say that
   $\bullet$ is a well defined morphism $M\odot M\to M$, while \eqref{eq:Prof_monoid_C} says that
   $\bullet$ is unital with respect to $i$.
-  
+
   The collapse $\Col{M}$ is then the category with the same objects as $\cat{C}$, with morphisms
   $\Col{M}(c,d)=M(c,d)$, and with composition given by $\bullet$. The unit $i$ of $M$ gives the
   functor $i_M\colon\cat{C}\to\Col{M}$.
@@ -1152,9 +1185,10 @@ Exact equipments arising in practice almost always have local coequalizers, and 
   $(f,\vec{f}\mspace{2mu})\colon(c,M)\to(d,N)$, a vertical morphism $\Col{f}\colon\Col{M}\to\Col{N}$
   in $\dcat{D}$, thus defining a functor $\Mon(\dcat{D})\to\dcat{D}_0$.
 
-  The functor $\ColDash$ is defined on horizontal arrows and 2-cells using the inverse of the
-  equivalence \eqref{eqn:exact_Hor_Bimod}. The collapse 2-cell being cartesian implies that
-  $\ColDash$ is a local equivalence. It is straightforward to verify that this is a strong double functor using the method of the proof of Proposition~\ref{prop:exact_coeqs}.
+  The functor $\ColDash$ is defined on horizontal arrows and 2-cells as in
+  Remark~\ref{rmk:exact_equiv_fibrations}. It is straightforward to verify that this is a strong
+  double functor, and hence a local equivalence, using the method of the proof of
+  Proposition~\ref{prop:exact_coeqs}.
 \end{proof}
 
 With these definitions in place we can now introduce two distinguished classes of vertical morphisms in an equipment $\dcat{D}$. These will become the left and right classes in an orthogonal factorization system on $\VVer(\dcat{D})$ for exact equipments.
