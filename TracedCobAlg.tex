@@ -1043,7 +1043,7 @@ equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we
   equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Thus $\dProf$ is exact, since there is an equivalence $\dProf\cong\dMod(\dSpan)$, where $\dSpan$ is the equipment of spans in $\Set$; see \cite{Shulman}.
 \end{example}
 
-Exact equipments arising in practice almost always have local coequalizers, and in this case it is possible to simplify the definition, as we show in Proposition~\ref{prop:exact_coeqs}. Recall from Remark~\ref{rem:canonical_actions} the natural $M$-module structures on the companion $\comp{i}_M\colon c\tickar \Col{M}$ and conjoint $\conj{i}_M\colon \Col{M}\tickar c$ of the collapse embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unit{a}\colon a\tickar a$ for the unit map on an object $a$.
+Exact equipments arising in practice almost always have local coequalizers, and in this case it is possible to simplify the definition, as we show in Proposition~\ref{prop:exact_coeqs}. Recall from Remark~\ref{rem:canonical_actions} the natural $M$-module structures on the companion $\comp{i}_M\colon c\tickar \Col{M}$ and conjoint $\conj{i}_M\colon \Col{M}\tickar c$ of the collapse embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unit(a)\colon a\tickar a$ for the unit map on an object $a$.
 
 \begin{proposition}
     \label{prop:exact_coeqs}
@@ -1058,10 +1058,10 @@ Exact equipments arising in practice almost always have local coequalizers, and 
         \ar[r,shift right,"\conj{i}_M\odot\comp{i}_M\odot\epsilon_{i_M}"']
       &[3.5em] \conj{i}_M\odot\comp{i}_M
         \ar[r,"\epsilon_{i_M}"]
-      & \unit{\Col{M}}
+      & \unit\Col{M}
     \end{tikzcd}
   \end{equation}
-  or, equivalently, $\conj{i}_M\otimes_M\comp{i}_M\iso\unit{\Col{M}}$.
+  or, equivalently, $\conj{i}_M\otimes_M\comp{i}_M\iso\unit\Col{M}$.
 \end{proposition}
 \begin{proof}
   By Condition~1 of Definition~\ref{def:exact_equipment}, we have $M\iso\comp{i}_M\odot\conj{i}_M$, so the final equivalence is just the definition of horizontal composition in $\dMod(\dcat{D})$; see Definition~\ref{def:monoids_and_modules} and Remark~\ref{rem:canonical_actions}. Below we will use the fact that, by definition of $\dcat{D}$ having local coequalizers, $\odot$ preserves coequalizers in each variable, and that $\otimes$ is defined as a coequalizer. Finally, note that the restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic to the functor
@@ -1069,13 +1069,13 @@ Exact equipments arising in practice almost always have local coequalizers, and 
   action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$. 
   
   Assuming
-  $\conj{i}_M\otimes_M\comp{i}_M\iso\unit{\Col{M}}$, we can construct an inverse to this restriction
+  $\conj{i}_M\otimes_M\comp{i}_M\iso\unit\Col{M}$, we can construct an inverse to this restriction
   functor, sending an $(M,N)$-bimodule $B$ to $\conj{i}_M\otimes_M B\otimes_N\comp{i}_N$. It is easy
   to check that this gives an equivalence of categories:
   \begin{align*}
     \conj{i}_M\otimes_M (\comp{i}_M\odot X\odot\conj{i}_N)\otimes_N\comp{i}_N
       &\iso (\conj{i}_M\otimes_M\comp{i}_M)\odot X\odot (\conj{i}_N\otimes_N\comp{i}_N) \\
-      &\iso \unit{\Col{M}}\odot X\odot \unit{\Col{N}} \\
+      &\iso \unit\Col{M}\odot X\odot \unit\Col{N} \\
       &\iso X \\
     \intertext{and}
     \comp{i}_M\odot (\conj{i}_M\otimes_M B\otimes_N\comp{i}_N)\odot \conj{i}_N
@@ -1085,14 +1085,14 @@ Exact equipments arising in practice almost always have local coequalizers, and 
   \end{align*}
 
   Conversely, assuming the functor \eqref{eqn:exact_Hor_Bimod} is an equivalence of categories, then we can prove
-  that $\conj{i}_M\otimes_M\comp{i}_M\iso\unit{\Col{M}}$ is an isomorphism by first applying the restriction functor:
+  that $\conj{i}_M\otimes_M\comp{i}_M\iso\unit\Col{M}$ is an isomorphism by first applying the restriction functor:
   \begin{align*}
     \comp{i}_M\odot(\conj{i}_M\otimes_M\comp{i}_M)\odot\conj{i}_M
       &\iso (\comp{i}_M\odot\conj{i}_M)\otimes_M(\comp{i}_M\odot\conj{i}_M) \\
       &\iso M\otimes_M M \\
       &\iso M \\
       &\iso \comp{i}_M\odot\conj{i}_M \\
-      &\iso \comp{i}_M\odot\unit{\Col{M}}\odot\conj{i}_M. \qedhere
+      &\iso \comp{i}_M\odot\unit\Col{M}\odot\conj{i}_M. \qedhere
   \end{align*} 
 \end{proof}
 
@@ -1680,7 +1680,7 @@ Proposition~\ref{prop:unit_implies_monoid} below.
   \]
   We also define a fibration $\Ptd(\dcat{D})\twoheadrightarrow\dcat{D}_0$ whose objects are
   \emph{pointed endo-proarrows}, i.e.\ endo-proarrows $M\colon c\tickar c$ in $\dcat{D}$ equipped
-  with a unit $i_M\colon c\to M$ as in \eqref{eqn:unit_and_mult} (but not a multiplication), and
+  with a unit $i_M\colon \unit(c)\Rightarrow M$ as in \eqref{eqn:unit_and_mult} (but not a multiplication), and
   whose morphisms are 2-cells which preserve the units.
 \end{definition}
 
@@ -2503,7 +2503,7 @@ As we saw throughout Section~\ref{sec:monoids_bimods} the exactness of an equipm
 \begin{proof}
    We can consider a monoid $M\colon \cat{C}\tickar \cat{C}$ in $\dCompProf$ as a monoid in $\dMonProf$, which
    has a collapse embedding $i_M\colon M\to \Col{M}$ by Proposition~\ref{prop:MonProf_exact}. The
-   collapse $\Col{M}$ is a monoidal category and, by Theorem~\ref{thm:Mod_vs_bo}, and $i_M$ is a (strict
+   collapse $\Col{M}$ is a monoidal category and, by Theorem~\ref{thm:Mod_vs_bo}, $i_M$ is a (strict
    symmetric monoidal) $\bo$ functor. But any strong monoidal functor preserves duals, so every object of
    $\Col{M}$ has a dual, hence $\Col{M}$ is compact. The map $\UCM\colon\dCompProf\to\dMonProf$ is a fully faithful local equivalence and so $\Col{M}$ being a collapse in $\dMonProf$ implies it is a collapse in $\dCompProf$.
 \end{proof}
@@ -2683,7 +2683,7 @@ As a corollary we obtain our second main theorem. Recall that we use the notatio
 \section{Objectwise-freeness}
       \label{sec:monoids_on_free}
 
-If we momentarily denote the free traced category on a set $\LabSet$ as $F(\LabSet)$, a corollary of \ref{thm:TheoremB} is an isomorphism $\Lax(\Int(\cat{T}),\Set)\cong\TrCat_\LabSet$, where the latter is the category of traced categories with fixed object set $\LabSet$. This was called \ref{thm:traced_is_cob_alg} in the introduction. Our goal in the present section is to prove \ref{thm:TheoremA}, for which we must formalize what it means for an object in an equipment to itself be objectwise-free.
+If we momentarily denote the free traced category on a set $\LabSet$ as $F(\LabSet)$, a corollary of \ref{thm:TheoremB} is an isomorphism $\Lax(\Int(F(\LabSet)),\Set)\cong\TrCat_\LabSet$, where the latter is the category of traced categories with fixed object set $\LabSet$. This was called \ref{thm:traced_is_cob_alg} in the introduction. Our goal in the present section is to prove \ref{thm:TheoremA}, for which we must formalize what it means for an object in an equipment to itself be objectwise-free.
 
 Consider an equipment $\dcat{D}$, and let $\dom\colon\dcat{D}_0^{\bo}\onto\dcat{D}_0$ denote the domain fibration. Suppose we are given an adjunction to a category $\cat{S}$:
 \begin{equation*}
@@ -2808,7 +2808,7 @@ for the vertical 1-categories. Note that each of these categories has a terminal
 
 \begin{remark}
 	\label{rem:PROP}
-  Definition~\ref{def:free_on_objects} defines objectwise-free monoidal categories, which are also known as (colored) PROPs (see, e.g.\ \cite{HackneyRobertson} for more on PROPs). However, the morphisms between PROPs are more restrictive than those defined above, because they must "send colors to colors". To define an equipment of PROPs, consider the functor $\FM\colon\Set\to\MonCat$ and let $\dPROP\coloneq\FM^*\dMonProf$ be the induced equipment. Similarly, one can define traced and compact (colored) PROPs as $\FT^*\dTrProf$ and $\FC^*\dCompProf$ respectively. 
+  Definition~\ref{def:free_on_objects} defines objectwise-free monoidal categories, which are also known as (colored) PROPs (see, e.g.\ \cite{HackneyRobertson} for more on PROPs). However, the morphisms between PROPs are more restrictive than those defined above, because they must "send colors to colors". To define an equipment of PROPs, consider the functor $\FM\colon\Set\to\MonCat$ and let $\dPROP\coloneqq\FM^*\dMonProf$ be the induced equipment. Similarly, one can define traced and compact (colored) PROPs as $\FT^*\dTrProf$ and $\FC^*\dCompProf$ respectively. 
   
   Although we will not prove it here, one can prove a variant of \ref{thm:TheoremA}, namely that there is an equivalence of categories
   \begin{equation*}
