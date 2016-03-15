@@ -774,7 +774,7 @@ related to monoids in $\dcat{D}$.
 \end{definition}
 
 There is an evident forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ sending a monoid
-$M\colon c\tickar c$ to its underlying object $|M|\coloneqq c$. The following result can also be found in \cite{FioreGambinoKock}.\todo{P: Christina suggested we add this reference; thoughts?}
+$M\colon c\tickar c$ to its underlying object $|M|\coloneqq c$. The following result can also be found in \cite{FioreGambinoKock}.\todo{P: Christina suggested we add this reference; thoughts?  It looks like Prop. 3.3 there corresponds to our lemma.}
 
 \begin{lemma}
     \label{lemma:Mon_und_fib}
@@ -952,7 +952,7 @@ equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we
 
 \begin{remark}
 	\label{rem:canonical_actions}
- For any monoid $M\colon c\tickar c$, the companion $\comp{i}_M\colon a\tickar b$ (resp.\ the conjoint $\conj{i}_M\colon b\tickar a$) of the embedding $i_M\colon c\to\Col{M}$ has the structure of a left (resp.\ right) $M$-module. Indeed, these are given by rewriting the collapse 2-cell $\vec{\imath}_M$ as follows:
+  For any monoid $M\colon c\tickar c$, the companion $\comp{i}_M\colon c\tickar \Col{M}$ (resp.\ the conjoint $\conj{i}_M\colon \Col{M}\tickar c$) of the embedding $i_M\colon c\to\Col{M}$ has the structure of a left (resp.\ right) $M$-module. Indeed, these are given by rewriting the collapse 2-cell $\vec{\imath}_M$ as follows:\todo{I don't understand how to construct these diagrams.  It seems to me that we should consider the horizontal composition of $\vec{\imath}_M$ with the cartesian two-cell defining $\comp{i}_M$ to get a two-cell into $\Col{M}$, which then factors through $\comp{i}_M$ using the cartesian property.}
 	\[
 	\begin{tikzcd}
       c\ar[r,tick,"M"]\ar[d,equal]&
@@ -1043,12 +1043,11 @@ equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we
   equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Thus $\dProf$ is exact, since there is an equivalence $\dProf\cong\dMod(\dSpan)$, where $\dSpan$ is the equipment of spans in $\Set$; see \cite{Shulman}.
 \end{example}
 
-Exact equipments arising in practice almost always have local coequalizers, and in this case it is possible to simplify the definition, as we show in Proposition~\ref{prop:exact_coeqs}. Recall from Remark~\ref{rem:canonical_actions} the natural $M$-module structures on the companion $\comp{i}_M\colon a\tickar b$ and conjoint $\conj{i}_M\colon b\tickar a$ of the collapse embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unitOf{a}\colon a\tickar a$ for the unit map on an object $a$.
+Exact equipments arising in practice almost always have local coequalizers, and in this case it is possible to simplify the definition, as we show in Proposition~\ref{prop:exact_coeqs}. Recall from Remark~\ref{rem:canonical_actions} the natural $M$-module structures on the companion $\comp{i}_M\colon c\tickar \Col{M}$ and conjoint $\conj{i}_M\colon \Col{M}\tickar c$ of the collapse embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unit{a}\colon a\tickar a$ for the unit map on an object $a$.
 
 \begin{proposition}
     \label{prop:exact_coeqs}
-  Let $\dcat{D}$ be an equipment with local coequalizers, and suppose $\dcat{D}$ satisfies Condition
-  1 of Definition~\ref{def:exact_equipment}, giving $i_M\colon c\to\Col{M}$. Then $\dcat{D}$ satisfies Condition 2 if and only if
+  Suppose $\dcat{D}$ is an equipment with local coequalizers which satisfies Condition 1 of Definition~\ref{def:exact_equipment}. Then $\dcat{D}$ satisfies Condition 2 if and only if
   for every monoid $M\colon c\tickar c$, the following diagram is a coequalizer in
   $\HHor(\dcat{D})(\Col{M},\Col{M})$:
   \begin{equation}
@@ -1059,10 +1058,10 @@ Exact equipments arising in practice almost always have local coequalizers, and 
         \ar[r,shift right,"\conj{i}_M\odot\comp{i}_M\odot\epsilon_{i_M}"']
       &[3.5em] \conj{i}_M\odot\comp{i}_M
         \ar[r,"\epsilon_{i_M}"]
-      & \unitOf{\Col{M}}
+      & \unit{\Col{M}}
     \end{tikzcd}
   \end{equation}
-  or, equivalently, $\conj{i}_M\otimes_M\comp{i}_M\iso\unitOf{\Col{M}}$.
+  or, equivalently, $\conj{i}_M\otimes_M\comp{i}_M\iso\unit{\Col{M}}$.
 \end{proposition}
 \begin{proof}
   By Condition~1 of Definition~\ref{def:exact_equipment}, we have $M\iso\comp{i}_M\odot\conj{i}_M$, so the final equivalence is just the definition of horizontal composition in $\dMod(\dcat{D})$; see Definition~\ref{def:monoids_and_modules} and Remark~\ref{rem:canonical_actions}. Below we will use the fact that, by definition of $\dcat{D}$ having local coequalizers, $\odot$ preserves coequalizers in each variable, and that $\otimes$ is defined as a coequalizer. Finally, note that the restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic to the functor
@@ -1070,13 +1069,13 @@ Exact equipments arising in practice almost always have local coequalizers, and 
   action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$. 
   
   Assuming
-  $\conj{i}_M\otimes_M\comp{i}_M\iso\unitOf{\Col{M}}$, we can construct an inverse to this restriction
+  $\conj{i}_M\otimes_M\comp{i}_M\iso\unit{\Col{M}}$, we can construct an inverse to this restriction
   functor, sending an $(M,N)$-bimodule $B$ to $\conj{i}_M\otimes_M B\otimes_N\comp{i}_N$. It is easy
   to check that this gives an equivalence of categories:
   \begin{align*}
     \conj{i}_M\otimes_M (\comp{i}_M\odot X\odot\conj{i}_N)\otimes_N\comp{i}_N
       &\iso (\conj{i}_M\otimes_M\comp{i}_M)\odot X\odot (\conj{i}_N\otimes_N\comp{i}_N) \\
-      &\iso \unitOf{\Col{M}}\odot X\odot \unitOf{\Col{N}} \\
+      &\iso \unit{\Col{M}}\odot X\odot \unit{\Col{N}} \\
       &\iso X \\
     \intertext{and}
     \comp{i}_M\odot (\conj{i}_M\otimes_M B\otimes_N\comp{i}_N)\odot \conj{i}_N
@@ -1086,14 +1085,14 @@ Exact equipments arising in practice almost always have local coequalizers, and 
   \end{align*}
 
   Conversely, assuming the functor \eqref{eqn:exact_Hor_Bimod} is an equivalence of categories, then we can prove
-  that $\conj{i}_M\otimes_M\comp{i}_M\iso\unitOf{\Col{M}}$ is an isomorphism by first applying the restriction functor:
+  that $\conj{i}_M\otimes_M\comp{i}_M\iso\unit{\Col{M}}$ is an isomorphism by first applying the restriction functor:
   \begin{align*}
     \comp{i}_M\odot(\conj{i}_M\otimes_M\comp{i}_M)\odot\conj{i}_M
       &\iso (\comp{i}_M\odot\conj{i}_M)\otimes_M(\comp{i}_M\odot\conj{i}_M) \\
       &\iso M\otimes_M M \\
       &\iso M \\
       &\iso \comp{i}_M\odot\conj{i}_M \\
-      &\iso \comp{i}_M\odot\unitOf{\Col{M}}\odot\conj{i}_M. \qedhere
+      &\iso \comp{i}_M\odot\unit{\Col{M}}\odot\conj{i}_M. \qedhere
   \end{align*} 
 \end{proof}
 
