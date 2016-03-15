@@ -1433,7 +1433,7 @@ $\CPsh(\dCompProf)\equiv\CompCat^{\bo}$. Similar results hold for traced categor
 Theorem~\ref{thm:mon_prof_equivalence} and Corollary~\ref{cor:Tr_mon_prof_equivalence}. These
 results suffice to prove \ref{thm:TheoremB}.
 
-The remaining difficulty is dealing with freeness-on-objects, which we need for \ref{thm:TheoremA}.
+The remaining difficulty is dealing with objectwise-freeness, which we need for \ref{thm:TheoremA}.
 This is the purpose of Section~\ref{sec:monoids_on_free}. 
 
 \section{Monoidal, Compact, and Traced Categories}
@@ -1525,7 +1525,7 @@ We denote by $\TTrCat$ the corrected 2-category of traced categories (where 2-ce
 
 Every compact category $\cat{C}$ has a canonical trace structure, defined on a morphism $f\colon
 U\otimes X\to U\otimes Y$ morally (up to symmetries and identities) to be $\epsilon_U\circ f\circ
-\eta_U$. More precisely, if $\sigma_{A,B}$ is the symmetry isomorphism, one defines $\Tr^U_{X,Y}[f]$ to be the composite
+\eta_U$. More precisely, one defines $\Tr^U_{X,Y}[f]$ to be the composite
 \begin{equation*}
 \begin{tikzcd}[column sep=29pt]
 	X\ar[r,"\eta_U\otimes X"]&
@@ -1557,7 +1557,7 @@ We record the following facts, which hold for any traced category $\cat{T}$; eac
       \item If $\cat{M}$ is a monoidal category and $F\colon\cat{M}\to\cat{T}$ is a fully faithful
          symmetric monoidal functor, then $\cat{M}$ has a unique trace for which $F$ is a traced
          functor.
-      \item If $\cat{T}$ is compact then the counit
+      \item If $\cat{T}$ is compact, then the counit
          $\Int(\cat{T})\To{\raisebox{-1ex}{$\equiv$}}\cat{T}$ is an equivalence.
       \item Suppose that $\cat{T'}$ is a traced category and that $F\colon \cat{T}\to \cat{T}'$ is a
          traced functor. Then $F$ is bijective-on-objects (resp.\ fully faithful) if and only if
