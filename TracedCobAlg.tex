@@ -506,9 +506,7 @@ out and give two relevant examples. An excellent reference is Shulman's paper \c
 \begin{definition}
    A \emph{double category}%
 \footnote{We will use many flavors of category in this paper. To help distinguish, we denote named 1-categories, monoidal categories, and operads with bold roman letters, e.g.\ $\ncat{Cob}$, and unnamed 1-categories with script, e.g.\ $\cat{C}$. For named 2-categories or bicategories we do almost the same, but change the font of the first letter to calligraphic, such as $\nncat{T}{rCat}$; for unnamed 2-categories we use (unbold) calligraphic, e.g.\ $\ccat{D}$. Finally, for double categories we make the first letter blackboard bold, whether named (e.g., $\ndcat{P}{rof}$) or unnamed (e.g., $\dcat{D}$). 
-The objects in a category, 2-category, or double category will be denoted with the usual math font (e.g.\ $T\in\Ob\TrCat$ or $c\in\Ob\dcat{D}$).
 }
-\todo{delete the last sentence in the footnote; correct?}
   $\dcat{D}$ consists of the following data:
    \begin{itemize}
       \item A category $\dcat{D}_0$, which we refer to as the \emph{vertical category} of
@@ -563,7 +561,7 @@ Recall that a \emph{fibration} of categories $p\colon\cat{E}\to\cat{B}$ is a fun
          & c'\ar[d,"f'"] \\
       d \ar[r,tick,"N"' codA]
          & d'
-      \twocellalt{A}{\tn{cart}}
+      \twocellA{\tn{cart}}
    \end{tikzcd} \]
    which we call a \emph{cartesian 2-cell}. We refer to $M$ as the \emph{restriction of $N$ along
    $f$ and $f'$}, written $M=N(f',f)$. 
@@ -575,14 +573,14 @@ For any vertical morphism $f\colon c\to d$ in an equipment $\dcat{D}$, there are
     c \ar[r,tick,"\comp{f}" domA] \ar[d,"f"']
     & d \ar[d,equal] \\
     d \ar[r,tick,"\unit(d)"' codA] & d
-    \twocellalt{A}{\tn{cart}}
+    \twocellA{\tn{cart}}
   \end{tikzcd}
   \quad
   \begin{tikzcd}
     d \ar[r,tick,"\conj{f}" domA] \ar[d,equal]
     & c \ar[d,"f"] \\
     d \ar[r,tick,"\unit(d)"' codA] & d.
-    \twocellalt{A}{\tn{cart}}
+    \twocellA{\tn{cart}}
   \end{tikzcd}
 \end{equation*}
 In \cite{Shulman}, it is shown that all restrictions can be obtained by composing with companions and
@@ -591,7 +589,7 @@ $\comp{f}$ and $\conj{f}$ form an adjunction in $\HHor(\dcat{D})$; we write
 $\eta_f\colon\conj{f}\odot\comp{f}\to\unit(d)$ and
 $\epsilon_f\colon\unit(c)\to\comp{f}\odot\conj{f}$ for the unit and counit of this adjunction.
 
-Recall that a pseudo-pullback of a cospan $A_1\To{f_1}A\From{f_2}A_2$ is a diagram
+Recall that a pseudo-pullback of a cospan $A_1\To{f_1}A\From{f_2}A_2$ in a 2-category $\ccat{C}$ is a diagram
 \begin{equation}
 	\label{eqn:pseudopullback}
 \begin{tikzcd}[sep=small]
@@ -599,9 +597,9 @@ X\ar[r,"g_1"]\ar[d,"g_2"']\ar[rd,phantom,"\overset{\alpha}{\footnotesize\cong}"]
 A_1\ar[r,"f_1"']&A
 \end{tikzcd}
 \end{equation}
-where the tuple $(X,g_1,g_2,\alpha)$ is universal, up to equivalence, for data of that shape. This definition makes sense in any 2-category $\ccat{C}$, though we will use it only in a special case, described in the next paragraph.
+where the tuple $(X,g_1,g_2,\alpha)$ is universal, up to equivalence, for data of that shape. Although this definition makes sense for any 2-category $\ccat{C}$, we will use it only in the special case described in the next paragraph.
 
-Suppose that $\ccat{C}=\CCat$, that $f_2$ is a fibration, and that the square in \eqref{eqn:pseudopullback} strictly commutes, i.e.\ that $\alpha$ is the identity. It is a standard fact that a strict pullback of a Grothendieck fibration along an arbitrary functor is a fibration and that the strict pullback is also a pseudo-pullback. The upshot is that $g_2$ is a pseudo-pullback if and only if, for any strict pullback $g_2'$ of $f_2$ along $f_1$, the induced map $g_2\to g_2'$ is an equivalence of fibrations.
+Let $\ccat{C}=\CCat$.  Suppose $f_2$ is a fibration and that the square \eqref{eqn:pseudopullback} strictly commutes, i.e.\ that $\alpha$ is the identity. It is a standard fact that a strict pullback of a Grothendieck fibration along an arbitrary functor is a fibration and that the strict pullback is also a pseudo-pullback. The upshot is that $g_2$ is a pseudo-pullback if and only if, for any strict pullback $g_2'$ of $f_2$ along $f_1$, the induced map $g_2\to g_2'$ is an equivalence of fibrations.
 
 \begin{definition}
       \label{def:local_equivalence}
@@ -618,10 +616,9 @@ Suppose that $\ccat{C}=\CCat$, that $f_2$ is a fibration, and that the square in
 
 \begin{remark}
       \label{rem:strict_vs_pseudo_pullback}
-As discussed above, if the square \eqref{eqn:local_equiv} is a strict pullback, it will be a pseudo-pullback, and hence a local equivalence. Any local equivalence can be replaced by an equivalent strict pullback, which we define in Definition~\ref{def:induced_locally_equivalent_equipment}.
+   As discussed above, if the square \eqref{eqn:local_equiv} is a strict pullback, it will be a pseudo-pullback, and hence a local equivalence. Any local equivalence can be replaced by an equivalent strict pullback, which we define in Definition~\ref{def:induced_locally_equivalent_equipment}.
 
-   Also note that the frame fibration for $\dcat{C}$ is equivalent to the functor $\dcat{C}_0\times\dcat{C}_0\to\CCat$, the 2-category of
-   small categories, sending $(c,d)$ to $\HHor(\dcat{C})(c,d)$ and similarly for $\dcat{D}$. In this language, $F$ is a local equivalence if and only if the induced functors $\HHor(\dcat{C})(c,d)\to\HHor(\dcat{D})(F_0(c),F_0(d))$ are equivalences of categories for every pair of objects $(c,d)$. The square \eqref{eqn:local_equiv} is a strict pullback precisely when these are isomorphisms of categories.
+   Also note that the frame fibration for $\dcat{C}$ is equivalent to the functor $\dcat{C}_0\times\dcat{C}_0\to\CCat$, to the 2-category of small categories, sending $(c,d)$ to $\HHor(\dcat{C})(c,d)$ and similarly for $\dcat{D}$. In this language, $F$ is a local equivalence if and only if the induced functors $\HHor(\dcat{C})(c,d)\to\HHor(\dcat{D})(F_0(c),F_0(d))$ are equivalences of categories for every pair of objects $(c,d)$. The square \eqref{eqn:local_equiv} is a strict pullback precisely when these are isomorphisms of categories.
 \end{remark}
 
 \begin{definition}
@@ -718,7 +715,7 @@ of) profunctors, as in the following example.
   $m\cdot f\in M(c',d)$ for the elements $M(\id,g)(m)$ and $M(f,\id)(m)$ respectively. Thus we think
   of the functoriality of $M$ as providing left and right actions of $\cat{D}$ and $\cat{C}$ on the
   elements of $M$. The equations $(g\cdot m)\cdot f = g\cdot (m\cdot f)$, $g'\cdot(g\cdot
-  m)=(g'\circ g)\cdot m$, and $(m\cdot f)\cdot f')=m\cdot(f\circ f')$ clearly hold whenever they
+  m)=(g'\circ g)\cdot m$, and $(m\cdot f)\cdot f'=m\cdot(f\circ f')$ clearly hold whenever they
   make sense.
   
   The coequalizer \eqref{eqn:coendComp} can be easily expressed in this notation: the elements of
@@ -726,7 +723,7 @@ of) profunctors, as in the following example.
   $d\in\cat{D}$ modulo the relation $(m\cdot f)\otimes n = m\otimes(f\cdot n)$, whenever this makes
   sense.
   
-  Finally, a 2-cell $\phi$ of the form \eqref{eqn:Prof2cells} is function sending elements $m\in
+  Finally, a 2-cell $\phi$ of the form \eqref{eqn:Prof2cells} is a function sending elements $m\in
   M(c,c')$ to elements $\phi(m)\in N(Fc,F'c')$ such that the equation $\phi(f\cdot m\cdot
   g)=F(f)\cdot\phi(m)\cdot F'(g)$ holds whenever it makes sense.
 \end{remark}
@@ -2860,8 +2857,6 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
 \begin{proof}
    The equipment functor $\varphi_{\MTCfont{C}}\colon\dFrCompProf\to\dCompProf$ (resp. $\varphi_{\MTCfont{T}}\colon\dFrTrProf\to\dTrProf$) is by definition a local equivalence, and it preserves terminal objects in the vertical category. Thus using Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} we construct the desired equivalence $\CPsh(\dFrCompProf)\to\Mon(\dFrCompProf)$ as the pullback along $\varphi_{\MTCfont{C}}$ of the equivalence $\CPsh(\dCompProf)\to\Mon(\dCompProf)$ from Theorem~\ref{thm:mon_prof_equivalence} (resp. for the traced case).
 \end{proof}
-
-\todo[inline]{We never said that $\LCob{\LabSet}$ is the free compact category on $\LabSet$!!!  Didn't we?  See comment in intro.}
 
 \begin{named}{Theorem A}
       \label{thm:TheoremA}
