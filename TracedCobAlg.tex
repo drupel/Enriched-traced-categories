@@ -120,7 +120,7 @@ Moreover, the wiring diagram itself in which boxes $X_1,\ldots,X_n$ are wired to
 larger box $Y$ can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$.
 In fact, this is more appropriately interpreted as a morphism in the (colored) operad $\Cob$
 underlying the symmetric monoidal category of oriented 1-cobordisms. The
-following shows the two approaches to drawing a 2-ary morphism $X_1,X_2\to Y$ in $\LCob{\LabSet}$:
+following shows the two approaches to drawing a 2-ary morphism $X_1,X_2\to Y$ in $\LCob{\LabSet}$\todo{$\LCob{\LabSet}$ hasn't been introduced yet, move this lower?}:
 \begin{equation*}
   \begin{tikzpicture}[wiring diagram, baseline=(current bounding box.center)]
     \node[bb={2}{1}, bb name=$X_1$] (X1) {};
@@ -260,7 +260,7 @@ for every $f\colon U\otimes X\to U\otimes Y$ and $g\colon W\to Z$, or diagramati
 
 To make precise the relationship between these interpretations of string diagrams, we fix the set
 $\LabSet$ of labels. Let $\TrCat$ denote the 1-category of traced categories and traced strict
-monoidal functors. Write $\TrCat_{\LabSet}$ for the subcategory of those traced categories $\cat{T}$ for which the monoid of objects is free on the set $\LabSet$, with identity-on-objects functors $\cat{T}\to\cat{T}'$ between them.
+monoidal functors. Write $\TrCat_{\LabSet}$ for the subcategory consisting of those traced categories $\cat{T}$ for which the monoid of objects is free on the set $\LabSet$, with identity-on-objects functors $\cat{T}\to\cat{T}'$ between them.
 
 \begin{named}{Theorem 0}
     \label{thm:traced_is_cob_alg}
@@ -377,7 +377,7 @@ F\colon\LabSet\to\TT(\LabSet')$ which can be identified with a morphism in the K
 $\Set_{\TT}$ of this monad.
 
 The compact category $\LCob{\LabSet}$ clearly varies functorially in $\LabSet\in\Set$, but it is not
-much harder to see that it is also functorial in $\LabSet\in\Set_{\TT}$, giving rise to a functor
+much harder to see that it is also functorial in $\LabSet\in\Set_{\TT}$.  This gives rise to a functor
 \[
   (\LCob{\bullet})\colon\Set_{\TT}\to\CompCat
 \]
@@ -475,7 +475,7 @@ interest are exact, and apply the theory developed in Section~\ref{chap:backgrou
 deduce \ref{thm:TheoremB}. In Section~\ref{sec:monoids_on_free} we deal with the objectwise-freeness
 needed for \ref{thm:TheoremA}.
 
-The appendix contains material that is not necessary to the paper. Its function is to prove the
+The appendix contains material that is not essential for establishing the main results of the paper. Its function is to prove the
 biequivalence between the 2-category $\MMonCatStrong$ of monoidal categories with arbitrary object
 set and strong functors, on the one hand, and the 2-category $\MMonFrObCat$ of monoidal categories
 with free object set and strict functors. We do the same for traced and compact categories, all in
