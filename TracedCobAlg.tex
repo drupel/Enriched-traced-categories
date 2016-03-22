@@ -932,7 +932,25 @@ which is immediate from the definitions.
 \section{Exact equipments and $\bo$, $\ff$ factorization}
   \label{sec:exactness_boff}
 
-\todo[inline]{Patrick: introduce this section.}
+In many equipments, there are ways of constructing objects from data in the horizontal bicategory
+which satisfy vertical universal properties. In this paper, we will make extensive use of such a
+construction, which builds from any (horizontal) monoid $M$ a universal object $\Col{M}$, which we
+call the \emph{collapse} of $M$. This collapse construction is formally analogous to the quotient of
+an equivalence relation.
+
+In \cite{Schultz2015}, this analogy was pursued further, proposing definitions of \emph{regular}
+and \emph{exact} equipments, in which certain collapses exist and satisfy certain exactness
+properties. Showing that several equipments of interest are exact is one of the key pieces of our
+proof of our main theorems. In particular, the collapse construction will be the bridge connecting
+algebras of an operad (i.e.\ set-valued functors), which live in the horizontal bicategory of
+equipments, with traced or compact monoidal categories, which will be the objects of equipments. We
+will also show that in any exact (in fact any regular) equipment, ane can define an orthogonal
+factorization system which generalizes the fully-faithful/bijective-on-objects factorization system
+on $\CCat$. These factorization systems are also used extensively throughout the paper.
+
+In this section we recall the definition of an exact equipment from \cite{Schultz2015}, and review
+some basic results.
+
 \begin{definition}
     \label{def:embedding}
   Let $M\colon c\tickar c$ be a monoid in an equipment $\dcat{D}$. An \emph{embedding} of $M$ into
