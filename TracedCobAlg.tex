@@ -1743,11 +1743,10 @@ compact and monoidal categories.
 
 Suppose $\cat{C}$ and $\cat{D}$ are monoidal categories. We define a \emph{monoidal profunctor} $M$
 from $\cat{C}$ to $\cat{D}$ to be an ordinary profunctor (see Example~\ref{ex:profunctors}) $M\colon
-\op{\cat{C}}\times\cat{D}\to\Set$ in $\MMonCat$, i.e.\ $M\colon \op{\cat{C}}\times\cat{D}\to\Set$ is
-equipped with a lax-monoidal structure where $\Set$ is endowed with the cartesian monoidal
-structure. In the bimodule notation, this means that there is an associative operation assigning to
-any elements $m_1\in M(c_1,d_1)$ and $m_2\in M(c_2,d_2)$ an element $m_1\boxtimes m_2\in
-M(c_1\otimes c_2,d_1\otimes d_2)$ such that
+\op{\cat{C}}\times\cat{D}\to\Set$ which is equipped with a lax-monoidal structure, where $\Set$ is
+endowed with the cartesian monoidal structure. In the bimodule notation, this means that there is an
+associative operation assigning to any elements $m_1\in M(c_1,d_1)$ and $m_2\in M(c_2,d_2)$ an
+element $m_1\boxtimes m_2\in M(c_1\otimes c_2,d_1\otimes d_2)$ such that
 \[
    (f_1\cdot m_1\cdot g_1)\boxtimes(f_2\cdot m_2\cdot g_2)
       = (f_1\otimes f_2)\cdot(m_1\boxtimes m_2)\cdot(g_1\otimes g_2),
@@ -2663,10 +2662,10 @@ rigorous equational proofs.
 
 \todo{Prove/mention that these equipments have local coequalizers}
 
-As we saw throughout Section~\ref{sec:monoids_bimods} the exactness of an equipment gives rise to
-many equivalences of fibrations. Thus to establish our main theorems we aim first to show that the
-equipments from Section~\ref{sec:monoidal_profunctors} are all exact, as in
-Definition~\ref{def:exact_equipment}.
+After Section~\ref{sec:special_CompProf}, the second key piece of our argument is to show that the
+equipments $\dMonProf$, $\dTrProf$, and $\dCompProf$ from Section~\ref{sec:monoidal_profunctors} are
+all exact, as in Definition~\ref{def:exact_equipment}. We can then immediately deduce
+\ref{thm:TheoremB}.
 
 \begin{proposition}
     \label{prop:MonProf_exact}
