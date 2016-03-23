@@ -1340,7 +1340,7 @@ In fact, the orthogonal factorization system above has a more concrete descripti
 \begin{definition}
     \label{def:fully_faithful}
   A morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{fully faithful} if the functor
-  $\ccat{C}(x,a)\to\ccat{C}(x,b)$, induced by composition with $f$, is fully faithful for every $x$.
+  $f^*\colon\ccat{C}(x,a)\to\ccat{C}(x,b)$, induced by composition with $f$, is fully faithful for every $x$.
   That is, $f$ is fully faithful if, for every diagram
   \begin{equation*} \begin{tikzcd}[row sep=large]
     x \ar[r,bend left,"u"] \ar[r,bend right,"v"']
@@ -1354,7 +1354,7 @@ In fact, the orthogonal factorization system above has a more concrete descripti
   $f\alpha=\alpha'$.
 
   A morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{bijective-on-objects} if it is
-  left orthogonal to every fully faithful morphism.
+  left orthogonal to every fully faithful morphism.\todo{Is there a less opaque way of saying what bijective-on-objects means in an arbitrary 2-category?}
 \end{definition}
 
 \begin{lemma}
@@ -3438,6 +3438,7 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
   ``preserve and jointly detect'' strictness in the sense of
   Definition~\ref{def:preserve_jdetect_strictness} below. In particular, the 2-categories
   $\MMonCat$, $\TTrCat$, and $\CCompCat$ (objectwise-free monoidal categories and strict functors)
+  \todo{Is this meant to be saying that $\MMonCat$, $\TTrCat$, and $\CCompCat$ refer to objectwise-free categories?}
   also have arrow objects and mapping path objects, and the inclusions of strict-into-strong (e.g.,
   $\MMonCat\to\MMonCatStrong$) preserve them. Looking back at
   Examples~\ref{ex:arrow_objects}~and~\ref{ex:mapping_paths}, we see that the forgetful functors
