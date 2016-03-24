@@ -2743,10 +2743,10 @@ all exact, as in Definition~\ref{def:exact_equipment}. We can then immediately d
 We record the following consequence of Theorem~\ref{thm:orthogonal} in the current notation.
 
 \begin{corollary}
-  The 2-categories $\MMonCat$ and $\CCompCat$ admit 2-orthogonal factorization systems.
+  Each of the 2-categories $\MMonCat$ and $\CCompCat$ admits a 2-orthogonal $(\bo,\ff)$ factorization system.
 \end{corollary}
 
-We abuse notation slightly and denote each of the factorization systems above by $(\bo,\ff)$. Recall
+We abuse notation slightly and use the same name ($\bo,\ff$) for the factorization systems on different categories. Recall
 the adjunction \eqref{dia:traced_compact_adjunction} and write
 $\eta_{\cat{T}}\colon\cat{T}\to\UCT\Int(\cat{T})$ for the unit component on $\cat{T}\in\TTrCat$.
 
@@ -2858,7 +2858,16 @@ $\eta_{\cat{T}}\colon\cat{T}\to\UCT\Int(\cat{T})$ for the unit component on $\ca
   condition of Definition~\ref{def:exact_equipment} follows immediately.
 \end{proof}
 
-As a corollary we obtain our second main theorem. Recall that we use the notation $\int$ to denote
+\begin{proposition}
+	\label{prop:(bo,ff)_really_is}
+In $\dMonProf$, $\dTrProf$, and $\dCompProf$, a vertical map is $\ff$ (resp. $\bo$) if and only if it is fully faithful (resp. bijective-on-objects) in the usual sense. 
+\end{proposition}
+
+\begin{proof}\todo{P: Check proof.}
+In all three cases, the fully faithful functors are right-orthogonal to the bijective-on-objects functors, so by Theorem~\ref{thm:orthogonal} it suffices to show that bijective-on-objects coincides with $\bo$. It is clear by the construction of collapses in $\dMonProf$ that a map $f\colon\cat{C}\to\cat{D}$ is $\bo$ if and only if it is bijective-on-objects. The result follows because the collapse of a monoid in $\dCompProf$ and $\dTrProf$ is defined as the collapse of the underlying monoid in $\dMonProf$.
+\end{proof}
+
+As a corollary of exactness, we obtain our second main theorem. Recall that we use the notation $\int$ to denote
 the Grothendieck construction.
 
 \begin{named}{Theorem B}
