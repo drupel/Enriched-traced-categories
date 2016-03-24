@@ -3355,19 +3355,19 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
     \label{cor:2_adjunctions_MonTrComp}
   There are 2-adjunctions
   \[
-    \FM\colon\CCat\leftrightarrows\MMonCat\cocolon\UM
+    \FM\colon\CCat\leftrightarrows\MMonCatStrong\cocolon\UM
     \qquad
-    \FT\colon\CCat_{\iso}\leftrightarrows\TTrCat\cocolon\UT
+    \FT\colon\CCat_{\iso}\leftrightarrows\TTrCatStrong\cocolon\UT
     \qquad
-    \FC\colon\CCat_{\iso}\leftrightarrows\CCompCat\cocolon\UC
+    \FC\colon\CCat_{\iso}\leftrightarrows\CCompCatStrong\cocolon\UC
   \]
   that extend the 1-adjunctions constructed in \cite{Abramsky2}.
 \end{corollary}
 \begin{proof}
   Let $R$ be either $\UM$, $\UT$, or $\UC$. Its underlying 1-functor has a left adjoint, constructed
-  in \cite{Abramsky2}. We showed in Example~\ref{ex:arrow_objects} that $\MMonCat$, $\TTrCat$, and
-  $\CCompCat$ have arrow objects, which are preserved by $R$. The result follows by
-  Lemma~\ref{lem:2_adjunction}.
+  in \cite{Abramsky2}. We showed in Example~\ref{ex:arrow_objects} that $\MMonCatStrong$,
+  $\TTrCatStrong$, and $\CCompCatStrong$ have arrow objects, which are preserved by $R$. The result
+  follows by Lemma~\ref{lem:2_adjunction}.
 \end{proof}
 
 \begin{definition}
@@ -3454,11 +3454,9 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
   in passing that the structure morphisms for that cone are strict monoidal functors and that they
   ``preserve and jointly detect'' strictness in the sense of
   Definition~\ref{def:preserve_jdetect_strictness} below. In particular, the 2-categories
-  $\MMonCat$, $\TTrCat$, and $\CCompCat$ (objectwise-free monoidal categories and strict functors)
-  \todo{Is this meant to be saying that $\MMonCat$, $\TTrCat$, and $\CCompCat$ refer to objectwise-free categories?}
-  also have arrow objects and mapping path objects, and the inclusions of strict-into-strong (e.g.,
-  $\MMonCat\to\MMonCatStrong$) preserve them. Looking back at
-  Examples~\ref{ex:arrow_objects}~and~\ref{ex:mapping_paths}, we see that the forgetful functors
+  $\MMonCat$, $\TTrCat$, and $\CCompCat$ also have arrow objects and mapping path objects, and the
+  inclusions of strict-into-strong (e.g., $\MMonCat\to\MMonCatStrong$) preserve them. Looking back
+  at Examples~\ref{ex:arrow_objects}~and~\ref{ex:mapping_paths}, we see that the forgetful functors
   \[
     \UM\colon\MMonCat\to\CCat
     \qquad
