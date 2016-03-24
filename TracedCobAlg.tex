@@ -1407,42 +1407,6 @@ orthogonal factorization systems.
   there is an orthogonal factorization system $(\bo,\ff)$ on the vertical 1-category $\dcat{D}_0$.
 \end{theorem}
 
-In fact, the orthogonal factorization system above has a more concrete description:
-
-\begin{definition}
-    \label{def:fully_faithful}
-  A morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{fully faithful} if the functor
-  $f^*\colon\ccat{C}(x,a)\to\ccat{C}(x,b)$, induced by composition with $f$, is fully faithful for every $x$.
-  That is, $f$ is fully faithful if, for every diagram
-  \begin{equation*} \begin{tikzcd}[row sep=large]
-    x \ar[r,bend left,"u"] \ar[r,bend right,"v"']
-        \ar[d,equal]
-      & a \ar[d,"f"] \\
-    x \ar[r,bend left,"u'" domA] \ar[r,bend right,"v'"' codA]
-      & b
-    \twocellA{\alpha'}
-  \end{tikzcd} \end{equation*}
-  such that $fu=u'$ and $fv=v'$, there exists a unique $\alpha\colon u\Rightarrow v$ such that
-  $f\alpha=\alpha'$.
-
-  A morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{bijective-on-objects} if it is
-  left orthogonal to every fully faithful morphism.
-\end{definition}
-
-In the 2-category $\CCat$, fully faithful and bijective-on-objects functors have the usual definitions.
-
-\begin{lemma}
-    \label{lem:(bo,ff)_really_is}
-  Let $\dcat{D}$ be an exact equipment. If a vertical morphism $f$ in $\dcat{D}$ is $\bo$
-  (respectively $\ff$), then $f$ is a bijective-on-objects (respectively fully faithful) morphism
-  in $\VVer(\dcat{D})$ in the sense of Definition~\ref{def:fully_faithful}.
-\end{lemma}
-\begin{proof}
-  It is easy to see that the condition of $f$ being fully faithful in $\VVer(\dcat{D})$ is a special
-  case of the condition of the unit 2-cell on $f$ being cartesian in $\dcat{D}$. If $f$ is $\bo$,
-  then Theorem~\ref{thm:orthogonal} in particular implies that $f$ is left orthogonal to every $\ff$
-  morphism, hence $f$ is bijective-on-objects.
-\end{proof}
 
 In an exact equipment, there is a close connection between monoids and $\bo$ morphisms. This
 connection is formalized in Theorem~\ref{thm:Mod_vs_bo} below, which is a key ingredient in the
@@ -1873,6 +1837,7 @@ It suffices to prove this for $\dMonProf$, since the other two are locally equiv
 \end{proof}
 
 \begin{proposition}
+	\label{prop:(bo,ff)_really_is}
 In $\dMonProf$, $\dTrProf$, and $\dCompProf$, a vertical map is $\ff$ (resp. $\bo$) if and only if it is fully faithful (resp. bijective-on-objects) in the usual sense. 
 \end{proposition}
 
@@ -2035,7 +2000,7 @@ the requirements from Example~\ref{ex:monoid_in_Prof}.
 To make the proof of Proposition~\ref{prop:unit_implies_monoid} easier to follow, we make use of an
 extension of the standard string diagrams for (compact) monoidal categories to monoidal profunctors,
 as well as monoids in $\dMonProf$. We summarize the use of these string diagrams in
-Table~\ref{tab:string_diagrams}\todo{The location of the table in the text seems a little awkward being in the middle of the proof, should we force pages 27 and 28 to switch places?}. We will only use these diagrams in the proof of
+Table~\ref{tab:string_diagrams}. We will only use these diagrams in the proof of
 Proposition~\ref{prop:unit_implies_monoid}, and there only informally, as an aid to follow the
 rigorous equational proofs.
 
@@ -3705,13 +3670,13 @@ $\pcat{D}=\MMonCatStrong$, and $\ccat{C}=\CCat$. See Example~\ref{ex:strictifiab
   \end{itemize}
   We will now show that in each case the collection admits strong morphism classifiers.
 
-  Property \ref{item:boff} is proved as Lemma~\ref{lem:(bo,ff)_really_is} and the exactness of
+  Property \ref{item:boff} is proved as Proposition~\ref{prop:(bo,ff)_really_is} and the exactness of
   $\dMonProf$, $\dTrProf$, and $\dCompProf$; see Section~\ref{sec:exactness_proofs}. Property
   \ref{item:ioofflff} is obvious for $\MMonCat$ and $\CCompCat$, and by definition (see
   Remark~\ref{rem:traced_2morphisms}) for $\TTrCat$. Property \ref{item:arrowMPO} is shown in
   Remark~\ref{rem:pres_joint_detect}. Property~\ref{item:left2adj} is shown in
   Corollary~\ref{cor:2_adjunctions_MonTrComp}. Property~\ref{item:pres_ff} is a consequence of
-  Lemma~\ref{lem:(bo,ff)_really_is} and
+  Proposition~\ref{prop:(bo,ff)_really_is} and
   Propositions~\ref{prop:MonProf_exact},~\ref{prop:CompProf_exact},~and~\ref{prop:TrProf_exact}.
   Property~\ref{item:pres_MPO} is shown in Remark~\ref{rem:pres_joint_detect}.
   Property~\ref{item:reflids} is obvious: if $\alpha\colon F\to G$ is a 2-cell in $\scat{D_s}$ whose
