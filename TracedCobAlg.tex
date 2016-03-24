@@ -1786,8 +1786,6 @@ A \emph{monoidal profunctor morphism} $\phi\colon M\to N$ is simply a monoidal t
 Spelling this out in bimodule notation, $\phi$ is an ordinary morphism of profunctors such that
 $\phi(m_1\boxtimes m_2)=\phi(m_1)\boxtimes\phi(m_2)$ and $\phi(I_M)=I_N$.
 
-\todo[inline]{Say somewhere below that $\dMonProf$ and hence $\dTrProf, \dCompProf$ have local reflexive coequalizers.}
-
 We define a double category $\dMonProf$ whose objects are (symmetric) monoidal categories, vertical
 arrows are strict (symmetric) monoidal functors, horizontal arrows are (symmetric) monoidal
 profunctors, and 2-cells are defined as in \eqref{eqn:Prof2cells}, requiring $\phi$ to be a monoidal
@@ -1832,6 +1830,14 @@ Thus from the definitions and Proposition~\ref{prop:2iso_traced}, we see that th
 \[
   \VVer(\dMonProf)\iso\MMonCat,\quad\VVer(\dCompProf)\iso\CCompCat,\quad\VVer(\dTrProf)\iso\TTrCat.
 \]
+
+\begin{proposition}
+The equipments $\dMonProf$, $\dTrProf$, and $\dCompProf$ all have local reflexive coequalizers.
+\end{proposition}
+
+\begin{proof}
+\todo{Complete proof}
+\end{proof}
 
 \section{Special properties of $\dCompProf$}
   \label{sec:special_CompProf}
