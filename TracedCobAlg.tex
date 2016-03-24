@@ -118,9 +118,16 @@ exiting on the right.
 \end{equation*}
 Moreover, the wiring diagram itself in which boxes $X_1,\ldots,X_n$ are wired together inside a
 larger box $Y$ can be interpreted as an oriented cobordism from $X_1\sqcup\cdots\sqcup X_n$ to $Y$.
-In fact, this is more appropriately interpreted as a morphism in the (colored) operad $\Cob$
-underlying the symmetric monoidal category of oriented 1-cobordisms. The
-following shows the two approaches to drawing a 2-ary morphism $X_1,X_2\to Y$ in $\LCob{\LabSet}$\todo{$\LCob{\LabSet}$ hasn't been introduced yet, move this lower?}:
+In fact, this is more appropriately interpreted as a morphism in the operad $\Cob$
+underlying the symmetric monoidal category of oriented 1-cobordisms. 
+
+There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{T}$
+than in a cobordism. Namely, each input and output of a box must be labeled by an object of
+$\cat{T}$ and the wires connecting boxes must respect the labels (e.g.\ in
+(\ref{dia:string_diagram}) objects $1c$ and $2b$ must be equal). We will thus consider the (colored) operad
+$\LCob{\LabSet}$ of oriented 1-dimensional cobordisms over a fixed set of labels $\LabSet$. We also
+write $\LCob{\LabSet}$ to denote the corresponding symmetric monoidal category.  The
+following shows the two approaches to drawing a 2-ary morphism $X_1,X_2\to Y$ in $\LCob{\LabSet}$:
 \begin{equation*}
   \begin{tikzpicture}[wiring diagram, baseline=(current bounding box.center)]
     \node[bb={2}{1}, bb name=$X_1$] (X1) {};
@@ -164,13 +171,6 @@ following shows the two approaches to drawing a 2-ary morphism $X_1,X_2\to Y$ in
     \draw (X2c) to (Yc);
   \end{tikzpicture}
 \end{equation*}
-
-There is actually a bit more data in a string (or wiring) diagram for a traced category $\cat{T}$
-than in a cobordism. Namely, each input and output of a box must be labeled by an object of
-$\cat{T}$ and the wires connecting boxes must respect the labels (e.g.\ in
-(\ref{dia:string_diagram}) objects $1c$ and $2b$ must be equal). We will thus consider the operad
-$\LCob{\LabSet}$ of oriented 1-dimensional cobordisms over a fixed set of labels $\LabSet$. We also
-write $\LCob{\LabSet}$ to denote the corresponding symmetric monoidal category.
 
 In the table below, we record these two interpretations of a string diagram. Note the ``degree
 shift'' between the second and third columns.
@@ -594,7 +594,8 @@ denote fibrations of 1-categories using two-headed arrows $\onto$.
 For any vertical morphism $f\colon c\to d$ in an equipment $\dcat{D}$, there are two canonical
 proarrows $\comp{f}\colon c\tickar d$ and $\conj{f}\colon d\tickar c$, called respectively the
 \emph{companion} and \emph{conjoint} of $f$, defined by restriction:
-\begin{equation*}
+\begin{equation}
+  \label{dia:comapanion conjoint}
   \begin{tikzcd}
     c \ar[r,tick,"\comp{f}" domA] \ar[d,"f"']
     & d \ar[d,equal] \\
@@ -608,9 +609,9 @@ proarrows $\comp{f}\colon c\tickar d$ and $\conj{f}\colon d\tickar c$, called re
     d \ar[r,tick,"\unit(d)"' codA] & d.
     \twocellA{\tn{cart}}
   \end{tikzcd}
-\end{equation*}
+\end{equation}
 In \cite{Shulman}, it is shown that all restrictions can be obtained by composing with companions
-and conjoints. In particular, $N(f,g)\iso\comp{f}\odot N\odot\conj{g}$ for any proarrow $N$.
+and conjoints. In particular, $N(f',f)\iso\comp{f}\odot N\odot\conj{f'}$ for any proarrow $N$.
 Moreover, $\comp{f}$ and $\conj{f}$ form an adjunction in $\HHor(\dcat{D})$; we write
 $\eta_f\colon\conj{f}\odot\comp{f}\to\unit(d)$ and
 $\epsilon_f\colon\unit(c)\to\comp{f}\odot\conj{f}$ for the unit and counit of this adjunction.
@@ -1021,32 +1022,35 @@ some basic results.
     \label{rem:canonical_actions}
   For any monoid $M\colon c\tickar c$, the companion $\comp{i}_M\colon c\tickar \Col{M}$ (resp.\ the
   conjoint $\conj{i}_M\colon \Col{M}\tickar c$) of the embedding $i_M\colon c\to\Col{M}$ has the
-  structure of a left (resp.\ right) $M$-module. Indeed, these are given by rewriting the collapse
-  2-cell $\vec{\imath}_M$ as follows:\todo{I don't understand how to construct these diagrams.  It
-  seems to me that we should consider the horizontal composition of $\vec{\imath}_M$ with the
-  cartesian two-cell defining $\comp{i}_M$ to get a two-cell into $\Col{M}$, which then factors
-  through $\comp{i}_M$ using the cartesian property.}
-  \[
-    \begin{tikzcd}
-      c \ar[r,tick,"M"] \ar[d,equal]
-        & |[alias=domA]| c \ar[r,tick,"\comp{i}_M"]
-        & \Col{M} \ar[d,equal] \\
-      c \ar[r,tick,"\comp{i}_M"']
-        & |[alias=codA]| \Col{M} \ar[r,tick,"\Col{M}"']
-        & \Col{M}
-      \twocellA{}
-    \end{tikzcd}
-    \qquad\qquad
-    \begin{tikzcd}
-      \Col{M} \ar[r,tick,"\conj{i}_M"] \ar[d,equal]
-        & |[alias=domA]| c \ar[r,tick,"M"]
-        & c \ar[d,equal] \\
-      \Col{M} \ar[r,tick,"\Col{M}"']
-        & |[alias=codA]| \Col{M} \ar[r,tick,"\conj{i}_M"']
-        & c
-      \twocellA{}
-    \end{tikzcd}
-  \]
+  structure of a left (resp.\ right) $M$-module. Indeed, the horizontal composition of $\vec{\imath}_M$
+  and the left hand cartesian 2-cell from \eqref{dia:comapanion conjoint} defining $\comp{i}_M$ factors 
+  as follows:
+  \[ \begin{tikzcd}
+    c \ar[r,tick,"M" domA] \ar[d,"i_M"']
+      & c \ar[r,tick, "\comp{i}_M" domB] \ar[d,"i_M"']
+      & \Col{M} \ar[d,equal] \\
+    \Col{M} \ar[r,tick,"\Col{M}"' codA] \ar[d,equal]
+      & |[alias=domC]| \Col{M} \ar[r,tick,"\Col{M}"' codB] 
+      & \Col{M} \ar[d,equal]\\
+    \Col{M} \ar[rr,tick,"\Col{M}"' codC]
+      && \Col{M}
+    \twocellA{\vec{\imath}_M}
+    \twocellB{\tn{cart}}
+    \twocelliso{C}{}
+  \end{tikzcd}
+  \quad = \quad
+  \begin{tikzcd}
+    c \ar[r,tick,"M"] \ar[d,equal]
+      & |[alias=domA]| c \ar[r,tick,"\comp{i}_M"]
+      & \Col{M} \ar[d,equal] \\
+    c \ar[rr,tick,"\comp{i}_M"' {codA,domB}] \ar[d,"i_M"']
+      && \Col{M} \ar[d,equal]\\
+    \Col{M} \ar[rr,tick,"\Col{M}"' codB]
+      && \Col{M}.
+    \twocellA{l_{\comp{i}_M}}
+    \twocellB{\tn{cart}}
+  \end{tikzcd}\]
+  The right action on $\conj{i}_M$ is obtained similarly.
 \end{remark}
 
 \begin{lemma}
