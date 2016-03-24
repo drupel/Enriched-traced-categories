@@ -1831,18 +1831,19 @@ Thus from the definitions and Proposition~\ref{prop:2iso_traced}, we see that th
 \begin{proposition}
 Each of the equipments $\dMonProf$, $\dTrProf$, and $\dCompProf$ is locally cocomplete. In particular, they have local reflexive coequalizers.
 \end{proposition}
-
 \begin{proof}
-It suffices to prove this for $\dMonProf$, since the other two are locally equivalent to it. \todo[inline]{Finish!}
-\end{proof}
+  It suffices to prove this for $\dMonProf$, since the other two are locally equivalent to it.
+  \todo[inline]{Check the following:}
 
-\begin{proposition}
-	\label{prop:(bo,ff)_really_is}
-In $\dMonProf$, $\dTrProf$, and $\dCompProf$, a vertical map is $\ff$ (resp. $\bo$) if and only if it is fully faithful (resp. bijective-on-objects) in the usual sense. 
-\end{proposition}
+  For any monoidal category $\cat{M}$, the category of lax monoidal functors $\cat{M}\to\Set$ is
+  closed under reflexive coequalizers. This follows easily from the fact that reflexive coequalizers
+  commute with finite products. (In fact, the same argument shows that the category $\cat{O}\alg$ of
+  algebras for any colored operad $\cat{O}$ is closed under reflexive coequalizers.) Thus in
+  particular the category of monoidal profunctors $\cat{M}\tickar\cat{N}$, i.e.\ the category of lax
+  functors $\op{\cat{M}}\times\cat{N}\to\Set$, is closed under reflexive coequalizers.
 
-\begin{proof}
-\todo[inline]{Finish!}
+  The fact that tensor product of monoidal profunctors preserves reflexive coequalizers follows from
+  the fact that the tensor product itself is constructed as a reflexive coequalizer.
 \end{proof}
 
 \section{Special properties of $\dCompProf$}
