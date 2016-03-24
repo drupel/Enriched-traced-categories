@@ -616,21 +616,21 @@ $\eta_f\colon\conj{f}\odot\comp{f}\to\unit(d)$ and
 $\epsilon_f\colon\unit(c)\to\comp{f}\odot\conj{f}$ for the unit and counit of this adjunction. Finally, note that the companion and conjoint can be used to convert any 2-cell to a globular 2-cell in four ways (see \cite[\S 4]{Shulman}), two of which we will use later:
 \begin{equation}\label{eqn:globularize}
 \begin{tikzcd}
-	c\ar[r,tick,"M" domA]\ar[d,"f"']&c'\ar[d,"f'"]\\
-	d\ar[r,tick,"N"' codA]&d'
-	\twocellA{\phi}
+  c\ar[r,tick,"M" domA]\ar[d,"f"']&c'\ar[d,"f'"]\\
+  d\ar[r,tick,"N"' codA]&d'
+  \twocellA{\phi}
 \end{tikzcd}
 \quad\leftrightarrow\quad
 \begin{tikzcd}
-	c\ar[r,tick,"M" domA]\ar[d,equal]&c'\ar[r,tick,"\comp{f'}"]&d'\ar[d,equal]\\
-	c\ar[r,tick,"\comp{f}"']&d\ar[r,tick,"N"' codA]&d'
-	\twocellA{\comp{\phi}}
+  c\ar[r,tick,"M" domA]\ar[d,equal]&c'\ar[r,tick,"\comp{f'}"]&d'\ar[d,equal]\\
+  c\ar[r,tick,"\comp{f}"']&d\ar[r,tick,"N"' codA]&d'
+  \twocellA{\comp{\phi}}
 \end{tikzcd}
 \quad\leftrightarrow\quad
 \begin{tikzcd}
-	d\ar[d,equal]\ar[r,tick,"\conj{f}"]&c\ar[r,tick,"M" domA]& c'\ar[d,equal]\\
-	d\ar[r,tick,"N"' codA]&d'\ar[r,tick,"\conj{f'}"']&c'
-	\twocellA{\conj{\phi}}
+  d\ar[d,equal]\ar[r,tick,"\conj{f}"]&c\ar[r,tick,"M" domA]& c'\ar[d,equal]\\
+  d\ar[r,tick,"N"' codA]&d'\ar[r,tick,"\conj{f'}"']&c'
+  \twocellA{\conj{\phi}}
 \end{tikzcd}
 \end{equation}
 
@@ -918,10 +918,10 @@ following is a standard construction; see \cite{Shulman}
       $B_2\colon M'\tickar M''$ is given by the reflexive coequalizer in $\HHor(\dcat{D})(M,M'')$
       \[
       \begin{tikzcd}
-      	B_1\odot M'\odot B_2 \ar[r,shift left]\ar[r,shift right]
-				& B_1\odot B_2 \ar[r]\ar[l]
-				& B_1\otimes_{M'} B_2
-			\end{tikzcd}
+        B_1\odot M'\odot B_2 \ar[r,shift left]\ar[r,shift right]
+        & B_1\odot B_2 \ar[r]\ar[l]
+        & B_1\otimes_{M'} B_2
+      \end{tikzcd}
       \]
       together with the evident left $M$ and right $M''$ actions. Above, the splitting map $B_1\odot B_2\to B_1\odot M'\odot B_2$ comes from the unit of the monoid.
     \item The 2-cells are \emph{bimodule homomorphisms}: cells in $\dcat{D}$
@@ -1163,28 +1163,28 @@ some basic results.
   see \cite{Shulman}.
 \end{example}
 
-Exact equipments arising in practice almost always have local reflexive coequalizers, and in this case it is
-possible to simplify the definition, as we show in Proposition~\ref{prop:exact_coeqs}. Recall from
-Remark~\ref{rem:canonical_actions} the natural $M$-module structures on the companion
+Exact equipments arising in practice almost always have local reflexive coequalizers, and in this
+case it is possible to simplify the definition, as we show in Proposition~\ref{prop:exact_coeqs}.
+Recall from Remark~\ref{rem:canonical_actions} the natural $M$-module structures on the companion
 $\comp{i}_M\colon c\tickar \Col{M}$ and conjoint $\conj{i}_M\colon \Col{M}\tickar c$ of the collapse
 embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unit(a)\colon a\tickar a$ for the unit
 map on an object $a$.
 
-\todo[inline]{Fix the following proposition to make it use reflexive coequalizers.}
 \begin{proposition}
     \label{prop:exact_coeqs}
-  Suppose $\dcat{D}$ is an equipment with local reflexive coequalizers which satisfies Condition 1 of
-  Definition~\ref{def:exact_equipment}. Then $\dcat{D}$ satisfies Condition 2 if and only if for
+  Suppose $\dcat{D}$ is an equipment with local reflexive coequalizers which satisfies Condition 1
+  of Definition~\ref{def:exact_equipment}. Then $\dcat{D}$ satisfies Condition 2 if and only if for
   every monoid $M\colon c\tickar c$, the following diagram is a reflexive coequalizer in
   $\HHor(\dcat{D})(\Col{M},\Col{M})$:
   \begin{equation}
       \label{eqn:exact_coeq}
     \begin{tikzcd}
       \conj{i}_M\odot\comp{i}_M\odot\conj{i}_M\odot\comp{i}_M
-        \ar[r,shift left=.3cm,"\epsilon_{i_M}\odot\conj{i}_M\odot\comp{i}_M"]
-        \ar[r,shift right=.3cm,"\conj{i}_M\odot\comp{i}_M\odot\epsilon_{i_M}"']
-      &[3.5em] \conj{i}_M\odot\comp{i}_M
-        \ar[r,"\epsilon_{i_M}"]\ar[l,"\conj{i}_M\odot i_M\odot\comp{i}_M" description]
+        \ar[r,shift left=.32cm,"\epsilon_{i_M}\odot\conj{i}_M\odot\comp{i}_M"]
+        \ar[r,shift right=.32cm,"\conj{i}_M\odot\comp{i}_M\odot\epsilon_{i_M}"']
+      &[3.7em] \conj{i}_M\odot\comp{i}_M
+        \ar[r,"\epsilon_{i_M}"]
+        \ar[l,"\conj{i}_M\odot\eta_{i_M}\odot\comp{i}_M"{description,inner sep=1.5pt}]
       & \unit\Col{M}
     \end{tikzcd}
   \end{equation}
@@ -1194,11 +1194,11 @@ map on an object $a$.
   By Condition~1 of Definition~\ref{def:exact_equipment}, we have $M\iso\comp{i}_M\odot\conj{i}_M$,
   so the final equivalence is just the definition of horizontal composition in $\dMod(\dcat{D})$;
   see Definition~\ref{def:monoids_and_modules} and Remark~\ref{rem:canonical_actions}. Below we will
-  use the fact that, by definition of $\dcat{D}$ having local coequalizers, $\odot$ preserves
-  coequalizers in each variable, and that $\otimes$ is defined as a coequalizer. Finally, note that
-  the restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic to the functor
-  $X\mapsto\comp{i}_M\odot X\odot\conj{i}_N$, with the left and right actions given by the left
-  action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$.
+  use the fact that, by definition of $\dcat{D}$ having local reflexive coequalizers, $\odot$
+  preserves reflexive coequalizers in each variable, and that $\otimes$ is defined as a reflexive
+  coequalizer. Finally, note that the restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic
+  to the functor $X\mapsto\comp{i}_M\odot X\odot\conj{i}_N$, with the left and right actions given
+  by the left action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$.
 
   Assuming $\conj{i}_M\otimes_M\comp{i}_M\iso\unit\Col{M}$, we can construct an inverse to this
   restriction functor, sending an $(M,N)$-bimodule $B$ to $\conj{i}_M\otimes_M
