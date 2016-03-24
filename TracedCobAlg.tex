@@ -614,7 +614,27 @@ In \cite{Shulman}, it is shown that all restrictions can be obtained by composin
 and conjoints. In particular, $N(f',f)\iso\comp{f}\odot N\odot\conj{f'}$ for any proarrow $N$.
 Moreover, $\comp{f}$ and $\conj{f}$ form an adjunction in $\HHor(\dcat{D})$; we write
 $\eta_f\colon\conj{f}\odot\comp{f}\to\unit(d)$ and
-$\epsilon_f\colon\unit(c)\to\comp{f}\odot\conj{f}$ for the unit and counit of this adjunction.
+$\epsilon_f\colon\unit(c)\to\comp{f}\odot\conj{f}$ for the unit and counit of this adjunction. 
+\erase{Finally, note that the companion and conjoint can be used to convert any 2-cell to a globular 2-cell in four ways (see \cite[\S 4]{Shulman}), two of which we will use later:
+\begin{equation}\label{eqn:globularize}
+\begin{tikzcd}
+  c\ar[r,tick,"M" domA]\ar[d,"f"']&c'\ar[d,"f'"]\\
+  d\ar[r,tick,"N"' codA]&d'
+  \twocellA{\phi}
+\end{tikzcd}
+\quad\leftrightarrow\quad
+\begin{tikzcd}
+  c\ar[r,tick,"M" domA]\ar[d,equal]&c'\ar[r,tick,"\comp{f'}"]&d'\ar[d,equal]\\
+  c\ar[r,tick,"\comp{f}"']&d\ar[r,tick,"N"' codA]&d'
+  \twocellA{\comp{\phi}}
+\end{tikzcd}
+\quad\leftrightarrow\quad
+\begin{tikzcd}
+  d\ar[d,equal]\ar[r,tick,"\conj{f}"]&c\ar[r,tick,"M" domA]& c'\ar[d,equal]\\
+  d\ar[r,tick,"N"' codA]&d'\ar[r,tick,"\conj{f'}"']&c'
+  \twocellA{\conj{\phi}}
+\end{tikzcd}
+\end{equation}}
 
 Recall that a pseudo-pullback of a cospan $A_1\To{f_1}A\From{f_2}A_2$ in a 2-category $\ccat{C}$ is a diagram
 \begin{equation}
@@ -719,16 +739,15 @@ of) profunctors, as in the following example.
     \cat{C} \ar[r,tick,"M"] & \cat{D} \ar[r,tick,"N"] & \cat{E},
   \end{tikzcd} \]
   define the horizontal composition $M\odot N$ on objects $c\in\cat{C}$ and $e\in\cat{E}$ as the
-  coequalizer of the diagram
+  reflexive coequalizer of the diagram
   \begin{equation} \begin{tikzcd}
       \label{eqn:coendComp}
     \displaystyle\coprod_{d_1,d_2\in\cat{D}} M(c,d_1)\times\cat{D}(d_1,d_2)\times N(d_2,e)
       \ar[r,shift left] \ar[r,shift right]
-    & \displaystyle\coprod_{d\in\cat{D}} M(c,d)\times N(d,e)
+    & \displaystyle\coprod_{d\in\cat{D}} M(c,d)\times N(d,e)\ar[l]
   \end{tikzcd} \end{equation}
-  where the two maps are given by the right and left actions of $\cat{D}$ on $M$ and $N$
-  respectively. Note that the coequalizer \eqref{eqn:coendComp} is in fact a reflexive coequalizer,
-  using $\id_d\in\cat{D}(d,d)$. Given a profunctor $M\colon\cat{C}\tickar\cat{C'}$ there are
+  where the two rightward maps are given by the right and left actions of $\cat{D}$ on $M$ and $N$
+  respectively and the splitting is given by $\id_d\in\cat{D}(d,d)$. Given a profunctor $M\colon\cat{C}\tickar\cat{C'}$ there are
   canonical isomorphisms $\Hom_{\cat{C}}\odot M \iso M \iso M\odot\Hom_{\cat{D}}$ which can be
   viewed as giving an action of $\Hom_{\cat{C}}$ and of $\Hom_{\cat{D}}$ on $M$, from the left and
   right respectively.
@@ -770,7 +789,7 @@ of) profunctors, as in the following example.
   m)=(g'\circ g)\cdot m$, and $(m\cdot f)\cdot f'=m\cdot(f\circ f')$ clearly hold whenever they
   make sense.
 
-  The coequalizer \eqref{eqn:coendComp} can be easily expressed in this notation: the elements of
+  The reflexive coequalizer \eqref{eqn:coendComp} can be easily expressed in this notation: the elements of
   $(M\odot N)(c,e)$ are pairs $m\otimes n$ of elements $m\in M(c,d)$ and $n\in N(d,e)$ for some
   $d\in\cat{D}$ modulo the relation $(m\cdot f)\otimes n = m\otimes(f\cdot n)$, whenever this makes
   sense.
@@ -869,8 +888,8 @@ following is a standard construction; see \cite{Shulman}
 
 \begin{definition}
     \label{def:monoids_and_modules}
-  Let $\dcat{D}$ be an equipment with local coequalizers, i.e.\ such that each category
-  $\HHor(\dcat{D})(c,d)$ has coequalizers and $\odot$ preserves coequalizers in each variable. The
+  Let $\dcat{D}$ be an equipment with local reflexive coequalizers, i.e.\ such that each category
+  $\HHor(\dcat{D})(c,d)$ has reflexive coequalizers and $\odot$ preserves reflexive coequalizers in each variable. The
   equipment $\dMod(\dcat{D})$ of \emph{monoids and bimodules} is defined as follows:
   \begin{itemize}
     \item The vertical category $\dMod(\dcat{D})_0$ is the category $\Mon(\dcat{D})$ of monoids in
@@ -898,11 +917,15 @@ following is a standard construction; see \cite{Shulman}
       \end{equation*}
       satisfying evident monoid action axioms.
     \item The horizontal composition $B_1\otimes_{M'} B_2$ of bimodules $B_1\colon M\tickar M'$ and
-      $B_2\colon M'\tickar M''$ is given by the coequalizer in $\HHor(\dcat{D})(M,M'')$
+      $B_2\colon M'\tickar M''$ is given by the reflexive coequalizer in $\HHor(\dcat{D})(M,M'')$
       \[
-        B_1\odot M'\odot B_2 \rightrightarrows B_1\odot B_2 \to B_1\otimes_{M'} B_2
+      \begin{tikzcd}
+        B_1\odot M'\odot B_2 \ar[r,shift left]\ar[r,shift right]
+        & B_1\odot B_2 \ar[r]\ar[l]
+        & B_1\otimes_{M'} B_2
+      \end{tikzcd}
       \]
-      together with the evident left $M$ and right $M''$ actions.
+      together with the evident left $M$ and right $M''$ actions. Above, the splitting map $B_1\odot B_2\to B_1\odot M'\odot B_2$ comes from the unit of the monoid.
     \item The 2-cells are \emph{bimodule homomorphisms}: cells in $\dcat{D}$
       \[ \begin{tikzcd}
         c \ar[r,tick,"A"] \ar[d,"f"' domA]
@@ -1051,6 +1074,33 @@ some basic results.
     \twocellB{\tn{cart}}
   \end{tikzcd}\]
   The right action on $\conj{i}_M$ is obtained similarly.
+\erase{=======
+  structure of a left (resp.\ right) $M$-module. Indeed, these are given by globularizing the collapse
+  2-cell $\vec{\imath}_M$ as in \eqref{eqn:globularize}:\todo{I don't understand how to construct these diagrams.  It
+  seems to me that we should consider the horizontal composition of $\vec{\imath}_M$ with the
+  cartesian two-cell defining $\comp{i}_M$ to get a two-cell into $\Col{M}$, which then factors
+  through $\comp{i}_M$ using the cartesian property.}
+  \[
+    \begin{tikzcd}
+      c \ar[r,tick,"M"] \ar[d,equal]
+        & |[alias=domA]| c \ar[r,tick,"\comp{i}_M"]
+        & \Col{M} \ar[d,equal] \\
+      c \ar[r,tick,"\comp{i}_M"']
+        & |[alias=codA]| \Col{M} \ar[r,tick,"\Col{M}"']
+        & \Col{M}
+      \twocellA{}
+    \end{tikzcd}
+    \qquad\qquad
+    \begin{tikzcd}
+      \Col{M} \ar[r,tick,"\conj{i}_M"] \ar[d,equal]
+        & |[alias=domA]| c \ar[r,tick,"M"]
+        & c \ar[d,equal] \\
+      \Col{M} \ar[r,tick,"\Col{M}"']
+        & |[alias=codA]| \Col{M} \ar[r,tick,"\conj{i}_M"']
+        & c
+      \twocellA{}
+    \end{tikzcd}
+  \]}
 \end{remark}
 
 \begin{lemma}
@@ -1145,27 +1195,28 @@ some basic results.
   see \cite{Shulman}.
 \end{example}
 
-Exact equipments arising in practice almost always have local coequalizers, and in this case it is
-possible to simplify the definition, as we show in Proposition~\ref{prop:exact_coeqs}. Recall from
-Remark~\ref{rem:canonical_actions} the natural $M$-module structures on the companion
+Exact equipments arising in practice almost always have local reflexive coequalizers, and in this
+case it is possible to simplify the definition, as we show in Proposition~\ref{prop:exact_coeqs}.
+Recall from Remark~\ref{rem:canonical_actions} the natural $M$-module structures on the companion
 $\comp{i}_M\colon c\tickar \Col{M}$ and conjoint $\conj{i}_M\colon \Col{M}\tickar c$ of the collapse
 embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unit(a)\colon a\tickar a$ for the unit
 map on an object $a$.
 
 \begin{proposition}
     \label{prop:exact_coeqs}
-  Suppose $\dcat{D}$ is an equipment with local coequalizers which satisfies Condition 1 of
-  Definition~\ref{def:exact_equipment}. Then $\dcat{D}$ satisfies Condition 2 if and only if for
-  every monoid $M\colon c\tickar c$, the following diagram is a coequalizer in
+  Suppose $\dcat{D}$ is an equipment with local reflexive coequalizers which satisfies Condition 1
+  of Definition~\ref{def:exact_equipment}. Then $\dcat{D}$ satisfies Condition 2 if and only if for
+  every monoid $M\colon c\tickar c$, the following diagram is a reflexive coequalizer in
   $\HHor(\dcat{D})(\Col{M},\Col{M})$:
   \begin{equation}
       \label{eqn:exact_coeq}
     \begin{tikzcd}
       \conj{i}_M\odot\comp{i}_M\odot\conj{i}_M\odot\comp{i}_M
-        \ar[r,shift left,"\epsilon_{i_M}\odot\conj{i}_M\odot\comp{i}_M"]
-        \ar[r,shift right,"\conj{i}_M\odot\comp{i}_M\odot\epsilon_{i_M}"']
-      &[3.5em] \conj{i}_M\odot\comp{i}_M
+        \ar[r,shift left=.32cm,"\epsilon_{i_M}\odot\conj{i}_M\odot\comp{i}_M"]
+        \ar[r,shift right=.32cm,"\conj{i}_M\odot\comp{i}_M\odot\epsilon_{i_M}"']
+      &[3.7em] \conj{i}_M\odot\comp{i}_M
         \ar[r,"\epsilon_{i_M}"]
+        \ar[l,"\conj{i}_M\odot\eta_{i_M}\odot\comp{i}_M"{description,inner sep=1.5pt}]
       & \unit\Col{M}
     \end{tikzcd}
   \end{equation}
@@ -1175,11 +1226,11 @@ map on an object $a$.
   By Condition~1 of Definition~\ref{def:exact_equipment}, we have $M\iso\comp{i}_M\odot\conj{i}_M$,
   so the final equivalence is just the definition of horizontal composition in $\dMod(\dcat{D})$;
   see Definition~\ref{def:monoids_and_modules} and Remark~\ref{rem:canonical_actions}. Below we will
-  use the fact that, by definition of $\dcat{D}$ having local coequalizers, $\odot$ preserves
-  coequalizers in each variable, and that $\otimes$ is defined as a coequalizer. Finally, note that
-  the restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic to the functor
-  $X\mapsto\comp{i}_M\odot X\odot\conj{i}_N$, with the left and right actions given by the left
-  action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$.
+  use the fact that, by definition of $\dcat{D}$ having local reflexive coequalizers, $\odot$
+  preserves reflexive coequalizers in each variable, and that $\otimes$ is defined as a reflexive
+  coequalizer. Finally, note that the restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic
+  to the functor $X\mapsto\comp{i}_M\odot X\odot\conj{i}_N$, with the left and right actions given
+  by the left action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$.
 
   Assuming $\conj{i}_M\otimes_M\comp{i}_M\iso\unit\Col{M}$, we can construct an inverse to this
   restriction functor, sending an $(M,N)$-bimodule $B$ to $\conj{i}_M\otimes_M
@@ -1259,7 +1310,7 @@ map on an object $a$.
 
 \begin{proposition}
     \label{prop:collapse_local_equivalence}
-  If $\dcat{D}$ is an exact equipment with local coequalizers, then collapse induces an equipment
+  If $\dcat{D}$ is an exact equipment with local reflexive coequalizers, then collapse induces an equipment
   functor $\ColDash\colon\dMod(\dcat{D})\to\dcat{D}$ which is a local equivalence.
 \end{proposition}
 \begin{proof}
@@ -1470,7 +1521,7 @@ proofs of our main theorems.
 
 \begin{theorem}
     \label{thm:Mod_vs_bo}
-  Let $\dcat{D}$ be an exact equipment with local coequalizers. There is an equivalence of
+  Let $\dcat{D}$ be an exact equipment with local reflexive coequalizers. There is an equivalence of
   equipments
 %   \[
 %      \dMod(\dcat{D}) \iso \dcat{D}^{\bo}.
@@ -1766,6 +1817,8 @@ m_2)\cdot\sigma_{c_1,c_2}^{-1}$, then one says $M$ is \emph{symmetric monoidal}.
 A \emph{monoidal profunctor morphism} $\phi\colon M\to N$ is simply a monoidal transformation.
 Spelling this out in bimodule notation, $\phi$ is an ordinary morphism of profunctors such that
 $\phi(m_1\boxtimes m_2)=\phi(m_1)\boxtimes\phi(m_2)$ and $\phi(I_M)=I_N$.
+
+\todo[inline]{Say somewhere below that $\dMonProf$ and hence $\dTrProf, \dCompProf$ have local reflexive coequalizers.}
 
 We define a double category $\dMonProf$ whose objects are (symmetric) monoidal categories, vertical
 arrows are strict (symmetric) monoidal functors, horizontal arrows are (symmetric) monoidal
@@ -2927,7 +2980,7 @@ pullback of $k_T$ along $\dom$:
 \begin{proposition}
     \label{prop:objectfree_Mod_bo}
   With the setup as in Definition~\ref{def:kleisli_equipment}, suppose also that $\dcat{D}$ is exact
-  and has local coequalizers. There is a commutative diagram of equipments, in which the vertical
+  and has local reflexive coequalizers. There is a commutative diagram of equipments, in which the vertical
   functors are equivalences and the horizontal functors are local equivalences:
   \[ \begin{tikzcd}[column sep=large]
     \dMod(\dcat{D}_T) \ar[r,"\dMod(\varphi_T)"] \ar[d,"\equiv"']
@@ -3145,10 +3198,14 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
   \]
 \end{proof}
 
-\section{Axiom-free definition of traced categories}
+\section{A traceless characterization of \texorpdfstring{$\TTrCat$}{TrCat}}
   \label{sec:characterization_of_traced}
 
-\todo[inline]{Introduce this section. Rename it?}
+\todo[author=David,inline]{How's this?}
+In this final section, we briefly record a result by which to construct a 2-category
+bi-equivalent to the 2-category $\TTrCat$ of traced categories. A distinguishing feature of this construction is that it makes no mention of a trace
+operation, nor anything akin to the usual traced category axioms. It is a direct consequence of the machinery used to
+prove our main theorems, and is---to the best of our knowledge---a new result.
 
 The forgetful functors between the categories of structured monoidal categories commute with the
 underlying set functors, i.e.\ the following diagram commutes:
