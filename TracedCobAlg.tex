@@ -2875,7 +2875,16 @@ $\eta_{\cat{T}}\colon\cat{T}\to\UCT\Int(\cat{T})$ for the unit component on $\ca
   equivalence, it follows that it too creates cartesian 2-cells, and from the construction of
   collapses in $\dCompProf$ it also creates collapse 2-cells. Hence a vertical map in $\dCompProf$
   is in $\bo/\ff$ iff its underlying map in $\dMonProf$ is.
-  \todo{Finish $\dTrProf$}
+
+  Likewise, $\Int\colon\dTrProf\to\dCompProf$ creates cartesian and collapse 2-cells. So what is
+  left is to show that a traced functor $F\colon\cat{T}\to\cat{T}'$ is fully faithful (resp.\
+  bijective-on-objects) in the usual sense if and only if $\Int(F)$ is. For fully faithfulness, this
+  follows easily from the fact that the unit $\eta\colon\cat{T}\to\UCT\Int T$ is fully faithful. It
+  is also clear that $\Int(F)$ is bijective-on-objects by construction when $F$ is. Finally, suppose
+  $\Int(F)$ is bijective-on-objects. Because the unit $\eta$ is injective-on-objects, $F$ must be
+  injective-on-objects. If $x\in\cat{T}'$ is any object, then there is an object $(t_1,t_2)\in\Int
+  T$ such that $\Int(F)(t_1,t_2)=(x,I)$, but $\Int(F)(t_1,t_2)=(Ft_1,Ft_2)$, hence $Ft_1=x$, showing
+  that $F$ is also surjective-on-objects.
 \end{proof}
 
 As a corollary of exactness, we obtain our second main theorem. Recall that we use the notation $\int$ to denote
@@ -3977,7 +3986,6 @@ $\bo$ morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
   Theorem~\ref{thm:free_on_objects_strong_equivalence}.
 \end{proof}
 
-\todo{Unused references commented, we probably want to incorporate some of those into the main text somewhere.}
 \begin{thebibliography}{XXX}
 
  \bibitem{Abramsky1}
