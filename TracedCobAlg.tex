@@ -1829,7 +1829,7 @@ Thus from the definitions and Proposition~\ref{prop:2iso_traced}, we see that th
 \]
 
 \begin{proposition}
-Each of the equipments $\dMonProf$, $\dTrProf$, and $\dCompProf$ is locally cocomplete. In particular, they have local reflexive coequalizers.
+  Each of the equipments $\dMonProf$, $\dTrProf$, and $\dCompProf$ has local reflexive coequalizers.
 \end{proposition}
 \begin{proof}
   It suffices to prove this for $\dMonProf$, since the other two are locally equivalent to it.
@@ -1841,8 +1841,16 @@ Each of the equipments $\dMonProf$, $\dTrProf$, and $\dCompProf$ is locally coco
   functors $\op{\cat{M}}\times\cat{N}\to\Set$, is closed under reflexive coequalizers.
 
   The fact that tensor product of monoidal profunctors preserves reflexive coequalizers follows from
-  the fact that the tensor product itself is constructed as a reflexive coequalizer.\todo{This proof is incomplete, because we haven't shown that it's got all local colimits.}
+  the fact that the tensor product itself is constructed as a reflexive coequalizer.
 \end{proof}
+
+\begin{remark}
+  The equipments $\dMonProf$, $\dTrProf$, and $\dCompProf$ are in fact locally cocomplete. The
+  category of profunctors $\cat{C}\tickar\cat{D}$ in any of these equipments is equivalent to the
+  category of algebras for a monad on $\Set^{\op{\cat{C}}\times\cat{D}}$, and it is a general fact
+  that if the category of algebras for a monad on a comcomplete category has reflexive coequalizers,
+  then it has all colimits.
+\end{remark}
 
 \section{Special properties of $\dCompProf$}
   \label{sec:special_CompProf}
@@ -2695,8 +2703,6 @@ rigorous equational proofs.
 
 \section{$\dMonProf$, $\dCompProf$, and $\dTrProf$ are exact}
   \label{sec:exactness_proofs}
-
-\todo{Prove/mention that these equipments have local coequalizers}
 
 After Section~\ref{sec:special_CompProf}, the second key piece of our argument is to show that the
 equipments $\dMonProf$, $\dTrProf$, and $\dCompProf$ from Section~\ref{sec:monoidal_profunctors} are
