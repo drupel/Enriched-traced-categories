@@ -613,7 +613,7 @@ In \cite{Shulman}, it is shown that all restrictions can be obtained by composin
 and conjoints. In particular, $N(f',f)\iso\comp{f}\odot N\odot\conj{f'}$ for any proarrow $N$.
 Moreover, $\comp{f}$ and $\conj{f}$ form an adjunction in $\HHor(\dcat{D})$; we write
 $\eta_f\colon\conj{f}\odot\comp{f}\to\unit(d)$ and
-$\epsilon_f\colon\unit(c)\to\comp{f}\odot\conj{f}$ for the unit and counit of this adjunction. 
+$\epsilon_f\colon\unit(c)\to\comp{f}\odot\conj{f}$ for the unit and counit of this adjunction.
 \erase{Finally, note that the companion and conjoint can be used to convert any 2-cell to a globular 2-cell in four ways (see \cite[\S 4]{Shulman}), two of which we will use later:
 \begin{equation}\label{eqn:globularize}
 \begin{tikzcd}
@@ -1044,15 +1044,15 @@ some basic results.
     \label{rem:canonical_actions}
   For any monoid $M\colon c\tickar c$, the companion $\comp{i}_M\colon c\tickar \Col{M}$ (resp.\ the
   conjoint $\conj{i}_M\colon \Col{M}\tickar c$) of the embedding $i_M\colon c\to\Col{M}$ has the
-  structure of a left (resp.\ right) $M$-module. Indeed, the horizontal composition of $\vec{\imath}_M$
-  and the left hand cartesian 2-cell from \eqref{dia:comapanion conjoint} defining $\comp{i}_M$ factors 
-  as follows:
+  structure of a left (resp.\ right) $M$-module. Indeed, the horizontal composition of
+  $\vec{\imath}_M$ and the left hand cartesian 2-cell from \eqref{dia:comapanion conjoint} defining
+  $\comp{i}_M$ factors as follows:
   \[ \begin{tikzcd}
     c \ar[r,tick,"M" domA] \ar[d,"i_M"']
       & c \ar[r,tick, "\comp{i}_M" domB] \ar[d,"i_M"']
       & \Col{M} \ar[d,equal] \\
     \Col{M} \ar[r,tick,"\Col{M}"' codA] \ar[d,equal]
-      & |[alias=domC]| \Col{M} \ar[r,tick,"\Col{M}"' codB] 
+      & |[alias=domC]| \Col{M} \ar[r,tick,"\Col{M}"' codB]
       & \Col{M} \ar[d,equal]\\
     \Col{M} \ar[rr,tick,"\Col{M}"' codC]
       && \Col{M}
@@ -2857,12 +2857,25 @@ $\eta_{\cat{T}}\colon\cat{T}\to\UCT\Int(\cat{T})$ for the unit component on $\ca
 \end{proof}
 
 \begin{proposition}
-	\label{prop:(bo,ff)_really_is}
-In $\dMonProf$, $\dTrProf$, and $\dCompProf$, a vertical map is $\ff$ (resp. $\bo$) if and only if it is fully faithful (resp. bijective-on-objects) in the usual sense. 
+    \label{prop:(bo,ff)_really_is}
+  In $\dMonProf$, $\dTrProf$, and $\dCompProf$, a vertical map is $\ff$ (resp. $\bo$) if and only if
+  it is fully faithful (resp. bijective-on-objects) in the usual sense.
 \end{proposition}
+\begin{proof}
+  It is clear that the forgetful double functor $U\colon\dMonProf\to\dProf$ creates cartesian 2-cells: a
+  2-cell in $\dMonProf$ is cartesian if and only if its underlying 2-cell in $\dProf$ is cartesian.
+  In particular, this implies that a vertical map in $\dMonProf$ is $\ff$ if and only if its
+  underlying map in $\dProf$ is $\ff$, hence is fully faithful in the usual sense.
 
-\begin{proof}\todo{P: Check proof.}
-In all three cases, the fully faithful functors are right-orthogonal to the bijective-on-objects functors, so by Theorem~\ref{thm:orthogonal} it suffices to show that bijective-on-objects coincides with $\bo$. It is clear by the construction of collapses in $\dMonProf$ that a map $f\colon\cat{C}\to\cat{D}$ is $\bo$ if and only if it is bijective-on-objects. The result follows because the collapse of a monoid in $\dCompProf$ and $\dTrProf$ is defined as the collapse of the underlying monoid in $\dMonProf$.
+  By the construction of collapses in $\dMonProf$, it is easy to see that $U$ similarly creates
+  collapse 2-cells. Thus a vertical map in $\dMonProf$ is $\bo$ if and only if its underlying map in
+  $\dProf$ is $\bo$, hence is bijective-on-objects in the usual sense.
+
+  Because the forgetful double functor $\UCM\colon\dCompProf\to\dMonProf$ is a fully faithful local
+  equivalence, it follows that it too creates cartesian 2-cells, and from the construction of
+  collapses in $\dCompProf$ it also creates collapse 2-cells. Hence a vertical map in $\dCompProf$
+  is in $\bo/\ff$ iff its underlying map in $\dMonProf$ is.
+  \todo{Finish $\dTrProf$}
 \end{proof}
 
 As a corollary of exactness, we obtain our second main theorem. Recall that we use the notation $\int$ to denote
@@ -3189,11 +3202,11 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
 \section{A traceless characterization of \texorpdfstring{$\TTrCat$}{TrCat}}
   \label{sec:characterization_of_traced}
 
-\todo[author=David,inline]{How's this?}
-In this final section, we briefly record a result by which to construct a 2-category
-bi-equivalent to the 2-category $\TTrCat$ of traced categories. A distinguishing feature of this construction is that it makes no mention of a trace
-operation, nor anything akin to the usual traced category axioms. It is a direct consequence of the machinery used to
-prove our main theorems, and is---to the best of our knowledge---a new result.
+In this final section, we briefly record a construction of a 2-category bi-equivalent to the
+2-category $\TTrCat$ of traced categories. A distinguishing feature of this construction is that it
+makes no mention of a trace operation, nor anything akin to the usual traced category axioms. It is
+a direct consequence of the machinery used to prove our main theorems, and is---to the best of our
+knowledge---a new result.
 
 The forgetful functors between the categories of structured monoidal categories commute with the
 underlying set functors, i.e.\ the following diagram commutes:
