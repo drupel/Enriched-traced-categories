@@ -1407,7 +1407,6 @@ orthogonal factorization systems.
   there is an orthogonal factorization system $(\bo,\ff)$ on the vertical 1-category $\dcat{D}_0$.
 \end{theorem}
 
-
 In an exact equipment, there is a close connection between monoids and $\bo$ morphisms. This
 connection is formalized in Theorem~\ref{thm:Mod_vs_bo} below, which is a key ingredient in the
 proofs of our main theorems.
@@ -1447,7 +1446,7 @@ proofs of our main theorems.
 \end{proposition}
 \begin{proof}
   The functor $\dom\colon\dcat{D}_0^{\bo}\to\dcat{D}_0$ is a fibration via the factorization system
-  in Theorem~{thm:orthogonal}. The equivalence sends a monoid $(c,M)$ to the collapse morphism
+  in Theorem~\ref{thm:orthogonal}. The equivalence sends a monoid $(c,M)$ to the collapse morphism
   $i_M\colon c\twoheadrightarrow\Col{M}$, which is in $\bo$ by the exactness of $\dcat{D}$. Since
   $\vec{\imath}_M$ is the universal embedding of $M$, any monoid homomorphism
   $(f,\vec{f}\mspace{2mu})$ gives rise to a unique $\tilde{f}$ such that
@@ -1868,6 +1867,9 @@ the proofs of our main results revolve. Recall Definitions~\ref{def:copresheaves
     & \CompCat. &
   \end{tikzcd} \]
 \end{theorem}
+
+The proof of this theorem will occupy the rest of this section, but first we note that the analogous
+result for traced categories follows as an easy corollary.
 
 \begin{corollary}
     \label{cor:Tr_mon_prof_equivalence}
@@ -3210,7 +3212,7 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
   \[
     \MMon(\dFrTrProf)\equiv\TTrFrObCat
     \quad\text{and}\quad
-    \MMon(\dFrCompProf)\equiv\CCompFrObCat.
+    \MMon(\dFrCompProf)\equiv\CCompFrObCat. \qedhere
   \]
 \end{proof}
 
@@ -3543,6 +3545,26 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
   \]
   preserve arrow objects and mapping path objects.
 \end{remark}
+
+\begin{definition}
+    \label{def:fully_faithful}
+  A morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{fully faithful} if the functor
+  $f^*\colon\ccat{C}(x,a)\to\ccat{C}(x,b)$, induced by composition with $f$, is fully faithful for every $x$.
+  That is, $f$ is fully faithful if, for every diagram
+  \begin{equation*} \begin{tikzcd}[row sep=large]
+    x \ar[r,bend left,"u"] \ar[r,bend right,"v"']
+        \ar[d,equal]
+      & a \ar[d,"f"] \\
+    x \ar[r,bend left,"u'" domA] \ar[r,bend right,"v'"' codA]
+      & b
+    \twocellA{\alpha'}
+  \end{tikzcd} \end{equation*}
+  such that $fu=u'$ and $fv=v'$, there exists a unique $\alpha\colon u\Rightarrow v$ such that
+  $f\alpha=\alpha'$.
+
+  A morphism $f\colon a\to b$ in a 2-category $\ccat{C}$ is \emph{bijective-on-objects} if it is
+  left orthogonal to every fully faithful morphism.
+\end{definition}
 
 \begin{definition}
     \label{def:surjective_equivalence}
@@ -4009,11 +4031,11 @@ $\bo$ morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
  %\bibitem{BaezDolan}
  %J.C.~Baez, J.~Dolan, Higher-dimensional Algebra and Topological Quantum Field Theory, Journal of Mathematical Physics, 36 (1995), no. 11, pp.~6073--6105.
 
- %\bibitem{BorceuxV1}
- %F.~Borceux, Handbook of Categorical Algebra: Volume 1, Basic Category Theory, Cambridge University Press (1994).
+ \bibitem{BorceuxV1}
+ F.~Borceux, Handbook of Categorical Algebra: Volume 1, Basic Category Theory, Cambridge University Press (1994).
 
- %\bibitem{BorceuxV2}
- %F.~Borceux, Handbook of Categorical Algebra: Volume 2, Categories and Structures, Cambridge University Press (1994).
+ \bibitem{BorceuxV2}
+ F.~Borceux, Handbook of Categorical Algebra: Volume 2, Categories and Structures, Cambridge University Press (1994).
 
  \bibitem{BorceuxBourn}
  F.~Borceux, D.~Bourn, Mal'cev, protomodular, homological and semi-abelian categories, Mathematics
@@ -4058,8 +4080,8 @@ M.~Hasegawa, S-Y.~Katsumata, A note on the biadjunction between 2-categories of 
  \bibitem{LackHomotopy}
  S.~Lack, Homotopy-theoretic aspects of 2-monads (English summary), Journal of Homotopy and Related Structures, 2 (2007), no. 2, pp.~229--260.
 
- %\bibitem{Leinster}
- %T.~Leinster, Higher Operads, higher categories, London Mathematical Society Lecture Note Series, 298, Cambridge University Press, Cambridge (2004).
+ \bibitem{Leinster}
+ T.~Leinster, Higher Operads, higher categories, London Mathematical Society Lecture Note Series, 298, Cambridge University Press, Cambridge (2004).
 
  %\bibitem{MacL--CTWM}
  %S.~MacLane, Categories for the Working Mathematician, Springer Science \& Business Media (1978).
