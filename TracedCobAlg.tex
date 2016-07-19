@@ -515,13 +515,13 @@ also \cite{Wood1} and \cite{Wood2}.
 \begin{definition}
   A \emph{double category}%
   \footnote{
-    We will use many flavors of category in this paper. To help distinguish, we denote named
-    1-categories, monoidal categories, and operads with bold roman letters, e.g.\ $\ncat{Cob}$, and
+    We will use many flavors of category in this paper, and we attempt to use different fonts to distinguish between them. We denote named
+    1-categories, monoidal categories, and operads using bold roman letters, e.g.\ $\ncat{Cob}$, and
     unnamed 1-categories with script, e.g.\ $\cat{C}$. For named 2-categories or bicategories we do
     almost the same, but change the font of the first letter to calligraphic, such as
     $\nncat{T}{rCat}$; for unnamed 2-categories we use (unbold) calligraphic, e.g.\ $\ccat{D}$.
     Finally, for double categories we make the first letter blackboard bold, whether named (e.g.,
-    $\ndcat{P}{rof}$) or unnamed (e.g., $\dcat{D}$).
+    $\dProf$) or unnamed (e.g., $\dcat{D}$). A minor exception occurs almost immediately, however: two 1-categories appear as part of the structure of a double category $\dcat{D}$, and we denote them as $\dcat{D}_0,\dcat{D}_1$ rather than using script font.
   }
   $\dcat{D}$ consists of the following data:
   \begin{itemize}
@@ -533,7 +533,7 @@ also \cite{Wood1} and \cite{Wood2}.
       frame} functors. Given an object $M\in\Ob(\dcat{D}_1)$ with $c=\lframe(M)$ and
       $c'=\rframe(M)$, we say that $M$ is a \emph{proarrow} (or \emph{horizontal arrow}) \emph{from
       $c$ to $c'$} and write $M\colon c\tickar c'$. A morphism $\phi\colon M\to N$ in $\dcat{D}_1$
-      is called a 2-cell, and is drawn as follows, where $f=\lframe(\phi)$ and $f'=\rframe(\phi)$:
+      is called a \emph{2-cell}, and is drawn as follows, where $f=\lframe(\phi)$ and $f'=\rframe(\phi)$:
       \begin{equation} \begin{tikzcd}
           \label{eqn:2cell}
         c \ar[r,tick,"M" domA] \ar[d,"f"']
@@ -554,7 +554,7 @@ also \cite{Wood1} and \cite{Wood2}.
   2-category}, denoted $\VVer(\dcat{D})$, whose underlying 1-category is $\dcat{D}_0$ and whose
   2-morphisms $f\Rightarrow f'$ are defined to be 2-cells \eqref{eqn:2cell} where $M=\unit(c)$ and
   $N=\unit(d)$ are unit proarrows. There is also a \emph{horizontal bicategory}, denoted
-  $\HHor(\dcat{D})$, whose objects and 1-cells are the objects and horizontal 1-cells of $\dcat{D}$,
+  $\HHor(\dcat{D})$, whose objects and 1-cells are the objects and horizontal arrows of $\dcat{D}$,
   and whose 2-cells are the 2-cells of $\dcat{D}$ of the form \eqref{eqn:2cell} such that $f=\id_c$
   and $f'=\id_{c'}$.
 
