@@ -512,7 +512,7 @@ is a double category satisfying a certain fibrancy condition. In this section, w
 out and give two relevant examples. An excellent reference is Shulman's paper \cite{Shulman}; see
 also \cite{Wood1} and \cite{Wood2}.
 
-\begin{definition}
+\begin{definition}\label{def:double_cat}
   A \emph{double category}%
   \footnote{
     We will use many flavors of category in this paper, and we attempt to use different fonts to distinguish between them. We denote named
@@ -560,7 +560,7 @@ also \cite{Wood1} and \cite{Wood2}.
 
   A \emph{strong double functor} $F\colon\dcat{C}\to\dcat{D}$ consists of functors
   $F_0\colon\dcat{C}_0\to\dcat{D}_0$ and $F_1\colon\dcat{C}_1\to\dcat{D}_1$ commuting with the
-  frames $\lframe$,$\rframe$, and preserving the unit $\unit$ and horizontal composition $\odot$ up
+  frames $\lframe$,$\rframe$, which preserve the unit $\unit$ and the horizontal composition $\odot$ up
   to coherent isomorphism.
 \end{definition}
 
@@ -591,7 +591,7 @@ denote fibrations of 1-categories using two-headed arrows $\onto$.
 
 For any vertical morphism $f\colon c\to d$ in an equipment $\dcat{D}$, there are two canonical
 proarrows $\comp{f}\colon c\tickar d$ and $\conj{f}\colon d\tickar c$, called respectively the
-\emph{companion} and \emph{conjoint} of $f$, defined by restriction:
+\emph{companion} and the \emph{conjoint} of $f$, defined by restriction:
 \begin{equation}
   \label{dia:comapanion conjoint}
   \begin{tikzcd}
@@ -611,8 +611,8 @@ proarrows $\comp{f}\colon c\tickar d$ and $\conj{f}\colon d\tickar c$, called re
 In \cite{Shulman}, it is shown that all restrictions can be obtained by composing with companions
 and conjoints. In particular, $N(f',f)\iso\comp{f}\odot N\odot\conj{f'}$ for any proarrow $N$.
 Moreover, $\comp{f}$ and $\conj{f}$ form an adjunction in $\HHor(\dcat{D})$; we write
-$\eta_f\colon\conj{f}\odot\comp{f}\to\unit(d)$ and
-$\epsilon_f\colon\unit(c)\to\comp{f}\odot\conj{f}$ for the unit and counit of this adjunction.
+$\eta_f\colon\unit(c)\to\comp{f}\odot\conj{f}$ and
+$\epsilon_f\colon\conj{f}\odot\comp{f}\to\unit(d)$ for the unit and counit of this adjunction.
 \erase{Finally, note that the companion and conjoint can be used to convert any 2-cell to a globular 2-cell in four ways (see \cite[\S 4]{Shulman}), two of which we will use later:
 \begin{equation}\label{eqn:globularize}
 \begin{tikzcd}
@@ -648,17 +648,18 @@ where the tuple $(X,g_1,g_2,\alpha)$ is universal, up to equivalence, for data o
 Although this definition makes sense for any 2-category $\ccat{C}$, we will use it only in the
 special case described in the next paragraph.
 
-Let $\ccat{C}=\CCat$.  Suppose $f_2$ is a fibration and that the square \eqref{eqn:pseudopullback}
+Let $\ccat{C}=\CCat$, the 2-category of small categories.  Suppose $f_2$ is a fibration and that the pullback square \eqref{eqn:pseudopullback}
 strictly commutes, i.e.\ that $\alpha$ is the identity. It is a standard fact that a strict pullback
-of a Grothendieck fibration along an arbitrary functor is a fibration and that the strict pullback
+of a fibration along an arbitrary functor is a fibration and that the strict pullback
 is also a pseudo-pullback. The upshot is that $g_2$ is a pseudo-pullback if and only if, for any
 strict pullback $g_2'$ of $f_2$ along $f_1$, the induced map $g_2\to g_2'$ is an equivalence of
 fibrations.
 
 \begin{definition}
     \label{def:local_equivalence}
-  By an \emph{equipment functor}, we simply mean a strong double functor between equipments. We
-  refer to an equipment functor $F\colon\dcat{C}\to\dcat{D}$ as a \emph{local equivalence} if the
+  By an \emph{equipment functor}, we simply mean a strong double functor between equipments (see Definition~\ref{def:double_cat}). 
+  
+  We refer to an equipment functor $F\colon\dcat{C}\to\dcat{D}$ as a \emph{local equivalence} if the
   following (strictly commuting) square is a pseudo-pullback of categories:
   \begin{equation} \begin{tikzcd}
       \label{eqn:local_equiv}
@@ -674,12 +675,12 @@ fibrations.
 \begin{remark}
     \label{rem:strict_vs_pseudo_pullback}
   As discussed above, if the square \eqref{eqn:local_equiv} is a strict pullback, it will be a
-  pseudo-pullback, and hence a local equivalence. Any local equivalence can be replaced by an
-  equivalent strict pullback, which we define in
+  pseudo-pullback, and hence a local equivalence. Any local equivalence can thus be replaced by
+  an equivalent strict pullback. We will use this fact often; see 
   Definition~\ref{def:induced_locally_equivalent_equipment}.
 
-  Also note that the frame fibration for $\dcat{C}$ is equivalent to the functor
-  $\dcat{C}_0\times\dcat{C}_0\to\CCat$, the 2-category of small categories, sending $(c,d)$ to
+  Also note that the frame fibration for $\dcat{C}$ is equivalent to a functor
+  $\dcat{C}_0\times\dcat{C}_0\to\CCat$, sending $(c,d)$ to
   $\HHor(\dcat{C})(c,d)$ and similarly for $\dcat{D}$. In this language, $F$ is a local equivalence
   if and only if the induced functors $\HHor(\dcat{C})(c,d)\to\HHor(\dcat{D})(F_0(c),F_0(d))$ are
   equivalences of categories for every pair of objects $(c,d)$. The square \eqref{eqn:local_equiv}
@@ -689,11 +690,9 @@ fibrations.
 \begin{definition}
     \label{def:induced_locally_equivalent_equipment}
   Let $\dcat{D}$ be a double category and $F_0\colon\dcat{C}_0\to\dcat{D}_0$ be a functor. A strict
-  pullback of the form \eqref{eqn:local_equiv} defines a double category $\dcat{C}$, which we denote
-  \[
-    \dcat{C}\coloneqq F_0^*(\dcat{D}).
-  \]
-  If $\dcat{D}$ is an equipment, $F_0^*(\dcat{D})$ will be as well since fibrations are stable under
+  pullback of the form \eqref{eqn:local_equiv} defines a double category with vertical category $\dcat{C}_0$, which we denote $F_0^*(\dcat{D})$.
+  
+  If $\dcat{D}$ is an equipment, $F_0^*(\dcat{D})$ will be one as well since fibrations are stable under
   pullback. In this case we call $F_0^*(\dcat{D})$ the \emph{equipment induced by $F_0$}. By
   Remark~\ref{rem:strict_vs_pseudo_pullback}, the induced equipment functor
   $F_0^*(\dcat{D})\to\dcat{D}$ is a local equivalence.
@@ -745,7 +744,7 @@ of) profunctors, as in the following example.
     & \displaystyle\coprod_{d\in\cat{D}} M(c,d)\times N(d,e)\ar[l]
   \end{tikzcd} \end{equation}
   where the two rightward maps are given by the right and left actions of $\cat{D}$ on $M$ and $N$
-  respectively and the splitting is given by $\id_d\in\cat{D}(d,d)$. Given a profunctor $M\colon\cat{C}\tickar\cat{C'}$ there are
+  respectively, and the splitting is given by $\id_d\in\cat{D}(d,d)$. Given a profunctor $M\colon\cat{C}\tickar\cat{D}$ there are
   canonical isomorphisms $\Hom_{\cat{C}}\odot M \iso M \iso M\odot\Hom_{\cat{D}}$ which can be
   viewed as giving an action of $\Hom_{\cat{C}}$ and of $\Hom_{\cat{D}}$ on $M$, from the left and
   right respectively.
@@ -789,12 +788,11 @@ of) profunctors, as in the following example.
 
   The reflexive coequalizer \eqref{eqn:coendComp} can be easily expressed in this notation: the elements of
   $(M\odot N)(c,e)$ are pairs $m\otimes n$ of elements $m\in M(c,d)$ and $n\in N(d,e)$ for some
-  $d\in\cat{D}$ modulo the relation $(m\cdot f)\otimes n = m\otimes(f\cdot n)$, whenever this makes
-  sense.
+  $d\in\cat{D}$ modulo the relation $(m\cdot f)\otimes n = m\otimes(f\cdot n)$, for $f\in\cat{D}$.
 
   Finally, a 2-cell $\phi$ of the form \eqref{eqn:Prof2cells} is function sending elements $m\in
-  M(c,c')$ to elements $\phi(m)\in N(Fc,F'c')$ such that the equation $\phi(f\cdot m\cdot
-  g)=F(f)\cdot\phi(m)\cdot F'(g)$ holds whenever it makes sense.
+  M(c,c')$ to elements $\phi(m)\in N(Fc,F'c')$ such that the equation $\phi(g\cdot m\cdot
+  g)=F(g)\cdot\phi(m)\cdot F'(f)$ holds whenever it makes sense.
 \end{remark}
 
 \section{Monoids and bimodules}
@@ -810,7 +808,7 @@ to monoids in $\dcat{D}$.
     \label{def:monoids}
   Denote by $\Mon(\dcat{D})$ the category of monoids in $\dcat{D}$. More precisely, the objects are
   \emph{monoids}: 4-tuples $(c,M,i_M,m_M)$ consisting of an object $c$ of $\dcat{D}$ and a proarrow
-  $M\colon c\tickar c$ together with unit and multiplication cells
+  $M\colon c\tickar c$, together with unit and multiplication cells
   \begin{equation}
       \label{eqn:unit_and_mult}
     \begin{tikzcd}
@@ -843,8 +841,7 @@ to monoids in $\dcat{D}$.
 \end{definition}
 
 There is an evident forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ sending a monoid
-$M\colon c\tickar c$ to its underlying object $|M|\coloneqq c$. The following result can also be
-found in \cite{FioreGambinoKock}.
+$M\colon c\tickar c$ to its underlying object $|M|\coloneqq c$. The following result is also in \cite{FioreGambinoKock}.
 
 \begin{lemma}
     \label{lemma:Mon_und_fib}
@@ -866,7 +863,7 @@ found in \cite{FioreGambinoKock}.
 \begin{lemma}
     \label{lem:Mon_pullback}
   For a local equivalence $F\colon\dcat{C}\to\dcat{D}$, the induced square
-  \[ \begin{tikzcd}
+  \[ \begin{tikzcd}[column sep=large]
     \Mon(\dcat{C}) \ar[r,"\Mon(F)"] \ar[d,two heads,"\MOb"'] \ar[dr,phantom,"\lrcorner" very near start]
       & \Mon(\dcat{D}) \ar[d,two heads,"\MOb"] \\
     \dcat{C}_0 \ar[r,"F_0"']
@@ -875,18 +872,18 @@ found in \cite{FioreGambinoKock}.
   is a pseudo-pullback of categories.
 \end{lemma}
 \begin{proof}
-  By Remark~\ref{rem:strict_vs_pseudo_pullback}, we may assume that the pullback in
-  Definition~\ref{def:local_equivalence} realizing $F\colon\dcat{C}\to\dcat{D}$ as a local
-  equivalence is strict. It is then straightforward to check directly that the above square is again
+  By Remark~\ref{rem:strict_vs_pseudo_pullback}, we may assume that the pullback \eqref{eqn:local_equiv} in
+  Definition~\ref{def:local_equivalence}, realizing $F\colon\dcat{C}\to\dcat{D}$ as a local
+  equivalence, is strict. It is then straightforward to check directly that the above square is again
   a strict pullback and hence a pseudo-pullback.
 \end{proof}
 
-In all our cases of interest, $\Mon(\dcat{C})$ will be the vertical part of an equipment. The
-following is a standard construction; see \cite{Shulman}
+In all our cases of interest, $\Mon(\dcat{D})$ becomes the vertical part of another equipment. 
+The following is a standard construction; see \cite{Shulman}
 
 \begin{definition}
     \label{def:monoids_and_modules}
-  Let $\dcat{D}$ be an equipment with local reflexive coequalizers, i.e.\ such that each category
+  Let $\dcat{D}$ be an equipment with local reflexive coequalizers, i.e.\ such that each 1-category
   $\HHor(\dcat{D})(c,d)$ has reflexive coequalizers and $\odot$ preserves reflexive coequalizers in each variable. The
   equipment $\dMod(\dcat{D})$ of \emph{monoids and bimodules} is defined as follows:
   \begin{itemize}
@@ -923,21 +920,21 @@ following is a standard construction; see \cite{Shulman}
         & B_1\otimes_{M'} B_2
       \end{tikzcd}
       \]
-      together with the evident left $M$ and right $M''$ actions. Above, the splitting map $B_1\odot B_2\to B_1\odot M'\odot B_2$ comes from the unit of the monoid.
+      together with the evident left $M$ and right $M''$ actions. Above, the splitting map $B_1\odot B_2\to B_1\odot M'\odot B_2$ comes from the unit $i_{M'}$ of the monoid.
     \item The 2-cells are \emph{bimodule homomorphisms}: cells in $\dcat{D}$
       \[ \begin{tikzcd}
-        c \ar[r,tick,"A"] \ar[d,"f"' domA]
-          & c' \ar[d,"f'" codA] \\
-        d \ar[r,tick,"B"']
+        c \ar[r,tick,"B"] \ar[d,"f"' domA]
+          & d \ar[d,"f'" codA] \\
+        c' \ar[r,tick,"B'"']
           & d'
         \twocellA{\phi}
       \end{tikzcd} \]
-      which are compatible with the left and right actions of the bimodules.
+      which are compatible with the various left and right monoid actions.
   \end{itemize}
-  We will write $\Bimod{M}{N}$ to denote the 1-category of $(M,N)$-bimodules and bimodule morphisms.
+  We will write $\Bimod{M}{N}\coloneqq\HHor(\dMod(\dcat{D}))(M,N)$ to denote the 1-category of $(M,N)$-bimodules and bimodule morphisms.
 \end{definition}
 
-The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ extends to a forgetful equipment
+The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ extends to an equipment
 functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$. There is also a local equivalence
 $U\colon\dcat{D}\to\dMod(\dcat{D})$ sending $c$ to the unit $c\tickar c$ with the trivial monoid
 structure. If $F\colon\dcat{C}\to\dcat{D}$ is an equipment functor, then there is an evident
