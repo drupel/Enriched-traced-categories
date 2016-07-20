@@ -934,8 +934,10 @@ The following is a standard construction; see \cite{Shulman}
   We will write $\Bimod{M}{N}\coloneqq\HHor(\dMod(\dcat{D}))(M,N)$ to denote the 1-category of $(M,N)$-bimodules and bimodule morphisms.
 \end{definition}
 
-The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ extends to an equipment
-functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$. There is also a local equivalence
+The forgetful functor $\MOb\colon\Mon(\dcat{D})\to\dcat{D}_0$ extends to a \emph{lax} equipment
+functor $\MOb\colon\dMod(\dcat{D})\to\dcat{D}$. We have not defined lax equipment functors---because we do not use them---and in particular we will we not use the equipment version of $\MOb$.
+
+More importantly for our work, there is a local equivalence
 $U\colon\dcat{D}\to\dMod(\dcat{D})$ sending $c$ to the unit $c\tickar c$ with the trivial monoid
 structure. If $F\colon\dcat{C}\to\dcat{D}$ is an equipment functor, then there is an evident
 equipment functor $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. In fact, we have the following
@@ -943,8 +945,8 @@ which is immediate from the definitions.
 
 \begin{lemma}
     \label{lemma:FFLE_Mod}
-  For a local equivalence $F\colon\dcat{C}\to\dcat{D}$ the induced functor
-  $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$ is a local equivalence. If $F$ is a fully
+  If $F\colon\dcat{C}\to\dcat{D}$ is a local equivalence, then so is the induced functor
+  $\dMod(F)\colon\dMod(\dcat{C})\to\dMod(\dcat{D})$. If $F$ is a fully
   faithful local equivalence, then so is $\dMod(F)$.
 \end{lemma}
 
