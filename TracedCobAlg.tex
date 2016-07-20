@@ -610,9 +610,12 @@ proarrows $\comp{f}\colon c\tickar d$ and $\conj{f}\colon d\tickar c$, called re
 \end{equation}
 In \cite{Shulman}, it is shown that all restrictions can be obtained by composing with companions
 and conjoints. In particular, $N(f',f)\iso\comp{f}\odot N\odot\conj{f'}$ for any proarrow $N$.
-Moreover, $\comp{f}$ and $\conj{f}$ form an adjunction in $\HHor(\dcat{D})$; we write
-$\eta_f\colon\unit(c)\to\comp{f}\odot\conj{f}$ and
-$\epsilon_f\colon\conj{f}\odot\comp{f}\to\unit(d)$ for the unit and counit of this adjunction.
+Moreover, $\comp{f}$ and $\conj{f}$ form an adjunction in $\HHor(\dcat{D})$; we denote the unit and counit by:
+\begin{equation}\label{eqn:eta_epsilon}
+	\eta_f\colon\unit(c)\to\comp{f}\odot\conj{f}
+	\qquad\tn{and}\qquad
+	\epsilon_f\colon\conj{f}\odot\comp{f}\to\unit(d)
+\end{equation}
 \erase{Finally, note that the companion and conjoint can be used to convert any 2-cell to a globular 2-cell in four ways (see \cite[\S 4]{Shulman}), two of which we will use later:
 \begin{equation}\label{eqn:globularize}
 \begin{tikzcd}
@@ -879,7 +882,7 @@ $M\colon c\tickar c$ to its underlying object $|M|\coloneqq c$. The following re
 \end{proof}
 
 In all our cases of interest, $\Mon(\dcat{D})$ becomes the vertical part of another equipment. 
-The following is a standard construction; see \cite{Shulman}
+The following is a standard construction; see \cite{Shulman}.
 
 \begin{definition}
     \label{def:monoids_and_modules}
@@ -961,10 +964,9 @@ an equivalence relation.
 
 In \cite{Schultz2015}, this analogy was pursued further, proposing definitions of \emph{regular}
 and \emph{exact} equipments, in which certain collapses exist and satisfy certain exactness
-properties. Showing that several equipments of interest are exact is one of the key pieces of our
-proof of our main theorems. In particular, the collapse construction will be the bridge connecting
-algebras of an operad (i.e.\ set-valued functors), which live in the horizontal bicategory of
-equipments, with traced or compact monoidal categories, which will be the objects of equipments. We
+properties. Showing that several equipments of interest are exact is a key piece in our
+proof of the main theorems. In particular, the collapse construction will be the bridge connecting a given operad algebra (i.e.\ a set-valued functor), which lives in the horizontal bicategory of an
+equipment, with a certain traced or compact monoidal category, which will be the an object in the equipment. We
 will also show that in any exact (in fact any regular) equipment, one can define an orthogonal
 factorization system which generalizes the fully-faithful/bijective-on-objects factorization system
 on $\CCat$. These factorization systems are also used extensively throughout the paper.
@@ -1004,8 +1006,8 @@ some basic results.
 \end{lemma}
 
 \begin{definition}
-  Let $M\colon c\tickar c$ be a monoid in an equipment $\dcat{D}$. The \emph{collapse} of $M$ is
-  defined to be a universal embedding of $M$. That is, the collapse of $M$ is an object
+  Let $M\colon c\tickar c$ be a monoid in an equipment $\dcat{D}$. A \emph{collapse} of $M$ is
+  defined to be a universal embedding of $M$. That is, a collapse of $M$ is an object
   $\Col{M}\in\dcat{D}_0$ together with an embedding
   \[ \begin{tikzcd}
     c \ar[r,tick,"M" domA] \ar[d,"i_M"']
@@ -1044,7 +1046,7 @@ some basic results.
   conjoint $\conj{i}_M\colon \Col{M}\tickar c$) of the embedding $i_M\colon c\to\Col{M}$ has the
   structure of a left (resp.\ right) $M$-module. Indeed, the horizontal composition of
   $\vec{\imath}_M$ and the left hand cartesian 2-cell from \eqref{dia:comapanion conjoint} defining
-  $\comp{i}_M$ factors as follows:
+  $\comp{i}_M$ factors uniquely through some $l_{\comp{i}_M}$, as follows:
   \[ \begin{tikzcd}
     c \ar[r,tick,"M" domA] \ar[d,"i_M"']
       & c \ar[r,tick, "\comp{i}_M" domB] \ar[d,"i_M"']
@@ -1070,7 +1072,7 @@ some basic results.
     \twocellA{l_{\comp{i}_M}}
     \twocellB{\tn{cart}}
   \end{tikzcd}\]
-  The right action on $\conj{i}_M$ is obtained similarly.
+  The right $M$-action on $\conj{i}_M$ is obtained similarly.
 \erase{=======
   structure of a left (resp.\ right) $M$-module. Indeed, these are given by globularizing the collapse
   2-cell $\vec{\imath}_M$ as in \eqref{eqn:globularize}:\todo{I don't understand how to construct these diagrams.  It
@@ -1101,10 +1103,10 @@ some basic results.
 \end{remark}
 
 \begin{lemma}
-  Let $M\colon c\tickar c$ and $N\colon d\tickar d$ be monoids in an equipment $\dcat{D}$ and assume
+  Let $M\colon c\tickar c$ and $N\colon d\tickar d$ be monoids in an equipment $\dcat{D}$, and assume
   they admit collapses $\Col{M}$ and $\Col{N}$, respectively. Then restriction induces a functor
   \[
-    \HHor(\dcat{D})(\Col{M},\Col{N})\to\Bimod{M}{N}.
+    \HHor(\dcat{D})\big(\Col{M},\Col{N}\big)\to\Bimod{M}{N}.
   \]
 \end{lemma}
 \begin{proof}
@@ -1160,7 +1162,7 @@ some basic results.
     \item for every pair of monoids $M$ and $N$ the restriction functor
     \begin{equation}
         \label{eqn:exact_Hor_Bimod}
-      \HHor(\dcat{D})(\Col{M},\Col{N})\To{\raisebox{-1ex}{$\equiv$}}\Bimod{M}{N}
+      \HHor(\dcat{D})\big(\Col{M},\Col{N}\big)\To{\raisebox{-1ex}{$\equiv$}}\Bimod{M}{N}
     \end{equation}
     is an equivalence of categories.
   \end{enumerate}
@@ -1174,8 +1176,8 @@ some basic results.
   pseudo-pullback square
   \begin{equation*}
     \begin{tikzcd}
-      \dMod(\dcat{D})_1 \ar[d,two heads] \ar[r]
-      & \dcat{D}_1 \ar[d,two heads] \\
+      \dMod(\dcat{D})_1 \ar[d,two heads,"{(\lframe,\rframe)}"'] \ar[r]
+      & \dcat{D}_1 \ar[d,two heads,"{(\lframe,\rframe)}"] \\
       \Mon(\dcat{D})\times\Mon(\dcat{D}) \ar[r,"\Col{\textrm{--}}\times\Col{\textrm{--}}"']
       & \dcat{D}_0\times\dcat{D}_0.
     \end{tikzcd}
@@ -1196,8 +1198,7 @@ Exact equipments arising in practice almost always have local reflexive coequali
 case it is possible to simplify the definition, as we show in Proposition~\ref{prop:exact_coeqs}.
 Recall from Remark~\ref{rem:canonical_actions} the natural $M$-module structures on the companion
 $\comp{i}_M\colon c\tickar \Col{M}$ and conjoint $\conj{i}_M\colon \Col{M}\tickar c$ of the collapse
-embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unit(a)\colon a\tickar a$ for the unit
-map on an object $a$.
+embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unit(a)$ from Definition~\ref{def:double_cat}, and $\eta,\epsilon$ from \eqref{eqn:eta_epsilon}.
 
 \begin{proposition}
     \label{prop:exact_coeqs}
@@ -1223,9 +1224,9 @@ map on an object $a$.
   By Condition~1 of Definition~\ref{def:exact_equipment}, we have $M\iso\comp{i}_M\odot\conj{i}_M$,
   so the final equivalence is just the definition of horizontal composition in $\dMod(\dcat{D})$;
   see Definition~\ref{def:monoids_and_modules} and Remark~\ref{rem:canonical_actions}. Below we will
-  use the fact that, by definition of $\dcat{D}$ having local reflexive coequalizers, $\odot$
-  preserves reflexive coequalizers in each variable, and that $\otimes$ is defined as a reflexive
-  coequalizer. Finally, note that the restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic
+  use the fact that $\otimes$ is defined as a reflexive
+  coequalizer, and that, by definition of $\dcat{D}$ having local reflexive coequalizers, $\odot$
+  preserves reflexive coequalizers in each variable. Finally, note that the restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic
   to the functor $X\mapsto\comp{i}_M\odot X\odot\conj{i}_N$, with the left and right actions given
   by the left action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$.
 
