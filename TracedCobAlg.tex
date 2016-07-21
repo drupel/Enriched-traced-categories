@@ -1017,7 +1017,7 @@ some basic results.
     \twocellA{\vec{\imath}_M}
   \end{tikzcd} \]
   such that any other embedding of $M$ factors uniquely through $\vec{\imath}_M$:
-  \begin{equation*}
+  \begin{equation}\label{eqn:universal_embedding}
     \begin{tikzcd}
       c \ar[r,tick,"M" domA] \ar[d,"f"']
         & c \ar[d,"f"] \\
@@ -1036,7 +1036,7 @@ some basic results.
       \twocellA{\vec{\imath}_M}
       \twocellB[pos=.6]{\id_{\tilde{f}}}
     \end{tikzcd}
-  \end{equation*}
+  \end{equation}
   In other words, $\Col{M}$ represents the functor $\Emb(M,\textrm{--})\colon\dcat{D}_0\to\Set$.
 \end{definition}
 
@@ -1227,17 +1227,17 @@ embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unit(a)$ from Defi
   use the fact that $\otimes$ is defined as a reflexive
   coequalizer, and that, by definition of $\dcat{D}$ having local reflexive coequalizers, $\odot$
   preserves reflexive coequalizers in each variable. Finally, note that the restriction functor \eqref{eqn:exact_Hor_Bimod} is isomorphic
-  to the functor $X\mapsto\comp{i}_M\odot X\odot\conj{i}_N$, with the left and right actions given
+  to the functor $B\mapsto\comp{i}_M\odot B\odot\conj{i}_N$, with the left and right actions given
   by the left action of $M$ on $\comp{i}_M$ and right action of $N$ on $\conj{i}_N$.
 
   Assuming $\conj{i}_M\otimes_M\comp{i}_M\iso\unit\Col{M}$, we can construct an inverse to this
   restriction functor, sending an $(M,N)$-bimodule $B$ to $\conj{i}_M\otimes_M
   B\otimes_N\comp{i}_N$. It is easy to check that this gives an equivalence of categories:
   \begin{align*}
-    \conj{i}_M\otimes_M (\comp{i}_M\odot X\odot\conj{i}_N)\otimes_N\comp{i}_N
-      &\iso (\conj{i}_M\otimes_M\comp{i}_M)\odot X\odot (\conj{i}_N\otimes_N\comp{i}_N) \\
-      &\iso \unit\Col{M}\odot X\odot \unit\Col{N} \\
-      &\iso X \\
+    \conj{i}_M\otimes_M (\comp{i}_M\odot B\odot\conj{i}_N)\otimes_N\comp{i}_N
+      &\iso (\conj{i}_M\otimes_M\comp{i}_M)\odot B\odot (\conj{i}_N\otimes_N\comp{i}_N) \\
+      &\iso \unit\Col{M}\odot B\odot \unit\Col{N} \\
+      &\iso B \\
     \intertext{and}
     \comp{i}_M\odot (\conj{i}_M\otimes_M B\otimes_N\comp{i}_N)\odot \conj{i}_N
       &\iso (\comp{i}_M\odot\conj{i}_M)\otimes_M B\otimes_N (\comp{i}_N\odot\conj{i}_N) \\
@@ -1291,7 +1291,7 @@ embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unit(a)$ from Defi
   $\bullet$ is unital with respect to $i$.
 
   The collapse $\Col{M}$ is then the category with the same objects as $\cat{C}$, with morphisms
-  $\Col{M}(c,d)=M(c,d)$, and with composition given by $\bullet$. The unit $i$ of $M$ gives the
+  $\Col{M}(c,d)\coloneqq M(c,d)$, and with composition given by $\bullet$. The unit $i$ of $M$ gives a
   functor $i_M\colon\cat{C}\to\Col{M}$.
 \end{example}
 
@@ -1323,8 +1323,8 @@ embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unit(a)$ from Defi
 \end{proof}
 
 With these definitions in place we can now introduce two distinguished classes of vertical morphisms
-in an equipment $\dcat{D}$. These will become the left and right classes in an orthogonal
-factorization system on $\VVer(\dcat{D})$ for exact equipments.
+in an equipment $\dcat{D}$. When $\dcat{D}$ is exact, these will become the left and right classes in an orthogonal
+factorization system on $\VVer(\dcat{D})$.
 
 \begin{definition}\cite[Definitions~4.3~and~4.5]{Schultz2015}
     \label{def:boff}
@@ -1354,7 +1354,7 @@ factorization system on $\VVer(\dcat{D})$ for exact equipments.
 \end{definition}
 
 In Section~\ref{sec:monoidal_profunctors} we will define equipments of profunctors on monoidal
-categories and verify their exactness directly in Section~\ref{sec:exactness_proofs}. The key
+categories, and we will verify their exactness directly in Section~\ref{sec:exactness_proofs}. The key
 ingredient in verifying that the equipment of traced profunctors is exact will be orthogonal
 factorization systems. Thus we briefly recall the notion of orthogonal factorization systems for
 1-categories and strict 2-categories. Additional background on orthogonal factorization systems can
@@ -1415,8 +1415,7 @@ proofs of our main theorems.
   vertical category $\dcat{D}_0^{\bo}\ss\dcat{D}_0^{\rightarrow}$ is the full subcategory of the
   arrow category of $\dcat{D}_0$ spanned by the arrows in the class $\bo$. As such, we have functors
   $\dom,\cod\colon\dcat{D}_0^{\bo}\to\dcat{D}_0$. The rest of the structure of $\dcat{D}^{\bo}$ is
-  defined by setting $\dcat{D}^{\bo}\coloneqq\cod^*\dcat{D}$, i.e.\ by the strict pullback of
-  categories
+  defined by setting $\dcat{D}^{\bo}\coloneqq\cod^*\dcat{D}$, i.e.\ by the following strict pullback of categories (see Definition~\ref{def:induced_locally_equivalent_equipment}):
   \[ \begin{tikzcd}[column sep=large]
     \dcat{D}_1^{\bo} \ar[r] \ar[d, two heads] \ar[dr,phantom,"\lrcorner" very near start]
       & \dcat{D}_1 \ar[d, two heads] \\
@@ -1447,7 +1446,7 @@ proofs of our main theorems.
   The functor $\dom\colon\dcat{D}_0^{\bo}\to\dcat{D}_0$ is a fibration via the factorization system
   in Theorem~\ref{thm:orthogonal}. The equivalence sends a monoid $(c,M)$ to the collapse morphism
   $i_M\colon c\twoheadrightarrow\Col{M}$, which is in $\bo$ by the exactness of $\dcat{D}$. Since
-  $\vec{\imath}_M$ is the universal embedding of $M$, any monoid homomorphism
+  $\vec{\imath}_M$ is the universal embedding \eqref{eqn:universal_embedding} of $M$, any monoid homomorphism
   $(f,\vec{f}\mspace{2mu})$ gives rise to a unique $\tilde{f}$ such that
   \begin{equation*}
     \begin{tikzcd}
@@ -1515,8 +1514,7 @@ bifibration over $\dcat{D}_0$ whose fiber over an object $c$ is the category of 
     \label{def:copresheaves}
   Let $\dcat{D}$ be an equipment with a terminal object $1\in\dcat{D}_0$.%
   \footnote{
-    In fact, such a definition makes sense for any object of $\dcat{D}_0$, but for our purposes we
-    require the terminal object.
+    In fact, such a definition makes sense for any object of $d\in\dcat{D}_0$, but we will only use the case $d=1$.
   }
   We define the category $\CPsh(\dcat{D})$, bifibered over $\dcat{D}_0$, by the strict pullback of
   categories
