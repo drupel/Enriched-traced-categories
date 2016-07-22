@@ -3211,11 +3211,11 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
   \]
 \end{proof}
 
-\section{A traceless characterization of \texorpdfstring{$\TTrCat$}{TrCat}}
+\section{A traceless characterization of \texorpdfstring{$\TTrCatStrong$}{TrCat}}
   \label{sec:characterization_of_traced}
 
 In this final section, we briefly record a construction of a 2-category bi-equivalent to the
-2-category $\TTrCat$ of traced categories. A distinguishing feature of this construction is that it
+2-category $\TTrCatStrong$ of traced categories with strong functors between them. A distinguishing feature of this construction is that it
 makes no mention of a trace operation, nor anything akin to the usual traced category axioms. It is
 a direct consequence of the machinery used to prove our main theorems, and is---to the best of our
 knowledge---a new result.
@@ -3255,14 +3255,14 @@ Because the monads $\TM$ and $\TT$ are in fact isomorphic, we have
   \FrTrCat = \Set_{\TT} \iso \Set_{\TM} = \FrMonCat.
 \]
 
-The following proposition defines the 2-category $\TTrCat$ of traced categories purely in terms of
+The following proposition defines the 2-category $\TTrCatStrong$ of traced categories, and strong functors, purely in terms of
 $\dCompProf$, $\dMonProf$, and the adjunctions $\FM\dashv\UM$ and $\FC\dashv\UC$. In particular, it
-does not involve any explicit mention of the trace structure defined in \cite{JoyalStreetVerity}.
+does not involve any explicit mention of the trace structure defined in \cite{JoyalStreetVerity}. However, it does use the main result of the appendix, Corollary~\ref{cor:object_frees}.
 
 \begin{proposition}
   Consider the functor $\FrMonCat\To{\FMC}\FrCompCat\To{k_{\MTCfont{C}}}\CompCat$ and the induced
   equipment $\dcat{F}\coloneqq(k_{\MTCfont{C}}\circ\FMC)^*(\dCompProf)$. There is a fully faithful local equivalence $\dMod(\dcat{F})\to\dTrProf$ and an equivalence of
-  2-categories $\MMon(\dcat{F})\equiv\TTrCat$.
+  2-categories $\MMon(\dcat{F})\equiv\TTrCatStrong$.
 \end{proposition}
 \begin{proof}
   By combining the definitions of $\dFrTrProf$ and $\dTrProf$, it is easy to see that the following
@@ -3275,7 +3275,7 @@ does not involve any explicit mention of the trace structure defined in \cite{Jo
       & \CompCat\times\CompCat
   \end{tikzcd} \end{equation}
   Thus we have an equivalence $\dcat{F}\equiv\dFrTrProf$, and the result follows by
-  Corollary~\ref{cor:TrCat_ObjectFree}.
+  Corollary~\ref{cor:TrCat_ObjectFree} and Corollary~\ref{cor:object_frees}.
 \end{proof}
 
 \appendix
