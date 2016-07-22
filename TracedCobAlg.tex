@@ -586,7 +586,7 @@ denote fibrations of 1-categories using two-headed arrows $\onto$.
     \twocellalt{A}{\tn{cart}}
   \end{tikzcd} \]
   which we call a \emph{cartesian 2-cell}. We refer to $M$ as the \emph{restriction of $N$ along $f$
-  and $f'$}, written $M=N(f',f)$.
+  and $f'$}, written $M=N(f,f')$.
 \end{definition}
 
 For any vertical morphism $f\colon c\to d$ in an equipment $\dcat{D}$, there are two canonical
@@ -609,7 +609,7 @@ proarrows $\comp{f}\colon c\tickar d$ and $\conj{f}\colon d\tickar c$, called re
   \end{tikzcd}
 \end{equation}
 In \cite{Shulman}, it is shown that all restrictions can be obtained by composing with companions
-and conjoints. In particular, $N(f',f)\iso\comp{f}\odot N\odot\conj{f'}$ for any proarrow $N$.
+and conjoints. In particular, $N(f,f')\iso\comp{f}\odot N\odot\conj{f'}$ for any proarrow $N$.
 Moreover, $\comp{f}$ and $\conj{f}$ form an adjunction in $\HHor(\dcat{D})$; we denote the unit and counit by:
 \begin{equation}\label{eqn:eta_epsilon}
 	\eta_f\colon\unit(c)\to\comp{f}\odot\conj{f}
@@ -761,11 +761,11 @@ of) profunctors, as in the following example.
       &[1.5em] \op{\cat{D}}\times\cat{D}' \ar[r,"N"]
       & \Set,
   \end{tikzcd}\]
-  denoted $N(F',F)\colon\cat{C}\tickar\cat{C}'$, such that
+  denoted $N(F,F')\colon\cat{C}\tickar\cat{C}'$, such that
   \begin{equation}
       \label{eq:cartesian profunctor morphism}
     \begin{tikzcd}
-      \cat{C} \ar[r,tick,"{N(F',F)}" domA] \ar[d,"F"']
+      \cat{C} \ar[r,tick,"{N(F,F')}" domA] \ar[d,"F"']
         & \cat{C}'\ar[d,"F'"] \\
       \cat{D} \ar[r,tick,"N"' codA]
         & \cat{D}'
@@ -3180,7 +3180,7 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
   \end{equation*}
 \end{named}
 \begin{proof}
-  First note that, essentially by definition, there are isomorphisms of fibrations
+  First note that, essentially by definition (as well as the fact that $\Cob/\LabSet$ is the free compact category on the set $\LabSet$; see \cite{KellyLaplaza,Abramsky2}), there are isomorphisms of fibrations
   \begin{equation*}
     \begin{tikzcd}[column sep=-2em]
       \int\limits^{\mathclap{\LabSet\in\Set_{\TT}}}(\LCob{\LabSet})\alg
