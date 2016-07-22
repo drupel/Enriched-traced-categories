@@ -1695,7 +1695,7 @@ $(\inp{X},\outp{X})\in\Ob(\cat{T})\times\Ob(\cat{T})$ with morphisms given by
   \Hom_{\Int(\cat{T})}\big((\inp{X},\outp{X}),(\inp{Y},\outp{Y})\big)
     = \Hom_{\cat{T}}(\inp{X}\otimes\outp{Y},\outp{X}\otimes\inp{Y})
 \end{equation*}
-and compositions computed using the trace of $\cat{T}$.
+and with compositions computed using the trace of $\cat{T}$.
 
 \begin{remark}
     \label{rem:traced_2morphisms}
@@ -1723,7 +1723,7 @@ U\otimes X\to U\otimes Y$ morally (up to symmetries and identities) to be $\epsi
   \end{tikzcd}
 \end{equation*}
 Thus we have a functor $\UCT\colon\CCompCat\to\TTrCat$. It is shown
-in~\cite{JoyalStreetVerity}~and~\cite{HK} that this functor is the right half of the 2-adjunction
+in~\cite{JoyalStreetVerity}~and~\cite{HK} that this functor is the right half of a 2-adjunction
 \begin{equation}
     \label{dia:traced_compact_adjunction}
   \begin{tikzcd}
@@ -1732,7 +1732,7 @@ in~\cite{JoyalStreetVerity}~and~\cite{HK} that this functor is the right half of
 \end{equation}
 Note that $\UCM=\UCT\UTM$. In Section~\ref{sec:characterization_of_traced} we will be able to
 formally define the 2-category $\TTrCat$ without mentioning the trace structure
-\eqref{dia:trace_function} or the usual seven axioms, but instead via the relationship between
+\eqref{dia:trace_function} or the usual seven axioms, but instead in terms of the relationship between
 compact and monoidal categories.
 
 \begin{remark}
@@ -1802,8 +1802,8 @@ of these equipments are given by
   \dMonProf_0=\MonCat,\quad\dCompProf_0=\CompCat,\quad\dTrProf_0=\TrCat.
 \]
 
-It may seem strange at first to define a profunctor $\cat{T}\tickar \cat{T}'$ between traced
-categories to be a profunctor $\Int(\cat{T})\tickar\Int(\cat{T}')$. The next proposition serves as a
+It may seem strange at first to define a proarrow $\cat{T}\tickar \cat{T}'$ between traced
+categories to be a monoidal profunctor $\Int(\cat{T})\tickar\Int(\cat{T}')$. The next proposition serves as a
 first sanity check on this definition, and the remainder of this paper provides further support.
 
 \begin{proposition}
@@ -1865,7 +1865,7 @@ the proofs of our main results revolve. Recall Definitions~\ref{def:copresheaves
   \end{tikzcd} \]
 \end{theorem}
 
-The proof of this theorem will occupy the rest of this section, but first we note that the analogous
+The proof of this theorem will occupy the rest of this section (see Propositions~\ref{Prop:ptd_prof_equivalence} and~\ref{prop:unit_implies_monoid}), but first we note that the analogous
 result for traced categories follows as an easy corollary.
 
 \begin{corollary}
@@ -1878,7 +1878,7 @@ result for traced categories follows as an easy corollary.
   \end{tikzcd} \]
 \end{corollary}
 \begin{proof}
-  We have that $\Int\colon\dTrProf\to\dCompProf$ is a local equivalence that preserves the terminal
+  We have that $\Int\colon\dTrProf\to\dCompProf$ is a local equivalence, and it preserves the terminal
   object. Thus using Lemma~\ref{lem:Mon_pullback} and Lemma~\ref{lem:Psh_pullback} we construct the
   desired equivalence $\CPsh(\dTrProf)\to\Mon(\dTrProf)$ as the pullback along $\Int$ of the
   equivalence $\CPsh(\dCompProf)\to\Mon(\dCompProf)$ from Theorem~\ref{thm:mon_prof_equivalence}.
@@ -1907,24 +1907,24 @@ Proposition~\ref{prop:unit_implies_monoid} below.
 \end{definition}
 
 \begin{lemma}
-    \label{Lem:comp prof bijection}
-  Let $\cat{C}$ be a compact category. For any pointed endo-profunctor $i\colon\Hom_\cat{C}\to N$ in
-  $\Ptd(\dCompProf)$, there is a natural bijection $N(a,b)\iso N(I,a^*\otimes b)$ for any objects
+    \label{Lem:comp_prof_bijection}
+  Let $\cat{C}$ be a compact category. For any pointed endo-profunctor $i\colon\Hom_\cat{C}\to M$ in
+  $\Ptd(\dCompProf)$, there is a natural bijection $M(a,b)\iso M(I,a^*\otimes b)$ for any objects
   $a,b\in \cat{C}$.
 \end{lemma}
 \begin{proof}
-  Given $n\in N(a,b)$, we can construct an element
+  Given $m\in M(a,b)$, we can construct an element
   \[
-    \big(i(\id_{a^*})\boxtimes n\big)\cdot\eta_a \in N(I,a^*\otimes b).
+    \big(i(\id_{a^*})\boxtimes m\big)\cdot\eta_a \in M(I,a^*\otimes b).
   \]
-  Conversely, given $n'\in N(I,a^*\otimes b)$, we can construct an element
+  Conversely, given $m'\in M(I,a^*\otimes b)$, we can construct an element
   \[
-    (\epsilon_a\otimes\id_b)\cdot\big(i(\id_a)\boxtimes n'\big) \in N(a,b).
+    (\epsilon_a\otimes\id_b)\cdot\big(i(\id_a)\boxtimes m'\big) \in M(a,b).
   \]
   It is simple to check that this defines a natural bijection.
 \end{proof}
 
-With the fibration $\End(\dCompProf)\onto\CompCat$ from Definition~\ref{def:ptd}, we can define the
+With the fibration $\MOb\colon\End(\dCompProf)\onto\CompCat$ from Definition~\ref{def:ptd}, we can define the
 functors
 \begin{equation} \begin{tikzcd}[column sep=-1em]
     \label{eqn:functors_1C_CC}
@@ -1934,7 +1934,7 @@ functors
 \end{tikzcd} \end{equation}
 where $FM\colon\op{\cat{C}}\times \cat{C}\to\Set$ is defined by $FM(a,b)\coloneqq M(a^*\otimes b)$
 while $UN\colon \cat{C}\to\Set$ is given by $UN(a)\coloneqq N(I,a)$. It is simple to check that
-these are morphisms of fibrations, i.e.\ that they preserve cartesian morphisms.
+$F$ and $U$ are morphisms of fibrations, i.e.\ that they preserve cartesian morphisms.
 
 \begin{proposition}
     \label{Prop:canonical unit}
@@ -1971,9 +1971,9 @@ in which the triangle involving the $F$'s and the triangle involving the $U$'s b
 \end{proposition}
 \begin{proof}
   If $M\in\CPsh(\dCompProf)$, i.e.\ $M$ is a lax functor $\cat{C}\to\Set$ for some compact
-  $\cat{C}$, then $(U(FM))(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any $a\in \cat{C}$. On the
-  other hand, given $N\in\Ptd(\dCompProf)$, we have $(F(UN))(a,b)=N(I,a^*\otimes b)$, and the
-  equivalence follows from Lemma~\ref{Lem:comp prof bijection}.
+  $\cat{C}$, then $U(FM)(a)=(FM)(I,a)=M(I^*\otimes a)\iso M(a)$ for any $a\in \cat{C}$. On the
+  other hand, given $N\in\Ptd(\dCompProf)$, we have $F(UN)(a,b)=N(I,a^*\otimes b)$, and the
+  equivalence follows from Lemma~\ref{Lem:comp_prof_bijection}.
 \end{proof}
 
 As preparation for the proof of Proposition~\ref{prop:unit_implies_monoid} below, we work out what a
@@ -2716,8 +2716,7 @@ all exact, as in Definition~\ref{def:exact_equipment}. We can then immediately d
   Suppose that $M\colon \cat{C}\tickar \cat{C}$ is a monoid in $\dMonProf$. One uses $M$ to
   construct a category $\Col{M}$ with the same objects as $\cat{C}$, and with hom sets defined by
   $\Col{M}(c,d)\coloneqq M(c,d)$ for any pair of objects $c,d\in\Ob(\cat{C})$. For any object $c$,
-  the identity is provided by $i(\id_{\cat{C}})$, while the multiplication $\bullet$ on $M$ provides
-  the composition of $\Col{M}$.
+  the identity is provided by $i(\id_{\cat{C}})$, while the multiplication $\bullet$ on $M$ defines composition in $\Col{M}$.
 
   The unit of $M$ can also be used to construct an identity-on-objects functor
   $i_M\colon\cat{C}\to\Col{M}$ and an embedding 2-cell $\vec{\imath}_M$ sending any element of $M$
@@ -2735,7 +2734,7 @@ all exact, as in Definition~\ref{def:exact_equipment}. We can then immediately d
 \end{proposition}
 \begin{proof}
   We can consider a monoid $M\colon \cat{C}\tickar \cat{C}$ in $\dCompProf$ as a monoid in
-  $\dMonProf$, which has a collapse embedding $i_M\colon M\to \Col{M}$ by
+  $\dMonProf$; it has a collapse embedding $i_M\colon M\to \Col{M}$ by
   Proposition~\ref{prop:MonProf_exact}. The collapse $\Col{M}$ is a monoidal category and, by
   Theorem~\ref{thm:Mod_vs_bo}, $i_M$ is a (strict symmetric monoidal) $\bo$ functor. But any strong
   monoidal functor preserves duals, so every object of $\Col{M}$ has a dual, hence $\Col{M}$ is
@@ -2892,8 +2891,7 @@ $\eta_{\cat{T}}\colon\cat{T}\to\UCT\Int(\cat{T})$ for the unit component on $\ca
   that $F$ is also surjective-on-objects.
 \end{proof}
 
-As a corollary of exactness, we obtain our second main theorem. Recall that we use the notation $\int$ to denote
-the Grothendieck construction.
+As a corollary of exactness, we obtain our second main theorem. Recall that we use the notation $\int$ to denote the Grothendieck construction.
 
 \begin{named}{Theorem B}
     \label{thm:TheoremB}
@@ -2907,7 +2905,7 @@ the Grothendieck construction.
     \end{tikzcd}
     \qquad\quad
     \begin{tikzcd}[column sep=-1em]
-      \int\limits^{\mathclap{\cat{T}\in\TrCat}} \Lax(\Int(\cat{T}),\Set)
+      \int\limits^{\mathclap{\cat{T}\in\TrCat}} \Lax\big(\Int(\cat{T}),\Set\big)
           \ar[rr,"\equiv"] \ar[dr,two heads]
         && \TrCat^{\bo} \ar[dl,two heads,"\dom" pos=.4] \\
       & \TrCat &
@@ -2918,14 +2916,14 @@ the Grothendieck construction.
   Essentially by definition, we have isomorphisms of fibrations
   \begin{equation*}
     \begin{tikzcd}[column sep=-2em]
-      \int\limits^{\mathclap{\cat{C}\in\CompCat}}\Lax(\cat{C},\Set)~
+      \int\limits^{\mathclap{\cat{C}\in\CompCat}}\Lax\big(\cat{C},\Set\big)~
           \ar[rr,phantom,"\iso"] \ar[dr,two heads]
         && ~\CPsh(\dCompProf) \ar[dl,two heads] \\
       & \CompCat &
     \end{tikzcd}
     \quad\text{and}\quad
     \begin{tikzcd}[column sep=-2em]
-      \int\limits^{\mathclap{\cat{T}\in\TrCat}}\Lax(\Int(\cat{T}),\Set)~~
+      \int\limits^{\mathclap{\cat{T}\in\TrCat}}\Lax\big(\Int(\cat{T}),\Set\big)~~
           \ar[rr,phantom,"\iso"] \ar[dr,two heads]
         && ~~\CPsh(\dTrProf) \ar[dl,two heads] \\
       & \TrCat. &
@@ -3080,7 +3078,7 @@ Following Definition~\ref{def:kleisli_equipment}, we have equipments:
   \qquad
   \dFrTrProf   \coloneqq \dTrProf_{\TT}
 \]
-In other words, $\dFrMonProf\to\dMonProf$ is a fully faithful local equivalence, meaning it can be
+The functor $\dFrMonProf\to\dMonProf$ is a fully faithful local equivalence, meaning it can be
 identified with the full sub-equipment of $\dMonProf$ spanned by the monoidal categories which are
 \emph{free on a set}; similarly for $\dFrCompProf$ and $\dFrTrProf$. We will write
 \begin{align*}
@@ -3113,7 +3111,7 @@ for the vertical 1-categories. Note that each of these categories has a terminal
   known as (colored) PROPs (see, e.g.\ \cite{HackneyRobertson} for more on PROPs). However, the
   morphisms between PROPs are more restrictive than those defined above, because they must "send
   colors to colors". To define an equipment of PROPs, consider the functor $\FM\colon\Set\to\MonCat$
-  and let $\dPROP\coloneq\FM^*\dMonProf$ be the induced equipment. Similarly, one can define traced
+  and let $\dPROP\coloneqq\FM^*\dMonProf$ be the induced equipment. Similarly, one can define traced
   and compact (colored) PROPs as $\FT^*\dTrProf$ and $\FC^*\dCompProf$ respectively.
 
   Although we will not prove it here, one can prove a variant of \ref{thm:TheoremA}, namely that
@@ -3263,8 +3261,7 @@ does not involve any explicit mention of the trace structure defined in \cite{Jo
 
 \begin{proposition}
   Consider the functor $\FrMonCat\To{\FMC}\FrCompCat\To{k_{\MTCfont{C}}}\CompCat$ and the induced
-  equipment $\dcat{F}\coloneqq(k_{\MTCfont{C}}\circ\FMC)^*(\dCompProf)$. The equipment
-  $\dMod(\dcat{F})$ is equivalent to $\dTrProf$, and in particular there is an equivalence of
+  equipment $\dcat{F}\coloneqq(k_{\MTCfont{C}}\circ\FMC)^*(\dCompProf)$. There is a fully faithful local equivalence $\dMod(\dcat{F})\to\dTrProf$ and an equivalence of
   2-categories $\MMon(\dcat{F})\equiv\TTrCat$.
 \end{proposition}
 \begin{proof}
