@@ -3291,7 +3291,7 @@ Corollary~\ref{cor:object_frees}, the three biequivalences
   \CCompFrObCat \to \CCompCatStrong.
 \]
 Here, $\MMonFrObCat$ (resp. $\TTrFrObCat$ and $\CCompFrObCat$) is the 2-category of objectwise-free
-monoidal (resp. traced and compact) categories and strict functors between them, whereas
+monoidal (resp. traced and compact) categories and strict functors between them (see Definition~\ref{def:free_on_objects}), whereas
 $\MMonCatStrong$ (resp. $\TTrCatStrong$ and $\CCompCatStrong$) is the 2-category of monoidal (resp.
 traced and compact) categories with arbitrary objects and strong functors between them. This result
 will not be new to experts, but we found it difficult to find in the literature.
@@ -3330,8 +3330,8 @@ will not be new to experts, but we found it difficult to find in the literature.
   $(\beta,\gamma)\colon\hat{\alpha}\Rightarrow\hat{\alpha'}$ such that $\dom(\beta,\gamma)=\beta$
   and $\cod(\beta,\gamma)=\gamma$.
 
-  We say that $\ccat{C}$ \emph{has arrow objects} if an arrow object $c^2$ exists for each object
-  $c\in\cat{C}$.
+  We say that $\ccat{C}$ \emph{has arrow objects} if an arrow object $a^2$ exists for each object
+  $a\in\cat{C}$.
 \end{definition}
 
 \begin{example}
@@ -3362,17 +3362,17 @@ will not be new to experts, but we found it difficult to find in the literature.
   functor $\hat{\alpha}\colon\cat{X}\to\cat{M}^2$ is strong monoidal. Note that if $d,c$ are strict
   monoidal functors then $\hat{\alpha}$ will be as well.
 
-  The 2-category $\CCompCatStrong$ has arrow objects, which are preserved by the functor
+  The 2-category $\CCompCatStrong$ also has arrow objects, and they are preserved by the forgetful functor
   $\CCompCatStrong\to\CCat_{\iso}$. Recall from Section~\ref{sec:monoidal,compact,traced} that every
   natural transformation between compact categories is an isomorphism. Thus for a compact category
   $\cat{C}$, the arrow category $\cat{C}^2$ has as objects the isomorphisms $a\To{\iso} b$ in
-  $\cat{C}$, and as morphisms the commuting squares. This is compact: the dual of $a\To{f} b$ is
-  $a^\ast\To{(f^{-1})^\ast}b^\ast$.
+  $\cat{C}$, and as morphisms the commuting squares. This is compact: the dual of $f\colon a\to b$ is
+  $(f^{-1})^\ast\colon a^\ast\to b^\ast$.
 
   The 2-morphisms between traced categories are also defined to be isomorphisms (see
   Remark~\ref{rem:traced_2morphisms}). For a traced category $\cat{T}\in\TTrCatStrong$, the arrow
   object $\cat{T}^2$ has the isomorphisms in $\cat{T}$ as objects and commuting squares as
-  morphisms; i.e.\ it too is preserved by the 2-functor $\TTrCatStrong\to\Cat_{\iso}$. To see the
+  morphisms; i.e.\ here too arrow objects are preserved by the 2-functor $\TTrCatStrong\to\Cat_{\iso}$. To see the
   traced structure of $\cat{T}^2$, suppose given objects $a\colon A\To{\iso} A'$, $b\colon
   B\To{\iso} B'$, and $u\colon U\To{\iso} U'$, as well as a morphism $(f,g)\colon a\otimes u\to
   b\otimes u$ as in the diagram to the left
@@ -3411,7 +3411,7 @@ will not be new to experts, but we found it difficult to find in the literature.
   there are unique $f',g'\colon LD\to C$ such that $Rf'\circ\eta_D=f$ and $Rg'\circ\eta_D=g$. Using
   the arrow object $R(C^2)=(RC)^2$, there is a unique morphism $\hat{\alpha}\colon D\to RC^2$ such
   that $\kappa_{RC}\hat{\alpha}=\alpha$. Using the 1-adjunction again, there is a unique
-  $\hat{\alpha}'\colon RLD\to C^2$ such that $R\hat{\alpha}'\circ\eta_D=\hat{\alpha}$. Finally, we
+  $\hat{\alpha}'\colon LD\to C^2$ such that $R\hat{\alpha}'\circ\eta_D=\hat{\alpha}$. Finally, we
   let $\alpha'\coloneqq\kappa_C\hat{\alpha}'$, and check
   \[
     R(\alpha')\eta_D = R(\kappa_C)R(\hat{\alpha}')\eta_D = \kappa_{RC}\hat{\alpha} = \alpha.
