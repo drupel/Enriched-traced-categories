@@ -521,7 +521,7 @@ also \cite{Wood1} and \cite{Wood2}.
     almost the same, but change the font of the first letter to calligraphic, such as
     $\nncat{T}{rCat}$; for unnamed 2-categories we use (unbold) calligraphic, e.g.\ $\ccat{D}$.
     Finally, for double categories we make the first letter blackboard bold, whether named (e.g.,
-    $\dProf$) or unnamed (e.g., $\dcat{D}$). A minor exception occurs almost immediately, however: two 1-categories appear as part of the structure of a double category $\dcat{D}$, and we denote them as $\dcat{D}_0,\dcat{D}_1$ rather than using script font.
+    $\dProf$) or unnamed (e.g.\ $\dcat{D}$). A minor exception occurs almost immediately, however: two 1-categories appear as part of the structure of a double category $\dcat{D}$, and we denote them as $\dcat{D}_0,\dcat{D}_1$ rather than using script font.
   }
   $\dcat{D}$ consists of the following data:
   \begin{itemize}
@@ -1393,7 +1393,7 @@ orthogonal factorization systems.
   $\cat{R}$ using a hooked arrow.%
   \footnote{
     We sometimes also use the two-headed arrow symbol $\twoheadrightarrow$
-    to indicate fibrations of categories (e.g., as we did in \ref{thm:TheoremB} or
+    to indicate fibrations of categories (e.g.\ as we did in \ref{thm:TheoremB} or
     when defining the frame fibration for equipments, Definition~\ref{def:equipment}). Whether
     we mean a $\bo$ map in an equipment or a fibration of categories should be clear from context.
   }
@@ -3050,7 +3050,7 @@ monoidal category can be identified with a $\bo$-map out of the free monoidal ca
 Thus we begin by defining the latter.
 
 Consider the free-forgetful adjunctions%
-\footnote{
+\footnote{\label{foot:adjunctions}
   These three adjunctions in fact extend to 2-adjunctions; see
   Corollary~\ref{cor:2_adjunctions_MonTrComp}.
 }
@@ -3422,7 +3422,7 @@ will not be new to experts, but we found it difficult to find in the literature.
   (right adjoints preserve limits).
 \end{proof}
 
-The following result was promised above; see \eqref{eqn:adjunctions}.
+The following result was promised above; see \eqref{eqn:adjunctions} and footnote~\ref{foot:adjunctions}.
 
 \begin{corollary}
     \label{cor:2_adjunctions_MonTrComp}
@@ -3528,7 +3528,7 @@ The following result was promised above; see \eqref{eqn:adjunctions}.
   ``preserve and jointly detect'' strictness in the sense of
   Definition~\ref{def:preserve_jdetect_strictness} below. In particular, the 2-categories
   $\MMonCat$, $\TTrCat$, and $\CCompCat$ also have arrow objects and mapping path objects, and the
-  inclusions of strict-into-strong (e.g., $\MMonCat\to\MMonCatStrong$) preserve them. Looking back
+  inclusions of strict-into-strong (e.g.\ $\MMonCat\to\MMonCatStrong$) preserve them. Looking back
   at Examples~\ref{ex:arrow_objects}~and~\ref{ex:mapping_paths}, we see that the forgetful functors
   \[
     \UM\colon\MMonCat\to\CCat
@@ -3937,13 +3937,12 @@ $\bo$ morphism $F(\Disc(s))\twoheadrightarrow A$. Then we have that:
 
 \begin{theorem}
     \label{thm:free_on_objects_strong_equivalence}
-  The composition
+  The following composition is a biequivalence of 2-categories:
   \[ \begin{tikzcd}[column sep=small]
     \ccatFrOb{D} \ar[r,hook]
       & \scat{D} \ar[r,"\iota"]
-      & \pcat{D}
+      & \pcat{D}.
   \end{tikzcd} \]
-  is a biequivalence of 2-categories.
 \end{theorem}
 \begin{proof}
   We first need to show that $\iota$ induces equivalences of categories
