@@ -413,8 +413,7 @@ Corollary~\ref{cor:object_frees}. This result seems to be well-known to experts 
 find in the literature.
 
 In the course of proving \ref{thm:TheoremA_statement}, we will also establish generalizations
-characterizing lax functors out of arbitrary compact categories, and in particular lax functors out
-of $\Int(\cat{T})$ for an arbitrary traced category $\cat{T}$. In order to state this
+characterizing lax functors out of arbitrary compact categories. In order to state this
 characteization, we prove (Theorem~\ref{thm:orthogonal} and Proposition~\ref{prop:CompProf_exact})
 that the well-known $(\bo,\ff)$ factorization system of $\Cat$ restricts to a factorization system
 on $\TrCat$; more precisely the left class consists of bijective-on-objects functors and the right
@@ -434,7 +433,7 @@ $\TrCat_{\LabSet}\iso\TrCat^{\bo}_{(\FT\LabSet)/}$.
 
 Recall from~\cite{JoyalStreetVerity} that traced categories can be thought of as full subcategories
 of compact categories: the Int construction applied to a traced category $\cat{T}$ builds the
-smallest compact category $\Int(\cat{T})$ of which $\cat{T}$ is a monoidal subcategory. Generalizing
+smallest compact category $\Int(\cat{T})$ of which $\cat{T}$ is a monoidal subcategory, we refer the reader to~\cite{JoyalStreetVerity} for more details. Generalizing
 \eqref{eq:single_fiber_tr}, we can give a complete characterization of lax functors out of such
 compact categories: for a fixed traced category $\cat{T}$ there is an equivalence of categories
 \[
@@ -574,8 +573,8 @@ denote fibrations of 1-categories using two-headed arrows $\onto$.
   \[
     (\lframe,\rframe)\colon\dcat{D}_1\onto\dcat{D}_0\times\dcat{D}_0
   \]
-  is a fibration. If $f\colon c\to d$ and $f'\colon c'\to d'$ are vertical morphisms and $N\colon
-  d\tickar d'$ is a proarrow, a cartesian morphism $M\to N$ in $\dcat{D}_1$ over $(f,f')$ is a
+  is a fibration. Given vertical morphisms $f\colon c\to d$ and $f'\colon c'\to d'$ together with a proarrow $N\colon
+  d\tickar d'$, a cartesian morphism $M\to N$ in $\dcat{D}_1$ over $(f,f')$ is a
   2-cell
   \[ \begin{tikzcd}
     c \ar[r,tick, "M" domA] \ar[d,"f"']
@@ -652,16 +651,16 @@ special case described in the next paragraph.
 
 Let $\ccat{C}=\CCat$, the 2-category of small categories.  Suppose $f_2$ is a fibration and that the pullback square \eqref{eqn:pseudopullback}
 strictly commutes, i.e.\ that $\alpha$ is the identity. It is a standard fact that a strict pullback
-of a fibration along an arbitrary functor is a fibration and that the strict pullback
-is also a pseudo-pullback. The upshot is that $g_2$ is a pseudo-pullback if and only if, for any
+of a fibration along an arbitrary functor is a fibration.  Moreover, this strict pullback
+is also a pseudo-pullback. The upshot is that in \eqref{eqn:pseudopullback}, $g_2$ is a pseudo-pullback if and only if for any
 strict pullback $g_2'$ of $f_2$ along $f_1$, the induced map $g_2\to g_2'$ is an equivalence of
 fibrations.
 
 \begin{definition}
     \label{def:local_equivalence}
-  By an \emph{equipment functor}, we simply mean a strong double functor between equipments (see Definition~\ref{def:double_cat}). 
+  An \emph{equipment functor} is a strong double functor between equipments (see Definition~\ref{def:double_cat}). 
   
-  We refer to an equipment functor $F\colon\dcat{C}\to\dcat{D}$ as a \emph{local equivalence} if the
+  An equipment functor $F\colon\dcat{C}\to\dcat{D}$ is called a \emph{local equivalence} if the
   following (strictly commuting) square is a pseudo-pullback of categories:
   \begin{equation} \begin{tikzcd}
       \label{eqn:local_equiv}
@@ -1192,6 +1191,43 @@ some basic results.
   see \cite{Shulman}.
 \end{example}
 
+\begin{example}
+    \label{ex:monoid_in_Prof}
+  While the exactness of $\dProf$ follows for formal reasons, as we saw in
+  Example~\ref{ex:exact_span_prof}, it will be helpful to understand collapse in $\dProf$
+  concretely.
+
+  Consider a monoid $M\colon \cat{C}\tickar \cat{C}$ in $\dProf$. The unit is a profunctor morphism
+  $i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element
+  $i(f)\in M(c,d)$, such that
+  \begin{equation}
+      \label{eq:Prof_monoid_unit}
+    g\cdot i(f)\cdot h = i(g\circ f\circ h)
+  \end{equation}
+  whenever this makes sense.
+
+  The multiplication $M\odot M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and
+  $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative and satisfies the
+  following equations whenever they make sense:
+  \begin{gather}
+    (f\cdot m_2)\bullet(m_1\cdot h) = f\cdot(m_2\bullet m_1)\cdot h
+      \label{eq:Prof_monoid_A}
+    \\ (m_3\cdot g)\bullet m_1 = m_3\bullet(g\cdot m_1)
+      \label{eq:Prof_monoid_B}
+    \\ m\bullet i(f) = m\cdot f
+          \quad\text{and}\quad
+      i(g)\bullet m = g\cdot m
+      \label{eq:Prof_monoid_C}
+  \end{gather}
+  Specifically, equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B} simply say that
+  $\bullet$ is a well defined morphism $M\odot M\to M$, while \eqref{eq:Prof_monoid_C} says that
+  $\bullet$ is unital with respect to $i$.
+
+  The collapse $\Col{M}$ is then the category with the same objects as $\cat{C}$, with morphisms
+  $\Col{M}(c,d)\coloneqq M(c,d)$, and with composition given by $\bullet$. The unit $i$ of $M$ gives a
+  functor $i_M\colon\cat{C}\to\Col{M}$.
+\end{example}
+
 Exact equipments arising in practice almost always have local reflexive coequalizers, and in this
 case it is possible to simplify the definition, as we show in Proposition~\ref{prop:exact_coeqs}.
 Recall from Remark~\ref{rem:canonical_actions} the natural $M$-module structures on the companion
@@ -1255,43 +1291,6 @@ embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unit(a)$ from Defi
       &\iso \comp{i}_M\odot\unit\Col{M}\odot\conj{i}_M. \qedhere
   \end{align*}
 \end{proof}
-
-\begin{example}
-    \label{ex:monoid_in_Prof}
-  While the exactness of $\dProf$ follows from formal reasons, as we saw in
-  Example~\ref{ex:exact_span_prof}, it will be helpful to understand collapse in $\dProf$
-  concretely.
-
-  Consider a monoid $M\colon \cat{C}\tickar \cat{C}$ in $\dProf$. The unit is a profunctor morphism
-  $i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element
-  $i(f)\in M(c,d)$, such that
-  \begin{equation}
-      \label{eq:Prof_monoid_unit}
-    g\cdot i(f)\cdot h = i(g\circ f\circ h)
-  \end{equation}
-  whenever this makes sense.
-
-  The multiplication $M\odot M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and
-  $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative and satisfies the
-  following equations whenever they make sense:
-  \begin{gather}
-    (f\cdot m_2)\bullet(m_1\cdot h) = f\cdot(m_2\bullet m_1)\cdot h
-      \label{eq:Prof_monoid_A}
-    \\ (m_3\cdot g)\bullet m_1 = m_3\bullet(g\cdot m_1)
-      \label{eq:Prof_monoid_B}
-    \\ m\bullet i(f) = m\cdot f
-          \quad\text{and}\quad
-      i(g)\bullet m = g\cdot m
-      \label{eq:Prof_monoid_C}
-  \end{gather}
-  Specifically, equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B} simply say that
-  $\bullet$ is a well defined morphism $M\odot M\to M$, while \eqref{eq:Prof_monoid_C} says that
-  $\bullet$ is unital with respect to $i$.
-
-  The collapse $\Col{M}$ is then the category with the same objects as $\cat{C}$, with morphisms
-  $\Col{M}(c,d)\coloneqq M(c,d)$, and with composition given by $\bullet$. The unit $i$ of $M$ gives a
-  functor $i_M\colon\cat{C}\to\Col{M}$.
-\end{example}
 
 \begin{remark}
     \label{rem:suffices_for_monoid}
@@ -3181,31 +3180,31 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
   First note that, essentially by definition (as well as the fact that $\Cob/\LabSet$ is the free compact category on the set $\LabSet$; see \cite{KellyLaplaza,Abramsky2}), there are isomorphisms of fibrations
   \begin{equation*}
     \begin{tikzcd}[column sep=-2em]
-      \int\limits^{\mathclap{\LabSet\in\Set_{\TT}}}(\LCob{\LabSet})\alg
-          \ar[rr,phantom,"\iso"] \ar[dr,two heads]
-        && \CPsh(\dFrTrProf) \ar[dl,two heads] \\
-      & \FrTrCat &
-    \end{tikzcd}
-    \quad\text{and}\quad
-    \begin{tikzcd}[column sep=-2em]
       \int\limits^{\mathclap{\LabSet\in\Set_{\TC}}}(\LCob{\LabSet})\alg
           \ar[rr,phantom,"\iso"] \ar[dr,two heads]
         && \CPsh(\dFrCompProf) \ar[dl,two heads] \\
       & \FrCompCat. &
     \end{tikzcd}
+    \quad\text{and}\quad
+    \begin{tikzcd}[column sep=-2em]
+      \int\limits^{\mathclap{\LabSet\in\Set_{\TT}}}(\LCob{\LabSet})\alg
+          \ar[rr,phantom,"\iso"] \ar[dr,two heads]
+        && \CPsh(\dFrTrProf) \ar[dl,two heads] \\
+      & \FrTrCat &
+    \end{tikzcd}
   \end{equation*}
   By Lemma~\ref{lem:FrCompProf_Psh_Mon}, we have equivalences of 1-categories
   \begin{equation}
-    \CPsh(\dFrTrProf)\simeq\Mon(\dFrTrProf)
+    \CPsh(\dFrCompProf)\simeq\Mon(\dFrCompProf)
     \quad\text{and}\quad
-    \CPsh(\dFrCompProf)\simeq\Mon(\dFrCompProf).
+    \CPsh(\dFrTrProf)\simeq\Mon(\dFrTrProf).
   \end{equation}
   The result now follows from Corollary~\ref{cor:TrCat_ObjectFree}, which provides equivalences of
   2-categories:
   \[
-    \MMon(\dFrTrProf)\equiv\TTrFrObCat
+    \MMon(\dFrCompProf)\equiv\CCompFrObCat
     \quad\text{and}\quad
-    \MMon(\dFrCompProf)\equiv\CCompFrObCat. \qedhere
+    \MMon(\dFrTrProf)\equiv\TTrFrObCat. \qedhere
   \]
 \end{proof}
 
