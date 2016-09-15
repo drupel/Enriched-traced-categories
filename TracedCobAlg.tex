@@ -372,13 +372,13 @@ appropriate. There is an adjunction
 \begin{equation}\label{eqn:FT_UT}
   \Adjoint{\Set}{\TrCat}{\FT}{\UT}
 \end{equation}
-inducing a monad $\TT$ on $\Set$, which is in fact isomorphic to the free monoid monad. Let
-$\cat{T}$ and $\cat{T}'$ be objectwise-free traced categories where $\Ob(\cat{T})$ is the free
-monoid on a set $\LabSet$ and $\Ob(\cat{T}')$ is the free monoid on a set $\LabSet'$. A strict
-(traced) monoidal functor $F\colon \cat{T}\to \cat{T}'$ induces a homomorphism
-$\Ob(F)\colon\Ob(\cat{T})\to\Ob(\cat{T}')$ between the free monoids, or equivalently a function $\Ob
-F\colon\LabSet\to\TT(\LabSet')$ which can be identified with a morphism in the Kleisli category
-$\Set_{\TT}$ of this monad.
+inducing a monad $\TT$ on $\Set$, which is in fact isomorphic to the free monoid monad. This induces
+a canonical functor from $\TrCat$ to the Eilenberg-Moore category $\Set^{\TT}$ of this monad,
+sending each traced category to its underlying monoid of objects. We define
+$\TrFrObCat\subset\TrCat$ to be the full subcategory spanned by the objectwise-free traced
+categories. In other words, $\TrFrObCat$ is the pullback of $\TrCat\to\Set^{\TT}$ along the
+fully-faithful functor $\Set_{\TT}\to\Set^{\TT}$ from the Kleisli to the Eilenberg-Moore categories,
+or equivalently along the inclusion of free monoids into all monoids.
 
 The compact category $\LCob{\LabSet}$ clearly varies functorially in $\LabSet\in\Set$, but it is not
 much harder to see that it is also functorial in $\LabSet\in\Set_{\TT}$.  This gives rise to a functor
@@ -394,9 +394,7 @@ We can compose this with $\Lax(-,\Set)$ to obtain a functor which we denote
 \end{equation}
 By applying the Grothendieck construction (denoted by $\int$ here) to (\ref{eqn:cob/bullet}), we
 obtain a fibration for which the fiber over a set $\LabSet$ is equivalent (by
-\ref{thm:traced_is_cob_alg}) to $\TrCat_{\LabSet}$. Let $\TrFrObCat\subset\TrCat$ denote the full
-subcategory spanned by the objectwise-free traced categories.
-
+\ref{thm:traced_is_cob_alg}) to $\TrCat_{\LabSet}$.
 \begin{named}{Theorem A}
     \label{thm:TheoremA_statement}
   There is an equivalence of 1-categories
@@ -499,9 +497,14 @@ Vasilakopoulou for helpful comments on drafts of this paper. Finally, we thank t
 \chapter{Background on equipments}
   \label{chap:background_equipments}
 
-This section introduces equipments, which we use to properly situate traced and compact categories.
-This tool will eventually allow us to clarify the relationship between strict monoidal functors
-between monoidal categories and lax monoidal functors to $\Set$.
+One of the main technical tools used in our proofs of the main theorems is \emph{monoidal
+profunctors}, which are profunctors between monoidal categories with extra structure. Just as when
+studying monoidal/traced/compact categories and their corresponding functors and natural
+transformations, a bit of 2-category theory is often useful, when studying monoidal profunctors
+between such structured categories and their relation to functors and natural transformations, it is
+helpful to make use of the theory of equipments.
+
+In this section we review the material on equipments that will be needed in the sequel.
 
 %%% Section %%%
 \section{Equipments}
@@ -702,8 +705,9 @@ fibrations.
   $F_0^*(\dcat{D})\to\dcat{D}$ is a local equivalence.
 \end{definition}
 
-Our main tool in this paper will be equipments in which the horizontal arrows are (generalizations
-of) profunctors, as in the following example.
+All of the types of structured categories of interest in this paper can be organized into
+equipments. The prototype for all of these equipments is that of categories, functors, and
+profunctors:
 
 \begin{example}
     \label{ex:profunctors}
@@ -803,11 +807,12 @@ of) profunctors, as in the following example.
 \section{Monoids and bimodules}
   \label{sec:monoids_bimods}
 
-Our eventual proofs of \ref{thm:TheoremA}~and~\ref{thm:TheoremB} will revolve around a careful
-understanding of internal monoids in an equipment $\dcat{D}$. In particular,
-following~\cite{Schultz2015}, the exactness of an equipment and the resulting $(\bo,\ff)$
-factorization system, both given in Section~\ref{sec:exactness_boff}, are built on notions related
-to monoids in $\dcat{D}$.
+In any equipment $\dcat{D}$, we can consider monads in the horizontal bicategory $\HHor(\dcat{D})$.
+In \cite{Schultz2015}, a definition of \emph{exact equipment} was given, axiomatizing a class of
+equipments in which there is a close connection between monads in $\HHor(\dcat{D})$ and the objects
+of $\dcat{D}$. We will review exact equipments and the results needed here in
+Section~\ref{sec:exactness_boff}, but first we collect the necessary definitions and results about monads
+in $\HHor(\dcat{D})$, which we refer to as \emph{monoids in $\dcat{D}$}.
 
 \begin{definition}
     \label{def:monoids}
@@ -958,23 +963,35 @@ which is immediate from the definitions.
 %%% Section %%%
 \section{Exact equipments and $\bo$, $\ff$ factorization}
   \label{sec:exactness_boff}
+For many equipments $\dcat{D}$, monoids in $\dcat{D}$ are category-like objects, and moreover the
+vertical and horizonal arrows in $\dMod(\dcat{D})$ are like functors and profunctors. The canonical
+example is the equipment of spans of sets, whose objects, vertical and horizontal arrows are sets,
+functions, and spans. In this case, the equipment of monoids is equivalent to $\dProf$, as is not
+difficult to verify directly.
 
-In many equipments, there are ways of constructing objects satisfying vertical universal properties from data in the horizontal bicategory. In this paper, we will make extensive use of such a
-construction, which builds from any (horizontal) monoid $M$ a universal object $\Col{M}$, which we
-call the \emph{collapse} of $M$. This collapse construction is formally analogous to the quotient of
-an equivalence relation.
+One natural question then is: what are monoids in equipments like $\dProf$, whose objects are already
+category-like? It turns out that in cases where $\dcat{D}$ is an equipment of category-like objects,
+the equipment $\dMod(\dcat{D})$ of monoids in $\dcat{D}$ is very closely related to $\dcat{D}$. In
+other words, monoids in an equipment are category-like objects, but taking monoids in an already
+category-like equipment doesn't add much new.
 
-In \cite{Schultz2015}, this analogy was pursued further, proposing definitions of \emph{regular}
-and \emph{exact} equipments, in which certain collapses exist and satisfy certain exactness
-properties. Showing that several equipments of interest are exact is a key piece in our
-proof of the main theorems. In particular, the collapse construction will be the bridge connecting a given operad algebra (i.e.\ a set-valued functor), which lives in the horizontal bicategory of an
-equipment, with a certain traced or compact monoidal category, which will be the an object in the equipment. We
-will also show that in any exact (in fact any regular) equipment, one can define an orthogonal
-factorization system which generalizes the fully-faithful/bijective-on-objects factorization system
-on $\CCat$. These factorization systems are also used extensively throughout the paper.
+The article \cite{Schultz2015} proposed definitions of \emph{regular} and \emph{exact} equipments.
+For this paper we will only be concerned with exact equipments, which are an attempt to axiomatize
+the above property of equipments whose objects are category-like. In particular, given any monoid
+$M$ in an an exact equipment, there is a corresponding object called the \emph{collapse} of $M$
+satisfying a certain vertical universal property. This collapse construction has formal similarities
+to the quotient of an equivalence relation, and it is because of this (informal) analogy that the
+names regular and exact where chosen. From this perspective, $\dMod(\dcat{D})$ can be seen as the
+exact completion of the equipment $\dcat{D}$.
 
 In this section we recall the definition of an exact equipment from \cite{Schultz2015}, and review
-some basic results.
+some basic results. In Section~\ref{sec:exactness_proofs} we will prove that the equipments of
+interest are exact. This will allow us to use the collapse construction as a step in the connection
+between lax monoidal set valued functors---which will be proarrows in exact equipments---with
+(traced or compact) monoidal categories---which will be objects of those exact equipments. We will
+also need to make use of fully-faithful/bijective-on-objects factorization systems, which we show in
+this section exist in any exact equipment (as the image regular-epi/mono factorization system exists
+in any exact category).
 
 \begin{definition}
     \label{def:embedding}
@@ -1189,18 +1206,14 @@ some basic results.
 \end{remark}
 
 \begin{example}
-    \label{ex:exact_span_prof}
+    \label{ex:monoid_in_Prof}
   It was proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its
   equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Thus $\dProf$ is exact, since there
   is an equivalence $\dProf\cong\dMod(\dSpan)$, where $\dSpan$ is the equipment of spans in $\Set$;
   see \cite{Shulman}.
-\end{example}
 
-\begin{example}
-    \label{ex:monoid_in_Prof}
-  While the exactness of $\dProf$ follows for formal reasons, as we saw in
-  Example~\ref{ex:exact_span_prof}, it will be helpful to understand collapse in $\dProf$
-  concretely.
+  While the exactness of $\dProf$ follows for formal reasons, it will be helpful to understand
+  collapse in $\dProf$ concretely.
 
   Consider a monoid $M\colon \cat{C}\tickar \cat{C}$ in $\dProf$. The unit is a profunctor morphism
   $i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element
@@ -1508,19 +1521,47 @@ proofs of our main theorems.
 \chapter{Equipments of monoidal profunctors}
   \label{chap:equipments_monoidal_profunctors}
 
-In this section we set up the necessary equipment to prove our main results, \ref{thm:TheoremA} and
-\ref{thm:TheoremB}. The high-level view of the argument runs as follows.
+With the needed material on general equipments out of the way, we now move on to topics specific to
+monoidal, traced monoidal, and compact closed categories, culminating in the proofs of
+\ref{thm:TheoremA} and \ref{thm:TheoremB}. In the introduction, we stated versions of these theorems
+for traced categories, but versions about compact categories seem to be their most natural and
+general statements. We will prove both.
 
-For any compact category $\cat{C}$, there is an equivalence of categories
-(Proposition~\ref{prop:unit_implies_monoid}) between the lax functors $\cat{C}\to\Set$ and the
-monoids on $\cat{C}$ in the equipment $\dCompProf$. Because $\dCompProf$ is an exact equipment
-(Proposition~\ref{prop:CompProf_exact}), the monoids on $\cat{C}$ can be identified with the
-bijective-on-objects functors out of $\cat{C}$ by Theorem~\ref{thm:Mod_vs_bo}.
-These
-results suffice to prove \ref{thm:TheoremB}.
+After a brief review of monoidal, traced, and compact categories in
+Section~\ref{sec:monoidal,compact,traced}, we define equipments $\dMonProf$, $\dTrProf$, and
+$\dCompProf$ in Section~\ref{sec:monoidal_profunctors}, whose objects are respectively monoidal,
+traced, and compact categories. \ref{thm:TheoremB} will be proven first through chains of
+equivalences of fibrations over $\CompCat$ and $\TrCat$ respectively:
+\begin{equation*}
+  \begin{tikzcd}[column sep=.8em]
+    \int\limits^{\mathclap{\cat{C}\in\CompCat}} \Lax(\cat{C},\Set)
+        \ar[r,"\equiv"]
+      & \CPsh(\dCompProf)
+        \ar[r,"\equiv"]
+      & \Ptd(\dCompProf)
+        \ar[r,"\equiv"]
+      & \Mon(\dCompProf)
+        \ar[r,"\equiv"]
+      & \CompCat^{\bo} \\
+    \int\limits^{\mathclap{\cat{T}\in\TrCat}} \Lax\big(\Int(\cat{T}),\Set\big)
+        \ar[r,"\equiv"]
+      & \CPsh(\dTrProf)
+        \ar[rr,"\equiv"]
+      && \Mon(\dTrProf)
+        \ar[r,"\equiv"]
+      & \TrCat^{\bo}
+  \end{tikzcd}
+\end{equation*}
+The leftmost equivalences follow trivially from the definition of $\CPsh$,
+Definition~\ref{def:copresheaves}. The rightmost equivalences will follow directly from
+Proposition~\ref{prop:Mon_vs_bo} once we prove that $\dTrProf$ and $\dCompProf$ are exact in
+Section~\ref{sec:exactness_proofs}. The parts of the proof which are specific to traced and compact
+categories go into establishing the middle equivalences, which we do in
+Section~\ref{sec:special_CompProf}.
 
-The remaining difficulty is dealing with objectwise-freeness, which we need for \ref{thm:TheoremA}.
-This is the purpose of Section~\ref{sec:monoids_on_free}. Finally in Section~\ref{sec:characterization_of_traced} we give our "traceless characterization of $\TTrCat$". 
+To prove \ref{thm:TheoremA}, we need to deal with the issue of objecwise-freeness. This is
+the purpose of Section~\ref{sec:monoids_on_free}. Finally in
+Section~\ref{sec:characterization_of_traced} we give our "traceless characterization of $\TTrCat$". 
 
 %%% Section %%%
 \section{Monoidal, Compact, and Traced Categories}
@@ -1992,7 +2033,7 @@ There are equivalences of equipments
 %  \label{sec:internal_presheaves}
 
 In this section we will prove \ref{thm:TheoremB}. \todo[inline]{Patrick, introduce this section?}
-  
+
 \subsection{Internal copresheaves and endo-proarrows in an equipment}
 
 Copresheaves on a category $\cat{C}$ can be identified with profunctors $1\tickar\cat{C}$ in
@@ -2091,10 +2132,71 @@ bifibration over $\dcat{D}_0$ whose fiber over an object $c$ is the category of 
 
 \subsection{Copresheaves coincide with monoids in $\dCompProf$ and $\dTrProf$}
 
-Our goal is to prove Theorem~\ref{thm:mon_prof_equivalence}, an equivalence between two fibrations: copresheaves and monoids. To do so we introduce a third fibration---that of pointed
-endo-proarrows---and establish its equivalence with each of $\CPsh(\dCompProf)$ and
-$\Mon(\dCompProf)$ in Proposition~\ref{Prop:ptd_prof_equivalence} and
-Proposition~\ref{prop:unit_implies_monoid} below.
+Our goal in this section is to construct an equivalence of fibrations
+\[ \begin{tikzcd}[column sep=-.5em]
+  \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads,"\MOb"']
+    && \Mon(\dCompProf) \ar[dl,two heads,"\MOb"] \\
+  & \CompCat &
+\end{tikzcd} \]
+To do so we introduce a third fibration---that of pointed endo-proarrows---and establish its
+equivalence with each of $\CPsh(\dCompProf)$ and $\Mon(\dCompProf)$ in
+Proposition~\ref{Prop:ptd_prof_equivalence} and Proposition~\ref{prop:unit_implies_monoid} below.
+The introduction of $\Ptd(\dCompProf)$ is merely a convenient way of organizing the proof:
+recovering a copresheaf from a monoidal endo-profunctor requires only a unit (and not a
+multiplication), while for any monoidal endo-profunctor on a compact category, a unit extends
+uniquely to a multiplication.
+
+\begin{remark}
+  One can think of compact categories as a categorification of groups, where duals of objects act
+  like inverses of group elements. From this perspective, the results of this section can be seen as
+  categorifications of basic facts from group theory.
+
+  We can think of profunctors between compact categories as playing the role of relations between
+  groups which are stable under multiplication. Pointed endo-profunctors act like reflexive
+  relations, and monoids in profunctors act like reflexive and transitive relations. In fact, one
+  can define an equipment of groups, group homomorphisms, and equivariant relations, in which
+  monoids are precisely reflexive transitive relations. It is easy to see that copresheaves, i.e.\
+  equivariant relations $1\tickar G$, are the same as subgroups of $G$.
+
+  In this way, the equivalence $\CPsh(\dCompProf)\equiv\Mon(\dCompProf)$ categorifies the standard
+  fact that a subgroup determines, and is determined by, the conjugacy congruence. The equivalence
+  $\Ptd(\dCompProf)\equiv\Mon(\dCompProf)$ would seem to be saying that every reflexive relation
+  (stable under multiplication) on a group is in fact transitive, which while true is perhaps less
+  familiar than the conjugacy relation. But note, in the definition of a Mal'cev category (see
+  \cite{BorceuxBourn}) this property is singled out as characterizing categories in which some
+  amount of classical group theory can be developed. By analogy, we might think of this section as
+  proving that $\dCompProf$ is a ``Mal'cev equipment''.
+\end{remark}
+
+It will be helpful to work out what a monoid in $\dMonProf$ looks like using the bimodule notation
+for profunctors. A unit for a monoidal profunctor $M\colon\cat{C}\tickar\cat{C}$ is a unit
+$i\colon\Hom_{\cat{C}}\to M$ as in Example~\ref{ex:monoid_in_Prof} where
+\begin{equation}
+    \label{eq:MnProf_monoid_unit}
+  i(\id_{I_{\cat{C}}})=I_M \quad\text{and}\quad i(f\otimes g)=i(f)\boxtimes i(g)
+\end{equation}
+for any morphisms $f$ and $g$ in $\cat{C}$. Similarly, the multiplication $\bullet$ on $M$ must
+satisfy
+\begin{gather}
+  I_M\bullet I_M=I_M \label{eq:MnProf_monoid_I} \\
+  (m_2\boxtimes m'_2)\bullet(m_1\boxtimes m'_1) = (m_2\bullet m_1)\boxtimes(m'_2\bullet m'_1)
+    \label{eq:MnProf_monoid_exchange}
+\end{gather}
+for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e')$, in addition to
+the requirements from Example~\ref{ex:monoid_in_Prof}.
+
+\begin{remark}
+    \label{rem:suffices_for_monoidal_monoid}
+  Equation \eqref{eq:MnProf_monoid_I} follows immediately from \eqref{eq:Prof_monoid_C} and the
+  identification $i(\id_{I_{\cat{C}}})=I_M$. Thus, to prove that $i$ and $\bullet$ form a monoid in
+  $\dMonProf$, it suffices to show \eqref{eq:MnProf_monoid_unit} and
+  \eqref{eq:MnProf_monoid_exchange}, in addition to the requirements discussed in
+  Remark~\ref{rem:suffices_for_monoid}.
+\end{remark}
+
+The next lemma shows that the standard natural equivalence
+$\Hom_{\cat{C}}(a,b)\equiv\Hom_{\cat{C}}(I,a^*\otimes b)$ for any compact category $\cat{C}$ can be
+extended to any pointed monoidal endo-profunctor on $\cat{C}$.
 
 \begin{lemma}
     \label{Lem:comp_prof_bijection}
@@ -2114,8 +2216,8 @@ Proposition~\ref{prop:unit_implies_monoid} below.
   It is simple to check that this defines a natural bijection.
 \end{proof}
 
-With the fibration $\MOb\colon\End(\dCompProf)\onto\CompCat$ from Definition~\ref{def:ptd}, we can define the
-functors
+With the fibration $\MOb\colon\End(\dCompProf)\onto\CompCat$ from Definition~\ref{def:ptd}, we can
+define the functors
 \begin{equation} \begin{tikzcd}[column sep=-1em]
     \label{eqn:functors_1C_CC}
   \CPsh(\dCompProf) \ar[rr,shift left,"F"] \ar[dr,two heads,"\MOb"']
@@ -2165,33 +2267,6 @@ in which the triangle involving the $F$'s and the triangle involving the $U$'s b
   other hand, given $N\in\Ptd(\dCompProf)$, we have $F(UN)(a,b)=N(I,a^*\otimes b)$, and the
   equivalence follows from Lemma~\ref{Lem:comp_prof_bijection}.
 \end{proof}
-
-As preparation for the proof of Proposition~\ref{prop:unit_implies_monoid} below, we work out what a
-monoid in $\dMonProf$ looks like using the bimodule notation for profunctors. A unit for a monoidal
-profunctor $M\colon\cat{C}\tickar\cat{C}$ is a unit $i\colon\Hom_{\cat{C}}\to M$ as in
-Example~\ref{ex:monoid_in_Prof} where
-\begin{equation}
-    \label{eq:MnProf_monoid_unit}
-  i(\id_{I_{\cat{C}}})=I_M \quad\text{and}\quad i(f\otimes g)=i(f)\boxtimes i(g)
-\end{equation}
-for any morphisms $f$ and $g$ in $\cat{C}$. Similarly, the multiplication $\bullet$ on $M$ must
-satisfy
-\begin{gather}
-  I_M\bullet I_M=I_M \label{eq:MnProf_monoid_I} \\
-  (m_2\boxtimes m'_2)\bullet(m_1\boxtimes m'_1) = (m_2\bullet m_1)\boxtimes(m'_2\bullet m'_1)
-    \label{eq:MnProf_monoid_exchange}
-\end{gather}
-for any $m_1\in M(c,d)$, $m'_1\in M(c',d')$, $m_2\in M(d,e)$, and $m'_2\in M(d'e')$, in addition to
-the requirements from Example~\ref{ex:monoid_in_Prof}.
-
-\begin{remark}
-    \label{rem:suffices_for_monoidal_monoid}
-  Equation \eqref{eq:MnProf_monoid_I} follows immediately from \eqref{eq:Prof_monoid_C} and the
-  identification $i(\id_{I_{\cat{C}}})=I_M$. Thus, to prove that $i$ and $\bullet$ form a monoid in
-  $\dMonProf$, it suffices to show \eqref{eq:MnProf_monoid_unit} and
-  \eqref{eq:MnProf_monoid_exchange}, in addition to the requirements discussed in
-  Remark~\ref{rem:suffices_for_monoid}.
-\end{remark}
 
 To make the proof of Proposition~\ref{prop:unit_implies_monoid} easier to follow, we make use of an
 extension of the standard string diagrams for (compact) monoidal categories to monoidal profunctors,
@@ -2868,30 +2943,7 @@ rigorous equational proofs.
   categories.
 \end{proof}
 
-\begin{remark}
-  One can think of compact categories as a categorification of groups, where duals of objects act
-  like inverses of group elements. From this perspective, the results of this section can be seen as
-  categorifications of basic facts from group theory.
-
-  We can think of profunctors between compact categories as playing the role of relations between
-  groups which are stable under multiplication. Pointed endo-profunctors act like reflexive
-  relations, and monoids in profunctors act like reflexive and transitive relations. In fact, one
-  can define an equipment of groups, group homomorphisms, and equivariant relations, in which
-  monoids are precisely reflexive transitive relations. It is easy to see that copresheaves, i.e.\
-  equivariant relations $1\tickar G$, are the same as subgroups of $G$.
-
-  In this way, the equivalence $\CPsh(\dCompProf)\equiv\Mon(\dCompProf)$ categorifies the standard
-  fact that a subgroup determines, and is determined by, the conjugacy congruence. The equivalence
-  $\Ptd(\dCompProf)\equiv\Mon(\dCompProf)$ would seem to be saying that every reflexive relation
-  (stable under multiplication) on a group is in fact transitive, which while true is perhaps less
-  familiar than the conjugacy relation. But note, in the definition of a Mal'cev category (see
-  \cite{BorceuxBourn}) this property is singled out as characterizing categories in which some
-  amount of classical group theory can be developed. By analogy, we might think of this section as
-  proving that $\dCompProf$ is a ``Mal'cev equipment''.
-\end{remark}
-
 \subsection{Deducing \ref{thm:TheoremB}}
-
 
 Recall that we use the notation $\int$ to denote the Grothendieck construction.
 
@@ -2991,11 +3043,6 @@ For the second equivalence, we have that $\Int\colon\dTrProf\to\dCompProf$ is a 
 %  \end{tikzcd}
 %  \]
 \end{proof}
-
-
-
-
-
 
 %%% Section %%%
 \section{Objectwise-freeness}
