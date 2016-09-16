@@ -414,7 +414,7 @@ find in the literature.
 
 In the course of proving \ref{thm:TheoremA_statement}, we will also establish generalizations
 characterizing lax functors out of arbitrary compact categories. In order to state this
-characteization, we prove (Theorem~\ref{thm:orthogonal} and Proposition~\ref{prop:CompProf_exact})
+characterization, we prove (Theorem~\ref{thm:orthogonal} and Proposition~\ref{prop:CompProf_exact})
 that the well-known $(\bo,\ff)$ factorization system of $\Cat$ restricts to a factorization system
 on $\TrCat$; more precisely the left class consists of bijective-on-objects functors and the right
 class consists of fully faithful functors.
@@ -454,6 +454,9 @@ equivalence of fibrations:
     \end{tikzcd}
   \end{equation*}
 \end{named}
+
+\ref{thm:TheoremA_statement} will follow from this by restricting to just those $\cat{T}\in\TrCat$
+which are free on a set $\LabSet$.
 
 Our main tool in proving this result will be the 2-categorical notion of \emph{(proarrow)
 equipments}, which we recall in Section~\ref{chap:background_equipments}. We will introduce what
@@ -981,8 +984,8 @@ the above property of equipments whose objects are category-like. In particular,
 $M$ in an an exact equipment, there is a corresponding object called the \emph{collapse} of $M$
 satisfying a certain vertical universal property. This collapse construction has formal similarities
 to the quotient of an equivalence relation, and it is because of this (informal) analogy that the
-names regular and exact where chosen. From this perspective, $\dMod(\dcat{D})$ can be seen as the
-exact completion of the equipment $\dcat{D}$.
+names regular and exact where chosen. From this perspective, $\dMod(\dcat{D})$ can be thought of as
+the exact completion of the equipment $\dcat{D}$.
 
 In this section we recall the definition of an exact equipment from \cite{Schultz2015}, and review
 some basic results. In Section~\ref{sec:exactness_proofs} we will prove that the equipments of
@@ -990,8 +993,9 @@ interest are exact. This will allow us to use the collapse construction as a ste
 between lax monoidal set valued functors---which will be proarrows in exact equipments---with
 (traced or compact) monoidal categories---which will be objects of those exact equipments. We will
 also need to make use of fully-faithful/bijective-on-objects factorization systems, which we show in
-this section exist in any exact equipment (as the image regular-epi/mono factorization system exists
-in any exact category).
+this section exist in any exact equipment. (In \cite{Schultz2015} it is shown that this
+factorization system exists in any \emph{regular} equipment, as the image regular-epi/mono
+factorization system exists in any regular category).
 
 \begin{definition}
     \label{def:embedding}
@@ -1058,6 +1062,52 @@ in any exact category).
   \end{equation}
   In other words, $\Col{M}$ represents the functor $\Emb(M,\textrm{--})\colon\dcat{D}_0\to\Set$.
 \end{definition}
+
+\begin{example}
+    \label{ex:monoid_in_Prof}
+  Collapses of monoids always exist in $\dProf$, and this is the prototypical example of callapse.
+
+  Consider a monoid $M\colon \cat{C}\tickar \cat{C}$ in $\dProf$. The unit is a profunctor morphism
+  $i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element
+  $i(f)\in M(c,d)$, such that
+  \begin{equation}
+      \label{eq:Prof_monoid_unit}
+    g\cdot i(f)\cdot h = i(g\circ f\circ h)
+  \end{equation}
+  whenever this makes sense.
+
+  The multiplication $M\odot M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and
+  $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative and satisfies the
+  following equations whenever they make sense:
+  \begin{gather}
+    (f\cdot m_2)\bullet(m_1\cdot h) = f\cdot(m_2\bullet m_1)\cdot h
+      \label{eq:Prof_monoid_A}
+    \\ (m_3\cdot g)\bullet m_1 = m_3\bullet(g\cdot m_1)
+      \label{eq:Prof_monoid_B}
+    \\ m\bullet i(f) = m\cdot f
+          \quad\text{and}\quad
+      i(g)\bullet m = g\cdot m
+      \label{eq:Prof_monoid_C}
+  \end{gather}
+  Specifically, equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B} simply say that
+  $\bullet$ is a well defined morphism $M\odot M\to M$, while \eqref{eq:Prof_monoid_C} says that
+  $\bullet$ is unital with respect to $i$.
+
+  The collapse $\Col{M}$ is then the category with the same objects as $\cat{C}$, with morphisms
+  $\Col{M}(c,d)\coloneqq M(c,d)$, and with composition given by $\bullet$. The unit $i$ of $M$ gives a
+  functor $i_M\colon\cat{C}\to\Col{M}$.
+\end{example}
+
+\begin{remark}
+    \label{rem:suffices_for_monoid}
+  The equations \eqref{eq:Prof_monoid_unit}--\eqref{eq:Prof_monoid_C} are actually overdetermined.
+  It is easy to see that equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B} follow from
+  \eqref{eq:Prof_monoid_C} and the associativity of $\bullet$. Thus, when proving that
+  $\bullet\colon M\odot M\to M$ and $i\colon\Hom_{\cat{C}}\to M$ form a monoid, it suffices to prove
+  \eqref{eq:Prof_monoid_unit}, \eqref{eq:Prof_monoid_C}, and associativity of $\bullet$. These
+  observations will be used to slightly simplify the proof of
+  Proposition~\ref{prop:unit_implies_monoid}.
+\end{remark}
 
 \begin{remark}
     \label{rem:canonical_actions}
@@ -1201,49 +1251,15 @@ in any exact category).
       & \dcat{D}_0\times\dcat{D}_0.
     \end{tikzcd}
   \end{equation*}
-  We will show in Proposition~\ref{prop:collapse_local_equivalence} that this preserves horizontal
-  composition, defining a double functor, and hence a local equivalence.
+  We will show in Proposition~\ref{prop:collapse_local_equivalence} that (under mild hypotheses)
+  this preserves horizontal composition, defining a double functor, and hence a local equivalence.
 \end{remark}
 
 \begin{example}
-    \label{ex:monoid_in_Prof}
   It was proven in \cite[Proposition~5.2]{Schultz2015} that for any equipment $\dcat{D}$, its
   equipment $\dMod(\dcat{D})$ of monoids and bimodules is exact. Thus $\dProf$ is exact, since there
   is an equivalence $\dProf\cong\dMod(\dSpan)$, where $\dSpan$ is the equipment of spans in $\Set$;
   see \cite{Shulman}.
-
-  While the exactness of $\dProf$ follows for formal reasons, it will be helpful to understand
-  collapse in $\dProf$ concretely.
-
-  Consider a monoid $M\colon \cat{C}\tickar \cat{C}$ in $\dProf$. The unit is a profunctor morphism
-  $i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element
-  $i(f)\in M(c,d)$, such that
-  \begin{equation}
-      \label{eq:Prof_monoid_unit}
-    g\cdot i(f)\cdot h = i(g\circ f\circ h)
-  \end{equation}
-  whenever this makes sense.
-
-  The multiplication $M\odot M\to M$ is an operation assigning to any elements $m_1\in M(c,d)$ and
-  $m_2\in M(d,e)$ an element $m_2\bullet m_1\in M(c,e)$, which is associative and satisfies the
-  following equations whenever they make sense:
-  \begin{gather}
-    (f\cdot m_2)\bullet(m_1\cdot h) = f\cdot(m_2\bullet m_1)\cdot h
-      \label{eq:Prof_monoid_A}
-    \\ (m_3\cdot g)\bullet m_1 = m_3\bullet(g\cdot m_1)
-      \label{eq:Prof_monoid_B}
-    \\ m\bullet i(f) = m\cdot f
-          \quad\text{and}\quad
-      i(g)\bullet m = g\cdot m
-      \label{eq:Prof_monoid_C}
-  \end{gather}
-  Specifically, equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B} simply say that
-  $\bullet$ is a well defined morphism $M\odot M\to M$, while \eqref{eq:Prof_monoid_C} says that
-  $\bullet$ is unital with respect to $i$.
-
-  The collapse $\Col{M}$ is then the category with the same objects as $\cat{C}$, with morphisms
-  $\Col{M}(c,d)\coloneqq M(c,d)$, and with composition given by $\bullet$. The unit $i$ of $M$ gives a
-  functor $i_M\colon\cat{C}\to\Col{M}$.
 \end{example}
 
 Exact equipments arising in practice almost always have local reflexive coequalizers, and in this
@@ -1309,17 +1325,6 @@ embedding $i_M\colon c\to\Col{M}$. Recall also the notation $\unit(a)$ from Defi
       &\iso \comp{i}_M\odot\unit\Col{M}\odot\conj{i}_M. \qedhere
   \end{align*}
 \end{proof}
-
-\begin{remark}
-    \label{rem:suffices_for_monoid}
-  The equations \eqref{eq:Prof_monoid_unit}--\eqref{eq:Prof_monoid_C} are actually overdetermined.
-  It is easy to see that equations \eqref{eq:Prof_monoid_A} and \eqref{eq:Prof_monoid_B} follow from
-  \eqref{eq:Prof_monoid_C} and the associativity of $\bullet$. Thus, when proving that
-  $\bullet\colon M\odot M\to M$ and $i\colon\Hom_{\cat{C}}\to M$ form a monoid, it suffices to prove
-  \eqref{eq:Prof_monoid_unit}, \eqref{eq:Prof_monoid_C}, and associativity of $\bullet$. These
-  observations will be used to slightly simplify the proof of
-  Proposition~\ref{prop:unit_implies_monoid}.
-\end{remark}
 
 \begin{proposition}
     \label{prop:collapse_local_equivalence}
@@ -1439,6 +1444,15 @@ proofs of our main theorems.
   \end{tikzcd} \]
 \end{definition}
 
+In the introduction to Section~\ref{chap:equipments_monoidal_profunctors} we will outline our proof
+of \ref{thm:TheoremA} as a sequence of equivalences. To finish
+Section~\ref{chap:background_equipments} we prove a proposition and theorem which provide the key
+equivalence in that proof which is not about traced or compact categories specifically, but in fact
+holds for any exact equipment, and which forms the bridge between profunctors and
+bijective-on-objects functors. They can be seen as the strongest statement of the idea, mentioned in
+the introduction to this section, that in an exact equipment $\dcat{D}$ there is a very close
+connection between monoids in $\dcat{D}$ and objects of $\dcat{D}$.
+
 \begin{proposition}
     \label{prop:Mon_vs_bo}
   Let $\dcat{D}$ be an exact equipment. There is an equivalence of fibrations on the left such
@@ -1496,7 +1510,6 @@ proofs of our main theorems.
   the restriction $d(f,f)$ with its induced monoid structure.
 \end{proof}
 
-\todo[inline]{Patrick add emphasis to \ref{thm:Mod_vs_bo}.}
 \begin{theorem}
     \label{thm:Mod_vs_bo}
   Let $\dcat{D}$ be an exact equipment with local reflexive coequalizers. There is an equivalence of
@@ -1821,8 +1834,6 @@ Thus from the definitions and Proposition~\ref{prop:2iso_traced}, we see that th
 Our next goal is to prove that the equipments $\dMonProf$, $\dTrProf$, and $\dCompProf$ from Section~\ref{sec:monoidal_profunctors} are
 all exact, as in Definition~\ref{def:exact_equipment}. We then discuss a few consequences of exactness: the $(\bo,\ff)$ factorization systems (Proposition~\ref{prop:(bo,ff)_really_is}) and the relationship between monoids and $\bo$-maps in these equipments (Corollary~\ref{cor:Mod_vs_bo}).
 
-
-
 \begin{proposition}
     \label{prop:MonProf_exact}
   The equipment $\dMonProf$ is exact.
@@ -1863,9 +1874,14 @@ We record the following consequence of Theorem~\ref{thm:orthogonal} in the curre
   Each of the 2-categories $\MMonCat$ and $\CCompCat$ admits a 2-orthogonal $(\bo,\ff)$ factorization system.
 \end{corollary}
 
-We abuse notation slightly and use the same name ($\bo,\ff$) for the factorization systems on different categories. Recall
-the adjunction \eqref{dia:traced_compact_adjunction} and write
-$\eta_{\cat{T}}\colon\cat{T}\to\UCT\Int(\cat{T})$ for the unit component on $\cat{T}\in\TTrCat$.
+We abuse notation slightly and use the same name ($\bo,\ff$) for the factorization systems on
+different categories.
+
+The exactness of $\dTrProf$ is significantly more difficult to establish. We use the exactness of
+$\dCompProf$ and the close relationship between $\dTrProf$ and $\dCompProf$ provided by the $\Int$
+construction. We first prove a lemma which is needed for the proof. Recall the adjunction
+\eqref{dia:traced_compact_adjunction} and write $\eta_{\cat{T}}\colon\cat{T}\to\UCT\Int(\cat{T})$
+for the unit component on $\cat{T}\in\TTrCat$.
 
 \begin{lemma}
     \label{lem:Tr_bo_Int}
@@ -2006,7 +2022,8 @@ $\eta_{\cat{T}}\colon\cat{T}\to\UCT\Int(\cat{T})$ for the unit component on $\ca
   that $F$ is also surjective-on-objects.
 \end{proof}
 
-The following is a direct consequence of Theorem~\ref{thm:Mod_vs_bo} and Propositions~\ref{prop:CompProf_exact} and~\ref{prop:TrProf_exact}.
+Finally, we record for reference the application of Theorem~\ref{thm:Mod_vs_bo} to the exact
+equipments $\dTrProf$ and $\dCompProf$.
 
 \begin{corollary}\label{cor:Mod_vs_bo}
 There are equivalences of equipments
@@ -2032,7 +2049,15 @@ There are equivalences of equipments
 %\section{Internal copresheaves}
 %  \label{sec:internal_presheaves}
 
-In this section we will prove \ref{thm:TheoremB}. \todo[inline]{Patrick, introduce this section?}
+In Section~\ref{sec:exactness_proofs}, we saw that the equipments $\dTrProf$ and $\dCompProf$ are
+exact, connecting traced and compact categories to the machinery reviewed in
+Section~\ref{chap:background_equipments}. All that has come before can be seen as general machinery
+used to translate the statement of \ref{thm:TheoremB} into a more convenient form. In this section,
+we collect the properties unique to traced and compact categories, and use these to prove
+\ref{thm:TheoremB} via this translation.
+
+Before we get to that, though, we must quickly say how we talk about (co)presheaves in the language
+of equipments.
 
 \subsection{Internal copresheaves and endo-proarrows in an equipment}
 
@@ -2132,14 +2157,16 @@ bifibration over $\dcat{D}_0$ whose fiber over an object $c$ is the category of 
 
 \subsection{Copresheaves coincide with monoids in $\dCompProf$ and $\dTrProf$}
 
-Our goal in this section is to construct an equivalence of fibrations
+The key ingredient in the proof of \ref{thm:TheoremB} which is specific to traced and compact
+categories is an equivalence of fibrations
 \[ \begin{tikzcd}[column sep=-.5em]
   \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads,"\MOb"']
     && \Mon(\dCompProf) \ar[dl,two heads,"\MOb"] \\
   & \CompCat &
 \end{tikzcd} \]
-To do so we introduce a third fibration---that of pointed endo-proarrows---and establish its
-equivalence with each of $\CPsh(\dCompProf)$ and $\Mon(\dCompProf)$ in
+which we prove in this section (and which implies the corresponding equivalence for traced
+categories). To do so we introduce a third fibration---that of pointed endo-proarrows---and
+establish its equivalence with each of $\CPsh(\dCompProf)$ and $\Mon(\dCompProf)$ in
 Proposition~\ref{Prop:ptd_prof_equivalence} and Proposition~\ref{prop:unit_implies_monoid} below.
 The introduction of $\Ptd(\dCompProf)$ is merely a convenient way of organizing the proof:
 recovering a copresheaf from a monoidal endo-profunctor requires only a unit (and not a
@@ -2945,7 +2972,8 @@ rigorous equational proofs.
 
 \subsection{Deducing \ref{thm:TheoremB}}
 
-Recall that we use the notation $\int$ to denote the Grothendieck construction.
+We now have all the pieces in place to prove \ref{thm:TheoremB}. Recall that we use the notation
+$\int$ to denote the Grothendieck construction.
 
 \begin{named}{Theorem B}
     \label{thm:TheoremB}
@@ -3049,14 +3077,16 @@ For the second equivalence, we have that $\Int\colon\dTrProf\to\dCompProf$ is a 
   \label{sec:monoids_on_free}
 
 If we momentarily denote the free traced category on a set $\LabSet$ as $F(\LabSet)$, a corollary of
-\ref{thm:TheoremB} is an isomorphism $\Lax(\Int(F(\LabSet)),\Set)\cong\TrCat_\LabSet$, where the
-latter is the category of traced categories with fixed object set $\LabSet$. This was called
-\ref{thm:traced_is_cob_alg} in the introduction. Our goal in the present section is to prove
-\ref{thm:TheoremA}, for which we must formalize what it means for an object in an equipment to
-itself be objectwise-free.
+\ref{thm:TheoremB} is an isomorphism
+$\Lax(\Int(F(\LabSet)),\Set)\cong\TrCat^{\bo}_{F(\LabSet)/}\cong\TrCat_\LabSet$, where
+$\TrCat_{\LabSet}$ is the category (defined in the introduction) of traced categories whose monoid
+of objects is free on the set $\LabSet$. This was called \ref{thm:traced_is_cob_alg} in the
+introduction. Our goal in the present section is to prove \ref{thm:TheoremA}, which allows the set
+$\LabSet$ to vary. In order to handle the cases of traced and compact categories uniformly, we first
+formalize what it means for an object in a general exact equipment to itself be objectwise-free.
 
-Consider an equipment $\dcat{D}$, and let $\dom\colon\dcat{D}_0^{\bo}\onto\dcat{D}_0$ denote the
-domain fibration. Suppose we are given an adjunction to a category $\cat{S}$:
+Consider an exact equipment $\dcat{D}$, and let $\dom\colon\dcat{D}_0^{\bo}\onto\dcat{D}_0$ denote
+the domain fibration. Suppose we are given an adjunction to a category $\cat{S}$:
 \begin{equation*}
   \Adjoint{\cat{S}}{\dcat{D}_0.}{F}{U}
 \end{equation*}
@@ -3085,6 +3115,83 @@ pullback of $k_T$ along $\dom$:
     \varphi_T^{\bo}\colon \dcat{D}_T^{\bo}\to\dcat{D}^{\bo}.
   \end{equation}
 \end{definition}
+
+We can now apply the previous abstract definition to define equipments of objectwise-free monoidal,
+compact, and traced categories, preparing for the proof of \ref{thm:TheoremA}. Consider the
+free-forgetful adjunctions%
+\footnote{\label{foot:adjunctions}
+  These three adjunctions in fact extend to 2-adjunctions; see
+  Corollary~\ref{cor:2_adjunctions_MonTrComp}.
+}
+\begin{equation}
+    \label{eqn:adjunctions}
+  \Adjoint{\Set}{\MonCat}{\FM}{\UM}
+  \qquad
+  \Adjoint{\Set}{\CompCat}{\FC}{\UC}
+  \qquad
+  \Adjoint{\Set}{\TrCat}{\FT}{\UT}
+\end{equation}
+and write $\TM,\TC,$ and $\TT$ for the corresponding monads on $\Set$. Note that $\TM$ and $\TT$ are
+both isomorphic to the free monoid monad, while $\TC$ is isomorphic to the free
+monoid-with-involution monad.%
+\footnote{
+   Note that $\TM$ is not the free-\emph{commutative}-monoid monad, even though the objects of
+   $\MonCat$ are \emph{symmetric} monoidal categories, because the symmetries are encoded by natural
+   isomorphisms, not equalities.
+}
+Following Definition~\ref{def:kleisli_equipment}, we have equipments:
+\[
+  \dFrMonProf  \coloneqq \dMonProf_{\TM}
+  \qquad
+  \dFrCompProf \coloneqq \dCompProf_{\TC}
+  \qquad
+  \dFrTrProf   \coloneqq \dTrProf_{\TT}
+\]
+The functor $\dFrMonProf\to\dMonProf$ is a fully faithful local equivalence, meaning it can be
+identified with the full sub-equipment of $\dMonProf$ spanned by the monoidal categories which are
+\emph{free on a set}; similarly for $\dFrCompProf$ and $\dFrTrProf$. We will write
+\begin{align*}
+  \FrMonCat&\coloneqq\dFrMonProf_0=\Set_{\TM}\\
+  \FrCompCat&\coloneqq\dFrCompProf_0=\Set_{\TC}\\
+  \FrTrCat&\coloneqq\dFrTrProf_0=\Set_{\TT}
+\end{align*}
+for the vertical 1-categories. Note that each of these categories has a terminal object.
+
+Similarly, we can define
+\begin{gather*}
+  \MMonFrObCat \coloneqq \VVer\left(\dMonProf_{\TM}^{\bo}\right) \qquad
+  \CCompFrObCat \coloneqq \VVer\left(\dCompProf_{\TC}^{\bo}\right) \\
+  \TTrFrObCat \coloneqq \VVer\left(\dTrProf_{\TT}^{\bo}\right).
+\end{gather*}
+The functor $\dMonProf_{\TM}^{\bo}\to\dMonProf^{\bo}$ is also a fully faithful local equivalence.
+Hence $\MMonFrObCat$ is the full sub-2-category of $\MMonCat^{\bo}$ spanned by those
+bijective-on-objects monoidal functors $\cat{M}'\onto\cat{M}$ for which $\cat{M}'=\FM(\LabSet)$ is
+free on a set. Note that this is equivalent to the full sub-2-category of $\MMonCat$ spanned by
+those monoidal categories $\cat{M}$ which are \emph{objectwise-free}, i.e.\ whose underlying monoid
+of objects is free. Likewise for $\CCompFrObCat$ and $\TTrFrObCat$.
+
+\begin{remark}
+    \label{rem:PROP}
+  We have defined a 2-category $\MMonFrObCat$ of objectwise-free monoidal categories, which are also
+  known as (colored) PROPs (see, e.g.\ \cite{HackneyRobertson} for more on PROPs). However, the
+  morphisms between PROPs are more restrictive than those defined above, because they must "send
+  colors to colors". To define an equipment of PROPs, consider the functor $\FM\colon\Set\to\MonCat$
+  and let $\dPROP\coloneqq\FM^*\dMonProf$ be the induced equipment. Similarly, one can define traced
+  and compact (colored) PROPs as $\FT^*\dTrProf$ and $\FC^*\dCompProf$ respectively.
+
+  Although we will not prove it here, one can prove a variant of \ref{thm:TheoremA}, namely that
+  there are equivalences of categories
+  \begin{equation*}
+    \int^{\LabSet\in\Set}(\LCob{\LabSet})\alg \to \CompPROP
+    \quad\text{and}\quad
+    \int^{\LabSet\in\Set}(\LCob{\LabSet})\alg \to \TrPROP.
+  \end{equation*}
+  See \cite{JoyalKock} for another approach to compact PROPs.
+\end{remark}
+
+The proof of \ref{thm:TheoremA} depends on connecting monoids in $\dFrCompProf$ and $\dFrTrProf$ to
+$\CCompFrObCat$ and $\TTrFrObCat$. We first prove this connection in the abstract setting, then
+specialize to the cases of interest in Corollary~\ref{cor:TrCat_ObjectFree}.
 
 \begin{proposition}
     \label{prop:objectfree_Mod_bo}
@@ -3140,88 +3247,6 @@ pullback of $k_T$ along $\dom$:
   as desired.
 \end{proof}
 
-We apply the above work to define equipments of objectwise-free monoidal, compact, and traced
-categories and conclude by addressing \ref{thm:TheoremA}. The idea is that an objectwise-free
-monoidal category can be identified with a $\bo$-map out of the free monoidal category on a set.
-Thus we begin by defining the latter.
-
-Consider the free-forgetful adjunctions%
-\footnote{\label{foot:adjunctions}
-  These three adjunctions in fact extend to 2-adjunctions; see
-  Corollary~\ref{cor:2_adjunctions_MonTrComp}.
-}
-\begin{equation}
-    \label{eqn:adjunctions}
-  \Adjoint{\Set}{\MonCat}{\FM}{\UM}
-  \qquad
-  \Adjoint{\Set}{\CompCat}{\FC}{\UC}
-  \qquad
-  \Adjoint{\Set}{\TrCat}{\FT}{\UT}
-\end{equation}
-and write $\TM,\TC,$ and $\TT$ for the corresponding monads on $\Set$. Note that $\TM$ and $\TT$ are
-both isomorphic to the free monoid monad, while $\TC$ is isomorphic to the free
-monoid-with-involution monad.%
-\footnote{
-   Note that $\TM$ is not the free-\emph{commutative}-monoid monad, even though the objects of
-   $\MonCat$ are \emph{symmetric} monoidal categories, because the symmetries are encoded by natural
-   isomorphisms, not equalities.
-}
-Following Definition~\ref{def:kleisli_equipment}, we have equipments:
-\[
-  \dFrMonProf  \coloneqq \dMonProf_{\TM}
-  \qquad
-  \dFrCompProf \coloneqq \dCompProf_{\TC}
-  \qquad
-  \dFrTrProf   \coloneqq \dTrProf_{\TT}
-\]
-The functor $\dFrMonProf\to\dMonProf$ is a fully faithful local equivalence, meaning it can be
-identified with the full sub-equipment of $\dMonProf$ spanned by the monoidal categories which are
-\emph{free on a set}; similarly for $\dFrCompProf$ and $\dFrTrProf$. We will write
-\begin{align*}
-  \FrMonCat&\coloneqq\dFrMonProf_0=\Set_{\TM}\\
-  \FrCompCat&\coloneqq\dFrCompProf_0=\Set_{\TC}\\
-  \FrTrCat&\coloneqq\dFrTrProf_0=\Set_{\TT}
-\end{align*}
-for the vertical 1-categories. Note that each of these categories has a terminal object.
-
-\begin{definition}
-    \label{def:free_on_objects}
-  A monoidal (resp.\ compact or traced) category $\cat{M}$ is \emph{objectwise-free} if there is a
-  set $\LabSet$ and a bijective-on-objects functor $\FM(\LabSet)\onto\cat{M}$, (resp.\
-  $\FC(\LabSet)\onto\cat{C}$ or $\FT(\LabSet)\onto\cat{T}$). Denote by
-  \[
-    \MMonFrObCat\ss\MMonCat\qquad\CCompFrObCat\ss\CCompCat\qquad\TTrFrObCat\ss\TTrCat
-  \]
-  the full 2-subcategories spanned by the objectwise-free monoidal (resp.\ compact or traced)
-  categories. In other words, using Definition~\ref{def:kleisli_equipment} we may write
-  \begin{gather*}
-    \MMonFrObCat \coloneqq \VVer\left(\dMonProf_{\TM}^{\bo}\right) \qquad
-    \CCompFrObCat \coloneqq \VVer\left(\dCompProf_{\TC}^{\bo}\right) \\
-    \TTrFrObCat \coloneqq \VVer\left(\dTrProf_{\TT}^{\bo}\right).
-  \end{gather*}
-\end{definition}
-
-\begin{remark}
-    \label{rem:PROP}
-  Definition~\ref{def:free_on_objects} defines objectwise-free monoidal categories, which are also
-  known as (colored) PROPs (see, e.g.\ \cite{HackneyRobertson} for more on PROPs). However, the
-  morphisms between PROPs are more restrictive than those defined above, because they must "send
-  colors to colors". To define an equipment of PROPs, consider the functor $\FM\colon\Set\to\MonCat$
-  and let $\dPROP\coloneqq\FM^*\dMonProf$ be the induced equipment. Similarly, one can define traced
-  and compact (colored) PROPs as $\FT^*\dTrProf$ and $\FC^*\dCompProf$ respectively.
-
-  Although we will not prove it here, one can prove a variant of \ref{thm:TheoremA}, namely that
-  there are equivalences of categories
-  \begin{equation*}
-    \int^{\LabSet\in\Set}(\LCob{\LabSet})\alg \to \CompPROP
-    \quad\text{and}\quad
-    \int^{\LabSet\in\Set}(\LCob{\LabSet})\alg \to \TrPROP.
-  \end{equation*}
-  See \cite{JoyalKock} for another approach to compact PROPs.
-\end{remark}
-
-As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the following.
-
 \begin{corollary}
     \label{cor:TrCat_ObjectFree}
   There are fully faithful local equivalences of equipments, in the left column, and equivalences of
@@ -3238,6 +3263,10 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
   $\dMod(\dcat{D}_T)\equiv\dcat{D}_T^{\bo}$ in the first part of
   Proposition~\ref{prop:objectfree_Mod_bo}.
 \end{proof}
+
+The last piece needed for the proof of \ref{thm:TheoremA} is to show that the equivalence between
+copresheaves and monoids in $\dCompProf$ and $\dTrProf$ proven in Section~\ref{sec:special_CompProf}
+restricts to $\dFrCompProf$ and $\dFrTrProf$.
 
 \begin{lemma}
     \label{lem:FrCompProf_Psh_Mon}
@@ -3264,6 +3293,8 @@ As a consequence of Proposition~\ref{prop:objectfree_Mod_bo} we obtain the follo
   $\CPsh(\dFrCompProf)\to\Mon(\dFrCompProf)$ as the pullback along $\varphi_{\MTCfont{C}}$ of the
   equivalence $\CPsh(\dCompProf)\to\Mon(\dCompProf)$ from \eqref{eqn:mon_prof_equivalence}, and similarly for the traced case.
 \end{proof}
+
+Finally, we are ready to prove \ref{thm:TheoremA}.
 
 \begin{named}{Theorem A}
     \label{thm:TheoremA}
@@ -3388,10 +3419,11 @@ Corollary~\ref{cor:object_frees}, the three biequivalences
   \CCompFrObCat \to \CCompCatStrong.
 \]
 Here, $\MMonFrObCat$ (resp. $\TTrFrObCat$ and $\CCompFrObCat$) is the 2-category of objectwise-free
-monoidal (resp. traced and compact) categories and strict functors between them (see Definition~\ref{def:free_on_objects}), whereas
-$\MMonCatStrong$ (resp. $\TTrCatStrong$ and $\CCompCatStrong$) is the 2-category of monoidal (resp.
-traced and compact) categories with arbitrary objects and strong functors between them. This result
-will not be new to experts, but we found it difficult to find in the literature.
+monoidal (resp. traced and compact) categories and strict functors between them (see
+Section~\ref{sec:monoids_on_free}), whereas $\MMonCatStrong$ (resp. $\TTrCatStrong$ and
+$\CCompCatStrong$) is the 2-category of monoidal (resp. traced and compact) categories with
+arbitrary objects and strong functors between them. This result will not be new to experts, but we
+found it difficult to find in the literature.
 
 %%% Section %%%
 \section{Arrow objects and mapping path objects}\label{sec:app_arrowObs}
