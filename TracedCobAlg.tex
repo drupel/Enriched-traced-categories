@@ -967,22 +967,23 @@ which is immediate from the definitions.
 %%% Section %%%
 \section{Exact equipments and $\bo$, $\ff$ factorization}
   \label{sec:exactness_boff}
-For many equipments $\dcat{D}$, monoids in $\dcat{D}$ are category-like objects where the
-vertical and horizonal arrows in $\dMod(\dcat{D})$ behave much like functors and profunctors. The canonical
-example is the equipment of spans of sets whose objects, vertical, and horizontal arrows are sets,
-functions, and spans respectively. In this case, the equipment of monoids is equivalent to $\dProf$, which
-may be easily verified by direct calculation.
+For many equipments $\dcat{D}$, monoids in $\dcat{D}$ are category-like objects where the vertical
+and horizontal arrows in $\dMod(\dcat{D})$ are (generalized or structured) functors and profunctors.
+The canonical example is the equipment of spans of sets whose objects, vertical, and horizontal
+arrows are sets, functions, and spans respectively. In this case, the equipment of monoids is
+equivalent to $\dProf$, which may be easily verified directly (or see \cite{Leinster}).
 
-One natural question is thus: how should one think about monoids in equipments like $\dProf$ whose objects are already
-category-like? It turns out that in these cases where $\dcat{D}$ is an equipment of category-like objects,
-the equipment $\dMod(\dcat{D})$ of monoids in $\dcat{D}$ is very closely related to $\dcat{D}$ itself. In
-other words, monoids in an equipment are category-like objects, but taking monoids in an already
-category-like equipment doesn't change much.
+One natural question is thus: what are monoids in equipments like $\dProf$ whose objects are already
+category-like? One might guess they would be higher-dimensional structures like double categories.
+However, it turns out that in these cases where $\dcat{D}$ is an equipment of category-like objects,
+the equipment $\dMod(\dcat{D})$ of monoids in $\dcat{D}$ is very closely related to $\dcat{D}$
+itself. In other words, monoids in an equipment are category-like objects, but taking monoids in an
+already category-like equipment doesn't change much.
 
 The article \cite{Schultz2015} proposed definitions of \emph{regular} and \emph{exact} equipments.
 For this paper we will only be concerned with exact equipments, which are an attempt to axiomatize
 the above property of equipments whose objects are category-like. In particular, given any monoid
-$M$ in an an exact equipment, there is a corresponding object called the \emph{collapse} of $M$
+$M$ in an exact equipment, there is a corresponding object called the \emph{collapse} of $M$
 satisfying a certain vertical universal property. This collapse construction has formal similarities
 to the quotient of an equivalence relation, and it is because of this (informal) analogy that the
 names regular and exact where chosen. From this perspective, $\dMod(\dcat{D})$ can be thought of as
@@ -1066,7 +1067,7 @@ factorization system exists in any regular category).
 
 \begin{example}
     \label{ex:monoid_in_Prof}
-  Collapses of monoids always exist in $\dProf$, and this is the prototypical example of callapse.
+  Collapses of monoids always exist in $\dProf$, and this is the prototypical example of collapse.
 
   Consider a monoid $M\colon \cat{C}\tickar \cat{C}$ in $\dProf$. The unit is a profunctor morphism
   $i\colon\Hom_{\cat{C}}\to M$. So for any $f\colon c\to d$ in $\cat{C}$ there is an element
@@ -1094,9 +1095,9 @@ factorization system exists in any regular category).
   $\bullet$ is a well-defined morphism $M\odot M\to M$, while \eqref{eq:Prof_monoid_C} says that
   $\bullet$ is unital with respect to $i$.
 
-  The collapse $\Col{M}$ is thus the category with the same objects as $\cat{C}$, with morphisms
-  $\Col{M}(c,d)\coloneqq M(c,d)$, and with composition given by $\bullet$. The unit $i$ of $M$ gives a
-  functor $i_M\colon\cat{C}\to\Col{M}$.
+  The collapse $\Col{M}$ of $M$ is the category with the same objects as $\cat{C}$, with morphisms
+  $\Col{M}(c,d)\coloneqq M(c,d)$, and with composition given by $\bullet$. The unit $i$ of $M$ gives
+  a functor $i_M\colon\cat{C}\to\Col{M}$.
 \end{example}
 
 \begin{remark}
@@ -1445,12 +1446,11 @@ proofs of our main theorems.
   \end{tikzcd} \]
 \end{definition}
 
-Section~\ref{chap:equipments_monoidal_profunctors} begins with an outline of our proof
-of \ref{thm:TheoremA} as a sequence of equivalences. To finish the present section,
-we establish the following two results that provide the key equivalence in that proof.
-These are not about traced or compact categories specifically, but in fact
-hold for any exact equipment and form a precise bridge between profunctors and
-bijective-on-objects functors. They can be seen as the strongest statement of the idea (mentioned in
+Section~\ref{chap:equipments_monoidal_profunctors} begins with an outline of our proof of
+\ref{thm:TheoremA} as a sequence of equivalences. The last two results of the present section
+provide the step in that sequence which is not about traced or compact categories specifically, but
+in fact holds for any exact equipment. They form the bridge we need between profunctors and
+bijective-on-objects functors. They can be seen as a stronger statement of the idea (mentioned in
 the introduction to this section) that in an exact equipment $\dcat{D}$, there is a very close
 connection between monoids in $\dcat{D}$ and objects of $\dcat{D}$.
 
@@ -1570,7 +1570,7 @@ The leftmost equivalences follow trivially from the definition of $\CPsh$,
 Definition~\ref{def:copresheaves}. The rightmost equivalences will follow directly from
 Proposition~\ref{prop:Mon_vs_bo} once we prove that $\dTrProf$ and $\dCompProf$ are exact in
 Section~\ref{sec:exactness_proofs}. The middle equivalences are specific to traced and compact
-categories, these are established in Section~\ref{sec:special_CompProf}.
+categories; these are established in Section~\ref{sec:special_CompProf}.
 
 To prove \ref{thm:TheoremA}, we need to deal with the issue of objectwise-freeness. This is
 the purpose of Section~\ref{sec:monoids_on_free}. Finally in
@@ -1618,7 +1618,7 @@ Let $\cat{M}$ and $\cat{N}$ be monoidal categories. A functor $F\colon\cat{M}\to
   \end{tikzcd}
 \end{equation*}
 satisfying certain compatibility equations (see, e.g.\ \cite{Leinster,BorceuxV2}). If all coherence
-morphisms are identities (resp. isomorphisms), then $F$ is \emph{strict} (resp. \emph{strong}). Let
+morphisms are identities (resp.\ isomorphisms), then $F$ is \emph{strict} (resp.\ \emph{strong}). Let
 $\Lax(\cat{M},\cat{N})$ denote the category of lax monoidal functors and monoidal transformations
 from $\cat{M}$ to $\cat{N}$.
 
@@ -1993,8 +1993,8 @@ for the unit component on $\cat{T}\in\TTrCat$.
 
 \begin{proposition}
     \label{prop:(bo,ff)_really_is}
-  In $\dMonProf$, $\dTrProf$, and $\dCompProf$, a vertical map is $\ff$ (resp. $\bo$) if and only if
-  it is fully faithful (resp. bijective-on-objects) in the usual sense.
+  In $\dMonProf$, $\dTrProf$, and $\dCompProf$, a vertical map is $\ff$ (resp.\ $\bo$) if and only if
+  it is fully faithful (resp.\ bijective-on-objects) in the usual sense.
 \end{proposition}
 \begin{proof}
   It is clear that the forgetful double functor $U\colon\dMonProf\to\dProf$ creates cartesian 2-cells: a
@@ -2009,7 +2009,7 @@ for the unit component on $\cat{T}\in\TTrCat$.
   Because the forgetful double functor $\UCM\colon\dCompProf\to\dMonProf$ is a fully faithful local
   equivalence, it follows that it too creates cartesian 2-cells, and from the construction of
   collapses in $\dCompProf$ it also creates collapse 2-cells. Hence a vertical map in $\dCompProf$
-  is in $\bo/\ff$ iff its underlying map in $\dMonProf$ is.
+  is in $\bo/\ff$ if and only if its underlying map in $\dMonProf$ is.
 
   Likewise, $\Int\colon\dTrProf\to\dCompProf$ creates cartesian and collapse 2-cells. It only remains 
   to show that a traced functor $F\colon\cat{T}\to\cat{T}'$ is fully faithful (resp.\
@@ -2157,13 +2157,15 @@ bifibration over $\dcat{D}_0$ whose fiber over an object $c$ is the category of 
 
 \subsection{Copresheaves coincide with monoids in $\dCompProf$ and $\dTrProf$}
 
-The key ingredient in the proof of \ref{thm:TheoremB} which we prove in this section (and which implies the corresponding equivalence for traced
-categories) is specific to traced and compact categories is the following equivalence of fibrations
+The component of the proof of \ref{thm:TheoremB} which is specific to traced and compact categories
+is the following equivalence of fibrations:
 \[ \begin{tikzcd}[column sep=-.5em]
   \CPsh(\dCompProf) \ar[rr,"\equiv"] \ar[dr,two heads,"\MOb"']
     && \Mon(\dCompProf) \ar[dl,two heads,"\MOb"] \\
   & \CompCat. &
 \end{tikzcd} \]
+We prove this equivalence in this section (which implies the corresponding equivalence for traced
+categories).
 To do so we introduce a third fibration---that of pointed endo-proarrows---and
 establish its equivalence with each of $\CPsh(\dCompProf)$ and $\Mon(\dCompProf)$ in
 Proposition~\ref{Prop:ptd_prof_equivalence} and Proposition~\ref{prop:unit_implies_monoid} below.
@@ -2228,8 +2230,8 @@ extended to any pointed monoidal endo-profunctor on $\cat{C}$.
 
 \begin{lemma}
     \label{Lem:comp_prof_bijection}
-  Let $\cat{C}$ be a compact category. Any pointed endo-profunctor $i\colon\Hom_\cat{C}\to M$ in
-  $\Ptd(\dCompProf)$ induces a natural bijection $M(a,b)\iso M(I,a^*\otimes b)$ for any objects
+  Let $\cat{C}$ be a compact category. Given any pointed endo-profunctor $i\colon\Hom_\cat{C}\to M$
+  in $\Ptd(\dCompProf)$, there is a natural bijection $M(a,b)\iso M(I,a^*\otimes b)$ for any objects
   $a,b\in \cat{C}$.
 \end{lemma}
 \begin{proof}
@@ -3287,7 +3289,7 @@ restricts to $\dFrCompProf$ and $\dFrTrProf$.
   \end{equation*}
 \end{lemma}
 \begin{proof}
-  The equipment functor $\varphi_{\MTCfont{C}}\colon\dFrCompProf\to\dCompProf$ (resp.
+  The equipment functor $\varphi_{\MTCfont{C}}\colon\dFrCompProf\to\dCompProf$ (resp.\
   $\varphi_{\MTCfont{T}}\colon\dFrTrProf\to\dTrProf$) is by definition a local equivalence, and it
   preserves terminal objects in the vertical category. Thus using Lemma~\ref{lem:Mon_pullback} and
   Lemma~\ref{lem:Psh_pullback} we construct the desired equivalence
@@ -3419,10 +3421,10 @@ Corollary~\ref{cor:object_frees}, the three biequivalences
   \TTrFrObCat \to \TTrCatStrong \qquad
   \CCompFrObCat \to \CCompCatStrong.
 \]
-Here, $\MMonFrObCat$ (resp. $\TTrFrObCat$ and $\CCompFrObCat$) is the 2-category of objectwise-free
-monoidal (resp. traced and compact) categories and strict functors between them (see
-Section~\ref{sec:monoids_on_free}), whereas $\MMonCatStrong$ (resp. $\TTrCatStrong$ and
-$\CCompCatStrong$) is the 2-category of monoidal (resp. traced and compact) categories with
+Here, $\MMonFrObCat$ (resp.\ $\TTrFrObCat$ and $\CCompFrObCat$) is the 2-category of objectwise-free
+monoidal (resp.\ traced and compact) categories and strict functors between them (see
+Section~\ref{sec:monoids_on_free}), whereas $\MMonCatStrong$ (resp.\ $\TTrCatStrong$ and
+$\CCompCatStrong$) is the 2-category of monoidal (resp.\ traced and compact) categories with
 arbitrary objects and strong functors between them. This result will not be new to experts, but we
 found it difficult to find in the literature.
 
@@ -4052,7 +4054,7 @@ for morphisms in $\pcat{D}$.
   same as strict monoidal functors out of $QA$, or more precisely that for any monoidal category $B$
   there is an isomorphism of categories $\MMonCatStrong(A,B)\iso\MMonCat(QA,B)$.
 
-  The cases of $\TTrCat$ and $\CCompCat$ are analagous.
+  The cases of $\TTrCat$ and $\CCompCat$ are analogous.
 \end{example}
 
 %%% Section %%%
